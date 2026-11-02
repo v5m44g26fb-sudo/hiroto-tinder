@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v58</b>（元版v257までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v59</b>（元版v257までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3675,6 +3675,22 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
    "はやて":{s:[["今日も定時で上がれました","静かな店、席だけ押さえてあります"],["📷:assets/dummy-hayate-2.jpg","城下町の夕方。今度は、なおさんと歩きたい","夜の顔は、会ったときのお楽しみで"]],d:["今夜、まだ起きていらっしゃいますか","なおさんからの誘いには、弱いんです"]}
   };
   Object.keys(DM2).forEach(function(n){ if(DM[n]){ DM[n].script2=DM2[n].s; DM[n].def=DM[n].def.concat(DM2[n].d); } });
+  /* ===== Tinder ver v59: dummy chats round 3 - a third lap of script beats + extra defaults, plus a late-night-only pool (23:00-3:59) that only surfaces after the scripts run out; same eager tone, nothing explicit, everyone 20+ ===== */
+  var DM3={
+   "けんた":{s:[["この前おすすめしたサウナ、実はもう予約の画面まで開いてある笑","あとは、なおさんの「行く」が聞きたいだけ"],["📷:assets/dummy-kenta-2.jpg","この写真、なんかお気に入りで","実物はもうちょいマシだと思う。今夜、確かめに来ない？"]],d:["キャンプ道具、車に積みっぱなしなんだ。いつでも行けるよ","なおさんのペース、尊重する。でも本音は、今夜会いたい"],n:["夜中、起きてる？ サウナのあとの空腹って、最強だよね","寝る前に少しだけ話そ。明日も誘うけど"]},
+   "れん":{s:[["新店、開拓してきたよ。なおさん専用の候補リスト、更新中","一軒目に連れて行きたい店、決まった"],["📷:assets/dummy-ren-3.jpg","麺リフト、また会心の一枚出た","次は、なおさんの反応を隣で見たいな"]],d:["麺の話以外も、なおさんのこと知りたい","終電の時間、頭に入れて待ってる。…過ぎたら、知らないけど笑"],n:["夜中のラーメンの誘惑に、勝てたことないんだよね","なおさんも起きてるなら、話そ。今夜の店の話"]},
+   "だいき":{s:[["現像したフィルム、上がってきたんです","なおさんと行ったわけじゃないのに、なおさんに見せたい写真ばかりで"],["📷:assets/dummy-daiki-3.jpg","窓際の席、夕方の光が最高なんです","今度は隣に座ってほしいな"]],d:["写真の上達より、なおさんとの距離の縮まり方が気になる笑","バイト終わり、真っ先に連絡しちゃいました"],n:["夜のカフェって、昼と別物なんですよ","こんな時間に起きてる同士、少し話しません？"]},
+   "そうた":{s:[["チケット2枚、無事に手元にあるよ","日程、送るね。…今夜じゃなくても、会う口実にしたい"],["📷:assets/dummy-sota-3.jpg","行きつけの店、店員さんに顔覚えられた","なおさん連れて行ったら、自慢できそう"]],d:["下北、今日も音が漏れてる。なおさんの分まで聞いとく","古着、なおさんに似合いそうなの見つけたら写真送るね"],n:["夜の下北、歩いてるだけで楽しいんだ","起きてる？ 一曲、おすすめ送りつけていい？"]},
+   "はると":{s:[["今日の夕日、助手席が似合う空でした","…なんて、迎えに行く理由を探してます"],["📷:assets/dummy-haruto-2.jpg","フィールドワークの海。また行くんです","次は仕事抜きで、なおさんと行きたい"]],d:["研究の話、退屈だったら止めてくださいね","なおさんの返信が来ると、論文のやる気まで上がるんです"],n:["夜の研究室、静かすぎて。なおさんの声が聞きたいな","星、見えてます。同じ空、見てますか"]},
+   "しゅん":{s:[["今日も夜型。なおさんに合わせて起きてる","…嘘。もともと、この時間がいちばん冴える"],["📷:assets/dummy-shun-3.jpg","夜の街、今夜も静かだよ","隣に乗せるなら、なおさんがいい"]],d:["短い返信でも、来ると違う","なおさんには、言葉数 増えるほう"],n:["この時間のドライブ、誘うの2人目とかじゃない。…1人目","眠れないなら、朝まで付き合う"]},
+   "たくみ":{s:[["今日のエビ、活きが良すぎて。なおさんの顔が浮かんだ","店に来なくても、届けに行きたいくらい"],["📷:assets/dummy-takumi-3.jpg","休みの台所。結局、誰かのために作りたいんだなって","なおさんの『美味しい』、早く聞きたい"]],d:["年上らしく、急かしはしません。でも、待ってます","店終わりの連絡が、なおさんには一番早いかも"],n:["仕込み終わり。この時間の静けさ、好きなんです","夜食、作りすぎた日は、なおさんを思い出します"]},
+   "ゆうき":{s:[["今日は胸の日。パンプ、すごいことになってる笑","鏡の前で、なおさんに見せる想像しちゃった"],["📷:assets/dummy-yuki-2.jpg","この腕、サウナで温めたら完璧なんだけど","一緒にととのったら、もっと完璧"]],d:["なおさんと話すと、ジムより元気出る説ある","返信の速度、俺と同じくらい早いの嬉しい"],n:["夜の銭湯、空いてて最高だよ。今からでも間に合う","起きてるなら、サウナの約束の日 決めちゃお"]},
+   "りく":{s:[["なおさんの曲、サビまで書けた","タイトル、まだ内緒。ライブで最初に聞いて"],["📷:assets/dummy-riku-3.jpg","学祭の写真、懐かしくて引っ張り出した","来年は客席に、なおさんがいてほしい"]],d:["歌詞に、なおさんの言葉が混ざってきてる","ライブハウスの近く、今日も通った。思い出した"],n:["夜中に書く曲って、素直すぎて怖い","なおさんにだけ、デモ音源 送っていい？"]},
+   "かいと":{s:[["実家の猫の写真、母から届きました","なおさんにも見せたくて。今度、まとめて送ります"],["📷:assets/dummy-kaito-2.jpg","傘の日の写真、なんか好きで","雨の日の映画、二人で観たいな"]],d:["夜勤の日も、なおさんの返信が癒しです","無理のないペースで。でも、会える日は楽しみにしてます"],n:["夜勤明け、眠る前のこの時間が好きです","眠れない夜は、いつでも声かけてください"]},
+   "そうま":{s:[["ラテアート、今日は両面ハート成功しました！","なおさんの一杯は、本番にとってあります"],["📷:assets/dummy-soma-2.jpg","バイト先の窓側、この席キープしたい","なおさんの席って、もう決めてるんです笑"]],d:["バイト中も、なおさんからの通知が一番嬉しいです","自転車、夜風が気持ちいい季節ですよ。迎えに行きます"],n:["夜カフェのバイト終わり、この時間が一番そわそわします","まだ起きてます？ カフェの話、あと少しだけ"]},
+   "はやて":{s:[["城下町の夕方、歩いてきました","御朱印帳、なおさんの分も買っておこうかと"],["📷:assets/dummy-hayate-3.jpg","スーツじゃない日の一枚。…感想、待ってます","会ったときのギャップは、もっとあるかもですよ"]],d:["真面目に、なおさんのことが気になっています","静かな店、席は取ってあります。あとは日程だけ"],n:["夜更かしは得意じゃないんです。…なおさん相手だと、別ですね","こんな時間まで話せる相手、久しぶりです"]}
+  };
+  Object.keys(DM3).forEach(function(n){ if(DM[n]){ DM[n].script3=DM3[n].s; DM[n].def=DM[n].def.concat(DM3[n].d); DM[n].night=DM3[n].n; } });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -3845,11 +3861,15 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     var inp=dmWrap.querySelector("#dm-text"); var v=(inp.value||"").trim(); if(!v||!current) return;
     var name=current; inp.value="";
     dmPush(name,"me",v);
+    window.__lastDmChat={name:name,at:Date.now()};
     var cs=chatState[name]; var D=DM[name]; if(!cs||!D) return;
     var msgs=null;
     for(var i=0;i<D.keys.length;i++){ if(D.keys[i][0].test(v) && !cs.usedKeys[i]){ cs.usedKeys[i]=1; msgs=[D.keys[i][1]]; break; } }
     if(!msgs && cs.step<D.script.length){ msgs=D.script[cs.step]; cs.step++; }
     else if(!msgs && D.script2 && cs.step<D.script.length+D.script2.length){ msgs=D.script2[cs.step-D.script.length]; cs.step++; }
+    else if(!msgs && D.script3 && cs.step<D.script.length+(D.script2?D.script2.length:0)+D.script3.length){ msgs=D.script3[cs.step-D.script.length-(D.script2?D.script2.length:0)]; cs.step++; }
+    if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
+      if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs){ msgs=[D.def[cs.defIdx%D.def.length]]; cs.defIdx++; }
     msgs.forEach(function(t,j){ setTimeout(function(){ dmPush(name,"them",t); },1000+j*1200); });
   }
@@ -6589,6 +6609,43 @@ app.style.display="flex";},true);
    FCHATS.kazu.calm.push("ゆうた、また前のめりやったで","俺は見てるだけやけど、なおのこと気にしてるのは本気やと思うわ","無理すんなよ。困ったら言え");
    clearInterval(iv); } }catch(e){}
   if(tries>40) clearInterval(iv); },600);
+})();
+</script>
+<script>
+/* ===== Tinder ver v59: his free chat notices the app - a restrained jealous streak when she has just been talking with a dummy match (an afterthought double-text in the v213 style, escalating at most three times, fully gated by the v28 farewell/scandal rules), plus quiet cross-references to the bonus episodes (the Super Like he almost did not press, the cafe walk home) ===== */
+(function(){
+ if(typeof himReply!=="function"||typeof state==="undefined"||state._v59j) return; state._v59j=true;
+ const _hr=himReply;
+ const JEAL=[
+  ["…さっき、誰と話してたん？","べつに。気になっただけや"],
+  ["また、アプリの人と話してたんやろ","…楽しそうで、何よりや"],
+  ["…ふーん","俺も、負けてられへんな"]];
+ himReply=async function(t){ const r=await _hr(t);
+  try{
+   if(state.ended||state.act2||state.phase==="scandal") return r;
+   const calm=state._vmCalm||state.started;
+   if(!calm||state.chapter<2) return r;
+   // jealousy: she chatted with a dummy in the last 10 minutes, not yet reacted to
+   const ld=window.__lastDmChat;
+   if(ld && (Date.now()-ld.at)<600000 && ld.at>(state._jealSeen||0)){
+     state._jealSeen=ld.at;
+     const n=state._jealN||0;
+     if(n<JEAL.length){ state._jealN=n+1; const lines=JEAL[n];
+       setTimeout(async ()=>{ if(state.ended||state.act2||state.phase==="scandal") return;
+         for(const s of lines){ await himMsg(s,350); } },3400);
+       return r; }
+   }
+   // cross-references to the bonus episodes, one-shot each
+   if(typeof t==="string" && /スーパーライク|Super\s?Like/i.test(t) && !state._xrefSL){ state._xrefSL=true;
+     setTimeout(async ()=>{ if(state.ended||state.act2||state.phase==="scandal") return;
+       await himMsg("あの Super Like な",350); await himMsg("押すとき、手が震えたんは…内緒やで",350); },3400);
+     return r; }
+   if(typeof t==="string" && /カフェオレ/.test(t) && !state._xrefCafe && state.chapter>=2){ state._xrefCafe=true;
+     setTimeout(async ()=>{ if(state.ended||state.act2||state.phase==="scandal") return;
+       await himMsg("カフェオレの話したら、あのカフェ思い出すな",350); await himMsg("帰り道も、悪くなかったやろ",350); },3400);
+     return r; }
+  }catch(e){}
+  return r; };
 })();
 </script>
 </body>
