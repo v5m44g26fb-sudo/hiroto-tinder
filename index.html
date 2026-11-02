@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v64</b>（元版v266までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v65</b>（元版v271までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -6313,6 +6313,78 @@ app.style.display="flex";},true);
  const t0=Date.now();
  const iv=setInterval(()=>{ run(); if(ig.querySelector("[data-v266]")||Date.now()-t0>25000) clearInterval(iv); },900);
  run();
+})();
+/* ===== Tinder ver v65 (orig v267): the photo album follows the timeline too, and Sakuya joins it as a fan save ===== */
+(function(){
+ const grid=document.querySelector("#ph-grid"); if(!grid) return;
+ if(!grid.querySelector("[data-v267]")){
+  const f=document.createElement("figure"); f.dataset.v267="1";
+  f.innerHTML='<img src="assets/sakuya-post.jpg" alt=""><figcaption>サクヤ💚</figcaption>';
+  grid.appendChild(f); }
+ const RULES=[["送ってくれた",()=> (state.chapter||0)>=2],
+              ["カフェの彼",()=> (state.chapter||0)>=2],
+              ["カフェで腕組み",()=> (state.chapter||0)>=2],
+              ["バラと彼",()=> (state.chapter||0)>=3],
+              ["例の投稿",()=> state.phase==="scandal"||!!state.act2||!!state.ended]];
+ const gate=()=>{ grid.querySelectorAll("figure").forEach(f=>{
+  const cap=(f.querySelector("figcaption")||{}).textContent||"";
+  for(const [key,ok] of RULES){ if(cap.includes(key)){ f.style.display=ok()?"":"none"; break; } } }); };
+ setInterval(gate,1200); gate();
+})();
+/* ===== Tinder ver v65 (orig v268): her friends talk about the fandom life too ===== */
+(function(){
+ let tries=0;
+ const iv=setInterval(()=>{ tries++;
+  try{ if(typeof FCHATS!=="undefined"&&FCHATS.yui&&FCHATS.misaki&&FCHATS.rina){
+   FCHATS.yui.calm.push("サクヤくんの新しい写真、見た？　天使やった","WISHの曲、最近ずっと聞いてる。なおの影響");
+   FCHATS.misaki.calm.push("いくみんのステージ動画、送られてきたやつ見たで。かっこよかった");
+   FCHATS.rina.calm.push("推し活と日常のバランス、なおは上手いよなあ");
+   clearInterval(iv); } }catch(e){}
+  if(tries>40) clearInterval(iv); },600);
+})();
+/* ===== Tinder ver v65 (orig v269): in free chat he reacts to her other fandom - and to being called Ikumin. v28 gates kept: never during the scandal, never after an ending ===== */
+(function(){
+ if(state._v269t) return; state._v269t=true;
+ const prev=himReply;
+ himReply=async function(t){ const r=await prev.call(this,t);
+  try{ const s2=t||"";
+   if(!state.ended&&state.phase!=="scandal"){
+    if(/サクヤ|WISH|うぃしゅ|ウィッシュ/.test(s2)&&Math.random()<0.65){
+     const pool=["サクヤくん、か。……負けてられへんな、俺も","へえ、そんなに好きなんや。……ちょっとだけ、妬けるな","その話する時のなお、楽しそうやな。……うん、ええと思う"];
+     setTimeout(()=>himMsg(pool[Math.floor(Math.random()*pool.length)]),900); }
+    else if(/いくみん/.test(s2)&&Math.random()<0.6){
+     setTimeout(()=>himMsg("……その呼び方、ファンの子らが使うやつやんな。なおに言われると、なんか変な感じするわ"),900); }
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v65 (orig v270): a notebook page about having two people she cheers for, read against this arc ===== */
+(function(){
+ const obs=new MutationObserver(()=>{ const p=document.querySelector("#note-panel");
+  if(!p||p.querySelector("#note-extra6")) return;
+  const d=document.createElement("div"); d.id="note-extra6";
+  d.style.cssText="background:#fffdf5;border:1px solid #f0e6c8;border-radius:12px;padding:12px 14px;margin-top:10px;font-size:13.5px;line-height:1.75;color:#333";
+  d.innerHTML="<b>💚 推し活のページ</b><br>"
+   +"サクヤの言葉選びがすきで、WISHを見ると元気になる。それは今まで通りの私の日常。<br>"
+   +"で、もう一人の推しは、画面の向こうにいるはずだったのに、私の名前を知ってる人になってた。応援してたはずの人に名前を呼ばれるの、まだ時々ふしぎ。<br>"
+   +"……このページのことは、彼には内緒。ちょっと妬いてたの、知ってるけど。";
+  p.appendChild(d); });
+ obs.observe(document.body,{childList:true,subtree:true});
+})();
+/* ===== Tinder ver v65 (orig v271): a date never chips twice in his chat - the same-day night part becomes a slim night divider ===== */
+(function(){
+ if(state._v271t) return; state._v271t=true;
+ const orig=addDayChip;
+ addDayChip=function(t){ const chat=document.querySelector("#chat");
+  if(chat){ const chips=chat.querySelectorAll(".daychip");
+   const last=chips[chips.length-1];
+   if(last){ const core=x=>{ const m=(x||"").match(/^\d+月\d+日/); return m?m[0]:""; };
+    if(core(last.textContent)&&core(last.textContent)===core(t)){
+     if(/夜/.test(t)&&!/夜/.test(last.textContent)){
+      const d=document.createElement("div"); d.className="nightsep"; d.textContent="🌙 その夜";
+      d.style.cssText="align-self:center;color:#9aa0a6;font-size:11px;padding:2px 10px";
+      chat.appendChild(d); }
+     return; } } }
+  return orig(t); };
 })();
 /* ===== Tinder ver v53 (orig v231): timeline locks - features stay unusable until the story reaches them (chapters read against this arc; the records here live in the settings rows, which already carry the match day, so there is no records panel to guard) ===== */
 (function(){
