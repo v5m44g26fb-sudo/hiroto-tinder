@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v92</b>（元版v300までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v93</b>（元版v301まで監査／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -6840,6 +6840,24 @@ app.style.display="flex";},true);
      fire("books",["漫画読むんや。……俺、続き気なって止まらんタイプ","おすすめあったら教えて。今度、読んでみる","本の話できるん、ええな。……なおの好きなやつ、気になる"]);
     else if(/カメラ|景色|夕焼け|夕日|写メ/.test(s2)&&Math.random()<0.65)
      fire("photo",["景色の写真、撮るほうなんや。……今度見せて","俺、撮られる側ばっかやから。撮る人の目線って、新鮮やねん","夕焼けって、写真に残したなるよな。……なんか、わかる"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v93 (orig v301 audited, read against the Tinder arc): orig v301 makes the original's v297 morning-after beat wait inside #party-chat until she leaves the chat before advancing to ch2 - NOT ported: #party-chat and the morning-after beat do not exist here (9/27 is the match day in this arc, no party), and this version's chapter advances fire from story beats rather than from inside a group chat she is still reading; the one in-chat advance (the ch4 fade into ch5) plays its lines into the very chat on screen and the chapter card is the intended transition, so there is no equivalent yank-away to fix. Customization instead: his free chat gains two more dives in the v83/v85/v88 style - sauna & baths (her signature hobby and one of his own Tinder tags; \u6e29\u6cc9 stays with the v77 travel dive, so it is excluded here) and hair / image changes (not covered by any earlier layer). Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v93d) return; state._v93d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/\u30b5\u30a6\u30ca|\u3068\u3068\u306e|\u304a\u98a8\u5442|\u928d\u6e6f/.test(s2)&&Math.random()<0.65)
+     fire("sauna",["\u30b5\u30a6\u30ca\u3001\u4ffa\u3082\u884c\u304f\u3067\u3002\u4ed5\u4e8b\u306e\u3042\u3068\u3001\u982d\u7a7a\u3063\u307d\u306b\u3057\u305f\u304f\u3066","\u3068\u3068\u306e\u3063\u305f\u3042\u3068\u306e\u611f\u3058\u3001\u306a\u304a\u306f\u597d\u304d\u306a\u307b\u3046\uff1f","\u30b5\u30a6\u30ca\u4e0a\u304c\u308a\u306e\u4e00\u676f\u3001\u683c\u5225\u3084\u308d\u3002\u2026\u2026\u306a\u304a\u306e\u5b9a\u756a\u306f\u3001\u306a\u3093\u3084\u308d\u306a"]);
+    else if(/\u9aea|\u30a4\u30e1\u30c1\u30a7\u30f3|\u7f8e\u5bb9\u9662|\u524d\u9aea/.test(s2)&&Math.random()<0.65)
+     fire("hair",["\u9aea\u3001\u306a\u3093\u304b\u5909\u3048\u305f\uff1f \u2026\u2026\u6c17\u306e\u305b\u3044\u3084\u3063\u305f\u3089\u3001\u3054\u3081\u3093","\u30a4\u30e1\u30c1\u30a7\u30f3\u8003\u3048\u3066\u308b\u3093\uff1f \u306a\u304a\u3001\u4f3c\u5408\u3046\u3068\u601d\u3046\u3067","\u7f8e\u5bb9\u9662\u884c\u3063\u305f\u65e5\u3063\u3066\u3001\u3061\u3087\u3063\u3068\u6c17\u5206 \u9055\u3046\u3088\u306a"]);
    } }catch(e){}
   return r; };
 })();
