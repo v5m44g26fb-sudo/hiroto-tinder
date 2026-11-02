@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v26</b>（元版v142の修正を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v29</b>（元版v152までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -4128,7 +4128,9 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   const row=v.querySelector(".stories"); if(!row) return;
   const HLS=[
    ["🍚 ごはん","assets/ig-meal.jpg",[["assets/ig-meal.jpg","カフェの彼☕"],["assets/ig-sushi.jpg","寿司🍣"],["assets/cafe3.jpg","カフェで腕組み"]]],
-   ["🎤 ライブ","assets/stage.jpg",[["assets/stage.jpg","ステージ"],["assets/crown.jpg","ファンミの日🤴"],["assets/crown-full.jpg","保存用"]]]];
+   ["🎤 ライブ","assets/stage.jpg",[["assets/stage.jpg","ステージ"],["assets/crown.jpg","ファンミの日🤴"],["assets/crown-full.jpg","保存用"]]],
+   ["🌙 日常","assets/night.jpg",[["assets/night.jpg","夜の散歩"],["assets/glasses.jpg","メガネの日"],["assets/selfie.jpg","送ってくれた自撮り"]]],
+   ["☕ カフェ","assets/cafe3.jpg",[["assets/cafe3.jpg","カフェで腕組み"],["assets/hoodie.jpg","フーディ彼氏"],["assets/ig-drink.jpg","本人の投稿🥤"]]]];
   const player=document.createElement("div"); player.id="hl-player";
   player.style.cssText="position:absolute;inset:0;z-index:90;background:#000;display:none;flex-direction:column";
   player.innerHTML='<div id="hl-bars" style="display:flex;gap:4px;padding:52px 10px 8px"></div>'+
@@ -4159,7 +4161,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
    const incOn=inc.style.display!=="none"&&inc.offsetParent!==null, actOn=act.style.display!=="none"&&act.offsetParent!==null;
    if(actOn){ state._vm117=false; return; }
    if(!incOn){ state._vm117=false;
-    later(()=>{ if(Math.random()<0.65&&typeof himVoice==="function"){ himVoice("assets/vm-calmfree.mp3","0:04");
+    later(()=>{ if(Math.random()<0.65&&typeof himVoice==="function"){ himVoice("assets/vm-t-vmail.mp3","0:08").then(()=>{ const cap=document.createElement("div"); cap.style.cssText="align-self:flex-start;margin:-4px 0 8px 44px;font-size:11.5px;color:#8e8e93;max-width:76%;line-height:1.6"; cap.textContent="（留守電）もしもし、俺やけど。……出られへんかった？ いや、用事とかちゃうねん。ただ、声聞きたかってん。……気にせんとってな"; const ch=$("#chat"); if(ch){ ch.appendChild(cap); ch.scrollTop=ch.scrollHeight; } });
      if(typeof push==="function") push("LINE","#06c755","💬","ひろと","留守電が入ってるよ",()=>{ show("line"); openChat(); }); } },26000); } },1000); }
 
  /* ---- v118: TikTok - tappable likes + comments per video ---- */
@@ -4820,6 +4822,224 @@ app.querySelector("#mu-prog").addEventListener("input",e=>{ if(vid.duration) vid
 app.querySelector("#mu-x").addEventListener("click",()=>{ pause(); app.style.display="none";});
 btn.addEventListener("click",e=>{ e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
 app.style.display="flex";},true);
+})();
+
+/* ===== Tinder v29: original v143-v152 spec sync (voicemail v150 wired above) ===== */
+/* ---- v143: a memories movie in the photos app ---- */
+(function(){
+ const tabs=document.querySelector("#album-tabs"); const grid=document.querySelector("#ph-grid");
+ if(!tabs||!grid) return;
+ const view=grid.closest("section")||grid.parentElement;
+ const btn=document.createElement("button"); btn.textContent="🎬 思い出ムービー"; btn.style.marginLeft="8px";
+ tabs.appendChild(btn);
+ const ov=document.createElement("div"); ov.id="mem-movie";
+ ov.style.cssText="position:absolute;inset:0;z-index:65;background:#000;display:none;flex-direction:column;color:#fff;overflow:hidden";
+ ov.innerHTML='<img id="mm-img" style="width:100%;flex:1;object-fit:cover;min-height:0" alt="">'+
+  '<div style="padding:14px 18px 26px;background:linear-gradient(transparent,#000 40%)"><div id="mm-cap" style="font-size:16.5px;font-weight:700;text-shadow:0 1px 8px #000"></div>'+
+  '<div id="mm-sub" style="font-size:12px;color:#ccc;margin-top:3px">🎬 思い出ムービー ・ タップで閉じる</div>'+
+  '<div style="height:3px;background:#333;border-radius:2px;margin-top:11px"><div id="mm-bar" style="height:100%;width:0;background:#ffd94d;border-radius:2px;transition:width .3s"></div></div></div>';
+ view.appendChild(ov);
+ let timer=null, idx=0, figs=[];
+ const css=document.createElement("style"); css.textContent="@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.13)}}#mm-img.kb{animation:kenburns 3.4s ease-out forwards}";
+ document.head.appendChild(css);
+ const step=()=>{ if(idx>=figs.length){ stop(); return; }
+  const f=figs[idx]; const im=f.querySelector("img"); const img=ov.querySelector("#mm-img");
+  img.src=im.getAttribute("src"); img.classList.remove("kb"); void img.offsetWidth; img.classList.add("kb");
+  ov.querySelector("#mm-cap").textContent=(f.querySelector("figcaption")||{}).textContent||"";
+  ov.querySelector("#mm-bar").style.width=Math.round((idx+1)/figs.length*100)+"%";
+  idx++; timer=setTimeout(step,3000); };
+ const stop=()=>{ clearTimeout(timer); ov.style.display="none"; };
+ ov.addEventListener("click",stop);
+ btn.addEventListener("click",()=>{ figs=[...grid.querySelectorAll("figure")].filter(f=>f.style.display!=="none").slice(0,12);
+  if(figs.length<2){ if(typeof toast==="function") toast("写真が足りないみたい"); return; }
+  idx=0; ov.style.display="flex"; step(); });
+})();
+/* ---- v144: a newspaper extra edition flashes when you open news mid-scandal (Tinder angle) ---- */
+(function(){
+ const v=document.querySelector("#v-news"); if(!v) return;
+ const ov=document.createElement("div"); ov.id="news-extra";
+ ov.style.cssText="position:absolute;inset:0;z-index:80;background:rgba(10,10,12,.88);display:none;align-items:center;justify-content:center;padding:22px";
+ ov.innerHTML='<div style="background:#f7f2e4;color:#111;max-width:330px;width:100%;padding:22px 20px;transform:rotate(-2deg);box-shadow:0 18px 50px rgba(0,0,0,.6)">'+
+  '<div style="border-bottom:3px double #111;padding-bottom:7px;display:flex;align-items:baseline"><b style="font-size:21px;letter-spacing:2px">日刊スポーツ</b><span style="margin-left:auto;font-size:11px">11月2日（日）</span></div>'+
+  '<div style="background:#e60012;color:#fff;font-weight:900;font-size:29px;text-align:center;padding:6px 0;margin:12px 0;letter-spacing:6px">号　外</div>'+
+  '<div style="font-size:19px;font-weight:900;line-height:1.5">人気アイドル井汲大翔（24）<br>マッチングアプリ利用か</div>'+
+  '<div style="font-size:12.5px;line-height:1.8;margin-top:9px">拡散されたプロフィール写真が本人と酷似。一般女性と都内のカフェで会う様子も目撃された。事務所は「交際の事実はございません。アプリの利用については確認中」とコメント。ファンの間では動揺が広がっている。</div>'+
+  '<div style="font-size:11px;color:#777;margin-top:12px;text-align:center">― タップで閉じる ―</div></div>';
+ v.appendChild(ov);
+ ov.addEventListener("click",()=>ov.style.display="none");
+ new MutationObserver(()=>{ if(v.classList.contains("on")&&state.phase==="scandal"&&!state.act2&&!state._extraShown){
+  state._extraShown=true; setTimeout(()=>{ if(v.classList.contains("on")) ov.style.display="flex"; },600); } })
+  .observe(v,{attributes:true,attributeFilter:["class"]});
+})();
+/* ---- v145: LINE content pack, retold for the Tinder arc (worried friends, a support thread, one late-night line) ---- */
+(function(){
+ /* (a) friends check in during the scandal */
+ const SC=[["yui","ニュース見た…なお、大丈夫？"],["misaki","無理しないでね。ごはんは食べた？"],["rina","私たちは味方やからね"]];
+ let si=0;
+ setInterval(()=>{ if(typeof fPush!=="function") return;
+  if(state.phase==="scandal"&&!state.act2&&si<SC.length){ fPush(SC[si][0],SC[si][1]); si++; }
+ },50000);
+ /* (b) itsumen group thread after the statement - support, not celebration */
+ setInterval(()=>{ if(state._gSup||!(state.act2||state.ended)) return;
+  const gc=document.querySelector("#gchat"); if(!gc) return;
+  const gcView=document.querySelector("#group-chat"); if(!gcView||gcView.style.display==="none") return;
+  state._gSup=true;
+  const seq=[["ゆい","なお、全部見てたよ",600],["みさき","よく頑張ったね",2400],["りな","落ち着いたらごはん行こ。話、聞かせて",4200],["ゆい","私らはいつでも味方やからね",6000]];
+  seq.forEach(([n,t,d])=>setTimeout(()=>{ if(typeof gMsg==="function") gMsg(n,t); },d));
+ },1500);
+ /* (c) one late-night line from him in free time - prologue only, never after an ending (v28 discipline) */
+ if(typeof openChat==="function"){ const _oc29=openChat;
+  openChat=function(){ _oc29();
+   const h=new Date().getHours();
+   if(!state.started&&!state.ended&&!state.act2&&state.phase==="prologue"&&(state.chapter||0)>=3&&(h>=22||h<2)){
+    if(!state._nightAt||Date.now()-state._nightAt>25*60000){ state._nightAt=Date.now();
+     const L=["…起きてる？","眠いなら、寝ていいんやで","…もうちょっとだけ、話そ"];
+     setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(L[Math.floor(Math.random()*L.length)]); },1600); } }
+  }; }
+ /* (d) richer friend histories */
+ const iv=setInterval(()=>{ let ok=false; try{ ok=(typeof FCHATS!=="undefined"&&!!FCHATS.yui); }catch(e){}
+  if(!ok) return; clearInterval(iv);
+  try{
+   FCHATS.yui.log.push(["f","今週の飲み、店決めたよ〜"],["f","なおの席、端っこにしといた"]);
+   FCHATS.misaki.log.push(["f","この前のカフェ、また行きたいね"],["f","写真、上手く撮れてたよ"]);
+   FCHATS.rina.log.push(["f","なおの推し活レポ、楽しみにしてる"],["f","早く会いたい〜"]);
+  }catch(e){}
+ },600);
+})();
+/* ---- v146+v148: bonus episodes - a story reader in settings, three scenes written for the Tinder arc ---- */
+(function(){
+ const sc=document.querySelector("#v-settings .scroll"); const vs=document.querySelector("#v-settings");
+ if(!sc||!vs) return;
+ const EPS=[
+  {t:"前日譚 ― Super Likeを押す前", sub:"マッチの前日 ・ 彼の画面", un:()=>state.chapter>=1, lines:[
+   ["n","9月26日、金曜の夜。彼の部屋。"],
+   ["him","…また、この時間や"],
+   ["him","別に、暇つぶしやねんけどな"],
+   ["n","スワイプする指が、一枚の写真で止まった。カフェで、カフェオレを前に笑う女の子。"],
+   ["him","……カフェオレ、好きなんや"],
+   ["him","なんか、気になるな"],
+   ["n","プロフィールは派手じゃなかった。ただ、楽しそうだった。"],
+   ["him","Super Like、残り1回か"],
+   ["him","……使うんか、俺"],
+   ["n","指先が、少しだけ迷った。"],
+   ["him","……押してもうた"],
+   ["him","まあ、どうせマッチせんやろ"],
+   ["n","彼はスマホを置いて、マロンの散歩に出た。"]]},
+  {t:"幕間 ― カフェの帰り道", sub:"第2話と第3話のあいだ", un:()=>state.chapter>=2, lines:[
+   ["n","初デートの帰り道。カフェを出て、駅までの十分。"],
+   ["him","今日のカフェ、当たりやったな"],
+   ["me","うん、カフェオレ美味しかった"],
+   ["him","……バレたときの顔、すごかったで"],
+   ["me","だって、ほんまに本人やと思わんやん…"],
+   ["him","ふふ、まあな"],
+   ["n","信号待ち。彼の歩幅が、少しだけゆっくりだった。"],
+   ["him","送る、とかは言わんけど"],
+   ["him","駅までは、一緒に歩かせて"],
+   ["me","……うん"],
+   ["him","着いたら、LINEしてな"],
+   ["n","改札の前で手を振った。名残惜しいのは、どっちも同じだった。"]]},
+  {t:"幕間 ― 消す前の下書き", sub:"炎上編 ・ 彼のスマホ", un:()=>state.phase==="scandal"||!!state.act2||!!state.ended, lines:[
+   ["n","11月2日、深夜。彼のスマホのメモには、下書きが残っていた。"],
+   ["him","「なおへ。アプリの件、巻き込んでごめん」"],
+   ["him","「なおは、何も悪くない」"],
+   ["him","「ほんまは、もっと普通に会いたかった」"],
+   ["n","何度も書いては、消した跡があった。"],
+   ["him","「……元気で」"],
+   ["n","送信ボタンは、押されなかった。"],
+   ["him","送ったら、迷惑やもんな"],
+   ["n","代わりに彼は、事務所の声明文を何度も読み返した。"],
+   ["him","ごめんな、なお"]]}];
+ const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
+ row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">3本</b>';
+ sc.appendChild(row);
+ const panel=document.createElement("div"); panel.id="ep-panel";
+ panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
+ vs.appendChild(panel);
+ const openList=()=>{ panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:16.5px">📖 ボーナスエピソード</b><button id="ep-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
+  '<div style="overflow-y:auto;padding:8px 16px">'+EPS.map((e,i)=>{ const un=e.un();
+   return '<div class="ep-row" data-i="'+i+'" style="background:#fff;border-radius:13px;padding:14px 15px;margin-bottom:9px;cursor:'+(un?"pointer":"default")+';'+(un?"":"opacity:.55")+'"><div style="font-weight:800;font-size:14.5px">'+(un?e.t:"🔒 ？？？")+'</div><div style="font-size:12px;color:#888;margin-top:3px">'+e.sub+(un?"":" ・ まだ解放されていません")+'</div></div>'; }).join("")+'</div>';
+  panel.style.display="flex";
+  panel.querySelector("#ep-x").addEventListener("click",()=>panel.style.display="none");
+  panel.querySelectorAll(".ep-row").forEach(r=>r.addEventListener("click",()=>{ const e=EPS[+r.dataset.i]; if(e.un()) read(e); })); };
+ const read=e=>{ let i=0;
+  panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:15.5px">'+e.t+'</b><button id="ep-x2" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
+  '<div id="ep-msgs" style="flex:1;overflow-y:auto;padding:10px 16px;display:flex;flex-direction:column;gap:8px"></div>'+
+  '<div style="padding:10px 16px 22px"><button id="ep-next" style="width:100%;background:#111;color:#fff;border:none;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700;cursor:pointer">すすむ ▶</button></div>';
+  const box=panel.querySelector("#ep-msgs");
+  const add=()=>{ if(i>=e.lines.length){ panel.querySelector("#ep-next").textContent="― おわり ―　一覧へ戻る"; return; }
+   const [w,t]=e.lines[i]; i++;
+   const d=document.createElement("div");
+   if(w==="n"){ d.style.cssText="align-self:center;background:#ececf0;color:#555;border-radius:11px;padding:8px 13px;font-size:12.5px;line-height:1.6;max-width:88%;text-align:center"; }
+   else if(w==="him"){ d.style.cssText="align-self:flex-start;background:#fff;border:1px solid #e5e5ea;border-radius:16px;padding:9px 13px;font-size:14px;line-height:1.6;max-width:78%"; }
+   else { d.style.cssText="align-self:flex-end;background:#06c755;color:#fff;border-radius:16px;padding:9px 13px;font-size:14px;line-height:1.6;max-width:78%"; }
+   d.textContent=t; box.appendChild(d); box.scrollTop=box.scrollHeight;
+   if(i>=e.lines.length) panel.querySelector("#ep-next").textContent="― おわり ―　一覧へ戻る"; };
+  add();
+  panel.querySelector("#ep-next").addEventListener("click",()=>{ if(i>=e.lines.length){ openList(); } else add(); });
+  panel.querySelector("#ep-x2").addEventListener("click",openList); };
+ row.addEventListener("click",openList);
+})();
+/* ---- v149: a save-data panel in settings - live progress stats with a copy button ---- */
+(function(){
+ const sc=document.querySelector("#v-settings .scroll"); const vs=document.querySelector("#v-settings");
+ if(!sc||!vs) return;
+ const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
+ row.innerHTML='<span>💾 セーブデータ</span><b style="color:#8e8e93">進捗を見る</b>';
+ sc.appendChild(row);
+ const panel=document.createElement("div"); panel.id="save-panel";
+ panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
+ vs.appendChild(panel);
+ const stage=()=> state.act2 ? "翌朝編に到達" : state.ended ? "エンディング到達" : state.phase==="scandal" ? "炎上編の真っ最中" : state.chapter>0 ? ("第"+state.chapter+"話まで進行") : "プロローグ";
+ const favN=()=>{ let n=0; try{ n=FAVS.size; }catch(e){} if(!n) n=(state._favs||[]).length; return n; };
+ const stats=()=>[
+  ["物語の状態", stage()],
+  ["到達した章", (state.phase==="scandal"||state.act2||state.ended) ? "第6話（炎上編）" : ("第"+(state.chapter||0)+"話")],
+  ["通話した回数", (state._callN||0)+"回"],
+  ["Instagram フォロワー", (document.querySelector("#ig-fol-n")||{}).textContent||"―"],
+  ["アルバムの写真", document.querySelectorAll("#ph-grid figure").length+"枚"],
+  ["お気に入りの写真", favN()+"枚"]];
+ const render=()=>{ panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:16.5px">💾 セーブデータ</b><button id="sv-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
+  '<div style="overflow-y:auto;padding:8px 16px">'+stats().map(s=>'<div style="background:#fff;border-radius:13px;padding:13px 15px;margin-bottom:9px;display:flex;align-items:center"><span style="font-size:13.5px;color:#555">'+s[0]+'</span><b style="margin-left:auto;font-size:14.5px">'+s[1]+'</b></div>').join("")+
+  '<button id="sv-copy" style="width:100%;background:#111;color:#fff;border:none;border-radius:999px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px">📋 記録をコピーする</button>'+
+  '<div style="font-size:11.5px;color:#999;text-align:center;margin-top:10px">※ 数値はこの端末でのプレイ状況から集計しています</div></div>';
+  panel.querySelector("#sv-x").addEventListener("click",()=>panel.style.display="none");
+  panel.querySelector("#sv-copy").addEventListener("click",()=>{ const t="『熱愛バレた件』Tinder ver セーブデータ💾\n"+stats().map(s=>s[0]+"："+s[1]).join("\n");
+   if(navigator.clipboard) navigator.clipboard.writeText(t).then(()=>{ if(typeof toast==="function") toast("コピーしました📋"); }).catch(()=>{ if(typeof toast==="function") toast("コピーできませんでした"); });
+   else if(typeof toast==="function") toast("この環境ではコピーできません"); }); };
+ row.addEventListener("click",()=>{ render(); panel.style.display="flex"; });
+})();
+/* ---- v151: emoji reactions on his IG posts ---- */
+(function(){
+ const view=document.querySelector("#v-hisig"); if(!view) return;
+ const RX=["😍","🔥","👏"];
+ const add=post=>{ if(post.dataset.rx) return; post.dataset.rx="1";
+  const acts=post.querySelector(".acts"); if(!acts) return;
+  const row=document.createElement("div");
+  row.style.cssText="display:flex;gap:7px;padding:2px 12px 4px";
+  RX.forEach((e,i)=>{ const c=document.createElement("button"); c.type="button";
+   let n=12+((post.querySelector("img.pimg")||{}).src||"").length*3+i*17;
+   c.textContent=e+" "+n;
+   c.style.cssText="border:1px solid #e2e2e6;background:#fff;border-radius:999px;padding:3.5px 10px;font-size:12.5px;cursor:pointer";
+   c.addEventListener("click",()=>{ const on=c.dataset.on==="1"; c.dataset.on=on?"":"1";
+    n+=on?-1:1; c.textContent=e+" "+n;
+    c.style.background=on?"#fff":"#ffe9f0"; c.style.borderColor=on?"#e2e2e6":"#ff9dbd"; });
+   row.appendChild(c); });
+  acts.after(row); };
+ const scan=()=>view.querySelectorAll(".ig-post").forEach(add);
+ new MutationObserver(scan).observe(view,{childList:true,subtree:true});
+ scan();
+})();
+/* ---- v152: a hidden draft memo from him appears in the memo app after the statement / an ending ---- */
+(function(){
+ const panel=document.querySelector("#hp-panel"); if(!panel) return;
+ new MutationObserver(()=>{ if(state._himMemo||!(state.act2||state.ended)) return;
+  const head=panel.querySelector(".hp-head"); if(!head||!head.textContent.includes("メモ")) return;
+  state._himMemo=true;
+  const card=document.createElement("div");
+  card.style.cssText="background:#fff7dd;border:1px solid #f0dfa0;border-radius:12px;padding:13px 14px;margin-top:10px;color:#4a3f14;line-height:1.75;font-size:13.5px";
+  card.innerHTML="<b>✉️ ひろとの隠しメモ</b><br>（下書き）なおへ。<br>コメント、出たやろ。アプリのことは、俺が悪い。<br>なおは、何も悪くないからな。<br>……元気で。";
+  panel.appendChild(card);
+ }).observe(panel,{childList:true,subtree:true});
 })();
 </script>
 <script>
