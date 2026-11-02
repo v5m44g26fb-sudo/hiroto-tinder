@@ -1,6 +1,7 @@
-# 🔥 熱愛バレた件｜Tinder ver
+# 🔥 現役アイドル、Tinderやってた件｜Tinder ver
 
 ひろとと Tinder で出会ったていで始まる、スマホ風SNSゲーム（単一HTML＋画像アセット、フレームワークなし）。元作『熱愛バレた件』のカスタマイズ版です。
+※ v71（2026-11-03）で題名を『現役アイドル、Tinderやってた件』に変更（旧題：『熱愛バレた件』Tinder ver）。このverは熱愛ではなく「現役アイドルが Tinder を使っていたこと」自体がバレる話のため。
 
 ▶ **プレイ:** https://v5m44g26fb-sudo.github.io/hiroto-tinder/
 ▶ **元作『熱愛バレた件』:** https://v5m44g26fb-sudo.github.io/hiroto-netsuai-bareta/
