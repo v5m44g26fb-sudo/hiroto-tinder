@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v119</b>（ダミー4人の雑談に第21周「教え合い」――自分の得意を一つ教え、一つ教わる周＋彼のフリーチャットにラジオ／手紙のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v120</b>（ダミー4人の雑談に第22周「いつか」――締め切りのない遠くの夢を語る周＋彼のフリーチャットにスキー・スノボ／文房具のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3901,6 +3901,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    "そうま":{s:[["教え合いってことで、僕からは窓側の席の見分け方","光の入り方と、隣の席との距離。この二つで、だいたい決まります"],["次は、なおさんに教えてほしいんです","手帳とかノートの使い方。……間取りノート、もう少し上手くまとめたいんです"]],d:["ノートの使い方、教えてくださいね"]}
   };
   Object.keys(DM22).forEach(function(n){ if(DM[n]){ DM[n].script21=DM22[n].s; DM[n].def=DM[n].def.concat(DM22[n].d); } });
+  /* ===== Tinder ver v120: dummy chats round 22 - the someday lap. A different shape from rounds 8-21 (the goals in rounds 18/19 were small and dated - this lap has no deadline at all: each dummy says one far-off someday dream out loud for the first time, growing straight out of his own thread): Sota someday wants a setlist prediction with every song right and that envelope framed, overseas festival next, Shun someday wants a trip taken just to watch the sunrise (the far end of his weekly early mornings) and a day when telling a secret first is just everyday, Takumi someday wants a small shop of his own with a first-customer seat and a dish carrying her name on its menu, Soma someday wants his own cafe built window-seat-first from the floor-plan notebook with the round-logo sign up and her in the regular-no.1 seat on opening day. Cross-references stay inside each dummy's own arc, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
+  var DM23={
+   "そうた":{s:[["『いつか』の話、していい？","いつか、セトリ予想を全曲当ててみたい。全曲当たった封筒は、額に入れて飾る"],["そんときは、なおにも見せたい","……まあ、その前に二通目の結果やな。夢は、順番に叶えてく"]],d:["いつかの夢、封筒と一緒に保管中"]},
+   "しゅん":{s:[["『いつか』の話。いつか、朝日を見るためだけに旅行したい","夜型の俺が言うと笑うやろ。……でも、週一早起きの延長に、ある気がする"],["いつか、秘密を先に言うのが日常になるといいな","なおの番も、その頃には聞けてるといい。……急かして言ってないで"]],d:["いつかの朝日、楽しみにしてる"]},
+   "たくみ":{s:[["『いつか』の話、していいですか","いつか、小さな自分の店を持ちたいんです。最初のお客さんの席、一つだけある店"],["その店のメニューに、なおさんの名前の一皿を","……大げさじゃなく、本気の夢のほうです。順番に、叶えます"]],d:["いつかの店、夢のほうも進めてます"]},
+   "そうま":{s:[["『いつか』の話、僕もしていいですか","いつか、自分のカフェを開く日。間取りノートの窓側の席を、最初に作る店"],["開店の日、丸いロゴの看板を下げて","常連さん第一号の席に、なおさんが座ってる。……それが、いつかの完成形です"]],d:["いつかの開店、ノートに書きました"]}
+  };
+  Object.keys(DM23).forEach(function(n){ if(DM[n]){ DM[n].script22=DM23[n].s; DM[n].def=DM[n].def.concat(DM23[n].d); } });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -4119,6 +4127,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     else if(!msgs && D.script19 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+D.script19.length){ var off19=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0); msgs=D.script19[cs.step-off19]; cs.step++; }
     else if(!msgs && D.script20 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+D.script20.length){ var off20=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0); msgs=D.script20[cs.step-off20]; cs.step++; }
     else if(!msgs && D.script21 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+D.script21.length){ var off21=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0); msgs=D.script21[cs.step-off21]; cs.step++; }
+    else if(!msgs && D.script22 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+D.script22.length){ var off22=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0); msgs=D.script22[cs.step-off22]; cs.step++; }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
@@ -7250,6 +7259,24 @@ app.style.display="flex";},true);
      fire("radio",["ラジオ聴く人なんや。……声だけの時間、俺も好きやで","深夜ラジオの空気感、ええよな。……なおは、聴きながら何してる派？","ポッドキャスト、作業のお供にしてるん？ ……おすすめ、今度こっそり教えて"]);
     else if(/手紙|ポストカード|年賀状|ハガキ/.test(s2)&&Math.random()<0.65)
      fire("letter",["手紙書く人なんや。……文字って、声と違う残り方するよな","年賀状、もう準備してるん？ ……几帳面なとこ、そういうとこ出るな","手書きの字、見てみたいな。……なおの字、想像してる"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v120: his free chat gains two more dives in the v105-v119 style - skiing & snowboarding (the slopes / which one she rides; triggers stay on the winter sports themselves so they do not poach the v85 weather dive, which keeps rain and forecast words, or the v118 illuminations dive, which keeps lit-up streets) and stationery & notebooks (a favourite pen / keeping a planner; no earlier dive or FCV voice uses the trigger). Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v120d) return; state._v120d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/スキー|スノボ|スノーボード|ゲレンデ/.test(s2)&&Math.random()<0.65)
+     fire("ski",["スキー行く人なんや。……なお、転ぶとき豪快そうやな","スノボ、俺は最初 立つのに半日かかったわ。……なおはどっち派？","ゲレンデのあとの温泉とごはん、あれが本番やと思ってる"]);
+    else if(/文房具|手帳|ペンケース|ボールペン/.test(s2)&&Math.random()<0.65)
+     fire("stationery",["文房具、こだわる人なんや。……ペン一本で気分変わるの、ちょっと分かる","手帳続けてる人、尊敬するわ。……俺、三日で真っ白なるタイプや","なおの字と一緒に、手帳の中身も気になるな。……見せて、とは言わへんけど"]);
    } }catch(e){}
   return r; };
 })();
