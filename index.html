@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v23</b>（ダミーマッチ＆雑談チャット追加／いつメンの段階反応を増量）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v24</b>（元版v131〜v136の仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -4520,6 +4520,143 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   }); })();
 })();
 
+/* ===== Tinder v24: original v131-v136 spec sync ===== */
+/* v131: X overhaul 3 - your own posts get pin and delete */
+(function(){
+ const mine=document.querySelector("#x-me-posts"); if(!mine) return;
+ const setup=p=>{ if(p.dataset.v131) return; p.dataset.v131="1";
+  const mt=p.querySelector(".mt"); if(!mt) return;
+  const b=document.createElement("span"); b.textContent="⋯"; b.style.cssText="cursor:pointer;font-weight:900;opacity:.6";
+  b.title="ポストのメニュー";
+  mt.appendChild(b);
+  b.addEventListener("click",e=>{ e.stopPropagation();
+   document.querySelectorAll(".post-menu").forEach(m=>m.remove());
+   const m=document.createElement("div"); m.className="post-menu";
+   m.style.cssText="background:#fff;border:1px solid #e6e6ea;border-radius:12px;box-shadow:0 6px 22px rgba(0,0,0,.16);padding:5px;margin-top:5px;font-size:13.5px;color:#111";
+   m.innerHTML='<div class="pm-pin" style="padding:8px 10px;cursor:pointer">📌 プロフィールに固定する</div><div class="pm-del" style="padding:8px 10px;cursor:pointer;color:#e60012">🗑 このポストを削除</div>';
+   p.appendChild(m);
+   m.querySelector(".pm-pin").addEventListener("click",()=>{ mine.querySelectorAll(".pin-label").forEach(x=>x.remove());
+    const lb=document.createElement("div"); lb.className="pin-label"; lb.textContent="📌 固定されたポスト";
+    lb.style.cssText="font-size:11.5px;color:#71767b;padding:2px 0";
+    p.prepend(lb); mine.prepend(p); m.remove(); if(typeof toast==="function") toast("ポストを固定したよ📌"); });
+   m.querySelector(".pm-del").addEventListener("click",()=>{ p.style.opacity=".35"; setTimeout(()=>p.remove(),250); if(typeof toast==="function") toast("ポストを削除したよ"); });
+   setTimeout(()=>document.addEventListener("click",()=>m.remove(),{once:true}),10);
+  }); };
+ mine.querySelectorAll(".post").forEach(setup);
+ new MutationObserver(()=>mine.querySelectorAll(".post").forEach(setup)).observe(mine,{childList:true});
+})();
+/* v132: you can comment on his Instagram posts - and he may like it (avatar = default icon in this ver) */
+(function(){
+ const v=document.querySelector("#v-hisig"); if(!v) return;
+ const setup=p=>{ if(p.dataset.v132) return; p.dataset.v132="1";
+  const row=document.createElement("div");
+  row.style.cssText="display:flex;gap:8px;align-items:center;padding:7px 14px 11px";
+  row.innerHTML='<img src="assets/default-avatar.svg" style="width:28px;height:28px;border-radius:50%" alt=""><input placeholder="コメントを追加…" maxlength="80" style="flex:1;border:none;background:#f6f6f8;border-radius:999px;padding:7px 12px;font-size:13px;outline:none"><button style="background:none;border:none;color:#0095f6;font-weight:800;font-size:13px;cursor:pointer">投稿</button>';
+  p.appendChild(row);
+  const post=()=>{ const inp=row.querySelector("input"); const t=inp.value.trim(); if(!t) return; inp.value="";
+   let host=p.querySelector(".ig-cmts")||p.querySelector("[id^=ig-cmts]")||[...p.querySelectorAll("div")].find(d=>d.querySelector(":scope > .cmt"));
+   if(!host){ host=document.createElement("div"); row.before(host); }
+   const c=document.createElement("div"); c.className="cmt";
+   c.innerHTML='<b>nao_0324</b> <span></span>'; c.querySelector("span").textContent=t;
+   host.appendChild(c);
+   if(typeof toast==="function") toast("コメントしたよ");
+   if(Math.random()<0.55) setTimeout(()=>{ if(!c.isConnected) return;
+    const n=document.createElement("div");
+    n.style.cssText="font-size:11.5px;color:#e0245e;margin:2px 0 4px";
+    n.textContent="❤️ 193.hiroto_jixiang があなたのコメントにいいねしました";
+    c.after(n); },40000);
+  };
+  row.querySelector("button").addEventListener("click",post);
+  row.querySelector("input").addEventListener("keydown",e=>{ if(e.key==="Enter") post(); });
+ };
+ v.querySelectorAll(".ig-post").forEach(setup);
+ new MutationObserver(()=>v.querySelectorAll(".ig-post").forEach(setup)).observe(v,{childList:true,subtree:true});
+})();
+/* v133: news gains category tabs */
+(function(){
+ const list=document.querySelector("#news-list"); if(!list||!list.parentElement) return;
+ const KEYS=["Tinder","アプリ","大翔","井汲","事務所","Super Like","マッチング"];
+ const bar=document.createElement("div");
+ bar.style.cssText="display:flex;gap:7px;padding:10px 12px 2px;background:#fff";
+ const TABS=[["すべて",null],["🔥 炎上のスレッド",KEYS],["📰 その他",[]]];
+ bar.innerHTML=TABS.map((t,i)=>'<button data-ti="'+i+'" style="border:1px solid '+(i===0?"#111":"#ddd")+';background:'+(i===0?"#111":"#fff")+';color:'+(i===0?"#fff":"#111")+';border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;cursor:pointer">'+t[0]+'</button>').join("");
+ list.parentElement.insertBefore(bar,list);
+ bar.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{ const ti=+b.dataset.ti;
+  bar.querySelectorAll("button").forEach(x=>{ const on=x===b; x.style.background=on?"#111":"#fff"; x.style.color=on?"#fff":"#111"; x.style.borderColor=on?"#111":"#ddd"; });
+  const keys=TABS[ti][1];
+  list.querySelectorAll(".newsrow").forEach(r=>{ const h=(r.querySelector(".h")||{}).textContent||"";
+   let showIt=true;
+   if(keys===null) showIt=true;
+   else if(keys.length===0) showIt=!KEYS.some(k=>h.includes(k));
+   else showIt=keys.some(k=>h.includes(k));
+   r.style.display=showIt?"":"none"; });
+ }));
+})();
+/* v134: after a free-time call ends, he sometimes writes to you about it */
+(function(){
+ let activeSince=0, wasActive=false;
+ const POOL=["さっきはありがとう","声聞けてよかった","またかけていい？","…切るの、名残惜しかったわ"];
+ setInterval(()=>{ const act=document.querySelector("#call-active");
+  const on=act&&act.style.display==="flex"&&document.querySelector("#v-call").classList.contains("on");
+  if(on&&!wasActive){ wasActive=true; activeSince=Date.now(); }
+  if(!on&&wasActive){ wasActive=false;
+   const dur=Date.now()-activeSince;
+   if(dur>6000&&!state.started&&state.caller!=="manager"&&Math.random()<0.55){
+    const line=POOL[Math.floor(Math.random()*POOL.length)];
+    setTimeout(()=>{ if(!state.started) himMsg(line); },22000);
+   } }
+ },1000);
+})();
+/* v135: a shared notebook, from his LINE profile (entries retold for the Tinder arc) */
+(function(){
+ const prof=document.querySelector("#hiroto-prof"); if(!prof) return;
+ const row=document.createElement("div");
+ row.style.cssText="display:flex;gap:9px;padding:0 16px 12px";
+ row.innerHTML='<button id="note-btn" style="flex:1;background:#fff;color:#111;border:1.5px solid #111;border-radius:999px;padding:10px;font-size:14px;font-weight:700;cursor:pointer">📒 共有ノート</button>';
+ prof.appendChild(row);
+ const NOTES=[
+  ["9/27 マッチ。Super Like、押してよかった",()=>state.chapter>=1],
+  ["カフェで会った日。本物って、バレた",()=>state.chapter>=2],
+  ["カフェオレが好き（甘め）。覚えた",()=>state.chapter>=2],
+  ["線、引いた。引いたのは、俺のほう",()=>state.chapter>=3],
+  ["それでも会ってしまう。あかんな、俺",()=>state.chapter>=4],
+  ["今は連絡、控えめに。でも大丈夫、なはず",()=>state.phase==="scandal"||state.act2],
+  ["アプリは消した。あの子は、悪くない",()=>!!state.act2]];
+ const mine=[];
+ row.querySelector("#note-btn").addEventListener("click",()=>{
+  if(document.querySelector("#note-panel")) return;
+  const vline=document.querySelector("#v-line"); if(!vline) return;
+  const p=document.createElement("div"); p.id="note-panel";
+  p.style.cssText="position:absolute;inset:0;z-index:66;background:#f7f3e8;display:flex;flex-direction:column;color:#111";
+  const render=()=>{ p.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:16.5px">📒 共有ノート</b><button id="note-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
+   '<div style="overflow-y:auto;padding:6px 16px;flex:1">'+
+   NOTES.map(n=>{ const un=n[1](); return '<div style="background:#fffdf4;border:1px solid #eee3bd;border-radius:11px;padding:11px 13px;margin-bottom:8px;font-size:13.5px;line-height:1.6;'+(un?"":"opacity:.5")+'">'+(un?"✏️ "+n[0]:"🔒 まだ書かれていないページ")+'</div>'; }).join("")+
+   mine.map(m=>'<div style="background:#eef7ee;border:1px solid #cfe6cf;border-radius:11px;padding:11px 13px;margin-bottom:8px;font-size:13.5px;line-height:1.6">📝 なお：'+m.replace(/</g,"&lt;")+'</div>').join("")+
+   '</div>'+
+   '<div style="display:flex;gap:8px;padding:11px 12px;background:#fffdf4;border-top:1px solid #eee3bd"><input id="note-in" placeholder="ノートに書く…" maxlength="80" style="flex:1;border:1px solid #ddd;border-radius:999px;padding:9px 14px;font-size:13.5px;outline:none"><button id="note-add" style="background:#111;color:#fff;border:none;border-radius:999px;padding:9px 16px;font-weight:700;cursor:pointer">書く</button></div>';
+   p.querySelector("#note-x").addEventListener("click",()=>p.remove());
+   p.querySelector("#note-add").addEventListener("click",()=>{ const v=p.querySelector("#note-in").value.trim(); if(!v) return; mine.push(v); render(); });
+  };
+  render(); vline.appendChild(p);
+ });
+})();
+/* v136: the memories collection grows three new entries */
+(function(){
+ if(typeof state._openLive==="function"){ const orig=state._openLive; state._openLive=function(){ state._liveWatched=true; return orig.apply(this,arguments); }; }
+ document.addEventListener("click",e=>{ const b=e.target.closest("#v-hisig .stories button");
+  if(b&&b.textContent.includes("LIVE")) state._liveWatched=true; },true);
+ const panel=document.querySelector("#mem-panel"); if(!panel) return;
+ const EXTRA=[
+  ["📸","はじめての撮影",()=>[...document.querySelectorAll("#ph-grid figcaption")].some(f=>f.textContent.includes("📷"))],
+  ["🎓","ひろと検定への挑戦",()=>!!state._quizTried],
+  ["🔴","LIVEを見た夜",()=>!!state._liveWatched]];
+ new MutationObserver(()=>{ if(panel.style.display==="none"||panel.querySelector("#mem-extra")) return;
+  const box=document.createElement("div"); box.id="mem-extra";
+  box.innerHTML='<div style="font-weight:800;font-size:14.5px;margin:14px 0 8px">✨ あたらしい思い出</div>'+
+   EXTRA.map(([e,t,f])=>{ const un=f(); return '<div style="display:flex;gap:10px;align-items:center;background:'+(un?"#fff":"#ececf0")+';border-radius:12px;padding:11px 13px;margin-bottom:8px;font-size:13.5px;'+(un?"":"opacity:.55")+'"><span style="font-size:19px">'+e+'</span><span>'+(un?t:"🔒 ？？？")+'</span>'+(un?'<span style="margin-left:auto;color:#06c755;font-weight:800">GET</span>':'')+'</div>'; }).join("");
+  panel.appendChild(box);
+ }).observe(panel,{attributes:true,attributeFilter:["style"]});
+})();
 </script>
 </body>
 </html>
