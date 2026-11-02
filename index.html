@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v22</b>（ダミーマッチ＆雑談チャット追加／いつメンの段階反応を増量）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v23</b>（ダミーマッチ＆雑談チャット追加／いつメンの段階反応を増量）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3927,6 +3927,597 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     const home=$("#v-home"); if(home) home.style.backgroundImage='url("'+url+'")';
     bar.style.display="none"; sel.forEach(f=>f.style.outline=""); sel=[];
     toast("🧩 <b>コラージュ完成！　ホームの壁紙にもしたよ</b>"); } }); })();
+})();
+
+</script>
+<script>
+/* ===== Tinder ver v23: original v101-v130 spec sync (IG / X / news / settings / TikTok / mini-apps) ===== */
+(function(){
+ "use strict";
+ const $=q=>document.querySelector(q), $$=q=>Array.from(document.querySelectorAll(q));
+
+ /* ---- v104: breaking-news banner while the scandal burns (Tinder headlines) ---- */
+ (function(){ const list=$("#news-list"); if(!list||!list.parentElement) return;
+  if($("#news-breaking")) return;
+  const bar=document.createElement("div"); bar.id="news-breaking";
+  bar.style.cssText="display:none;background:#e60012;color:#fff;padding:9px 14px;font-size:13px;font-weight:700;line-height:1.45";
+  list.parentElement.insertBefore(bar,list);
+  const H=["🔴 速報：井汲大翔さんマッチングアプリ利用か　事務所『交際の事実はない』","🔴 速報：SNSでは賛否　『本人の言葉を待つ』","🔴 速報：『現役アイドルがTinder』がトレンド上位を維持"];
+  let i=0;
+  setInterval(()=>{ const on=state.phase==="scandal"&&!state.act2;
+   bar.style.display=on?"block":"none"; if(!on) return;
+   bar.textContent=H[i%H.length]; i++; },4000); })();
+
+ /* ---- v111: her Instagram grid, rebuilt lazily ---- */
+ (function(){ const vig=$("#v-ig"); if(!vig) return;
+  const hl=vig.querySelector(".hl-row"); if(!hl||$("#nao-grid")) return;
+  let posts=[];
+  const bar=document.createElement("div");
+  bar.style.cssText="display:flex;border-top:1px solid #e6e6ea;border-bottom:1px solid #e6e6ea;margin-top:6px";
+  bar.innerHTML='<button id="ng-feed" style="flex:1;background:none;border:none;font-size:19px;padding:8px 0;cursor:pointer;border-bottom:2px solid #111">☰</button><button id="ng-grid" style="flex:1;background:none;border:none;font-size:19px;padding:8px 0;cursor:pointer;opacity:.45">▦</button>';
+  hl.after(bar);
+  const g=document.createElement("div"); g.id="nao-grid";
+  g.style.cssText="display:none;grid-template-columns:repeat(3,1fr);gap:2px;background:#fff";
+  bar.after(g);
+  const collect=()=>{ posts=[...vig.querySelectorAll(".ig-post")];
+   const nEl=vig.querySelector(".ig-stats .n"); if(nEl&&posts.length) nEl.textContent=posts.length; };
+  const build=()=>{ collect();
+   g.innerHTML=posts.map((p,i)=>{ const im=p.querySelector("img.pimg"); return im?'<img data-pi="'+i+'" src="'+im.getAttribute("src")+'" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer" alt="">':""; }).join("");
+   g.querySelectorAll("img").forEach(im=>im.addEventListener("click",()=>{ const p=posts[+im.dataset.pi]; setMode(false);
+    if(p){ p.scrollIntoView({block:"center"}); p.style.outline="3px solid #ffd94d"; setTimeout(()=>p.style.outline="",1400); } })); };
+  const setMode=gridOn=>{ if(gridOn) build(); else collect();
+   g.style.display=gridOn?"grid":"none";
+   posts.forEach(p=>p.style.display=gridOn?"none":"");
+   bar.querySelector("#ng-feed").style.opacity=gridOn?".45":"1";
+   bar.querySelector("#ng-grid").style.opacity=gridOn?"1":".45";
+   bar.querySelector("#ng-feed").style.borderBottom=gridOn?"2px solid transparent":"2px solid #111";
+   bar.querySelector("#ng-grid").style.borderBottom=gridOn?"2px solid #111":"2px solid transparent"; };
+  bar.querySelector("#ng-feed").addEventListener("click",()=>setMode(false));
+  bar.querySelector("#ng-grid").addEventListener("click",()=>setMode(true));
+  setTimeout(collect,2500); })();
+
+ /* ---- v112: talk search filters the list; profile status editable with presets ---- */
+ (function(){ const list=$("#line-list"); if(!list||$("#talk-search")) return;
+  const bar=document.createElement("div");
+  bar.style.cssText="padding:10px 12px 2px;background:#fff";
+  bar.innerHTML='<input id="talk-search" placeholder="🔍 トークを検索" style="width:100%;box-sizing:border-box;border:none;background:#f1f1f4;border-radius:999px;padding:8px 14px;font-size:13.5px;outline:none">';
+  list.insertBefore(bar,list.firstChild);
+  bar.querySelector("#talk-search").addEventListener("input",e=>{ const q=e.target.value.trim();
+   list.querySelectorAll("button.talkrow").forEach(r=>{ r.style.display=(!q||r.textContent.includes(q))?"":"none"; }); });
+  const span=$("#my-status");
+  if(span){ span.style.cursor="pointer"; span.title="ステータスを変更";
+   span.addEventListener("click",e=>{ e.stopPropagation();
+    if($("#prof-editor")) return;
+    const vline=$("#v-line"); if(!vline) return;
+    const ed=document.createElement("div"); ed.id="prof-editor";
+    ed.style.cssText="position:absolute;inset:0;z-index:60;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center";
+    ed.innerHTML='<div style="background:#fff;border-radius:16px;padding:18px;width:82%;color:#111">'+
+     '<div style="font-weight:800;font-size:15.5px;margin-bottom:4px">ステータスメッセージ</div>'+
+     '<div style="font-size:12px;color:#888;margin-bottom:10px">LINEのプロフィールに表示されます</div>'+
+     '<input id="prof-input" maxlength="40" style="width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:9px;padding:9px;font-size:14px">'+
+     '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">'+["🦐 エビ食べたい","💤 ねむい","✨ 推し活たのしい","♨️ サウナいきたい","☕ カフェオレ日和"].map(t=>'<button class="prof-chip" style="border:1px solid #e3e3e8;background:#f7f7fa;border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer">'+t+'</button>').join("")+'</div>'+
+     '<div style="display:flex;gap:9px;margin-top:14px"><button id="prof-cancel" style="flex:1;border:1px solid #ddd;background:#fff;border-radius:999px;padding:9px;cursor:pointer">やめる</button><button id="prof-save" style="flex:1;border:none;background:#06c755;color:#fff;border-radius:999px;padding:9px;font-weight:700;cursor:pointer">保存する</button></div></div>';
+    vline.appendChild(ed);
+    ed.querySelector("#prof-input").value=span.textContent.trim();
+    ed.querySelectorAll(".prof-chip").forEach(c=>c.addEventListener("click",()=>ed.querySelector("#prof-input").value=c.textContent));
+    ed.querySelector("#prof-cancel").addEventListener("click",()=>ed.remove());
+    ed.addEventListener("click",ev=>{ if(ev.target===ed) ed.remove(); });
+    ed.querySelector("#prof-save").addEventListener("click",()=>{ const v=ed.querySelector("#prof-input").value.trim(); if(v) span.textContent=v; ed.remove(); toast("ステータスを変更したよ"); });
+   }); } })();
+
+ /* ---- v113: post your own comment on the scandal article ---- */
+ (function(){ const art=$("#news-article"); if(!art) return;
+  new MutationObserver(()=>{ if(art.querySelector("#my-cmt-form")) return;
+   const inner=art.querySelector(".article"); if(!inner) return;
+   if(!/マッチングアプリ|熱愛|Tinder/.test(inner.textContent)) return;
+   const box=document.createElement("div"); box.id="my-cmt-form";
+   box.style.cssText="margin:16px 0 6px;border-top:1px solid #eee;padding-top:12px";
+   box.innerHTML='<div style="font-weight:800;font-size:14.5px;margin-bottom:8px">💬 コメントを書く</div>'+
+    '<div style="display:flex;gap:8px"><img src="assets/default-avatar.svg" style="width:32px;height:32px;border-radius:50%" alt="">'+
+    '<input id="my-cmt-in" placeholder="当事者として、一言…" maxlength="120" style="flex:1;border:1px solid #ddd;border-radius:999px;padding:8px 13px;font-size:13.5px;outline:none">'+
+    '<button id="my-cmt-btn" style="background:#111;color:#fff;border:none;border-radius:999px;padding:8px 15px;font-size:13px;font-weight:700;cursor:pointer">投稿</button></div>'+
+    '<div id="my-cmt-list"></div>';
+   inner.appendChild(box);
+   box.querySelector("#my-cmt-btn").addEventListener("click",()=>{ const inp=box.querySelector("#my-cmt-in"); const v=inp.value.trim(); if(!v) return; inp.value="";
+    let likes=0;
+    const row=document.createElement("div");
+    row.style.cssText="display:flex;gap:9px;margin-top:12px;background:#fff8e6;border:1px solid #f0e2ac;border-radius:12px;padding:10px 12px";
+    row.innerHTML='<img src="assets/default-avatar.svg" style="width:32px;height:32px;border-radius:50%" alt=""><div style="flex:1"><b style="font-size:13px">nao_0324</b> <span style="color:#999;font-size:11px">・ たった今 ・ あなたのコメント</span><div class="mc-text" style="font-size:13.5px;line-height:1.55;margin-top:2px"></div><div style="font-size:12px;color:#e0245e;margin-top:4px">♡ <span class="mc-likes">0</span></div></div>';
+    row.querySelector(".mc-text").textContent=v;
+    box.querySelector("#my-cmt-list").prepend(row);
+    toast("コメントを投稿したよ");
+    const iv=setInterval(()=>{ likes+=Math.floor(Math.random()*4); if(likes>140){ clearInterval(iv); return; }
+     const s=row.querySelector(".mc-likes"); if(s) s.textContent=likes; },4200);
+    setTimeout(()=>{ if(!row.isConnected) return;
+     const rp=document.createElement("div");
+     rp.style.cssText="margin:8px 0 0 41px;font-size:12.5px;color:#444;background:#f6f6f8;border-radius:10px;padding:8px 11px";
+     rp.innerHTML='<b>推し活さくら</b>：当事者の声、待ってました…！';
+     row.after(rp); },45000);
+   });
+  }).observe(art,{childList:true,subtree:true}); })();
+
+ /* ---- v114: X bookmarks on every post + list panel ---- */
+ (function(){ const vx=$("#v-x"); if(!vx||$("#x-bm-panel")) return;
+  const saved=[];
+  const addBtns=()=>{ vx.querySelectorAll(".post").forEach(p=>{ if(p.querySelector(".bm-btn")) return;
+   const mt=p.querySelector(".mt"); if(!mt) return;
+   const b=document.createElement("span"); b.className="bm-btn"; b.textContent="🔖"; b.style.cssText="cursor:pointer;opacity:.55";
+   b.title="ブックマーク";
+   b.addEventListener("click",e=>{ e.stopPropagation();
+    const nm=(p.querySelector(".nm")||{}).textContent||""; const tx=(p.querySelector(".tx")||{}).textContent||"";
+    const i=saved.findIndex(s=>s.n===nm&&s.t===tx);
+    if(i>=0){ saved.splice(i,1); b.style.opacity=".55"; b.style.color=""; toast("ブックマークを外したよ"); }
+    else { saved.unshift({n:nm,t:tx}); b.style.opacity="1"; b.style.color="#1d9bf0"; toast("ブックマークしたよ🔖"); }
+   });
+   mt.appendChild(b); }); };
+  new MutationObserver(addBtns).observe(vx,{childList:true,subtree:true});
+  addBtns();
+  const btn=document.createElement("button"); btn.textContent="🔖";
+  btn.style.cssText="position:absolute;top:64px;right:60px;z-index:6;width:38px;height:38px;border-radius:50%;border:1px solid #e6e6ea;background:#fff;font-size:16px;cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.12)";
+  vx.appendChild(btn);
+  const panel=document.createElement("div"); panel.id="x-bm-panel";
+  panel.style.cssText="position:absolute;inset:0;z-index:7;background:#fff;display:none;flex-direction:column;color:#111";
+  panel.innerHTML='<div style="padding:60px 16px 10px;border-bottom:1px solid #eee;display:flex;align-items:center"><b style="font-size:16.5px">🔖 ブックマーク</b><button id="x-bm-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div><div id="x-bm-list" style="overflow-y:auto;padding:8px 0"></div>';
+  vx.appendChild(panel);
+  btn.addEventListener("click",()=>{ panel.style.display="flex";
+   panel.querySelector("#x-bm-list").innerHTML=saved.length?saved.map(s=>'<div style="padding:11px 16px;border-bottom:1px solid #f2f2f4"><b style="font-size:13.5px">'+s.n.replace(/</g,"&lt;")+'</b><div style="font-size:13.5px;line-height:1.55;margin-top:2px">'+s.t.replace(/</g,"&lt;")+'</div></div>').join(""):'<div style="padding:22px 16px;color:#888;font-size:13.5px">まだブックマークがありません。<br>ポストの 🔖 をタップすると、ここに溜まります。</div>'; });
+  panel.querySelector("#x-bm-x").addEventListener("click",()=>panel.style.display="none"); })();
+
+ /* ---- v101: X notifications tab (Tinder-flavoured texts) ---- */
+ (function(){ const vx=$("#v-x"); if(!vx||$("#x-bell")) return;
+  const bell=document.createElement("button"); bell.textContent="🔔"; bell.id="x-bell";
+  bell.style.cssText="position:absolute;top:64px;right:14px;z-index:6;width:38px;height:38px;border-radius:50%;border:1px solid #e6e6ea;background:#fff;font-size:17px;cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.12)";
+  vx.appendChild(bell);
+  const bd=document.createElement("span"); bd.id="x-bell-n"; bd.textContent="3";
+  bd.style.cssText="position:absolute;top:-3px;right:-3px;background:#f4212e;color:#fff;font-size:10px;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:700";
+  bell.appendChild(bd);
+  const panel=document.createElement("div"); panel.id="x-notif";
+  panel.style.cssText="position:absolute;inset:0;z-index:7;background:#fff;display:none;flex-direction:column;color:#111";
+  panel.innerHTML='<div style="padding:60px 16px 10px;border-bottom:1px solid #eee;display:flex;align-items:center"><b style="font-size:16.5px">通知</b><button id="x-notif-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div><div id="x-notif-list" style="overflow-y:auto;padding:6px 0"></div>';
+  vx.appendChild(panel);
+  const ITEMS=()=> state.phase==="scandal"&&!state.act2 ?
+   [["💬","@wish_0271 があなたに返信：アプリの人ってまじですか…？"],["💬","@info_hiroto があなたに返信：例のマッチの相手？"],["❤️","@hiroto_ouen があなたの投稿にいいねしました"],["👤","新しいフォロワーが急増しています（+2,314）"],["🔁","あなたの投稿が1,204件リポストされました"]] :
+   state.act2 ? [["❤️","@ouen_dan があなたの投稿にいいねしました"],["💬","@wish_0271：応援してます！"],["👤","新しいフォロワー：@cafe_lover_22"],["❤️","井汲大翔さんがあなたの投稿にいいねしました"]] :
+   [["❤️","@sakura_88 があなたの投稿にいいねしました"],["🔁","@yui_s があなたの投稿をリポストしました"],["👤","新しいフォロワー：@maron_0324"],["❤️","井汲大翔さんがあなたの投稿にいいねしました"]];
+  bell.addEventListener("click",()=>{ panel.style.display="flex"; bd.style.display="none";
+   panel.querySelector("#x-notif-list").innerHTML=ITEMS().map(([i,t])=>'<div style="display:flex;gap:11px;padding:11px 16px;border-bottom:1px solid #f2f2f4;font-size:13.5px;line-height:1.5"><span style="font-size:17px">'+i+'</span><span>'+t+'</span></div>').join(""); });
+  panel.querySelector("#x-notif-x").addEventListener("click",()=>panel.style.display="none"); })();
+
+ /* ---- v115 (+v116 fix): his home-icon cycle in settings; two-tap full reset ---- */
+ (function(){ const sc=$("#v-settings .scroll"); if(!sc||$("#icon-cur")) return;
+  const OPTS=[["🤴 絵文字",null],["いつもの彼","assets/line-avatar.jpg"],["フーディ","assets/hoodie.jpg"],["お仕事","assets/studio.jpg"],["自撮り","assets/selfie.jpg"]];
+  let cur=0;
+  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
+  row.innerHTML='<span>🖼 「ひろとの垢」アイコン</span><b id="icon-cur">🤴 絵文字</b>';
+  sc.appendChild(row);
+  const apply=()=>{ const ic=$('[data-open="hisig"] .ic'); if(!ic) return;
+   const [label,src]=OPTS[cur];
+   if(src){ ic.innerHTML='<img src="'+src+'" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit" alt="">'; ic.style.overflow="hidden"; }
+   else { ic.innerHTML="🤴"; }
+   const b=$("#icon-cur"); if(b) b.textContent=label; };
+  row.addEventListener("click",()=>{ cur=(cur+1)%OPTS.length; apply(); toast("アイコンを「"+OPTS[cur][0].replace(/^[^ ]+ /,"")+"」に変えたよ"); });
+  const rrow=document.createElement("div"); rrow.className="setrow"; rrow.style.cursor="pointer";
+  rrow.innerHTML='<span>🗑 最初からやり直す</span><b style="color:#e60012">リセット</b>';
+  sc.appendChild(rrow);
+  rrow.addEventListener("click",()=>{ if(rrow.dataset.arm){ location.reload(); }
+   rrow.dataset.arm="1"; rrow.querySelector("b").textContent="もう一度タップで本当にリセット";
+   setTimeout(()=>{ delete rrow.dataset.arm; const b=rrow.querySelector("b"); if(b) b.textContent="リセット"; },3500); }); })();
+
+ /* ---- v116: his IG story highlights with a tap-through player ---- */
+ (function(){ const v=$("#v-hisig"); if(!v||$("#hl-player")) return;
+  const row=v.querySelector(".stories"); if(!row) return;
+  const HLS=[
+   ["🍚 ごはん","assets/ig-meal.jpg",[["assets/ig-meal.jpg","カフェの彼☕"],["assets/ig-sushi.jpg","寿司🍣"],["assets/cafe3.jpg","カフェで腕組み"]]],
+   ["🎤 ライブ","assets/stage.jpg",[["assets/stage.jpg","ステージ"],["assets/crown.jpg","ファンミの日🤴"],["assets/crown-full.jpg","保存用"]]]];
+  const player=document.createElement("div"); player.id="hl-player";
+  player.style.cssText="position:absolute;inset:0;z-index:90;background:#000;display:none;flex-direction:column";
+  player.innerHTML='<div id="hl-bars" style="display:flex;gap:4px;padding:52px 10px 8px"></div>'+
+   '<div style="display:flex;align-items:center;padding:2px 12px;color:#fff;font-size:13.5px"><img src="assets/line-avatar.jpg" style="width:30px;height:30px;border-radius:50%;margin-right:8px" alt=""><b>193.hiroto_jixiang</b><span id="hl-title" style="margin-left:8px;opacity:.75"></span><button id="hl-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button></div>'+
+   '<div style="flex:1;position:relative"><img id="hl-img" style="width:100%;height:100%;object-fit:contain" alt=""><div id="hl-cap" style="position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.9)"></div>'+
+   '<div id="hl-prev" style="position:absolute;left:0;top:0;bottom:0;width:35%"></div><div id="hl-next" style="position:absolute;right:0;top:0;bottom:0;width:65%"></div></div>';
+  v.appendChild(player);
+  let segs=[], idx=0, timer=null;
+  const draw=()=>{ const [src,cap]=segs[idx];
+   player.querySelector("#hl-img").src=src; player.querySelector("#hl-cap").textContent=cap;
+   player.querySelector("#hl-bars").innerHTML=segs.map((_,i)=>'<span style="flex:1;height:3px;border-radius:2px;background:'+(i<idx?"#fff":i===idx?"#fff":"rgba(255,255,255,.35)")+';opacity:'+(i===idx?".95":"1")+'"></span>').join("");
+   clearTimeout(timer); timer=setTimeout(()=>step(1),3500); };
+  const step=d=>{ idx+=d; if(idx<0) idx=0; if(idx>=segs.length){ close(); return; } draw(); };
+  const close=()=>{ player.style.display="none"; clearTimeout(timer); };
+  player.querySelector("#hl-x").addEventListener("click",close);
+  player.querySelector("#hl-next").addEventListener("click",()=>step(1));
+  player.querySelector("#hl-prev").addEventListener("click",()=>step(-1));
+  HLS.forEach(([label,cover,ss])=>{ const b=document.createElement("button");
+   b.innerHTML='<span class="ring"><img src="'+cover+'" alt=""></span>'+label;
+   b.addEventListener("click",()=>{ segs=ss; idx=0; player.querySelector("#hl-title").textContent=label; player.style.display="flex"; draw(); });
+   row.appendChild(b); }); })();
+
+ /* ---- v117: voicemail on a missed call (texts come from the v105 follow-up) ---- */
+ if(typeof showIncomingCall==="function"){ const _sic2=showIncomingCall;
+  showIncomingCall=function(caller){ if((caller||"hiroto")==="hiroto") state._vm117=true; _sic2(caller); };
+  setInterval(()=>{ if(!state._vm117) return;
+   const inc=$("#call-incoming"), act=$("#call-active"); if(!inc||!act) return;
+   const incOn=inc.style.display!=="none"&&inc.offsetParent!==null, actOn=act.style.display!=="none"&&act.offsetParent!==null;
+   if(actOn){ state._vm117=false; return; }
+   if(!incOn){ state._vm117=false;
+    later(()=>{ if(Math.random()<0.65&&typeof himVoice==="function"){ himVoice("assets/vm-calmfree.mp3","0:04");
+     if(typeof push==="function") push("LINE","#06c755","💬","ひろと","留守電が入ってるよ",()=>{ show("line"); openChat(); }); } },26000); } },1000); }
+
+ /* ---- v118: TikTok - tappable likes + comments per video ---- */
+ (function(){ const vt=$("#v-tiktok"); if(!vt) return;
+  const PRESETS=[
+   ["振り付け完璧すぎる","この人の踊り、目が離せない","保存した"],
+   ["NG可愛すぎかよ","素の大翔くん最高","何回も見てる"],
+   ["応援してます！","かっこよさが限界突破","おすすめから来た"],
+   ["神動画","推しが尊い","何回も見てる"],
+   ["ダンスのキレがすごい","保存した","おすすめから来た"]];
+  const NAMES=["wish_0271","sakura_act","dance_mania","ouen_dan","maron_fan"];
+  const fmt=n=>n>=1000?(n/1000).toFixed(1).replace(/\.0$/,"")+"K":String(n);
+  const parse=t=>{ const m=(t||"").match(/([\d.]+)(K|万)?/); if(!m) return 0; let v=parseFloat(m[1]); if(m[2]==="K") v*=1000; if(m[2]==="万") v*=10000; return Math.round(v); };
+  const setup=card=>{ if(card.dataset.v118) return; card.dataset.v118="1";
+   const likes=card.querySelector(".tt-likes");
+   if(likes){ likes.style.cursor="pointer"; let n=parse(likes.textContent);
+    likes.addEventListener("click",()=>{ const on=likes.dataset.on==="1"; n+=on?-1:1; likes.dataset.on=on?"":"1";
+     likes.textContent="❤️ "+fmt(n); likes.style.color=on?"":"#fe2c55"; likes.style.transform=on?"":"scale(1.12)";
+     setTimeout(()=>likes.style.transform="",150); }); }
+   const idx=[...document.querySelectorAll(".tt-card")].indexOf(card);
+   const cmts=PRESETS[Math.min(Math.max(idx,0),PRESETS.length-1)];
+   const sec=document.createElement("div");
+   sec.style.cssText="padding:2px 14px 14px;background:#111";
+   sec.innerHTML='<button class="tt-cmt-open" style="background:none;border:none;color:#9db3c8;font-size:13px;cursor:pointer;padding:4px 0">💬 コメント '+cmts.length+' 件を見る</button>'+
+    '<div class="tt-cmts" style="display:none">'+
+    cmts.map((c,i)=>'<div style="display:flex;gap:8px;margin-top:9px"><img src="assets/default-avatar.svg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">'+NAMES[(idx+i)%NAMES.length]+'</b> <span style="color:#ddd">'+c+'</span></div></div>').join("")+
+    '<div class="tt-mine"></div>'+
+    '<div style="display:flex;gap:7px;margin-top:11px"><img src="assets/default-avatar.svg" style="width:28px;height:28px;border-radius:50%" alt=""><input class="tt-in" placeholder="コメントを追加…" maxlength="80" style="flex:1;background:#222;border:1px solid #333;border-radius:999px;padding:7px 12px;color:#fff;font-size:13px;outline:none"><button class="tt-send" style="background:#fe2c55;color:#fff;border:none;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer">投稿</button></div></div>';
+   card.appendChild(sec);
+   const listEl=sec.querySelector(".tt-cmts");
+   sec.querySelector(".tt-cmt-open").addEventListener("click",e=>{ const open=listEl.style.display!=="none";
+    listEl.style.display=open?"none":"block"; e.target.textContent=open?"💬 コメントを見る":"💬 コメントを閉じる"; });
+   sec.querySelector(".tt-send").addEventListener("click",()=>{ const inp=sec.querySelector(".tt-in"); const v=inp.value.trim(); if(!v) return; inp.value="";
+    const d=document.createElement("div");
+    d.style.cssText="display:flex;gap:8px;margin-top:9px";
+    d.innerHTML='<img src="assets/default-avatar.svg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">nao_0324</b> <span style="color:#ffd94d"></span></div>';
+    d.querySelector("span").textContent=v;
+    sec.querySelector(".tt-mine").appendChild(d);
+    toast("コメントを投稿したよ"); });
+  };
+  $$(".tt-card").forEach(setup);
+  new MutationObserver(()=>$$(".tt-card").forEach(setup)).observe(vt,{childList:true,subtree:true}); })();
+
+ /* ---- v119: his Instagram LIVE ---- */
+ (function(){ const v=$("#v-hisig"); if(!v||$("#ig-live")) return;
+  const row=v.querySelector(".stories"); if(!row) return;
+  const live=document.createElement("div"); live.id="ig-live";
+  live.style.cssText="position:absolute;inset:0;z-index:95;background:#000;display:none;flex-direction:column;color:#fff";
+  live.innerHTML='<video id="live-vid" src="assets/tt-shinee.mp4" playsinline loop muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>'+
+   '<div style="position:relative;padding:54px 12px 0;display:flex;align-items:center;gap:8px"><span style="background:#e60012;font-weight:800;font-size:12px;padding:3px 8px;border-radius:5px">LIVE</span><img src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><b style="font-size:13.5px;text-shadow:0 1px 6px rgba(0,0,0,.8)">193.hiroto_jixiang</b><span id="live-view" style="margin-left:auto;background:rgba(0,0,0,.45);border-radius:999px;padding:4px 10px;font-size:12px">👁 12,483</span><button id="live-x" style="background:none;border:none;color:#fff;font-size:21px;cursor:pointer">✕</button></div>'+
+   '<div id="live-cmts" style="position:relative;margin-top:auto;padding:0 12px;max-height:38%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"></div>'+
+   '<div style="position:relative;display:flex;gap:8px;padding:10px 12px 20px"><input id="live-in" placeholder="コメントを送信…" maxlength="60" style="flex:1;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 14px;color:#fff;font-size:13.5px;outline:none"><button id="live-heart" style="background:none;border:none;font-size:25px;cursor:pointer">❤️</button></div>'+
+   '<div id="live-hearts" style="position:absolute;right:14px;bottom:90px;width:50px;height:220px;pointer-events:none;overflow:visible"></div>';
+  v.appendChild(live);
+  const POOL=[["wish_0271","大翔くーん！"],["sakura_act","かっこいい…"],["dance_mania","生ダンス最高"],["ouen_dan","応援してます"],["maron_fan","今日も尊い"],["wish_88","目が離せない"],["k_hiroto","新曲たのしみ"]];
+  let iv=null, viv=null, viewers=12483;
+  const addCmt=(n,t,mine)=>{ const box=live.querySelector("#live-cmts"); if(!box) return;
+   const d=document.createElement("div");
+   d.style.cssText="background:rgba(0,0,0,.42);border-radius:12px;padding:6px 10px;font-size:12.5px;line-height:1.45;max-width:85%";
+   d.innerHTML='<b>'+n+'</b> <span></span>'; d.querySelector("span").textContent=t;
+   if(mine) d.style.background="rgba(230,0,18,.55)";
+   box.appendChild(d); while(box.children.length>6) box.firstChild.remove(); };
+  const open=()=>{ live.style.display="flex"; const vid=live.querySelector("#live-vid"); try{ vid.play(); }catch(e){}
+   addCmt("wish_0271","はじまった！"); let i=1;
+   iv=setInterval(()=>{ const c=POOL[i%POOL.length]; addCmt(c[0],c[1]); i++; },2600);
+   viv=setInterval(()=>{ viewers+=Math.floor(Math.random()*240-70); const el=live.querySelector("#live-view"); if(el) el.textContent="👁 "+viewers.toLocaleString("ja-JP"); },3000); };
+  const close=()=>{ live.style.display="none"; const vid=live.querySelector("#live-vid"); try{ vid.pause(); }catch(e){}
+   clearInterval(iv); clearInterval(viv); };
+  live.querySelector("#live-x").addEventListener("click",close);
+  live.querySelector("#live-heart").addEventListener("click",()=>{ const h=document.createElement("span"); h.textContent="❤️";
+   h.style.cssText="position:absolute;bottom:0;right:"+(Math.random()*26)+"px;font-size:"+(18+Math.random()*12)+"px;transition:all 1.6s ease-out;opacity:1";
+   live.querySelector("#live-hearts").appendChild(h);
+   requestAnimationFrame(()=>{ h.style.transform="translateY(-190px)"; h.style.opacity="0"; });
+   setTimeout(()=>h.remove(),1700); });
+  const sendLive=()=>{ const inp=live.querySelector("#live-in"); const t=inp.value.trim(); if(!t) return; inp.value=""; addCmt("nao_0324",t,true); };
+  live.querySelector("#live-in").addEventListener("keydown",e=>{ if(e.key==="Enter") sendLive(); });
+  const b=document.createElement("button");
+  b.innerHTML='<span class="ring" style="background:conic-gradient(#e60012,#ff7a00,#e60012)"><img src="assets/stage.jpg" alt=""></span>🔴 LIVE';
+  b.addEventListener("click",open);
+  row.appendChild(b);
+  state._openLive=open; })();
+
+ /* ---- v120: achievements wall (Tinder story items) ---- */
+ (function(){ const sc=$("#v-settings .scroll"); if(!sc||$("#ach-sec")) return;
+  const sec=document.createElement("div"); sec.id="ach-sec";
+  sec.innerHTML='<div style="font-weight:800;font-size:15px;margin:20px 2px 8px">🏆 実績</div><div id="ach-list"></div>';
+  sc.appendChild(sec);
+  const num=t=>{ const m=(t||"").replace(/,/g,"").match(/([\d.]+)(万)?/); if(!m) return 0; let n=parseFloat(m[1]); if(m[2]) n*=10000; return n; };
+  const ACH=()=>[
+   ["🔥 マッチ成立", state.chapter>=1||state.started],
+   ["☕ 初デートに行った", state.chapter>=2],
+   ["🌙 線引きの夜", state.chapter>=3],
+   ["🌃 あの夜を越えた", state.chapter>=5],
+   ["🔥 炎上を生き延びた", state.phase==="scandal"||!!state.act2],
+   ["🌅 翌朝を迎えた", !!state.act2],
+   ["🏁 物語を見届けた", !!state.ended],
+   ["👥 フォロワー1万人突破", num(($("#ig-fol-n")||{}).textContent)>=10000],
+   ["🖼 アルバム40枚", $$("#ph-grid figure").length>=40],
+   ["🎓 ひろと検定に挑戦した", !!state._quizTried],
+   ["🔖 Xでブックマークした", !!state._bmUsed],
+   ["💬 ニュースにコメントした", !!state._newsCmt]];
+  const render=()=>{ const L=ACH(); const got=L.filter(a=>a[1]).length;
+   sec.querySelector("#ach-list").innerHTML='<div style="font-size:12.5px;color:#888;margin-bottom:7px">'+got+' ／ '+L.length+' 解放</div>'+
+    L.map(([t,ok])=>'<div style="display:flex;gap:9px;align-items:center;background:'+(ok?"#fff8e6":"#f4f4f6")+';border:1px solid '+(ok?"#f0e2ac":"#e8e8ec")+';border-radius:11px;padding:9px 12px;margin-bottom:6px;font-size:13.5px;'+(ok?"":"opacity:.55")+'"><span>'+(ok?"🔓":"🔒")+'</span><span>'+t+'</span></div>').join(""); };
+  new MutationObserver(()=>{ if($("#v-settings").classList.contains("on")) render(); })
+   .observe($("#v-settings"),{attributes:true,attributeFilter:["class"]});
+  render(); })();
+
+ /* ---- v121: wire achievement flags ---- */
+ (function(){
+  document.addEventListener("click",e=>{
+   if(e.target.closest(".bm-btn")) state._bmUsed=true;
+   if(e.target.closest("#my-cmt-btn")) state._newsCmt=true;
+  },true);
+  const panel=$("#quiz-panel");
+  if(panel) new MutationObserver(()=>{ if(panel.textContent.includes("結果をひろとに送る")) state._quizTried=true; })
+   .observe(panel,{childList:true,subtree:true}); })();
+
+ /* ---- v122: LINE bottom tabs become real (home / points panels; news & settings jump) ---- */
+ (function(){ const vline=$("#v-line"); const bar=$("#line-tabbar"); if(!vline||!bar) return;
+  if($("#line-tab-panel")) return;
+  const panel=document.createElement("div"); panel.id="line-tab-panel";
+  panel.style.cssText="position:absolute;inset:0;z-index:55;background:#fff;display:none;flex-direction:column;color:#111";
+  vline.appendChild(panel);
+  const FRIENDS=[["ひろと","assets/line-avatar.jpg","…なおの声、聞きたかってん","#talk-hiroto"],["いつメン🍻","assets/grp-itsumen.jpg","女子会しよ〜","#talk-group"],["ゆい","assets/fr-yui.jpg","サウナいこ♨️","#talk-yui"],["みさき","assets/fr-misaki.jpg","チキン食べたい","#talk-misaki"],["りな","assets/fr-rina.jpg","推し活たのしい","#talk-rina"]];
+  const open=(title,html)=>{ panel.innerHTML='<div style="padding:58px 16px 10px;border-bottom:1px solid #eee;display:flex;align-items:center"><b style="font-size:16.5px">'+title+'</b><button id="ltp-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div><div style="overflow-y:auto;padding:12px 16px">'+html+'</div>';
+   panel.style.display="flex";
+   panel.querySelector("#ltp-x").addEventListener("click",()=>panel.style.display="none");
+   panel.querySelectorAll("[data-row]").forEach(r=>r.addEventListener("click",()=>{ panel.style.display="none";
+    const t=$(r.dataset.row); if(t) t.click(); }));
+   const pc=panel.querySelector("#pts-card"); if(pc) pc.addEventListener("click",()=>open("🎁 LINEポイント",ptsHtml())); };
+  const homeHtml=()=>'<div style="display:flex;align-items:center;gap:12px;background:#f7f7fa;border-radius:14px;padding:14px"><img src="assets/default-avatar.svg" style="width:56px;height:56px;border-radius:50%" alt=""><div><div style="font-weight:800;font-size:16.5px">なお</div><div style="font-size:12.5px;color:#666;margin-top:2px">'+((($("#my-status")||{}).textContent)||"☕ カフェオレとサウナが好き")+'</div></div><span style="margin-left:auto;font-size:19px">🎵</span></div>'+
+   '<div id="pts-card" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:14px;padding:13px 14px;margin-top:12px;cursor:pointer"><span style="font-size:19px">🎁</span><div><div style="font-size:11.5px;opacity:.9">LINEポイント残高</div><div style="font-weight:800;font-size:17px">1,240 pt</div></div><span style="margin-left:auto">›</span></div>'+
+   '<div style="font-weight:800;font-size:14px;margin:18px 0 6px">友だち '+FRIENDS.length+'</div>'+
+   FRIENDS.map(f=>'<div data-row="'+f[3]+'" style="display:flex;align-items:center;gap:11px;padding:9px 2px;cursor:pointer"><img src="'+f[1]+'" style="width:44px;height:44px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:14.5px">'+f[0]+'</div><div style="font-size:12px;color:#8e8e93;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+f[2]+'</div></div></div>').join("");
+  const ptsHtml=()=>'<div style="background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:16px;padding:18px"><div style="font-size:12.5px;opacity:.9">LINEポイント残高</div><div style="font-size:32px;font-weight:800;margin-top:2px">1,240 <span style="font-size:15px">pt</span></div><div style="font-size:12px;opacity:.85;margin-top:4px">今月末で 120pt が失効します</div></div>'+
+   '<div style="font-weight:800;font-size:14px;margin:18px 0 6px">履歴</div>'+
+   [["キャンペーン参加","+500","11/1"],["コンビニでお買い物","+12","10/30"],["アンケート回答","+30","10/28"],["スタンプ購入","-120","10/25"]].map(h=>'<div style="display:flex;padding:9px 2px;border-bottom:1px solid #f2f2f4;font-size:13.5px"><span>'+h[0]+'</span><span style="margin-left:auto;font-weight:700;color:'+(h[1][0]==="+"?"#06c755":"#e60012")+'">'+h[1]+' pt</span><span style="color:#aaa;font-size:12px;margin-left:9px">'+h[2]+'</span></div>').join("");
+  bar.querySelectorAll("button").forEach(b0=>{ const b=b0.cloneNode(true); b0.replaceWith(b);
+   const t=b.textContent;
+   if(t.includes("ホーム")) b.addEventListener("click",()=>open("🏠 ホーム",homeHtml()));
+   else if(t.includes("ニュース")) b.addEventListener("click",()=>{ panel.style.display="none"; show("news"); });
+   else if(t.includes("その他")) b.addEventListener("click",()=>{ panel.style.display="none"; show("settings"); });
+   else if(t.includes("トーク")) b.addEventListener("click",()=>{ panel.style.display="none"; show("line"); });
+   else if(t.includes("通話")) b.addEventListener("click",()=>toast("📞 通話は彼のプロフィールから（物語の中だけ）"));
+  }); })();
+
+ /* ---- v123: working DM inside his Instagram (phases follow the Tinder arc) ---- */
+ (function(){ const v=$("#v-hisig"); if(!v||$("#his-dm")) return;
+  const prof=v.querySelector(".ig-prof"); if(!prof) return;
+  const bar=document.createElement("div");
+  bar.style.cssText="display:flex;gap:9px;padding:10px 14px 2px";
+  bar.innerHTML='<button id="his-dm-btn" style="flex:1;background:#0095f6;color:#fff;border:none;border-radius:9px;padding:8px;font-size:13.5px;font-weight:700;cursor:pointer">メッセージを送る</button>';
+  prof.after(bar);
+  const dm=document.createElement("div"); dm.id="his-dm";
+  dm.style.cssText="position:absolute;inset:0;z-index:85;background:#fff;display:none;flex-direction:column;color:#111";
+  dm.innerHTML='<div style="padding:56px 14px 9px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:9px"><button id="hdm-x" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div><b style="font-size:14px">193.hiroto_jixiang</b><div id="hdm-sub" style="font-size:11px;color:#06c755">オンライン</div></div></div>'+
+   '<div id="hdm-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px"></div>'+
+   '<div style="display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee"><input id="hdm-in" placeholder="メッセージを送信…" maxlength="100" style="flex:1;border:1px solid #ddd;border-radius:999px;padding:9px 14px;font-size:13.5px;outline:none"><button id="hdm-send" style="background:none;border:none;color:#0095f6;font-weight:800;font-size:14px;cursor:pointer">送信</button></div>';
+  v.appendChild(dm);
+  const box=dm.querySelector("#hdm-msgs");
+  const add=(me,text)=>{ const d=document.createElement("div");
+   d.style.cssText=me?"align-self:flex-end;background:#efefef;color:#111":"align-self:flex-start;background:#fff;border:1px solid #e3e3e8";
+   d.style.maxWidth="75%"; d.style.borderRadius="18px"; d.style.padding="8px 13px"; d.style.fontSize="13.5px"; d.style.lineHeight="1.5";
+   d.textContent=text; box.appendChild(d); box.scrollTop=box.scrollHeight; };
+  if(!state._hdmSeed){ state._hdmSeed=true;
+   if(state.act2){ add(false,"昨日は、ごめんな"); add(false,"……ここより、LINEの方がええかも"); }
+   else if(state.phase==="scandal"){ add(false,"…DMも、見られてるかもしれん"); add(false,"LINEの方で話そ"); }
+   else { add(false,"投稿見たで"); add(false,"その麺のやつ、うまそうやった"); } }
+  const REPLIES=["ほんまに？","笑","それ、好き","またカフェ行こ","……ありがとう","今、練習終わったとこ"];
+  const SLOW=["（既読がつかない…）","…ごめん、今バタバタしてる","あとでLINEするな"];
+  let ri=0;
+  const send=()=>{ const inp=dm.querySelector("#hdm-in"); const t=inp.value.trim(); if(!t) return; inp.value=""; add(true,t);
+   const sub=dm.querySelector("#hdm-sub");
+   if(state.phase==="scandal"&&!state.act2){ sub.textContent="既読にならない…"; sub.style.color="#999";
+    setTimeout(()=>add(false,SLOW[ri++%SLOW.length]),2600); }
+   else { sub.textContent="入力中…"; sub.style.color="#999";
+    setTimeout(()=>{ add(false,REPLIES[ri++%REPLIES.length]); sub.textContent="オンライン"; sub.style.color="#06c755"; },1700); } };
+  dm.querySelector("#hdm-send").addEventListener("click",send);
+  dm.querySelector("#hdm-in").addEventListener("keydown",e=>{ if(e.key==="Enter") send(); });
+  dm.querySelector("#hdm-x").addEventListener("click",()=>dm.style.display="none");
+  bar.querySelector("#his-dm-btn").addEventListener("click",()=>{ dm.style.display="flex"; box.scrollTop=box.scrollHeight; }); })();
+
+ /* ---- v124: her IG post composer + bio editor (photo choices never include the Tinder-only cafe photo) ---- */
+ (function(){ const vig=$("#v-ig"); if(!vig||$("#nao-composer")) return;
+  const bio=vig.querySelector(".ig-bio"); if(!bio) return;
+  const row=document.createElement("div");
+  row.style.cssText="display:flex;gap:9px;padding:10px 14px 0";
+  row.innerHTML='<button id="nao-edit-bio" style="flex:1;background:#fff;border:1px solid #dbdbdb;border-radius:9px;padding:7px;font-size:13px;font-weight:700;cursor:pointer">プロフィールを編集</button><button id="nao-new-post" style="flex:1;background:#0095f6;color:#fff;border:none;border-radius:9px;padding:7px;font-size:13px;font-weight:700;cursor:pointer">＋ 新規投稿</button>';
+  bio.after(row);
+  const mkPanel=(id,title,html)=>{ const p=document.createElement("div"); p.id=id;
+   p.style.cssText="position:absolute;inset:0;z-index:70;background:#fff;display:none;flex-direction:column;color:#111";
+   p.innerHTML='<div style="padding:58px 16px 10px;border-bottom:1px solid #eee;display:flex;align-items:center"><b style="font-size:16.5px">'+title+'</b><button class="np-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div><div style="overflow-y:auto;padding:14px 16px">'+html+'</div>';
+   vig.appendChild(p);
+   p.querySelector(".np-x").addEventListener("click",()=>p.style.display="none");
+   return p; };
+  const CHOICES=["assets/nao-hl-01.jpg","assets/nao-hl-03.jpg","assets/nao-hl-06.jpg","assets/nao-hl-08.jpg","assets/nao-hl-11.jpg","assets/nao-hl-20.jpg"];
+  const cp=mkPanel("nao-composer","＋ 新規投稿",
+   '<div style="font-size:13px;color:#666;margin-bottom:8px">写真を選んでね</div><div id="nc-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px">'+
+   CHOICES.map((s,i)=>'<img data-s="'+s+'" src="'+s+'" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer;'+(i===0?'outline:3px solid #0095f6;outline-offset:-3px':'opacity:.75')+'" alt="">').join("")+'</div>'+
+   '<textarea id="nc-cap" rows="3" placeholder="キャプションを書く…" style="width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:10px;padding:10px;font-size:14px;margin-top:12px"></textarea>'+
+   '<button id="nc-post" style="width:100%;background:#0095f6;color:#fff;border:none;border-radius:999px;padding:11px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:10px">投稿する</button>');
+  let pick=CHOICES[0];
+  cp.querySelectorAll("#nc-grid img").forEach(im=>im.addEventListener("click",()=>{ pick=im.dataset.s;
+   cp.querySelectorAll("#nc-grid img").forEach(x=>{ const on=x.dataset.s===pick; x.style.outline=on?"3px solid #0095f6":"none"; x.style.outlineOffset="-3px"; x.style.opacity=on?"1":".75"; }); }));
+  row.querySelector("#nao-new-post").addEventListener("click",()=>cp.style.display="flex");
+  cp.querySelector("#nc-post").addEventListener("click",()=>{ const cap=cp.querySelector("#nc-cap").value.trim()||"📸";
+   const first=vig.querySelector(".ig-post"); if(!first) return;
+   const d=document.createElement("div"); d.className="ig-post";
+   d.innerHTML='<div class="ph"><img class="avatar" src="assets/default-avatar.svg" width="30" height="30" alt=""> nao_0324</div>'+
+    '<img class="pimg" src="'+pick+'" alt="">'+
+    '<div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div>'+
+    '<div class="cap"><b>nao_0324</b> <span class="nc-cap-t"></span> <span style="color:#8e8e93">いいね！0件</span></div><div class="nc-cmts"></div>';
+   d.querySelector(".nc-cap-t").textContent=cap;
+   first.parentElement.insertBefore(d,first);
+   const nEl=vig.querySelector(".ig-stats .n"); if(nEl) nEl.textContent=vig.querySelectorAll(".ig-post").length;
+   cp.style.display="none"; cp.querySelector("#nc-cap").value="";
+   d.scrollIntoView({block:"center"});
+   toast("投稿したよ📸");
+   setTimeout(()=>{ const c=d.querySelector(".nc-cmts"); if(c&&d.isConnected) c.innerHTML='<div class="cmt"><b>yui_s</b>かわいい〜！<span class="tm">たった今</span></div>'; },25000);
+  });
+  const bp=mkPanel("nao-bio-editor","プロフィールを編集",
+   '<div style="font-size:13px;color:#666;margin-bottom:8px">自己紹介（改行できます）</div>'+
+   '<textarea id="nb-text" rows="4" style="width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:10px;padding:10px;font-size:14px"></textarea>'+
+   '<button id="nb-save" style="width:100%;background:#111;color:#fff;border:none;border-radius:999px;padding:11px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:10px">保存する</button>');
+  row.querySelector("#nao-edit-bio").addEventListener("click",()=>{ bp.querySelector("#nb-text").value=bio.innerText; bp.style.display="flex"; });
+  bp.querySelector("#nb-save").addEventListener("click",()=>{ const t=bp.querySelector("#nb-text").value.trim(); if(t) bio.innerHTML=t.replace(/</g,"&lt;").replace(/\n/g,"<br>");
+   bp.style.display="none"; toast("プロフィールを更新したよ"); }); })();
+
+ /* ---- v125: photo viewer info bar + favorites (star; the top-right heart keeps its own job) ---- */
+ (function(){ const pv=$("#ph-view"); if(!pv||typeof pvShow!=="function"||$("#pv-info")) return;
+  state._favs=state._favs||[];
+  const bar=document.createElement("div"); bar.id="pv-info";
+  bar.style.cssText="position:absolute;left:12px;bottom:16px;z-index:6;background:rgba(0,0,0,.55);color:#fff;border-radius:999px;padding:7px 13px;font-size:12.5px;display:flex;gap:8px;align-items:center;max-width:72%";
+  pv.appendChild(bar);
+  const fav=document.createElement("button"); fav.id="pv-star"; fav.textContent="🤍";
+  fav.style.cssText="position:absolute;right:12px;bottom:16px;z-index:6;width:44px;height:44px;border-radius:50%;border:none;background:rgba(0,0,0,.55);font-size:19px;cursor:pointer";
+  pv.appendChild(fav);
+  const cur=()=>{ try{ const L=pvList(); const f=L[pvIdx]; if(!f) return null;
+   const im=f.querySelector("img"); return {f,src:im?im.getAttribute("src"):null,cap:(f.querySelector("figcaption")||{}).textContent||"",i:pvIdx,n:L.length}; }catch(e){ return null; } };
+  const badge=(f,on)=>{ if(!f) return; f.style.position="relative";
+   let b=f.querySelector(".fav-badge");
+   if(on&&!b){ b=document.createElement("span"); b.className="fav-badge"; b.textContent="⭐";
+    b.style.cssText="position:absolute;top:5px;right:5px;font-size:15px;text-shadow:0 1px 4px rgba(0,0,0,.6)"; f.appendChild(b); }
+   if(!on&&b) b.remove(); };
+  const sync=()=>{ const c=cur(); if(!c||!c.src) return;
+   bar.textContent=(c.i+1)+" / "+c.n+"　・　"+c.cap;
+   fav.textContent=state._favs.includes(c.src)?"⭐":"🤍"; };
+  fav.addEventListener("click",()=>{ const c=cur(); if(!c||!c.src) return;
+   const i=state._favs.indexOf(c.src);
+   if(i>=0){ state._favs.splice(i,1); badge(c.f,false); toast("お気に入りを外したよ"); }
+   else { state._favs.push(c.src); badge(c.f,true); toast("お気に入りに追加⭐"); }
+   sync(); });
+  const _pv=pvShow; pvShow=function(i){ _pv(i); setTimeout(sync,30); };
+  setTimeout(sync,600); })();
+
+ /* ---- v126: calendar countdowns (match-day milestones, not couple anniversaries) + fuller weather ---- */
+ (function(){ const panel=$("#hp-panel"); if(!panel) return;
+  const daysTo=(m,d)=>{ const now=new Date(); let t=new Date(now.getFullYear(),m-1,d);
+   if(t<new Date(now.getFullYear(),now.getMonth(),now.getDate())) t=new Date(now.getFullYear()+1,m-1,d);
+   return Math.round((t-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/86400000); };
+  new MutationObserver(()=>{ const t=panel.textContent;
+   if(panel.querySelector("#cd-box")||panel.querySelector("#wx-box")) return;
+   if(t.includes("カレンダー")&&t.includes("マッチした日")){
+    const box=document.createElement("div"); box.id="cd-box";
+    box.style.cssText="margin-top:12px;background:#fff;border-radius:12px;padding:13px 14px";
+    box.innerHTML='<div style="font-weight:800;font-size:14px;margin-bottom:7px">⏳ カウントダウン</div>'+
+     [["🎄 クリスマスまで",daysTo(12,25)],["🔥 マッチ記念日（27日）まで",(()=>{ const n=new Date(); let d=27-n.getDate(); if(d<0) d+=30; return d; })()],["🎤 NCT WISH 神戸公演（3/5）まで",daysTo(3,5)]]
+     .map(r=>'<div style="display:flex;font-size:13.5px;padding:5px 0;border-bottom:1px solid #f4f4f6"><span>'+r[0]+'</span><b style="margin-left:auto;color:#d62976">あと '+r[1]+' 日</b></div>').join("");
+    panel.appendChild(box); }
+   if(t.includes("天気")&&(t.includes("大阪")||t.includes("°"))){
+    const box=document.createElement("div"); box.id="wx-box";
+    box.style.cssText="margin-top:12px;background:#fff;border-radius:12px;padding:13px 14px";
+    box.innerHTML='<div style="font-weight:800;font-size:14px;margin-bottom:7px">🕐 時間ごとの予報（大阪）</div>'+
+     [["今","☀️","18°"],["15時","☀️","19°"],["18時","🌆","16°"],["21時","🌙","14°"],["24時","🌙","13°"]]
+     .map(r=>'<span style="display:inline-block;text-align:center;width:19%;font-size:12.5px;color:#444">'+r[0]+'<br><span style="font-size:19px">'+r[1]+'</span><br><b style="color:#111">'+r[2]+'</b></span>').join("")+
+     '<div style="font-weight:800;font-size:14px;margin:13px 0 5px">📅 週間</div>'+
+     [["明日","☀️","20° / 12°"],["明後日","⛅","19° / 12°"],["金曜","🌧","17° / 11°"],["土曜","☀️","21° / 13°"]]
+     .map(r=>'<div style="display:flex;font-size:13.5px;padding:5px 0;border-bottom:1px solid #f4f4f6"><span style="width:52px">'+r[0]+'</span><span>'+r[1]+'</span><b style="margin-left:auto">'+r[2]+'</b></div>').join("")+
+     '<div style="font-size:12px;color:#888;margin-top:9px">🧳 釜山はだいたい大阪より1〜2°低め。海風対策に薄手の上着を。</div>';
+    panel.appendChild(box); }
+  }).observe(panel,{childList:true,subtree:true}); })();
+
+ /* ---- v127: world clock in the clock mini-app ---- */
+ (function(){ const panel=$("#hp-panel"); if(!panel) return;
+  const ZONES=[["🇯🇵 東京","Asia/Tokyo"],["🇰🇷 ソウル・釜山","Asia/Seoul"],["🇬🇧 ロンドン","Europe/London"],["🇺🇸 ニューヨーク","America/New_York"],["🇺🇸 ロサンゼルス","America/Los_Angeles"]];
+  let iv=null;
+  const fmt=tz=>new Intl.DateTimeFormat("ja-JP",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false,timeZone:tz}).format(new Date());
+  new MutationObserver(()=>{ const head=panel.querySelector(".hp-head b");
+   if(!head||!head.textContent.includes("時計")){ if(!panel.querySelector("#wc-box")&&iv){ clearInterval(iv); iv=null; } return; }
+   if(panel.querySelector("#wc-box")) return;
+   const box=document.createElement("div"); box.id="wc-box";
+   box.style.cssText="margin-top:12px;background:#fff;border-radius:12px;padding:13px 14px";
+   box.innerHTML='<div style="font-weight:800;font-size:14px;margin-bottom:6px">🌍 世界時計</div>'+ZONES.map(z=>'<div style="display:flex;font-size:14px;padding:6px 0;border-bottom:1px solid #f4f4f6"><span>'+z[0]+'</span><b class="wc-t" data-tz="'+z[1]+'" style="margin-left:auto;font-variant-numeric:tabular-nums">--:--:--</b></div>').join("")+
+    '<div style="font-size:12px;color:#888;margin-top:8px">釜山と東京は同じ時刻。時差ぼけの心配なし✈️</div>';
+   panel.appendChild(box);
+   const tick=()=>box.querySelectorAll(".wc-t").forEach(el=>el.textContent=fmt(el.dataset.tz));
+   tick(); clearInterval(iv); iv=setInterval(()=>{ if(panel.style.display==="none"){ clearInterval(iv); iv=null; return; } tick(); },1000);
+  }).observe(panel,{childList:true,subtree:true}); })();
+
+ /* ---- v128: news read-later shelf ---- */
+ (function(){ const art=$("#news-article"); const list=$("#news-list");
+  if(!art||!list||$("#news-shelf")) return;
+  const saved=[];
+  const shelf=document.createElement("div"); shelf.id="news-shelf";
+  shelf.style.cssText="display:none;background:#fff8e6;border:1px solid #f0e2ac;border-radius:12px;padding:10px 13px;margin:10px 12px 0;font-size:13px";
+  list.parentElement.insertBefore(shelf,list);
+  const drawShelf=()=>{ shelf.style.display=saved.length?"block":"none";
+   shelf.innerHTML='<b>🔖 あとで読む（'+saved.length+'）</b>'+saved.map(t=>'<div style="padding:5px 0 0;line-height:1.5">・'+t+'</div>').join(""); };
+  new MutationObserver(()=>{ const inner=art.querySelector(".article"); if(!inner||inner.querySelector("#rl-btn")) return;
+   const h=inner.querySelector("h1,h2,.atitle")||inner;
+   const title=(inner.querySelector("h1,h2")||{}).textContent||"記事";
+   const b=document.createElement("button"); b.id="rl-btn"; b.textContent="🔖 あとで読む";
+   b.style.cssText="margin:10px 0;background:#fff;border:1.5px solid #111;border-radius:999px;padding:7px 15px;font-size:13px;font-weight:700;cursor:pointer";
+   h.after(b);
+   b.addEventListener("click",()=>{ const t=title.trim().slice(0,60);
+    if(saved.includes(t)){ b.textContent="🔖 あとで読む"; saved.splice(saved.indexOf(t),1); }
+    else { saved.unshift(t); b.textContent="✅ 保存した"; toast("「あとで読む」に保存したよ"); }
+    drawShelf(); });
+  }).observe(art,{childList:true,subtree:true}); })();
+
+ /* ---- v129+v130fix: home edit mode (swaps stay on the same page) ---- */
+ (function(){ const home=$("#v-home"); const sc=$("#v-settings .scroll");
+  if(!home||!sc||$("#edit-cur")) return;
+  const css=document.createElement("style");
+  css.textContent="@keyframes wig{0%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}100%{transform:rotate(-1.6deg)}}"+
+   "#v-home.editing .appicon{animation:wig .28s infinite}"+
+   "#v-home.editing .appicon.swap-pick{outline:3px solid #ffd94d;outline-offset:2px;border-radius:20px}";
+  document.head.appendChild(css);
+  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
+  row.innerHTML='<span>🧲 ホーム画面を編集</span><b id="edit-cur">オフ</b>';
+  sc.appendChild(row);
+  let pick=null;
+  document.addEventListener("click",e=>{ if(!home.classList.contains("editing")) return;
+   const ic=e.target.closest(".appicon"); if(!ic||!home.contains(ic)) return;
+   e.stopPropagation(); e.preventDefault();
+   if(!pick){ pick=ic; ic.classList.add("swap-pick"); toast("入れ替える相手を選んでね"); return; }
+   if(pick===ic){ pick.classList.remove("swap-pick"); pick=null; return; }
+   const parent=pick.parentElement;
+   if(ic.parentElement!==parent){ toast("同じページの中で入れ替えてね"); return; }
+   const ph=document.createElement("span"); parent.insertBefore(ph,pick);
+   parent.insertBefore(pick,ic); parent.insertBefore(ic,ph); ph.remove();
+   pick.classList.remove("swap-pick"); pick=null;
+   toast("入れ替えたよ🧲");
+  },true);
+  row.addEventListener("click",()=>{ const on=home.classList.toggle("editing");
+   row.querySelector("#edit-cur").textContent=on?"オン（編集中）":"オフ";
+   if(on){ show("home"); toast("アイコンが揺れてる間、2つタップで入れ替え"); }
+   if(!on&&pick){ pick.classList.remove("swap-pick"); pick=null; } }); })();
+
+ /* ---- v130: gifts from his LINE profile ---- */
+ (function(){ const prof=$("#hiroto-prof"); if(!prof||$("#gift-btn")) return;
+  const row=document.createElement("div");
+  row.style.cssText="display:flex;gap:9px;padding:12px 16px";
+  row.innerHTML='<button id="gift-btn" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:999px;padding:10px;font-size:14px;font-weight:700;cursor:pointer">🎁 ギフトを送る</button>';
+  prof.appendChild(row);
+  const GIFTS=[["🧸","くまのぬいぐるみ"],["🌹","バラの花束"],["🍰","ケーキ"],["☕","カフェギフト"]];
+  row.querySelector("#gift-btn").addEventListener("click",()=>{
+   if($("#gift-panel")) return;
+   const vline=$("#v-line"); if(!vline) return;
+   const p=document.createElement("div"); p.id="gift-panel";
+   p.style.cssText="position:absolute;inset:0;z-index:65;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center";
+   p.innerHTML='<div style="background:#fff;width:100%;border-radius:18px 18px 0 0;padding:16px;color:#111"><div style="font-weight:800;font-size:15.5px;margin-bottom:10px">🎁 ひろとへギフト</div>'+
+    '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">'+GIFTS.map(g=>'<button class="gift-pick" data-e="'+g[0]+'" data-n="'+g[1]+'" style="background:#f7f7fa;border:1px solid #eee;border-radius:13px;padding:11px 4px;font-size:25px;cursor:pointer">'+g[0]+'<div style="font-size:10.5px;color:#555;margin-top:3px">'+g[1]+'</div></button>').join("")+'</div>'+
+    '<button id="gift-x" style="width:100%;margin-top:12px;background:#fff;border:1px solid #ddd;border-radius:999px;padding:9px;cursor:pointer">やめる</button></div>';
+   vline.appendChild(p);
+   p.querySelector("#gift-x").addEventListener("click",()=>p.remove());
+   p.addEventListener("click",e=>{ if(e.target===p) p.remove(); });
+   p.querySelectorAll(".gift-pick").forEach(b=>b.addEventListener("click",()=>{ const e2=b.dataset.e, n=b.dataset.n; p.remove();
+    show("line"); openChat();
+    const d=document.createElement("div"); d.className="msg me";
+    d.innerHTML='<span class="bub" style="background:#fff3f6;border:1px solid #ffd3e0;text-align:center"><span style="font-size:38px;display:block">'+e2+'</span><span style="font-size:12px;color:#c2437a">🎁 '+n+'を送りました</span></span><span class="meta">既読<br>'+nowTime()+'</span>';
+    const chat=$("#chat"); chat.appendChild(d); chat.scrollTop=chat.scrollHeight;
+    const R={"🧸":"…なにこれ、かわいい","🌹":"バラ…俺に？　ありがとう","🍰":"ケーキ！　甘いの好きやで","☕":"カフェギフト…気が利くな"};
+    setTimeout(()=>himMsg(R[e2]||"ありがとう"),1500);
+    setTimeout(()=>himMsg("お返し、考えとく"),3400);
+   }));
+  }); })();
 })();
 
 </script>
