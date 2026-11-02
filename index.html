@@ -844,7 +844,7 @@ input,textarea{font-size:16px!important}
 <div class="scroll" style="padding:14px">
 <div class="setrow"><span>🔔 サウンド（効果音・着信音）</span><button class="set-tgl" id="set-sound">ON</button></div>
 <div class="setrow"><span>📳 バイブレーション</span><button class="set-tgl" id="set-vib">ON</button></div><div class="setrow"><span>🔤 文字の大きさ</span><button class="set-tgl" id="set-font">標準</button></div><div class="setrow"><span>🖼 ホーム画面の壁紙</span><button class="set-tgl" id="set-wall">デフォルト</button></div>
-<div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div><div class="setrow"><span>📚 あらすじ・チャプター</span><button class="set-tgl" id="set-chapters">ひらく</button></div><div class="setrow"><span>💭 思い出</span><button class="set-tgl" id="set-memories">ひらく</button></div><div class="setrow"><span>💭 解放した思い出</span><span style="color:#8e8e93;font-size:12.5px" id="set-memcount">0 / 8</span></div>
+<div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div><div class="setrow"><span>📚 あらすじ・チャプター</span><button class="set-tgl" id="set-chapters">ひらく</button></div><div class="setrow"><span>💭 思い出</span><button class="set-tgl" id="set-memories">ひらく</button></div><div class="setrow"><span>💭 解放した思い出</span><span style="color:#8e8e93;font-size:12.5px" id="set-memcount">0 / 9</span></div>
 <div class="setrow"><span>📷 Instagram フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-ig">342</span></div>
 <div class="setrow"><span>𝕏 フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-x">189</span></div>
 <div class="setrow"><span>🔥 炎上度のピーク</span><span style="color:#8e8e93;font-size:12.5px" id="set-heat">0%</span></div>
@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v34</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v35</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1023,6 +1023,8 @@ later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「
 later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿に「誰と？」の声　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},52000);
 later(()=>{addNewsRow("assets/tinder-hiroto-1.jpg","出会いはマッチングアプリか　彼のものとされる“私服プロフ写真”が拡散","週刊デジタル ・ たった今",()=>openTinderArticle()); setHeat(86); push("ニュース速報","#e60012","N","続報：出会いの経緯が判明？","「マッチングアプリで、Super Likeから」——タップで記事へ",()=>show("news"));},70000);
 later(()=>{addNewsRow("assets/glasses.jpg","お相手「最初はアイドルだと知らなかった」証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},92000);
+later(()=>{addNewsRow("assets/crown.jpg","現役アイドルのアプリ利用に賛否　「恋愛」と「信頼」の線引きはどこか","芸能デスク ・ たった今",null); setHeat(94);},112000);
+later(()=>{addNewsRow("assets/stage.jpg","事務所「アプリの削除・退会を確認」　私生活の管理体制を見直しへ","芸能デスク ・ たった今",null); setHeat(88);},128000);
 }
 /* ============ NEWS ============ */
 function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔、マッチングアプリ利用か —— 一般女性とカフェで会う姿も</h3><p>昨夜、都内カフェから出てきた二人。交際を裏付ける写真はないが、本人のものとされるアプリのプロフィールが拡散し、騒ぎが広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
@@ -1048,6 +1050,16 @@ const X_POSTS=[
 {n:"特定班",h:"@tokutei_work",t:"お相手とはマッチングアプリで出会った説が濃厚。彼のものとされるプロフ写真、私服の自撮りで本人のIGには未掲載のやつ。つまり未公開写真が回ってることに…",m:["💬 6,940","🔁 24,880","❤️ 11,203"]},
 {n:"まとめ速報",h:"@matome_soku",t:"「お相手の女性、最初は彼がアイドルだと知らなかった」証言が拡散中。元々ファンだったのに気づかなかったって…会うまで分からんもんなの？ #大翔Tinder",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
 {n:"ロットダン💙",h:"@rottdan_love",t:"Super Likeから始まったって話、ほんまなら大翔のほうから行ってるやん…。でも付き合ってへんのなら、ただの知り合いってこと？　複雑やけど、ちょっと安心した自分もいる",m:["💬 1,180","🔁 5,204","❤️ 21,870"]},
+{n:"芸能ウォッチャー",h:"@geino_watch",t:"続報なしで事務所の『確認中』だけが長い…。大翔の件、年単位の恋愛スキャンダルじゃなくて『アプリ使ってた』が論点なのが現代っぽい",m:["💬 861","🔁 5,430","❤️ 8,214"]},
+{n:"まひろ",h:"@mahiro_kk",t:"現役アイドルがTinderしてたって、別に犯罪じゃないのにこの燃え方。推しが普通の24歳みたいに生きたかっただけな気がして、ちょっと切ない",m:["💬 1,540","🔁 7,802","❤️ 26,540"]},
+{n:"特定班",h:"@tokutei_work",t:"プロフ文の『ごはんとコーラが好き』、地味に本人の食の好みと一致してて笑う。盛ったプロフじゃないあたり、逆にリアル",m:["💬 3,208","🔁 15,670","❤️ 12,305"]},
+{n:"さくらの推し活",h:"@sakura_act",t:"同担の子が泣いてた。…気持ちは分かる。でも大翔の言葉を聞くまでは、誰も結論出さんといてほしい",m:["💬 289","🔁 2,410","❤️ 15,980"]},
+{n:"まとめ速報",h:"@matome_soku",t:"【賛否まとめ】『24歳の自由』擁護派 vs 『ファンの信頼』批判派。交際自体は事務所が否定済み #大翔Tinder",m:["💬 2,764","🔁 16,208","❤️ 6,930"]},
+{n:"ゆん",h:"@yun_o0",t:"声明出たね…『利用していたのは事実、軽率でした』って、逃げずに言ったのは認める。でも、しばらくは複雑なまま応援すると思う",m:["💬 1,975","🔁 1,102","❤️ 5,468"]},
+{n:"ロットダン💙",h:"@rottdan_love",t:"アプリ退会したって。…もう会うこともないってことやんね。ステージで返してくれるなら、私はそれを見届ける側でいたい",m:["💬 1,340","🔁 6,540","❤️ 24,310"]},
+{n:"一般の感想",h:"@ippan_no",t:"お相手の一般の子が叩かれてるのだけは違うと思う。Super Like送ったのは彼のほうって話やん",m:["💬 4,120","🔁 11,860","❤️ 19,450"]},
+{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"井汲大翔、本人の言葉でコメント発表『マッチングアプリを利用していたのは事実です。軽率でした』 交際は改めて否定",m:["💬 9,870","🔁 38,540","❤️ 52,300"],imp:428},
+{n:"まひろ",h:"@mahiro_kk",t:"結局いちばん刺さったの、『お相手に迷惑をかけた』って部分。誰かを守ろうとする文章だった気がする",m:["💬 976","🔁 4,320","❤️ 17,260"]}
 ];
 function avaTxt(name){let h=0;for(const c of name)h=(h*31+c.charCodeAt(0))%360;return `<span class="ava-txt" style="background:hsl(${h},55%,55%)">${name.trim()[0]||"？"}</span>`}
 function postEl(p,hot){const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(p.n)}<span style="min-width:0"><span class="nm">${p.n}</span> <span class="hd">${p.h} ・ ${p.tm||"今"}</span><div class="tx">${p.t}</div><div class="mt"><span class="${hot?'hot':''}">${p.m[0]}</span><span class="rp-btn">${p.m[1]}</span><span class="like-btn">${p.m[2]}</span>${p.imp?`<span>👁 <span id="imp-n">${p.imp}万</span></span>`:""}</div></span>`;
@@ -2483,6 +2495,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   ["🔥","マッチした日","9月27日 ・ TinderでSuper Like",()=>state.chapter>=1,null],
   ["☕","本物バレ","10月4日 ・ 初デート",()=>state.chapter>=2,"assets/vm-t-hello.mp3"],
   ["🌙","線引き","10月12日 ・ 並木道",()=>state.chapter>=3,"assets/vm-t-line.mp3"],
+  ["🍁","近づく休日","10月13日〜17日 ・ 線のこちら側",()=>!!state._ch3bDone||state.chapter>=4,null],
   ["🌃","あの夜","10月18日 ・ 二人だけの秘密",()=>state.chapter>=5,null],
   ["🔥","バレた日","11月2日 ・ アプリ利用が表に",()=>state.chapter>=6||state.phase==="scandal","assets/vm-t-sorry.mp3"],
   ["📞","事務所の電話","11月2日 ・ 連絡を控えてください",()=> !!state._mgrDone,"assets/mgr-t-1.mp3"],
@@ -2558,10 +2571,11 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
  setInterval(()=>{ const el=document.querySelector("#set-memcount"); if(!el) return;
   let n=0;
   if(state.chapter>=1) n++; if(state.chapter>=2) n++; if(state.chapter>=3) n++;
+  if(state._ch3bDone||state.chapter>=4) n++;
   if(state.chapter>=5) n++;
   if(state.chapter>=6||state.phase==="scandal") n++;
   if(state._mgrDone) n++; if(state.ended) n++; if(state.act2) n++;
-  el.textContent=n+" / 8";
+  el.textContent=n+" / 9";
   const list=document.querySelector("#news-list"); if(!list) return;
   let st=document.querySelector("#news-stamp");
   if(!st){ st=document.createElement("div"); st.id="news-stamp";
@@ -3233,6 +3247,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。何人かスワイプした先で、ひとりの男の子から Super Like が届いていた。アイドルみたいな顔立ち。でも、私服の自撮りはどこか印象が違って——「本人なわけない」と、なおは打ち消す。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
   {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",sy:"数日のやり取りの末、LINEを交換して初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。元々ファンだった なお は、会った瞬間に気づいてしまう。彼は最初、アイドルだということを隠していた。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
   {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"会うたびに距離は縮まるのに、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——抑えられなくなる前にと、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
+  {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
   {no:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",sy:"友達未満、でも他人じゃない。名前のない関係のまま、嫉妬と独占欲と「我慢」が積み重なっていく。そしてその夜、引いたはずの線を、ふたりは越えてしまう——その先は、二人だけの秘密。",un:()=>state.chapter>=4||past(),go:()=>jumpLine("10月18日（土）")},
   {no:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",sy:"あの夜のあと、連絡は少しずつ間遠になった。「後悔はしてへんねん」——久しぶりに会えたカフェで交わす、ぎこちない優しさ。何もなかったことにはできないまま、時間だけが進んでいく。",un:()=>state.chapter>=5||past(),go:()=>jumpLine("11月1日（土）")},
   {no:"第6話",tt:"バレた日",dt:"11月2日（日） ・ 夜",sy:"カフェでの目撃写真と、拡散されていくTinderのプロフィール。「現役アイドル、マッチングアプリ利用か」——騒ぎの矛先は、交際ではなく“アプリを使っていたこと”そのものへ。なおのSNSにも、波が押し寄せる。",un:()=>past(),go:()=>jumpLine("11月2日（日）")},
@@ -3346,6 +3361,29 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
    {k:"draft",t:"落ち着いたら、またごはん"},
    {k:"mono",t:"（送られへん。送ったら、また巻き込む）"},
    {k:"mono",t:"（……ごめんな、なお）"}
+  ]},
+  4:{sub:"彼のスマホ —— 10月13日（月）朝",steps:[
+   {k:"note",t:"10月13日（月）7:42"},
+   {k:"mono",t:"（出勤前の電車。昨日、自分で引いたはずの線が、頭から離れへん）"},
+   {k:"mgr",t:"おはよう。昨日の収録分、評判ええぞ"},
+   {k:"him",t:"おはようございます。そっか、よかった"},
+   {k:"mgr",t:"なんかあった？ 声のトーンが変やぞ"},
+   {k:"him",t:"なんもないです。ほんまに"},
+   {k:"mgr",t:"ならええけど。無理すんなよ"},
+   {k:"draft",t:"昨日はごめん。…ほんまは、線なんか引きたくなかった"},
+   {k:"draft",t:"今日も、声聞きたいねん"},
+   {k:"mono",t:"（消した。……送ったのは、いつも通りの『おはよ』だけ）"}
+  ]},
+  5:{sub:"彼のスマホ —— 11月2日（日）深夜 ・ 声明のあと",steps:[
+   {k:"note",t:"11月2日（日）23:58"},
+   {k:"mgr",t:"声明、出したぞ。反応は、落ち着いてきてる"},
+   {k:"him",t:"見ました。ありがとうございます"},
+   {k:"mgr",t:"お相手の子には、こっちから伝えた。…大丈夫そうか"},
+   {k:"him",t:"…分かりません"},
+   {k:"mono",t:"（分かってる。もう、連絡したらあかん。分かってるのに）"},
+   {k:"draft",t:"ごめん。幸せになってな"},
+   {k:"mono",t:"（最後まで、送らんかった。それが、俺にできる最後のことやった）"},
+   {k:"mono",t:"（……元気でな、なお）"}
   ]}
  };
  function povEl(s){
@@ -3425,7 +3463,9 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
    const defs=[
      {n:1,tt:"彼の画面 ― 初デートのあと",dt:"10月4日（土）夜 ・ 電車の中",un:seen[1]||state.chapter>=3||pastSc},
      {n:2,tt:"彼の画面 ― 線引きの夜",dt:"10月12日（日）夜 ・ 帰り道",un:seen[2]||state.chapter>=4||pastSc},
-     {n:3,tt:"彼の画面 ― 炎上の夜",dt:"11月2日（日）深夜 ・ 声明の前",un:seen[3]||!!state.ended||!!state.act2}
+     {n:3,tt:"彼の画面 ― 炎上の夜",dt:"11月2日（日）深夜 ・ 声明の前",un:seen[3]||!!state.ended||!!state.act2},
+     {n:4,tt:"彼の画面 ― 線引きの翌朝",dt:"10月13日（月）朝 ・ 出勤の電車",un:seen[4]||!!state._ch3bDone||state.chapter>=4||pastSc},
+     {n:5,tt:"彼の画面 ― 声明の夜",dt:"11月2日（日）深夜 ・ 声明のあと",un:seen[5]||!!state.ended||!!state.act2}
    ];
    const unl=defs.filter(d=>d.un); if(!unl.length) return;
    const h=document.createElement("div"); h.style.cssText="font-size:12px;color:#8e8e93;font-weight:800;margin:16px 2px 8px"; h.textContent="📱 彼の画面（なおには見えない裏側）"; list.appendChild(h);
@@ -3504,17 +3544,17 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   var LIKEBACK={"けんた":1,"れん":1,"だいき":1};
   var DM={
    "けんた":{open:["はじめまして！マッチありがとうございます😊","プロフィール見ました。サウナ、僕も好きです！"],
-    script:[["週2くらいで行ってます。水風呂に入る瞬間が好きで","なおさんはサウナ、よく行かれるんですか？"],["キャンプもたまに行きます","自然の中で食べるごはん、美味しいですよね"]],
-    keys:[[/サウナ/,"サウナいいですよね！おすすめの施設があったら教えてください"],[/キャンプ|山|焚き火/,"キャンプいいですね！テントとかお持ちなんですか？"],[/写真/,"写真も好きです。風景を撮ることが多いです"]],
-    def:["そうなんですね！","いいですね😊","なるほど〜","今度よかったら、ごはんでも行きましょう","プロフィールの写真、素敵でした"]},
+    script:[["週2くらいで行ってます。水風呂に入る瞬間が好きで","なおさんはサウナ、よく行かれるんですか？"],["キャンプもたまに行きます","自然の中で食べるごはん、美味しいですよね"],["📷:assets/dummy-kenta-2.jpg","この前の写真です。顔寄りで撮ってもらいました"],["週末はだいたい外にいます","インドアな日も、たまにはあるんですけどね"],["📷:assets/dummy-kenta-3.jpg","テント張ったときの景色です。朝が最高でした"],["おすすめのサウナ、今度まとめて送りますね"],["よかったら、そのうちお茶でもどうですか？","無理に誘うつもりはないので、気が向いたらで大丈夫です"]],
+    keys:[[/サウナ/,"サウナいいですよね！おすすめの施設があったら教えてください"],[/キャンプ|山|焚き火/,"キャンプいいですね！テントとかお持ちなんですか？"],[/写真/,"写真も好きです。風景を撮ることが多いです"],[/仕事/,"お仕事は平日ですか？僕はシフト制でして"]],
+    def:["そうなんですね！","いいですね😊","なるほど〜","今度よかったら、ごはんでも行きましょう","プロフィールの写真、素敵でした","ゆっくりで大丈夫ですよ","気が向いたときに返してくれれば"]},
    "れん":{open:["マッチありがとうございます！れんです","美味しいもの食べるのが好きで、ついプロフィール長く見ちゃいました笑"],
-    script:[["最近は麺ばっかり食べてます","なおさんは何系のごはんが好きですか？"],["行ってみたい店のリストが増えすぎてまして…","よかったら今度、一軒付き合ってください"]],
-    keys:[[/麺|ラーメン/,"麺いいですね！太麺派ですか？細麺派ですか？"],[/旅行/,"旅行いいですよね。僕も年2回くらい遠出します"],[/映画/,"映画も観ますよ。最近観たのだと何がよかったですか？"]],
-    def:["いいですね！","わかります、それ美味しいですよね","なるほど〜","話してて楽しいです","また色々教えてください"]},
+    script:[["最近は麺ばっかり食べてます","なおさんは何系のごはんが好きですか？"],["📷:assets/dummy-ren-2.jpg","昨日の一杯です。完全に好みのビジュアルでした"],["行ってみたい店のリストが増えすぎてまして…","よかったら今度、一軒付き合ってください"],["太麺のつけ麺にハマってます","なおさんは細麺派でしたっけ？"],["📷:assets/dummy-ren-3.jpg","同じ店の別カットです。麺リフト、自分的には会心でした"],["休みの日はだいたい麺か、スーパーで買い出ししてます"],["急かすつもりはないので、また気軽に話しましょう"]],
+    keys:[[/麺|ラーメン/,"麺いいですね！太麺派ですか？細麺派ですか？"],[/旅行/,"旅行いいですよね。僕も年2回くらい遠出します"],[/映画/,"映画も観ますよ。最近観たのだと何がよかったですか？"],[/エビ/,"エビいいですね！エビ出汁のラーメン、名店あるんですよ"]],
+    def:["いいですね！","わかります、それ美味しいですよね","なるほど〜","話してて楽しいです","また色々教えてください","麺の話ばかりですみません笑","また美味しい店、見つけときます"]},
    "だいき":{open:["マッチありがとうございます、だいきです📷","カフェの写真、雰囲気すごく好きでした"],
-    script:[["休みの日はカフェで写真撮ってることが多くて","なおさんはカフェ、よく行かれますか？"],["夕日の写真を撮るのが好きなんです","よかったら今度、写真見せますね"]],
-    keys:[[/カフェ/,"カフェいいですよね！おすすめのカフェありますか？"],[/写真|カメラ/,"写真、フィルムで撮ってます。現像するまでの時間が好きで"],[/スイーツ|甘|ケーキ/,"甘いもの僕も好きです。チーズケーキは外せないです"]],
-    def:["そうなんですね😊","素敵ですね","いいですね〜","お話できて嬉しいです","またお話しましょう"]}
+    script:[["休みの日はカフェで写真撮ってることが多くて","なおさんはカフェ、よく行かれますか？"],["夕日の写真を撮るのが好きなんです","よかったら今度、写真見せますね"],["📷:assets/dummy-daiki-2.jpg","この前のカフェで撮ってもらったやつです"],["フィルム、現像代が地味にかかるんですけどね","それでもやめられなくて"],["📷:assets/dummy-daiki-3.jpg","お気に入りの一枚です。窓際の席が好きで"],["なおさんのカフェ写真、光の入り方が綺麗でした"],["よかったらまた、カフェの話しましょう"]],
+    keys:[[/カフェ/,"カフェいいですよね！おすすめのカフェありますか？"],[/写真|カメラ/,"写真、フィルムで撮ってます。現像するまでの時間が好きで"],[/スイーツ|甘|ケーキ/,"甘いもの僕も好きです。チーズケーキは外せないです"],[/旅行/,"旅行先で写真撮るのも好きです。最近は海辺が多くて"]],
+    def:["そうなんですね😊","素敵ですね","いいですね〜","お話できて嬉しいです","またお話しましょう","写真の話、つい長くなっちゃいます","また見せますね"]}
   };
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
@@ -3633,7 +3673,10 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     cs.log.push({cls:cls,text:text});
     if(cls==="them" && current!==name) cs.unread=true;
     if(current===name && dmWrap.style.display!=="none"){
-      var d=document.createElement("div"); d.className="t-bub "+cls; d.textContent=text; dmScroll.appendChild(d); dmScroll.scrollTop=99999;
+      var d=document.createElement("div");
+      if(text.indexOf("📷:")===0){ d.className="t-bub "+cls; d.style.padding="4px"; var im=document.createElement("img"); im.src=text.slice(3); im.alt="写真"; im.style.cssText="width:170px;height:215px;object-fit:cover;border-radius:11px;display:block"; d.appendChild(im); }
+      else { d.className="t-bub "+cls; d.textContent=text; }
+      dmScroll.appendChild(d); dmScroll.scrollTop=99999;
     }
     updateRowStates();
   }
@@ -3641,7 +3684,10 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     dmScroll.innerHTML="";
     var cs=chatState[name]; if(!cs) return;
     var chip=document.createElement("div"); chip.className="daychip"; chip.style.cssText="align-self:center;margin:4px 0 2px"; chip.textContent="9月27日（土） —— マッチした日"; dmScroll.appendChild(chip);
-    cs.log.forEach(function(m){ var d=document.createElement("div"); d.className="t-bub "+m.cls; d.textContent=m.text; dmScroll.appendChild(d); });
+    cs.log.forEach(function(m){ var d=document.createElement("div"); d.className="t-bub "+m.cls;
+      if(typeof m.text==="string"&&m.text.indexOf("📷:")===0){ d.style.padding="4px"; var im=document.createElement("img"); im.src=m.text.slice(3); im.alt="写真"; im.style.cssText="width:170px;height:215px;object-fit:cover;border-radius:11px;display:block"; d.appendChild(im); }
+      else d.textContent=m.text;
+      dmScroll.appendChild(d); });
     dmScroll.scrollTop=99999;
   }
   function openDummyChat(name){
@@ -5477,6 +5523,61 @@ app.style.display="flex";},true);
  /* keep the input focused after sending to him */
  const snd=document.querySelector("#line-send");
  if(snd) snd.addEventListener("click",()=>setTimeout(()=>{ const i=document.querySelector("#line-text"); if(i) i.focus({preventScroll:true}); },350));
+})();
+</script>
+<script>
+/* ===== Tinder ver v35: side episode "近づく休日" - the awkward days between the line he drew (ch3 + interlude) and ch4; inserted by wrapping chapter(4) once, only after the interlude ===== */
+(function(){
+ function ready(fn){ if(document.readyState!=="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+ ready(function(){
+  if(typeof window.chapter!=="function"||typeof himMsg!=="function"||typeof askChoices!=="function") return;
+  async function ch3b(t){
+   setChapterWidget("特別編『近づく休日』","線は引かれたまま。それでも、明日が待ち遠しい。");
+   chapterCard("特別編","近づく休日","10月13日（月）〜17日（金） —— 線を引かれた、翌日からの数日間。<br>LINEを開いてね");
+   addDayChip("10月13日（月）");
+   await himMsg("おはよ",1200); if(!alive(t))return;
+   await himMsg("…昨日は、ごめんな"); if(!alive(t))return;
+   await himMsg("変な空気にしてもうた"); if(!alive(t))return;
+   await new Promise(res=>{ askChoices("なおの返信を選んで",[
+    {label:"気にしないで。大丈夫",fn:async()=>{ await himMsg("…ありがとう"); await himMsg("なお、優しいな"); res(); }},
+    {label:"私も、昨日はありがとう",fn:async()=>{ await himMsg("…そっか"); await himMsg("俺も、楽しかったで"); res(); }}
+   ]); }); if(!alive(t))return;
+   await himMsg("仕事、行ってくるわ"); if(!alive(t))return;
+   addDayChip("10月14日（火）");
+   await himMsg("収録、終わった",1600); if(!alive(t))return;
+   await himMsg("なおは、仕事どうやった？"); if(!alive(t))return;
+   await himMsg("無理だけは、すんなよ"); if(!alive(t))return;
+   await himMsg("…なんでも、話聞くから"); if(!alive(t))return;
+   addDayChip("10月15日（水）");
+   await himMsg("なぁ、なお",1400); if(!alive(t))return;
+   await himMsg("今週末、土曜って…予定ある？"); if(!alive(t))return;
+   await himMsg("映画、観に行きたいやつあってん"); if(!alive(t))return;
+   await himMsg("…一人でも、行くつもりやったんやけど"); if(!alive(t))return;
+   await new Promise(res=>{ askChoices("なおの返信を選んで",[
+    {label:"誘ってくれるの？",fn:async()=>{ await himMsg("…うん"); await himMsg("線引いた側が、言うのもなんやけど"); await himMsg("なおと、行きたいねん"); res(); }},
+    {label:"土曜、空いてるよ",fn:async()=>{ await himMsg("…ほんまに？"); await himMsg("ありがとう"); await himMsg("断っても、よかったんやで"); res(); }}
+   ]); }); if(!alive(t))return;
+   await himMsg("じゃあ、詳細また送るわ"); if(!alive(t))return;
+   addDayChip("10月16日（木）");
+   await himMsg("土曜の映画、昼の回にした",1500); if(!alive(t))return;
+   await himMsg("人少ないとこやから、安心やで"); if(!alive(t))return;
+   await himMsg("…楽しみに、してもええんかな"); if(!alive(t))return;
+   addDayChip("10月17日（金）");
+   await himMsg("明日、よろしくな",1400); if(!alive(t))return;
+   await himMsg("帽子とマスクで地味に紛れるから、心配すんな 笑"); if(!alive(t))return;
+   await himMsg("…おやすみ。いい夢見てな"); if(!alive(t))return;
+   toast("🍁 <b>（線は、まだ引かれたまま。それでも明日が、やけに待ち遠しい）</b>");
+  }
+  var _ch=window.chapter;
+  window.chapter=async function(n){
+   if(n===4&&typeof state!=="undefined"&&state._interludeDone&&!state._ch3bDone&&!state._ch3bRun){
+    state._ch3bRun=true;
+    try{ await ch3b(state._token); }catch(e){}
+    state._ch3bDone=true; state._ch3bRun=false;
+   }
+   return _ch(n);
+  };
+ });
 })();
 </script>
 </body>
