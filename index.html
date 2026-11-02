@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v85</b>（元版v296までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v86</b>（元版v296までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3752,6 +3752,22 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    "はやて":["おはようございます。今日も定時で上がります。…夜の約束、決めませんか","朝の城下町、静かでいいんです。なおさんと歩く日が、楽しみで"]
   };
   Object.keys(DM5).forEach(function(n){ if(DM[n]) DM[n].morning=DM5[n]; });
+  /* ===== Tinder ver v86: dummy chats round 5 - a fifth lap per person, autumn check-ins that lean on each one's flavour and circle back to their profile photo (the -1 framing, re-sent as a 'remember this one?' beat); same eager 'free tonight' tone, nothing explicit, everyone 20+ ===== */
+  var DM6={
+   "けんた":[["紅葉キャンプ、そろそろ計画立ててるんだ","なおさんと焚き火、したいな。寒いの対策は任せて"],["📷:assets/dummy-kenta-1.jpg","プロフィールのやつ、久しぶりに見返した","実物のほうが話しやすいよ。今夜、試さない？"]],
+   "れん":[["寒くなってきたから、味噌の店を開拓した","なおさんを連れて行きたい店、更新されたよ"],["📷:assets/dummy-ren-1.jpg","最初の写真、懐かしいでしょ","実物はもっと喋るよ。今夜、隣でどう？"]],
+   "だいき":[["秋の光で撮った写真、現像が上がったんです","なおさんに見せたいの、何枚かあって"],["📷:assets/dummy-daiki-1.jpg","プロフィールの窓際、覚えてます？","今度は、なおさんが座ってるとこ撮りたいな"]],
+   "そうた":[["古着屋で、なおさんに似合いそうなの見つけたんだ","写真より実物。一緒に見に行かない？"],["📷:assets/dummy-sota-1.jpg","最初のやつ、懐かしい","実物のほうがノリいいよ。今夜、下北で確かめない？"]],
+   "はると":[["学会が一段落しました。やっと時間が作れます","なおさんとの夕日の約束、そろそろ叶えたいな"],["📷:assets/dummy-haruto-1.jpg","プロフィールの海、覚えてますか","次のフィールドワークは仕事抜きで、なおさんを誘います"]],
+   "しゅん":[["朝型に矯正中だったけど…無理だった","やっぱり夜のほうが、なおさんと話せる"],["📷:assets/dummy-shun-1.jpg","プロフィールのやつ、静かすぎるでしょ","実物は、なおさんの前だともうちょい喋る。今夜、確認して"]],
+   "たくみ":[["秋メニュー、始まりました。出汁が冴える季節です","最初のお客さんは、やっぱりなおさんがいいな"],["📷:assets/dummy-takumi-1.jpg","最初の写真、若く見えるって言われます","実物は、もうちょい大人ですよ。今夜、店に確かめに来ませんか"]],
+   "ゆうき":[["朝晩、冷えてきたね。サウナが恋しい季節だ笑","回数券、なおさんの分もまだあるよ"],["📷:assets/dummy-yuki-1.jpg","プロフィールのやつ、懐かしい笑","実物はもっと元気。今夜、会って確かめてよ"]],
+   "りく":[["秋のライブ決まった！セトリ考え中","なおさんの曲、入れます。客席、来てくれる？"],["📷:assets/dummy-riku-1.jpg","最初の自撮り、懐かしい","ロン毛、伸びたよ。今夜、実物チェックして笑"]],
+   "かいと":[["夜勤のローテ、少し落ち着きました","夕方の時間が作れそうです。映画の約束、どうですか"],["📷:assets/dummy-kaito-1.jpg","プロフィールの写真、覚えてますか","実物のほうがよく笑いますよ。今度、会って確かめてください"]],
+   "そうま":[["秋の限定メニュー出ました！栗のやつです","なおさんに最初に食べてほしいな"],["📷:assets/dummy-soma-1.jpg","最初の写真、初々しいでしょ笑","ラテアート、だいぶ上達しました。今夜、実物で証明します！"]],
+   "はやて":[["城下町、紅葉が始まりました","なおさんと歩く日、そろそろ決めませんか"],["📷:assets/dummy-hayate-1.jpg","プロフィールの写真、真面目すぎましたね","実物は、もっと砕けてます。今夜、一杯で確かめてください"]]
+  };
+  Object.keys(DM6).forEach(function(n){ if(DM[n]) DM[n].script5=DM6[n]; });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -3947,6 +3963,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     else if(!msgs && D.script2 && cs.step<D.script.length+D.script2.length){ msgs=D.script2[cs.step-D.script.length]; cs.step++; }
     else if(!msgs && D.script3 && cs.step<D.script.length+(D.script2?D.script2.length:0)+D.script3.length){ msgs=D.script3[cs.step-D.script.length-(D.script2?D.script2.length:0)]; cs.step++; }
     else if(!msgs && D.script4){ var off4=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0); if(cs.step<off4+D.script4.length){ msgs=D.script4[cs.step-off4]; cs.step++; } }
+    else if(!msgs && D.script5){ var off5=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0); if(cs.step<off5+D.script5.length){ msgs=D.script5[cs.step-off5]; cs.step++; } }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
