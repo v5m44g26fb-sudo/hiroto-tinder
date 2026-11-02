@@ -411,28 +411,28 @@ input,textarea{font-size:16px!important}
 .tinder-tabs{display:flex;border-bottom:1px solid #f0f0f0;background:#fff;flex:none}
 .tinder-tabs button{flex:1;background:none;border:none;padding:10px 0;font-size:13px;font-weight:700;color:#8e8e93;cursor:pointer;font-family:inherit}
 .tinder-tabs button.act{color:#fd267d;box-shadow:inset 0 -3px 0 #fd267d}
-.swipe-wrap{flex:1;overflow-y:auto;padding:14px 14px 8px;background:linear-gradient(180deg,#fff,#fff5f7)}
-.swipe-card{position:relative;border-radius:18px;overflow:hidden;background:#111;color:#fff;min-height:430px;box-shadow:0 10px 28px rgba(0,0,0,.22);animation:fadeup .35s ease}
-.swipe-card img.mainphoto{width:100%;height:430px;object-fit:cover;display:block}
+.swipe-wrap{flex:1;overflow-y:auto;padding:14px 14px 8px;background:linear-gradient(180deg,#fff,#fff5f7);display:flex;flex-direction:column}
+.swipe-card{position:relative;border-radius:18px;overflow:hidden;background:#111;color:#fff;flex:1 1 auto;min-height:330px;box-shadow:0 10px 28px rgba(0,0,0,.22);animation:fadeup .35s ease}
+.swipe-card img.mainphoto{width:100%;height:100%;object-fit:cover;display:block}
 .swipe-card .grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 38%,rgba(0,0,0,.82))}
 .swipe-card .info{position:absolute;left:0;right:0;bottom:0;padding:16px}
 .swipe-card .nm{font-size:28px;font-weight:900}
 .swipe-card .meta{font-size:13px;opacity:.92;margin-top:2px}
-.swipe-card .bio{font-size:14px;line-height:1.6;margin-top:8px}
+.swipe-card .bio{font-size:14px;line-height:1.55;margin-top:6px}
 .swipe-card .tags{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px}
 .swipe-card .tags span{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 9px;font-size:11.5px}
-.swipe-card .prompt{margin-top:9px;background:rgba(255,255,255,.14);border-radius:12px;padding:9px 11px;font-size:13px;line-height:1.55}
+.swipe-card .prompt{margin-top:7px;background:rgba(255,255,255,.14);border-radius:12px;padding:7px 10px;font-size:12.5px;line-height:1.5}
 .swipe-card .prompt b{display:block;font-size:11px;opacity:.8;letter-spacing:.04em}
 .swipe-card .grad{pointer-events:none}
 .swipe-card .info{pointer-events:none}
 .photo-dots{pointer-events:none}
 .swipe-card.superlike{border:4px solid #33c6dd;box-shadow:0 0 0 3px rgba(51,198,221,.35),0 12px 32px rgba(51,198,221,.35)}
-.super-badge{position:absolute;top:34px;left:12px;z-index:4;background:#33c6dd;color:#fff;font-weight:900;font-size:13px;border-radius:999px;padding:7px 12px;box-shadow:0 4px 14px rgba(0,0,0,.3);display:flex;gap:5px;align-items:center}
+.super-badge{position:absolute;top:34px;right:12px;left:auto;z-index:4;background:#33c6dd;color:#fff;font-weight:900;font-size:13px;border-radius:999px;padding:7px 12px;box-shadow:0 4px 14px rgba(0,0,0,.3);display:flex;gap:5px;align-items:center}
 .super-banner{position:relative;z-index:3;margin-bottom:10px;background:linear-gradient(90deg,#1299c3,#33c6dd);color:#fff;border-radius:14px;padding:11px 13px;font-size:13.5px;font-weight:800;line-height:1.5;box-shadow:0 6px 18px rgba(51,198,221,.35);animation:fadeup .35s ease}
 .super-banner span{font-weight:400;font-size:12px;opacity:.95}
-.dummy-art{height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.dummy-art{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:12px;gap:4px;box-sizing:border-box}
 .dummy-art .sil{font-size:110px;opacity:.92}
-.dummy-art .ini{font-size:54px;font-weight:900;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.5)}
+.dummy-art .ini{font-size:34px;font-weight:900;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.5)}
 .stamp{position:absolute;top:22px;font-size:28px;font-weight:900;padding:5px 12px;border:4px solid;border-radius:10px;opacity:0;transform:rotate(-14deg);z-index:3;letter-spacing:.06em}
 .stamp.like{left:16px;color:#2ee59d;border-color:#2ee59d;transform:rotate(-14deg)}
 .stamp.nope{right:16px;color:#ff3b5c;border-color:#ff3b5c;transform:rotate(14deg)}
@@ -461,11 +461,11 @@ input,textarea{font-size:16px!important}
 .swipe-wrap{position:relative}
 .swipe-card{touch-action:none;cursor:grab}
 .swipe-card.dragging{transition:none!important;cursor:grabbing}
-.stack-card{position:absolute;left:26px;right:26px;top:30px;height:430px;border-radius:18px;z-index:0;transform:scale(.94);box-shadow:0 8px 22px rgba(0,0,0,.18);display:flex;align-items:flex-end;padding:16px;color:#fff;font-weight:900;font-size:19px;pointer-events:none}
+.stack-card{position:absolute;left:26px;right:26px;top:30px;bottom:10px;border-radius:18px;z-index:0;transform:scale(.94);box-shadow:0 8px 22px rgba(0,0,0,.18);display:flex;align-items:flex-end;padding:16px;color:#fff;font-weight:900;font-size:19px;pointer-events:none}
 .tapzone{position:absolute;top:0;bottom:150px;width:36%;z-index:2;background:none;border:none;cursor:pointer;padding:0}
 .tapzone.l{left:0}.tapzone.r{right:0}
 .tdetail{pointer-events:auto;margin-top:10px;background:rgba(255,255,255,.92);color:#111;border:none;border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
-.scene-cap{font-size:15px;font-weight:700;background:rgba(0,0,0,.28);border-radius:999px;padding:5px 13px}
+.scene-cap{font-size:13.5px;font-weight:700;background:rgba(0,0,0,.28);border-radius:999px;padding:3px 12px}
 .t-sheet{position:absolute;inset:0;background:rgba(0,0,0,.48);z-index:320;display:none;align-items:flex-end}
 .t-sheet.on{display:flex}
 .t-sheet .box{background:#fff;width:100%;max-height:88%;overflow-y:auto;border-radius:20px 20px 0 0;padding:18px 16px 34px;animation:fadeup .3s ease;color:#111}
@@ -497,7 +497,7 @@ input,textarea{font-size:16px!important}
 .picktile .im{width:104px;height:130px;border-radius:12px;overflow:hidden;position:relative}
 .picktile img{width:100%;height:100%;object-fit:cover}
 .blurme{filter:blur(7px);transform:scale(1.12)}
-.picktile span{font-size:12px;font-weight:700;display:block;margin-top:5px;color:#111}
+.picktile span{font-size:12px;font-weight:700;display:block;margin-top:5px;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:104px}
 </style>
 </head>
 <body>
@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v32</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v33</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2015,7 +2015,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       if(_card) _card.addEventListener("click",e=>{ if(e.target.closest(".info")) return; if(e.target.id==="hiroto-photo") return; photoIdx=(photoIdx+1)%photos.length; render(); });
     } else {
       const sc=c.scenes[sceneIdx%c.scenes.length];
-      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><div class="dummy-art" style="background:${c.grad}"><div class="ini">${c.ini}</div><div style="font-size:96px;line-height:1.1">${sc.e}</div><div class="scene-cap">${sc.cap}</div></div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><div class="dummy-art" style="background:${c.grad}"><div class="ini">${c.ini}</div><div style="font-size:52px;line-height:1.1">${sc.e}</div><div class="scene-cap">${sc.cap}</div></div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
       const _zl=document.getElementById("tz-l"), _zr=document.getElementById("tz-r");
       if(_zl) _zl.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+c.scenes.length-1)%c.scenes.length; render(); });
       if(_zr) _zr.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+1)%c.scenes.length; render(); });
@@ -2969,7 +2969,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     }
     renderChips(); renderPreview();
     if(bioIn) bioIn.addEventListener("input",renderPreview);
-    clone.addEventListener("click",function(){ if(panel) panel.style.display = panel.style.display==="none" ? "block" : "none"; });
+    clone.addEventListener("click",function(){ if(panel){ panel.style.display = panel.style.display==="none" ? "block" : "none"; if(panel.style.display==="block") setTimeout(function(){ panel.scrollIntoView({block:"nearest",behavior:"smooth"}); },80); } });
     var cancel=$("#nao-edit-cancel"); if(cancel) cancel.addEventListener("click",function(){ panel.style.display="none"; });
     var save=$("#nao-edit-save"); if(save) save.addEventListener("click",function(){
       var nb=$("#nao-bio"); if(nb) nb.textContent=bioIn.value;
@@ -3118,7 +3118,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     var m=window.__tinder && window.__tinder.matched;
     var himTile = m
       ? '<button class="picktile" id="gp-him"><span class="im"><img src="assets/tinder-hiroto-1.jpg" alt=""></span><span>ひろと ⭐ マッチ済み</span></button>'
-      : '<button class="picktile" id="gp-him"><span class="im"><img class="blurme" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>⭐ Super Likeした人</span></button>';
+      : '<button class="picktile" id="gp-him"><span class="im"><img class="blurme" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>⭐ Super Like</span></button>';
     gbox.innerHTML='<h3>⭐ Tinder Gold / Platinum</h3><div class="sub">あなたを Like した人が見放題…という設定の画面です。課金はできません（演出）。</div>'
       +'<div class="gold-plan"><div style="font-weight:900;font-size:15px">Tinder Gold　<span style="color:#b8860b">月額 ¥2,200〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">あなたをLikeした人が見える／無制限のLike／月1ブースト</div><button class="gold-buy" style="margin-top:9px;background:#e8a33d;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Goldにアップグレード</button></div>'
       +'<div class="gold-plan plat"><div style="font-weight:900;font-size:15px">Tinder Platinum　<span style="color:#5b7ba5">月額 ¥3,400〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">マッチ前にメッセージ送信／あなたのLikeを優先表示／スーパーいいね週5回</div><button class="gold-buy" style="margin-top:9px;background:#5b7ba5;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Platinumにアップグレード</button></div>'
