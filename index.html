@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v115</b>（ダミー4人の雑談に第17周「その後の日常」――節目を終えた各人の日常が戻ってくる周＋彼のフリーチャットに動物園／美術館のダイブ追加。元版はv305のまま新規版なしのためTinder版側の作り込み）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v116</b>（ダミー4人の雑談に第18周「次の小さな目標」――節目を越えた各人が次の一歩を決める周＋彼のフリーチャットに遊園地／ドライブのダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3869,6 +3869,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    "そうま":{s:[["窓側の席、完成してから数日経ちました","あの席目当ての常連さん、もう二人増えたんです"],["看板のロゴシール、一度はがれかけて貼り直しました","丸いほうも窓のほうも、店の顔になりました。……報告、遅れてごめんなさい"]],d:["窓側の席、今日も空いてますよ"]}
   };
   Object.keys(DM18).forEach(function(n){ if(DM[n]){ DM[n].script17=DM18[n].s; DM[n].def=DM[n].def.concat(DM18[n].d); } });
+  /* ===== Tinder ver v116: dummy chats round 18 - the next-small-goal lap. A different shape from rounds 8-17 (nothing is reported or looked back on - each dummy sets one small next goal that grows straight out of his finished milestone, so the chats keep a forward thread): Sota aims to beat half on the next live's predictions and now builds the playlist shuffle-first (round 16's lesson), with a second envelope already in the drawer, Shun upgrades the early morning from a one-off win to a once-a-week pace and restocks the morning pudding to match - her secret gets the same weekly, pressure-free waiting, Takumi has started the second dish's trial with the first-customer tasting promise renewed and two name candidates saved until he hears her verdict, Soma has begun sketching his own shop's floor plan in a notebook (the window seat is in it, as promised in rounds 1/8) and opened a savings envelope toward the round-logo sign. Cross-references stay inside each dummy's own arc, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
+  var DM19={
+   "そうた":{s:[["次の目標、決めた。次のライブの予想は『半分以上』当てる","前回はシャッフルの順番に負けたからな。……今度は最初からシャッフル前提で組む"],["封筒はもう二通目が引き出しにあります","当日のジャケットも、もう一着 増やそうか迷い中。……相談のる？"]],d:["次の予想、精度上げてくよ"]},
+   "しゅん":{s:[["次の目標。早起きを、週一ペースに増やす","朝プリンの買い置きも、週一仕様に変えた。……段取りは、もう勝ち筋あるから"],["なおの秘密も、週一ペースで待つことにする","急かさないのは変わらない。……ただ、楽しみが増えただけ"]],d:["週一早起き、挑戦中"]},
+   "たくみ":{s:[["次の目標ができました。第二弾の試作、始めます","一品目はもう回ってる。……二品目は、最初のお客さんに最初に味見してもらう約束で"],["名前も、もう候補が二つあります","決めるのは、味見の感想を聞いてから。……急ぎませんよ"]],d:["第二弾の試作、進めてます"]},
+   "そうま":{s:[["次の目標、言っちゃいます。自分の店の間取り、ノートに描き始めました","窓側の席は、自分の店でも絶対作ります。……約束です"],["貯金用の封筒も用意しました","丸いロゴの看板、出せる日まで。……完成した席、まずはこっちで座っててください"]],d:["間取りのノート、少しずつ増えてます"]}
+  };
+  Object.keys(DM19).forEach(function(n){ if(DM[n]){ DM[n].script18=DM19[n].s; DM[n].def=DM[n].def.concat(DM19[n].d); } });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -4083,6 +4091,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     else if(!msgs && D.script15 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+D.script15.length){ var off15=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0); msgs=D.script15[cs.step-off15]; cs.step++; }
     else if(!msgs && D.script16 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+D.script16.length){ var off16=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0); msgs=D.script16[cs.step-off16]; cs.step++; }
     else if(!msgs && D.script17 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+D.script17.length){ var off17=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0); msgs=D.script17[cs.step-off17]; cs.step++; }
+    else if(!msgs && D.script18 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+D.script18.length){ var off18=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0); msgs=D.script18[cs.step-off18]; cs.step++; }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
@@ -7142,6 +7151,24 @@ app.style.display="flex";},true);
      fire("zoo",["動物園、行く人なんや。……なおは、どの動物の前で長く止まるタイプ？","パンダって、食べてるか寝てるかやのにな。……あの人気、なんなんやろな","動物園、歩く距離はなかなかやけど。……平和な時間やよな、あそこ"]);
     else if(/美術館|展示会|個展|美術展/.test(s2)&&Math.random()<0.65)
      fire("museum",["美術館行くんや。……絵の前で止まる時間、長いほう？","展示の感想、なおの言葉で聞いたら楽しそうやな。……俺、うまく言えへんタイプやから","正解のないもの、眺める時間って贅沢やよな。……なおの『好き』は、まっすぐやし"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v116: his free chat gains two more dives in the v105-v115 style - amusement parks (thrill rides vs the Ferris wheel; no earlier dive or FCV voice uses the trigger) and driving (who owns the passenger-seat playlist / how honest car talk gets; the dummies keep their own drive talk in their own chats, and no dive on his side touches cars). Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v116d) return; state._v116d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/遊園地|テーマパーク|ジェットコースター|観覧車/.test(s2)&&Math.random()<0.65)
+     fire("amuse",["遊園地、好きなんや。……絶叫系、いける口？","観覧車の一番上、景色はええけど。……俺、ちょっとだけ手すり握るタイプや","閉園のアナウンス聞くと、なんか名残惜しくなるよな。……なおも？"]);
+    else if(/ドライブ|運転免許|レンタカー/.test(s2)&&Math.random()<0.65)
+     fire("drive",["ドライブ行く人なんや。……助手席のプレイリスト、任せる派？","運転するなお、ちょっと新鮮やな。……安全運転そうやけど","車の中の会話って、なんか素直に話せるよな。……前向いてるからかな"]);
    } }catch(e){}
   return r; };
 })();
