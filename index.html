@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v86</b>（元版v296までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v87</b>（元版v298までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1145,7 +1145,7 @@ function startCall(customLines){ show("call"); state.callSec=0; $("#call-time").
 const lines=customLines||["「…なおの声、聞きたかってん」","「大丈夫。俺、逃げへんから」","「ファンのことも大事やけど」","「なおのことも、同じくらい大事やねん」","「今日はもう、寝られへんかもな 笑」","「明日も電話していい？」"];
 let i=0; $("#call-sub").textContent=lines[0];
 state.callTimer=setInterval(()=>{state.callSec++;$("#call-time").textContent=String(Math.floor(state.callSec/60)).padStart(2,"0")+":"+String(state.callSec%60).padStart(2,"0")},1000);
-if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(state._mgrAud){ try{state._mgrAud.pause()}catch(e){} } state._mgrAud=new Audio("assets/mgr-t-"+n+".mp3"); const pr=state._mgrAud.play(); if(pr&&pr.catch) pr.catch(()=>{}); }; playN(1);
+if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(!state._mgrAud) state._mgrAud=new Audio(); try{ state._mgrAud.src="assets/mgr-t-"+n+".mp3"; state._mgrAud.volume=1; const pr=state._mgrAud.play(); if(pr&&pr.catch) pr.catch(()=>{}); }catch(e){} }; playN(1);
  const iv=setInterval(()=>{i++; if(i<lines.length){$("#call-sub").textContent=lines[i]; playN(i+1);} else {clearInterval(iv)}},4200); timers.push(iv); }
 else { startCallVoice(); }
 }
@@ -1447,18 +1447,20 @@ const VOICE_SCHED=[
  [14900,"「ありがとう、なお。おやすみ」"],
  [17600,"（…なおの返事を、待ってる）"],
 ];
-let _cv1=null,_cv2=null;
+let _cv1=null,_cv2=null,_cv2Live=false;
+/* ===== v87 (orig v297+v298 audited, read against the Tinder arc): orig v297 = the party group's 9/28 morning-after beat - NOT ported, #party-chat and the karaoke interlude do not exist here. Orig v298 = the gokon self-intro voice could not autoplay on iOS, fixed by priming its audio element on her first tap - the scene/voice do not exist here (he never gives his full name in this version), but the SAME iOS failure mode lived in this version's two delayed programmatic plays, so the mechanism is adapted: (1) the manager call's playN now reuses ONE audio element for mgr-t-1..5 - the first line plays inside the answer-tap call chain, blessing the element, and later lines just swap src on it instead of creating a fresh unblessed element every 4.2s; stopCallVoice also pauses that element so a hangup silences it. (2) _cv2 is silently primed at creation inside startCallVoice (volume-0 play -> pause/reset/restore, mirroring orig v298) so its 9.6s-delayed real play() is allowed on iOS. Tap-to-play voices (himVoice bubbles, memory panel) were never affected. ===== */
 function startCallVoice(){
   stopCallVoice();
   state._callN=(state._callN||0)+1; const useB=state.act2||state._callN>1; const sched=useB?VOICE_SCHED_B:VOICE_SCHED;
   _cv1=new Audio(useB?"assets/voice-b1.mp3":"assets/voice-1.mp3"); _cv2=new Audio(useB?"assets/voice-b2.mp3":"assets/voice-2.mp3");
-  _cv1.volume=1; _cv2.volume=1;
+  _cv1.volume=1; _cv2.volume=1; _cv2Live=false;
+  try{ _cv2.volume=0; const pp=_cv2.play(); const pdone=()=>{ if(_cv2Live){ _cv2.volume=1; return; } try{ _cv2.pause(); _cv2.currentTime=0; }catch(e){} _cv2.volume=1; }; if(pp&&pp.then) pp.then(pdone).catch(()=>{ _cv2.volume=1; }); else pdone(); }catch(e){ try{ _cv2.volume=1; }catch(e2){} }
   sched.forEach(([ms,txt])=>{ timers.push(setTimeout(()=>{ const el=$("#call-sub"); if(el&&$("#v-call").classList.contains("on")) el.textContent=txt; },ms)); });
   $("#call-sub").textContent=sched[0][1];
   const p1=_cv1.play(); if(p1&&p1.catch) p1.catch(()=>{ $("#call-sub").textContent=sched[0][1]; });
-  timers.push(setTimeout(()=>{ if(_cv2){ const p2=_cv2.play(); if(p2&&p2.catch) p2.catch(()=>{}); } },useB?8000:9640));
+  timers.push(setTimeout(()=>{ if(_cv2){ _cv2Live=true; _cv2.volume=1; const p2=_cv2.play(); if(p2&&p2.catch) p2.catch(()=>{}); } },useB?8000:9640));
 }
-function stopCallVoice(){ [_cv1,_cv2].forEach(a=>{ if(a){ try{a.pause()}catch(e){} } }); _cv1=null; _cv2=null; }
+function stopCallVoice(){ [_cv1,_cv2].forEach(a=>{ if(a){ try{a.pause()}catch(e){} } }); _cv1=null; _cv2=null; if(state&&state._mgrAud){ try{state._mgrAud.pause()}catch(e){} } }
 /* ===== v2: incoming call ===== */
 function showIncomingCall(caller){ state.caller=caller||"hiroto"; const mgr=state.caller==="manager";
   $("#call-inc-name").textContent=mgr?"マネージャー（事務所）":"ひろと";
