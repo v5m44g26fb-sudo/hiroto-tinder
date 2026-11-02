@@ -803,7 +803,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v7</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v8</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1769,6 +1769,74 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done).catch(()=>{ toast("📋 記録： IG 342→"+$("#w-ig").textContent+" ／ X 189→"+$("#w-x").textContent); }); }
   else done(); }
 
+/* ===== Tinder ver v8: lock + home design synced with the original (its v66 + v67 blocks ported below; Tinder flame SVG added) ===== */
+/* ===== v66: home layout compaction for short screens (quote card no longer crowds the icons) ===== */
+(function(){ const css=document.createElement("style"); css.textContent=
+ "@media (max-height:740px){ .home-inner{padding-top:54px} .widget{padding:10px 12px;margin-bottom:10px} .appicon .ic{width:50px;height:50px;font-size:24px;border-radius:13px} .grid{gap:12px 10px} .dock{padding:8px 12px;border-radius:22px} }"+
+ "@media (max-height:640px){ .home-inner{padding-top:44px;padding-bottom:8px} .appicon .ic{width:44px;height:44px;font-size:21px} .appicon{gap:2px} .grid{gap:9px 8px} .widget{padding:8px 10px} .widget .w-main{font-size:13.5px} .widget .w-row{margin-top:4px} .meter{margin-top:5px} }";
+ document.head.appendChild(css); })();
+/* ===== v67: lock screen + home screen realism pass ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  ".lock-time{font-size:88px!important;font-weight:800;letter-spacing:-1.5px;line-height:1.04;text-shadow:0 4px 24px rgba(0,0,0,.35)}"+
+  ".lock-date{font-size:17px!important;margin-bottom:2px}"+
+  ".lock-notif{background:rgba(28,28,32,.48)!important;backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);border-radius:20px!important;padding:10px 12px!important;box-shadow:0 6px 20px rgba(0,0,0,.18)}"+
+  ".lock-notif .p-ic{width:36px!important;height:36px!important;border-radius:9px!important}"+
+  ".lock-hint{font-size:13px!important;opacity:.92;letter-spacing:.04em}"+
+  ".lock-tool{position:absolute;bottom:52px;width:47px;height:47px;border-radius:50%;background:rgba(25,25,28,.55);backdrop-filter:blur(12px);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5}"+
+  "#lock-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .45s ease;z-index:40}"+
+  ".home-pages{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px}"+
+  ".home-pages i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);display:block}"+
+  ".home-pages i.on{background:#fff}"+
+  ".home-pages .hp-search{margin-left:8px;background:rgba(255,255,255,.28);backdrop-filter:blur(10px);color:#fff;font-size:11px;font-weight:600;border-radius:12px;padding:3px 10px}";
+ document.head.appendChild(css);
+
+ const svg=(inner,vb)=>{ const s=document.createElementNS("http://www.w3.org/2000/svg","svg"); s.setAttribute("viewBox",vb||"0 0 24 24"); s.setAttribute("width","30"); s.setAttribute("height","30"); s.innerHTML=inner; return s; };
+ const BUBBLE='<path d="M12 3.5c-4.9 0-8.8 3.3-8.8 7.4 0 4.1 3.9 7.4 8.8 7.4.9 0 1.8-.1 2.6-.3l3.3 2c.3.2.7 0 .7-.4l-.1-3.1c1.4-1.3 2.3-3.2 2.3-5.6 0-4.1-3.9-7.4-8.8-7.4z" fill="#fff"/><text x="12" y="13.6" text-anchor="middle" font-size="4.6" font-weight="900" fill="#06c755" font-family="Arial">LINE</text>';
+ const IG='<g fill="none" stroke="#fff" stroke-width="1.9"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.3" cy="6.7" r="1.35" fill="#fff" stroke="none"/></g>';
+ const GEAR='<path fill="#ececf1" d="M12 8.6A3.4 3.4 0 1 0 12 15.4 3.4 3.4 0 0 0 12 8.6zm9.1 4.9l-2 .5a7.6 7.6 0 0 1-.7 1.7l1.2 1.7a.5.5 0 0 1-.1.7l-1.4 1.4a.5.5 0 0 1-.7.1l-1.7-1.2a7.6 7.6 0 0 1-1.7.7l-.5 2a.5.5 0 0 1-.5.4h-2a.5.5 0 0 1-.5-.4l-.5-2a7.6 7.6 0 0 1-1.7-.7l-1.7 1.2a.5.5 0 0 1-.7-.1L2.5 18a.5.5 0 0 1-.1-.7l1.2-1.7a7.6 7.6 0 0 1-.7-1.7l-2-.5A.5.5 0 0 1 .5 13v-2a.5.5 0 0 1 .4-.5l2-.5c.2-.6.4-1.2.7-1.7L2.4 6.6a.5.5 0 0 1 .1-.7l1.4-1.4a.5.5 0 0 1 .7-.1l1.7 1.2c.5-.3 1.1-.5 1.7-.7l.5-2A.5.5 0 0 1 9 2.5h2a.5.5 0 0 1 .5.4l.5 2c.6.2 1.2.4 1.7.7l1.7-1.2a.5.5 0 0 1 .7.1l1.4 1.4a.5.5 0 0 1 .1.7l-1.2 1.7c.3.5.5 1.1.7 1.7l2 .5a.5.5 0 0 1 .4.5v2a.5.5 0 0 1-.4.5z" transform="scale(0.96) translate(0.5,0.5)"/>';
+ const NOTE='<path d="M16.5 3.5v10.7a3.9 3.9 0 1 1-2.7-3.7V7.1a5.6 5.6 0 0 0 3.2 2.4V6.4a8.3 8.3 0 0 1-3.2-3z" fill="#fff"/>';
+ const petals=()=>{ const cols=["#FFCC02","#FF9500","#FF3B30","#FF2D55","#AF52DE","#007AFF","#5AC8FA","#4CD964"]; let h=""; for(let k=0;k<8;k++){ h+='<ellipse cx="12" cy="6.8" rx="2.7" ry="5" fill="'+cols[k]+'" opacity="0.82" transform="rotate('+(k*45)+' 12 12)"/>'; } return h; };
+
+ function swapIcon(openName, node){ const btn=document.querySelector('[data-open="'+openName+'"]'); if(!btn) return; const ic=btn.querySelector(".ic"); if(!ic) return;
+  const badge=ic.querySelector(".badge"); ic.textContent=""; ic.appendChild(node); if(badge) ic.appendChild(badge); }
+ swapIcon("line", svg(BUBBLE));
+ swapIcon("ig", svg(IG));
+ swapIcon("photos", svg(petals()));
+ swapIcon("tiktok", svg(NOTE));
+ swapIcon("settings", svg(GEAR));
+ const FLAME='<path d="M12 2.2c1 3.8 3.8 6.4 3.8 10.4a3.9 3.9 0 0 1-7.6 0c0-2.2 1.1-3.6 2.1-5 .4.8.9 1.4 1.6 1.8-.5-2.5-.3-5 .1-7.2z" fill="#fff"/>';
+ swapIcon("tinder", svg(FLAME));
+ const his=document.querySelector('[data-open="hisig"] .ic');
+ if(his){ his.textContent=""; his.style.background='url("assets/ig-avatar.jpg") center/cover'; }
+
+ /* page dots + search pill above the dock */
+ const dock=document.querySelector("#v-home .dock");
+ if(dock&&!document.querySelector(".home-pages")){ const p=document.createElement("div"); p.className="home-pages";
+  p.innerHTML='<i class="on"></i><i></i><span class="hp-search">🔍 検索</span>'; dock.parentNode.insertBefore(p,dock); }
+
+ /* lock screen: padlock, real app icons in notifications, flashlight + camera */
+ const lock=document.querySelector("#v-lock"), ldate=document.querySelector("#lock-date");
+ if(lock&&ldate){ const lk=document.createElement("div"); lk.style.cssText="text-align:center;margin-bottom:6px;opacity:.96";
+  lk.innerHTML='<svg width="17" height="17" viewBox="0 0 24 24"><path fill="#fff" d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 1 1 6 0v3H9z"/></svg>';
+  ldate.parentNode.insertBefore(lk,ldate);
+  const notifs=document.querySelectorAll(".lock-notif .p-ic");
+  if(notifs[0]){ notifs[0].style.background="#06c755"; notifs[0].textContent=""; const s=svg(BUBBLE); s.setAttribute("width","24"); s.setAttribute("height","24"); notifs[0].appendChild(s); }
+  if(notifs[1]){ notifs[1].textContent=""; const s=svg(IG); s.setAttribute("width","22"); s.setAttribute("height","22"); notifs[1].appendChild(s); }
+  const hint=document.querySelector(".lock-hint"); if(hint) hint.textContent="タップして開く";
+  const fl=document.createElement("div"); fl.id="lock-flash"; lock.appendChild(fl);
+  const mk=(right,inner,label)=>{ const b=document.createElement("button"); b.className="lock-tool"; b.style[right?"right":"left"]="42px"; b.innerHTML=inner; b.setAttribute("aria-label",label);
+   b.addEventListener("click",e=>{ e.stopPropagation(); if(label==="flashlight"){ fl.style.opacity="0.92"; setTimeout(()=>fl.style.opacity="0",130); pop(); } else { unlock(); setTimeout(()=>show("photos"),350); } });
+   lock.appendChild(b); return b; };
+  mk(false,'<svg width="21" height="21" viewBox="0 0 24 24"><path fill="#fff" d="M9 2h6v3H9zM10 5h4l-.6 4.2A3.5 3.5 0 1 1 10.6 9z"/></svg>',"flashlight");
+  mk(true,'<svg width="22" height="22" viewBox="0 0 24 24"><path fill="#fff" d="M4 7h3l2-2.5h6L17 7h3a1.5 1.5 0 0 1 1.5 1.5V18A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V8.5A1.5 1.5 0 0 1 4 7zm8 3.2A3.6 3.6 0 1 0 12 17.4a3.6 3.6 0 0 0 0-7.2z"/></svg>',"camera");
+ }
+})();
+
+/* ===== Tinder ver v8 extra: one more icon row than the original, so compact the 741-900px band to keep the dock inside ===== */
+(function(){ const css=document.createElement("style"); css.textContent=
+ "@media (min-height:741px) and (max-height:900px){ .home-inner{padding-top:54px} .widget{padding:10px 12px;margin-bottom:10px} .appicon .ic{width:52px;height:52px;font-size:23px;border-radius:13px} .grid{gap:11px 10px} .dock{padding:9px 12px} }";
+ document.head.appendChild(css); })();
 /* ===== Tinder ver v1 ===== */
 (function(){
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
