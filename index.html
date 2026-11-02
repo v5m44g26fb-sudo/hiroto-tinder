@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v61</b>（元版v263までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v62</b>（元版v263までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3697,6 +3697,22 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
    "はやて":{s:[["城下町の夕方、歩いてきました","御朱印帳、なおさんの分も買っておこうかと"],["📷:assets/dummy-hayate-3.jpg","スーツじゃない日の一枚。…感想、待ってます","会ったときのギャップは、もっとあるかもですよ"]],d:["真面目に、なおさんのことが気になっています","静かな店、席は取ってあります。あとは日程だけ"],n:["夜更かしは得意じゃないんです。…なおさん相手だと、別ですね","こんな時間まで話せる相手、久しぶりです"]}
   };
   Object.keys(DM3).forEach(function(n){ if(DM[n]){ DM[n].script3=DM3[n].s; DM[n].def=DM[n].def.concat(DM3[n].d); DM[n].night=DM3[n].n; } });
+  /* ===== Tinder ver v62: dummy chats round 4 - one more lap per person, each leaning into their own flavour; same eager 'free tonight' tone, nothing explicit, everyone 20+ ===== */
+  var DM4={
+   "けんた":[["サウナの回数券、ついに買っちゃった","なおさんと行く前提の、2人分だよ"]],
+   "れん":[["候補リスト、5軒目が本命かも","なおさんの『また行きたい』が聞きたい店。…今夜、試さない？"]],
+   "だいき":[["なおさんと行く日のために、フィルム1本 温存してます","現像、楽しみにしてて"]],
+   "そうた":[["ライブの日程、決まったよ","なおさんの隣、空けとく。返事は早めが嬉しいな"]],
+   "はると":[["夕日のドライブコース、助手席テスト走行済みです","あとは、なおさんが乗るだけ"]],
+   "しゅん":[["今日の夜、月が綺麗だって","…月より、なおさんと話すほうが楽しみだけど"]],
+   "たくみ":[["新メニュー、試作中。名前、まだない","一号店のお客さんは、なおさんに決めてる"]],
+   "ゆうき":[["サウナ、回数券デビューした笑","なおさんの分もあるよ。一緒に行こ"]],
+   "りく":[["なおさんの曲、ライブで披露する日 決めました","客席のいちばん見えるところ、空けとく"]],
+   "かいと":[["実家の猫、今度まとめて写真送りますね","なおさんと猫、どっちが先に懐くかな"]],
+   "そうま":[["窓側の席、常連さんに勝ちました笑","なおさんの席、キープ継続中です！"]],
+   "はやて":[["御朱印帳、なおさんの分 買っておきました","渡す口実に、会いたいだけなんですけどね"]]
+  };
+  Object.keys(DM4).forEach(function(n){ if(DM[n]) DM[n].script4=DM4[n]; });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -3718,8 +3734,10 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   var dmOv=document.createElement("div"); dmOv.id="dm-overlay";
   vt.appendChild(dmOv);
   function showDummyMatch(c){
+    var SUBS=["（この人も、なおを Like していたみたい）","（お互い、気になっていたみたい）","（スワイプした瞬間、その場でマッチ！）","（向こうも、なおの写真で止まったみたい）","（今日の新規マッチです）"];
+    var sub=SUBS[order.length%SUBS.length];
     dmOv.innerHTML='<h2 style="font-size:30px;font-weight:900;font-style:italic">It\'s a Match!</h2>'
-     +'<p style="margin-top:8px;font-size:14px;line-height:1.6">なお と '+c.name+' がマッチしました<br><span style="font-size:12px;opacity:.85">（この人も、なおを Like していたみたい）</span></p>'
+     +'<p style="margin-top:8px;font-size:14px;line-height:1.6">なお と '+c.name+' がマッチしました<br><span style="font-size:12px;opacity:.85">'+sub+'</span></p>'
      +'<div style="display:flex;gap:14px;align-items:center;margin:20px 0 8px"><img src="assets/nao-tinder-3.jpg" alt="なお" style="width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff">'+(c.photos?'<img src="'+c.photos[0]+'" alt="'+c.name+'" style="width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff">':'<span style="width:92px;height:92px;border-radius:50%;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;border:3px solid #fff;color:#fff">'+c.ini+'</span>')+'</div>'
      +'<button id="dm-ov-msg" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button>'
      +'<button id="dm-ov-keep" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button>';
@@ -3874,6 +3892,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     if(!msgs && cs.step<D.script.length){ msgs=D.script[cs.step]; cs.step++; }
     else if(!msgs && D.script2 && cs.step<D.script.length+D.script2.length){ msgs=D.script2[cs.step-D.script.length]; cs.step++; }
     else if(!msgs && D.script3 && cs.step<D.script.length+(D.script2?D.script2.length:0)+D.script3.length){ msgs=D.script3[cs.step-D.script.length-(D.script2?D.script2.length:0)]; cs.step++; }
+    else if(!msgs && D.script4){ var off4=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0); if(cs.step<off4+D.script4.length){ msgs=D.script4[cs.step-off4]; cs.step++; } }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs){ msgs=[D.def[cs.defIdx%D.def.length]]; cs.defIdx++; }
@@ -6238,6 +6257,25 @@ app.style.display="flex";},true);
   var sub=box.querySelector(".sub"); if(sub&&sub.textContent.indexOf("日替わり")<0) sub.textContent+="（Top Picks の顔ぶれは日替わりです）";
  }
  new MutationObserver(function(){ try{ apply(); }catch(e){} }).observe(box,{childList:true,subtree:true});
+})();
+/* ===== Tinder ver v62: her favourites get their own free-chat layer - Busan / shrimp / karaage / cafe au lait, each a small two-beat dive, plus a quiet day-before profile cross-reference; same farewell/scandal gates as v219/v229/v50 ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v62t) return; state._v62t=true;
+ const RULES=[
+  [/釜山|プサン|海雲台|西面/,["釜山の話、すると止まらんくなるな","カンジャンセウ、なおの本命やろ。……海雲台も西面も、案内できるくらい下調べしたわ、俺"]],
+  [/カンジャン|醤油漬け|ケジャン/,["醤油漬けの話は、なおの目が一番光るやつ","現地で食べるやつ、格別やもんな。……いつか、本場で一緒に"]],
+  [/エビ|えび|海老/,["エビ好きって、筋金入りやな","揚げたやつも生もいける口なん、強いわ。……俺は、なおの残した分まで食べる係でええで"]],
+  [/からあげ|唐揚げ/,["からあげは、揚げたての音がご馳走やな","なおは醤油派？ 俺は……店によるけど、基本は塩やな"]],
+  [/カフェオレ/,["カフェオレ、甘めが好きなん覚えてるで","初めて会った日も、それやったな。……あの味、忘れられへん"]],
+  [/プロフィール|写真選|アイコン/,["プロフィールの写真、選ぶの時間かかったやろ","……俺もやで。あの日、鏡の前でけっこう悩んだ"]]];
+ const _hr=himReply;
+ himReply=async function(t){ const r=await _hr(t);
+  if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&typeof t==="string"){
+   const hit=RULES.find(r2=>r2[0].test(t));
+   if(hit&&Math.random()<0.6){ const ok=()=>!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal";
+    setTimeout(()=>{ if(ok()) himMsg(hit[1][0]); },2600);
+    setTimeout(()=>{ if(ok()) himMsg(hit[1][1]); },4600); } }
+  return r; };
 })();
 /* ===== Tinder ver v53 (orig v231): timeline locks - features stay unusable until the story reaches them (chapters read against this arc; the records here live in the settings rows, which already carry the match day, so there is no records panel to guard) ===== */
 (function(){
