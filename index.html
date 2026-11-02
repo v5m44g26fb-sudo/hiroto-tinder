@@ -710,7 +710,7 @@ input,textarea{font-size:16px!important}
 <div class="typing" id="f-typing" style="margin:0 12px 8px;display:none"><i></i><i></i><i></i></div>
 <div class="line-input"><span style="font-size:19px">＋</span><input id="f-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="f-send">送信</button></div>
 </div>
-<div id="hiroto-prof"><img class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img class="avatar" src="assets/line-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div style="font-size:13px;color:#536471;margin-top:2px">…なおだけ、特別やねん</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ（11月1日）<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
+<div id="hiroto-prof"><img class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img class="avatar" src="assets/line-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div id="hp-status" style="font-size:13px;color:#536471;margin-top:2px">…なおだけ、特別やねん</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div id="hp-photos" style="display:flex;gap:6px;margin-top:14px"><img src="assets/ig-meal.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img src="assets/roses.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img src="assets/insta-post.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"></div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ（11月1日）<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
 </section>
 
 <div id="member-panel"><div class="line-head" style="background:#fff"><button class="back" id="mp-close" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t" id="mp-title" style="font-size:15.5px;font-weight:800">メンバー</span></div><div style="overflow-y:auto;flex:1"><div class="mp-sec">メンバー</div><div id="mp-list"></div><div class="mp-sec">ノート</div><div class="mp-note" id="mp-note"></div><div class="mp-sec">アルバム</div><div class="mp-album"><img id="mp-album-img" src="" alt="グループの写真"></div></div></div>
@@ -792,8 +792,8 @@ input,textarea{font-size:16px!important}
 <div class="appbar"><button class="back" data-home>‹</button><span class="t">設定</span></div>
 <div class="scroll" style="padding:14px">
 <div class="setrow"><span>🔔 サウンド（効果音・着信音）</span><button class="set-tgl" id="set-sound">ON</button></div>
-<div class="setrow"><span>📳 バイブレーション</span><button class="set-tgl" id="set-vib">ON</button></div>
-<div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div>
+<div class="setrow"><span>📳 バイブレーション</span><button class="set-tgl" id="set-vib">ON</button></div><div class="setrow"><span>🔤 文字の大きさ</span><button class="set-tgl" id="set-font">標準</button></div><div class="setrow"><span>🖼 ホーム画面の壁紙</span><button class="set-tgl" id="set-wall">デフォルト</button></div>
+<div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div><div class="setrow"><span>💭 思い出</span><button class="set-tgl" id="set-memories">ひらく</button></div><div class="setrow"><span>💭 解放した思い出</span><span style="color:#8e8e93;font-size:12.5px" id="set-memcount">0 / 8</span></div>
 <div class="setrow"><span>📷 Instagram フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-ig">342</span></div>
 <div class="setrow"><span>𝕏 フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-x">189</span></div>
 <div class="setrow"><span>🔥 炎上度のピーク</span><span style="color:#8e8e93;font-size:12.5px" id="set-heat">0%</span></div>
@@ -803,7 +803,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v12</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v13</b>（元版 v88相当のアプリ仕様に同期中）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2080,6 +2080,332 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   }
   $("#tf-send").addEventListener("click",sendFree);
   $("#tf-text").addEventListener("keydown",function(e){ if(e.key==="Enter") sendFree(); });
+})();
+
+/* ===== Tinder ver v13: app-spec sync with the original (LINE / X / news / call / settings) — original v56 ===== */
+(function(){
+ const btn=document.querySelector("#hiroto-prof-btn"), st=document.querySelector("#hp-status");
+ if(btn&&st) btn.addEventListener("click",()=>{ st.textContent = state.act2 ? (state.ending==="away" ? "…ごめんな" : "普通に、話そな") : (state.started ? "…心配かけて、ごめん" : "…なおだけ、特別やねん"); });
+ const hp=document.querySelector("#hp-photos");
+ if(hp) hp.addEventListener("click",()=>{ document.querySelector("#hiroto-prof").classList.remove("on"); show("photos"); const t=document.querySelector('#album-tabs button[data-album="him"]'); if(t) t.click(); });
+})();
+/* ===== original v60: LINE + call big pass - reactions, wallpapers, stamps, video call, redial (PiP uses the default icon in this ver) ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#stamp-bar{display:none;gap:10px;padding:10px 14px;background:#fff;border-top:1px solid #eee;flex-wrap:wrap}"+
+  "#stamp-bar.on{display:flex}#stamp-bar button{font-size:30px;background:none;border:none;cursor:pointer;padding:2px 4px}"+
+  "#v-call.video-on #call-act-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;z-index:0}"+
+  "#v-call.video-on #call-active{position:relative}"+
+  "#v-call.video-on #call-active>*{position:relative;z-index:1}"+
+  "#v-call.video-on #call-act-name,#v-call.video-on #call-sub{text-shadow:0 1px 8px rgba(0,0,0,.8)}"+
+  "#call-pip{position:absolute;right:14px;bottom:110px;width:74px;height:104px;object-fit:cover;border-radius:12px;border:2px solid rgba(255,255,255,.85);display:none;z-index:2}"+
+  "#v-call.video-on #call-pip{display:block}"+
+  "#set-calllog>div{cursor:pointer}";
+ document.head.appendChild(css);
+ const chat=document.querySelector("#chat");
+ if(chat) chat.addEventListener("dblclick",e=>{ const b=e.target.closest(".bub"); if(b) attachRxn(b,"❤️"); });
+ const head=document.querySelector("#line-chat .line-head");
+ if(head){ const wps=["","#ffe9f3","#dceeff","#2b3350"]; let wi=0;
+  const wb=document.createElement("button"); wb.textContent="🎨"; wb.style.cssText="font-size:17px;background:none;border:none;cursor:pointer";
+  wb.title="壁紙を変える";
+  wb.addEventListener("click",()=>{ wi=(wi+1)%wps.length; document.querySelector("#line-chat").style.background=wps[wi]; toast(wi===0?"🎨 壁紙：デフォルト":wi===1?"🎨 壁紙：さくら":wi===2?"🎨 壁紙：そら":"🎨 壁紙：よる"); });
+  const callBtn=document.querySelector("#line-call-btn"); if(callBtn) head.insertBefore(wb,callBtn); }
+ const plus=document.querySelector("#line-chat .line-input > span");
+ const inputBar=document.querySelector("#line-chat .line-input");
+ if(plus&&inputBar){ plus.style.cursor="pointer";
+  const bar=document.createElement("div"); bar.id="stamp-bar";
+  ["❤️","😆","🥺","👍","😴","🍮"].forEach(em=>{ const b=document.createElement("button"); b.textContent=em;
+   b.addEventListener("click",()=>{ bar.classList.remove("on");
+    const d=document.createElement("div"); d.className="msg me";
+    d.innerHTML='<span style="font-size:38px;line-height:1.1">'+em+'</span><span class="meta pr" data-t="'+nowTime()+'">'+nowTime()+'</span>';
+    chat.appendChild(d); chat.scrollTop=chat.scrollHeight;
+    const pv=document.querySelector("#line-preview"); if(pv) pv.textContent=em;
+    clearTimeout(state._replyT); state._replyT=setTimeout(()=>himReply(em),1100);
+   }); bar.appendChild(b); });
+  inputBar.parentNode.insertBefore(bar,inputBar);
+  plus.addEventListener("click",()=>bar.classList.toggle("on")); }
+ const act=document.querySelector("#call-active");
+ if(act){ const pip=document.createElement("img"); pip.id="call-pip"; pip.src="assets/default-avatar.svg"; pip.alt=""; document.querySelector("#v-call").appendChild(pip);
+  const btns=act.querySelector(".call-btns");
+  if(btns){ const vb=document.createElement("button"); vb.className="cb"; vb.textContent="📹"; vb.style.background="#3a3f4d";
+   vb.addEventListener("click",()=>{ const v=document.querySelector("#v-call"); const on=v.classList.toggle("video-on");
+    const img=document.querySelector("#call-act-img");
+    if(state.caller!=="manager"&&img){ img.src=on?"assets/hoodie.jpg":"assets/line-avatar.jpg"; }
+    toast(on?"📹 ビデオ通話モード":"📞 音声通話モード"); });
+   btns.appendChild(vb); } }
+ const log=document.querySelector("#set-calllog");
+ if(log) log.addEventListener("click",e=>{ const row=e.target.closest("div"); if(!row) return; const t=row.textContent||"";
+  if(t.includes("マネージャー")){ toast("🏢 事務所にはかけ直せないよ"); return; }
+  if(t.includes("ひろと")) requestCall(); });
+})();
+/* ===== original v61: news comments+bookmarks, photo favorites tab, settings font/wallpaper ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent="body.font-big .bub{font-size:16px!important;line-height:1.65!important}";
+ document.head.appendChild(css);
+ const CALM_NC=[["追加公演まじで神…絶対当てる",312],["王子様衣装の破壊力、えぐかった",528],["現地で見たけど、かっこよすぎて脚が震えた",204],["チケット戦争、がんばろ…",96]];
+ const saved={};
+ const artBox=document.querySelector("#news-article");
+ function decorate(){
+  const art=artBox&&artBox.querySelector(".article"); if(!art) return;
+  const h2=art.querySelector("h2"); const title=h2?h2.textContent:"記事";
+  if(!art.querySelector(".nb-save")){ const b=document.createElement("button"); b.className="btn-main nb-save";
+   b.style.cssText="background:#fff3cd;width:auto;padding:7px 14px;margin:0 0 12px 6px";
+   b.textContent= saved[title] ? "🔖 保存済み" : "🔖 あとで読む";
+   b.addEventListener("click",()=>{ if(saved[title]){ delete saved[title]; b.textContent="🔖 あとで読む"; toast("🔖 保存を取り消しました"); }
+    else { const clone=art.cloneNode(true); const cb=clone.querySelector(".nb-save"); if(cb) cb.remove(); saved[title]=clone.outerHTML; b.textContent="🔖 保存済み"; toast("🔖 あとで読むに保存しました"); }
+    renderSaved(); });
+   const back=art.querySelector("button"); if(back) back.after(b); else art.prepend(b); }
+  if(!art.querySelector(".nc-wrap") && !Array.from(art.querySelectorAll("h3")).some(h=>h.textContent.includes("コメント"))){
+   const w=document.createElement("div"); w.className="nc-wrap";
+   w.innerHTML='<h3 style="margin-top:22px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">1,024件</span></h3>'+CALM_NC.map(c=>'<div style="padding:10px 0;border-bottom:1px solid #f2f2f7"><div style="font-size:14px;line-height:1.75">'+c[0]+'</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px"><span class="nc-like" style="cursor:pointer">♡ '+c[1]+'</span> ・ 返信</div></div>').join("");
+   art.appendChild(w); } }
+ function renderSaved(){ const list=document.querySelector("#news-list"); if(!list) return;
+  let sec=document.querySelector("#news-saved");
+  const titles=Object.keys(saved);
+  if(!titles.length){ if(sec) sec.remove(); return; }
+  if(!sec){ sec=document.createElement("div"); sec.id="news-saved"; list.prepend(sec); }
+  sec.innerHTML='<div style="font-size:12.5px;font-weight:800;color:#8e8e93;padding:10px 4px 4px">🔖 あとで読む</div>'+titles.map(t=>'<div class="newsrow" data-t="'+t.replace(/"/g,"")+'"><span><span class="h">'+t+'</span></span></div>').join("");
+  sec.querySelectorAll(".newsrow").forEach(r=>r.addEventListener("click",()=>{ const t=r.dataset.t; if(!saved[t]) return;
+   document.querySelector("#news-list").style.display="none"; artBox.style.display="block"; artBox.innerHTML=saved[t]; window.scrollTo(0,0); const ns=document.querySelector("#news-scroll"); if(ns) ns.scrollTop=0; decorate(); })); }
+ if(artBox){ new MutationObserver(()=>decorate()).observe(artBox,{childList:true}); }
+ const tabs=document.querySelector("#album-tabs");
+ if(tabs&&!tabs.querySelector('[data-album="fav"]')){ const b=document.createElement("button"); b.dataset.album="fav"; b.textContent="♥ お気に入り";
+  b.addEventListener("click",()=>{ tabs.querySelectorAll("button").forEach(x=>x.classList.toggle("act",x===b));
+   let shown=0;
+   document.querySelectorAll("#ph-grid figure").forEach(f=>{ const img=f.querySelector("img"); const base=img?(img.getAttribute("src")||"").split("/").pop():"";
+    const on=FAVS.has(base); f.style.display=on?"":"none"; if(on) shown++; });
+   if(!shown) toast("♡ まだお気に入りがないよ（写真を開いて♡を押してね）"); });
+  tabs.appendChild(b); }
+ const fb=document.querySelector("#set-font");
+ if(fb) fb.addEventListener("click",()=>{ const big=document.body.classList.toggle("font-big"); fb.textContent=big?"大きい":"標準"; });
+ const wb=document.querySelector("#set-wall");
+ if(wb){ const walls=[["デフォルト",""],["よる","assets/night.jpg"],["カフェ","assets/cafe.jpg"],["ステージ","assets/stage.jpg"]]; let wi=0;
+  wb.addEventListener("click",()=>{ wi=(wi+1)%walls.length; const home=document.querySelector("#v-home");
+   if(home){ home.style.backgroundImage=walls[wi][1]?'url("'+walls[wi][1]+'")':""; home.style.backgroundSize="cover"; home.style.backgroundPosition="center"; }
+   wb.textContent=walls[wi][0]; }); }
+})();
+/* ===== original v62: home quote card + in-chat search (quotes remapped to this ver) ===== */
+(function(){
+ const inner=document.querySelector("#v-home .home-inner"), widget=document.querySelector("#v-home .widget");
+ if(inner&&widget){ const card=document.createElement("div"); card.id="home-quote";
+  card.style.cssText="margin:0 2px 12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);border-radius:14px;padding:7px 11px;color:#fff;font-size:13.5px;line-height:1.45";
+  widget.after(card);
+  const QUOTES=[[6,"バレた日——それでも、なおだけが心配やねん"],[5,"「…でも、後悔はしてへんねん」"],[4,"「今日は…帰したくないな」"],[2,"「…なおの声、聞きたかってん」"],[0,"9月27日。すべては、あのスワイプから"]];
+  const upd=()=>{ let q;
+   if(state.act2) q="「歌とダンスで返していけるよう、頑張ります」";
+   else if(state.started) q="「なおだけが心配やねん」";
+   else { const hit=QUOTES.find(x=>state.chapter>=x[0]); q=hit?hit[1]:QUOTES[QUOTES.length-1][1]; }
+   card.innerHTML='<div style="font-size:9px;letter-spacing:.1em;opacity:.85;line-height:1.2">💬 ひろとのことば</div><div style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+q+'</div>'; };
+  upd();
+  new MutationObserver(upd).observe(document.querySelector("#v-home"),{attributes:true,attributeFilter:["class"]}); }
+ const head=document.querySelector("#line-chat .line-head"), chatBox=document.querySelector("#line-chat");
+ if(head&&chatBox){ const sb=document.createElement("button"); sb.textContent="🔍"; sb.style.cssText="font-size:16px;background:none;border:none;cursor:pointer";
+  const callBtn=document.querySelector("#line-call-btn"); if(callBtn) head.insertBefore(sb,callBtn);
+  const bar=document.createElement("div"); bar.id="chat-search";
+  bar.style.cssText="display:none;gap:8px;align-items:center;padding:8px 12px;background:#fff;border-bottom:1px solid #eee";
+  bar.innerHTML='<input id="cs-input" placeholder="トーク内を検索" style="flex:1;border:1px solid #e5e5ea;border-radius:10px;padding:8px 10px;font-size:14px;font-family:inherit"><span id="cs-count" style="font-size:12px;color:#8e8e93"></span><button id="cs-close" style="background:none;border:none;font-size:15px;cursor:pointer">✕</button>';
+  chatBox.insertBefore(bar, document.querySelector("#chat"));
+  const clear=()=>{ document.querySelectorAll("#chat .msg").forEach(m=>{ m.style.opacity=""; const b=m.querySelector(".bub"); if(b) b.style.outline=""; }); document.querySelector("#cs-count").textContent=""; };
+  sb.addEventListener("click",()=>{ const on=bar.style.display!=="flex"; bar.style.display=on?"flex":"none"; if(on) document.querySelector("#cs-input").focus(); else { document.querySelector("#cs-input").value=""; clear(); } });
+  bar.querySelector("#cs-close").addEventListener("click",()=>{ bar.style.display="none"; document.querySelector("#cs-input").value=""; clear(); });
+  bar.querySelector("#cs-input").addEventListener("input",e=>{ const q=e.target.value.trim(); if(!q){ clear(); return; }
+   let n=0; document.querySelectorAll("#chat .msg").forEach(m=>{ const b=m.querySelector(".bub"); const hit=b&&b.textContent.includes(q);
+    m.style.opacity=hit?"1":".28"; if(b) b.style.outline=hit?"2px solid #f7b500":""; if(hit) n++; });
+   document.querySelector("#cs-count").textContent=n+"件"; }); }
+})();
+/* ===== original v64: scandal ignition safety net (push text remapped) ===== */
+(function(){ setInterval(()=>{ if(state.phase!=="scandal"||state.started) return;
+  if(document.querySelector("#v-line").classList.contains("on")){ startScandal(); return; }
+  const p=document.querySelector("#push");
+  if(p&&!p.classList.contains("in")) push("ニュース速報","#e60012","N","【速報】人気アイドル、マッチングアプリ利用か","「現役アイドルがTinder」週刊誌が今夜配信——タップで記事へ",()=>{ show("news"); startScandal(); });
+ },5000); })();
+/* ===== original v71: live talk-list preview/time (date chips already exist in this ver as .daychip) ===== */
+(function(){
+ const pv=document.querySelector("#line-preview"), tm=document.querySelector("#talk-hiroto .tm"), box=document.querySelector("#chat");
+ if(pv&&box){ new MutationObserver(()=>{ const bs=box.querySelectorAll(".bub"); if(!bs.length) return;
+   const last=bs[bs.length-1]; let t=(last.textContent||"").trim().replace(/\s+/g," ");
+   if(last.querySelector("audio")||last.classList.contains("voice")) t="🎙 ボイスメッセージ";
+   if(last.querySelector("img")) t="📷 写真";
+   if(t){ pv.textContent=t.slice(0,26); if(tm){ const d=new Date(); tm.textContent=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); } }
+  }).observe(box,{childList:true,subtree:true}); }
+})();
+/* ===== original v72: X - my posts gather engagement + follower list ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#x-fl-btn{display:block;margin:10px 0 4px;background:#f7f9fa;border:1px solid #e6ecf0;color:#0f1419;font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;cursor:pointer}"+
+  "#x-fl-panel{position:absolute;inset:0;background:#fff;z-index:230;display:none;flex-direction:column;padding:64px 0 0}"+
+  ".xfl-row{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #f2f2f2}"+
+  ".xfl-row .fb{margin-left:auto;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:800;cursor:pointer;border:1px solid #0f1419;background:#0f1419;color:#fff}"+
+  ".xfl-row .fb.on{background:#fff;color:#0f1419}";
+ document.head.appendChild(css);
+ const host=document.querySelector("#x-me-posts");
+ if(host){ const grown=new WeakSet();
+  const num=el=>{ const m=(el.textContent||"").match(/([\d,]+)/); return m?parseInt(m[1].replace(/,/g,"")):0; };
+  const grow=post=>{ if(grown.has(post)) return; grown.add(post);
+   const spans=Array.from(post.querySelectorAll("span,button"));
+   const like=spans.find(s=>/^[❤️♡]/.test((s.textContent||"").trim())); if(!like) return;
+   const rep=spans.find(s=>/^💬/.test((s.textContent||"").trim()));
+   let added=0; const cap=()=> state.phase==="scandal"? 1400+Math.random()*1600 : 50+Math.random()*90;
+   const C=cap();
+   const iv=setInterval(()=>{ if(!post.isConnected){ clearInterval(iv); return; }
+    const inc=state.phase==="scandal"? Math.floor(8+Math.random()*70) : Math.floor(1+Math.random()*5);
+    added+=inc; const g=(like.textContent||"").trim().startsWith("♡")?"♡":"❤️";
+    like.textContent=g+" "+(num(like)+inc).toLocaleString("ja-JP");
+    if(rep&&Math.random()<0.22) rep.textContent="💬 "+(num(rep)+1).toLocaleString("ja-JP");
+    if(added>=C) clearInterval(iv);
+   },3200); };
+  new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{ if(n.nodeType===1) grow(n); }))).observe(host,{childList:true});
+  host.querySelectorAll(":scope > *").forEach(grow);
+ }
+ const pane=document.querySelector("#x-pane-me");
+ if(pane&&!document.querySelector("#x-fl-btn")){ const btn=document.createElement("button"); btn.id="x-fl-btn"; btn.textContent="👥 フォロワーをみる";
+  const posts=document.querySelector("#x-me-posts"); pane.insertBefore(btn,posts);
+  const panel=document.createElement("div"); panel.id="x-fl-panel";
+  panel.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:0 16px 12px"><button id="x-fl-close" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b style="font-size:16px">フォロワー</b></div><div id="x-fl-list" style="overflow-y:auto"></div>';
+  document.querySelector("#v-x").appendChild(panel);
+  const BASE=[["ゆい","@yui_s","🍓","#e879a0"],["みさき","@msa_ki","🌊","#7a9cc6"],["りな","@rina_rin","🎀","#b48ec9"],["サウナ友","@sauna_m","♨️","#7ab648"],["高校の友達","@hs_tomo","📚","#d9a441"]];
+  const FAN=[["大翔ファン","@hiroto_ouen","👑","#e5c158"],["情報垢","@scoop_watch","👀","#888"],["考察班","@kousatsu_jp","🔍","#5aa2d6"]];
+  btn.addEventListener("click",()=>{ const list=panel.querySelector("#x-fl-list");
+   const rows=state.phase==="scandal"? FAN.concat(BASE) : BASE;
+   list.innerHTML=""; rows.forEach(r=>{ const d=document.createElement("div"); d.className="xfl-row";
+    d.innerHTML='<span class="ava-txt" style="background:'+r[3]+';width:42px;height:42px;font-size:18px">'+r[2]+'</span><span><b style="font-size:14px">'+r[0]+'</b><br><span style="color:#536471;font-size:12.5px">'+r[1]+'</span></span>';
+    const fb=document.createElement("button"); fb.className="fb on"; fb.textContent="フォロー中";
+    fb.addEventListener("click",()=>{ const on=fb.classList.toggle("on"); fb.textContent=on?"フォロー中":"フォローする"; });
+    d.appendChild(fb); list.appendChild(d); });
+   panel.style.display="flex"; });
+  panel.querySelector("#x-fl-close").addEventListener("click",()=>{ panel.style.display="none"; });
+ }
+})();
+/* ===== original v73: news related-articles rail (headlines remapped, leak guard kept) ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  ".rel-wrap{margin-top:26px;border-top:2px solid #f2f2f7;padding-top:14px}"+
+  ".rel-wrap h3{font-size:15px;margin-bottom:6px}"+
+  ".rel-item{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid #f2f2f7;padding:10px 2px;cursor:pointer;font-family:inherit}"+
+  ".rel-item img{width:56px;height:56px;border-radius:8px;object-fit:cover;flex:none}"+
+  ".rel-item .rh{font-size:13.5px;font-weight:700;line-height:1.45;color:#111}";
+ document.head.appendChild(css);
+ const box=document.querySelector("#news-article"); if(!box) return;
+ new MutationObserver(()=>{ const art=box.querySelector(".article"); if(!art||art.querySelector(".rel-wrap")) return;
+  const cur=(art.querySelector("h2")||{}).textContent||"";
+  const items=[];
+  if((state.phase==="scandal"||state.act2)&&!cur.includes("マッチングアプリ利用疑惑")) items.push({t:"人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃",img:"assets/crown-full.jpg",go:()=>openArticle()});
+  if(state.act2&&!cur.includes("事務所がコメント")) items.push({t:"事務所がコメント発表「交際の事実はございません」",img:"assets/stage.jpg",go:()=>openStatement()});
+  document.querySelectorAll("#news-list .newsrow").forEach(r=>{ const h=r.querySelector(".h"); const im=r.querySelector("img");
+   if(h&&cur.indexOf(h.textContent.slice(0,10))!==0&&h.textContent.slice(0,10)!==cur.slice(0,10)) items.push({t:h.textContent,img:im?im.getAttribute("src"):"",go:()=>r.click()}); });
+  const rel=items.slice(0,3); if(!rel.length) return;
+  const w=document.createElement("div"); w.className="rel-wrap"; w.innerHTML="<h3>関連記事</h3>";
+  rel.forEach(it=>{ const b=document.createElement("button"); b.className="rel-item";
+   b.innerHTML='<img src="'+it.img+'" alt=""><span class="rh">'+it.t+"</span>";
+   b.addEventListener("click",()=>{ it.go(); const s=document.querySelector("#news-scroll"); if(s) s.scrollTop=0; });
+   w.appendChild(b); });
+  art.appendChild(w);
+ }).observe(box,{childList:true});
+})();
+/* ===== original v76: memories collection (beats remapped to this ver, replays use the vm-t / mgr-t voices) ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#mem-panel{position:absolute;inset:0;background:#f2f2f7;z-index:120;display:none;flex-direction:column;padding:64px 14px 16px;overflow-y:auto}"+
+  ".mem-card{background:#fff;border-radius:14px;padding:13px 14px;margin-bottom:10px;display:flex;align-items:center;gap:12px}"+
+  ".mem-card.lock{opacity:.55}"+
+  ".mem-card .mt{font-size:14.5px;font-weight:800}"+
+  ".mem-card .md{font-size:12px;color:#8e8e93;margin-top:2px}"+
+  ".mem-card .play{margin-left:auto;background:#111;color:#fff;border:none;border-radius:999px;padding:8px 13px;font-size:12.5px;font-weight:700;cursor:pointer;flex:none}";
+ document.head.appendChild(css);
+ const panel=document.createElement("div"); panel.id="mem-panel";
+ panel.innerHTML='<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><button id="mem-close" style="border:none;background:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer">‹</button><b style="font-size:17px">💭 思い出</b><span style="color:#8e8e93;font-size:12px">ひろととの記録</span></div><div id="mem-list"></div>';
+ document.querySelector("#v-settings").appendChild(panel);
+ const MEMS=[
+  ["🔥","マッチした日","9月27日 ・ TinderでSuper Like",()=>state.chapter>=1,null],
+  ["☕","本物バレ","10月4日 ・ 初デート",()=>state.chapter>=2,"assets/vm-t-hello.mp3"],
+  ["🌙","線引き","10月12日 ・ 並木道",()=>state.chapter>=3,"assets/vm-t-line.mp3"],
+  ["🌃","あの夜","10月18日 ・ 二人だけの秘密",()=>state.chapter>=5,null],
+  ["🔥","バレた日","11月2日 ・ アプリ利用が表に",()=>state.chapter>=6||state.phase==="scandal","assets/vm-t-sorry.mp3"],
+  ["📞","事務所の電話","11月2日 ・ 連絡を控えてください",()=> !!state._mgrDone,"assets/mgr-t-1.mp3"],
+  ["👋","別れ","エンディング ・ 最後のボイス",()=> !!state.ended,"assets/vm-t-bye.mp3"],
+  ["🌅","翌朝","11月3日",()=> !!state.act2,"assets/vm-nextmorning.mp3"]];
+ let aud=null;
+ const render=()=>{ const list=panel.querySelector("#mem-list"); list.innerHTML="";
+  MEMS.forEach(m=>{ const un=m[3](); const d=document.createElement("div"); d.className="mem-card"+(un?"":" lock");
+   d.innerHTML='<span style="font-size:24px">'+(un?m[0]:"🔒")+'</span><span><div class="mt">'+(un?m[1]:"まだ見ぬ思い出")+'</div><div class="md">'+(un?m[2]:"物語を進めると開くよ")+'</div></span>';
+   if(un&&m[4]){ const b=document.createElement("button"); b.className="play"; b.textContent="▶ 声を聞く";
+    b.addEventListener("click",()=>{ if(aud){ try{aud.pause()}catch(e){} } aud=new Audio(m[4]); aud.play().catch(()=>{}); });
+    d.appendChild(b); }
+   list.appendChild(d); }); };
+ const btn=document.querySelector("#set-memories");
+ if(btn) btn.addEventListener("click",()=>{ render(); panel.style.display="flex"; });
+ panel.querySelector("#mem-close").addEventListener("click",()=>{ panel.style.display="none"; if(aud){ try{aud.pause()}catch(e){} } });
+})();
+/* ===== original v77: quote card second line + font size reaches news + album tab counts (alt lines remapped) ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "body.font-big #news-article .article p{font-size:17.5px!important;line-height:1.95}"+
+  "#home-quote{cursor:pointer}"+
+  "#hq-alt{display:none;margin:-6px 2px 12px;background:rgba(20,20,30,.42);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(10px);border-radius:12px;padding:7px 11px;font-size:12.5px;color:#ffe9a8;font-weight:600}";
+ document.head.appendChild(css);
+ const ALT=()=> state.act2? "……歌とダンスで、返していくから"
+  : state.phase==="scandal"? "心配かけて、ごめん。なおだけが心配やねん"
+  : state.chapter>=5? "…でも、後悔はしてへんねん"
+  : state.chapter>=4? "ほんまに、帰したくなくなるで"
+  : state.chapter>=2? "カフェオレ、覚えとくわ"
+  : "次、会える日が楽しみやねん";
+ setInterval(()=>{ const card=document.querySelector("#home-quote"); if(!card||!card.parentNode) return;
+  let alt=document.querySelector("#hq-alt");
+  if(!alt){ alt=document.createElement("div"); alt.id="hq-alt"; card.parentNode.insertBefore(alt,card.nextSibling); }
+  if(!card._altBound){ card._altBound=true;
+   card.addEventListener("click",()=>{ const a=document.querySelector("#hq-alt"); if(!a) return;
+    const on=a.style.display==="block"; a.style.display=on?"none":"block"; if(!on) a.textContent="💭 "+ALT(); }); }
+ },1200);
+ setInterval(()=>{ const tabs=document.querySelectorAll("#album-tabs [data-album]"); if(!tabs.length) return;
+  if(window.tagPhotos) tagPhotos();
+  const figs=document.querySelectorAll("#ph-grid figure");
+  tabs.forEach(t=>{ const k=t.dataset.album; if(k==="fav"||k==="video") return; if(!t.dataset.base) t.dataset.base=t.textContent.trim();
+   let n=0; figs.forEach(f=>{ if(k==="all"||f.dataset.cat===k) n++; });
+   t.textContent=t.dataset.base+" "+n; });
+ },1600);
+})();
+/* ===== original v78: lock screen notifications follow the story (texts remapped to this ver) ===== */
+(function(){
+ const BUB='<svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3.5c-4.9 0-8.8 3.3-8.8 7.4 0 4.1 3.9 7.4 8.8 7.4.9 0 1.8-.1 2.6-.3l3.3 2c.3.2.7 0 .7-.4l-.1-3.1c1.4-1.3 2.3-3.2 2.3-5.6 0-4.1-3.9-7.4-8.8-7.4z" fill="#fff"/><text x="12" y="13.6" text-anchor="middle" font-size="4.6" font-weight="900" fill="#06c755" font-family="Arial">LINE</text></svg>';
+ const IGG='<svg width="22" height="22" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="1.9"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.3" cy="6.7" r="1.35" fill="#fff" stroke="none"/></g></svg>';
+ const ic=(bg,inner)=>'<span class="p-ic" style="background:'+bg+'">'+inner+'</span>';
+ const sets=()=> state.ending==="away" ?
+  [ ic("#d92b2b",'<span style="font-size:16px;font-weight:900">N</span>')+'<span><b>ニュース速報</b> ・ 朝<br>続報：本人の言葉に、応援の声も</span>',
+    ic("linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)",IGG)+'<span><b>Instagram</b> ・ 朝<br>193.hiroto_jixiang が投稿しました</span>' ] :
+  [ ic("#06c755",BUB)+'<span><b>ひろと</b> ・ 朝<br>おはよう。投稿、出したで</span>',
+    ic("linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)",IGG)+'<span><b>Instagram</b> ・ 朝<br>193.hiroto_jixiang が投稿しました</span>' ];
+ const SETS={
+  base:null,
+  sc:[ ic("#000",'<span style="font-size:17px">𝕏</span>')+'<span><b>X</b> ・ たった今<br>#大翔Tinder がトレンド1位になっています</span>',
+       ic("#d92b2b",'<span style="font-size:16px;font-weight:900">N</span>')+'<span><b>ニュース速報</b> ・ 12分前<br>人気アイドル・井汲大翔にマッチングアプリ利用疑惑　事務所は「確認中」</span>' ],
+  a2:null };
+ let baseHTML=null;
+ setInterval(()=>{ const ns=document.querySelectorAll(".lock-notif"); if(ns.length<2) return;
+  if(!baseHTML) baseHTML=[ns[0].innerHTML,ns[1].innerHTML];
+  const key=state.act2?"a2":(state.phase==="scandal"?"sc":"base");
+  const wrap=document.querySelector(".lock-notifs"); if(!wrap||wrap.dataset.k===key) return;
+  wrap.dataset.k=key;
+  const set=key==="base"? baseHTML : (key==="a2"? sets() : SETS[key]);
+  ns[0].innerHTML=set[0]; ns[1].innerHTML=set[1];
+ },1200);
+})();
+/* ===== original v81: memory counter in settings + news freshness stamp (counter remapped to 8 beats) ===== */
+(function(){
+ setInterval(()=>{ const el=document.querySelector("#set-memcount"); if(!el) return;
+  let n=0;
+  if(state.chapter>=1) n++; if(state.chapter>=2) n++; if(state.chapter>=3) n++;
+  if(state.chapter>=5) n++;
+  if(state.chapter>=6||state.phase==="scandal") n++;
+  if(state._mgrDone) n++; if(state.ended) n++; if(state.act2) n++;
+  el.textContent=n+" / 8";
+  const list=document.querySelector("#news-list"); if(!list) return;
+  let st=document.querySelector("#news-stamp");
+  if(!st){ st=document.createElement("div"); st.id="news-stamp";
+   st.style.cssText="padding:10px 14px 2px;color:#8e8e93;font-size:11.5px;text-align:right";
+   list.parentNode.insertBefore(st,list); }
+  const d=new Date();
+  st.textContent="最終更新 "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");
+ },1500);
 })();
 </script>
 </body>
