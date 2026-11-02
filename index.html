@@ -471,6 +471,26 @@ input,textarea{font-size:16px!important}
 .tgl-chip.sel{background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border-color:transparent}
 .sheet-close{width:100%;background:#f2f2f7;border:none;border-radius:999px;padding:12px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:14px}
 .boosting{box-shadow:inset 0 0 0 3px #ffb302,0 0 34px rgba(255,179,2,.55)}
+/* ===== Tinder ver v16: matches / chat / premium / story state ===== */
+.t-bub{position:relative}
+.t-bub.me .t-read{display:block;font-size:10px;color:rgba(255,255,255,.85);text-align:right;margin-top:2px}
+.t-heart{position:absolute;bottom:-9px;right:8px;background:#fff;border-radius:999px;font-size:11px;padding:1px 5px;box-shadow:0 2px 6px rgba(0,0,0,.25);z-index:2}
+.t-chat-scroll.night{background:linear-gradient(180deg,#1a1a24,#101018)}
+.t-chat-scroll.night .t-bub.them{background:#2a2a38;color:#f0f0f5}
+.newrow{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 10px}
+.newtile{flex:none;text-align:center;width:66px;background:none;border:none;cursor:pointer;font-family:inherit}
+.newtile img,.newtile .ph{width:58px;height:58px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 4px}
+.newtile .ph{display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff}
+.newtile span{font-size:11.5px;font-weight:700;color:#111;display:block}
+.unread-dot{background:#fd267d;color:#fff;border-radius:999px;min-width:19px;height:19px;font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;margin-left:auto;flex:none}
+.gold-plan{border:2px solid #f3d27a;background:linear-gradient(160deg,#fffbe8,#fff3c4);border-radius:16px;padding:14px;margin-bottom:10px}
+.gold-plan.plat{border-color:#c9d4e5;background:linear-gradient(160deg,#f4f7fb,#e2e9f4)}
+.pickrow{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.picktile{flex:none;width:104px;border:none;background:none;cursor:pointer;font-family:inherit;text-align:left;padding:0}
+.picktile .im{width:104px;height:130px;border-radius:12px;overflow:hidden;position:relative}
+.picktile img{width:100%;height:100%;object-fit:cover}
+.blurme{filter:blur(7px);transform:scale(1.12)}
+.picktile span{font-size:12px;font-weight:700;display:block;margin-top:5px;color:#111}
 </style>
 </head>
 <body>
@@ -546,14 +566,14 @@ input,textarea{font-size:16px!important}
 
 <!-- ===== Tinder ===== -->
 <section class="view" id="v-tinder">
-<div class="tinder-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="tinder-logo">🔥 tinder</span><span style="margin-left:auto;display:flex;gap:6px"><button id="tdisc-open" title="発見設定" style="background:#f2f2f7;border:none;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer">🎛️</button><button id="tbell" title="通知" style="background:#f2f2f7;border:none;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer;position:relative">🔔<span class="badge" id="bd-tinder-in" style="position:absolute;top:-3px;right:-3px"></span></button></span></div>
-<div class="tinder-tabs"><button class="act" id="ttab-discover">発見</button><button id="ttab-match">マッチ</button><button id="ttab-prof">プロフィール</button></div>
+<div class="tinder-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="tinder-logo">🔥 tinder</span><span style="margin-left:auto;display:flex;gap:6px"><button id="tgold-open" title="Tinder Gold" style="background:linear-gradient(135deg,#f6c453,#e8a33d);border:none;border-radius:999px;height:34px;padding:0 11px;font-size:12.5px;font-weight:900;cursor:pointer;font-family:inherit;color:#5b4300">⭐ Gold</button><button id="tdisc-open" title="発見設定" style="background:#f2f2f7;border:none;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer">🎛️</button><button id="tbell" title="通知" style="background:#f2f2f7;border:none;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer;position:relative">🔔<span class="badge" id="bd-tinder-in" style="position:absolute;top:-3px;right:-3px"></span></button></span></div>
+<div class="tinder-tabs"><button class="act" id="ttab-discover">発見</button><button id="ttab-match">マッチ</button><button id="ttab-msg">メッセージ<span class="unread-dot" id="ttab-msg-dot" style="display:none;margin-left:5px">1</span></button><button id="ttab-prof">プロフィール</button></div>
 <div id="tinder-deck-wrap" style="display:flex;flex-direction:column;flex:1;min-height:0">
 <div class="swipe-wrap" id="swipe-wrap"></div>
 <div class="swipe-actions"><button id="btn-rewind" aria-label="巻き戻し" style="color:#ffb302;font-size:20px">↩️</button><button class="nope" id="btn-nope" aria-label="Nope">✕</button><button class="super" id="btn-super" aria-label="Super Like">⭐</button><button class="like" id="btn-like" aria-label="Like">❤️</button><button id="btn-boost" aria-label="ブースト" style="color:#7b2ff7;font-size:20px">⚡</button></div>
 </div>
 <div id="tinder-chat-wrap" style="display:none;flex-direction:column;flex:1;min-height:0">
-<div style="padding:10px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center"><img class="avatar" src="assets/tinder-hiroto-1.jpg" width="36" height="36" alt=""><span><span style="font-weight:800;font-size:15px;display:block">ひろと</span><span style="font-size:11px;color:#2ee59d">● マッチしました</span></span></div>
+<div style="padding:10px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center"><img class="avatar" id="tchat-ava" src="assets/tinder-hiroto-1.jpg" width="36" height="36" alt=""><span><span style="font-weight:800;font-size:15px;display:block">ひろと</span><span id="tchat-status" style="font-size:11px;color:#2ee59d">● マッチしました</span></span></div><div id="tchat-banner" style="display:none;background:#f2f2f7;color:#6e6e73;font-size:12px;line-height:1.6;padding:9px 14px;flex:none">🔒 ひろとは退会しました。このチャットは思い出として読み取り専用で残っています。</div>
 <div class="t-chat-scroll" id="tchat"></div>
 <div class="t-choices" id="t-choices"></div>
 <div style="padding:9px 12px 22px;border-top:1px solid #eee;color:#8e8e93;font-size:13px">メッセージを入力…（v1では選択肢で返信）</div>
@@ -572,6 +592,7 @@ input,textarea{font-size:16px!important}
 </div>
 <div class="t-sheet" id="tdisc-sheet"><div class="box"><h3>🎛️ 発見設定</h3><div class="sub">ここで変えた条件は、実際にカードの表示に反映されるよ（ひろとは特別枠でいつも出てきます）。</div><div class="t-setrow"><span>最大距離</span><span id="tdisc-dist-v">100 km</span></div><input type="range" class="t-range" id="tdisc-dist" min="1" max="100" value="100"><div class="t-setrow"><span>年齢の下限</span><span id="tdisc-amin-v">18歳</span></div><input type="range" class="t-range" id="tdisc-amin" min="18" max="40" value="18"><div class="t-setrow"><span>年齢の上限</span><span id="tdisc-amax-v">40歳以上</span></div><input type="range" class="t-range" id="tdisc-amax" min="18" max="40" value="40"><div class="t-setrow"><span>⭐ Super Like を優先表示</span><span><button class="tgl-chip sel" id="tdisc-super">ON</button></span></div><div class="t-setrow"><span>🔥 最近アクティブな人を優先</span><span><button class="tgl-chip sel" id="tdisc-active">ON</button></span></div><button id="tdisc-apply" style="width:100%;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:13px;font-weight:900;cursor:pointer;font-family:inherit;margin-top:18px">この条件で探す</button><button class="sheet-close" id="tdisc-close">閉じる</button></div></div>
 <div class="t-sheet" id="tdetail-sheet"><div class="box" id="tdetail-box"></div></div>
+<div class="t-sheet" id="tgold-sheet"><div class="box" id="tgold-box"></div></div>
 <div id="match-overlay"><h2>It's a Match!</h2><p style="margin-top:8px;font-size:14px;line-height:1.6">ひろと とマッチしました ⭐ Super Likeから<br>2026年9月27日</p><div class="avatars"><img src="assets/nao-tinder-1.jpg" alt="なお" style="object-fit:cover;object-position:center"><img src="assets/tinder-hiroto-1.jpg" alt="ひろと"></div><button id="match-msg-btn" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button><button id="match-keep-btn" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button></div>
 </section>
 
@@ -821,12 +842,14 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>𝕏 フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-x">189</span></div>
 <div class="setrow"><span>🔥 炎上度のピーク</span><span style="color:#8e8e93;font-size:12.5px" id="set-heat">0%</span></div>
 <div class="setrow"><span>📞 通話した回数</span><span style="color:#8e8e93;font-size:12.5px" id="set-calls">0回</span></div>
-<div class="setrow"><span>🔥 Tinder マッチ数</span><span style="color:#8e8e93;font-size:12.5px">1組（ひろと）</span></div>
-<div class="setrow"><span>⭐ Super Like 受信</span><span style="color:#8e8e93;font-size:12.5px">1件（ひろとから）</span></div>
+<div class="setrow"><span>👆 Tinder スワイプ数</span><span style="color:#8e8e93;font-size:12.5px" id="set-t-swipe">0回</span></div>
+<div class="setrow"><span>❤️ Tinder Like数</span><span style="color:#8e8e93;font-size:12.5px" id="set-t-like">0回</span></div>
+<div class="setrow"><span>🔥 Tinder マッチ数</span><span style="color:#8e8e93;font-size:12.5px" id="set-t-match">0組</span></div>
+<div class="setrow"><span>⭐ Super Like 受信</span><span style="color:#8e8e93;font-size:12.5px" id="set-t-super">まだ</span></div>
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v15</b>（Tinderアプリ大幅改修・第1弾：スワイプ＆プロフィール）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v16</b>（Tinderアプリ大幅改修・第2弾：マッチ／チャット／プレミアム／物語連動）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2867,6 +2890,212 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       panel.style.display="none"; toast("✏️ <b>プロフィールを保存しました</b><br>この編集はTinder内だけ。ひろとが見てる1枚はそのまま");
     });
   }
+})();
+</script>
+<script>
+/* ===== Tinder ver v16: matches & messages split, chat upgrades (read receipts, double-tap hearts, typing, photo sending, night mood), Gold/Platinum upsell + Likes You + Top Picks, home/lock notifications, story-linked withdrawal state, live Tinder stats in settings ===== */
+(function(){
+  function $(q){ return document.querySelector(q); }
+  window.__tUnread=0;
+  var chatWrap=$("#tinder-chat-wrap"), tchat=$("#tchat");
+  function showPane(name){
+    ["#tinder-deck-wrap","#tinder-chat-wrap","#tinder-match-wrap","#tinder-prof-wrap"].forEach(function(sel){ var el=$(sel); if(el) el.style.display="none"; });
+    var t = name==="deck" ? "#tinder-deck-wrap" : name==="chat" ? "#tinder-chat-wrap" : name==="match" ? "#tinder-match-wrap" : "#tinder-prof-wrap";
+    var el=$(t); if(el) el.style.display=(name==="match"||name==="prof")?"block":"flex";
+    ["discover","match","msg","prof"].forEach(function(k){ var b=document.getElementById("ttab-"+k); if(b) b.classList.toggle("act",(name==="deck"&&k==="discover")||(name==="match"&&k==="match")||(name==="chat"&&k==="msg")||(name==="prof"&&k==="prof")); });
+  }
+  function clearUnread(){
+    window.__tUnread=0;
+    ["bd-tinder","bd-tinder-in"].forEach(function(id){ var b=document.getElementById(id); if(b) b.textContent=""; });
+    var dot=$("#ttab-msg-dot"); if(dot) dot.style.display="none";
+  }
+  var msgTab=$("#ttab-msg");
+  if(msgTab) msgTab.addEventListener("click",function(){
+    if(window.__tinder && window.__tinder.matched){ showPane("chat"); clearUnread(); }
+    else toast("まだメッセージはないよ。まずはマッチしよう🔥");
+  });
+  /* clear unread whenever chat is opened by any route */
+  if(chatWrap) new MutationObserver(function(){ if(chatWrap.style.display==="flex") clearUnread(); }).observe(chatWrap,{attributes:true,attributeFilter:["style"]});
+  /* --- match → notifications (home badge + in-app bell + lock screen) --- */
+  var wasMatched=false, lockDone=false;
+  setInterval(function(){
+    var m=window.__tinder && window.__tinder.matched;
+    if(m && !wasMatched){
+      wasMatched=true; window.__tUnread=1;
+      ["bd-tinder","bd-tinder-in"].forEach(function(id){ var b=document.getElementById(id); if(b) b.textContent="1"; });
+      var dot=$("#ttab-msg-dot"); if(dot) dot.style.display="inline-flex";
+      if(!lockDone){ lockDone=true; var ln=document.querySelector(".lock-notifs");
+        if(ln){ var d=document.createElement("div"); d.className="lock-notif"; d.innerHTML='<span class="p-ic" style="background:linear-gradient(135deg,#fd267d,#ff7854)">🔥</span><span><b>Tinder</b> ・ たった今<br>It\'s a Match! ひろととマッチしました ⭐</span>'; ln.insertBefore(d, ln.firstChild); } }
+    }
+    if(!m) wasMatched=false;
+    updStats(); checkWithdrawn();
+  },900);
+  var bell=$("#tbell");
+  if(bell) bell.addEventListener("click",function(){
+    var m=window.__tinder && window.__tinder.matched;
+    toast(m ? "🔔 <b>Tinderの通知</b><br>⭐ ひろとから Super Like が届いています<br>🔥 It's a Match!（9月27日）" : "🔔 <b>Tinderの通知</b><br>⭐ あなたを Super Like した人がいます…カードをめくってみて");
+  });
+  /* --- match pane: new matches row + search + message list separation --- */
+  var matchTab=$("#ttab-match");
+  if(matchTab) matchTab.addEventListener("click",function(){ setTimeout(enhanceMatch,80); });
+  function enhanceMatch(){
+    var wrapEl=$("#tinder-match-wrap"); if(!wrapEl || wrapEl.dataset.enh) { paintUnread(); return; }
+    wrapEl.dataset.enh="1";
+    var list=$("#match-list"); if(!list) return;
+    var sec=document.createElement("div");
+    sec.innerHTML='<div style="font-weight:900;font-size:15px;margin:6px 0 2px">✨ 新規マッチ</div><div class="newrow" id="tm-newrow"></div>'
+      +'<input id="tm-search" placeholder="マッチ・メッセージを検索" autocomplete="off" style="width:100%;box-sizing:border-box;border:1.5px solid #e5e5ea;border-radius:999px;padding:10px 14px;font-size:13.5px;font-family:inherit;margin:4px 0 10px">'
+      +'<div style="font-weight:900;font-size:15px;margin:2px 0 8px">💬 メッセージ</div>';
+    list.parentNode.insertBefore(sec, list);
+    renderNewRow();
+    var si=$("#tm-search");
+    if(si) si.addEventListener("input",function(){
+      var q=si.value.trim();
+      list.querySelectorAll(":scope > div").forEach(function(r){ r.style.display=(!q || r.textContent.includes(q))?"":"none"; });
+      var nr=$("#tm-newrow"); if(nr) nr.querySelectorAll(".newtile").forEach(function(t2){ t2.style.display=(!q || t2.textContent.includes(q))?"":"none"; });
+    });
+    var likesBox=wrapEl.querySelector('div[style*="1299c3"]');
+    if(likesBox){ likesBox.style.cursor="pointer"; likesBox.addEventListener("click",function(){ openGold(); }); }
+    paintUnread();
+  }
+  function renderNewRow(){
+    var nr=$("#tm-newrow"); if(!nr) return;
+    var m=window.__tinder && window.__tinder.matched;
+    if(!m){ nr.innerHTML='<div style="font-size:12.5px;color:#8e8e93;padding:8px 2px">まだ新規マッチはありません</div>'; return; }
+    nr.innerHTML='<button class="newtile" id="tm-tile-h"><img src="assets/tinder-hiroto-1.jpg" alt=""><span>ひろと ⭐</span></button>'
+      +'<button class="newtile" data-gold="1"><span class="ph blurme" style="background:linear-gradient(160deg,#667eea,#764ba2)">？</span><span>？？？ 🔒</span></button>'
+      +'<button class="newtile" data-gold="1"><span class="ph blurme" style="background:linear-gradient(160deg,#11998e,#38ef7d)">？</span><span>？？？ 🔒</span></button>';
+    var th=$("#tm-tile-h"); if(th) th.addEventListener("click",function(){ showPane("chat"); clearUnread(); });
+    nr.querySelectorAll("[data-gold]").forEach(function(t2){ t2.addEventListener("click",function(){ openGold(); }); });
+  }
+  function paintUnread(){
+    var list=$("#match-list"); if(!list) return;
+    var row=list.querySelector(":scope > div"); if(!row) return;
+    var old=row.querySelector(".unread-dot"); if(old) old.remove();
+    if(window.__tUnread>0){ var s=document.createElement("span"); s.className="unread-dot"; s.textContent=window.__tUnread; row.appendChild(s); }
+    renderNewRow();
+  }
+  /* --- chat upgrades --- */
+  if(tchat){
+    var freeTyping=null;
+    new MutationObserver(function(muts){
+      muts.forEach(function(mu){ mu.addedNodes.forEach(function(n){
+        if(n.nodeType!==1) return;
+        if(n.classList.contains("t-bub") && n.classList.contains("them")){
+          if(freeTyping){ freeTyping.remove(); freeTyping=null; }
+          var prev=n.previousElementSibling;
+          while(prev && !(prev.classList && prev.classList.contains("t-bub") && prev.classList.contains("me"))) prev=prev.previousElementSibling;
+          if(prev && !prev.querySelector(".t-read")){ var r=document.createElement("span"); r.className="t-read"; r.textContent="既読"; prev.appendChild(r); }
+        }
+        if(n.classList.contains("daychip")){ tchat.classList.toggle("night", n.textContent.includes("夜")); }
+        if(n.classList.contains("t-bub") && n.classList.contains("me") && typeof state!=="undefined" && state._tinderDone && !window.__tWithdrawn){
+          var mine=n;
+          setTimeout(function(){
+            if(freeTyping || !mine.isConnected) return;
+            var nx=mine.nextElementSibling;
+            if(nx && nx.classList && nx.classList.contains("them")) return;
+            freeTyping=document.createElement("div"); freeTyping.className="t-bub them"; freeTyping.textContent="・・・"; freeTyping.style.opacity=".6";
+            tchat.appendChild(freeTyping); tchat.scrollTop=99999;
+          },250);
+        }
+      }); });
+    }).observe(tchat,{childList:true});
+    tchat.addEventListener("dblclick",function(e){
+      var b=e.target.closest(".t-bub"); if(!b) return;
+      var h=b.querySelector(".t-heart");
+      if(h) h.remove(); else { var s=document.createElement("span"); s.className="t-heart"; s.textContent="❤️"; b.appendChild(s); }
+    });
+    /* photo sending in free chat */
+    var tf=$("#tf-text");
+    if(tf && tf.parentNode){
+      var pb=document.createElement("button"); pb.textContent="📷"; pb.title="写真を送る";
+      pb.style.cssText="background:#f2f2f7;border:none;border-radius:999px;width:42px;font-size:17px;cursor:pointer;flex:none";
+      tf.parentNode.insertBefore(pb, tf);
+      var PHOTOS=["assets/cafe.jpg","assets/cafe3.jpg","assets/ig-sunset.jpg"];
+      var pi=0, PREPLY=["写真ありがとう笑","ええ写真やな😎","…その笑顔、ずるいわ"];
+      pb.addEventListener("click",function(){
+        if(window.__tWithdrawn){ toast("🔒 チャットは思い出として残っています（おまけは下のボタンから）"); return; }
+        if(!(typeof state!=="undefined" && state._tinderDone)){ toast("💬 まずは選択肢の会話を進めてね（LINE交換後に写真も送れるよ）"); return; }
+        var d=document.createElement("div"); d.className="t-bub me"; d.style.padding="6px";
+        d.innerHTML='<img src="'+PHOTOS[pi%PHOTOS.length]+'" alt="" style="width:180px;max-width:100%;border-radius:12px;display:block">';
+        pi++; tchat.appendChild(d); tchat.scrollTop=99999;
+        var rp=PREPLY[(pi-1)%PREPLY.length];
+        setTimeout(function(){ var r=document.createElement("div"); r.className="t-bub them"; r.textContent=rp; tchat.appendChild(r); tchat.scrollTop=99999; },1100);
+      });
+    }
+  }
+  /* --- Gold / Platinum upsell --- */
+  var gsheet=$("#tgold-sheet"), gbox=$("#tgold-box");
+  function openGold(){
+    if(!gbox) return;
+    var m=window.__tinder && window.__tinder.matched;
+    var himTile = m
+      ? '<button class="picktile" id="gp-him"><span class="im"><img src="assets/tinder-hiroto-1.jpg" alt=""></span><span>ひろと ⭐ マッチ済み</span></button>'
+      : '<button class="picktile" id="gp-him"><span class="im"><img class="blurme" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>⭐ Super Likeした人</span></button>';
+    gbox.innerHTML='<h3>⭐ Tinder Gold / Platinum</h3><div class="sub">あなたを Like した人が見放題…という設定の画面です。課金はできません（演出）。</div>'
+      +'<div class="gold-plan"><div style="font-weight:900;font-size:15px">Tinder Gold　<span style="color:#b8860b">月額 ¥2,200〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">あなたをLikeした人が見える／無制限のLike／月1ブースト</div><button class="gold-buy" style="margin-top:9px;background:#e8a33d;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Goldにアップグレード</button></div>'
+      +'<div class="gold-plan plat"><div style="font-weight:900;font-size:15px">Tinder Platinum　<span style="color:#5b7ba5">月額 ¥3,400〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">マッチ前にメッセージ送信／あなたのLikeを優先表示／スーパーいいね週5回</div><button class="gold-buy" style="margin-top:9px;background:#5b7ba5;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Platinumにアップグレード</button></div>'
+      +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">💛 あなたを Like した人</div><div class="pickrow">'
+      + himTile
+      +'<button class="picktile" data-blur="1"><span class="im"><span class="blurme" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(160deg,#667eea,#764ba2);color:#fff">け</span></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><span class="blurme" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(160deg,#11998e,#38ef7d);color:#fff">そ</span></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><span class="blurme" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(160deg,#fc4a1a,#f7b733);color:#fff">れ</span></span><span>？？？ 🔒</span></button>'
+      +'</div>'
+      +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">🔥 Top Picks（本日のおすすめ）</div><div class="pickrow">'
+      + himTile.replace('id="gp-him"','id="gp-him2"')
+      +'<button class="picktile" data-pick="けんた"><span class="im"><span style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(160deg,#667eea,#764ba2)">🏕️</span></span><span>けんた 26</span></button>'
+      +'<button class="picktile" data-pick="だいき"><span class="im"><span style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(160deg,#ff9a9e,#fecfef)">🌇</span></span><span>だいき 24</span></button>'
+      +'</div>'
+      +'<button class="sheet-close" id="gold-close">閉じる</button>';
+    gsheet.classList.add("on");
+    document.getElementById("gold-close").addEventListener("click",function(){ gsheet.classList.remove("on"); });
+    gbox.querySelectorAll(".gold-buy").forEach(function(b){ b.addEventListener("click",function(){ toast("💳 <b>課金はできません</b>（これは演出だよ）。でも気持ちはプラチナム級やね"); }); });
+    gbox.querySelectorAll("[data-blur]").forEach(function(b){ b.addEventListener("click",function(){ toast("🔒 Goldになると見える…という設定。ひろとの分だけはマッチ後に見えるよ"); }); });
+    gbox.querySelectorAll("[data-pick]").forEach(function(b){ b.addEventListener("click",function(){ toast("🔥 Top Picks："+b.dataset.pick+" は発見タブのカードでも会えるよ"); }); });
+    ["gp-him","gp-him2"].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener("click",function(){ gsheet.classList.remove("on"); if(window.__tinder && window.__tinder.matched){ showPane("chat"); clearUnread(); } else { showPane("deck"); toast("⭐ Super Likeしてくれた人は、発見タブのカードにいるよ"); } }); });
+  }
+  var gop=$("#tgold-open"); if(gop) gop.addEventListener("click",openGold);
+  if(gsheet) gsheet.addEventListener("click",function(e){ if(e.target===gsheet) gsheet.classList.remove("on"); });
+  window.__openGold=openGold;
+  /* --- story-linked withdrawal (after an ending / next morning) --- */
+  var wApplied=false;
+  function checkWithdrawn(){
+    if(wApplied) return;
+    if(!(typeof state!=="undefined" && (state.ended || state.act2))) return;
+    wApplied=true; window.__tWithdrawn=true;
+    var st=$("#tchat-status"); if(st){ st.textContent="退会済み ・ チャットは思い出として残っています"; st.style.color="#8e8e93"; }
+    var av=$("#tchat-ava"); if(av) av.style.filter="grayscale(1) opacity(.55)";
+    var bn=$("#tchat-banner"); if(bn) bn.style.display="block";
+    var pw=$("#tinder-prof-wrap");
+    if(pw){ var card=pw.children[1];
+      if(card){ var img=card.querySelector("img"); if(img) img.style.filter="grayscale(1) opacity(.55)";
+        var badge=document.createElement("div"); badge.style.cssText="background:#3a3a3c;color:#fff;font-weight:900;font-size:13px;padding:9px 14px"; badge.textContent="🚪 このアカウントは退会済みです";
+        card.insertBefore(badge, card.firstChild); } }
+    var inp=$("#tf-text"), snd=$("#tf-send");
+    if(inp && !document.getElementById("omake-btn")){
+      inp.disabled=true; inp.placeholder="このチャットは思い出として残っています"; if(snd) snd.disabled=true;
+      var bar=document.createElement("div");
+      bar.style.cssText="padding:0 12px 20px;background:#fff;flex:none";
+      bar.innerHTML='<button id="omake-btn" style="width:100%;background:#fff5f7;border:1.5px solid #fd267d;color:#d81159;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">🎁 おまけフリーチャットを開く（本編とは別）</button>';
+      chatWrap.appendChild(bar);
+      document.getElementById("omake-btn").addEventListener("click",function(){
+        window.__tWithdrawn=false; inp.disabled=false; if(snd) snd.disabled=false;
+        inp.placeholder="（おまけ）ひろとにメッセージ…";
+        var d=document.createElement("div"); d.style.cssText="align-self:center;background:#fff0f4;color:#d81159;font-size:12px;border-radius:12px;padding:7px 11px;max-width:88%;text-align:center;line-height:1.55";
+        d.textContent="🎁 ここから先は本編クリア後の「おまけ」フリーチャットです"; tchat.appendChild(d); tchat.scrollTop=99999;
+        bar.remove(); toast("🎁 <b>おまけモード</b>：本編の結末とは別に、自由に話せるよ");
+      });
+    }
+  }
+  /* --- settings stats linkage --- */
+  function updStats(){
+    var st=window.__tinder && window.__tinder.stats ? window.__tinder.stats() : null; if(!st) return;
+    var a=$("#set-t-swipe"); if(a) a.textContent=st.swipe+"回";
+    var b=$("#set-t-like"); if(b) b.textContent=(st.like+st.super)+"回（うちSuper "+st.super+"）";
+    var c=$("#set-t-match"); if(c) c.textContent=(window.__tinder.matched?"1組（ひろと）":"0組");
+    var d=$("#set-t-super"); if(d) d.textContent=state && state._superNotified ? "1件（ひろとから）" : "まだ";
+  }
+  updStats();
 })();
 </script>
 </body>
