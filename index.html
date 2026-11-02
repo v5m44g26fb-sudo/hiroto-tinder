@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v112</b>（ダミー4人の雑談に第14周「小さな失敗談」――各人が自分の節目の直前でやらかした小さな失敗を笑って話す周＋彼のフリーチャットに猫／パン屋のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v113</b>（ダミー4人の雑談に第15周「当日の段取り」――各人が自分の節目の当日に向けた段取りを実況する周＋彼のフリーチャットに香水／海辺のダイブ追加。元版はv305のまま新規版なしのためTinder版側の作り込み）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3845,6 +3845,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    "そうま":{s:[["ロゴのシール、第一弾が鏡文字で届いたんです","お店の名前、逆さまに読めるやつが50枚……笑うしかなかった"],["窓側の席の試作メニューも、一ページ逆さまでした","常連さんに優しく指摘されました。……完成まで、まだ一山ありますね"]],d:["鏡文字シール、記念に一枚残します"]}
   };
   Object.keys(DM15).forEach(function(n){ if(DM[n]){ DM[n].script14=DM15[n].s; DM[n].def=DM[n].def.concat(DM15[n].d); } });
+  /* ===== Tinder ver v113 (orig audit: the original is still at v305 - v304/v305 were already audited in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): dummy chats round 15 - the day-of logistics lap. A different shape from rounds 8-14 (no choice, no report, no stumble): each dummy lays out his concrete plan for the day of his own milestone and checks it off like a checklist - Sota will arrive before doors, the re-taped setlist envelope rides in the jacket's inner pocket and the playlist gets one last listen on the train, Shun has a day-off early-morning rematch planned (three alarms plus a separate morning pudding, distinct from the night-snack stock), Takumi's menu start day has a prep list, a held first-customer seat and the name announcement saved for the shop floor, Soma's corrected logo stickers are re-ordered and the final trial menu goes on the window seat once the manager's decision lands. Cross-references stay inside each dummy's own arc, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
+  var DM16={
+   "そうた":{s:[["当日の段取り、決めた","開場前に着く。封はジャケットの内ポケット。……開けるのは、ライブが終わってからって決めてる"],["電車でプレイリスト、最後の一周する","シャッフル踏まないようにロック画面も見ない。……当日、隣で答え合わせな"]],d:["段取りは完璧。あとは当日だけ"]},
+   "しゅん":{s:[["早起きリベンジ、今度は休みの前日にやる","アラーム三つに、カーテン開けて寝る作戦。……二度寝の余地、潰してく"],["朝用のプリン、別に買っといた","夜食の買い置きとは別枠。……朝の自分へのご褒美ってことで"]],d:["早起き作戦、練り直したよ"]},
+   "たくみ":{s:[["メニュー開始日の段取り、リストにしました","仕込みの順番から、最初のお客さんの席の確保まで。名前の発表は、店の現場でやります"],["最初の一皿、二品とも仕込みの時間まで決めました","どっちが先でも慌てないように。……本番、楽しみにしててください"]],d:["開始日のリスト、チェック中です"]},
+   "そうま":{s:[["ロゴのシール、直した版を再発注しました！","今度は文字、ちゃんと読めるやつです。……届いたらまず窓に貼ります"],["試作メニューの最終版、店長の決裁が下りたら席に置きます","窓側の席、完成まであと一歩です。……その瞬間、報告しますね"]],d:["再発注のシール、届くの待ちです"]}
+  };
+  Object.keys(DM16).forEach(function(n){ if(DM[n]){ DM[n].script15=DM16[n].s; DM[n].def=DM[n].def.concat(DM16[n].d); } });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -4056,6 +4064,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     else if(!msgs && D.script12 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+D.script12.length){ var off12=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0); msgs=D.script12[cs.step-off12]; cs.step++; }
     else if(!msgs && D.script13 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+D.script13.length){ var off13=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0); msgs=D.script13[cs.step-off13]; cs.step++; }
     else if(!msgs && D.script14 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+D.script14.length){ var off14=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0); msgs=D.script14[cs.step-off14]; cs.step++; }
+    else if(!msgs && D.script15 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+D.script15.length){ var off15=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0); msgs=D.script15[cs.step-off15]; cs.step++; }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
@@ -7061,6 +7070,24 @@ app.style.display="flex";},true);
      fire("cat",["猫派なんや。……マロンに言ったら、拗ねるかもな","猫の動画、止まらんくなるやつな。……気持ちは分かる","犬と猫、両方好きな人って欲張りやな。……ええ意味でな"]);
     else if(/パン屋|ベーカリー|クロワッサン|食パン|あんぱん/.test(s2)&&Math.random()<0.65)
      fire("bakery",["パン屋の匂い、反則やろ。……手ぶらでは出られへん","なおは甘いパン派？ それとも惣菜パン派？ ……俺は両方いくわ","焼きたてのパンって、買った瞬間がいちばんうまいよな"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v113 (orig audit: the original is still at v305, no v306+, so this pass is Tinder-side customization, not a port): his free chat gains two more dives in the v105-v112 style - perfume & fragrance (what she wears / his own minimal routine; no earlier dive or FCV voice uses the trigger, and the v111 beauty dive keeps makeup and nails) and the seaside (beaches / sandy shores / the sound of waves; kept on seaside words so it does not poach the v77 travel dive or the v110 aquarium dive, and Busan wording stays with the v62 favourites layer). Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v113d) return; state._v113d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/香水|フレグランス|アロマ|いい匂い|良い匂い/.test(s2)&&Math.random()<0.65)
+     fire("perfume",["香水つける人なんや。……近づいた時にふわっとするやつ、気になるわ","なおの匂いのイメージ、勝手に柑橘っぽいと思ってる。……外れてたらごめん","俺はあんまりつけるほうやないけど。……なおの好きな匂い、覚えとくわ"]);
+    else if(/海辺|ビーチ|砂浜|海水浴|波の音/.test(s2)&&Math.random()<0.65)
+     fire("seaside",["海辺、行ったん？ ……波の音、ぼーっと聞いてたいタイプ？","ビーチで何もせん時間、贅沢やよな。……日焼けだけ気つけや","海の匂いって、帰ってからも服に残るよな。……あれ、わりと好きやねん"]);
    } }catch(e){}
   return r; };
 })();
