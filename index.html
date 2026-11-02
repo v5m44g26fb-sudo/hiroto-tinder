@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v56</b>（元版v253までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v57</b>（元版v253までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -6428,6 +6428,29 @@ app.style.display="flex";},true);
  const iv=setInterval(()=>{ if(hideBar()||Date.now()-t0>20000) clearInterval(iv); },600);
  hideBar();
 })();
+/* ===== Tinder ver v57: dummy match rows gain a presence line - online / recently active + distance, rotating daily (same date-seeded rotation idea as v50's Gold panel, but on the match list; story-free, nothing explicit, everyone 20+) ===== */
+(function(){
+ const DIST={ "けんた":"2 km","そうた":"5 km","れん":"3 km","はると":"8 km","しゅん":"12 km","だいき":"4 km","たくみ":"18 km","ゆうき":"6 km","りく":"3 km","かいと":"9 km","そうま":"2 km","はやて":"15 km" };
+ const dayOfYear=()=>{ const n=new Date(); return Math.floor((n-new Date(n.getFullYear(),0,0))/86400000); };
+ const presence=(name)=>{ let h=dayOfYear()*7; for(let i=0;i<name.length;i++) h+=name.charCodeAt(i)*(i+3);
+  const m=h%3, d=DIST[name]?(" ・ "+DIST[name]+"先"):"";
+  if(m===0) return {t:"🟢 オンライン中"+d, on:true};
+  if(m===1) return {t:"⚪ "+(5+(h%46))+"分前にアクティブ"+d, on:false};
+  return {t:"⚪ "+(1+(h%8))+"時間前にアクティブ"+d, on:false}; };
+ const decorate=()=>{ document.querySelectorAll('#match-list > div[id^="dm-row-"]').forEach(row=>{
+   if(row.querySelector(".v57-pres")) return;
+   const pv=row.querySelector(".dm-pv"); if(!pv) return;
+   const name=row.id.replace("dm-row-","");
+   const s=document.createElement("span"); s.className="v57-pres";
+   s.style.cssText="display:block;font-size:11px;margin-top:2px";
+   pv.parentNode.insertBefore(s, pv.nextSibling); row.dataset.v57name=name; }); };
+ const refresh=()=>{ document.querySelectorAll('#match-list > div[id^="dm-row-"] .v57-pres').forEach(s=>{
+   const row=s.closest('div[id^="dm-row-"]'); const p=presence(row.dataset.v57name||"");
+   s.textContent=p.t; s.style.color=p.on?"#34c759":"#8e8e93"; }); };
+ const list=document.querySelector("#match-list");
+ if(list) new MutationObserver(()=>{ decorate(); refresh(); }).observe(list,{childList:true});
+ decorate(); refresh(); setInterval(refresh,60000);
+})(); 
 </script>
 </body>
 </html>
