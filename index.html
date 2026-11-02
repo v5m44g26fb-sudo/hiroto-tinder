@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v81</b>（元版v286までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v82</b>（元版v290までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1383,8 +1383,9 @@ function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async(
   /* ===== v60: free-chat voices round 3, fc-t-12..16, same gates and one-shot-per-line rule ===== */
   /* ===== v63: free-chat voices round 4, fc-t-17..21 (Busan / shrimp / karaage / late-night closer / live thanks), same gates and one-shot-per-line rule ===== */
   /* ===== v80: free-chat voices round 5, fc-t-22..26 (sleepy good-morning after fc-t-6 / work-weary / cola / moonlit night pool / next-outing, early-mid story only), same gates and one-shot-per-line rule ===== */
+  /* ===== v82: original v290 voices ported - fv-11 (goodnight, after fc-t-7 is spent) and fv-12 (her voice calms him, after fv-9 is spent) join FCV as idx 27/28, same gates and one-shot rule. NOT ported: fv-13 "クリスマス、空けといてな" (orig v290) - an epilogue together-premise line that clashes with this arc's farewell-toned post-ending free chat, same reason v285's Christmas beat was skipped in v79 ===== */
   if(state.phase!=="scandal"){
-    const FCV=[["assets/fc-t-1.mp3","0:02","おつかれさま。今日も、がんばったな"],["assets/fc-t-2.mp3","0:02","ごめん、返事おそなった。レッスンやってん"],["assets/fc-t-3.mp3","0:02","ありがとうな。……ほんまに"],["assets/fc-t-4.mp3","0:04","マロンがな、今日も元気やで。……写真、送るわ"],["assets/fc-t-5.mp3","0:04","……なあ、今日の占い見た？ なんか、当たってそうで怖いわ"],["assets/fc-t-6.mp3","0:01","おはよう。……よく寝れた？"],["assets/fc-t-7.mp3","0:02","おやすみ。ええ夢見てな"],["assets/fc-t-8.mp3","0:02","ごはん食べた？ ちゃんと食べや"],["assets/fc-t-9.mp3","0:02","……雨やな。傘、持ったか？"],["assets/fc-t-10.mp3","0:03","今日な、レッスンで新しい振り入ってん。……むずかってん"],["assets/fc-t-11.mp3","0:02","……なあ、明日も話そな"],["assets/fv-9.mp3","0:04","声、聞きたくなって、電話していい？"],["assets/fc-t-12.mp3","0:03","ちょっと待って、今マロンが膝の上おんねん"],["assets/fc-t-13.mp3","0:03","なあ、カラオケ行ったら何歌うん？"],["assets/fc-t-14.mp3","0:03","プリン、買うてきた。……食べる？"],["assets/fc-t-15.mp3","0:04","サウナ、ええよな。俺もたまに行くで"],["assets/fc-t-16.mp3","0:02","今日のレッスンで、足パンパンや……"],["assets/fc-t-17.mp3","0:02","なあ、釜山行ったことある？"],["assets/fc-t-18.mp3","0:01","エビ好きって、ほんま？"],["assets/fc-t-19.mp3","0:03","からあげは醤油派？ それとも塩派？"],["assets/fc-t-20.mp3","0:02","……もうちょっとだけ、話そ"],["assets/fc-t-21.mp3","0:02","今日のライブ、来てくれてありがとな"],["assets/fc-t-22.mp3","0:02","おはよう。……まだ眠い"],["assets/fc-t-23.mp3","0:02","仕事おつかれ。無理すんなよ"],["assets/fc-t-24.mp3","0:02","コーラ買うてきたで"],["assets/fc-t-25.mp3","0:01","今日、月きれいやな"],["assets/fc-t-26.mp3","0:02","なあ、次はどこ行く？"]];
+    const FCV=[["assets/fc-t-1.mp3","0:02","おつかれさま。今日も、がんばったな"],["assets/fc-t-2.mp3","0:02","ごめん、返事おそなった。レッスンやってん"],["assets/fc-t-3.mp3","0:02","ありがとうな。……ほんまに"],["assets/fc-t-4.mp3","0:04","マロンがな、今日も元気やで。……写真、送るわ"],["assets/fc-t-5.mp3","0:04","……なあ、今日の占い見た？ なんか、当たってそうで怖いわ"],["assets/fc-t-6.mp3","0:01","おはよう。……よく寝れた？"],["assets/fc-t-7.mp3","0:02","おやすみ。ええ夢見てな"],["assets/fc-t-8.mp3","0:02","ごはん食べた？ ちゃんと食べや"],["assets/fc-t-9.mp3","0:02","……雨やな。傘、持ったか？"],["assets/fc-t-10.mp3","0:03","今日な、レッスンで新しい振り入ってん。……むずかってん"],["assets/fc-t-11.mp3","0:02","……なあ、明日も話そな"],["assets/fv-9.mp3","0:04","声、聞きたくなって、電話していい？"],["assets/fc-t-12.mp3","0:03","ちょっと待って、今マロンが膝の上おんねん"],["assets/fc-t-13.mp3","0:03","なあ、カラオケ行ったら何歌うん？"],["assets/fc-t-14.mp3","0:03","プリン、買うてきた。……食べる？"],["assets/fc-t-15.mp3","0:04","サウナ、ええよな。俺もたまに行くで"],["assets/fc-t-16.mp3","0:02","今日のレッスンで、足パンパンや……"],["assets/fc-t-17.mp3","0:02","なあ、釜山行ったことある？"],["assets/fc-t-18.mp3","0:01","エビ好きって、ほんま？"],["assets/fc-t-19.mp3","0:03","からあげは醤油派？ それとも塩派？"],["assets/fc-t-20.mp3","0:02","……もうちょっとだけ、話そ"],["assets/fc-t-21.mp3","0:02","今日のライブ、来てくれてありがとな"],["assets/fc-t-22.mp3","0:02","おはよう。……まだ眠い"],["assets/fc-t-23.mp3","0:02","仕事おつかれ。無理すんなよ"],["assets/fc-t-24.mp3","0:02","コーラ買うてきたで"],["assets/fc-t-25.mp3","0:01","今日、月きれいやな"],["assets/fc-t-26.mp3","0:02","なあ、次はどこ行く？"],["assets/fv-11.mp3","0:03","……なあ、今日はもう寝るん？"],["assets/fv-12.mp3","0:02","なおの声、聞くと落ち着くわ"]];
     const fcUsed=i=>!!(state._fcUsed&&state._fcUsed[i]);
     const fcSend=i=>{ const v=FCV[i]; state._fcUsed=state._fcUsed||{}; state._fcUsed[i]=true; (async()=>{ await himVoice(v[0],v[1]); const cap=document.createElement("div"); cap.style.cssText="align-self:flex-start;margin:-4px 0 8px 44px;font-size:11.5px;color:#8e8e93;max-width:76%;line-height:1.6"; cap.textContent="（ボイス）"+v[2]; const ch=$("#chat"); if(ch){ ch.appendChild(cap); ch.scrollTop=ch.scrollHeight; } if(i===3){ await himPhoto("assets/ig-dog.jpg"); await himMsg("マロン",300); } })(); };
     if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&!fcUsed(0)){ fcSend(0); return; }
@@ -1398,6 +1399,7 @@ function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async(
     if(/おはよう|おはよ/.test(text)&&!fcUsed(5)){ fcSend(5); return; }
     if(/おはよう|おはよ|眠い|ねむい|ねむ/.test(text)&&fcUsed(5)&&!fcUsed(22)){ fcSend(22); return; }
     if(/おやすみ/.test(text)&&!fcUsed(6)){ fcSend(6); return; }
+    if(/寝る|おやすみ|眠たい|ねむたい/.test(text)&&fcUsed(6)&&!fcUsed(27)&&Math.random()<0.65){ fcSend(27); return; }
     if(/プリン/.test(text)&&!fcUsed(14)){ fcSend(14); return; }
     if(/エビ|えび|海老/.test(text)&&!fcUsed(18)){ fcSend(18); return; }
     if(/からあげ|唐揚げ/.test(text)&&!fcUsed(19)){ fcSend(19); return; }
@@ -1414,6 +1416,7 @@ function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async(
     if((new Date().getHours()>=23||new Date().getHours()<2)&&/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(20)){ fcSend(20); return; }
     if(/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(10)){ fcSend(10); return; }
     if(/電話|声聞きたい|声ききたい/.test(text)&&Math.random()<0.4&&!fcUsed(11)){ fcSend(11); return; }
+    if(/声|電話/.test(text)&&fcUsed(11)&&!fcUsed(28)&&Math.random()<0.4){ fcSend(28); return; }
     if((/返事|待ってた|まってた|おそい|遅い/.test(text)||Math.random()<0.15)&&!fcUsed(1)){ fcSend(1); return; }
     if(Math.random()<0.08){ const rest=[0,2].filter(i=>!fcUsed(i)); if(rest.length){ fcSend(pick(rest)); return; } }
     if(Math.random()<0.05&&!fcUsed(10)){ fcSend(10); return; }
