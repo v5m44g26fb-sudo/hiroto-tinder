@@ -803,7 +803,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v8</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v9</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -888,7 +888,7 @@ $("#skip-btn").addEventListener("click",()=>{ if(state.phase!=="prologue") retur
 function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal"; $("#lock-date").textContent="11月2日 日曜日"; $("#news-note").textContent="11月2日（日）夜"; $("#skip-btn").style.display="none"; chapterCard("第6話","バレた日","11月2日（日）夜 —— 。LINEを開いて様子を見てね"); addDayChip("11月2日（日）"); scheduleFirstPush(); }
 function chapter(n){ if(state.phase!=="prologue") return; state.chapter=n; const LD={1:"9月27日 土曜日",2:"10月4日 土曜日",3:"10月12日 日曜日",4:"10月18日 土曜日",5:"11月1日 土曜日"}; if(LD[n]) $("#lock-date").textContent=LD[n]; const ND={1:"9月27日（土）夜",2:"10月4日（土）夜",3:"10月12日（日）夜",4:"10月18日（土）夜",5:"11月1日（土）夜"}; if(ND[n]) $("#news-note").textContent=ND[n]; const t=state._token; if(n===1) ch1(t); else if(n===2) ch2(t); else if(n===3) ch3(t); else if(n===4) ch4(t); else if(n===5) ch5(t); }
 async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","9月27日（土） —— Tinderで出会った日。<br>ホームの Tinder を開いてね"); state._tinderWaiting=true; toast("🔥 <b>Tinder</b>を開いて、スワイプしてみて"); }
-async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","10月4日（土） —— 待ち合わせ場所。<br>顔を上げたら——え、本物やん！？<br>LINEを開いてね"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2100); later(()=>toast("🎩 <b>帽子が深い</b>：それでも、目元だけですぐ分かった"),3900);
+async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","10月4日（土） —— 待ち合わせ場所。<br>顔を上げたら——え、本物やん！？<br>LINEを開いてね"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2100); later(()=>toast("🎩 <b>帽子が深い</b>：それでも、目元だけですぐ分かった"),3900); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),5600);
   await himMsg("…なお？",700); if(!alive(t))return; await himMsg("ごめんな、隠してて"); if(!alive(t))return; await himMsg("会ってから言お思ててん"); if(!alive(t))return; await himMsg("びっくりしたよな"); if(!alive(t))return; await himMsg("帽子とマスクで、ごめん"); if(!alive(t))return; await himMsg("人目がな…でも、会いたかってん");
   if(!alive(t))return; askChoices("なおの反応は——",[
     {label:"え…本物やん！？",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("騒がんでくれて、ありがとう"); if(!alive(t))return; await himMsg("今日は普通に、楽しもな"); ch2main(t); }},
@@ -896,14 +896,15 @@ async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2�
   ]); }
 async function ch2main(t){ if(!alive(t))return; await himMsg("今日、楽しみにしてた",700); if(!alive(t))return; await himMsg("カフェオレの美味い店、見つけてん"); if(!alive(t))return; await himMsg("あ、俺は帽子かぶってくわ"); if(!alive(t))return; await himMsg("人目、ちょっと気になるねん…理由は、もう分かるよな");
   later(()=>{ addPhoto("assets/ig-drink.jpg","初デート☕️"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },6500);
-  later(async()=>{ if(!alive(t))return; await himMsg("今日、楽しかった"); if(!alive(t))return; await himMsg("カフェオレ、なおの好きなやつ覚えたで"); if(!alive(t))return; await himVoice("assets/vm-date.mp3","0:03");
+  later(async()=>{ if(!alive(t))return; await himMsg("今日、楽しかった"); if(!alive(t))return; await himMsg("カフェオレ、なおの好きなやつ覚えたで"); if(!alive(t))return; await himMsg("今日は…帰したくないな"); if(!alive(t))return; await himMsg("…なんて、冗談やで笑"); if(!alive(t))return; await himVoice("assets/vm-date.mp3","0:03");
     if(!alive(t))return; askChoices("なおの返信を選んで",[
       {label:"私も楽しかった！",fn:async()=>{ if(!alive(t))return; await himMsg("よかった"); await himMsg("また行こな"); later(()=>chapter(3),2000); }},
       {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画な、任せて"); await himMsg("なおの好きそうなん、探しとく"); later(()=>chapter(3),2000); }},
+      {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>chapter(3),2000); }},
     ]); },8000); }
-async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『告白』","帰り道、駅までの並木道で。"); chapterCard("第3話","告白","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね");
+async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『告白』","帰り道、駅までの並木道で。"); chapterCard("第3話","告白","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
   await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("最初は正直、軽い気持ちやってん。でも…"); if(!alive(t))return; await himMsg("俺、なおが好きやねん"); if(!alive(t))return; await himMsg("付き合ってほしい"); if(!alive(t))return; await himVoice("assets/vm-confess.mp3","0:03");
-  if(!alive(t))return; const yesEnd=async()=>{ if(!alive(t))return; await himMsg("ほんまに！？"); if(!alive(t))return; await himMsg("ありがとう、なお"); await himMsg("絶対、大事にする"); later(()=>chapter(4),2200); };
+  if(!alive(t))return; const yesEnd=async()=>{ if(!alive(t))return; await himMsg("ほんまに！？"); if(!alive(t))return; await himMsg("ありがとう、なお"); await himMsg("絶対、大事にする"); if(!alive(t))return; await himMsg("…手、つないでいい？"); later(()=>chapter(4),2200); };
   askChoices("なおの答えは——",[
     {label:"うん、付き合う",fn:yesEnd},
     {label:"私でいいの…？",fn:async()=>{ if(!alive(t))return; await himMsg("なおがいいねん"); await himMsg("他の誰でもない"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"うん、付き合う",fn:yesEnd}]); }},
@@ -926,7 +927,7 @@ async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5�
     {label:"明日も会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も"); ch5end(t); }},
     {label:"帽子なしで歩ける日がいいな",fn:async()=>{ if(!alive(t))return; await himMsg("うん…"); if(!alive(t))return; await himMsg("ごめんな、窮屈な思いさせて"); ch5end(t); }},
   ]); }
-async function ch5end(t){ if(!alive(t))return; await himMsg("今日はありがとうな😎"); if(!alive(t))return; await himMsg("カフェオレ、また飲みに行こ"); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04"); 
+async function ch5end(t){ if(!alive(t))return; await himMsg("今日はありがとうな😎"); if(!alive(t))return; await himMsg("カフェオレ、また飲みに行こ"); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04");
   later(()=>{ if(!alive(t))return; toast("📸 <b>…シャッター音？</b>　気のせい…だよね"); },2500);
   later(async()=>{ if(!alive(t))return; await himMsg("…なぁ、今の、なんか光らんかった？"); if(!alive(t))return; await himMsg("気のせいか"); later(()=>{ if(alive(t)) toScandal(); },2600); },4200); }
 /* ============ story start ============ */
@@ -1837,6 +1838,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
 (function(){ const css=document.createElement("style"); css.textContent=
  "@media (min-height:741px) and (max-height:900px){ .home-inner{padding-top:54px} .widget{padding:10px 12px;margin-bottom:10px} .appicon .ic{width:52px;height:52px;font-size:23px;border-radius:13px} .grid{gap:11px 10px} .dock{padding:9px 12px} }";
  document.head.appendChild(css); })();
+/* ===== Tinder ver v9: a touch more heat, focused on the Tinder phase through ch2 — bolder teasing, late-night heat, closer-distance toasts, "don't want to let her go home" (but he does). Attraction without dating: tension only, nothing explicit ===== */
 /* ===== Tinder ver v1 ===== */
 (function(){
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
@@ -1905,11 +1907,13 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     await tThem("写真、タイプやってん笑");
     await tThem("カフェでカフェオレのやつ、あの写真は反則やで笑");
     await tThem("Super Likeは…ノリで押しちゃった");
+    await tThem("…ほんまは、何回か見返しててん笑");
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"Super Likeありがとう笑 びっくりした", fn:async()=>{ await tThem("勢いやで笑"); await tThem("でも、嘘ちゃうから"); step2(); }},
       {label:"よろしく〜 気楽に話そ", fn:async()=>{ await tThem("おっけー"); await tThem("気楽なん、助かるわ笑"); step2(); }},
       {label:"タイプって、どのへんが？笑", fn:async()=>{ await tThem("雰囲気やな"); await tThem("なんか、楽しそうやった"); step2(); }},
-      {label:"コーラ毎日はほんと？笑", fn:async()=>{ await tThem("ほんまやで"); await tThem("ごはんとコーラはセットやねん笑"); step2(); }}
+      {label:"コーラ毎日はほんと？笑", fn:async()=>{ await tThem("ほんまやで"); await tThem("ごはんとコーラはセットやねん笑"); step2(); }},
+      {label:"見返したん？笑 …ちょっと嬉しい", fn:async()=>{ await tThem("内緒やで😎"); await tThem("そういうとこ、ずるいって言われへん？笑"); step2(); }}
     ]);
   }
   async function step2(){
@@ -1960,10 +1964,13 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   async function stepNight2(){
     await tThem("音楽聴いてたら、目覚めてもて");
     await tThem("音楽は小さい頃から、ずっと聴いてる");
+    await tThem("なおの声、どんなんやろって思っててん");
+    await tThem("…今から会えたらな、とか言ったら引く？笑");
     await tThem("なおは寝る前なにするん？");
     tChoices("なおの返信を選んで",[
       {label:"動画見たり、推しの曲聴いたり", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
-      {label:"サウナの予定考えてる笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }}
+      {label:"サウナの予定考えてる笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
+      {label:"夜にそういうの、ずるい笑", fn:async()=>{ await tThem("ほんまやな笑"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }}
     ]);
   }
   async function stepSuspect(){
@@ -1988,6 +1995,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     tChip("10月1日（水）");
     await tThem("なぁ、なお");
     await tThem("そろそろ、ほんまにごはん行こや");
+    await tThem("楽しみにしすぎて、寝られへんかも笑");
     tChoices("なおの返信を選んで",[
       {label:"行きたい！ 今週末は？", fn:async()=>{ await tThem("土曜、あいてる？"); await tThem("カフェオレの美味い店、探しとくわ"); step3(); }},
       {label:"いいよ、どこ行く？", fn:async()=>{ await tThem("カフェとか、どう？"); await tThem("土曜あけといてな"); step3(); }}
@@ -2048,7 +2056,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   bar.innerHTML='<input id="tf-text" placeholder="ひろとにメッセージ…" autocomplete="off" style="flex:1;border:1px solid #e5e5ea;border-radius:999px;padding:10px 13px;font-size:13.5px;font-family:inherit;min-width:0"><button id="tf-send" style="background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:800;cursor:pointer;font-family:inherit">送信</button>';
   wrap.appendChild(bar);
   function bub(cls,text){ var sc=$("#tchat"); var d=document.createElement("div"); d.className="t-bub "+cls; d.textContent=text; sc.appendChild(d); sc.scrollTop=99999; return d; }
-  var REPLIES=[[/コーラ/,"コーラは裏切らへん笑"],[/ごはん|食べ|ラーメン|麺/,"ごはんの話は永遠にできるで😎"],[/サウナ/,"サウナ行きたなってきた"],[/好き|かわいい|可愛い/,"…そういうん、嬉しいねん"],[/会いたい|会お/,"俺も会いたいわ。次の休み、あけとく"],[/おはよ/,"おはよー。今日もがんばろな"],[/おやすみ/,"おやすみ。また明日な"],[/犬|マロン/,"マロンは今日も元気やで🐶"],[/映画/,"映画か、なおの好きそうなん探しとくわ"],[/仕事|アイドル|本物/,"…その話は、会ってからな笑"]];
+  var REPLIES=[[/コーラ/,"コーラは裏切らへん笑"],[/ごはん|食べ|ラーメン|麺/,"ごはんの話は永遠にできるで😎"],[/サウナ/,"サウナ行きたなってきた"],[/好き|かわいい|可愛い/,"…そういうん、嬉しいねん"],[/会いたい|会お/,"俺も会いたいわ。次の休み、あけとく"],[/おはよ/,"おはよー。今日もがんばろな"],[/おやすみ/,"おやすみ。また明日な"],[/犬|マロン/,"マロンは今日も元気やで🐶"],[/映画/,"映画か、なおの好きそうなん探しとくわ"],[/寝られへん|眠れない|寝れない/,"俺も起きてるで。…声聞いたら、寝れるかもな"],[/ドキドキ|ドキッ/,"…俺もやで、実は笑"],[/仕事|アイドル|本物/,"…その話は、会ってからな笑"]];
   var DEF=["おっけー笑","ほんま？","ええやん、それ","もっと聞かせて","なおと喋ってたら時間早いわ"];
   var di=0;
   function sendFree(){
