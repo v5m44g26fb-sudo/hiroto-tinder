@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v104</b>（大規模改修 第2期3：節目の演出 round2――夜・炎上・翌朝の空気感と主要画面 round2）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v105</b>（元版はv305止まりで新規版なし――Tinder版側の作り込み：彼のフリーチャットに「夜の散歩」と「体調を気づかう話」のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -6849,6 +6849,24 @@ app.style.display="flex";},true);
      fire("sauna",["\u30b5\u30a6\u30ca\u3001\u4ffa\u3082\u884c\u304f\u3067\u3002\u4ed5\u4e8b\u306e\u3042\u3068\u3001\u982d\u7a7a\u3063\u307d\u306b\u3057\u305f\u304f\u3066","\u3068\u3068\u306e\u3063\u305f\u3042\u3068\u306e\u611f\u3058\u3001\u306a\u304a\u306f\u597d\u304d\u306a\u307b\u3046\uff1f","\u30b5\u30a6\u30ca\u4e0a\u304c\u308a\u306e\u4e00\u676f\u3001\u683c\u5225\u3084\u308d\u3002\u2026\u2026\u306a\u304a\u306e\u5b9a\u756a\u306f\u3001\u306a\u3093\u3084\u308d\u306a"]);
     else if(/\u9aea|\u30a4\u30e1\u30c1\u30a7\u30f3|\u7f8e\u5bb9\u9662|\u524d\u9aea/.test(s2)&&Math.random()<0.65)
      fire("hair",["\u9aea\u3001\u306a\u3093\u304b\u5909\u3048\u305f\uff1f \u2026\u2026\u6c17\u306e\u305b\u3044\u3084\u3063\u305f\u3089\u3001\u3054\u3081\u3093","\u30a4\u30e1\u30c1\u30a7\u30f3\u8003\u3048\u3066\u308b\u3093\uff1f \u306a\u304a\u3001\u4f3c\u5408\u3046\u3068\u601d\u3046\u3067","\u7f8e\u5bb9\u9662\u884c\u3063\u305f\u65e5\u3063\u3066\u3001\u3061\u3087\u3063\u3068\u6c17\u5206 \u9055\u3046\u3088\u306a"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v105 (orig audit: the original is still at v305 - v304/v305 were already audited in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): his free chat gains two more dives in the v83/v85/v88/v93 style - night walks (his LINE profile photo is literally a night-walk shot, so the dive cross-references it) and looking-after-herself talk (feeling unwell / poor sleep; the care lines are his restrained way of worrying, no couple premise). Neither topic exists as a dive before: weather stays with v85, the everyday rhythm with v70, photos/scenery with v88 - the walk trigger words are kept narrow so they do not poach those layers. Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v105d) return; state._v105d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/散歩|夜道|歩いて帰|ウォーキング/.test(s2)&&Math.random()<0.65)
+     fire("walk",["散歩、俺も好きやで。夜の道を歩いてる時が、いちばん頭が静かやねん","なおも歩く人なんや。……歩く速さの合う人って、なんかええよな","散歩の話したら思い出すわ。俺のプロフィールの写真、あれ夜の散歩で撮ったやつやねん"]);
+    else if(/体調|風邪ひい|しんどい|頭痛|熱ある|寝不足/.test(s2)&&Math.random()<0.65)
+     fire("care",["無理したらあかんで。……今日は早めに休む日やって、自分に言い聞かせや","体調わるい日は、返事とか気にせんでええからな。……寝るのが一番やで","温かいもん飲んで、ゆっくりし。……心配やから、つい口うるさなるわ"]);
    } }catch(e){}
   return r; };
 })();
