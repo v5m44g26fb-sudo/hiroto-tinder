@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v109</b>（元版はv305のまま新規なしを確認：ダミー4人の雑談に第11周「次の一歩」――第10周の報告から各人が実際に踏み出した一歩＋彼のフリーチャットに運動／電車のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v110</b>（Tinder版側の作り込み：ダミー4人の雑談に第12周「振り返り」――各人が自分の雑談の始まりからここまでを振り返る周＋彼のフリーチャットに花・観葉植物／水族館のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3821,6 +3821,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    "そうま":{s:[["ロゴ、二つとも今の店の店長に見せたんです！","丸いほうはやさしい、窓のほうは覚えやすいって。……余計迷いました"],["窓側の席のメニュー表、試作を置かせてもらえることになりました","ロゴが入る場所、空けてあります"]],d:["店長の感想、また続き話しますね"]}
   };
   Object.keys(DM12).forEach(function(n){ if(DM[n]){ DM[n].script11=DM12[n].s; DM[n].def=DM[n].def.concat(DM12[n].d); } });
+  /* ===== Tinder ver v110: dummy chats round 12 - the looking-back lap. A different shape from rounds 8-11 (no new errand, no new choice): each dummy looks back across his own whole chat arc and names how far it has come - Sota from the two tickets (rounds 1/7) to the setlist playlist (round 11), Shun from the first night talks to both small secrets told (rounds 9/10) with her turn still open whenever, Takumi from the unnamed trial dish (round 4) to the named, passed, dated menu with the first-customer promise intact, Soma from the round-1 window seat to the logo feedback and the placed trial menu (round 11), the seat still hers. Cross-references stay inside each dummy's own arc, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
+  var DM13={
+   "そうた":{s:[["チケット2枚の話から始まったのにさ","プレイリストまで作って聴き込む仲になるとは思わなかったよ"],["当日、封を開けるの楽しみにしてて","……隣で語れるの、俺はもう決めてるけどな"]],d:["振り返ると、けっこう進んだよな、俺ら"]},
+   "しゅん":{s:[["最初の夜の話から、秘密まで両方言っちゃったな","なおには、隠しごと向いてないみたいだ"],["なおの番は、いつでもいいから","……この夜の続き、まだ何回でも話そう"]],d:["夜の話、積み重なってきたな"]},
+   "たくみ":{s:[["名前のなかった試作が、始まる日まで決まったんですよ","最初のお客さんは、ずっと決めたままです"],["メニューブックの一ページ目、なおさんのためにあります","……大げさじゃなく、本当の話です"]],d:["ここまでの話、一皿に込めますね"]},
+   "そうま":{s:[["窓側の席の話から、ロゴの相談までするようになりましたね","常連さん第一号って、最初に言ったの覚えてます？"],["試作メニュー、席に置かれてます","ロゴが決まったら完成です。……あと少し、付き合ってください"]],d:["窓側の席、いつでも空いてますよ"]}
+  };
+  Object.keys(DM13).forEach(function(n){ if(DM[n]){ DM[n].script12=DM13[n].s; DM[n].def=DM[n].def.concat(DM13[n].d); } });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -4029,6 +4037,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     else if(!msgs && D.script9 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+D.script9.length){ var off9=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0); msgs=D.script9[cs.step-off9]; cs.step++; }
     else if(!msgs && D.script10 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+D.script10.length){ var off10=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0); msgs=D.script10[cs.step-off10]; cs.step++; }
     else if(!msgs && D.script11 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+D.script11.length){ var off11=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0); msgs=D.script11[cs.step-off11]; cs.step++; }
+    else if(!msgs && D.script12 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+D.script12.length){ var off12=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0); msgs=D.script12[cs.step-off12]; cs.step++; }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
@@ -6980,6 +6989,24 @@ app.style.display="flex";},true);
      fire("exercise",["運動するんや。……レッスン以外で体動かすの、俺もわりと好きやで","筋トレ、地味に続けてるねん。……見た目はあんま変わらんけど","ストレッチ怠ると、翌日のレッスンが地獄やねん。……なおも気つけてな"]);
     else if(/電車|満員電車|遅延|各駅|環状線/.test(s2)&&Math.random()<0.65)
      fire("train",["電車、遅れてたん？ ……無理に急がんでもええからな","満員電車の日って、朝から体力ごっそり持ってかれるよな","電車でぼーっと外見てる時間、けっこう好きやねん"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v110: his free chat gains two more dives in the v105-v109 style - flowers & houseplants (florists / bouquets / plants; the trigger stays off the bare word for flower so it does not poach the gift/photo surfaces, and the season dive in v83 keeps autumn leaves) and aquariums & sea creatures (jellyfish / dolphins / penguins; no earlier dive touches them, and the travel dive in v77 keeps trips themselves). Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v110d) return; state._v110d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/花屋|花束|観葉植物|植木|サボテン/.test(s2)&&Math.random()<0.65)
+     fire("flowers",["花、もらったん？ ……誰からかは、聞かへんけど","観葉植物、育ててるんや。……水やり忘れる日、ない？","花のある部屋って、なんかええよな。……なおの部屋、想像したわ"]);
+    else if(/水族館|クラゲ|イルカ|ペンギン|チンアナゴ/.test(s2)&&Math.random()<0.65)
+     fire("aquarium",["水族館、好きなんや。……クラゲのとこで止まる人？","水の中の生き物見てると、時間忘れるよな","ペンギンの歩き方、真似したことある？ ……俺は、ある"]);
    } }catch(e){}
   return r; };
 })();
