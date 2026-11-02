@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v43</b>（元版v192までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v44</b>（元版v212までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5735,6 +5735,176 @@ app.style.display="flex";},true);
  dmBtn.addEventListener("click",()=>{ bd.style.display="none"; });
  if(oldBtn) oldBtn.style.display="none";
  view.appendChild(nav);
+})();
+</script>
+<script>
+/* ===== Tinder ver v44: original v193-v212 spec sync - app spec only.
+   Not ported: v199/v200/v201/v207/v208 (scenario chapters built on the confession / going-public premise, and the Sep 26 drinking-party prologue that does not exist in this arc) and v210-v212 (they swap HER avatar to a photo across the original; in Tinder ver her IG / LINE / X avatars stay the default icon by rule - her photos live only in her Tinder profile and match screens). ===== */
+(function(){
+ "use strict";
+ const $=q=>document.querySelector(q), $$=q=>Array.from(document.querySelectorAll(q));
+
+ /* --- orig v193, itsumen half only (the drinking-party group does not exist in Tinder ver): the itsumen lock in the hotpot date --- */
+ (function(){
+  const vis=sel=>{ const el=$(sel); return el&&el.style.display!=="none"&&!!el.offsetParent; };
+  setInterval(()=>{ if(typeof state==="undefined"||state.phase==="scandal") return;
+   if(vis("#group-chat")&&!state._gNabe2){ state._gNabe2=true;
+    const seq=[["ゆい","鍋パの日程、来週の土曜で確定したよ！"],["りな","買い出しリスト作るね。鶏肉、白菜、ねぎ…"],["みさき","きのこ多めでお願い！"],["ゆい","なおは締めの雑炊、担当ね"]];
+    seq.forEach((m,i)=>setTimeout(()=>{ try{ gMsg(m[0],m[1]); }catch(e){} },1200+i*1900)); }
+  },2000);
+ })();
+
+ /* --- orig v194: the X timeline breathes - fresh posts trickle in; the scandal pool is reworded to the app-use scandal --- */
+ (function(){
+  const FREE=[
+   {n:"ゆい",h:"@yui_s",tm:"今",t:"釜山の航空券、安いの見つけたかも…！",m:["💬 3","🔁 1","❤️ 12"]},
+   {n:"さくら",h:"@sakura_88",tm:"今",t:"ひろとの次のライブ、絶対当てる🎫",m:["💬 5","🔁 2","❤️ 31"]},
+   {n:"エンタメ速報",h:"@entame_flash",tm:"今",t:"【話題】人気アイドルのオフショットがSNSで拡散中",m:["💬 44","🔁 210","❤️ 890"]},
+   {n:"みさき",h:"@misaki_cat",tm:"今",t:"うちの猫、今日も天才的にかわいい",m:["💬 2","🔁 0","❤️ 18"]}];
+  const HOT=[
+   {n:"芸能ゴシップ速報",h:"@gossip_jp",tm:"今",t:"【続報】人気アイドルのマッチングアプリ使用疑惑、事務所の声明はまだなし。ファンの反応は真っ二つ",m:["💬 312","🔁 1,204","❤️ 2,008"]},
+   {n:"さくら",h:"@sakura_88",tm:"今",t:"信じて待つって決めたから…",m:["💬 18","🔁 3","❤️ 96"]},
+   {n:"エンタメ速報",h:"@entame_flash",tm:"今",t:"【速報】アプリ使用が報じられた当該アイドル、明日のラジオ出演は予定通り",m:["💬 208","🔁 940","❤️ 1,522"]}];
+  let i=0;
+  setInterval(()=>{ const vx=$("#v-x"); if(!vx||!vx.offsetParent) return;
+   const tl=$("#x-pane-tl"); if(!tl||tl.style.display==="none") return;
+   const th=$("#x-thread"); if(th&&th.style.display!=="none") return;
+   if(Math.random()>0.4) return;
+   const pool=(typeof state!=="undefined"&&state.phase==="scandal")?HOT:FREE; const p=pool[i++%pool.length];
+   try{ tl.prepend(postEl(p,false)); }catch(e){}
+  },21000);
+ })();
+
+ /* --- orig v195: LINE ambience round three - small everyday pings while the list is open (Tinder ver cast is yui / misaki / rina only; misaki's cat stays unnamed) --- */
+ (function(){
+  if(typeof show!=="function"||typeof fPush!=="function"||typeof state==="undefined") return;
+  if(state._v195) return; state._v195=true;
+  const POOL=[
+   ["yui","おやすみ〜、釜山の夢見た"],
+   ["misaki","うちの猫、今日も可愛い。親バカやけど"],
+   ["rina","チケット、発券してきた！席はまあまあ"]];
+  const prev=show;
+  show=function(v){ prev(v); if(v!=="line") return;
+   if(state.phase==="scandal"||state.ended||state.act2) return;
+   const now=Date.now(); if(state._sol3At&&now-state._sol3At<25*60000) return;
+   if(Math.random()>0.5) return; state._sol3At=now;
+   const p=POOL[Math.floor(Math.random()*POOL.length)];
+   setTimeout(()=>{ try{ fPush(p[0],p[1]); }catch(e){} },2600); };
+ })();
+
+ /* --- orig v196: he reacts to her words about him - stage, songs, his voice, his hands (lines reworded for the not-a-couple arc: no hand-holding memory, marriage deflected, the name line softened; silent after the farewell, per the v28 rule) --- */
+ (function(){
+  if(typeof himReply!=="function"||typeof state==="undefined") return;
+  if(state._v196k) return; state._v196k=true;
+  const RULES=[
+   [/ライブ|コンサート|公演/,"次のライブ、絶対来てな。客席のなお、探すから"],
+   [/歌|うた|曲/,"歌、聴いてくれた？……なおにだけ、特別やで"],
+   [/ダンス|踊|振り/,"新曲の振り、覚えるの必死やった。見てほしいな"],
+   [/かっこいい|イケメン/,"……急に言うなや。照れるやろ"],
+   [/かわいい/,"かわいいは、なおのほうやろ"],
+   [/声/,"声が好きって言われると、いちばん嬉しいかも"],
+   [/手/,"手、大きいやろ。……褒められるの、初めてやわ"],
+   [/結婚/,"……そういうの、まだ考えたことないわ。急に聞くなや"],
+   [/ひろと|大翔/,"本名で呼ばれるの、なんか新鮮やわ。……悪くない"]];
+  const prev=himReply;
+  himReply=async function(t){ const r=await prev(t);
+   if(typeof t==="string"&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    const hit=RULES.find(rr=>rr[0].test(t));
+    if(hit&&Math.random()<0.65) setTimeout(()=>{ if(!state.ended&&!state.act2){ try{ himMsg(hit[1]); }catch(e){} } },2600);
+   }
+   return r; };
+ })();
+
+ /* --- orig v197: his LINE profile gains a lately card (rows reworded for this arc: his goals stay on his work and Marron) --- */
+ (function(){
+  const prof=$("#hiroto-prof"); if(!prof||prof.querySelector("#h-lately")) return;
+  const card=document.createElement("div"); card.id="h-lately";
+  card.style.cssText="margin:14px 0 4px;background:#fff;border:1px solid #eee;border-radius:14px;padding:12px 14px;color:#111;box-shadow:0 1px 6px rgba(0,0,0,.06)";
+  const row=(e,t,v)=>'<div style="display:flex;gap:9px;align-items:center;font-size:13px;padding:5px 0"><span>'+e+'</span><span style="color:#666">'+t+'</span><b style="margin-left:auto;text-align:right">'+v+'</b></div>';
+  card.innerHTML='<div style="font-weight:800;font-size:13.5px;margin-bottom:4px">🌿 ひろとの最近</div>'+
+   row("🍯","ハマってるもの","はちみつ紅茶")+
+   row("💬","最近の口癖","「まあ、ええか」")+
+   row("🎯","次の目標","新曲の振りを完璧にすること")+
+   row("🐶","寝る前の日課","マロンの写真を見ること");
+  const host=prof.querySelector(":scope > div")||prof;
+  host.appendChild(card);
+ })();
+
+ /* --- orig v198: after a call with him ends, a follow-up LINE sometimes lands a little later (never after the farewell - v28 rule) --- */
+ (function(){
+  if(typeof state==="undefined") return;
+  const POOL=["電話、楽しかった","……切るの、名残惜しかったわ","今度は顔見て話そな","声聞いたら、会いたくなった","さっきの声、まだ耳に残ってる"];
+  setInterval(()=>{ const n=state._callN||0;
+   if(state._v198c===undefined){ state._v198c=n; return; }
+   if(n>state._v198c){ state._v198c=n;
+    if(Math.random()<0.5) setTimeout(()=>{ if(!state.ended&&!state.act2){ try{ himMsg(POOL[Math.floor(Math.random()*POOL.length)]); }catch(e){} } },24000); }
+  },2000);
+ })();
+
+ /* --- orig v202: the Photos app goes clean iOS-style - edge-to-edge squares, segmented tabs, item count --- */
+ (function(){
+  const view=$("#v-photos"); if(!view) return;
+  const css=document.createElement("style");
+  css.textContent="#v-photos .album-tabs{gap:0;background:#ececf0;border-radius:11px;padding:2px;margin:10px 12px 6px}"+
+   "#v-photos .album-tabs button{flex:1;border:none;background:transparent;border-radius:9px;padding:6px 4px;color:#111}"+
+   "#v-photos .album-tabs button.act{background:#fff;color:#111;box-shadow:0 1px 4px rgba(0,0,0,.22)}"+
+   "#ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px;background:#fff}"+
+   "#ph-grid figure{margin:0;position:relative}"+
+   "#ph-grid figure img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:0}"+
+   "#ph-grid figure video{width:100%;aspect-ratio:1;object-fit:cover;display:block}"+
+   "#ph-grid figcaption{display:none}";
+  document.head.appendChild(css);
+  const grid=$("#ph-grid");
+  const foot=document.createElement("div"); foot.id="ph-count";
+  foot.style.cssText="flex:none;text-align:center;font-size:12px;color:#8e8e93;padding:7px 0 10px;background:#fff;border-top:1px solid #f2f2f4";
+  const upd=()=>{ const n=grid?[...grid.querySelectorAll("figure")].filter(f=>f.style.display!=="none").length:0;
+   foot.textContent=n+"項目"; };
+  view.appendChild(foot);
+  if(grid) new MutationObserver(upd).observe(grid,{childList:true,subtree:true,attributes:true,attributeFilter:["style"]});
+  upd();
+ })();
+
+ /* --- orig v203+v204: her Instagram tidy-up - the DM requests section settles at the bottom of the feed and stays there (the avatar re-crop is not ported: her IG avatar is the default icon in Tinder ver) --- */
+ (function(){
+  const sc=$("#ig-scroll"); if(!sc) return;
+  const dms=$("#ig-dms"); if(!dms) return;
+  const head=dms.previousElementSibling;
+  const move=()=>{ if(head&&head.textContent.includes("DMリクエスト")&&head.parentElement===sc) sc.appendChild(head);
+   if(dms.parentElement===sc) sc.appendChild(dms); };
+  move();
+  let n=0; const iv=setInterval(()=>{ move(); if(++n>16) clearInterval(iv); },500);
+ })();
+
+ /* --- orig v205: her highlights move back above the post tabs, where Instagram keeps them --- */
+ (function(){
+  const vig=$("#v-ig"); if(!vig) return;
+  const hl=vig.querySelector(".hl-row"); const stories=vig.querySelector(".stories");
+  if(hl&&stories&&stories.parentElement===hl.parentElement){ stories.after(hl); }
+ })();
+
+ /* --- orig v206: stories open from the profile icon itself, like the real Instagram (ring styling only - her avatar stays the default icon) --- */
+ (function(){
+  const wire=(viewSel,btnSel)=>{ const v=$(viewSel); if(!v) return;
+   const av=v.querySelector(".ig-prof .avatar"); const btn=$(btnSel);
+   if(!av||!btn) return;
+   av.style.cssText+=";cursor:pointer;padding:3px;border-radius:50%;background:linear-gradient(45deg,#fa7e1e,#d62976,#962fbf);box-sizing:border-box";
+   av.addEventListener("click",()=>{ try{ btn.click(); }catch(e){} }); };
+  wire("#v-ig","#nao-story-btn");
+  wire("#v-hisig","#story-btn");
+ })();
+
+ /* --- orig v209: before the storm, the news app carries his ordinary headlines too --- */
+ (function(){
+  if(typeof show!=="function"||typeof state==="undefined") return;
+  if(state._v209) return; state._v209=true;
+  const prev=show;
+  show=function(v){ prev(v); if(v!=="news"||state._newsFlavor) return;
+   if(state.phase==="scandal"||state.ended||(state.chapter||0)<4) return; state._newsFlavor=true;
+   try{
+    addNewsRow("assets/stage.jpg","井汲大翔、深夜ラジオで『最近の幸せ』を語る ― リスナーからの質問が殺到","ラジオ関西 ・ 昨夜",null);
+    addNewsRow("assets/crown.jpg","ライブレポ：新曲の振り付けが『過去いちばん』とファンの間で話題に","音楽ナタリー ・ 2日前",null);
+   }catch(e){} };
+ })();
 })();
 </script>
 </body>
