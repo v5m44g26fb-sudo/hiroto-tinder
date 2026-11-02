@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v91</b>（元版v300までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v92</b>（元版v300までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2282,7 +2282,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   }
   render();
   // expose for verification
-  window.__tinder={get idx(){return idx}, get matched(){return matched}, get current(){return deck[idx]||null}, render, swipe, rewind, peekNext, stats:()=>window.__tstats, get deckSize(){return deck.length}, get history(){return swipeHistory}, get superLeft(){return superLeft}, get deckLeft(){ let n=0; for(let j=idx;j<deck.length;j++){ if(deck[j].hiroto||passFilter(deck[j])) n++; } return n; }};
+  window.__tinder={get idx(){return idx}, get matched(){return matched}, get current(){return deck[idx]||null}, get deck(){return deck}, render, swipe, rewind, peekNext, stats:()=>window.__tstats, get deckSize(){return deck.length}, get history(){return swipeHistory}, get superLeft(){return superLeft}, get deckLeft(){ let n=0; for(let j=idx;j<deck.length;j++){ if(deck[j].hiroto||passFilter(deck[j])) n++; } return n; }};
 })();
 
 </script>
@@ -3826,19 +3826,25 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   }
 
   /* --- detect dummy likes by watching the shared swipe stats --- */
+  /* v91 fix: the like used to be attributed to whatever card the previous 200ms tick had seen (lastCard). Fast swiping (nope -> like within one tick, e.g. right after the 380ms card animation) attributed the like to the PREVIOUS card - a phantom match with someone she had just noped, its overlay stacking over Hiroto's real match overlay and blocking the tabs. The swipe history records the actual card swiped ({idx,kind,name} for every non-Hiroto swipe), so likes are now read from there and the card snapshot is looked up in the deck by name. */
   var st0=T.stats(); var prevTot=(st0.like||0)+(st0.super||0);
-  var lastCard=T.current;
+  var seenHist=(T.history||[]).length;
   setInterval(function(){
-    var c=T.current; var st=T.stats(); var tot=(st.like||0)+(st.super||0);
+    var st=T.stats(); var tot=(st.like||0)+(st.super||0);
     if(tot>prevTot){
-      var liked=lastCard;
       prevTot=tot;
-      if(liked && !liked.hiroto && LIKEBACK[liked.name] && !matched[liked.name] && !unmatchedForever[liked.name]){
-        var snap={name:liked.name,age:liked.age,grad:liked.grad,ini:liked.ini,work:liked.work,photos:liked.photos};
-        setTimeout(function(){ registerDummyMatch(snap); },480);
+      var hist=T.history||[];
+      if(hist.length<seenHist) seenHist=hist.length;
+      for(var i=seenHist;i<hist.length;i++){ var h=hist[i];
+        if(h.kind!=="like"&&h.kind!=="super") continue;
+        if(!LIKEBACK[h.name]||matched[h.name]||unmatchedForever[h.name]) continue;
+        var card=null; var dk=T.deck||[]; for(var j=0;j<dk.length;j++){ if(dk[j].name===h.name){ card=dk[j]; break; } }
+        if(!card) continue;
+        var snap={name:card.name,age:card.age,grad:card.grad,ini:card.ini,work:card.work,photos:card.photos};
+        (function(s){ setTimeout(function(){ registerDummyMatch(s); },480); })(snap);
       }
+      seenHist=hist.length;
     }
-    lastCard=c;
   },200);
   function registerDummyMatch(c){
     if(matched[c.name]) return;
