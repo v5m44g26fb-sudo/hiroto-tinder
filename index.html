@@ -1924,10 +1924,16 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     {name:"しゅん",age:28,distKm:12,dist:"12 km",work:"エンジニア",bio:"仕事はエンジニア。ゲームとコーヒーと、静かな休日。自宅の作業環境が自慢です。",tags:["ゲーム","コーヒー","映画"],grad:"linear-gradient(160deg,#232526,#414345)",ini:"し",scenes:[{e:"💻",cap:"デスク環境ガチ勢"},{e:"🎮",cap:"RPGは100時間超えがち"},{e:"☕",cap:"豆は浅煎り派"}],promptQ:"理想のデートは…",promptA:"カフェでだらだらして、夜は家で映画"},
     {name:"だいき",age:24,distKm:4,dist:"4 km",work:"美容師アシスタント",bio:"美容師アシスタント。休みの日はカフェと写真。夕日の写真ばっかり撮ってます。",tags:["写真","カフェ","スイーツ"],grad:"linear-gradient(160deg,#ff9a9e,#fecfef)",ini:"だ",scenes:[{e:"📷",cap:"フィルムカメラ派"},{e:"🌇",cap:"夕日ハンター"},{e:"🍰",cap:"甘いものは別腹×2"}],promptQ:"休みの日は…",promptA:"カフェ開拓して、撮った写真を現像に出す"},
     {name:"たくみ",age:29,distKm:18,dist:"18 km",work:"料理人",bio:"小さな居酒屋の料理人。自分の店を持つのが夢。美味しいって言われるのが一番嬉しい。",tags:["料理","魚","居酒屋"],grad:"linear-gradient(160deg,#cb2d3e,#ef473a)",ini:"た",scenes:[{e:"🍳",cap:"まかないが人気の店"},{e:"🐟",cap:"市場は朝5時から"},{e:"🧑‍🍳",cap:"出汁にはうるさいです"}],promptQ:"実は…",promptA:"休みの日も結局、台所に立ってしまう"},
+    {name:"ゆうき",age:25,distKm:6,dist:"6 km",work:"物流",bio:"筋トレと銭湯と、休日の昼ビール。重いもの持つの得意です。気楽に話せる人だと嬉しい。",tags:["筋トレ","銭湯","ビール"],grad:"linear-gradient(160deg,#0f9b8e,#84fab0)",ini:"ゆ",scenes:[{e:"🏋️",cap:"ベンチプレス100kg目標"},{e:"🧖",cap:"銭湯は電気風呂派"},{e:"🍺",cap:"休日は昼から一杯だけ"}],promptQ:"休みの日は…",promptA:"ジム→銭湯→昼寝の三点セット",prompt2Q:"実は…",prompt2A:"プロテインの味にはうるさいです"},
+    {name:"りく",age:23,distKm:3,dist:"3 km",work:"大学生",bio:"大学で軽音やってます。担当はボーカルとギター。ライブ終わりのラーメンが最高。",tags:["音楽","バンド","ラーメン"],grad:"linear-gradient(160deg,#8e2de2,#4a00e0)",ini:"り",scenes:[{e:"🎤",cap:"学祭ライブが生きがい"},{e:"🎸",cap:"愛機はテレキャスター"},{e:"🍜",cap:"ライブ後は家系一択"}],promptQ:"理想のデートは…",promptA:"楽器屋めぐって、夜は小さいライブハウス",prompt2Q:"仕事（学業）は…",prompt2A:"心理学専攻。人の話を聞くのは好きなほう"},
+    {name:"かいと",age:27,distKm:9,dist:"9 km",work:"看護師",bio:"看護師です。夜勤明けの朝ごはんと、猫の動画で回復してます。聞き上手って言われます。",tags:["猫","朝ごはん","映画"],grad:"linear-gradient(160deg,#56ccf2,#2f80ed)",ini:"か",scenes:[{e:"🌅",cap:"夜勤明けの空が好き"},{e:"🍳",cap:"朝ごはんはちゃんと作る派"},{e:"🐈",cap:"実家の猫が世界一かわいい"}],promptQ:"休みの日は…",promptA:"寝だめして、夕方からカフェか映画",prompt2Q:"実は…",prompt2A:"注射はする側なのに、されるのは苦手"},
+    {name:"そうま",age:22,distKm:2,dist:"2 km",work:"カフェ店員",bio:"カフェでバイトしてます。ラテアート練習中。自転車で知らない街に行くのが好き。",tags:["カフェ","自転車","イラスト"],grad:"linear-gradient(160deg,#f7971e,#ffd200)",ini:"そ",scenes:[{e:"☕",cap:"ラテアートはハートまで習得"},{e:"🚲",cap:"休日はポタリング"},{e:"🎨",cap:"手帳に落書きする癖"}],promptQ:"理想のデートは…",promptA:"川沿いサイクリングして、気になるカフェに入る",prompt2Q:"実は…",prompt2A:"働いてるカフェの常連さんの顔、だいたい覚えてます"},
+    {name:"はやて",age:29,distKm:15,dist:"15 km",work:"公務員",bio:"市役所勤務。御朱印集めと城めぐりと、ベランダ菜園。落ち着いた関係がいいです。",tags:["旅行","歴史","園芸"],grad:"linear-gradient(160deg,#134e5e,#71b280)",ini:"は",scenes:[{e:"⛩️",cap:"御朱印帳は3冊目"},{e:"🏯",cap:"現存天守は制覇したい"},{e:"🌱",cap:"ベランダでトマト育成中"}],promptQ:"休みの日は…",promptA:"電車で1時間くらいの城下町をぶらぶら",prompt2Q:"実は…",prompt2A:"真面目そうに見えて、意外と方向音痴です"},
     {hiroto:true,name:"ひろと",age:24,distKm:1,dist:"1 km ・ 大阪",bio:"ごはんとコーラが好きです😎 のんびりしてるように見られます",tags:["コーラ","ごはん","犬","サウナ","映画"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。あと美味いごはん探す😎",prompt2Q:"仕事は…",prompt2A:"不定期なやつ。詳しくは、会ったら言うわ"}
   ];
   let idx=0, matched=false, chatStarted=false;
   let sceneIdx=0, lastCardIdx=-1, lastSwipe=null;
+  let swipeHistory=[]; let superLeft=3;
   window.__tstats={swipe:0,like:0,nope:0,super:0};
   function passFilter(c){ const s=window.__tdisc; if(!s) return true; const d=c.distKm||parseInt(c.dist)||99; return d<=s.maxDist && c.age>=s.ageMin && c.age<=s.ageMax; }
   function render(){
@@ -1963,7 +1969,8 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     const card=document.getElementById("swipe-card"); if(!card) return;
     const c=deck[idx]; if(!c) return;
     window.__tstats.swipe++; if(kind==="nope") window.__tstats.nope++; else if(kind==="super") window.__tstats.super++; else window.__tstats.like++;
-    if(!c.hiroto) lastSwipe={idx:idx,kind:kind};
+    if(!c.hiroto){ lastSwipe={idx:idx,kind:kind}; swipeHistory.push({idx:idx,kind:kind,name:c.name}); }
+    if(kind==="super" && superLeft>0) superLeft--;
     const stamp=document.getElementById(kind==="nope"?"stamp-nope":"stamp-like");
     if(stamp) stamp.classList.add("on");
     card.style.transition="transform .35s ease, opacity .35s ease";
@@ -1978,7 +1985,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   function showMatch(){ matched=true; document.getElementById("match-overlay").classList.add("on"); try{pop();}catch(e){} }
   document.getElementById("btn-nope").addEventListener("click",()=>swipe("nope"));
   document.getElementById("btn-like").addEventListener("click",()=>swipe("like"));
-  document.getElementById("btn-super").addEventListener("click",()=>swipe("super"));
+  document.getElementById("btn-super").addEventListener("click",()=>{ if(superLeft<=0){ toast("⭐ <b>Super Likeは今日の分を使い切ったよ</b><br>ふつうの Like ならまだ送れるよ"); return; } swipe("super"); });
   document.getElementById("match-keep-btn").addEventListener("click",()=>{ document.getElementById("match-overlay").classList.remove("on"); document.getElementById("tinder-deck-wrap").style.display="none"; document.getElementById("tinder-chat-wrap").style.display="flex"; startChat(); });
   document.getElementById("match-msg-btn").addEventListener("click",()=>{ document.getElementById("match-overlay").classList.remove("on"); document.getElementById("tinder-deck-wrap").style.display="none"; document.getElementById("tinder-chat-wrap").style.display="flex"; startChat(); });
   // tabs dummy
@@ -2116,8 +2123,8 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     setTimeout(()=>{ try{ chapter(2); }catch(e){} show("home"); },1800);
   }
   function rewind(){
-    if(matched || !lastSwipe){ toast("↩️ 巻き戻せるスワイプはまだないよ"); return; }
-    idx=lastSwipe.idx; lastSwipe=null; render(); toast("↩️ さっきのカードに戻したよ");
+    if(matched || !swipeHistory.length){ toast("↩️ 巻き戻せるスワイプはまだないよ"); return; }
+    const h=swipeHistory.pop(); idx=h.idx; const prev=swipeHistory[swipeHistory.length-1]; lastSwipe=prev?{idx:prev.idx,kind:prev.kind}:null; render(); toast("↩️ "+h.name+" のカードに戻したよ");
   }
   function peekNext(){
     let j=idx+1; while(j<deck.length && !deck[j].hiroto && !passFilter(deck[j])) j++;
@@ -2126,7 +2133,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   }
   render();
   // expose for verification
-  window.__tinder={get idx(){return idx}, get matched(){return matched}, get current(){return deck[idx]||null}, render, swipe, rewind, peekNext, stats:()=>window.__tstats};
+  window.__tinder={get idx(){return idx}, get matched(){return matched}, get current(){return deck[idx]||null}, render, swipe, rewind, peekNext, stats:()=>window.__tstats, get deckSize(){return deck.length}, get history(){return swipeHistory}, get superLeft(){return superLeft}, get deckLeft(){ let n=0; for(let j=idx;j<deck.length;j++){ if(deck[j].hiroto||passFilter(deck[j])) n++; } return n; }};
 })();
 
 </script>
@@ -4794,6 +4801,172 @@ app.querySelector("#mu-prog").addEventListener("input",e=>{ if(vid.duration) vid
 app.querySelector("#mu-x").addEventListener("click",()=>{ pause(); app.style.display="none";});
 btn.addEventListener("click",e=>{ e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
 app.style.display="flex";},true);
+})();
+</script>
+<script>
+/* ===== Tinder ver v27: immersion overhaul — deck +5 dummies with counters (remaining / super-like stock / rewind history panel), match celebration (avatars slide together + confetti + first-message 3-way choice that swaps the opening exchange), story-linked presence & read speed, Top Picks rotation with push notifications, his profile evolving with the story ===== */
+(function(){
+  function $(q){ return document.querySelector(q); }
+  function S(){ return (typeof state!=="undefined") ? state : {}; }
+  var css=document.createElement("style");
+  css.textContent=
+   "#match-overlay.on h2{animation:v27pop .55s ease both}"+
+   "#match-overlay.on .avatars img:first-child{animation:v27sl .8s cubic-bezier(.2,.9,.3,1.25) both}"+
+   "#match-overlay.on .avatars img:last-child{animation:v27sr .8s cubic-bezier(.2,.9,.3,1.25) both}"+
+   "@keyframes v27pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}"+
+   "@keyframes v27sl{from{transform:translateX(-80px) rotate(-10deg) scale(.75);opacity:0}to{transform:none;opacity:1}}"+
+   "@keyframes v27sr{from{transform:translateX(80px) rotate(10deg) scale(.75);opacity:0}to{transform:none;opacity:1}}"+
+   ".cfet{position:absolute;width:9px;height:14px;border-radius:2px;pointer-events:none;z-index:6;animation-name:cfetfall;animation-timing-function:linear;animation-fill-mode:forwards}"+
+   "@keyframes cfetfall{from{top:-16px;transform:rotate(0deg)}to{top:103%;transform:rotate(660deg)}}"+
+   ".fm-opt{display:block;width:100%;max-width:300px;margin:6px auto;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.65);color:#fff;border-radius:999px;padding:10px 14px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;line-height:1.45}"+
+   ".fm-opt.sel{background:#fff;color:#fd267d}";
+  document.head.appendChild(css);
+  /* ---------- 1. status bar: remaining / super stock / rewind history ---------- */
+  var deckWrap=$("#tinder-deck-wrap");
+  var histOpen=false;
+  if(deckWrap){
+    var bar=document.createElement("div");
+    bar.id="t-statusbar";
+    bar.style.cssText="display:flex;align-items:center;gap:6px;padding:8px 14px 2px;font-size:12.5px;color:#6e6e73;background:linear-gradient(180deg,#fff,#fff5f7)";
+    bar.innerHTML='🔥 あと <b id="ts-left" style="color:#111">–</b> 人 ・ ⭐ Super Like 残り <b id="ts-super" style="color:#1299c3">3</b><button id="ts-hist-btn" style="margin-left:auto;background:#fff7e0;border:1px solid #ffd76a;color:#8a6100;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit">↩️ 巻き戻し履歴</button>';
+    deckWrap.insertBefore(bar, deckWrap.firstChild);
+    var hp=document.createElement("div");
+    hp.id="ts-hist"; hp.style.cssText="display:none;margin:6px 14px 0;background:#fff;border:1px solid #f0e6ea;border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.9;color:#444";
+    deckWrap.insertBefore(hp, bar.nextSibling);
+    bar.querySelector("#ts-hist-btn").addEventListener("click",function(){ histOpen=!histOpen; hp.style.display=histOpen?"block":"none"; renderHist(); });
+  }
+  function renderHist(){
+    var hp=$("#ts-hist"); if(!hp||!histOpen) return;
+    var h=(window.__tinder&&window.__tinder.history)||[];
+    if(!h.length){ hp.innerHTML="まだスワイプ履歴はないよ"; return; }
+    hp.innerHTML="<b>↩️ スワイプ履歴</b>（↩️ボタンで新しい順に戻れるよ）<br>"+h.slice().reverse().map(function(e){ return e.name+" — "+(e.kind==="super"?"⭐ Super Like":e.kind==="like"?"❤️ Like":"✕ Nope"); }).join("<br>");
+  }
+  function updBar(){
+    var T=window.__tinder; if(!T) return;
+    var l=$("#ts-left"); if(l) l.textContent = T.matched ? "0" : String(T.deckLeft);
+    var s=$("#ts-super"); if(s) s.textContent=String(T.superLeft);
+    if(histOpen) renderHist();
+  }
+  /* ---------- 5. his profile evolution (shared phase logic) ---------- */
+  var PH=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
+  var BIO_BASE="ごはんとコーラが好きです😎 のんびりしてるように見られます";
+  function profPhase(){
+    var st=S();
+    if(st.ended||st.act2) return null;
+    if(st.phase==="scandal") return {key:"sc",strip:[PH[0],PH[2]],bio:"（プロフィールは更新されていません）",head:PH[0]};
+    var ch=st.chapter||0;
+    if(ch>=5) return {key:"c5",strip:PH.slice(),bio:"ごはんとコーラが好きです",head:PH[1]};
+    if(ch>=3) return {key:"c3",strip:[PH[0],PH[1],PH[2],PH[3],PH[5]],bio:"ごはんとコーラが好きです。のんびりしてるように見られます",head:PH[1]};
+    if(ch>=2) return {key:"c2",strip:[PH[1],PH[0],PH[2],PH[3],PH[4],PH[5]],bio:BIO_BASE+" 最近、笑うことが増えたらしいです",head:PH[1]};
+    if(st._tinderDone) return {key:"td",strip:[PH[0],PH[5],PH[1],PH[2],PH[3],PH[4]],bio:BIO_BASE,head:PH[0]};
+    return {key:"base",strip:PH.slice(),bio:BIO_BASE,head:PH[0]};
+  }
+  var profCard=null, profHead=null, profBio=null, profStrip=null, lastProfKey="";
+  function initProf(){
+    var pw=$("#tinder-prof-wrap"); if(!pw||pw.dataset.v27) return; pw.dataset.v27="1";
+    profCard=pw.children[1]; if(!profCard) return;
+    profHead=profCard.querySelector("img");
+    var divs=profCard.querySelectorAll("div");
+    for(var i=0;i<divs.length;i++){ if(divs[i].children.length===0 && divs[i].textContent.indexOf("ごはんとコーラが好きです")===0){ profBio=divs[i]; break; } }
+    if(profHead){ profStrip=document.createElement("div"); profStrip.id="prof-strip";
+      profStrip.style.cssText="display:flex;gap:7px;overflow-x:auto;padding:10px 14px 2px";
+      profHead.parentNode.insertBefore(profStrip, profHead.nextSibling); }
+  }
+  function updProf(){
+    initProf(); if(!profCard) return;
+    var ph=profPhase(); if(!ph||ph.key===lastProfKey) return; lastProfKey=ph.key;
+    if(profHead && profHead.getAttribute("src")!==ph.head) profHead.src=ph.head;
+    if(profStrip) profStrip.innerHTML=ph.strip.map(function(s){ return '<img src="'+s+'" style="width:62px;height:78px;object-fit:cover;border-radius:10px;flex:none" alt="">'; }).join("");
+    if(profBio) profBio.textContent=ph.bio;
+  }
+  var _otd=window.openTDetail;
+  if(_otd){ window.openTDetail=function(c){ _otd(c); if(!c||!c.hiroto) return;
+    var ph=profPhase(); if(!ph) return;
+    var dbox=$("#tdetail-box"); if(!dbox) return;
+    var strip=dbox.querySelector('div[style*="overflow-x"]');
+    if(strip){ var imgs=strip.querySelectorAll("img"); imgs.forEach(function(im,i){ if(ph.strip[i]){ im.src=ph.strip[i]; im.style.display=""; } else im.style.display="none"; }); }
+    if(ph.key==="c3"||ph.key==="sc"){ var note=document.createElement("div"); note.style.cssText="font-size:12px;color:#8e8e93;margin-top:8px"; note.textContent=(ph.key==="sc"?"（プロフィールは更新されていません）":"（あれ、前より写真が減った…？）"); dbox.appendChild(note); }
+  }; }
+  /* ---------- 3. presence & read speed ---------- */
+  var lastPresKey="", lastPresText="";
+  function updPresence(){
+    var stEl=$("#tchat-status"); if(!stEl) return;
+    var st=S();
+    if(st.ended||st.act2||window.__tWithdrawn) return;
+    if(!(window.__tinder&&window.__tinder.matched)) return;
+    var h=new Date().getHours(), late=(h>=23||h<5), eve=(h>=22||h<2);
+    var cur=null;
+    if(st.phase==="scandal") cur={key:"scandal",t:"オフライン（アプリは開いていないみたい）",c:"#8e8e93"};
+    else if(!st._tinderDone) cur= late?{key:"e-n",t:"● オンライン中（深夜）",c:"#2ee59d"}:{key:"e",t:"● オンライン中",c:"#2ee59d"};
+    else if((st.chapter||0)>=5) cur={key:"c5",t:"最終アクセス: 最近",c:"#a8a8ad"};
+    else if((st.chapter||0)>=3) cur= eve?{key:"c3-n",t:"● オンライン中（こんな時間に）",c:"#2ee59d"}:{key:"c3",t:"最終アクセス: 昨日の深夜",c:"#a8a8ad"};
+    else cur={key:"mid",t:"● オンライン中",c:"#2ee59d"};
+    if(cur.key!==lastPresKey){ lastPresKey=cur.key; stEl.textContent=cur.t; stEl.style.color=cur.c; lastPresText=cur.t; }
+    else if(stEl.textContent!==lastPresText){ lastPresText=stEl.textContent; }
+  }
+  var tchat=$("#tchat");
+  if(tchat){ new MutationObserver(function(muts){ muts.forEach(function(mu){ mu.addedNodes.forEach(function(n){
+    if(n.nodeType!==1||!n.classList||!n.classList.contains("t-bub")||!n.classList.contains("me")) return;
+    var st=S(); if(st.ended||st.act2||window.__tWithdrawn||st.phase==="scandal") return;
+    var delay = (st.chapter||0)>=5 ? 12000 : (st.chapter||0)>=3 ? 5000 : st._tinderDone ? 1500 : 700;
+    var bub=n;
+    setTimeout(function(){ if(bub.isConnected && !bub.querySelector(".t-read")){ var r=document.createElement("span"); r.className="t-read"; r.textContent="既読"; bub.appendChild(r); } },delay);
+  }); }); }).observe(tchat,{childList:true}); }
+  /* ---------- 2. match celebration + first-message choice ---------- */
+  var overlay=$("#match-overlay"), fmPayload=null, fmAwait=false, fmApplied=false;
+  var FM=[
+    {me:"はじめまして！ Super Likeありがとう😊", him:"こちらこそ、ありがとう笑　最初の一文、ちゃんとしてる人、好きやわ"},
+    {me:"写真のカフェオレ、私も好きなやつ！", him:"え、ほんま？　あの店のカフェオレ、反則級にうまいねん笑"},
+    {me:"…なんか、見たことある気がする笑", him:"え？　どこでやろ笑　……心当たり、多すぎるんやけど"}
+  ];
+  function spawnConfetti(){
+    if(!overlay) return;
+    var cols=["#fd267d","#ff7854","#1299c3","#ffd76a","#2ee59d","#b388ff"];
+    for(var i=0;i<36;i++){ var s=document.createElement("span"); s.className="cfet";
+      s.style.left=(Math.random()*98)+"%"; s.style.background=cols[i%cols.length];
+      s.style.animationDuration=(2.2+Math.random()*1.3)+"s"; s.style.animationDelay=(Math.random()*0.5)+"s";
+      if(Math.random()<0.5){ s.style.width="6px"; s.style.height="6px"; s.style.borderRadius="50%"; }
+      overlay.appendChild(s); }
+    setTimeout(function(){ overlay.querySelectorAll(".cfet").forEach(function(e){ e.remove(); }); },4600);
+  }
+  function showFM(){
+    if(!overlay||document.getElementById("fm-box")) return;
+    var box=document.createElement("div"); box.id="fm-box"; box.style.cssText="width:100%;margin-top:20px";
+    box.innerHTML='<div style="font-weight:900;font-size:14.5px;margin-bottom:6px">最初のメッセージ、どう送る？</div>';
+    FM.forEach(function(o,i){ var b=document.createElement("button"); b.className="fm-opt"; b.textContent=o.me;
+      b.addEventListener("click",function(){ fmPayload=o; box.querySelectorAll(".fm-opt").forEach(function(x){ x.classList.remove("sel"); }); b.classList.add("sel");
+        var mb=$("#match-msg-btn"); if(mb) mb.textContent="この文で送る 💬"; });
+      box.appendChild(b); });
+    var mb=$("#match-msg-btn"); if(mb) overlay.insertBefore(box, mb); else overlay.appendChild(box);
+  }
+  if(overlay){ new MutationObserver(function(){ if(overlay.classList.contains("on") && !overlay.dataset.v27){ overlay.dataset.v27="1"; spawnConfetti(); setTimeout(showFM,1000); } }).observe(overlay,{attributes:true,attributeFilter:["class"]}); }
+  if(tchat){ new MutationObserver(function(muts){ if(!fmPayload||fmApplied) return;
+    muts.forEach(function(mu){ mu.addedNodes.forEach(function(n){ if(n.nodeType!==1||!n.classList) return;
+      if(n.classList.contains("daychip") && !fmAwait){ fmAwait=true; var d=document.createElement("div"); d.className="t-bub me"; d.textContent=fmPayload.me; tchat.appendChild(d); tchat.scrollTop=99999; }
+      else if(fmAwait && n.classList.contains("t-bub") && n.classList.contains("them") && n.textContent==="マッチありがとう笑"){ n.textContent=fmPayload.him; fmAwait=false; fmApplied=true; }
+    }); });
+  }).observe(tchat,{childList:true}); }
+  /* ---------- 4. Top Picks rotation + push ---------- */
+  var POOL=[{n:"けんた",a:26,e:"🏕️",g:"linear-gradient(160deg,#667eea,#764ba2)"},{n:"だいき",a:24,e:"🌇",g:"linear-gradient(160deg,#ff9a9e,#fecfef)"},{n:"ゆうき",a:25,e:"🏋️",g:"linear-gradient(160deg,#0f9b8e,#84fab0)"},{n:"かいと",a:27,e:"🐈",g:"linear-gradient(160deg,#56ccf2,#2f80ed)"},{n:"そうま",a:22,e:"☕",g:"linear-gradient(160deg,#f7971e,#ffd200)"},{n:"りく",a:23,e:"🎤",g:"linear-gradient(160deg,#8e2de2,#4a00e0)"},{n:"はやて",a:29,e:"⛩️",g:"linear-gradient(160deg,#134e5e,#71b280)"},{n:"しゅん",a:28,e:"💻",g:"linear-gradient(160deg,#232526,#414345)"},{n:"たくみ",a:29,e:"🍳",g:"linear-gradient(160deg,#cb2d3e,#ef473a)"}];
+  var rot=0;
+  function applyPicks(){
+    var gbox=$("#tgold-box"); if(!gbox) return;
+    var pair=[POOL[rot%POOL.length], POOL[(rot+3)%POOL.length]];
+    gbox.querySelectorAll("[data-pick]").forEach(function(tile,i){ var p=pair[i%2]; tile.dataset.pick=p.n;
+      var im=tile.querySelector(".im > span"); if(im){ im.textContent=p.e; im.style.background=p.g; }
+      var lb=tile.querySelector("span:last-child"); if(lb) lb.textContent=p.n+" "+p.a; });
+  }
+  var gsheet=$("#tgold-sheet");
+  if(gsheet){ new MutationObserver(function(){ if(gsheet.classList.contains("on")) setTimeout(applyPicks,30); }).observe(gsheet,{attributes:true,attributeFilter:["class"]}); }
+  var nCount=0;
+  function rotatePicks(){
+    rot++;
+    try{ push("Tinder","linear-gradient(135deg,#fd267d,#ff7854)","🔥","Top Picksが更新されました","新しいおすすめが届いてるよ。Gold画面でチェックしてね",function(){ try{ show("tinder"); }catch(e){} if(window.__openGold) window.__openGold(); }); }catch(e){}
+  }
+  setTimeout(function(){ rotatePicks(); nCount++; var iv=setInterval(function(){ if(nCount>=3){ clearInterval(iv); return; } rotatePicks(); nCount++; },110000); },50000);
+  /* ---------- tick ---------- */
+  setInterval(function(){ updBar(); updPresence(); updProf(); },900);
+  updBar(); updProf();
 })();
 </script>
 </body>
