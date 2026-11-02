@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v60</b>（元版v257までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v61</b>（元版v263までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -6652,6 +6652,103 @@ app.style.display="flex";},true);
      return r; }
   }catch(e){}
   return r; };
+})();
+</script>
+<script>
+/* ===== Tinder ver v61 (orig v258+v259+v260): no DM requests at the bottom of her profile - they live behind the messages button, like the real app ===== */
+(function(){
+ const ig=document.querySelector("#v-ig"); if(!ig) return;
+ const setup=()=>{ const dms=ig.querySelector("#ig-dms"); if(!dms) return false;
+  // the heading leaves the feed
+  [...ig.querySelectorAll("#ig-scroll > div")].forEach(d=>{
+   if(d.textContent.trim().indexOf("DMリクエスト")===0||d.textContent.trim().indexOf("📩")===0&&d.textContent.includes("DMリクエスト")){
+    d.style.display="none"; } });
+  // the requests move into a messages panel
+  let panel=ig.querySelector("#v258-dmpanel");
+  if(!panel){ panel=document.createElement("div"); panel.id="v258-dmpanel";
+   panel.style.cssText="position:absolute;inset:0;background:#fff;z-index:350;display:none;flex-direction:column;color:#111";
+   panel.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:56px 14px 10px;border-bottom:1px solid #eee"><button id="v258-dmback" style="background:none;border:none;font-size:22px;cursor:pointer;font-family:inherit">‹</button><b style="font-size:16px">メッセージ</b></div><div id="v258-dmbody" style="flex:1;overflow-y:auto"></div>';
+   ig.appendChild(panel);
+   panel.querySelector("#v258-dmback").addEventListener("click",()=>panel.style.display="none"); }
+  const body=panel.querySelector("#v258-dmbody");
+  if(dms.parentElement!==body){ body.appendChild(dms); }
+  dms.style.setProperty("display","block","important");
+  if(!dms.dataset.v260){ dms.dataset.v260="1";
+   new MutationObserver(()=>{ if(dms.parentElement&&dms.parentElement.id==="v258-dmbody"&&dms.style.display!=="block") dms.style.setProperty("display","block","important"); })
+    .observe(dms,{attributes:true,attributeFilter:["style"]}); }
+  // the messages button opens the panel now (this version's IG header carries no
+  // bottom-nav plane, so a plane button is added beside the bell, like the real app)
+  const head=ig.querySelector(".ig-head");
+  if(head&&!head.dataset.v258){ head.dataset.v258="1";
+   const plane=document.createElement("button"); plane.id="v258-plane"; plane.textContent="✈️";
+   plane.title="メッセージ";
+   plane.style.cssText="font-size:18px;background:none;border:none;cursor:pointer;margin-left:2px";
+   head.appendChild(plane);
+   plane.addEventListener("click",()=>{ panel.style.display="flex"; dms.style.setProperty("display","block","important"); }); }
+  return true; };
+ const t0=Date.now();
+ const iv=setInterval(()=>{ if(setup()&&Date.now()-t0>6000) clearInterval(iv); if(Date.now()-t0>20000) clearInterval(iv); },700);
+ setup();
+})();
+/* ===== Tinder ver v61 (orig v261+v262): his profile speaks the same design language as hers ===== */
+(function(){
+ const v=document.querySelector("#v-hisig"); if(!v) return;
+ const COVERS={"ごはん":"assets/ig-food.jpg","ライブ":"assets/stage.jpg","日常":"assets/selfie.jpg","カフェ":"assets/cafe3.jpg"};
+ const setup=()=>{
+  // the old full-width blue DM button goes; the two-button row is the real design
+  const dmBtn=v.querySelector("#his-dm-btn");
+  if(dmBtn){ const wrap=dmBtn.closest("div"); if(wrap&&wrap.style.display!=="none") wrap.style.display="none"; }
+  // wire the row's message button to the DM, mirroring its lock state
+  const rowBtns=[...v.querySelectorAll("button")].filter(b=>b.textContent.trim()==="メッセージ"||b.textContent.trim().indexOf("メッセージ")===0&&b.id!=="his-dm-btn");
+  const msgBtn=rowBtns.find(b=>b.id!=="his-dm-btn"&&b.offsetParent!==null)||rowBtns[0];
+  if(msgBtn&&dmBtn&&!msgBtn.dataset.v261){ msgBtn.dataset.v261="1";
+   msgBtn.addEventListener("click",()=>dmBtn.click()); }
+  if(msgBtn&&dmBtn){ const locked=dmBtn.textContent.includes("🔒");
+   const want=locked?"メッセージ 🔒":"メッセージ";
+   if(msgBtn.textContent.trim()!==want) msgBtn.textContent=want;
+   msgBtn.style.opacity=dmBtn.style.opacity||""; }
+  // highlights become photo circles, like hers
+  v.querySelectorAll(".stories button").forEach(btn=>{
+   if(btn.dataset.v261hl) return; btn.dataset.v261hl="1";
+   const label=btn.textContent.replace(/[🍚🎤🌙☕🔴]/g,"").trim();
+   const isStory=btn.id==="story-btn";
+   const isLive=btn.textContent.includes("LIVE");
+   const cover=isStory?"assets/ig-avatar.jpg":(COVERS[label]||"assets/stage.jpg");
+   btn.innerHTML="";
+   const ring=document.createElement("span");
+   ring.style.cssText="display:block;width:58px;height:58px;border-radius:50%;padding:2.5px;"+(isLive?"background:#ff3040":(isStory?"background:conic-gradient(45deg,#fa7e1e,#d62976,#962fbf,#4f5bd5,#fa7e1e)":"background:#e6e6e6"));
+   const im=document.createElement("img"); im.src=cover; im.alt="";
+   im.style.cssText="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;display:block";
+   ring.appendChild(im); btn.appendChild(ring);
+   const lb=document.createElement("span"); lb.textContent=isLive?"LIVE":label;
+   lb.style.cssText="font-size:11px;color:#262626;margin-top:3px;display:block;max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";
+   btn.appendChild(lb);
+   btn.style.cssText="background:none;border:none;display:inline-flex;flex-direction:column;align-items:center;cursor:pointer;font-family:inherit;padding:0 2px;vertical-align:top";
+  });
+  // the icon tab row above his grid, same as hers
+  const grid=v.querySelector(".ig-grid");
+  if(grid&&!v.querySelector("#v261-tabs")){ const tabs=document.createElement("div"); tabs.id="v261-tabs";
+   tabs.style.cssText="display:flex;border-top:1px solid #eee;background:#fff";
+   tabs.innerHTML='<span style="flex:1;text-align:center;padding:8px 0;font-size:19px;border-bottom:1.5px solid #111">▦</span><span id="v261-tag" style="flex:1;text-align:center;padding:8px 0;font-size:17px;opacity:.45;cursor:pointer">👤</span>';
+   grid.parentElement.insertBefore(tabs,grid);
+   tabs.querySelector("#v261-tag").addEventListener("click",()=>toast("タグ付けされた投稿はまだないよ")); }
+ };
+ setInterval(setup,1200); setup();
+})();
+/* ===== Tinder ver v61 (orig v263): the news icon becomes a real app icon - a newspaper glyph on a news-red gradient ===== */
+(function(){
+ const ic=document.querySelector(".ic-news"); if(!ic) return;
+ const badge=ic.querySelector(".badge");
+ ic.style.background="linear-gradient(145deg,#ff4b3e 0%,#e60012 55%,#b3000d 100%)";
+ ic.innerHTML='<svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true">'
+  +'<rect x="30" y="18" width="20" height="32" rx="4" fill="rgba(255,255,255,.45)"/>'
+  +'<rect x="12" y="14" width="34" height="36" rx="4" fill="#ffffff"/>'
+  +'<rect x="17" y="19" width="15" height="11" rx="1.5" fill="#e60012"/>'
+  +'<rect x="17" y="34" width="24" height="3.4" rx="1.7" fill="#c9c9ce"/>'
+  +'<rect x="17" y="40" width="24" height="3.4" rx="1.7" fill="#c9c9ce"/>'
+  +'<rect x="17" y="46" width="15" height="3.4" rx="1.7" fill="#c9c9ce"/>'
+  +'</svg>';
+ if(badge) ic.appendChild(badge);
 })();
 </script>
 </body>
