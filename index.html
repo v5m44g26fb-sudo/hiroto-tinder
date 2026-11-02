@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v113</b>（ダミー4人の雑談に第15周「当日の段取り」――各人が自分の節目の当日に向けた段取りを実況する周＋彼のフリーチャットに香水／海辺のダイブ追加。元版はv305のまま新規版なしのためTinder版側の作り込み）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v114</b>（ダミー4人の雑談に第16周「結果報告」――各人が自分の節目の結果を報告する周＋彼のフリーチャットに神社・お寺／スポーツ観戦のダイブ追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3853,6 +3853,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    "そうま":{s:[["ロゴのシール、直した版を再発注しました！","今度は文字、ちゃんと読めるやつです。……届いたらまず窓に貼ります"],["試作メニューの最終版、店長の決裁が下りたら席に置きます","窓側の席、完成まであと一歩です。……その瞬間、報告しますね"]],d:["再発注のシール、届くの待ちです"]}
   };
   Object.keys(DM16).forEach(function(n){ if(DM[n]){ DM[n].script15=DM16[n].s; DM[n].def=DM[n].def.concat(DM16[n].d); } });
+  /* ===== Tinder ver v114: dummy chats round 16 - the result-report lap. A different shape from rounds 8-15 (the milestone itself is now behind each dummy and he reports how it landed, picking up round 15's logistics one by one): Sota opened the envelope after the live - half the setlist predictions hit, the jacket survived the day and the playlist order that got shuffled in round 14 turned out closer than his own, Shun's day-off early-morning rematch worked (curtains-open plus the separate morning pudding did it; he was back to night rhythm by evening, honestly reported), Takumi's menu has started - the first day sold through the prep list without a hitch and the name was announced on the shop floor as promised with the first-customer seat kept, Soma's corrected stickers arrived readable and the logo question resolved without presuming her round-9 pick: the round logo went to the shop sign, the window-shaped one to the window-seat menu, so both drafts she weighed live somewhere in the shop. Cross-references stay inside each dummy's own arc, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
+  var DM17={
+   "そうた":{s:[["結果報告。封、ライブ終わりに開けた","予想、半分当たってた。……シャッフルされたプレイリストの順番のほうが近かったのは、内緒な"],["ジャケットも無事だったし、当日の段取り勝ちだな","答え合わせ、楽しかった。……次のライブの予想も、もう書き始めてる"]],d:["次のセトリ予想、封の準備中"]},
+   "しゅん":{s:[["早起きリベンジ、結果報告。……成功した","カーテン開けて寝たのと、朝プリンが効いた。奇跡じゃなく段取り勝ち"],["まあ、その日の夜はいつも通りの夜更かしだったけど","一回勝てば、次もいける気がする。……なおの秘密の体制も、変わらず待機中"]],d:["早起き、まず一勝だな"]},
+   "たくみ":{s:[["メニュー、始まりました。結果報告です","初日、段取りリスト通りに回って、仕込みも売り切れまで持ちました"],["名前も、店で発表してきました","最初のお客さんの席も、守れたんですよ。……あとは、なおさんの『美味しい』待ちです"]],d:["メニュー初日、乗り切りました"]},
+   "そうま":{s:[["ロゴの結果報告です！ 直したシール、文字ちゃんと読めました","で、決着のつき方が面白くて。丸いほうは店の看板に、窓のほうは窓側の席のメニューに決まったんです"],["二択で迷った分、両方とも店のどこかにいるんですよ","窓側の席、完成しました。……常連さん第一号の席、ここにあります"]],d:["窓側の席、完成しましたよ"]}
+  };
+  Object.keys(DM17).forEach(function(n){ if(DM[n]){ DM[n].script16=DM17[n].s; DM[n].def=DM[n].def.concat(DM17[n].d); } });
   var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
   window.__dummyMatches=function(){ return order.slice(); };
 
@@ -4065,6 +4073,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     else if(!msgs && D.script13 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+D.script13.length){ var off13=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0); msgs=D.script13[cs.step-off13]; cs.step++; }
     else if(!msgs && D.script14 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+D.script14.length){ var off14=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0); msgs=D.script14[cs.step-off14]; cs.step++; }
     else if(!msgs && D.script15 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+D.script15.length){ var off15=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0); msgs=D.script15[cs.step-off15]; cs.step++; }
+    else if(!msgs && D.script16 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+D.script16.length){ var off16=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0); msgs=D.script16[cs.step-off16]; cs.step++; }
     if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
       if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
     if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
@@ -7088,6 +7097,24 @@ app.style.display="flex";},true);
      fire("perfume",["香水つける人なんや。……近づいた時にふわっとするやつ、気になるわ","なおの匂いのイメージ、勝手に柑橘っぽいと思ってる。……外れてたらごめん","俺はあんまりつけるほうやないけど。……なおの好きな匂い、覚えとくわ"]);
     else if(/海辺|ビーチ|砂浜|海水浴|波の音/.test(s2)&&Math.random()<0.65)
      fire("seaside",["海辺、行ったん？ ……波の音、ぼーっと聞いてたいタイプ？","ビーチで何もせん時間、贅沢やよな。……日焼けだけ気つけや","海の匂いって、帰ってからも服に残るよな。……あれ、わりと好きやねん"]);
+   } }catch(e){}
+  return r; };
+})();
+/* ===== Tinder ver v114: his free chat gains two more dives in the v105-v113 style - shrines & temples (visiting them / goshuin stamps / quiet grounds; no earlier dive or FCV voice uses the trigger) and watching sports (baseball and match spectating, as a spectator - the v109 exercise dive keeps doing sports himself, and the FCV live layer keeps his own stage, so triggers stay on watching). Each fires at most once, same free-calm gates as the other dives (never during the scandal, never after an ending, never in act2) ===== */
+(function(){
+ if(typeof himReply!=="function"||state._v114d) return; state._v114d=true;
+ const prev=himReply;
+ const used={};
+ const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
+  try{ const s2=t||"";
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
+    if(/神社|お寺|御朱印|お参り|初詣/.test(s2)&&Math.random()<0.65)
+     fire("shrine",["神社行く人なんや。……静かなとこ、好きそうやもんな、なお","御朱印集めてるん？ ……几帳面なとこ、そういうとこに出るよな","お参りで何お願いしたかは、聞かへん。……叶うまで内緒のほうがええらしいし"]);
+    else if(/野球|観戦|スタジアム|応援席/.test(s2)&&Math.random()<0.65)
+     fire("sportsfan",["野球観に行くんや。……応援席の熱気、テレビと全然ちゃうよな","観戦のお供は、やっぱ球場グルメ？ ……なおはそっちも楽しむタイプやろ","スポーツは観る専門の話、ええな。……俺はやる側の汗の話ばっかやから"]);
    } }catch(e){}
   return r; };
 })();
