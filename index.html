@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v45</b>（元版v212までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v48</b>（元版v225までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3154,7 +3154,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     var himTile = m
       ? '<button class="picktile" id="gp-him"><span class="im"><img src="assets/tinder-hiroto-1.jpg" alt=""></span><span>ひろと ⭐ マッチ済み</span></button>'
       : '<button class="picktile" id="gp-him"><span class="im"><img class="blurme" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>⭐ Super Like</span></button>';
-    gbox.innerHTML='<h3>⭐ Tinder Gold / Platinum</h3><div class="sub">あなたを Like した人が見放題…という設定の画面です。課金はできません（演出）。</div>'
+    gbox.innerHTML='<h3>⭐ Tinder Gold / Platinum</h3><div class="sub">あなたを Like した人が見放題…という設定の画面です。課金はできません（演出）。</div><div style="font-size:11.5px;color:#8e8e93;margin:-2px 0 10px">💛 なおは 9/26 から Gold（初月の無料トライアルに、ノリで入った）。ひろとも同じ日に Gold にしていたらしい</div>'
       +'<div class="gold-plan"><div style="font-weight:900;font-size:15px">Tinder Gold　<span style="color:#b8860b">月額 ¥2,200〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">あなたをLikeした人が見える／無制限のLike／月1ブースト</div><button class="gold-buy" style="margin-top:9px;background:#e8a33d;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Goldにアップグレード</button></div>'
       +'<div class="gold-plan plat"><div style="font-weight:900;font-size:15px">Tinder Platinum　<span style="color:#5b7ba5">月額 ¥3,400〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">マッチ前にメッセージ送信／あなたのLikeを優先表示／スーパーいいね週5回</div><button class="gold-buy" style="margin-top:9px;background:#5b7ba5;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Platinumにアップグレード</button></div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">💛 あなたを Like した人</div><div class="pickrow">'
@@ -5076,6 +5076,10 @@ app.style.display="flex";},true);
    ["me","自己紹介、どうしよ。前のやつ、真面目すぎたよね"],
    ["n","打っては消して、打っては消して。最後に残ったのは、わりと正直な一文だった。"],
    ["me","『大阪の会社員。今日ひましてます🙌 サウナとエビとお酒が好き。ノリの合う人と気軽に飲みたいな。会って話す派です』……うん、これでいっか"],
+   ["n","登録の仕上げに、ポップアップが出た。『初月キャンペーン ― Gold が無料トライアル中』"],
+   ["him","ゆい『Gold にしとき。来た Like、先に見えるから』"],
+   ["me","無料なら、まあ……ぽち"],
+   ["n","こうして、なんとなく Gold になった。"],
    ["n","あとは深く考えず、右へ左へ。軽い気持ちだった。この時は、まだ。"],
    ["n","― ひろと側 ―"],
    ["n","同じ夜。レッスンが終わって、帰りの電車。"],
@@ -5091,6 +5095,9 @@ app.style.display="flex";},true);
    ["n","自己紹介は、短く、正直に。"],
    ["him","『大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き』……こんなもんか"],
    ["him","どうせ、誰も気づかんやろ"],
+   ["n","最後に、有料プランの画面。Gold ―『あなたを Like した人が、先に見られます』"],
+   ["him","……誰に Like されたか分かるんか。逆に、バレる前に気づけるなら……安いもんや"],
+   ["n","深く考えずに、課金した。バレたくない気持ちが、ほんの少しだけ透けていた。"],
    ["n","同じ夜、同じ街で、二人が同じアプリを開いていた。マッチは、明日の話。"]]},
   {t:"前日譚 ― Super Likeを押す前", sub:"マッチの前日 ・ 彼の画面", un:()=>state.chapter>=1, lines:[
    ["n","9月26日、金曜の夜。彼の部屋。"],
@@ -5972,6 +5979,93 @@ app.style.display="flex";},true);
     addNewsRow("assets/crown.jpg","ライブレポ：新曲の振り付けが『過去いちばん』とファンの間で話題に","音楽ナタリー ・ 2日前",null);
    }catch(e){} };
  })();
+})();
+</script>
+<script>
+/* ===== Tinder ver v48: original v213-v225 spec sync (app spec only; v214 her-selfie album item, v215 notebook pages, v216-v218/v223/v224 prologue scenario built on the Sep 27 party are NOT ported - photo scope and arc) ===== */
+/* (orig v213) he sometimes double-texts: an afterthought lands after his free-chat reply */
+(function(){
+ if(typeof himReply!=="function"||state._v213t) return; state._v213t=true;
+ const POOL=["……なんてね","今の、内緒な","あ、言い忘れてた","マロンがこっち見てるわ","あと、さっきの店は当たりやったな"];
+ const _hr=himReply;
+ himReply=async function(t){ const r=await _hr(t);
+  if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&Math.random()<0.22){
+   const line=POOL[Math.floor(Math.random()*POOL.length)];
+   setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },1800); }
+  return r; };
+})();
+/* (orig v219) his real history surfaces in free chat, in his own words */
+(function(){
+ if(typeof himReply!=="function"||state._v219t) return; state._v219t=true;
+ const RULES=[
+  [/日プ|オーディション|練習生/,"日プの時は16歳で、ダンス未経験やった。……よく残った方やと思う"],
+  [/創造営|中国/,"中国の番組、中国語ゼロから行った。ほんま必死やったわ"],
+  [/ボイプラ|韓国/,"韓国も行ったな。最後の最後まで、悔しかった"],
+  [/マロン|犬|わんこ/,"マロン？ 実家の犬。……会いたいな、今"],
+  [/誕生日|8月23/,"俺？ 8月23日。……覚えてくれる？"],
+  [/ロック|キャッチフレーズ/,"『皆さんの心をロックします』……昔のキャッチフレーズ。今聞くと恥ずかしい"],
+  [/Tasty|ソロ|デビュー曲/,"ソロで出した曲、聴いてくれた？ 『Tasty』って言うねん"]];
+ const _hr=himReply;
+ himReply=async function(t){ const r=await _hr(t);
+  if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&typeof t==="string"){
+   const hit=RULES.find(r2=>r2[0].test(t));
+   if(hit&&Math.random()<0.65) setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(hit[1]); },2400); }
+  return r; };
+})();
+/* (orig v220) his LINE profile gains a data card from his real profile */
+(function(){
+ const prof=document.querySelector("#hiroto-prof"); if(!prof||prof.querySelector("#h-data")) return;
+ const card=document.createElement("div"); card.id="h-data";
+ card.style.cssText="margin:0 16px 12px;background:#fff;border:1px solid #eee;border-radius:14px;padding:12px 14px;color:#111";
+ const row=(e,t,v)=>'<div style="display:flex;gap:9px;align-items:center;font-size:13px;padding:5px 0"><span>'+e+'</span><span style="color:#666">'+t+'</span><b style="margin-left:auto;text-align:right">'+v+'</b></div>';
+ card.innerHTML='<div style="font-weight:800;font-size:13.5px;margin-bottom:4px">📇 ひろとデータ</div>'+
+  row("🎂","誕生日","8月23日")+
+  row("🏠","出身","大阪府")+
+  row("🐶","実家の犬","マロン")+
+  row("💬","キャッチフレーズ","「心をロックします」")+
+  row("🌏","話せる言葉","日本語・한국어・中文");
+ prof.appendChild(card);
+})();
+/* (orig v221) the shared notebook gains a page addressed to his sixteen-year-old self */
+(function(){
+ const vline=document.querySelector("#v-line"); if(!vline) return;
+ const EXTRA=[
+  ["16歳の自分に言いたい。今の俺、悪くないで",()=>state.chapter>=4],
+  ["次は、デビューって言える場所で会いたい",()=>!!state.act2]];
+ const inject=()=>{ const p=document.querySelector("#note-panel"); if(!p||p.querySelector("#note-extra3")) return;
+  const sc=p.querySelector('div[style*="overflow-y"]'); if(!sc) return;
+  const box=document.createElement("div"); box.id="note-extra3";
+  box.innerHTML=EXTRA.map(n=>{ const un=n[1]();
+   return '<div style="background:#fffdf4;border:1px solid #eee3bd;border-radius:11px;padding:11px 13px;margin-bottom:8px;font-size:13.5px;line-height:1.6;'+(un?"":"opacity:.5")+'">'+(un?"✏️ "+n[0]:"🔒 まだ書かれていないページ")+"</div>"; }).join("");
+  const anchor=p.querySelector("#note-extra2")||p.querySelector("#note-extra");
+  if(anchor&&anchor.nextSibling) sc.insertBefore(box, anchor.nextSibling); else sc.insertBefore(box, sc.firstChild); };
+ new MutationObserver(inject).observe(vline,{childList:true,subtree:true});
+})();
+/* (orig v222) the X timeline occasionally surfaces fan posts carrying his real history */
+(function(){
+ const POOL=[
+  {n:"ロットダンの端くれ",h:"@rottodan_life",t:"井汲大翔、日プで36位で落ちた子が今やソロデビューよ？ 人生何があるか分からん",m:["18","96","2,148"]},
+  {n:"ロットダンの端くれ",h:"@rottodan_life",t:"創造営の『Lover Boy 88』、中国語ゼロから個人票1位って今見ても鳥肌",m:["26","141","3,204"]},
+  {n:"さくらの推し活",h:"@sakura_act",t:"ボイプラ21位の悔しさを知ってるから、今の笑顔が眩しいんよ…",m:["9","63","1,487"]},
+  {n:"ロットダンの端くれ",h:"@rottodan_life",t:"『皆さんの心をロックします』って自己紹介、16歳の頃から言ってたのエモすぎ",m:["31","188","4,092"]}];
+ setInterval(()=>{ try{
+  if(state.phase==="scandal"||state.ended) return;
+  const tl=document.querySelector("#x-pane-tl"); if(!tl||!tl.offsetParent) return;
+  if(state.chapter<3||Math.random()>0.35) return;
+  const p=POOL[Math.floor(Math.random()*POOL.length)];
+  const el=postEl({n:p.n,h:p.h,tm:"今",t:p.t,m:p.m},false);
+  tl.insertBefore(el, tl.firstChild);
+ }catch(e){} },47000);
+})();
+/* (orig v225) before the match, the home quote already leans toward tomorrow */
+(function(){
+ const iv=setInterval(()=>{ try{
+  if(state.chapter<1&&!state.started&&!state.ended&&!state.act2){
+   const card=document.querySelector("#home-quote"); if(!card) return;
+   const q=card.children[1];
+   if(q&&q.textContent!=="明日、なにかが始まる気がする") q.textContent="明日、なにかが始まる気がする";
+  } else if(state.chapter>=1||state.ended) clearInterval(iv);
+ }catch(e){} },1500);
 })();
 </script>
 </body>
