@@ -803,7 +803,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v10</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v11</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -889,7 +889,7 @@ function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal";
 function chapter(n){ if(state.phase!=="prologue") return; state.chapter=n; const LD={1:"9月27日 土曜日",2:"10月4日 土曜日",3:"10月12日 日曜日",4:"10月18日 土曜日",5:"11月1日 土曜日"}; if(LD[n]) $("#lock-date").textContent=LD[n]; const ND={1:"9月27日（土）夜",2:"10月4日（土）夜",3:"10月12日（日）夜",4:"10月18日（土）夜",5:"11月1日（土）夜"}; if(ND[n]) $("#news-note").textContent=ND[n]; const t=state._token; if(n===1) ch1(t); else if(n===2) ch2(t); else if(n===3) ch3(t); else if(n===4) ch4(t); else if(n===5) ch5(t); }
 async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","9月27日（土） —— Tinderで出会った日。<br>ホームの Tinder を開いてね"); state._tinderWaiting=true; toast("🔥 <b>Tinder</b>を開いて、スワイプしてみて"); }
 async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","10月4日（土） —— 待ち合わせ場所。<br>顔を上げたら——え、本物やん！？<br>LINEを開いてね"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2100); later(()=>toast("🎩 <b>帽子が深い</b>：それでも、目元だけですぐ分かった"),3900); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),5600);
-  await himMsg("…なお？",700); if(!alive(t))return; await himMsg("ごめんな、隠してて"); if(!alive(t))return; await himMsg("会ってから言お思ててん"); if(!alive(t))return; await himMsg("びっくりしたよな"); if(!alive(t))return; await himMsg("帽子とマスクで、ごめん"); if(!alive(t))return; await himMsg("人目がな…でも、会いたかってん");
+  await himMsg("…なお？",700); if(!alive(t))return; await himMsg("ごめんな、隠してて"); if(!alive(t))return; await himMsg("会ってから言お思ててん"); if(!alive(t))return; await himMsg("びっくりしたよな"); if(!alive(t))return; await himMsg("帽子とマスクで、ごめん"); if(!alive(t))return; await himMsg("人目がな…でも、会いたかってん"); if(!alive(t))return; await himVoice("assets/vm-t-hello.mp3","0:07");
   if(!alive(t))return; askChoices("なおの反応は——",[
     {label:"え…本物やん！？",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("騒がんでくれて、ありがとう"); if(!alive(t))return; await himMsg("今日は普通に、楽しもな"); ch2main(t); }},
     {label:"…夢じゃないよね？",fn:async()=>{ if(!alive(t))return; await himMsg("夢ちゃうで笑"); if(!alive(t))return; await himMsg("隠してたんは、謝る"); if(!alive(t))return; await himMsg("でも今日は、普通に楽しも"); ch2main(t); }},
@@ -903,7 +903,7 @@ async function ch2main(t){ if(!alive(t))return; await himMsg("今日、楽しみ
       {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>chapter(3),2000); }},
     ]); },8000); }
 async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","好きだけど、越えられない一線。"); chapterCard("第3話","線引き","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
-  await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("俺、こういう仕事やから"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会うの、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
+  await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("俺、こういう仕事やから"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himVoice("assets/vm-t-line.mp3","0:05"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会うの、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
   if(!alive(t))return; const fin=async()=>{ later(()=>chapter(4),2200); };
   askChoices("なおの答えは——",[
     {label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); if(!alive(t))return; await himMsg("ほんまは、こんなん言う資格ないんやけど"); if(!alive(t))return; await himMsg("また、ごはんだけでも行ってくれる？"); fin(); }},
@@ -1040,7 +1040,7 @@ function meMsg(text){ pop();const d=document.createElement("div");d.className="m
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){
 push("LINE","#06c755","💬","ひろと","「なお」——タップでトークを開く",()=>{show("line");openChat()});
-await himMsg("なお"); await himMsg("ニュース、見た？"); await himMsg("ごめん…俺のせいで"); await himMsg("俺は平気やから"); await himMsg("なおだけが心配やねん"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
+await himMsg("なお"); await himMsg("ニュース、見た？"); await himMsg("ごめん…俺のせいで"); await himMsg("俺は平気やから"); await himMsg("なおだけが心配やねん"); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
 askChoices("なおの返信を選んで",[
 {label:"私も大丈夫だよ",fn:async()=>{state.choice1="strong";await himMsg("ほんま？");await himMsg("無理してへん？");await himMsg("…なお、強いな");lineSequence2();}},
 {label:"ちょっと怖い…",fn:async()=>{state.choice1="scared";await himMsg("ごめんな");await himMsg("そんな思いさせたくなかった");await himMsg("絶対、守るから");lineSequence2();}},
@@ -1049,7 +1049,7 @@ askChoices("なおの返信を選んで",[
 }
 async function lineSequence2(){ if(!state.started||state._seq2) return; state._seq2=true;
   await himPhoto("assets/ig-meal.jpg"); await himMsg("これ、なおだけ"); await himStamp("🥺");
-await himMsg("マネージャーと今話した"); await himMsg("事務所、コメント出すって"); await himMsg("「交際の事実はない」ってやつ"); await himMsg("事実やから、そのまま出すって"); await himMsg("でも…ごめんな、巻き込んで");
+await himMsg("マネージャーと今話した"); await himMsg("事務所、コメント出すって"); await himMsg("「交際の事実はない」ってやつ"); await himMsg("事実やから、そのまま出すって"); await himMsg("でも…ごめんな、巻き込んで"); await himVoice("assets/vm-t-bye.mp3","0:03");
 askChoices("これから、どうする？",[
 {label:"「交際してない」って、堂々と言おう",fn:()=>ending("open")},
 {label:"発表までは静かに待とう",fn:()=>ending("wait")},
@@ -1060,7 +1060,7 @@ function startCall(customLines){ show("call"); state.callSec=0; $("#call-time").
 const lines=customLines||["「…なおの声、聞きたかってん」","「大丈夫。俺、逃げへんから」","「ファンのことも大事やけど」","「なおのことも、同じくらい大事やねん」","「今日はもう、寝られへんかもな 笑」","「明日も電話していい？」"];
 let i=0; $("#call-sub").textContent=lines[0];
 state.callTimer=setInterval(()=>{state.callSec++;$("#call-time").textContent=String(Math.floor(state.callSec/60)).padStart(2,"0")+":"+String(state.callSec%60).padStart(2,"0")},1000);
-if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(state._mgrAud){ try{state._mgrAud.pause()}catch(e){} } state._mgrAud=new Audio("assets/mgr-"+n+".mp3"); const pr=state._mgrAud.play(); if(pr&&pr.catch) pr.catch(()=>{}); }; playN(1);
+if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(state._mgrAud){ try{state._mgrAud.pause()}catch(e){} } state._mgrAud=new Audio("assets/mgr-t-"+n+".mp3"); const pr=state._mgrAud.play(); if(pr&&pr.catch) pr.catch(()=>{}); }; playN(1);
  const iv=setInterval(()=>{i++; if(i<lines.length){$("#call-sub").textContent=lines[i]; playN(i+1);} else {clearInterval(iv)}},4200); timers.push(iv); }
 else { startCallVoice(); }
 }
@@ -1317,7 +1317,7 @@ function showIncomingCall(caller){ state.caller=caller||"hiroto"; const mgr=stat
   $("#call-inc-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
   $("#call-inc-sub").textContent=mgr?"事務所からの着信。何の話だろう…":"ドキドキの着信。応答する？";
   show("call"); $("#call-incoming").style.display="flex"; $("#call-active").style.display="none"; ringStart(); }
-const MGR_LINES=["「…もしもし、なおさんですか。私、井汲が所属する事務所の者です」","「確認させてください。アプリで知り合って、彼とお会いになったのは事実でしょうか」","「事務所としては『交際の事実はございません』と、コメントを出します」","「お願いがございます。SNSでの発信は控えていただき、今後、彼とのご連絡もお控えいただけますか」","「…ご協力、感謝します。お嬢さんにご迷惑がかからないよう、私たちも努めますので」"];
+const MGR_LINES=["「…もしもし、なおさんですか。私、井汲の所属事務所の者です」","「確認させてください。アプリで知り合って、彼とお会いになったのは事実でしょうか」","「事務所としては『交際の事実はございません』と、コメントを出します」","「どうか、SNSでは何も発信せず、今後は彼とのご連絡も控えてください」","「彼には、こちらから伝えます。ご協力、ありがとうございました」"];
 $("#call-answer").addEventListener("click",()=>{ ringStop(); $("#call-incoming").style.display="none"; $("#call-active").style.display="flex"; const mgr=state.caller==="manager";
   $("#call-act-name").textContent=mgr?"マネージャー（事務所）":"ひろと"; $("#call-act-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
   startCall(mgr?MGR_LINES:null); state._answered=true; state._callWho=mgr?"マネージャー（事務所）":"ひろと"; });
@@ -1840,13 +1840,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
  document.head.appendChild(css); })();
 /* ===== Tinder ver v10: story pivot — they never date. Ch3 becomes "drawing the line", ch4 an ambiguous distance (no matching necklace), ch5 a widening gap; the scandal is about an active idol using Tinder itself, the agency denies any relationship, his statement apologizes for using the app and confirms he quit it; endings are about not being together ===== */
 /* ===== Tinder ver v9: a touch more heat, focused on the Tinder phase through ch2 — bolder teasing, late-night heat, closer-distance toasts, "don't want to let her go home" (but he does). Attraction without dating: tension only, nothing explicit ===== */
-/* ===== v11 voice slots (files pending in ~/workspace/hiroto-tinder-voice-staging/; do NOT wire until they arrive):
-   1. assets/vm-t-hello.mp3 — ch2 opening, right after his first LINE messages (first voice after the LINE exchange)
-   2. assets/vm-t-line.mp3 — ch3 climax, right after himMsg("付き合うとかは、できへんねん")
-   3. assets/vm-t-sorry.mp3 — scandal lineSequence1, right after himMsg("なおだけが心配やねん"), alongside the existing scandal voices
-   4. assets/vm-t-bye.mp3 — lineSequence2, right before the final askChoices (his last voice before the ending)
-   Lover-premise legacy voices vm-confess / vm-necklace no longer fire anywhere in v10 (files kept, unreferenced).
-   Manager call: MGR_LINES subtitles were rewritten in v10 for the new angle (fact-check -> "no relationship" comment -> please refrain from SNS posts and from contacting him -> polite close). In v11, switch the manager audio prefix in startCall from "assets/mgr-"+n to "assets/mgr-t-"+n (new files mgr-t-1..5.mp3, voice "tsuno-1", arriving via staging) so audio matches the new subtitles; until then the old mgr-1..5 audio still plays under the new subtitles. ===== */
+/* ===== Tinder ver v11: new voices wired — vm-t-hello (ch2 opening, first voice after the LINE exchange), vm-t-line (ch3 climax, right after the line-drawing line), vm-t-sorry (scandal LINE, with the existing scandal voices), vm-t-bye (just before the final choice); manager call audio switched to mgr-t-1..5 (voice "tsuno-1") matching the v10-rewritten MGR_LINES subtitles. Lover-premise legacy voices vm-confess / vm-necklace remain unreferenced (files kept). ===== */
 /* ===== Tinder ver v1 ===== */
 (function(){
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
