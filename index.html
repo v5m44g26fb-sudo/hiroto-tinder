@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v21</b>（ダミーマッチ＆雑談チャット追加／いつメンの段階反応を増量）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v22</b>（ダミーマッチ＆雑談チャット追加／いつメンの段階反応を増量）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3653,6 +3653,282 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     }catch(e){}
   },2500);
 })();
+</script>
+<script>
+/* ===== Tinder ver v22: original v90-v109 spec sync (LINE / home / photos) ===== */
+(function(){
+ "use strict";
+ const $=q=>document.querySelector(q), $$=q=>Array.from(document.querySelectorAll(q));
+ const FR={"ゆい":"assets/fr-yui.jpg","みさき":"assets/fr-misaki.jpg","りな":"assets/fr-rina.jpg","いつメン🍻":"assets/grp-itsumen.jpg","いつメン":"assets/grp-itsumen.jpg"};
+ const INI={"ゆ":"ゆい","み":"みさき","り":"りな"};
+
+ /* ---- v90+v91: friend icons inside bubbles too; init sweep that never reverts ---- */
+ function swapIn(root){ if(!root||!root.querySelectorAll) return;
+  root.querySelectorAll(".ava-txt").forEach(el=>{ if(el.querySelector("img")) return;
+   let nm=el.dataset.name||"";
+   if(!nm&&el.closest("#friend-chat")) nm=($("#f-name")||{}).textContent||"";
+   if(!nm&&el.closest("#member-panel")) nm=el.textContent.trim();
+   if(!nm) nm=INI[el.textContent.trim()]||"";
+   const src=FR[nm]; if(!src) return;
+   const img=document.createElement("img"); img.className="avatar"; img.src=src;
+   img.width=el.classList.contains("ig-ava")?38:34; img.height=img.width; img.alt="";
+   el.replaceWith(img); }); }
+ if(typeof avaTxt==="function"){ const _at=avaTxt;
+  avaTxt=function(name){ const k=(name||"").trim(); if(FR[k]) return '<img class="avatar" src="'+FR[k]+'" width="40" height="40" alt="">'; return _at(name); }; }
+ new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{ if(n.nodeType===1) swapIn(n); }))).observe(document.body,{childList:true,subtree:true});
+ swapIn(document);
+ let _swN=0; const _swIv=setInterval(()=>{ swapIn(document); if(++_swN>9) clearInterval(_swIv); },700);
+
+ /* ---- v94: my profile row + header actions + bottom tab bar ---- */
+ (function(){ const list=$("#line-list"); if(!list||$("#my-prof")) return;
+  const row=document.createElement("div"); row.id="my-prof";
+  row.style.cssText="display:flex;align-items:center;gap:11px;padding:10px 16px 12px;border-bottom:8px solid #f2f2f7;cursor:pointer";
+  row.innerHTML='<img src="assets/default-avatar.svg" style="width:44px;height:44px;border-radius:50%" alt=""><span><b style="font-size:15px">なお</b><br><span id="my-status" style="color:#8e8e93;font-size:12.5px">☕ カフェオレとサウナが好き</span></span>';
+  row.addEventListener("click",()=>toast("👤 <b>なお</b>のプロフィール（物語の中だけ）"));
+  list.insertBefore(row,list.firstChild);
+  const head=$("#line-head-list");
+  if(head&&!head.querySelector(".hd-act")){ const t=head.querySelector(".t");
+   [["👤＋",()=>toast("👤 <b>友だち追加</b>（物語の中だけ）")],["＋",()=>toast("💬 <b>新規トーク</b>（物語の中だけ）")]].forEach(([tx,fn])=>{
+    const s=document.createElement("span"); s.className="hd-act"; s.textContent=tx;
+    s.style.cssText="margin-left:auto;font-size:16px;cursor:pointer;padding:2px 4px";
+    s.addEventListener("click",fn); head.insertBefore(s,t?head.querySelector(".t").nextSibling:head.firstChild); }); }
+  if(!$("#line-tabbar")){ const bar=document.createElement("div"); bar.id="line-tabbar";
+   bar.style.cssText="position:absolute;left:0;right:0;bottom:0;height:56px;background:rgba(255,255,255,.97);border-top:1px solid #e6e6ea;display:flex;z-index:30";
+   bar.innerHTML=[["🏠","ホーム","home"],["💬","トーク","line"],["📞","通話",null],["📰","ニュース",null],["⋯","その他",null]].map(([i,l,v])=>'<button data-v="'+(v||"")+'" style="flex:1;background:none;border:none;font-size:19px;cursor:pointer;font-family:inherit;color:#111">'+i+'<div style="font-size:9.5px;color:#8e8e93">'+l+'</div></button>').join("");
+   $("#v-line").appendChild(bar);
+   bar.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{ if(b.dataset.v) show(b.dataset.v); else toast("物語の中だけのタブだよ"); }));
+   const lv=$("#v-line"); if(lv) lv.style.paddingBottom="56px"; }
+ })();
+
+ /* ---- v90: pin his talk row ---- */
+ (function(){ const list=$("#line-list"), row=$("#talk-hiroto"); if(!list||!row) return;
+  const pin=document.createElement("span"); pin.textContent="📌"; pin.style.cssText="margin-left:6px;font-size:11px";
+  const nm=row.querySelector(".nm"); if(nm&&!nm.querySelector("span")) nm.appendChild(pin);
+  list.insertBefore(row,list.children[1]||null); })();
+
+ /* ---- v90c + v96: his free-chat extras - sends photos, rare honest line then unsends it, real-clock greeting ---- */
+ if(typeof himReply==="function"){ const _hr=himReply;
+  himReply=async function(t){ 
+   if((state._vmCalm||state._vmA2)&&!state._greeted){ state._greeted=true;
+    const h=new Date().getHours();
+    const g=(h>=5&&h<11)?"おはよ":h<16?"昼やな、飯食った？":h<19?"おつかれ、なお":h<24?"今日も一日おつかれ":"……まだ起きてたんか";
+    try{ await himMsg(g); }catch(e){} }
+   const r=await _hr(t);
+   if((state._vmCalm||state._vmA2)&&!state._lcBusy){ const roll=Math.random();
+    if(roll<0.20){ state._lcBusy=true;
+     later(async()=>{ try{ await himPhoto(pick(["assets/stage.jpg","assets/studio.jpg","assets/cafe3.jpg"])); await himMsg(pick(["さっきの","……なんか、送りたくなって","見てほしいやつ"])); }catch(e){} state._lcBusy=false; },2600);
+    } else if(roll<0.32){ state._lcBusy=true;
+     later(async()=>{ try{ await himMsg("……ほんまは、ずっと一緒にいたい"); const bs=$$("#chat .msg.him .bub"); const bub=bs[bs.length-1];
+      later(()=>{ if(bub){ bub.textContent="ひろとがメッセージの送信を取り消しました"; bub.style.cssText="background:none;color:#8e8e93;font-size:12px;box-shadow:none"; } state._lcBusy=false; },2400);
+     }catch(e){ state._lcBusy=false; } },2400);
+    } }
+   return r; }; }
+
+ /* ---- v90d: friends sometimes double-text ---- */
+ if(typeof fPush==="function"){ const _fp=fPush;
+  const EXTRA={ yui:[["f","あ、女子会の日程も決めなきゃ"],["f","なお、候補日おしえて〜"]],
+   misaki:[["f","あと昨日、例の人のグッズ見かけた"],["f","なおの分も買っとく？"]],
+   rina:[["f","あ、そういえば"],["f","新しいカフェ見つけたの！　今度いこ☕"]] };
+  fPush=function(key,text,fs){ _fp(key,text,fs);
+   if(!fs&&EXTRA[key]&&Math.random()<0.4&&!state._fxBusy){ state._fxBusy=true;
+    EXTRA[key].forEach((m,i)=>later(()=>{ _fp(key,m[1],fs); if(i===EXTRA[key].length-1) state._fxBusy=false; },1500+i*1700)); } }; }
+
+ /* ---- v96b: ambient friend topics while you are in other apps ---- */
+ (function(){ const TOPICS=[
+   [()=>state.chapter>=1,"rina","次の渡韓、11月にする？✈️ 釜山のカンジャンセウ食べたい"],
+   [()=>state.chapter>=2,"misaki","初デートの服、結局何にしたん？"],
+   [()=>state.chapter>=3,"yui","新しいサウナ開拓した♨️ 今度いこ"],
+   [()=>state.chapter>=4,"rina","WISHの供給おおすぎて追いつかん…幸せ"],
+   [()=>state.chapter>=5,"misaki","最近、返信ゆっくりめ？　無理してない？"]];
+  let idx=0;
+  setInterval(()=>{ if(idx>=TOPICS.length) return;
+   const lv=$("#v-line"); if(lv&&lv.classList.contains("on")) return;
+   if(state.phase==="scandal") return;
+   const [cond,key,text]=TOPICS[idx];
+   if(cond()){ idx++; try{ fPush(key,text); }catch(e){} } },40000); })();
+
+ /* ---- v97: sheet panels keep dark text ---- */
+ (function(){ const css=document.createElement("style");
+  css.textContent="#member-panel,#lb-panel,#ig-fl-panel,#his-fl-panel,#mem-panel,#hp-panel,#log-sheet{color:#111}#member-panel .sub,#mem-panel .sub{color:#8e8e93}";
+  document.head.appendChild(css); })();
+
+ /* ---- v98: send a photo to his LINE from the photo viewer ---- */
+ (function(){ const pv=$("#ph-view"); if(!pv||$("#pv-line")) return;
+  const b=document.createElement("button"); b.id="pv-line"; b.textContent="💬";
+  b.title="LINEに送る";
+  b.style.cssText="position:absolute;top:52px;right:138px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:14px;cursor:pointer;z-index:2";
+  pv.appendChild(b);
+  b.addEventListener("click",()=>{ const list=pvList(); const f=list[pvIdx]; if(!f) return;
+   const img=f.querySelector("img"); const src=img.getAttribute("src");
+   pv.classList.remove("on"); show("line"); openChat();
+   const d=document.createElement("div"); d.className="msg me";
+   d.innerHTML='<span class="bub photo"><img src="'+src+'" alt=""></span><span class="meta">'+nowTime()+'</span>';
+   $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight;
+   toast("💬 <b>写真を送ったよ</b>");
+   if(state._vmCalm||state._vmA2){ clearTimeout(state._replyT); state._replyT=setTimeout(()=>himReply("（写真を送った）"),1300); }
+   else later(async()=>{ try{ await himMsg("お、写真"); await himMsg("……ええやん"); }catch(e){} },1500); }); })();
+
+ /* ---- v99: video call goes truly full-screen ---- */
+ (function(){ const css=document.createElement("style");
+  css.textContent="#v-call.video-on{background:#000}#v-call.video-on #call-active{position:absolute;inset:0;padding:0}"+
+  "#v-call.video-on #call-act-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0;margin:0}"+
+  "#v-call.video-on #call-act-name{position:absolute;top:64px;left:0;right:0;text-align:center;z-index:3;text-shadow:0 1px 10px rgba(0,0,0,.85)}"+
+  "#v-call.video-on #call-state{position:absolute;top:96px;left:0;right:0;text-align:center;z-index:3;text-shadow:0 1px 8px rgba(0,0,0,.85)}"+
+  "#v-call.video-on #call-sub{position:absolute;left:16px;right:16px;bottom:118px;z-index:3;text-align:center;text-shadow:0 1px 10px rgba(0,0,0,.95);font-size:15px}"+
+  "#v-call.video-on .call-btns{position:absolute;left:0;right:0;bottom:34px;z-index:3;display:flex;justify-content:center;gap:26px;margin:0}";
+  document.head.appendChild(css); })();
+
+ /* ---- v100: write your own memos next to his ---- */
+ (function(){ const panel=$("#hp-panel"); if(!panel) return; const mine=[];
+  new MutationObserver(()=>{ if(panel.style.display==="none") return;
+   if(!panel.textContent.includes("ひろとのメモ")) return;
+   if(panel.querySelector("#my-memo-box")) return;
+   const box=document.createElement("div"); box.id="my-memo-box"; box.style.marginTop="16px";
+   box.innerHTML='<div style="font-weight:800;font-size:14px;margin-bottom:8px">🖊 わたしのメモ</div>'+
+    '<div style="display:flex;gap:8px"><input id="my-memo-in" placeholder="例：次のデートは水族館" maxlength="80" style="flex:1;border:1px solid #ddd;border-radius:10px;padding:9px 11px;font-size:13.5px;outline:none;background:#fff">'+
+    '<button id="my-memo-btn" style="background:#111;color:#fff;border:none;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer">保存</button></div><div id="my-memo-list"></div>';
+   panel.appendChild(box);
+   const render=()=>{ box.querySelector("#my-memo-list").innerHTML=mine.map(m=>'<div class="memo-row" style="margin-top:8px"><span>🖊 '+m.x.replace(/</g,"&lt;")+'<br><span style="color:#8e8e93;font-size:11px">'+m.t+'</span></span></div>').join(""); };
+   render();
+   box.querySelector("#my-memo-btn").addEventListener("click",()=>{ const ta=box.querySelector("#my-memo-in"); const v=ta.value.trim(); if(!v) return;
+    mine.unshift({x:v,t:nowTime()}); ta.value=""; render(); toast("メモを保存したよ"); });
+  }).observe(panel,{childList:true,subtree:true}); })();
+
+ /* ---- v103: stamp pickers for friend & group chats ---- */
+ (function(){ const EM=["❤️","😆","😮","👍","😢","🥺","🙏","✨"];
+  const mk=(host,inputSel,btnAnchor,onPick)=>{ const inp=$(inputSel); if(!inp||!host) return;
+   const row=inp.closest(".line-input")||inp.parentElement; if(!row||row.querySelector(".stamp-btn")) return;
+   const b=document.createElement("button"); b.className="stamp-btn"; b.textContent="😊"; b.type="button";
+   b.style.cssText="background:none;border:none;font-size:19px;cursor:pointer;padding:0 2px";
+   row.insertBefore(b,$(btnAnchor));
+   const panel=document.createElement("div"); panel.style.cssText="display:none;flex-wrap:wrap;gap:4px;padding:8px 10px;background:#fff;border-top:1px solid #eee";
+   EM.forEach(em=>{ const s=document.createElement("button"); s.textContent=em; s.type="button";
+    s.style.cssText="font-size:24px;background:none;border:none;cursor:pointer;padding:4px 6px";
+    s.addEventListener("click",()=>{ panel.style.display="none"; onPick(em); }); panel.appendChild(s); });
+   host.appendChild(panel);
+   b.addEventListener("click",()=>{ panel.style.display=panel.style.display==="flex"?"none":"flex"; }); };
+  mk($("#friend-chat"),"#f-text","#f-send",em=>{ if(!fCur) return; const fc=FCHATS[fCur]; const key=fCur;
+   fc.log.push(["me",em]); $("#fv-"+key).textContent="あなた："+em; fRender();
+   const bs=$$("#fchat .msg.me .bub"); const bub=bs[bs.length-1]; if(bub){ bub.classList.add("stk"); }
+   later(()=>{ $("#f-typing").style.display="flex"; },700);
+   later(()=>{ $("#f-typing").style.display="none"; const pool=state.started?fc.scandal:fc.calm; fPush(key,pool[Math.floor(Math.random()*pool.length)]); },2000); });
+  mk($("#group-chat"),"#g-text","#g-send",em=>{ gMe(em); const bs=$$("#gchat .msg.me .bub"); const bub=bs[bs.length-1]; if(bub) bub.classList.add("stk");
+   setTimeout(()=>gMsg(pick(Object.keys(FRIENDS)),pick(FRIEND_REPLIES)),1500); });
+ })();
+
+ /* ---- v105: miss his call and he follows up on LINE ---- */
+ if(typeof showIncomingCall==="function"){ const _sic=showIncomingCall;
+  showIncomingCall=function(caller){ state._incMiss=(caller!=="manager"); state._incAns=false; _sic(caller); };
+  setInterval(()=>{ const inc=$("#call-incoming"), act=$("#call-active"); if(!inc||!act) return;
+   const incOn=inc.style.display!=="none"&&inc.offsetParent!==null, actOn=act.style.display!=="none"&&act.offsetParent!==null;
+   if(actOn&&state._incMiss) state._incAns=true;
+   if(state._incMiss&&!incOn&&!actOn){ const ans=state._incAns; state._incMiss=false;
+    if(!ans) later(async()=>{ try{ await himMsg("出れんかった？"); await himMsg("また今度かけるわ"); }catch(e){} },20000); } },1000); }
+
+ /* ---- v107: camera app on home page 2 ---- */
+ (function(){ const grid=$("#home-page2 .grid"); const panel=$("#hp-panel"); if(!grid||!panel) return;
+  if(grid.querySelector('[data-hp="cam"]')) return;
+  const b=document.createElement("button"); b.className="appicon"; b.dataset.hp="cam";
+  b.innerHTML='<span class="ic" style="background:linear-gradient(180deg,#48484e,#1c1c1f);font-size:24px">📷</span><span class="lb">カメラ</span>';
+  grid.appendChild(b);
+  const SCENES=[["カフェのなお","assets/nao-tinder-1.jpg"],["ひろとの自撮り","assets/selfie.jpg"],["仕事終わり","assets/studio.jpg"],["夜景","assets/night.jpg"],["花束","assets/roses.jpg"]];
+  const FILTS=[["そのまま",""],["🌅 夕日","sepia(.55) saturate(1.3)"],["🎞 フィルム","contrast(1.1) saturate(.75)"],["❄️ クール","hue-rotate(18deg) saturate(1.15)"]];
+  let sc=0, fl=0;
+  b.addEventListener("click",()=>{ panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">📷 カメラ</b></div>'+
+   '<div style="border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center"><img id="cam-img" src="'+SCENES[0][1]+'" style="width:100%;height:100%;object-fit:cover" alt=""></div>'+
+   '<div style="display:flex;gap:7px;flex-wrap:wrap;margin:12px 0">'+SCENES.map((s,i)=>'<button class="cam-sc" data-i="'+i+'" style="border:1px solid #ddd;background:#fff;border-radius:999px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:inherit">'+s[0]+'</button>').join("")+'</div>'+
+   '<div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px">'+FILTS.map((f,i)=>'<button class="cam-fl" data-i="'+i+'" style="border:1px solid #ddd;background:#fff;border-radius:999px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:inherit">'+f[0]+'</button>').join("")+'</div>'+
+   '<button id="cam-shut" style="display:block;margin:0 auto;width:66px;height:66px;border-radius:50%;border:5px solid #111;background:#fff;cursor:pointer;font-size:24px">📸</button>';
+   panel.style.display="flex";
+   panel.querySelector(".hp-close").addEventListener("click",()=>panel.style.display="none");
+   const img=panel.querySelector("#cam-img");
+   panel.querySelectorAll(".cam-sc").forEach(x=>x.addEventListener("click",()=>{ sc=+x.dataset.i; img.src=SCENES[sc][1]; }));
+   panel.querySelectorAll(".cam-fl").forEach(x=>x.addEventListener("click",()=>{ fl=+x.dataset.i; img.style.filter=FILTS[fl][1]; }));
+   panel.querySelector("#cam-shut").addEventListener("click",()=>{
+    const gridEl=$("#ph-grid"); if(!gridEl) return;
+    const fig=document.createElement("figure");
+    fig.innerHTML='<img src="'+SCENES[sc][1]+'" alt=""><figcaption>'+SCENES[sc][0]+' 📷</figcaption>';
+    if(FILTS[fl][1]) fig.querySelector("img").style.filter=FILTS[fl][1];
+    gridEl.prepend(fig); toast("📸 <b>アルバムに保存したよ</b>"); });
+  }); })();
+
+ /* ---- v108: Hiroto quiz, rebuilt for the Tinder story ---- */
+ (function(){ const grid=$("#home-page2 .grid"); if(!grid||grid.querySelector('[data-hp="quiz"]')) return;
+  const b=document.createElement("button"); b.className="appicon"; b.dataset.hp="quiz";
+  b.innerHTML='<span class="ic" style="background:linear-gradient(180deg,#7a5af8,#5a3ad6);font-size:24px;color:#fff">🎓</span><span class="lb">ひろと検定</span>';
+  grid.appendChild(b);
+  const QS=[
+   ["ひろととマッチした日は？",["9月27日","10月4日","9月30日"],0],
+   ["初デートで、二人で飲んだのは？",["カフェオレ","アメリカーノ","アイスティー"],0],
+   ["ひろとの愛犬の名前は？",["マロン","ココ","ムギ"],0],
+   ["ひろとのTikTokのIDは？",["@193hiroto","@hiroto_193","@ikumi_h"],0],
+   ["炎上の日、電話をかけてきたのは？",["マネージャー","ひろと本人","友達"],0]];
+  let panel=$("#quiz-panel");
+  if(!panel){ panel=document.createElement("div"); panel.id="quiz-panel";
+   panel.style.cssText="position:absolute;inset:0;background:#f7f7fa;z-index:85;display:none;flex-direction:column;padding:64px 16px 16px;overflow-y:auto;color:#111";
+   $("#v-home").appendChild(panel); }
+  b.addEventListener("click",()=>{ let qi=0, score=0;
+   const draw=()=>{ if(qi>=QS.length){ const rank=score===5?"🏆 ひろと検定 1級":score>=3?"🥈 よく知ってる":"🥉 これから知っていく";
+     panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">🎓 結果</b></div>'+
+      '<div style="text-align:center;padding:26px 0"><div style="font-size:44px;font-weight:800">'+score+' / 5</div><div style="font-size:16px;margin-top:8px">'+rank+'</div>'+
+      '<button id="qz-send" style="margin-top:22px;background:#111;color:#fff;border:none;border-radius:999px;padding:12px 22px;font-size:14px;font-weight:700;cursor:pointer">結果をひろとに送る</button></div>';
+     panel.querySelector(".hp-close").addEventListener("click",()=>panel.style.display="none");
+     panel.querySelector("#qz-send").addEventListener("click",async()=>{ panel.style.display="none"; show("line"); openChat();
+      meMsg("ひろと検定、"+score+"点やった！");
+      later(async()=>{ try{
+       if(score===5){ await himMsg("満点…さすがやな"); await himMsg("……俺のこと、よく見てくれてるんやな"); }
+       else if(score>=3){ await himMsg("へぇ、なかなかやん"); await himMsg("間違えたとこ、今度教えたる"); }
+       else { await himMsg("……もっと知ってほしいな"); await himMsg("時間かけて、覚えてって"); } }catch(e){} },1200); });
+     return; }
+    const [q,opts,ans]=QS[qi];
+    panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">🎓 ひろと検定（'+(qi+1)+' / 5）</b></div>'+
+     '<div style="font-size:16.5px;font-weight:700;line-height:1.6;padding:10px 2px 16px">'+q+'</div>'+
+     opts.map((o,i)=>'<button class="qz-opt" data-i="'+i+'" style="display:block;width:100%;text-align:left;background:#fff;border:1px solid #e2e2e8;border-radius:12px;padding:13px 14px;font-size:14.5px;margin-bottom:9px;cursor:pointer;font-family:inherit">'+o+'</button>').join("");
+    panel.querySelector(".hp-close").addEventListener("click",()=>panel.style.display="none");
+    panel.querySelectorAll(".qz-opt").forEach(x=>x.addEventListener("click",()=>{ if(+x.dataset.i===ans) score++; qi++; draw(); })); };
+   panel.style.display="flex"; draw(); }); })();
+
+ /* ---- v109: multi-select photos -> collage -> home wallpaper ---- */
+ (function(){ const gridEl=$("#ph-grid"); if(!gridEl||$("#pv-collage")) return;
+  const bar=document.createElement("div"); bar.id="collage-bar";
+  bar.style.cssText="display:none;gap:8px;padding:10px 14px;background:#111;color:#fff;align-items:center";
+  bar.innerHTML='<span id="col-n" style="font-size:13px">0枚 選択中</span><button id="col-go" style="margin-left:auto;background:#fff;color:#111;border:none;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer">コラージュを作る</button><button id="col-x" style="background:none;border:none;color:#fff;font-size:15px;cursor:pointer">✕</button>';
+  gridEl.parentElement.insertBefore(bar,gridEl);
+  const btn=document.createElement("button"); btn.id="pv-collage"; btn.textContent="🧩 コラージュ";
+  btn.style.cssText="margin:10px 14px 0;background:#111;color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer";
+  gridEl.parentElement.insertBefore(btn,bar);
+  let sel=[];
+  const upd=()=>{ bar.querySelector("#col-n").textContent=sel.length+"枚 選択中（最大4枚）"; };
+  btn.addEventListener("click",()=>{ const on=bar.style.display==="flex";
+   bar.style.display=on?"none":"flex"; sel=[];
+   gridEl.querySelectorAll("figure").forEach(f=>f.style.outline="");
+   if(!on) toast("🧩 <b>写真をタップして選んでね（最大4枚）</b>"); });
+  gridEl.addEventListener("click",e=>{ if(bar.style.display!=="flex") return;
+   const f=e.target.closest("figure"); if(!f) return;
+   e.stopPropagation(); e.preventDefault();
+   const i=sel.indexOf(f);
+   if(i>=0){ sel.splice(i,1); f.style.outline=""; }
+   else { if(sel.length>=4){ toast("最大4枚までだよ"); return; } sel.push(f); f.style.outline="3px solid #0095f6"; }
+   upd(); },true);
+  bar.querySelector("#col-x").addEventListener("click",()=>{ bar.style.display="none"; sel.forEach(f=>f.style.outline=""); sel=[]; });
+  bar.querySelector("#col-go").addEventListener("click",()=>{ if(sel.length<2){ toast("2枚以上選んでね"); return; }
+   const cv=document.createElement("canvas"); cv.width=640; cv.height=640; const cx=cv.getContext("2d");
+   cx.fillStyle="#111"; cx.fillRect(0,0,640,640);
+   const half=sel.length===2?[ [0,0,640,320],[0,320,640,320] ]:[ [0,0,320,320],[320,0,320,320],[0,320,320,320],[320,320,320,320] ];
+   let done=0;
+   sel.forEach((f,i)=>{ const im=new Image();
+    im.onload=()=>{ const [x,y,w,h]=half[i]; cx.drawImage(im,x,y,w,h); if(++done===sel.length) finish(); };
+    im.onerror=()=>{ if(++done===sel.length) finish(); };
+    im.src=f.querySelector("img").getAttribute("src"); });
+   function finish(){ const url=cv.toDataURL("image/jpeg",0.85);
+    const fig=document.createElement("figure");
+    fig.innerHTML='<img src="'+url+'" alt=""><figcaption>コラージュ 🧩</figcaption>';
+    gridEl.prepend(fig);
+    const home=$("#v-home"); if(home) home.style.backgroundImage='url("'+url+'")';
+    bar.style.display="none"; sel.forEach(f=>f.style.outline=""); sel=[];
+    toast("🧩 <b>コラージュ完成！　ホームの壁紙にもしたよ</b>"); } }); })();
+})();
+
 </script>
 </body>
 </html>
