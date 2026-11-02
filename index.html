@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v52</b>（元版v230までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v53</b>（元版v245までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1381,7 +1381,7 @@ function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async(
   /* ===== v42: free-chat voices fc-t-1..5 (his clone, new recordings) - mid-story free time / free chat only; never after an ending (v28 rule) and never mid-scandal. Context triggers first, then a small random pool ===== */
   /* ===== v52: free-chat voices round 2, fc-t-6..11, same gates and one-shot-per-line rule as v42 ===== */
   if(state.phase!=="scandal"){
-    const FCV=[["assets/fc-t-1.mp3","0:02","おつかれさま。今日も、がんばったな"],["assets/fc-t-2.mp3","0:02","ごめん、返事おそなった。レッスンやってん"],["assets/fc-t-3.mp3","0:02","ありがとうな。……ほんまに"],["assets/fc-t-4.mp3","0:04","マロンがな、今日も元気やで。……写真、送るわ"],["assets/fc-t-5.mp3","0:04","……なあ、今日の占い見た？ なんか、当たってそうで怖いわ"],["assets/fc-t-6.mp3","0:01","おはよう。……よく寝れた？"],["assets/fc-t-7.mp3","0:02","おやすみ。ええ夢見てな"],["assets/fc-t-8.mp3","0:02","ごはん食べた？ ちゃんと食べや"],["assets/fc-t-9.mp3","0:02","……雨やな。傘、持ったか？"],["assets/fc-t-10.mp3","0:03","今日な、レッスンで新しい振り入ってん。……むずかってん"],["assets/fc-t-11.mp3","0:02","……なあ、明日も話そな"]];
+    const FCV=[["assets/fc-t-1.mp3","0:02","おつかれさま。今日も、がんばったな"],["assets/fc-t-2.mp3","0:02","ごめん、返事おそなった。レッスンやってん"],["assets/fc-t-3.mp3","0:02","ありがとうな。……ほんまに"],["assets/fc-t-4.mp3","0:04","マロンがな、今日も元気やで。……写真、送るわ"],["assets/fc-t-5.mp3","0:04","……なあ、今日の占い見た？ なんか、当たってそうで怖いわ"],["assets/fc-t-6.mp3","0:01","おはよう。……よく寝れた？"],["assets/fc-t-7.mp3","0:02","おやすみ。ええ夢見てな"],["assets/fc-t-8.mp3","0:02","ごはん食べた？ ちゃんと食べや"],["assets/fc-t-9.mp3","0:02","……雨やな。傘、持ったか？"],["assets/fc-t-10.mp3","0:03","今日な、レッスンで新しい振り入ってん。……むずかってん"],["assets/fc-t-11.mp3","0:02","……なあ、明日も話そな"],["assets/fv-9.mp3","0:04","声、聞きたくなって、電話していい？"]];
     const fcUsed=i=>!!(state._fcUsed&&state._fcUsed[i]);
     const fcSend=i=>{ const v=FCV[i]; state._fcUsed=state._fcUsed||{}; state._fcUsed[i]=true; (async()=>{ await himVoice(v[0],v[1]); const cap=document.createElement("div"); cap.style.cssText="align-self:flex-start;margin:-4px 0 8px 44px;font-size:11.5px;color:#8e8e93;max-width:76%;line-height:1.6"; cap.textContent="（ボイス）"+v[2]; const ch=$("#chat"); if(ch){ ch.appendChild(cap); ch.scrollTop=ch.scrollHeight; } if(i===3){ await himPhoto("assets/ig-dog.jpg"); await himMsg("マロン",300); } })(); };
     if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&!fcUsed(0)){ fcSend(0); return; }
@@ -1394,6 +1394,7 @@ function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async(
     if(/雨|傘|天気/.test(text)&&!fcUsed(8)){ fcSend(8); return; }
     if(/レッスン|練習|振り|ダンス|仕事/.test(text)&&!fcUsed(9)){ fcSend(9); return; }
     if(/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(10)){ fcSend(10); return; }
+    if(/電話|声聞きたい|声ききたい/.test(text)&&Math.random()<0.4&&!fcUsed(11)){ fcSend(11); return; }
     if((/返事|待ってた|まってた|おそい|遅い/.test(text)||Math.random()<0.15)&&!fcUsed(1)){ fcSend(1); return; }
     if(Math.random()<0.08){ const rest=[0,2].filter(i=>!fcUsed(i)); if(rest.length){ fcSend(pick(rest)); return; } }
     if(Math.random()<0.05&&!fcUsed(10)){ fcSend(10); return; }
@@ -2818,7 +2819,22 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     if(ng) ng.style.display="none"; if(ngBar) ngBar.style.display="none"; }
    else if(window.__naoSetMode){ if(ngBar) ngBar.style.display="flex"; window.__naoSetMode(!!window.__naoGridOn); }
    else { ig.querySelectorAll(".ig-post").forEach(p=>{ p.style.display=""; }); if(ngBar) ngBar.style.display="flex"; }
-   saved.style.display=sv?"grid":"none"; }));
+   saved.style.display=sv?"grid":"none"; applySavedMode(); }));
+  /* ===== Tinder ver v53 (orig v236+v239): while the saved tab is active, ONLY the saved grid shows - posts added later, the comment bar, the count chips and the DM requests all stay hidden ===== */
+  const svExtra=()=>{ const out=[];
+   const ci=ig.querySelector(".cmt-input"); if(ci) out.push(ci);
+   const cn=ig.querySelector("#ig-cmt-n"); if(cn&&cn.closest("div")) out.push(cn.closest("div"));
+   ig.querySelectorAll(".scroll > div").forEach(d=>{ if((d.textContent||"").trim().startsWith("📩")) out.push(d); });
+   const dm=ig.querySelector("#ig-dms"); if(dm) out.push(dm);
+   return out; };
+  const svHidden=new Set();
+  const applySavedMode=()=>{ const sv=!!window.__igSavedOpen;
+   if(sv){ ig.querySelectorAll(".ig-post").forEach(p=>{ p.style.display="none"; });
+    const ng2=ig.querySelector("#nao-grid"); if(ng2) ng2.style.display="none";
+    const ngF=ig.querySelector("#ng-feed"); if(ngF&&ngF.parentElement) ngF.parentElement.style.display="none";
+    svExtra().forEach(el=>{ if(el.style.display!=="none"){ svHidden.add(el); el.style.display="none"; } }); }
+   else { svHidden.forEach(el=>{ el.style.display=""; }); svHidden.clear(); } };
+  new MutationObserver(()=>{ if(window.__igSavedOpen) applySavedMode(); }).observe(ig,{childList:true,subtree:true});
  }
  const stats=ig.querySelector(".ig-stats");
  if(stats){ stats.style.cursor="pointer";
@@ -6196,6 +6212,69 @@ app.style.display="flex";},true);
   var sub=box.querySelector(".sub"); if(sub&&sub.textContent.indexOf("日替わり")<0) sub.textContent+="（Top Picks の顔ぶれは日替わりです）";
  }
  new MutationObserver(function(){ try{ apply(); }catch(e){} }).observe(box,{childList:true,subtree:true});
+})();
+/* ===== Tinder ver v53 (orig v231): timeline locks - features stay unusable until the story reaches them (chapters read against this arc; the records here live in the settings rows, which already carry the match day, so there is no records panel to guard) ===== */
+(function(){
+ if(state._v231t) return; state._v231t=true;
+ let toastEl=null, toastAt=0;
+ const toastL=(msg)=>{ const now=Date.now(); if(now-toastAt<2500) return; toastAt=now;
+  if(!toastEl){ toastEl=document.createElement("div");
+   toastEl.style.cssText="position:fixed;left:50%;bottom:110px;transform:translateX(-50%);z-index:999999;background:rgba(20,20,25,.92);color:#fff;font-size:13px;padding:10px 16px;border-radius:999px;max-width:86vw;text-align:center;opacity:0;transition:opacity .3s;pointer-events:none";
+   document.body.appendChild(toastEl); }
+  toastEl.textContent=msg; toastEl.style.opacity="1";
+  setTimeout(()=>{ toastEl.style.opacity="0"; },2400); };
+ const findBtn=(label)=>[...document.querySelectorAll("button")].find(b=>b.textContent.includes(label));
+ const RULES=[
+  {key:"quiz", label:"ひろと検定", unlock:()=>state.chapter>=3, msg:"🔒 ひろと検定は第3話から（彼のことを知ってから挑戦してね）"},
+  {key:"uranai", label:"相性占い", unlock:()=>state.chapter>=2, msg:"🔒 相性占いは第2話から（出会ってから占おう）"},
+  {key:"hisdm", sel:"#his-dm-btn", unlock:()=>state.chapter>=2, msg:"🔒 彼へのDMは第2話から（連絡先を交換してからね）"},
+  {key:"mem", panel:"#mem-panel", unlock:()=>state.chapter>=3, msg:"🔒 思い出は第3話から"}];
+ const elOf=r=> r.sel?document.querySelector(r.sel) : r.label?findBtn(r.label) : null;
+ document.addEventListener("click",e=>{
+  for(const r of RULES){ if(r.panel) continue;
+   const el=elOf(r); if(!el) continue;
+   if(e.target===el||el.contains(e.target)){ if(!r.unlock()){ e.stopPropagation(); e.preventDefault(); toastL(r.msg); } return; } }
+ },true);
+ const paint=()=>{ for(const r of RULES){ if(r.panel) continue;
+   const el=elOf(r); if(!el) continue;
+   const locked=!r.unlock();
+   el.style.opacity=locked?".45":"";
+   let bd=el.querySelector(".tl-lock");
+   if(locked&&!bd){ bd=document.createElement("span"); bd.className="tl-lock"; bd.textContent="🔒"; bd.style.cssText="position:absolute;top:2px;right:6px;font-size:11px"; if(getComputedStyle(el).position==="static") el.style.position="relative"; el.appendChild(bd); }
+   if(bd) bd.style.display=locked?"":"none"; } };
+ setInterval(paint,1500); paint();
+ for(const r of RULES){ if(!r.panel) continue;
+  const iv=setInterval(()=>{ const p=document.querySelector(r.panel); if(!p){ return; }
+   clearInterval(iv);
+   const guard=()=>{ if(r.unlock()) return;
+    const vis=p.classList.contains("on")||(p.style.display&&p.style.display!=="none");
+    if(vis){ p.classList.remove("on"); p.style.display="none"; toastL(r.msg); } };
+   new MutationObserver(guard).observe(p,{attributes:true,attributeFilter:["style","class"]});
+  },1200); }
+})();
+/* ===== Tinder ver v53 (orig v237): the lock screen joins the timeline - it reads the day before the match while the prologue runs (her lock notification was already reworded for the match in this arc) ===== */
+(function(){ const d=document.querySelector("#lock-date"); if(d&&state.chapter<1) d.textContent="9月26日 金曜日"; })();
+/* ===== Tinder ver v53 (orig v238): X search answers the actual topic - sauna / Busan / cafe queries get their own posts ===== */
+(function(){
+ if(state._v238t||typeof doSearch!=="function") return; state._v238t=true;
+ const TOPICS=[
+  {re:/チムジルバン|サウナ|釜山|韓国/, posts:[
+   {n:"サウナ女子",h:"@sauna_joshi",tm:"3時間",t:"釜山のチムジルバン行ってきた🧖 アカスリ最高…また行きたい",m:["💬 8","🔁 22","❤️ 204"]},
+   {n:"ゆい",h:"@yui_days",tm:"5時間",t:"次の釜山、チムジルバンでアカスリ絶対する",m:["💬 2","🔁 1","❤️ 31"]},
+   {n:"韓国旅行メモ",h:"@korea_memo",tm:"9時間",t:"釜山のチムジルバンは24時間営業のところが多くて、夜着でも入れるのが助かる",m:["💬 14","🔁 96","❤️ 412"]}]},
+  {re:/神戸カフェ|カフェ/, posts:[
+   {n:"神戸グルメ",h:"@kobe_gourmet",tm:"8時間",t:"三宮でカフェ開拓中。カフェオレが美味しいお店、教えてください☕",m:["💬 27","🔁 51","❤️ 486"]},
+   {n:"カフェ巡り",h:"@cafe_hop",tm:"12時間",t:"神戸のカフェ、坂の上のお店が優勝だった。窓からの景色が反則",m:["💬 6","🔁 18","❤️ 233"]}]}];
+ const prev=doSearch;
+ doSearch=function(q){
+  const r=prev.apply(this,arguments);
+  const hit=TOPICS.find(t=>t.re.test(q||""));
+  if(hit){ const res=document.querySelector("#x-search-results");
+   if(res){ res.innerHTML="";
+    const h=document.createElement("div"); h.style.cssText="padding:4px 14px 8px;font-weight:800;font-size:14.5px";
+    h.textContent="「"+(q||"")+"」の検索結果"; res.appendChild(h);
+    hit.posts.forEach(p=>res.appendChild(postEl(p,false))); } }
+  return r; };
 })();
 </script>
 </body>
