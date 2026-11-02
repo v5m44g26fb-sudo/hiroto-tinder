@@ -450,6 +450,27 @@ input,textarea{font-size:16px!important}
 .t-choices.on{display:flex}
 .t-choices .q{font-size:11.5px;color:#8e8e93;text-align:center}
 .t-choices button{border:1.5px solid #fd267d;color:#d81159;background:#fff5f7;border-radius:20px;padding:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
+/* ===== Tinder ver v15: swipe & profiles ===== */
+.swipe-wrap{position:relative}
+.swipe-card{touch-action:none;cursor:grab}
+.swipe-card.dragging{transition:none!important;cursor:grabbing}
+.stack-card{position:absolute;left:26px;right:26px;top:30px;height:430px;border-radius:18px;z-index:0;transform:scale(.94);box-shadow:0 8px 22px rgba(0,0,0,.18);display:flex;align-items:flex-end;padding:16px;color:#fff;font-weight:900;font-size:19px;pointer-events:none}
+.tapzone{position:absolute;top:0;bottom:150px;width:36%;z-index:2;background:none;border:none;cursor:pointer;padding:0}
+.tapzone.l{left:0}.tapzone.r{right:0}
+.tdetail{pointer-events:auto;margin-top:10px;background:rgba(255,255,255,.92);color:#111;border:none;border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:800;cursor:pointer;font-family:inherit}
+.scene-cap{font-size:15px;font-weight:700;background:rgba(0,0,0,.28);border-radius:999px;padding:5px 13px}
+.t-sheet{position:absolute;inset:0;background:rgba(0,0,0,.48);z-index:320;display:none;align-items:flex-end}
+.t-sheet.on{display:flex}
+.t-sheet .box{background:#fff;width:100%;max-height:88%;overflow-y:auto;border-radius:20px 20px 0 0;padding:18px 16px 34px;animation:fadeup .3s ease;color:#111}
+.t-sheet h3{font-size:17px;font-weight:900;margin-bottom:4px}
+.t-sheet .sub{font-size:12.5px;color:#8e8e93;margin-bottom:12px;line-height:1.6}
+.t-range{width:100%;accent-color:#fd267d;margin:6px 0 2px}
+.t-setrow{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;margin-top:12px}
+.t-setrow span:last-child{color:#fd267d}
+.tgl-chip{border:1.5px solid #e5e5ea;background:#fff;border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#3a3a3c}
+.tgl-chip.sel{background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border-color:transparent}
+.sheet-close{width:100%;background:#f2f2f7;border:none;border-radius:999px;padding:12px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:14px}
+.boosting{box-shadow:inset 0 0 0 3px #ffb302,0 0 34px rgba(255,179,2,.55)}
 </style>
 </head>
 <body>
@@ -525,11 +546,11 @@ input,textarea{font-size:16px!important}
 
 <!-- ===== Tinder ===== -->
 <section class="view" id="v-tinder">
-<div class="tinder-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="tinder-logo">🔥 tinder</span><span style="margin-left:auto;font-size:18px">🔔</span></div>
+<div class="tinder-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="tinder-logo">🔥 tinder</span><span style="margin-left:auto;display:flex;gap:6px"><button id="tdisc-open" title="発見設定" style="background:#f2f2f7;border:none;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer">🎛️</button><button id="tbell" title="通知" style="background:#f2f2f7;border:none;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer;position:relative">🔔<span class="badge" id="bd-tinder-in" style="position:absolute;top:-3px;right:-3px"></span></button></span></div>
 <div class="tinder-tabs"><button class="act" id="ttab-discover">発見</button><button id="ttab-match">マッチ</button><button id="ttab-prof">プロフィール</button></div>
 <div id="tinder-deck-wrap" style="display:flex;flex-direction:column;flex:1;min-height:0">
 <div class="swipe-wrap" id="swipe-wrap"></div>
-<div class="swipe-actions"><button class="nope" id="btn-nope" aria-label="Nope">✕</button><button class="super" id="btn-super" aria-label="Super Like">⭐</button><button class="like" id="btn-like" aria-label="Like">❤️</button></div>
+<div class="swipe-actions"><button id="btn-rewind" aria-label="巻き戻し" style="color:#ffb302;font-size:20px">↩️</button><button class="nope" id="btn-nope" aria-label="Nope">✕</button><button class="super" id="btn-super" aria-label="Super Like">⭐</button><button class="like" id="btn-like" aria-label="Like">❤️</button><button id="btn-boost" aria-label="ブースト" style="color:#7b2ff7;font-size:20px">⚡</button></div>
 </div>
 <div id="tinder-chat-wrap" style="display:none;flex-direction:column;flex:1;min-height:0">
 <div style="padding:10px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center"><img class="avatar" src="assets/tinder-hiroto-1.jpg" width="36" height="36" alt=""><span><span style="font-weight:800;font-size:15px;display:block">ひろと</span><span style="font-size:11px;color:#2ee59d">● マッチしました</span></span></div>
@@ -547,8 +568,10 @@ input,textarea{font-size:16px!important}
 <div id="tinder-prof-wrap" style="display:none;flex-direction:column;flex:1;min-height:0;overflow-y:auto;padding:14px">
 <div style="font-weight:900;font-size:17px;margin-bottom:10px">プロフィール</div>
 <div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;overflow:hidden;margin-bottom:14px"><img src="assets/tinder-hiroto-1.jpg" style="width:100%;height:240px;object-fit:cover" alt=""><div style="padding:13px 14px"><div style="font-weight:900;font-size:18px">ひろと <span style="font-weight:600;font-size:15px">24</span> <span style="background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px">⭐ Super Like済み</span></div><div style="font-size:12.5px;color:#8e8e93;margin:4px 0 10px">📍 大阪 ・ 1 km ／ 身長 175 cm ／ 仕事は…会ったら言うわ</div><div style="font-size:13.5px;line-height:1.7">ごはんとコーラが好きです😎 のんびりしてるように見られます</div><div style="margin-top:10px;font-size:13px;line-height:1.8"><b>休みの日は…</b> マロン（犬）と散歩か、家でごろごろ。あと美味いごはん探す😎<br><b>理想のデートは…</b> 美味い店はしごして、帰りにコンビニでコーラ<br><b>実は…</b> 人見知りっぽいけど、慣れたらよく喋ります<br><b>Super Likeした理由は…</b> カフェの写真見て、気になってん。カフェオレのやつ</div><div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px"><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">コーラ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">ごはん</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">犬</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">サウナ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">映画</span></div><div style="display:flex;gap:8px;margin-top:14px"><button id="prof-unmatch" style="flex:1;background:#f2f2f7;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">アンマッチする</button><button id="prof-report" style="flex:1;background:#fff0f0;color:#ff3b30;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">通報する</button></div></div></div>
-<div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:14px"><span style="display:block;height:250px;overflow:hidden;border-radius:12px;margin-bottom:11px"><img src="assets/nao-tinder-1.jpg" alt="なおのTinderプロフィール写真" style="width:118%;max-width:none;height:100%;object-fit:cover;object-position:center center;margin-left:-9%"></span><div style="display:flex;gap:11px;align-items:center"><img src="assets/nao-tinder-1.jpg" width="46" height="46" alt="" style="border-radius:50%;object-fit:cover;object-position:center"><span><span style="font-weight:900;font-size:15.5px;display:block">なお</span><span style="font-size:12px;color:#8e8e93">あなたのプロフィール ・ このカフェの写真が、ひろとに Super Like された1枚</span></span></div><div style="font-size:13px;line-height:1.7;margin-top:10px">ふつうの会社員。サウナとエビと、美味しいものが好き🍤 気楽に話せる人がいいです</div><button id="prof-edit" style="margin-top:11px;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px 16px;font-weight:800;cursor:pointer;font-family:inherit;width:100%">プロフィールを編集</button></div>
+<div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:14px"><span style="display:block;height:250px;overflow:hidden;border-radius:12px;margin-bottom:11px"><img src="assets/nao-tinder-1.jpg" alt="なおのTinderプロフィール写真" style="width:118%;max-width:none;height:100%;object-fit:cover;object-position:center center;margin-left:-9%"></span><div style="display:flex;gap:11px;align-items:center"><img src="assets/nao-tinder-1.jpg" width="46" height="46" alt="" style="border-radius:50%;object-fit:cover;object-position:center"><span><span style="font-weight:900;font-size:15.5px;display:block">なお</span><span style="font-size:12px;color:#8e8e93">あなたのプロフィール ・ このカフェの写真が、ひろとに Super Like された1枚</span></span></div><div id="nao-bio" style="font-size:13px;line-height:1.7;margin-top:10px">ふつうの会社員。サウナとエビと、美味しいものが好き🍤 気楽に話せる人がいいです</div><div id="nao-tags" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:9px"></div><button id="prof-edit" style="margin-top:11px;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px 16px;font-weight:800;cursor:pointer;font-family:inherit;width:100%">プロフィールを編集</button><div id="nao-edit-panel" style="display:none;margin-top:12px;border-top:1px dashed #eee;padding-top:12px"><div style="font-weight:800;font-size:13.5px;margin-bottom:7px">自己紹介を編集</div><textarea id="nao-bio-input" rows="3" style="width:100%;border:1.5px solid #e5e5ea;border-radius:12px;padding:10px;font-family:inherit;font-size:13.5px;line-height:1.6;box-sizing:border-box">ふつうの会社員。サウナとエビと、美味しいものが好き🍤 気楽に話せる人がいいです</textarea><div style="font-weight:800;font-size:13.5px;margin:11px 0 7px">興味（タップで付け外し）</div><div id="nao-interest-chips" style="display:flex;gap:7px;flex-wrap:wrap"></div><div style="font-weight:800;font-size:13.5px;margin:13px 0 7px">プレビュー</div><div style="background:#fff5f7;border-radius:12px;padding:11px 12px"><div id="nao-preview-bio" style="font-size:13px;line-height:1.7"></div><div id="nao-preview-tags" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"></div></div><div style="display:flex;gap:8px;margin-top:12px"><button id="nao-edit-save" style="flex:1;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">保存する</button><button id="nao-edit-cancel" style="flex:1;background:#f2f2f7;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">閉じる</button></div><div style="font-size:11.5px;color:#8e8e93;margin-top:9px;line-height:1.6">写真は許可済みのカフェの1枚だけ（変更はできません）。他のアプリのアイコンは初期アイコンのままです。</div></div></div>
 </div>
+<div class="t-sheet" id="tdisc-sheet"><div class="box"><h3>🎛️ 発見設定</h3><div class="sub">ここで変えた条件は、実際にカードの表示に反映されるよ（ひろとは特別枠でいつも出てきます）。</div><div class="t-setrow"><span>最大距離</span><span id="tdisc-dist-v">100 km</span></div><input type="range" class="t-range" id="tdisc-dist" min="1" max="100" value="100"><div class="t-setrow"><span>年齢の下限</span><span id="tdisc-amin-v">18歳</span></div><input type="range" class="t-range" id="tdisc-amin" min="18" max="40" value="18"><div class="t-setrow"><span>年齢の上限</span><span id="tdisc-amax-v">40歳以上</span></div><input type="range" class="t-range" id="tdisc-amax" min="18" max="40" value="40"><div class="t-setrow"><span>⭐ Super Like を優先表示</span><span><button class="tgl-chip sel" id="tdisc-super">ON</button></span></div><div class="t-setrow"><span>🔥 最近アクティブな人を優先</span><span><button class="tgl-chip sel" id="tdisc-active">ON</button></span></div><button id="tdisc-apply" style="width:100%;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:13px;font-weight:900;cursor:pointer;font-family:inherit;margin-top:18px">この条件で探す</button><button class="sheet-close" id="tdisc-close">閉じる</button></div></div>
+<div class="t-sheet" id="tdetail-sheet"><div class="box" id="tdetail-box"></div></div>
 <div id="match-overlay"><h2>It's a Match!</h2><p style="margin-top:8px;font-size:14px;line-height:1.6">ひろと とマッチしました ⭐ Super Likeから<br>2026年9月27日</p><div class="avatars"><img src="assets/nao-tinder-1.jpg" alt="なお" style="object-fit:cover;object-position:center"><img src="assets/tinder-hiroto-1.jpg" alt="ひろと"></div><button id="match-msg-btn" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button><button id="match-keep-btn" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button></div>
 </section>
 
@@ -803,7 +826,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v14</b>（アプリ仕様は元版 v88相当に同期済み）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v15</b>（Tinderアプリ大幅改修・第1弾：スワイプ＆プロフィール）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1853,30 +1876,53 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
   let photoIdx=0;
   const deck=[
-    {name:"けんた",age:26,dist:"2 km",bio:"休日はキャンプとサウナ。写真撮るのも好きです。",tags:["サウナ","キャンプ","写真"],grad:"linear-gradient(160deg,#667eea,#764ba2)",ini:"け"},
-    {name:"そうた",age:25,dist:"5 km",bio:"音楽と古着が好き。ライブ一緒に行ける人探してます。",tags:["音楽","古着","ライブ"],grad:"linear-gradient(160deg,#11998e,#38ef7d)",ini:"そ"},
-    {name:"れん",age:27,dist:"3 km",bio:"仕事は営業。ごはん屋さん開拓するのが趣味です。",tags:["グルメ","旅行","映画"],grad:"linear-gradient(160deg,#fc4a1a,#f7b733)",ini:"れ"},
-    {hiroto:true,name:"ひろと",age:24,dist:"1 km ・ 大阪",bio:"ごはんとコーラが好きです😎 のんびりしてるように見られます",tags:["コーラ","ごはん","犬","サウナ","映画"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。あと美味いごはん探す😎",prompt2Q:"仕事は…",prompt2A:"不定期なやつ。詳しくは、会ったら言うわ"}
+    {name:"けんた",age:26,distKm:2,dist:"2 km",work:"会社員",bio:"休日はキャンプとサウナ。写真撮るのも好きです。焚き火でぼーっとする時間が至福。",tags:["サウナ","キャンプ","写真"],grad:"linear-gradient(160deg,#667eea,#764ba2)",ini:"け",scenes:[{e:"🏕️",cap:"週末はだいたい山のなか"},{e:"♨️",cap:"サウナは週2、水風呂派"},{e:"🍖",cap:"キャンプ飯は失敗も思い出"}],promptQ:"理想のデートは…",promptA:"車でちょっと遠出して、美味い店と温泉はしご"},
+    {name:"そうた",age:25,distKm:5,dist:"5 km",work:"アパレル",bio:"音楽と古着が好き。ライブ一緒に行ける人探してます。レコードも少し集めてます。",tags:["音楽","古着","ライブ"],grad:"linear-gradient(160deg,#11998e,#38ef7d)",ini:"そ",scenes:[{e:"🎸",cap:"下北のライブハウス通い"},{e:"👕",cap:"古着屋めぐりが休日"},{e:"🎧",cap:"最近はシティポップ沼"}],promptQ:"休みの日は…",promptA:"昼まで寝て、夕方からレコード屋とライブ"},
+    {name:"れん",age:27,distKm:3,dist:"3 km",work:"営業",bio:"仕事は営業。ごはん屋さん開拓するのが趣味です。行列のできる麺に弱い。",tags:["グルメ","旅行","映画"],grad:"linear-gradient(160deg,#fc4a1a,#f7b733)",ini:"れ",scenes:[{e:"🍜",cap:"麺は太め・かため派"},{e:"✈️",cap:"年2回の遠征グルメ旅"},{e:"🎬",cap:"映画はサブスクで週3"}],promptQ:"実は…",promptA:"地図アプリの「行きたい」リストが300件超えた"},
+    {name:"はると",age:23,distKm:8,dist:"8 km",work:"大学院生",bio:"研究とフットサルと海。夏はだいたい水辺にいます。のんびり話せる人がいいです。",tags:["スポーツ","海","読書"],grad:"linear-gradient(160deg,#2193b0,#6dd5ed)",ini:"は",scenes:[{e:"⚽",cap:"火曜はフットサル"},{e:"🌊",cap:"夏は海でぼーっと"},{e:"📚",cap:"研究室の生き字引（自称）"}],promptQ:"仕事（研究）は…",promptA:"海の生き物の研究。詳しくは会ったときに"},
+    {name:"しゅん",age:28,distKm:12,dist:"12 km",work:"エンジニア",bio:"仕事はエンジニア。ゲームとコーヒーと、静かな休日。自宅の作業環境が自慢です。",tags:["ゲーム","コーヒー","映画"],grad:"linear-gradient(160deg,#232526,#414345)",ini:"し",scenes:[{e:"💻",cap:"デスク環境ガチ勢"},{e:"🎮",cap:"RPGは100時間超えがち"},{e:"☕",cap:"豆は浅煎り派"}],promptQ:"理想のデートは…",promptA:"カフェでだらだらして、夜は家で映画"},
+    {name:"だいき",age:24,distKm:4,dist:"4 km",work:"美容師アシスタント",bio:"美容師アシスタント。休みの日はカフェと写真。夕日の写真ばっかり撮ってます。",tags:["写真","カフェ","スイーツ"],grad:"linear-gradient(160deg,#ff9a9e,#fecfef)",ini:"だ",scenes:[{e:"📷",cap:"フィルムカメラ派"},{e:"🌇",cap:"夕日ハンター"},{e:"🍰",cap:"甘いものは別腹×2"}],promptQ:"休みの日は…",promptA:"カフェ開拓して、撮った写真を現像に出す"},
+    {name:"たくみ",age:29,distKm:18,dist:"18 km",work:"料理人",bio:"小さな居酒屋の料理人。自分の店を持つのが夢。美味しいって言われるのが一番嬉しい。",tags:["料理","魚","居酒屋"],grad:"linear-gradient(160deg,#cb2d3e,#ef473a)",ini:"た",scenes:[{e:"🍳",cap:"まかないが人気の店"},{e:"🐟",cap:"市場は朝5時から"},{e:"🧑‍🍳",cap:"出汁にはうるさいです"}],promptQ:"実は…",promptA:"休みの日も結局、台所に立ってしまう"},
+    {hiroto:true,name:"ひろと",age:24,distKm:1,dist:"1 km ・ 大阪",bio:"ごはんとコーラが好きです😎 のんびりしてるように見られます",tags:["コーラ","ごはん","犬","サウナ","映画"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。あと美味いごはん探す😎",prompt2Q:"仕事は…",prompt2A:"不定期なやつ。詳しくは、会ったら言うわ"}
   ];
   let idx=0, matched=false, chatStarted=false;
+  let sceneIdx=0, lastCardIdx=-1, lastSwipe=null;
+  window.__tstats={swipe:0,like:0,nope:0,super:0};
+  function passFilter(c){ const s=window.__tdisc; if(!s) return true; const d=c.distKm||parseInt(c.dist)||99; return d<=s.maxDist && c.age>=s.ageMin && c.age<=s.ageMax; }
   function render(){
     const w=document.getElementById("swipe-wrap"); if(!w) return;
     if(idx>=deck.length){ w.innerHTML='<div style="text-align:center;padding:60px 20px;color:#8e8e93;font-size:14px;line-height:1.8">近くに表示できる人がいません<br><span style="font-size:12px">ひろととのマッチは「マッチ」タブから見返せるよ</span></div>'; return; }
+    while(idx<deck.length && !deck[idx].hiroto && !passFilter(deck[idx])) idx++;
+    if(idx>=deck.length){ w.innerHTML='<div style="text-align:center;padding:60px 20px;color:#8e8e93;font-size:14px;line-height:1.8">この条件では近くに表示できる人がいません<br><span style="font-size:12px">発見設定（🎛️）で距離や年齢を広げてみてね</span></div>'; return; }
     const c=deck[idx];
+    if(idx!==lastCardIdx){ sceneIdx=0; lastCardIdx=idx; }
     if(c.hiroto){
       if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","ひろと があなたに Super Like しました！","あなたを Super Like した人がいます —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} setTimeout(()=>toast("💭 <b>（…似てるけど、まさか本人なわけないか。Tinderにいるはずないし）</b>"),1400); }
-      w.innerHTML=`<div class="super-banner">⭐ ひろと があなたに Super Like しました！<br><span>通常のLikeじゃなく、Super Like で来てくれた人だよ</span></div><div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><div class="prompt"><b>${c.prompt2Q}</b>${c.prompt2A}</div><div style="font-size:11px;opacity:.85;margin-top:8px">写真はタップで切り替え ・ マロン🐶と暮らしてます</div></div></div>`;
+      w.innerHTML=`<div class="super-banner">⭐ ひろと があなたに Super Like しました！<br><span>通常のLikeじゃなく、Super Like で来てくれた人だよ</span></div><div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><div class="prompt"><b>${c.prompt2Q}</b>${c.prompt2A}</div><div style="font-size:11px;opacity:.85;margin-top:8px">写真はタップで切り替え ・ マロン🐶と暮らしてます</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
       const img=document.getElementById("hiroto-photo");
       img.addEventListener("click",()=>{ photoIdx=(photoIdx+1)%photos.length; render(); });
+      const _tzl=document.getElementById("tz-l"), _tzr=document.getElementById("tz-r");
+      if(_tzl) _tzl.addEventListener("click",e=>{ e.stopPropagation(); photoIdx=(photoIdx+photos.length-1)%photos.length; render(); });
+      if(_tzr) _tzr.addEventListener("click",e=>{ e.stopPropagation(); photoIdx=(photoIdx+1)%photos.length; render(); });
+      const _tdb=document.getElementById("tdetail-btn");
+      if(_tdb) _tdb.addEventListener("click",e=>{ e.stopPropagation(); if(window.openTDetail) window.openTDetail(c); });
       const _card=document.getElementById("swipe-card");
       if(_card) _card.addEventListener("click",e=>{ if(e.target.closest(".info")) return; if(e.target.id==="hiroto-photo") return; photoIdx=(photoIdx+1)%photos.length; render(); });
     } else {
-      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><div class="dummy-art" style="background:${c.grad}"><div class="ini">${c.ini}</div><div class="sil">👤</div></div><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div></div></div>`;
+      const sc=c.scenes[sceneIdx%c.scenes.length];
+      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><div class="dummy-art" style="background:${c.grad}"><div class="ini">${c.ini}</div><div style="font-size:96px;line-height:1.1">${sc.e}</div><div class="scene-cap">${sc.cap}</div></div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      const _zl=document.getElementById("tz-l"), _zr=document.getElementById("tz-r");
+      if(_zl) _zl.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+c.scenes.length-1)%c.scenes.length; render(); });
+      if(_zr) _zr.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+1)%c.scenes.length; render(); });
+      const _db=document.getElementById("tdetail-btn");
+      if(_db) _db.addEventListener("click",e=>{ e.stopPropagation(); if(window.openTDetail) window.openTDetail(c); });
     }
   }
   function swipe(kind){
     const card=document.getElementById("swipe-card"); if(!card) return;
     const c=deck[idx]; if(!c) return;
+    window.__tstats.swipe++; if(kind==="nope") window.__tstats.nope++; else if(kind==="super") window.__tstats.super++; else window.__tstats.like++;
+    if(!c.hiroto) lastSwipe={idx:idx,kind:kind};
     const stamp=document.getElementById(kind==="nope"?"stamp-nope":"stamp-like");
     if(stamp) stamp.classList.add("on");
     card.style.transition="transform .35s ease, opacity .35s ease";
@@ -2028,9 +2074,18 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     const lp=document.getElementById("line-preview"); if(lp) lp.textContent="よろしくな😎";
     setTimeout(()=>{ try{ chapter(2); }catch(e){} show("home"); },1800);
   }
+  function rewind(){
+    if(matched || !lastSwipe){ toast("↩️ 巻き戻せるスワイプはまだないよ"); return; }
+    idx=lastSwipe.idx; lastSwipe=null; render(); toast("↩️ さっきのカードに戻したよ");
+  }
+  function peekNext(){
+    let j=idx+1; while(j<deck.length && !deck[j].hiroto && !passFilter(deck[j])) j++;
+    if(j>=deck.length) return null; const n=deck[j];
+    return {name:n.name, age:n.age, grad:n.hiroto?"linear-gradient(160deg,#1299c3,#33c6dd)":n.grad, hiroto:!!n.hiroto};
+  }
   render();
   // expose for verification
-  window.__tinder={get idx(){return idx}, get matched(){return matched}, render, swipe};
+  window.__tinder={get idx(){return idx}, get matched(){return matched}, get current(){return deck[idx]||null}, render, swipe, rewind, peekNext, stats:()=>window.__tstats};
 })();
 
 </script>
@@ -2692,6 +2747,126 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   if(!s) return;
   const img=document.createElement("img"); img.className="avatar"; img.src=src; img.width=48; img.height=48; img.alt="";
   s.replaceWith(img); });
+})();
+</script>
+<script>
+/* ===== Tinder ver v15: swipe & profiles — drag/swipe with stamps, card stack, dummy profiles x7 with photo scenes, profile detail sheet, discovery settings that actually filter, own-profile editing with live preview, rewind & boost ===== */
+(function(){
+  function $(q){ return document.querySelector(q); }
+  window.__tdisc={maxDist:100,ageMin:18,ageMax:99};
+  var wrap=$("#swipe-wrap"); if(!wrap) return;
+  /* --- card stack (next profile peeking behind) --- */
+  function addStack(){
+    if(!$("#swipe-card") || wrap.querySelector(".stack-card")) return;
+    var nx=window.__tinder && window.__tinder.peekNext && window.__tinder.peekNext();
+    var d=document.createElement("div"); d.className="stack-card";
+    if(nx){ d.style.background=nx.grad; d.textContent=nx.hiroto?("⭐ "+nx.name+" が待ってる…"):(nx.name+" "+nx.age); }
+    else { d.style.background="linear-gradient(160deg,#f5f5f7,#e9e9ee)"; d.style.color="#b9b9c0"; d.textContent="🔥"; }
+    wrap.insertBefore(d, wrap.firstChild);
+  }
+  /* --- drag / swipe --- */
+  var drag=null, suppressUntil=0;
+  function attachDrag(card){
+    if(!card || card.dataset.drag) return; card.dataset.drag="1";
+    card.addEventListener("pointerdown",function(e){
+      if(e.target.closest(".tdetail")) return;
+      drag={x:e.clientX, moved:0}; try{ if(e.pointerId!==undefined) card.setPointerCapture(e.pointerId); }catch(_){}
+    });
+    card.addEventListener("pointermove",function(e){
+      if(!drag) return; var dx=e.clientX-drag.x; drag.moved=Math.max(drag.moved,Math.abs(dx));
+      if(Math.abs(dx)>6){ card.classList.add("dragging"); card.style.transform="translateX("+dx+"px) rotate("+(dx/16)+"deg)";
+        var sl=$("#stamp-like"), sn=$("#stamp-nope");
+        if(sl){ sl.classList.toggle("on",dx>24); sl.style.opacity=dx>24?Math.min(1,dx/95):""; }
+        if(sn){ sn.classList.toggle("on",dx<-24); sn.style.opacity=dx<-24?Math.min(1,-dx/95):""; }
+      }
+    });
+    function end(e){
+      if(!drag) return; var dx=e.clientX-drag.x; var moved=drag.moved; drag=null;
+      card.classList.remove("dragging");
+      if(moved>10) suppressUntil=Date.now()+350;
+      if(dx>85){ window.__tinder.swipe("like"); }
+      else if(dx<-85){ window.__tinder.swipe("nope"); }
+      else { card.style.transition="transform .25s ease"; card.style.transform=""; var sl=$("#stamp-like"), sn=$("#stamp-nope"); if(sl){sl.classList.remove("on"); sl.style.opacity="";} if(sn){sn.classList.remove("on"); sn.style.opacity="";} }
+    }
+    card.addEventListener("pointerup",end); card.addEventListener("pointercancel",end);
+  }
+  wrap.addEventListener("click",function(e){ if(Date.now()<suppressUntil){ e.stopPropagation(); e.preventDefault(); } },true);
+  new MutationObserver(function(){ addStack(); attachDrag($("#swipe-card")); }).observe(wrap,{childList:true});
+  addStack(); attachDrag($("#swipe-card"));
+  /* --- rewind / boost --- */
+  var rb=$("#btn-rewind"); if(rb) rb.addEventListener("click",function(){ if(window.__tinder) window.__tinder.rewind(); });
+  var bb=$("#btn-boost"); if(bb) bb.addEventListener("click",function(){
+    var deck=$("#tinder-deck-wrap"); if(deck){ deck.classList.add("boosting"); setTimeout(function(){ deck.classList.remove("boosting"); },4000); }
+    toast("⚡ <b>ブースト発動（演出）</b><br>30分間、なおのプロフィールが優先表示される気分になれるよ");
+  });
+  /* --- discovery settings --- */
+  var sheet=$("#tdisc-sheet");
+  function syncLabels(){
+    $("#tdisc-dist-v").textContent=$("#tdisc-dist").value+" km";
+    $("#tdisc-amin-v").textContent=$("#tdisc-amin").value+"歳";
+    var mx=+$("#tdisc-amax").value; $("#tdisc-amax-v").textContent=(mx>=40?"40歳以上":mx+"歳");
+  }
+  ["tdisc-dist","tdisc-amin","tdisc-amax"].forEach(function(id){ var el=document.getElementById(id); if(el) el.addEventListener("input",syncLabels); });
+  syncLabels();
+  [["tdisc-super"],["tdisc-active"]].forEach(function(a){ var el=document.getElementById(a[0]); if(el) el.addEventListener("click",function(){ el.classList.toggle("sel"); el.textContent=el.classList.contains("sel")?"ON":"OFF"; }); });
+  var dop=$("#tdisc-open"); if(dop) dop.addEventListener("click",function(){ sheet.classList.add("on"); });
+  var dcl=$("#tdisc-close"); if(dcl) dcl.addEventListener("click",function(){ sheet.classList.remove("on"); });
+  if(sheet) sheet.addEventListener("click",function(e){ if(e.target===sheet) sheet.classList.remove("on"); });
+  var dap=$("#tdisc-apply"); if(dap) dap.addEventListener("click",function(){
+    var amin=+$("#tdisc-amin").value, amax=+$("#tdisc-amax").value; if(amin>amax){ var t=amin; amin=amax; amax=t; }
+    window.__tdisc={maxDist:+$("#tdisc-dist").value, ageMin:amin, ageMax:(amax>=40?99:amax)};
+    sheet.classList.remove("on"); if(window.__tinder) window.__tinder.render();
+    toast("🎛️ <b>発見設定を適用</b>：〜"+window.__tdisc.maxDist+" km ／ "+window.__tdisc.ageMin+"〜"+(window.__tdisc.ageMax>=99?"40+":window.__tdisc.ageMax)+"歳");
+  });
+  /* --- profile detail sheet --- */
+  var dsheet=$("#tdetail-sheet"), dbox=$("#tdetail-box");
+  window.openTDetail=function(c){
+    if(!c||!dbox) return;
+    var photosHtml = c.hiroto
+      ? '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"].map(function(s){ return '<img src="'+s+'" style="width:110px;height:140px;object-fit:cover;border-radius:12px;flex:none" alt="">'; }).join("")+"</div>"
+      : '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+c.scenes.map(function(s){ return '<div style="width:110px;height:140px;border-radius:12px;flex:none;background:'+c.grad+';display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff"><span style="font-size:44px">'+s.e+'</span><span style="font-size:11px;font-weight:700;text-align:center;padding:0 6px">'+s.cap+'</span></div>'; }).join("")+"</div>";
+    var prompts = '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:9px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.promptQ+"</b>"+c.promptA+"</div>"
+      + (c.prompt2Q ? '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:8px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.prompt2Q+"</b>"+c.prompt2A+"</div>" : "");
+    dbox.innerHTML = "<h3>"+c.name+" <span style='font-weight:600;font-size:16px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px'>⭐ Super Like済み</span>":"")+"</h3>"
+      + '<div class="sub">📍 '+(c.dist||"")+(c.work?" ・ "+c.work:"")+(c.hiroto?" ／ 身長 175 cm":"")+"</div>"
+      + photosHtml
+      + '<div style="font-size:13.5px;line-height:1.7;margin-top:10px">'+c.bio+"</div>"
+      + '<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px">'+c.tags.map(function(t){ return '<span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">'+t+"</span>"; }).join("")+"</div>"
+      + prompts
+      + '<div style="display:flex;gap:10px;margin-top:16px"><button id="td-nope" style="flex:1;background:#fff0f0;color:#ff3b30;border:none;border-radius:999px;padding:12px;font-weight:900;cursor:pointer;font-family:inherit">✕ Nope</button><button id="td-like" style="flex:1;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:12px;font-weight:900;cursor:pointer;font-family:inherit">❤️ Like</button></div>'
+      + '<button class="sheet-close" id="td-close">閉じる</button>';
+    dsheet.classList.add("on");
+    document.getElementById("td-close").addEventListener("click",function(){ dsheet.classList.remove("on"); });
+    document.getElementById("td-nope").addEventListener("click",function(){ dsheet.classList.remove("on"); window.__tinder.swipe("nope"); });
+    document.getElementById("td-like").addEventListener("click",function(){ dsheet.classList.remove("on"); window.__tinder.swipe(c.hiroto?"super":"like"); });
+  };
+  if(dsheet) dsheet.addEventListener("click",function(e){ if(e.target===dsheet) dsheet.classList.remove("on"); });
+  /* --- own profile editing --- */
+  var pe=$("#prof-edit");
+  if(pe){
+    var clone=pe.cloneNode(true); pe.replaceWith(clone);
+    var panel=$("#nao-edit-panel"), bioIn=$("#nao-bio-input");
+    var INTERESTS=["サウナ","エビ","カフェオレ","ごはん","映画","旅行","推し活","韓国","ねこ","お酒"];
+    var selected=["サウナ","エビ","ごはん"];
+    var chipsBox=$("#nao-interest-chips");
+    function chipHtml(t,sel){ return '<button class="tgl-chip'+(sel?" sel":"")+'" data-int="'+t+'">'+t+"</button>"; }
+    function renderChips(){ if(chipsBox) chipsBox.innerHTML=INTERESTS.map(function(t){ return chipHtml(t,selected.indexOf(t)>=0); }).join("");
+      if(chipsBox) chipsBox.querySelectorAll("[data-int]").forEach(function(b){ b.addEventListener("click",function(){ var t=b.dataset.int; var i=selected.indexOf(t); if(i>=0) selected.splice(i,1); else selected.push(t); renderChips(); renderPreview(); }); });
+    }
+    function renderPreview(){
+      var pb=$("#nao-preview-bio"); if(pb) pb.textContent=bioIn.value;
+      var pt=$("#nao-preview-tags"); if(pt) pt.innerHTML=selected.map(function(t){ return '<span style="background:#fff;border:1px solid #ffd3e2;border-radius:999px;padding:4px 9px;font-size:11.5px">'+t+"</span>"; }).join("");
+    }
+    renderChips(); renderPreview();
+    if(bioIn) bioIn.addEventListener("input",renderPreview);
+    clone.addEventListener("click",function(){ if(panel) panel.style.display = panel.style.display==="none" ? "block" : "none"; });
+    var cancel=$("#nao-edit-cancel"); if(cancel) cancel.addEventListener("click",function(){ panel.style.display="none"; });
+    var save=$("#nao-edit-save"); if(save) save.addEventListener("click",function(){
+      var nb=$("#nao-bio"); if(nb) nb.textContent=bioIn.value;
+      var nt=$("#nao-tags"); if(nt) nt.innerHTML=selected.map(function(t){ return '<span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">'+t+"</span>"; }).join("");
+      panel.style.display="none"; toast("✏️ <b>プロフィールを保存しました</b><br>この編集はTinder内だけ。ひろとが見てる1枚はそのまま");
+    });
+  }
 })();
 </script>
 </body>
