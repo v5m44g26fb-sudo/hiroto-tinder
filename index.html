@@ -849,7 +849,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v17</b>（読み返し強化：あらすじ・チャプター／LINE・Tinderのバックログ）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v18</b>（シナリオ増量：幕間『引いたはずの線』／彼視点パート「彼の画面」3編）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -944,13 +944,13 @@ async function ch2main(t){ if(!alive(t))return; await himMsg("今日、楽しみ
   later(()=>{ addPhoto("assets/ig-drink.jpg","初デート☕️"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },6500);
   later(async()=>{ if(!alive(t))return; await himMsg("今日、楽しかった"); if(!alive(t))return; await himMsg("カフェオレ、なおの好きなやつ覚えたで"); if(!alive(t))return; await himMsg("今日は…帰したくないな"); if(!alive(t))return; await himMsg("…なんて、冗談やで笑"); if(!alive(t))return; await himVoice("assets/vm-date.mp3","0:03");
     if(!alive(t))return; askChoices("なおの返信を選んで",[
-      {label:"私も楽しかった！",fn:async()=>{ if(!alive(t))return; await himMsg("よかった"); await himMsg("また行こな"); later(()=>chapter(3),2000); }},
-      {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画な、任せて"); await himMsg("なおの好きそうなん、探しとく"); later(()=>chapter(3),2000); }},
-      {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>chapter(3),2000); }},
+      {label:"私も楽しかった！",fn:async()=>{ if(!alive(t))return; await himMsg("よかった"); await himMsg("また行こな"); later(()=>povGate(1,3),2000); }},
+      {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画な、任せて"); await himMsg("なおの好きそうなん、探しとく"); later(()=>povGate(1,3),2000); }},
+      {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>povGate(1,3),2000); }},
     ]); },8000); }
 async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","抑えられなくなる前に、引く一線。"); chapterCard("第3話","線引き","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
   await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("これ以上会ったら、俺ほんまに…",1300); if(!alive(t))return; await himMsg("…ごめん、なんでもない"); later(()=>toast("✋ <b>（伸びかけた手が、途中で止まって、落ちた）</b>"),1200); if(!alive(t))return; await himMsg("俺、こういう仕事やから"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himVoice("assets/vm-t-line.mp3","0:05"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会うの、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
-  if(!alive(t))return; const fin=async()=>{ later(()=>chapter(4),2200); };
+  if(!alive(t))return; const fin=async()=>{ later(async()=>{ if(!alive(t))return; await showPOV(2); if(!alive(t))return; startInterlude(t); },2200); };
   askChoices("なおの答えは——",[
     {label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); if(!alive(t))return; await himMsg("ほんまは、こんなん言う資格ないんやけど"); if(!alive(t))return; await himMsg("また、ごはんだけでも行ってくれる？"); fin(); }},
     {label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("なおの気持ち、嬉しいねん"); if(!alive(t))return; await himMsg("でも、守られへん約束はしたくないねん"); fin(); }},
@@ -1116,7 +1116,7 @@ if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(state.
  const iv=setInterval(()=>{i++; if(i<lines.length){$("#call-sub").textContent=lines[i]; playN(i+1);} else {clearInterval(iv)}},4200); timers.push(iv); }
 else { startCallVoice(); }
 }
-$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
+$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
 async function ending(kind){ if(state.ended) return; state.ended=true;
 const box={open:{h:"エンディング：事実を、まっすぐに",t:"翌日、ひろとは自分の言葉でファンへ報告した。「アプリを使っていたのは事実です。相手とは交際していません」——炎上は続いたけど、嘘のない言葉に、応援の声も少しずつ戻り始めた。",news:"本人がコメント　「交際の事実はありません」"},
 wait:{h:"エンディング：静かに待つ",t:"二人は表向き静かに過ごすことにした。コメント欄は少しずつ落ち着いて、ひと月後——彼の投稿から、アプリの気配は消えていた。知ってる人だけが、知っている。",news:"アプリ利用疑惑は沈静化へ　事務所は静観の構え"},
@@ -1124,7 +1124,7 @@ away:{h:"エンディング：連絡を絶つ",t:"少しだけ、のつもりだ
 state.ending=kind; await himMsg(kind==="open"?"わかった。俺も、そのつもりやった":kind==="wait"?"うん。なおがそう言うなら、それでいこ":"…わかった。もう、連絡せんとく");
 await himMsg("今日はありがとうな");
 later(()=>{ const bs=$$("#chat .msg.him .bub"); const last=bs[bs.length-1]; if(last){ const r=document.createElement("span"); r.textContent=" ❤️"; r.style.fontSize="13px"; last.appendChild(r); } },2500);
-const main=$("#v-home"); setHeat(kind==="open"?88:kind==="wait"?45:60);
+await showPOV(3); const main=$("#v-home"); setHeat(kind==="open"?88:kind==="wait"?45:60);
 addNewsRow("assets/stage.jpg",box.news,"続報 ・ たった今",null);
 push("ニュース速報","#e60012","N",box.news,"タップで結末を確認",()=>{ show("home"); showEnding(box);});
 later(()=>showEnding(box),6000);
@@ -1372,8 +1372,8 @@ function showIncomingCall(caller){ state.caller=caller||"hiroto"; const mgr=stat
 const MGR_LINES=["「…もしもし、なおさんですか。私、井汲の所属事務所の者です」","「確認させてください。アプリで知り合って、彼とお会いになったのは事実でしょうか」","「事務所としては『交際の事実はございません』と、コメントを出します」","「どうか、SNSでは何も発信せず、今後は彼とのご連絡も控えてください」","「彼には、こちらから伝えます。ご協力、ありがとうございました」"];
 $("#call-answer").addEventListener("click",()=>{ ringStop(); $("#call-incoming").style.display="none"; $("#call-active").style.display="flex"; const mgr=state.caller==="manager";
   $("#call-act-name").textContent=mgr?"マネージャー（事務所）":"ひろと"; $("#call-act-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
-  startCall(mgr?MGR_LINES:null); state._answered=true; state._callWho=mgr?"マネージャー（事務所）":"ひろと"; });
-$("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.caller==="manager"?"マネージャー（事務所）":"ひろと")+" ・ 不在着信（拒否） ・ "+nowTime()); ringStop(); if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("マネージャーから電話いった？",300); await himMsg("出んでも大丈夫やで"); await himMsg("内容は俺から聞いて"); return; } show("line"); openChat(); await himMsg("出れんかった？",300); await himMsg("大丈夫、気にせんといて"); await himMsg("文字でも、なおと話せたらいい"); lineSequence2(); });
+  startCall(mgr?MGR_LINES:(state._interludeCall?window.INTERLUDE_LINES:null)); state._answered=true; state._callWho=mgr?"マネージャー（事務所）":"ひろと"; });
+$("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.caller==="manager"?"マネージャー（事務所）":"ひろと")+" ・ 不在着信（拒否） ・ "+nowTime()); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeDeclined) interludeDeclined(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("マネージャーから電話いった？",300); await himMsg("出んでも大丈夫やで"); await himMsg("内容は俺から聞いて"); return; } show("line"); openChat(); await himMsg("出れんかった？",300); await himMsg("大丈夫、気にせんといて"); await himMsg("文字でも、なおと話せたらいい"); lineSequence2(); });
 /* ===== v2: act2 next morning ===== */
 async function startAct2(kind){ if(state._act2) return; state._act2=true; state.act2=true; $("#lock-date").textContent="11月3日 月曜日";
   $("#w-title").textContent="🌅 翌朝 —— 少しずつ、日常に"; $("#w-main").textContent="彼の公式コメントが出た。謝罪と、交際否定と、アプリ退会と。"; setHeat(18); const ec=$("#endcard"); if(ec) ec.remove();
@@ -3187,6 +3187,166 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
  const tb=$("#t-log-btn"); if(tb) tb.addEventListener("click",()=>openLog("tinder"));
  const lc=sheet.querySelector("#log-close"); if(lc) lc.addEventListener("click",()=>sheet.classList.remove("on"));
  sheet.addEventListener("click",e=>{ if(e.target===sheet) sheet.classList.remove("on"); });
+})();
+</script>
+<script>
+/* ===== Tinder ver v18: his POV scenes + interlude late-night call ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#pov-ov{position:absolute;inset:0;background:linear-gradient(180deg,#08080e,#101019 55%,#0a0a12);z-index:480;display:none;flex-direction:column;color:#e8e8f0}"+
+  "#pov-ov.on{display:flex}"+
+  ".pov-head{display:flex;align-items:center;gap:10px;padding:58px 16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}"+
+  ".pov-head img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.25)}"+
+  ".pov-head .nm{font-size:15px;font-weight:800;line-height:1.25}"+
+  ".pov-head .sb{font-size:11px;color:#9a9aad;line-height:1.4}"+
+  "#pov-skip{margin-left:auto;border:1px solid rgba(255,255,255,.25);background:transparent;color:#c9c9d6;border-radius:999px;padding:5px 12px;font-size:11.5px;cursor:pointer}"+
+  "#pov-body{flex:1;overflow-y:auto;padding:16px 16px 8px;display:flex;flex-direction:column}"+
+  ".pov-step{animation:fadeup .35s ease;margin-top:10px;max-width:86%}"+
+  ".pov-note{align-self:center;background:rgba(255,255,255,.07);color:#a8a8ba;font-size:11px;border-radius:999px;padding:4px 12px;text-align:center;line-height:1.5}"+
+  ".pov-mono{align-self:center;color:#9a9aad;font-size:12.5px;font-style:italic;text-align:center;line-height:1.7;max-width:92%}"+
+  ".pov-who{font-size:10.5px;color:#8b8b9e;margin-bottom:3px}"+
+  ".pov-mgr{align-self:flex-start}"+
+  ".pov-mgr .tx{background:#23232e;border-radius:4px 14px 14px 14px;padding:8px 12px;font-size:13.5px;line-height:1.6;display:inline-block}"+
+  ".pov-him{align-self:flex-end;text-align:right}"+
+  ".pov-him .tx{background:#274b73;border-radius:14px 4px 14px 14px;padding:8px 12px;font-size:13.5px;line-height:1.6;display:inline-block;text-align:left}"+
+  ".pov-draft{align-self:flex-end;width:86%}"+
+  ".pov-draft .box{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03);border-radius:12px;padding:10px 12px}"+
+  ".pov-draft .to{font-size:10.5px;color:#8b8b9e;margin-bottom:4px}"+
+  ".pov-draft .tx{font-size:13.5px;line-height:1.65;color:#d7d7e2}"+
+  ".pov-draft .ng{font-size:10.5px;color:#ff8299;margin-top:6px}"+
+  ".pov-foot{padding:10px 16px 30px;text-align:center;font-size:12px;color:#8b8b9e;border-top:1px solid rgba(255,255,255,.06);cursor:pointer;letter-spacing:.08em}";
+ document.head.appendChild(css);
+
+ const ov=document.createElement("div"); ov.id="pov-ov";
+ ov.innerHTML='<div class="pov-head"><img src="assets/ig-avatar.jpg" alt=""><span><div class="nm">井汲 大翔</div><div class="sb" id="pov-sub"></div></span><button id="pov-skip">スキップ</button></div><div id="pov-body"></div><div class="pov-foot" id="pov-foot">タップで進む ▽</div>';
+ const anchor=$("#chapter-card"); if(anchor&&anchor.parentElement) anchor.parentElement.appendChild(ov);
+
+ const POVS={
+  1:{sub:"彼のスマホ —— 10月4日（土）夜",steps:[
+   {k:"note",t:"10月4日（土）23:12"},
+   {k:"mono",t:"（電車の中。帽子は、まだ取ったままにできない）"},
+   {k:"mgr",t:"今日は早めに切り上げたんやな"},
+   {k:"him",t:"うん。ちょっと出かけててん"},
+   {k:"mgr",t:"無理すんなよ。来週、収録が立て込むからな"},
+   {k:"him",t:"分かってる"},
+   {k:"mono",t:"（……ほんまに分かってるんか、俺）"},
+   {k:"draft",t:"嘘ついてて、ごめん。ほんまは最初から、会いたかってん"},
+   {k:"draft",t:"俺のこと、嫌いにならんといて"},
+   {k:"mono",t:"（送ったのは、無難な方の文面。……臆病やな、俺）"}
+  ]},
+  2:{sub:"彼のスマホ —— 10月12日（日）夜",steps:[
+   {k:"note",t:"10月12日（日）21:48"},
+   {k:"mono",t:"（駅まで送って、ひとりで帰る道）"},
+   {k:"draft",t:"さっきの、やっぱり撤回したい"},
+   {k:"draft",t:"会うの、やめたくない"},
+   {k:"mgr",t:"来週の収録、前倒しになったで"},
+   {k:"him",t:"了解"},
+   {k:"mgr",t:"最近、スタッフの間で『浮かれてる』って言われてるぞ"},
+   {k:"him",t:"…気のせいちゃう"},
+   {k:"mono",t:"（線は、引いた。引いたはずやのに）"},
+   {k:"mono",t:"（電話していい理由を探してる時点で、もう——）"}
+  ]},
+  3:{sub:"彼のスマホ —— 11月2日（日）深夜",steps:[
+   {k:"note",t:"11月2日（日）23:31"},
+   {k:"mgr",t:"声明の文案、これで出すぞ"},
+   {k:"him",t:"『交際の事実はない』…そこは、そのままで"},
+   {k:"him",t:"アプリのことは、全部ほんまのこと書いて"},
+   {k:"mgr",t:"お相手の子には、事務所から連絡しといた"},
+   {k:"mono",t:"（……分かってる。分かってるけど）"},
+   {k:"draft",t:"ごめん"},
+   {k:"draft",t:"なおは悪くない。全部、俺や"},
+   {k:"draft",t:"落ち着いたら、またごはん"},
+   {k:"mono",t:"（送られへん。送ったら、また巻き込む）"},
+   {k:"mono",t:"（……ごめんな、なお）"}
+  ]}
+ };
+ function povEl(s){
+   const d=document.createElement("div");
+   if(s.k==="note"){ d.className="pov-step pov-note"; d.textContent=s.t; }
+   else if(s.k==="mono"){ d.className="pov-step pov-mono"; d.textContent=s.t; }
+   else if(s.k==="mgr"){ d.className="pov-step pov-mgr"; d.innerHTML='<div class="pov-who">マネージャー</div><span class="tx"></span>'; d.querySelector(".tx").textContent=s.t; }
+   else if(s.k==="him"){ d.className="pov-step pov-him"; d.innerHTML='<span class="tx"></span>'; d.querySelector(".tx").textContent=s.t; }
+   else if(s.k==="draft"){ d.className="pov-step pov-draft"; d.innerHTML='<div class="box"><div class="to">なお へのメッセージ</div><div class="tx"></div><div class="ng">✕ 打って、消した（送信されなかった下書き）</div></div>'; d.querySelector(".tx").textContent=s.t; }
+   return d;
+ }
+ let povResolve=null,povIdx=0,povSteps=[];
+ function povFootUpdate(){ $("#pov-foot").textContent = povIdx>=povSteps.length ? "なおの画面に戻る ›" : "タップで進む ▽"; }
+ function povNext(){
+   if(povIdx>=povSteps.length){ povClose(); return; }
+   const body=$("#pov-body"); body.appendChild(povEl(povSteps[povIdx++])); body.scrollTop=body.scrollHeight; povFootUpdate();
+ }
+ function povClose(){ ov.classList.remove("on"); const r=povResolve; povResolve=null; if(r) r(); }
+ window.showPOV=function(n){
+   return new Promise(res=>{
+     const def=POVS[n]; if(!def){ res(); return; }
+     state._povSeen=state._povSeen||{}; state._povSeen[n]=true;
+     povSteps=def.steps; povIdx=0; povResolve=res;
+     $("#pov-sub").textContent=def.sub;
+     $("#pov-body").innerHTML="";
+     ov.classList.add("on"); povFootUpdate(); povNext();
+   });
+ };
+ window.povGate=async function(n,ch){ await window.showPOV(n); chapter(ch); };
+ ov.addEventListener("click",e=>{ if(e.target&&e.target.id==="pov-skip") return; povNext(); });
+ ov.querySelector("#pov-skip").addEventListener("click",e=>{ e.stopPropagation(); povClose(); });
+
+ /* ---------- interlude: the line he drew, and couldn't keep ---------- */
+ window.INTERLUDE_LINES=[
+  "「…寝てた？」",
+  "「起こしてもうたら、ごめん」",
+  "「なんか、眠れんくて」",
+  "「今日の話の続き、とかちゃうで」",
+  "「ただ、声聞きたかってん」",
+  "「…引いたの、俺やのにな」",
+  "「なぁ、なお」",
+  "「電話、切る前にひとつだけ」",
+  "「…ごめん。もう寝えや」",
+  "「おやすみ」"
+ ];
+ window.startInterlude=async function(t){
+   if(state._interludeDone) return; state._interludeStage="line";
+   chapterCard("幕間","引いたはずの線","10月12日（日） 深夜 —— 。<br>LINEを開いてね");
+   addDayChip("10月12日（日）深夜");
+   await himMsg("…起きてる？",1700); if(!alive(t))return;
+   await himMsg("寝てたら、ごめん",700); if(!alive(t))return;
+   state._interludeStage="ring";
+   push("着信","#111111","📞","ひろと","「いま、電話できる？」—— タップで出る",()=>{ if(state._interludeStage==="ring"){ state._interludeStage="call"; state._interludeCall=true; showIncomingCall("hiroto"); } });
+   later(()=>{ if(state._interludeStage==="ring"&&alive(t)){ state._interludeStage="call"; state._interludeCall=true; showIncomingCall("hiroto"); } },12000);
+ };
+ window.interludeAfter=async function(){
+   state._interludeStage="done"; state._interludeDone=true; const t=state._token;
+   await himMsg("電話、ありがとう",500); if(!alive(t))return;
+   await himMsg("…声、聞けてよかった"); if(!alive(t))return;
+   await himMsg("おやすみ。また明日"); if(!alive(t))return;
+   toast("🌙 <b>（線を引いた、はずだった）</b>");
+   later(()=>{ if(alive(t)) chapter(4); },2400);
+ };
+ window.interludeDeclined=async function(){
+   state._interludeStage="done"; state._interludeDone=true; const t=state._token;
+   await himMsg("寝てた？",400); if(!alive(t))return;
+   await himMsg("起こしたら、ごめん"); if(!alive(t))return;
+   await himMsg("…なんでもない。寝てな"); if(!alive(t))return;
+   toast("🌙 <b>（かかってきた電話は、鳴り止んだ）</b>");
+   later(()=>{ if(alive(t)) chapter(4); },2400);
+ };
+
+ /* ---------- re-read his POV from the chapter screen ---------- */
+ function appendPovCards(){
+   const list=$("#syn-list"); if(!list||list.querySelector(".pov-card")) return;
+   const seen=state._povSeen||{}; const pastSc=state.phase==="scandal"||!!state.act2;
+   const defs=[
+     {n:1,tt:"彼の画面 ― 初デートのあと",dt:"10月4日（土）夜 ・ 電車の中",un:seen[1]||state.chapter>=3||pastSc},
+     {n:2,tt:"彼の画面 ― 線引きの夜",dt:"10月12日（日）夜 ・ 帰り道",un:seen[2]||state.chapter>=4||pastSc},
+     {n:3,tt:"彼の画面 ― 炎上の夜",dt:"11月2日（日）深夜 ・ 声明の前",un:seen[3]||!!state.ended||!!state.act2}
+   ];
+   const unl=defs.filter(d=>d.un); if(!unl.length) return;
+   const h=document.createElement("div"); h.style.cssText="font-size:12px;color:#8e8e93;font-weight:800;margin:16px 2px 8px"; h.textContent="📱 彼の画面（なおには見えない裏側）"; list.appendChild(h);
+   unl.forEach(d=>{ const c=document.createElement("div"); c.className="syn-card pov-card";
+     c.innerHTML='<div class="sno">裏側</div><div class="stt">'+d.tt+'</div><div class="sdt">'+d.dt+'</div><div class="sgo">▶ 彼の画面を読み返す</div>';
+     c.addEventListener("click",()=>{ const p=$("#syn-panel"); if(p) p.style.display="none"; window.showPOV(d.n); });
+     list.appendChild(c); });
+ }
+ const scb=$("#set-chapters"); if(scb) scb.addEventListener("click",()=>setTimeout(appendPovCards,40));
 })();
 </script>
 </body>
