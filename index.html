@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v33</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v34</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1975,18 +1975,18 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
   let photoIdx=0;
   const deck=[
-    {name:"けんた",age:26,distKm:2,dist:"2 km",work:"会社員",bio:"休日はキャンプとサウナ。写真撮るのも好きです。焚き火でぼーっとする時間が至福。",tags:["サウナ","キャンプ","写真"],grad:"linear-gradient(160deg,#667eea,#764ba2)",ini:"け",scenes:[{e:"🏕️",cap:"週末はだいたい山のなか"},{e:"♨️",cap:"サウナは週2、水風呂派"},{e:"🍖",cap:"キャンプ飯は失敗も思い出"}],promptQ:"理想のデートは…",promptA:"車でちょっと遠出して、美味い店と温泉はしご"},
-    {name:"そうた",age:25,distKm:5,dist:"5 km",work:"アパレル",bio:"音楽と古着が好き。ライブ一緒に行ける人探してます。レコードも少し集めてます。",tags:["音楽","古着","ライブ"],grad:"linear-gradient(160deg,#11998e,#38ef7d)",ini:"そ",scenes:[{e:"🎸",cap:"下北のライブハウス通い"},{e:"👕",cap:"古着屋めぐりが休日"},{e:"🎧",cap:"最近はシティポップ沼"}],promptQ:"休みの日は…",promptA:"昼まで寝て、夕方からレコード屋とライブ"},
-    {name:"れん",age:27,distKm:3,dist:"3 km",work:"営業",bio:"仕事は営業。ごはん屋さん開拓するのが趣味です。行列のできる麺に弱い。",tags:["グルメ","旅行","映画"],grad:"linear-gradient(160deg,#fc4a1a,#f7b733)",ini:"れ",scenes:[{e:"🍜",cap:"麺は太め・かため派"},{e:"✈️",cap:"年2回の遠征グルメ旅"},{e:"🎬",cap:"映画はサブスクで週3"}],promptQ:"実は…",promptA:"地図アプリの「行きたい」リストが300件超えた"},
-    {name:"はると",age:23,distKm:8,dist:"8 km",work:"大学院生",bio:"研究とフットサルと海。夏はだいたい水辺にいます。のんびり話せる人がいいです。",tags:["スポーツ","海","読書"],grad:"linear-gradient(160deg,#2193b0,#6dd5ed)",ini:"は",scenes:[{e:"⚽",cap:"火曜はフットサル"},{e:"🌊",cap:"夏は海でぼーっと"},{e:"📚",cap:"研究室の生き字引（自称）"}],promptQ:"仕事（研究）は…",promptA:"海の生き物の研究。詳しくは会ったときに"},
-    {name:"しゅん",age:28,distKm:12,dist:"12 km",work:"エンジニア",bio:"仕事はエンジニア。ゲームとコーヒーと、静かな休日。自宅の作業環境が自慢です。",tags:["ゲーム","コーヒー","映画"],grad:"linear-gradient(160deg,#232526,#414345)",ini:"し",scenes:[{e:"💻",cap:"デスク環境ガチ勢"},{e:"🎮",cap:"RPGは100時間超えがち"},{e:"☕",cap:"豆は浅煎り派"}],promptQ:"理想のデートは…",promptA:"カフェでだらだらして、夜は家で映画"},
-    {name:"だいき",age:24,distKm:4,dist:"4 km",work:"美容師アシスタント",bio:"美容師アシスタント。休みの日はカフェと写真。夕日の写真ばっかり撮ってます。",tags:["写真","カフェ","スイーツ"],grad:"linear-gradient(160deg,#ff9a9e,#fecfef)",ini:"だ",scenes:[{e:"📷",cap:"フィルムカメラ派"},{e:"🌇",cap:"夕日ハンター"},{e:"🍰",cap:"甘いものは別腹×2"}],promptQ:"休みの日は…",promptA:"カフェ開拓して、撮った写真を現像に出す"},
-    {name:"たくみ",age:29,distKm:18,dist:"18 km",work:"料理人",bio:"小さな居酒屋の料理人。自分の店を持つのが夢。美味しいって言われるのが一番嬉しい。",tags:["料理","魚","居酒屋"],grad:"linear-gradient(160deg,#cb2d3e,#ef473a)",ini:"た",scenes:[{e:"🍳",cap:"まかないが人気の店"},{e:"🐟",cap:"市場は朝5時から"},{e:"🧑‍🍳",cap:"出汁にはうるさいです"}],promptQ:"実は…",promptA:"休みの日も結局、台所に立ってしまう"},
-    {name:"ゆうき",age:25,distKm:6,dist:"6 km",work:"物流",bio:"筋トレと銭湯と、休日の昼ビール。重いもの持つの得意です。気楽に話せる人だと嬉しい。",tags:["筋トレ","銭湯","ビール"],grad:"linear-gradient(160deg,#0f9b8e,#84fab0)",ini:"ゆ",scenes:[{e:"🏋️",cap:"ベンチプレス100kg目標"},{e:"🧖",cap:"銭湯は電気風呂派"},{e:"🍺",cap:"休日は昼から一杯だけ"}],promptQ:"休みの日は…",promptA:"ジム→銭湯→昼寝の三点セット",prompt2Q:"実は…",prompt2A:"プロテインの味にはうるさいです"},
-    {name:"りく",age:23,distKm:3,dist:"3 km",work:"大学生",bio:"大学で軽音やってます。担当はボーカルとギター。ライブ終わりのラーメンが最高。",tags:["音楽","バンド","ラーメン"],grad:"linear-gradient(160deg,#8e2de2,#4a00e0)",ini:"り",scenes:[{e:"🎤",cap:"学祭ライブが生きがい"},{e:"🎸",cap:"愛機はテレキャスター"},{e:"🍜",cap:"ライブ後は家系一択"}],promptQ:"理想のデートは…",promptA:"楽器屋めぐって、夜は小さいライブハウス",prompt2Q:"仕事（学業）は…",prompt2A:"心理学専攻。人の話を聞くのは好きなほう"},
-    {name:"かいと",age:27,distKm:9,dist:"9 km",work:"看護師",bio:"看護師です。夜勤明けの朝ごはんと、猫の動画で回復してます。聞き上手って言われます。",tags:["猫","朝ごはん","映画"],grad:"linear-gradient(160deg,#56ccf2,#2f80ed)",ini:"か",scenes:[{e:"🌅",cap:"夜勤明けの空が好き"},{e:"🍳",cap:"朝ごはんはちゃんと作る派"},{e:"🐈",cap:"実家の猫が世界一かわいい"}],promptQ:"休みの日は…",promptA:"寝だめして、夕方からカフェか映画",prompt2Q:"実は…",prompt2A:"注射はする側なのに、されるのは苦手"},
-    {name:"そうま",age:22,distKm:2,dist:"2 km",work:"カフェ店員",bio:"カフェでバイトしてます。ラテアート練習中。自転車で知らない街に行くのが好き。",tags:["カフェ","自転車","イラスト"],grad:"linear-gradient(160deg,#f7971e,#ffd200)",ini:"そ",scenes:[{e:"☕",cap:"ラテアートはハートまで習得"},{e:"🚲",cap:"休日はポタリング"},{e:"🎨",cap:"手帳に落書きする癖"}],promptQ:"理想のデートは…",promptA:"川沿いサイクリングして、気になるカフェに入る",prompt2Q:"実は…",prompt2A:"働いてるカフェの常連さんの顔、だいたい覚えてます"},
-    {name:"はやて",age:29,distKm:15,dist:"15 km",work:"公務員",bio:"市役所勤務。御朱印集めと城めぐりと、ベランダ菜園。落ち着いた関係がいいです。",tags:["旅行","歴史","園芸"],grad:"linear-gradient(160deg,#134e5e,#71b280)",ini:"は",scenes:[{e:"⛩️",cap:"御朱印帳は3冊目"},{e:"🏯",cap:"現存天守は制覇したい"},{e:"🌱",cap:"ベランダでトマト育成中"}],promptQ:"休みの日は…",promptA:"電車で1時間くらいの城下町をぶらぶら",prompt2Q:"実は…",prompt2A:"真面目そうに見えて、意外と方向音痴です"},
+    {name:"けんた",age:26,distKm:2,dist:"2 km",work:"会社員",bio:"休日はキャンプとサウナ。写真撮るのも好きです。焚き火でぼーっとする時間が至福。",tags:["サウナ","キャンプ","写真"],grad:"linear-gradient(160deg,#667eea,#764ba2)",ini:"け",photos:["assets/dummy-kenta-1.jpg","assets/dummy-kenta-2.jpg","assets/dummy-kenta-3.jpg"],scenes:[{e:"🏕️",cap:"週末はだいたい山のなか"},{e:"♨️",cap:"自撮り（山で）"},{e:"🍖",cap:"テント泊が至福"}],promptQ:"理想のデートは…",promptA:"車でちょっと遠出して、美味い店と温泉はしご"},
+    {name:"そうた",age:25,distKm:5,dist:"5 km",work:"アパレル",bio:"音楽と古着が好き。ライブ一緒に行ける人探してます。レコードも少し集めてます。",tags:["音楽","古着","ライブ"],grad:"linear-gradient(160deg,#11998e,#38ef7d)",ini:"そ",photos:["assets/dummy-sota-1.jpg","assets/dummy-sota-2.jpg","assets/dummy-sota-3.jpg"],scenes:[{e:"🎸",cap:"下北のライブハウス通い"},{e:"👕",cap:"古着屋めぐりが休日"},{e:"🎧",cap:"最近はシティポップ沼"}],promptQ:"休みの日は…",promptA:"昼まで寝て、夕方からレコード屋とライブ"},
+    {name:"れん",age:27,distKm:3,dist:"3 km",work:"営業",bio:"仕事は営業。ごはん屋さん開拓するのが趣味です。行列のできる麺に弱い。",tags:["グルメ","旅行","映画"],grad:"linear-gradient(160deg,#fc4a1a,#f7b733)",ini:"れ",photos:["assets/dummy-ren-1.jpg","assets/dummy-ren-2.jpg","assets/dummy-ren-3.jpg"],scenes:[{e:"🍜",cap:"麺は太め・かため派"},{e:"✈️",cap:"行きつけの一軒"},{e:"🎬",cap:"グルメ旅が趣味です"}],promptQ:"実は…",promptA:"地図アプリの「行きたい」リストが300件超えた"},
+    {name:"はると",age:23,distKm:8,dist:"8 km",work:"大学院生",bio:"研究とフットサルと海。夏はだいたい水辺にいます。のんびり話せる人がいいです。",tags:["スポーツ","海","読書"],grad:"linear-gradient(160deg,#2193b0,#6dd5ed)",ini:"は",photos:["assets/dummy-haruto-1.jpg","assets/dummy-haruto-2.jpg","assets/dummy-haruto-3.jpg"],scenes:[{e:"⚽",cap:"夏は海でぼーっと"},{e:"🌊",cap:"波の音が好き"},{e:"📚",cap:"のんびり話せる人がいいです"}],promptQ:"仕事（研究）は…",promptA:"海の生き物の研究。詳しくは会ったときに"},
+    {name:"しゅん",age:28,distKm:12,dist:"12 km",work:"エンジニア",bio:"仕事はエンジニア。ゲームとコーヒーと、静かな休日。自宅の作業環境が自慢です。",tags:["ゲーム","コーヒー","映画"],grad:"linear-gradient(160deg,#232526,#414345)",ini:"し",photos:["assets/dummy-shun-1.jpg","assets/dummy-shun-2.jpg","assets/dummy-shun-3.jpg"],scenes:[{e:"💻",cap:"夜型です"},{e:"🎮",cap:"ゲームとコーヒー"},{e:"☕",cap:"静かな休日が好き"}],promptQ:"理想のデートは…",promptA:"カフェでだらだらして、夜は家で映画"},
+    {name:"だいき",age:24,distKm:4,dist:"4 km",work:"美容師アシスタント",bio:"美容師アシスタント。休みの日はカフェと写真。夕日の写真ばっかり撮ってます。",tags:["写真","カフェ","スイーツ"],grad:"linear-gradient(160deg,#ff9a9e,#fecfef)",ini:"だ",photos:["assets/dummy-daiki-1.jpg","assets/dummy-daiki-2.jpg","assets/dummy-daiki-3.jpg"],scenes:[{e:"📷",cap:"カフェで働いてます"},{e:"🌇",cap:"甘いものは別腹×2"},{e:"🍰",cap:"写真も撮ります"}],promptQ:"休みの日は…",promptA:"カフェ開拓して、撮った写真を現像に出す"},
+    {name:"たくみ",age:29,distKm:18,dist:"18 km",work:"料理人",bio:"小さな居酒屋の料理人。自分の店を持つのが夢。美味しいって言われるのが一番嬉しい。",tags:["料理","魚","居酒屋"],grad:"linear-gradient(160deg,#cb2d3e,#ef473a)",ini:"た",photos:["assets/dummy-takumi-1.jpg","assets/dummy-takumi-2.jpg","assets/dummy-takumi-3.jpg"],scenes:[{e:"🍳",cap:"料理人やってます"},{e:"🐟",cap:"出汁にはうるさいです"},{e:"🧑‍🍳",cap:"休みの日も台所に立ちがち"}],promptQ:"実は…",promptA:"休みの日も結局、台所に立ってしまう"},
+    {name:"ゆうき",age:25,distKm:6,dist:"6 km",work:"物流",bio:"筋トレと銭湯と、休日の昼ビール。重いもの持つの得意です。気楽に話せる人だと嬉しい。",tags:["筋トレ","銭湯","ビール"],grad:"linear-gradient(160deg,#0f9b8e,#84fab0)",ini:"ゆ",photos:["assets/dummy-yuki-1.jpg","assets/dummy-yuki-2.jpg","assets/dummy-yuki-3.jpg"],scenes:[{e:"🏋️",cap:"トレーニング中"},{e:"🧖",cap:"ベンチプレス100kg目標"},{e:"🍺",cap:"銭湯は電気風呂派"}],promptQ:"休みの日は…",promptA:"ジム→銭湯→昼寝の三点セット",prompt2Q:"実は…",prompt2A:"プロテインの味にはうるさいです"},
+    {name:"りく",age:23,distKm:3,dist:"3 km",work:"大学生",bio:"大学で軽音やってます。担当はボーカルとギター。ライブ終わりのラーメンが最高。",tags:["音楽","バンド","ラーメン"],grad:"linear-gradient(160deg,#8e2de2,#4a00e0)",ini:"り",photos:["assets/dummy-riku-1.jpg","assets/dummy-riku-2.jpg","assets/dummy-riku-3.jpg"],scenes:[{e:"🎤",cap:"学祭ライブが生きがい"},{e:"🎸",cap:"キャンプでもギター弾きます"},{e:"🍜",cap:"愛機はテレキャスター"}],promptQ:"理想のデートは…",promptA:"楽器屋めぐって、夜は小さいライブハウス",prompt2Q:"仕事（学業）は…",prompt2A:"心理学専攻。人の話を聞くのは好きなほう"},
+    {name:"かいと",age:27,distKm:9,dist:"9 km",work:"看護師",bio:"看護師です。夜勤明けの朝ごはんと、猫の動画で回復してます。聞き上手って言われます。",tags:["猫","朝ごはん","映画"],grad:"linear-gradient(160deg,#56ccf2,#2f80ed)",ini:"か",photos:["assets/dummy-kaito-1.jpg","assets/dummy-kaito-2.jpg","assets/dummy-kaito-3.jpg"],scenes:[{e:"🌅",cap:"夜勤明けのコーヒー"},{e:"🍳",cap:"聞き上手って言われます"},{e:"🐈",cap:"実家の猫が世界一かわいい"}],promptQ:"休みの日は…",promptA:"寝だめして、夕方からカフェか映画",prompt2Q:"実は…",prompt2A:"注射はする側なのに、されるのは苦手"},
+    {name:"そうま",age:22,distKm:2,dist:"2 km",work:"カフェ店員",bio:"カフェでバイトしてます。ラテアート練習中。自転車で知らない街に行くのが好き。",tags:["カフェ","自転車","イラスト"],grad:"linear-gradient(160deg,#f7971e,#ffd200)",ini:"そ",photos:["assets/dummy-soma-1.jpg","assets/dummy-soma-2.jpg","assets/dummy-soma-3.jpg"],scenes:[{e:"☕",cap:"カフェでバイトしてます"},{e:"🚲",cap:"ラテアート練習中"},{e:"🎨",cap:"窓側の席が落ち着く"}],promptQ:"理想のデートは…",promptA:"川沿いサイクリングして、気になるカフェに入る",prompt2Q:"実は…",prompt2A:"働いてるカフェの常連さんの顔、だいたい覚えてます"},
+    {name:"はやて",age:29,distKm:15,dist:"15 km",work:"公務員",bio:"市役所勤務。御朱印集めと城めぐりと、ベランダ菜園。落ち着いた関係がいいです。",tags:["旅行","歴史","園芸"],grad:"linear-gradient(160deg,#134e5e,#71b280)",ini:"は",photos:["assets/dummy-hayate-1.jpg","assets/dummy-hayate-2.jpg","assets/dummy-hayate-3.jpg"],scenes:[{e:"⛩️",cap:"市役所勤務です"},{e:"🏯",cap:"御朱印帳は3冊目"},{e:"🌱",cap:"真面目そうに見えて方向音痴"}],promptQ:"休みの日は…",promptA:"電車で1時間くらいの城下町をぶらぶら",prompt2Q:"実は…",prompt2A:"真面目そうに見えて、意外と方向音痴です"},
     {hiroto:true,name:"ひろと",age:24,distKm:1,dist:"1 km ・ 大阪",bio:"ごはんとコーラが好きです😎 のんびりしてるように見られます",tags:["コーラ","ごはん","犬","サウナ","映画"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。あと美味いごはん探す😎",prompt2Q:"仕事は…",prompt2A:"不定期なやつ。詳しくは、会ったら言うわ"}
   ];
   let idx=0, matched=false, chatStarted=false;
@@ -2015,7 +2015,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       if(_card) _card.addEventListener("click",e=>{ if(e.target.closest(".info")) return; if(e.target.id==="hiroto-photo") return; photoIdx=(photoIdx+1)%photos.length; render(); });
     } else {
       const sc=c.scenes[sceneIdx%c.scenes.length];
-      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><div class="dummy-art" style="background:${c.grad}"><div class="ini">${c.ini}</div><div style="font-size:52px;line-height:1.1">${sc.e}</div><div class="scene-cap">${sc.cap}</div></div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img class="mainphoto" src="${c.photos?c.photos[sceneIdx%c.photos.length]:''}" alt="${c.name}"><div class="scene-cap" style="position:absolute;top:26px;left:12px;z-index:3">${sc.cap}</div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
       const _zl=document.getElementById("tz-l"), _zr=document.getElementById("tz-r");
       if(_zl) _zl.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+c.scenes.length-1)%c.scenes.length; render(); });
       if(_zr) _zr.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+1)%c.scenes.length; render(); });
@@ -2934,7 +2934,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     if(!c||!dbox) return;
     var photosHtml = c.hiroto
       ? '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"].map(function(s){ return '<img src="'+s+'" style="width:110px;height:140px;object-fit:cover;border-radius:12px;flex:none" alt="">'; }).join("")+"</div>"
-      : '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+c.scenes.map(function(s){ return '<div style="width:110px;height:140px;border-radius:12px;flex:none;background:'+c.grad+';display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff"><span style="font-size:44px">'+s.e+'</span><span style="font-size:11px;font-weight:700;text-align:center;padding:0 6px">'+s.cap+'</span></div>'; }).join("")+"</div>";
+      : '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+(c.photos||[]).map(function(p,i){ return '<div style="position:relative;width:110px;height:140px;border-radius:12px;flex:none;overflow:hidden"><img src="'+p+'" style="width:100%;height:100%;object-fit:cover" alt=""><span style="position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);color:#fff;font-size:10.5px;font-weight:700;text-align:center;padding:4px 5px">'+(c.scenes[i]?c.scenes[i].cap:"")+'</span></div>'; }).join("")+"</div>";
     var prompts = '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:9px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.promptQ+"</b>"+c.promptA+"</div>"
       + (c.prompt2Q ? '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:8px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.prompt2Q+"</b>"+c.prompt2A+"</div>" : "");
     dbox.innerHTML = "<h3>"+c.name+" <span style='font-weight:600;font-size:16px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px'>⭐ Super Like済み</span>":"")+"</h3>"
@@ -3124,14 +3124,14 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       +'<div class="gold-plan plat"><div style="font-weight:900;font-size:15px">Tinder Platinum　<span style="color:#5b7ba5">月額 ¥3,400〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">マッチ前にメッセージ送信／あなたのLikeを優先表示／スーパーいいね週5回</div><button class="gold-buy" style="margin-top:9px;background:#5b7ba5;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Platinumにアップグレード</button></div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">💛 あなたを Like した人</div><div class="pickrow">'
       + himTile
-      +'<button class="picktile" data-blur="1"><span class="im"><span class="blurme" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(160deg,#667eea,#764ba2);color:#fff">け</span></span><span>？？？ 🔒</span></button>'
-      +'<button class="picktile" data-blur="1"><span class="im"><span class="blurme" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(160deg,#11998e,#38ef7d);color:#fff">そ</span></span><span>？？？ 🔒</span></button>'
-      +'<button class="picktile" data-blur="1"><span class="im"><span class="blurme" style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:34px;background:linear-gradient(160deg,#fc4a1a,#f7b733);color:#fff">れ</span></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><img class="blurme" src="assets/dummy-kenta-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><img class="blurme" src="assets/dummy-sota-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><img class="blurme" src="assets/dummy-ren-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
       +'</div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">🔥 Top Picks（本日のおすすめ）</div><div class="pickrow">'
       + himTile.replace('id="gp-him"','id="gp-him2"')
-      +'<button class="picktile" data-pick="けんた"><span class="im"><span style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(160deg,#667eea,#764ba2)">🏕️</span></span><span>けんた 26</span></button>'
-      +'<button class="picktile" data-pick="だいき"><span class="im"><span style="display:flex;width:100%;height:100%;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(160deg,#ff9a9e,#fecfef)">🌇</span></span><span>だいき 24</span></button>'
+      +'<button class="picktile" data-pick="けんた"><span class="im"><img src="assets/dummy-kenta-1.jpg" alt=""></span><span>けんた 26</span></button>'
+      +'<button class="picktile" data-pick="だいき"><span class="im"><img src="assets/dummy-daiki-1.jpg" alt=""></span><span>だいき 24</span></button>'
       +'</div>'
       +'<button class="sheet-close" id="gold-close">閉じる</button>';
     gsheet.classList.add("on");
@@ -3539,7 +3539,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   function showDummyMatch(c){
     dmOv.innerHTML='<h2 style="font-size:30px;font-weight:900;font-style:italic">It\'s a Match!</h2>'
      +'<p style="margin-top:8px;font-size:14px;line-height:1.6">なお と '+c.name+' がマッチしました<br><span style="font-size:12px;opacity:.85">（この人も、なおを Like していたみたい）</span></p>'
-     +'<div style="display:flex;gap:14px;align-items:center;margin:20px 0 8px"><img src="assets/nao-tinder-1.jpg" alt="なお" style="width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff"><span style="width:92px;height:92px;border-radius:50%;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;border:3px solid #fff;color:#fff">'+c.ini+'</span></div>'
+     +'<div style="display:flex;gap:14px;align-items:center;margin:20px 0 8px"><img src="assets/nao-tinder-1.jpg" alt="なお" style="width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff">'+(c.photos?'<img src="'+c.photos[0]+'" alt="'+c.name+'" style="width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff">':'<span style="width:92px;height:92px;border-radius:50%;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;border:3px solid #fff;color:#fff">'+c.ini+'</span>')+'</div>'
      +'<button id="dm-ov-msg" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button>'
      +'<button id="dm-ov-keep" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button>';
     dmOv.classList.add("on");
@@ -3556,7 +3556,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       var liked=lastCard;
       prevTot=tot;
       if(liked && !liked.hiroto && LIKEBACK[liked.name] && !matched[liked.name] && !unmatchedForever[liked.name]){
-        var snap={name:liked.name,age:liked.age,grad:liked.grad,ini:liked.ini,work:liked.work};
+        var snap={name:liked.name,age:liked.age,grad:liked.grad,ini:liked.ini,work:liked.work,photos:liked.photos};
         setTimeout(function(){ registerDummyMatch(snap); },480);
       }
     }
@@ -3581,7 +3581,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       var m=matched[name]; if(!m) return;
       var row=document.createElement("div"); row.id="dm-row-"+name;
       row.style.cssText="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px;margin-top:10px";
-      row.innerHTML='<span style="width:52px;height:52px;border-radius:50%;background:'+m.grad+';display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;flex:none">'+m.ini+'</span>'
+      row.innerHTML=(m.photos?'<img src="'+m.photos[0]+'" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none">':'<span style="width:52px;height:52px;border-radius:50%;background:'+m.grad+';display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;flex:none">'+m.ini+'</span>')
        +'<span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">'+name+' <span style="font-weight:600;font-size:12.5px;color:#8e8e93">'+m.age+'</span></span><span class="dm-pv" style="font-size:12px;color:#8e8e93">マッチしました ・ メッセージしてみよう</span></span>'
        +'<span class="dm-rowdot" style="display:none">NEW</span>'
        +'<button style="margin-left:auto;background:#f2f2f7;color:#111;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button>';
@@ -3596,7 +3596,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
       if(document.getElementById("dm-tile-"+name)) return;
       var m=matched[name]; if(!m) return;
       var b=document.createElement("button"); b.className="newtile"; b.id="dm-tile-"+name;
-      b.innerHTML='<span class="ph" style="background:'+m.grad+'">'+m.ini+'</span><span>'+name+'</span>';
+      b.innerHTML=(m.photos?'<img src="'+m.photos[0]+'" alt="">':'<span class="ph" style="background:'+m.grad+'">'+m.ini+'</span>')+'<span>'+name+'</span>';
       b.addEventListener("click",function(){ openDummyChat(name); });
       nr.appendChild(b);
     });
@@ -3648,7 +3648,9 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
     var m=matched[name]; if(!m) return;
     current=name; hidePanes(); dmOv.classList.remove("on"); dmWrap.style.display="flex";
     ["discover","match","msg","prof"].forEach(function(k){ var b=document.getElementById("ttab-"+k); if(b) b.classList.toggle("act",k==="match"); });
-    dmWrap.querySelector("#dm-ava").style.background=m.grad; dmWrap.querySelector("#dm-ava").textContent=m.ini;
+    var dav=dmWrap.querySelector("#dm-ava");
+    if(m.photos){ dav.style.backgroundImage="url("+m.photos[0]+")"; dav.style.backgroundSize="cover"; dav.style.backgroundPosition="center"; dav.textContent=""; }
+    else { dav.style.backgroundImage=""; dav.style.background=m.grad; dav.textContent=m.ini; }
     dmWrap.querySelector("#dm-name").textContent=name+" "+m.age;
     var ub=dmWrap.querySelector("#dm-unmatch"); ub.textContent="アンマッチ"; ub.dataset.arm="";
     var cs=chatState[name]; cs.unread=false; renderDmChat(name); updateRowStates();
