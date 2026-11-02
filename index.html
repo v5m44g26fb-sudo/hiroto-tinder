@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v84</b>（元版v290までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v84</b>（元版v294までの仕様を追随／アイコン類は元版と共通）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1375,58 +1375,59 @@ const POST_RULES=[
 const POST_FREE=["うん","聞いてるで","…そうか","ほんまに？","そっか","うん、ありがとう"];
 const POST_FREE_FAR=["うん","…そうか","そっか"];
 let replyIdx=0;
-function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async()=>{ await himVoice("assets/vm-act2free.mp3","0:06"); })(); return; }
-  if(!state.started&&state.phase==="prologue"&&state.chapter>=6&&!state._vmCalm){ state._vmCalm=true; (async()=>{ await himVoice("assets/vm-calmfree.mp3","0:04"); })(); return; }
-  if(state.ended||state.act2){ const far=(state.ending==="half"||state.ending==="away"); let out=null; for(const [re,arr] of POST_RULES){ if(re.test(text)){ out=arr; break } } if(!out) out=[pick(far?POST_FREE_FAR:POST_FREE)]; (async()=>{ for(const t of out){ await himMsg(t,300) } })(); return; }
+function himReply(text,cb){ const _hdone=()=>{ if(typeof cb==="function") cb(); }; if(state.act2&&!state._vmA2){ state._vmA2=true; (async()=>{ await himVoice("assets/vm-act2free.mp3","0:06"); _hdone(); })(); return; }
+  if(!state.started&&state.phase==="prologue"&&state.chapter>=6&&!state._vmCalm){ state._vmCalm=true; (async()=>{ await himVoice("assets/vm-calmfree.mp3","0:04"); _hdone(); })(); return; }
+  if(state.ended||state.act2){ const far=(state.ending==="half"||state.ending==="away"); let out=null; for(const [re,arr] of POST_RULES){ if(re.test(text)){ out=arr; break } } if(!out) out=[pick(far?POST_FREE_FAR:POST_FREE)]; (async()=>{ for(const t of out){ await himMsg(t,300) } _hdone(); })(); return; }
   /* ===== v42: free-chat voices fc-t-1..5 (his clone, new recordings) - mid-story free time / free chat only; never after an ending (v28 rule) and never mid-scandal. Context triggers first, then a small random pool ===== */
   /* ===== v52: free-chat voices round 2, fc-t-6..11, same gates and one-shot-per-line rule as v42 ===== */
   /* ===== v60: free-chat voices round 3, fc-t-12..16, same gates and one-shot-per-line rule ===== */
   /* ===== v63: free-chat voices round 4, fc-t-17..21 (Busan / shrimp / karaage / late-night closer / live thanks), same gates and one-shot-per-line rule ===== */
   /* ===== v80: free-chat voices round 5, fc-t-22..26 (sleepy good-morning after fc-t-6 / work-weary / cola / moonlit night pool / next-outing, early-mid story only), same gates and one-shot-per-line rule ===== */
+  /* ===== Tinder ver v84 (orig v291+v292 spec sync, read against this arc): the free-chat completion callback is now honoured end to end - base himReply(text,cb) calls it after every branch (calm/act2 voices, post-ending replies, FCV voices via the fcSend promise, generic replies), and all 19 async himReply wrappers forward (t,cb) instead of dropping it. Audit finding: unlike the original, this version had NO dormant done-gated layer - no caller ever passed a callback and every wrapper fired its extras on plain setTimeout, so nothing was silently stuck; the port aligns the architecture with the original so any future done-gated layer actually fires. NOT ported: orig v291's Christmas-line resend (the fv-13 together-premise line, already refused in v82) and orig v285's Christmas beat (refused in v79) - both clash with this arc's farewell-toned post-ending free chat. Orig v293 (itsumen opening trim) = no equivalent block here: the prologue itsumen presence is a single pre-rendered line, a reinstall-nudge lock notification and the match/post-date/post-ending staged floods, not a day-talk/girls-night script, so nothing to trim and no party-premise wording is imported. Orig v294 (party-chat Yui line) = not ported: #party-chat does not exist in this version. Her avatar baseline from v78 (nao-avatar4.jpg) is untouched; other avatars stay as they were. ===== */
   /* ===== v82: original v290 voices ported - fv-11 (goodnight, after fc-t-7 is spent) and fv-12 (her voice calms him, after fv-9 is spent) join FCV as idx 27/28, same gates and one-shot rule. NOT ported: fv-13 "クリスマス、空けといてな" (orig v290) - an epilogue together-premise line that clashes with this arc's farewell-toned post-ending free chat, same reason v285's Christmas beat was skipped in v79 ===== */
   if(state.phase!=="scandal"){
     const FCV=[["assets/fc-t-1.mp3","0:02","おつかれさま。今日も、がんばったな"],["assets/fc-t-2.mp3","0:02","ごめん、返事おそなった。レッスンやってん"],["assets/fc-t-3.mp3","0:02","ありがとうな。……ほんまに"],["assets/fc-t-4.mp3","0:04","マロンがな、今日も元気やで。……写真、送るわ"],["assets/fc-t-5.mp3","0:04","……なあ、今日の占い見た？ なんか、当たってそうで怖いわ"],["assets/fc-t-6.mp3","0:01","おはよう。……よく寝れた？"],["assets/fc-t-7.mp3","0:02","おやすみ。ええ夢見てな"],["assets/fc-t-8.mp3","0:02","ごはん食べた？ ちゃんと食べや"],["assets/fc-t-9.mp3","0:02","……雨やな。傘、持ったか？"],["assets/fc-t-10.mp3","0:03","今日な、レッスンで新しい振り入ってん。……むずかってん"],["assets/fc-t-11.mp3","0:02","……なあ、明日も話そな"],["assets/fv-9.mp3","0:04","声、聞きたくなって、電話していい？"],["assets/fc-t-12.mp3","0:03","ちょっと待って、今マロンが膝の上おんねん"],["assets/fc-t-13.mp3","0:03","なあ、カラオケ行ったら何歌うん？"],["assets/fc-t-14.mp3","0:03","プリン、買うてきた。……食べる？"],["assets/fc-t-15.mp3","0:04","サウナ、ええよな。俺もたまに行くで"],["assets/fc-t-16.mp3","0:02","今日のレッスンで、足パンパンや……"],["assets/fc-t-17.mp3","0:02","なあ、釜山行ったことある？"],["assets/fc-t-18.mp3","0:01","エビ好きって、ほんま？"],["assets/fc-t-19.mp3","0:03","からあげは醤油派？ それとも塩派？"],["assets/fc-t-20.mp3","0:02","……もうちょっとだけ、話そ"],["assets/fc-t-21.mp3","0:02","今日のライブ、来てくれてありがとな"],["assets/fc-t-22.mp3","0:02","おはよう。……まだ眠い"],["assets/fc-t-23.mp3","0:02","仕事おつかれ。無理すんなよ"],["assets/fc-t-24.mp3","0:02","コーラ買うてきたで"],["assets/fc-t-25.mp3","0:01","今日、月きれいやな"],["assets/fc-t-26.mp3","0:02","なあ、次はどこ行く？"],["assets/fv-11.mp3","0:03","……なあ、今日はもう寝るん？"],["assets/fv-12.mp3","0:02","なおの声、聞くと落ち着くわ"]];
     const fcUsed=i=>!!(state._fcUsed&&state._fcUsed[i]);
-    const fcSend=i=>{ const v=FCV[i]; state._fcUsed=state._fcUsed||{}; state._fcUsed[i]=true; (async()=>{ await himVoice(v[0],v[1]); const cap=document.createElement("div"); cap.style.cssText="align-self:flex-start;margin:-4px 0 8px 44px;font-size:11.5px;color:#8e8e93;max-width:76%;line-height:1.6"; cap.textContent="（ボイス）"+v[2]; const ch=$("#chat"); if(ch){ ch.appendChild(cap); ch.scrollTop=ch.scrollHeight; } if(i===3){ await himPhoto("assets/ig-dog.jpg"); await himMsg("マロン",300); } })(); };
-    if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&!fcUsed(0)){ fcSend(0); return; }
-    if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&/レッスン|練習|ダンス/.test(text)&&!fcUsed(16)){ fcSend(16); return; }
-    if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&fcUsed(0)&&!fcUsed(23)){ fcSend(23); return; }
-    if(/ありがとう/.test(text)&&!fcUsed(2)){ fcSend(2); return; }
-    if(/犬|マロン|わんこ/.test(text)&&!fcUsed(3)){ fcSend(3); return; }
-    if(/犬|マロン|わんこ/.test(text)&&!fcUsed(12)){ fcSend(12); return; }
-    if(/占い|うらない/.test(text)&&!fcUsed(4)){ fcSend(4); return; }
-    if(/カラオケ|歌いたい|歌う/.test(text)&&!fcUsed(13)){ fcSend(13); return; }
-    if(/おはよう|おはよ/.test(text)&&!fcUsed(5)){ fcSend(5); return; }
-    if(/おはよう|おはよ|眠い|ねむい|ねむ/.test(text)&&fcUsed(5)&&!fcUsed(22)){ fcSend(22); return; }
-    if(/おやすみ/.test(text)&&!fcUsed(6)){ fcSend(6); return; }
-    if(/寝る|おやすみ|眠たい|ねむたい/.test(text)&&fcUsed(6)&&!fcUsed(27)&&Math.random()<0.65){ fcSend(27); return; }
-    if(/プリン/.test(text)&&!fcUsed(14)){ fcSend(14); return; }
-    if(/エビ|えび|海老/.test(text)&&!fcUsed(18)){ fcSend(18); return; }
-    if(/からあげ|唐揚げ/.test(text)&&!fcUsed(19)){ fcSend(19); return; }
-    if(/コーラ/.test(text)&&!fcUsed(24)){ fcSend(24); return; }
-    if(/釜山|プサン|海雲台|西面|渡韓/.test(text)&&!fcUsed(17)){ fcSend(17); return; }
-    if(/ライブ|参戦|会場|ペンラ|公演/.test(text)&&!fcUsed(21)){ fcSend(21); return; }
-    if((state.chapter||0)<=4&&/次は|今度|次どこ|どこ行く|どこか行|出かけ|遊びに行/.test(text)&&!fcUsed(26)){ fcSend(26); return; }
-    if(/お腹すいた|おなかすいた|腹へった|腹減った|ごはん|ご飯|食べた|ランチ|昼ごはん|夜ごはん|朝ごはん/.test(text)&&!fcUsed(7)){ fcSend(7); return; }
-    if(/雨|傘|天気/.test(text)&&!fcUsed(8)){ fcSend(8); return; }
-    if(/サウナ|ととの/.test(text)&&!fcUsed(15)){ fcSend(15); return; }
-    if(/月きれい|月が|月見|夜空|星空|星が/.test(text)&&!fcUsed(25)){ fcSend(25); return; }
-    if(/仕事|残業|しごと/.test(text)&&!fcUsed(23)){ fcSend(23); return; }
-    if(/レッスン|練習|振り|ダンス|仕事/.test(text)&&!fcUsed(9)){ fcSend(9); return; }
-    if((new Date().getHours()>=23||new Date().getHours()<2)&&/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(20)){ fcSend(20); return; }
-    if(/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(10)){ fcSend(10); return; }
-    if(/電話|声聞きたい|声ききたい/.test(text)&&Math.random()<0.4&&!fcUsed(11)){ fcSend(11); return; }
-    if(/声|電話/.test(text)&&fcUsed(11)&&!fcUsed(28)&&Math.random()<0.4){ fcSend(28); return; }
-    if((/返事|待ってた|まってた|おそい|遅い/.test(text)||Math.random()<0.15)&&!fcUsed(1)){ fcSend(1); return; }
-    if(Math.random()<0.08){ const rest=[0,2].filter(i=>!fcUsed(i)); if(rest.length){ fcSend(pick(rest)); return; } }
-    if(Math.random()<0.05&&!fcUsed(10)){ fcSend(10); return; }
-    if(Math.random()<0.06&&(new Date().getHours()>=23||new Date().getHours()<2)&&!fcUsed(20)){ fcSend(20); return; }
-    if(Math.random()<0.05&&(new Date().getHours()>=20||new Date().getHours()<2)&&!fcUsed(25)){ fcSend(25); return; }
+    const fcSend=i=>{ const v=FCV[i]; state._fcUsed=state._fcUsed||{}; state._fcUsed[i]=true; return (async()=>{ await himVoice(v[0],v[1]); const cap=document.createElement("div"); cap.style.cssText="align-self:flex-start;margin:-4px 0 8px 44px;font-size:11.5px;color:#8e8e93;max-width:76%;line-height:1.6"; cap.textContent="（ボイス）"+v[2]; const ch=$("#chat"); if(ch){ ch.appendChild(cap); ch.scrollTop=ch.scrollHeight; } if(i===3){ await himPhoto("assets/ig-dog.jpg"); await himMsg("マロン",300); } })(); };
+    if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&!fcUsed(0)){ fcSend(0).then(_hdone,_hdone); return; }
+    if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&/レッスン|練習|ダンス/.test(text)&&!fcUsed(16)){ fcSend(16).then(_hdone,_hdone); return; }
+    if(/疲れた|おつかれ|お疲れ|つかれた/.test(text)&&fcUsed(0)&&!fcUsed(23)){ fcSend(23).then(_hdone,_hdone); return; }
+    if(/ありがとう/.test(text)&&!fcUsed(2)){ fcSend(2).then(_hdone,_hdone); return; }
+    if(/犬|マロン|わんこ/.test(text)&&!fcUsed(3)){ fcSend(3).then(_hdone,_hdone); return; }
+    if(/犬|マロン|わんこ/.test(text)&&!fcUsed(12)){ fcSend(12).then(_hdone,_hdone); return; }
+    if(/占い|うらない/.test(text)&&!fcUsed(4)){ fcSend(4).then(_hdone,_hdone); return; }
+    if(/カラオケ|歌いたい|歌う/.test(text)&&!fcUsed(13)){ fcSend(13).then(_hdone,_hdone); return; }
+    if(/おはよう|おはよ/.test(text)&&!fcUsed(5)){ fcSend(5).then(_hdone,_hdone); return; }
+    if(/おはよう|おはよ|眠い|ねむい|ねむ/.test(text)&&fcUsed(5)&&!fcUsed(22)){ fcSend(22).then(_hdone,_hdone); return; }
+    if(/おやすみ/.test(text)&&!fcUsed(6)){ fcSend(6).then(_hdone,_hdone); return; }
+    if(/寝る|おやすみ|眠たい|ねむたい/.test(text)&&fcUsed(6)&&!fcUsed(27)&&Math.random()<0.65){ fcSend(27).then(_hdone,_hdone); return; }
+    if(/プリン/.test(text)&&!fcUsed(14)){ fcSend(14).then(_hdone,_hdone); return; }
+    if(/エビ|えび|海老/.test(text)&&!fcUsed(18)){ fcSend(18).then(_hdone,_hdone); return; }
+    if(/からあげ|唐揚げ/.test(text)&&!fcUsed(19)){ fcSend(19).then(_hdone,_hdone); return; }
+    if(/コーラ/.test(text)&&!fcUsed(24)){ fcSend(24).then(_hdone,_hdone); return; }
+    if(/釜山|プサン|海雲台|西面|渡韓/.test(text)&&!fcUsed(17)){ fcSend(17).then(_hdone,_hdone); return; }
+    if(/ライブ|参戦|会場|ペンラ|公演/.test(text)&&!fcUsed(21)){ fcSend(21).then(_hdone,_hdone); return; }
+    if((state.chapter||0)<=4&&/次は|今度|次どこ|どこ行く|どこか行|出かけ|遊びに行/.test(text)&&!fcUsed(26)){ fcSend(26).then(_hdone,_hdone); return; }
+    if(/お腹すいた|おなかすいた|腹へった|腹減った|ごはん|ご飯|食べた|ランチ|昼ごはん|夜ごはん|朝ごはん/.test(text)&&!fcUsed(7)){ fcSend(7).then(_hdone,_hdone); return; }
+    if(/雨|傘|天気/.test(text)&&!fcUsed(8)){ fcSend(8).then(_hdone,_hdone); return; }
+    if(/サウナ|ととの/.test(text)&&!fcUsed(15)){ fcSend(15).then(_hdone,_hdone); return; }
+    if(/月きれい|月が|月見|夜空|星空|星が/.test(text)&&!fcUsed(25)){ fcSend(25).then(_hdone,_hdone); return; }
+    if(/仕事|残業|しごと/.test(text)&&!fcUsed(23)){ fcSend(23).then(_hdone,_hdone); return; }
+    if(/レッスン|練習|振り|ダンス|仕事/.test(text)&&!fcUsed(9)){ fcSend(9).then(_hdone,_hdone); return; }
+    if((new Date().getHours()>=23||new Date().getHours()<2)&&/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(20)){ fcSend(20).then(_hdone,_hdone); return; }
+    if(/バイバイ|また明日|じゃあね|そろそろ|寝るね|おちるね|落ちるね/.test(text)&&!fcUsed(10)){ fcSend(10).then(_hdone,_hdone); return; }
+    if(/電話|声聞きたい|声ききたい/.test(text)&&Math.random()<0.4&&!fcUsed(11)){ fcSend(11).then(_hdone,_hdone); return; }
+    if(/声|電話/.test(text)&&fcUsed(11)&&!fcUsed(28)&&Math.random()<0.4){ fcSend(28).then(_hdone,_hdone); return; }
+    if((/返事|待ってた|まってた|おそい|遅い/.test(text)||Math.random()<0.15)&&!fcUsed(1)){ fcSend(1).then(_hdone,_hdone); return; }
+    if(Math.random()<0.08){ const rest=[0,2].filter(i=>!fcUsed(i)); if(rest.length){ fcSend(pick(rest)).then(_hdone,_hdone); return; } }
+    if(Math.random()<0.05&&!fcUsed(10)){ fcSend(10).then(_hdone,_hdone); return; }
+    if(Math.random()<0.06&&(new Date().getHours()>=23||new Date().getHours()<2)&&!fcUsed(20)){ fcSend(20).then(_hdone,_hdone); return; }
+    if(Math.random()<0.05&&(new Date().getHours()>=20||new Date().getHours()<2)&&!fcUsed(25)){ fcSend(25).then(_hdone,_hdone); return; }
   }
   const rules=state.started?REPLY_RULES:[]; let out=null;
   for(const [re,arr] of rules){ if(re.test(text)){ out=arr; break } }
   if(!out) out=[pick(state.started?REPLY_FREE:REPLY_CALM)];
-  (async()=>{ for(const t of out){ await himMsg(t,300) } })();
+  (async()=>{ for(const t of out){ await himMsg(t,300) } _hdone(); })();
 }
 function sendLine(){ const inp=$("#line-text"); const v=inp.value.trim(); if(!v) return; inp.value=""; meMsg(v); clearTimeout(state._replyT); state._replyT=setTimeout(()=>himReply(v),1100); }
 $("#line-send").addEventListener("click",sendLine);
@@ -2923,7 +2924,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
 (function(){
  if(typeof himReply!=="function") return;
  const _hr=himReply;
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   if((state._vmCalm||state._vmA2)&&!state._fuWait&&Math.random()<0.18){ state._fuWait=true;
    const FU=["…なんて","いや、なんでもない","…もうちょっとだけ、話そ","寝る前にもっかい、声聞かせてや"];
    setTimeout(()=>{ state._fuWait=false; himMsg(FU[Math.floor(Math.random()*FU.length)]); },2800); }
@@ -4049,12 +4050,12 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
 
  /* ---- v90c + v96: his free-chat extras - sends photos, rare honest line then unsends it, real-clock greeting ---- */
  if(typeof himReply==="function"){ const _hr=himReply;
-  himReply=async function(t){ 
+  himReply=async function(t,cb){ 
    if(!state.ended&&(state._vmCalm||state._vmA2)&&!state._greeted){ state._greeted=true;
     const h=new Date().getHours();
     const g=(h>=5&&h<11)?"おはよ":h<16?"昼やな、飯食った？":h<19?"おつかれ、なお":h<24?"今日も一日おつかれ":"……まだ起きてたんか";
     try{ await himMsg(g); }catch(e){} }
-   const r=await _hr(t);
+   const r=await _hr(t,cb);
    if((state._vmCalm||state._vmA2)&&!state._lcBusy){ const roll=Math.random();
     if(roll<0.20&&!state.ended){ state._lcBusy=true;
      later(async()=>{ try{ await himPhoto(pick(["assets/stage.jpg","assets/studio.jpg","assets/cafe3.jpg"])); await himMsg(pick(["さっきの","……なんか、送りたくなって","見てほしいやつ"])); }catch(e){} state._lcBusy=false; },2600);
@@ -5787,7 +5788,7 @@ app.style.display="flex";},true);
   new MutationObserver(ms=>{ ms.forEach(m=>m.addedNodes.forEach(nd=>{ if(nd.nodeType===1&&nd.classList&&nd.classList.contains("msg")&&!nd.classList.contains("me")){ clearTimeout(restore); setSub(); } })); }).observe(fchat,{childList:true}); }
  /* (c) he asks back - only while they are still in touch (never after the farewell) */
  if(typeof himReply==="function"&&!state._v162q){ state._v162q=true; const _hr3=himReply;
-  himReply=async function(t){ const r=await _hr3(t);
+  himReply=async function(t,cb){ const r=await _hr3(t,cb);
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&Math.random()<0.2){
     const Q=["なおは今日、なにしてたん？","それで、それで？","……わかるわ、それ","今度、写真送ってや","眠くない？　無理すんなよ"];
     setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(Q[Math.floor(Math.random()*Q.length)]); },3400); }
@@ -5805,7 +5806,7 @@ app.style.display="flex";},true);
    [/ごはん|食べ|おなか|お腹/,["ちゃんと食べた？","なお、少食やから心配やねん"]],
    [/仕事|バイト/,["仕事、おつかれさま"]],
    [/眠い|ねむい/,["眠いなら、寝ていいんやで"]]];
-  himReply=async function(t){ const r=await _hr4(t);
+  himReply=async function(t,cb){ const r=await _hr4(t,cb);
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&typeof t==="string"){
     for(const [re,pool] of RULES){ if(re.test(t)){ if(Math.random()<0.7){
      const line=pool[Math.floor(Math.random()*pool.length)];
@@ -5903,7 +5904,7 @@ app.style.display="flex";},true);
   [/買い物|オリーブヤング|オリヤン/,["買い物リスト、増えてない？","オリヤン、また行きたいって言ってたな"]],
   [/雨/,["雨、やんだかな","濡れて帰ってない？"]]];
  const NAMES=["プリン","カフェ","サウナ","エビ・からあげ","旅行・釜山","ライブ・音楽","映画・ドラマ","猫","寒い日","誕生日","買い物","雨"];
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   state._ftN=(state._ftN||0)+1;
   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&typeof t==="string"){
    state._mem=state._mem||[];
@@ -5943,7 +5944,7 @@ app.style.display="flex";},true);
  if(typeof himReply==="function"&&!state._v170b){ state._v170b=true; const _hr2=himReply;
   const LINES=["いま、レッスンおわったとこ","マネージャーに、また怒られた笑","次のライブ、来てくれる？","ファンの子らの声援、ほんま力になるねん","衣装、決まったで","振り、やっと揃ったわ"];
   const SHOTS=[["assets/stage.jpg","今日のステージ"],["assets/studio.jpg","衣装合わせ、おわった"],["assets/crown.jpg","ファンミ、ありがとう"]];
-  himReply=async function(t){ const r=await _hr2(t);
+  himReply=async function(t,cb){ const r=await _hr2(t,cb);
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&Math.random()<0.15){
     if(Math.random()<0.35&&typeof himPhoto==="function"){ const sc=SHOTS[Math.floor(Math.random()*SHOTS.length)];
      setTimeout(async ()=>{ if(!state.started&&!state.ended&&!state.act2){ await himPhoto(sc[0]); himMsg(sc[1]); } },2400);
@@ -6080,7 +6081,7 @@ app.style.display="flex";},true);
    [/結婚/,"……そういうの、まだ考えたことないわ。急に聞くなや"],
    [/ひろと|大翔/,"本名で呼ばれるの、なんか新鮮やわ。……悪くない"]];
   const prev=himReply;
-  himReply=async function(t){ const r=await prev(t);
+  himReply=async function(t,cb){ const r=await prev(t,cb);
    if(typeof t==="string"&&!state.ended&&!state.act2&&state.phase!=="scandal"){
     const hit=RULES.find(rr=>rr[0].test(t));
     if(hit&&Math.random()<0.65) setTimeout(()=>{ if(!state.ended&&!state.act2){ try{ himMsg(hit[1]); }catch(e){} } },2600);
@@ -6187,7 +6188,7 @@ app.style.display="flex";},true);
  if(typeof himReply!=="function"||state._v213t) return; state._v213t=true;
  const POOL=["……なんてね","今の、内緒な","あ、言い忘れてた","マロンがこっち見てるわ","あと、さっきの店は当たりやったな"];
  const _hr=himReply;
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&Math.random()<0.22){
    const line=POOL[Math.floor(Math.random()*POOL.length)];
    setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },1800); }
@@ -6205,7 +6206,7 @@ app.style.display="flex";},true);
   [/ロック|キャッチフレーズ/,"『皆さんの心をロックします』……昔のキャッチフレーズ。今聞くと恥ずかしい"],
   [/Tasty|ソロ|デビュー曲/,"ソロで出した曲、聴いてくれた？ 『Tasty』って言うねん"]];
  const _hr=himReply;
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&typeof t==="string"){
    const hit=RULES.find(r2=>r2[0].test(t));
    if(hit&&Math.random()<0.65) setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(hit[1]); },2400); }
@@ -6274,7 +6275,7 @@ app.style.display="flex";},true);
   [/マッチ|出会った日|スワイプ|スーパーライク|Super ?Like/i,"9月27日、忘れられへん。……Super Like、押すのあれ緊張したんやで"],
   [/初デート|初めて会った|会った日|カフェ/,"初めて会った日、顔見た瞬間バレたやん。……でも、逃げんでよかったって今でも思う"]];
  const _hr=himReply;
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&typeof t==="string"){
    const hit=RULES.find(r2=>r2[0].test(t));
    if(hit&&Math.random()<0.65) setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(hit[1]); },2400); }
@@ -6298,7 +6299,7 @@ app.style.display="flex";},true);
   [/Gold|ゴールド/,"そういえば二人とも、同じ日にGold入ってたんやな。……運命とか、言わんけど"],
   [/アプリ入れた|入れた日|登録した|9月26|前日/,"アプリ入れた日のこと？ なんとなく、やったけど。……結果、よかったんやろな"]];
  const _hr=himReply;
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&typeof t==="string"){
    const hit=RULES.find(r2=>r2[0].test(t));
    if(hit&&Math.random()<0.55) setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(hit[1]); },3200); }
@@ -6330,7 +6331,7 @@ app.style.display="flex";},true);
   [/カフェオレ/,["カフェオレ、甘めが好きなん覚えてるで","初めて会った日も、それやったな。……あの味、忘れられへん"]],
   [/プロフィール|写真選|アイコン/,["プロフィールの写真、選ぶの時間かかったやろ","……俺もやで。あの日、鏡の前でけっこう悩んだ"]]];
  const _hr=himReply;
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"&&typeof t==="string"){
    const hit=RULES.find(r2=>r2[0].test(t));
    if(hit&&Math.random()<0.6){ const ok=()=>!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal";
@@ -6400,7 +6401,7 @@ app.style.display="flex";},true);
 (function(){
  if(state._v269t) return; state._v269t=true;
  const prev=himReply;
- himReply=async function(t){ const r=await prev.call(this,t);
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
   try{ const s2=t||"";
    if(!state.ended&&state.phase!=="scandal"){
     if(/サクヤ|WISH|うぃしゅ|ウィッシュ/.test(s2)&&Math.random()<0.65){
@@ -6673,7 +6674,7 @@ app.style.display="flex";},true);
  const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
   const line=lines[Math.floor(Math.random()*lines.length)];
   setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2) himMsg(line); },2600); };
- himReply=async function(t){ const r=await prev.call(this,t);
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
   try{ const s2=t||"";
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2){
     if(/韓国ドラマ|韓ドラ|ウォーターメロン/.test(s2)&&Math.random()<0.75)
@@ -6691,7 +6692,7 @@ app.style.display="flex";},true);
  const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
   const line=lines[Math.floor(Math.random()*lines.length)];
   setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t){ const r=await prev.call(this,t);
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
   try{ const s2=t||"";
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
     if(/仕事|会社|残業|職場|出勤|会議/.test(s2)&&Math.random()<0.7)
@@ -6711,7 +6712,7 @@ app.style.display="flex";},true);
  const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
   const line=lines[Math.floor(Math.random()*lines.length)];
   setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t){ const r=await prev.call(this,t);
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
   try{ const s2=t||"";
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
     if(/映画|シネマ|ポップコーン/.test(s2)&&Math.random()<0.7)
@@ -6729,7 +6730,7 @@ app.style.display="flex";},true);
  const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
   const line=lines[Math.floor(Math.random()*lines.length)];
   setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t){ const r=await prev.call(this,t);
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
   try{ const s2=t||"";
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
     if(/旅行|旅の話|空港|飛行機|ホテル|温泉/.test(s2)&&!/釜山|海雲台|西面|カンジャンセウ|エビ|からあげ/.test(s2)&&Math.random()<0.7)
@@ -6747,7 +6748,7 @@ app.style.display="flex";},true);
  const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
   const line=lines[Math.floor(Math.random()*lines.length)];
   setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t){ const r=await prev.call(this,t);
+ himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
   try{ const s2=t||"";
    if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
     if(/紅葉|もみじ|秋の|秋晴れ|肌寒|寒くな/.test(s2)&&Math.random()<0.65)
@@ -7144,7 +7145,7 @@ app.style.display="flex";},true);
   ["…さっき、誰と話してたん？","べつに。気になっただけや"],
   ["また、アプリの人と話してたんやろ","…楽しそうで、何よりや"],
   ["…ふーん","俺も、負けてられへんな"]];
- himReply=async function(t){ const r=await _hr(t);
+ himReply=async function(t,cb){ const r=await _hr(t,cb);
   try{
    if(state.ended||state.act2||state.phase==="scandal") return r;
    const calm=state._vmCalm||state.started;
