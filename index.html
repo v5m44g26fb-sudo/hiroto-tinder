@@ -455,7 +455,7 @@ input,textarea{font-size:16px!important}
 <body>
 <header class="page-head">
 <h1>🔥 熱愛バレた件 <span style="font-size:13px;color:#fd267d">Tinder ver</span></h1>
-<p>Tinderでひろととマッチしたことから始まる、スマホ風SNSゲーム。スワイプで出会って、LINEを交換して、やがて熱愛がバレる——。</p>
+<p>Tinderでひろととマッチしたことから始まる、スマホ風SNSゲーム。スワイプで出会って、LINEを交換して、やがて「現役アイドルがTinder」がバレる——。</p>
 <p class="src">土台メモ：iPhone枠は GitHub の MIT ライセンス系モック（<a href="https://github.com/c2prods/Project-Tyson" target="_blank" rel="noopener">c2prods/Project-Tyson</a> 等）の構造を参考に自作し、アプリ群の作りは自作ゲーム『キープ管理中！』の方式を流用。写真はなおが送ってくれたものだけを使用。これは創作フィクションです。</p>
 </header>
 
@@ -515,7 +515,7 @@ input,textarea{font-size:16px!important}
 </div>
 <div class="dock">
 <button class="appicon" data-open="line"><span class="ic ic-tel">📞</span></button>
-<button class="appicon" data-toast="Safari：検索履歴『大翔 熱愛』が増殖中…"><span class="ic ic-safari">🧭</span></button>
+<button class="appicon" data-toast="Safari：検索履歴『大翔 Tinder』が増殖中…"><span class="ic ic-safari">🧭</span></button>
 <button class="appicon" data-open="line"><span class="ic ic-msg">💬</span></button>
 <button class="appicon" data-toast="ミュージック：彼のプレイリストは、また今度"><span class="ic ic-photo">🎵</span></button>
 </div>
@@ -749,14 +749,14 @@ input,textarea{font-size:16px!important}
           <figure><img src="assets/glasses.jpg" alt=""><figcaption>メガネの日</figcaption></figure>
           <figure><img src="assets/studio.jpg" alt=""><figcaption>お仕事ショット</figcaption></figure>
           <figure><img src="assets/cafe3.jpg" alt=""><figcaption>カフェで腕組み</figcaption></figure>
-          <figure><img src="assets/hoodie.jpg" alt=""><figcaption>フーディ彼氏</figcaption></figure>
+          <figure><img src="assets/hoodie.jpg" alt=""><figcaption>フーディ姿</figcaption></figure>
 <figure><img src="assets/gift-glasses.jpg" alt=""><figcaption>メガネの自撮り👓</figcaption></figure>
 <figure><img src="assets/gift-jacket.jpg" alt=""><figcaption>公園の彼</figcaption></figure>
 <figure><img src="assets/gift-shanghai.jpg" alt=""><figcaption>上海の夜景と彼🌃</figcaption></figure>
 <figure><img src="assets/gift-snow.jpg" alt=""><figcaption>雪の日の彼❄️</figcaption></figure>
 </div>
 <div style="padding:14px 16px;font-size:13px;line-height:1.8;color:#3a3a3c">
-※週刊誌に載った“手つなぎ写真”はここにはない。でもXでは、昨日のカフェとネックレスと、この投稿のキャプションが「匂わせ」として掘られていく…。
+※週刊誌に載ったカフェの写真はここにはない。でもXでは、昨日のカフェと、拡散中のプロフ写真と、この投稿のキャプションが掘られていく…。
 </div>
 </div>
 </section>
@@ -803,7 +803,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v9</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v10</b>（元版 v55相当）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -902,29 +902,29 @@ async function ch2main(t){ if(!alive(t))return; await himMsg("今日、楽しみ
       {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画な、任せて"); await himMsg("なおの好きそうなん、探しとく"); later(()=>chapter(3),2000); }},
       {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>chapter(3),2000); }},
     ]); },8000); }
-async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『告白』","帰り道、駅までの並木道で。"); chapterCard("第3話","告白","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
-  await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("最初は正直、軽い気持ちやってん。でも…"); if(!alive(t))return; await himMsg("俺、なおが好きやねん"); if(!alive(t))return; await himMsg("付き合ってほしい"); if(!alive(t))return; await himVoice("assets/vm-confess.mp3","0:03");
-  if(!alive(t))return; const yesEnd=async()=>{ if(!alive(t))return; await himMsg("ほんまに！？"); if(!alive(t))return; await himMsg("ありがとう、なお"); await himMsg("絶対、大事にする"); if(!alive(t))return; await himMsg("…手、つないでいい？"); later(()=>chapter(4),2200); };
+async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","好きだけど、越えられない一線。"); chapterCard("第3話","線引き","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
+  await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("俺、こういう仕事やから"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会うの、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
+  if(!alive(t))return; const fin=async()=>{ later(()=>chapter(4),2200); };
   askChoices("なおの答えは——",[
-    {label:"うん、付き合う",fn:yesEnd},
-    {label:"私でいいの…？",fn:async()=>{ if(!alive(t))return; await himMsg("なおがいいねん"); await himMsg("他の誰でもない"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"うん、付き合う",fn:yesEnd}]); }},
-    {label:"ちょっと考えさせて",fn:async()=>{ if(!alive(t))return; await himMsg("うん、待つで"); await himMsg("急かさんから"); addDayChip("10月13日（月）"); await himMsg("おはよ",1600); if(!alive(t))return; await himMsg("…考えた？"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"うん、付き合う",fn:yesEnd},{label:"付き合いたい",fn:yesEnd}]); }},
+    {label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); if(!alive(t))return; await himMsg("ほんまは、こんなん言う資格ないんやけど"); if(!alive(t))return; await himMsg("また、ごはんだけでも行ってくれる？"); fin(); }},
+    {label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("なおの気持ち、嬉しいねん"); if(!alive(t))return; await himMsg("でも、守られへん約束はしたくないねん"); fin(); }},
+    {label:"ちょっと考えさせて",fn:async()=>{ if(!alive(t))return; await himMsg("うん、待つで"); await himMsg("急かさんから"); addDayChip("10月13日（月）"); await himMsg("おはよ",1600); if(!alive(t))return; await himMsg("…無理に、答え出さんでいいからな"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう、なお"); fin(); }},{label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("気持ち、受け取ったから"); fin(); }}]); }},
   ]); }
-async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『付き合い始め』","内緒の、ふたりだけの関係。"); chapterCard("第4話","付き合い始め","10月18日（土） —— 誰にも言えない、幸せ。<br>LINEを開いてね");
-  await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("今日の、なおが撮ってくれたやつ"); if(!alive(t))return; await himMsg("ネックレス、買ったで"); if(!alive(t))return; await himMsg("お揃い…なおと"); if(!alive(t))return; await himMsg("バレへんようにな"); await himStamp("😎"); if(!alive(t))return; await himMsg("今日の映画、暗いとこやから安心やな"); if(!alive(t))return; await himMsg("ほんまは、もっと普通に歩きたいねんけど"); if(!alive(t))return; await himVoice("assets/vm-necklace.mp3","0:03");
+async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『曖昧な距離』","友達未満、でも他人じゃない。"); chapterCard("第4話","曖昧な距離","10月18日（土） —— 名前のない、ふたりの関係。<br>LINEを開いてね");
+  await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("今日の、なおが撮ってくれたやつ"); if(!alive(t))return; await himMsg("この前は、急に誘ってごめんな"); if(!alive(t))return; await himMsg("でも、顔見たかってん"); await himStamp("😎"); if(!alive(t))return; await himMsg("今日の映画、暗いとこやから安心やな"); if(!alive(t))return; await himMsg("ほんまは、もっと普通に歩きたいねんけど");
   later(()=>toast("📷 ひろとの<b>ストーリー</b>が更新された（彼の垢から見れる）"),3500);
   if(!alive(t))return; askChoices("なおの返信を選んで",[
-    {label:"内緒、守るね",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); await himMsg("なおだけは、特別やねん"); later(()=>chapter(5),2000); }},
-    {label:"バレたらどうするの…？",fn:async()=>{ if(!alive(t))return; await himMsg("大丈夫"); await himMsg("その時はその時や"); later(()=>chapter(5),2000); }},
+    {label:"誘ってくれて、嬉しいよ",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); await himMsg("なおだけは、特別やねん"); later(()=>chapter(5),2000); }},
+    {label:"私たちって、何なんやろ",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("名前、つけられへんねん"); if(!alive(t))return; await himMsg("でも、大事なんはほんまやで"); later(()=>chapter(5),2000); }},
     {label:"普通のデートも、したいな",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめんな"); if(!alive(t))return; await himMsg("いつか、帽子なしで"); if(!alive(t))return; await himMsg("その日まで、待っててな"); later(()=>chapter(5),2000); }},
   ]); }
-async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5話『何気ない日常』","これがずっと続けばいいのに。"); chapterCard("第5話","何気ない日常","11月1日（土） —— いつものカフェ、いつもの二人。<br>LINEを開いてね");
-  await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("今日のカフェ、当たりやったな"); if(!alive(t))return; await himMsg("麺、なおのやつも美味そうやった"); if(!alive(t))return; await himMsg("…今日も帽子、深めでごめんな"); if(!alive(t))return; await himMsg("あんま見られたくない日やってん"); if(!alive(t))return; await himMsg("人混みは、今日は避けて歩こ"); if(!alive(t))return; await himMsg("なおと普通に歩きたいだけやねんけどな");
+async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5話『少し空いた距離』","会えない日が、少し増えた。"); chapterCard("第5話","少し空いた距離","11月1日（土） —— 久しぶりの、カフェ。<br>LINEを開いてね");
+  await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("久しぶり"); if(!alive(t))return; await himMsg("仕事、立て込んでて"); if(!alive(t))return; await himMsg("最近、連絡できてなくてごめんな"); if(!alive(t))return; await himMsg("今日、やっと会えたな"); if(!alive(t))return; await himMsg("今日のカフェ、当たりやったな"); if(!alive(t))return; await himMsg("麺、なおのやつも美味そうやった"); if(!alive(t))return; await himMsg("…今日も帽子、深めでごめんな"); if(!alive(t))return; await himMsg("あんま見られたくない日やってん"); if(!alive(t))return; await himMsg("人混みは、今日は避けて歩こ"); if(!alive(t))return; await himMsg("なおと普通に歩きたいだけやねんけどな");
   later(()=>{ addPhoto("assets/night.jpg","夜の散歩"); },5000);
   later(()=>toast("📷 ひろとが投稿したよ「このまま時間が止まればいいのに🙃」（彼の垢）"),4000);
   if(!alive(t))return; askChoices("なおの返信を選んで",[
     {label:"今日はありがとう",fn:async()=>{ if(!alive(t))return; ch5end(t); }},
-    {label:"明日も会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も"); ch5end(t); }},
+    {label:"明日も会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も"); if(!alive(t))return; await himMsg("約束はできへんけど、また誘うわ"); ch5end(t); }},
     {label:"帽子なしで歩ける日がいいな",fn:async()=>{ if(!alive(t))return; await himMsg("うん…"); if(!alive(t))return; await himMsg("ごめんな、窮屈な思いさせて"); ch5end(t); }},
   ]); }
 async function ch5end(t){ if(!alive(t))return; await himMsg("今日はありがとうな😎"); if(!alive(t))return; await himMsg("カフェオレ、また飲みに行こ"); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04");
@@ -933,7 +933,7 @@ async function ch5end(t){ if(!alive(t))return; await himMsg("今日はありが�
 /* ============ story start ============ */
 function scheduleFirstPush(){ if(state._pushScheduled) return; state._pushScheduled=true;
   later(()=>{ if(state.started) return;
-    push("ニュース速報","#e60012","N","【熱愛スクープ】人気アイドルに手つなぎデート報道","週刊誌が今夜配信。お相手は“一般女性”——タップで記事へ",()=>{show("news"); startScandal();});
+    push("ニュース速報","#e60012","N","【速報】人気アイドル、マッチングアプリ利用か","「現役アイドルがTinder」週刊誌が今夜配信——タップで記事へ",()=>{show("news"); startScandal();});
   },2600);
 }
 function unlock(){ if(!$("#v-lock").classList.contains("on")) return; show("home"); schedulePrologue(); }
@@ -944,7 +944,7 @@ function animateCount(el,from,to,dur,format){const t0=performance.now();function
 function setHeat(v){state.heat=Math.min(100,v);state._heatPeak=Math.max(state._heatPeak||0,state.heat);$("#w-meter").style.width=state.heat+"%"}
 function startScandal(){ if(state.started) return; state.started=true;
 $("#w-title").textContent="🔥 バレた。スマホが止まらない";
-$("#w-main").textContent="ひろと熱愛報道——お相手、“なお”って特定され始めてる";
+$("#w-main").textContent="「現役アイドルがTinder」——マッチした“なお”も特定され始めてる";
 $("#news-calm") && $("#news-calm").remove();
 addNewsHero(); addArticleDefault(); bump("news");
 setHeat(35);
@@ -957,38 +957,38 @@ floodComments(); floodMentions(); floodDms(); every(genContent,15000); every(gen
   state._batt=43; every(()=>{ if(state._batt>36){ state._batt--; $("#batt-n").textContent=state._batt; const bf=document.querySelector(".batt .fill"); bf.style.width=state._batt+"%"; bf.style.background=state._batt<=37?"#ff453a":state._batt<=39?"#ff9f0a":"#fff"; if(state._batt===38&&!state._battWarned){ state._battWarned=true; toast("🪫 <b>電池残量わずか</b>： 通知の嵐で電池がピンチ"); } } },25000);
   $("#nao-story-viewers").innerHTML="👁 2,314人 ・ <b>193.hiroto_jixiang</b>、yui_s、sauna_m 他 —— 彼、見てる…";
   later(groupFlood,23000); later(()=>{ if(!state._mgrDone){ state._mgrDone=true; showIncomingCall("manager"); } },85000);
-later(()=>push("X","#000","𝕏","トレンド1位 #大翔熱愛","「裏切られた」「幸せなら応援」賛否が真っ二つ",()=>show("x")),6000);
+later(()=>push("X","#000","𝕏","トレンド1位 #大翔Tinder","「アイドルがアプリはやばい」「交際はしてないらしい」賛否が真っ二つ",()=>show("x")),6000);
 later(()=>push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","フォロワーが+10,000人突破","コメントとDMリクエストが殺到している",()=>show("ig")),12000);
 later(()=>{lineSequence1()},16000);
-later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「プライベートは本人に任せております」","芸能デスク ・ たった今",()=>openStatement()); setHeat(62); push("ニュース速報","#e60012","N","事務所コメント発表","「プライベートは本人に任せております」——火に油？",()=>show("news"));},34000);
-later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿が“匂わせ”と炎上　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},52000);
+later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「交際の事実はございません」","芸能デスク ・ たった今",()=>openStatement()); setHeat(62); push("ニュース速報","#e60012","N","事務所コメント発表","「交際の事実はございません」——アプリ利用は確認中",()=>show("news"));},34000);
+later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿に「誰と？」の声　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},52000);
 later(()=>{addNewsRow("assets/tinder-hiroto-1.jpg","出会いはマッチングアプリか　彼のものとされる“私服プロフ写真”が拡散","週刊デジタル ・ たった今",()=>openTinderArticle()); setHeat(86); push("ニュース速報","#e60012","N","続報：出会いの経緯が判明？","「マッチングアプリで、Super Likeから」——タップで記事へ",()=>show("news"));},70000);
 later(()=>{addNewsRow("assets/glasses.jpg","お相手「最初はアイドルだと知らなかった」証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},92000);
 }
 /* ============ NEWS ============ */
-function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔、一般女性と“手つなぎデート”撮 —— 週刊誌が決定的写真を配信</h3><p>昨夜、都内カフェから出てきた二人は人目を気にしながらも手を繋ぎ…。お相手女性のSNSも特定が進んでいる模様。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
+function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔、マッチングアプリ利用か —— 一般女性とカフェで会う姿も</h3><p>昨夜、都内カフェから出てきた二人。交際を裏付ける写真はないが、本人のものとされるアプリのプロフィールが拡散し、騒ぎが広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
 function newsBack(){ $("#news-article").style.display="none"; $("#news-list").style.display="block"; $("#news-scroll").scrollTop=0}
-function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>人気アイドル、一般女性と手つなぎデート　「お揃いネックレス」も</h2><div class="m">週刊デジタル ・ 20:49配信</div><img src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、一般女性と都内のカフェでデートする様子をキャッチした。店を出た二人は、周囲を気にしながらも自然に手をつなぎ、同じ方向の駅へ消えたという。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>ネットでは早くもお相手のSNS特定が進み、本人のInstagramには数時間で数万件のフォローとコメントが殺到。昨日の投稿「お昼の麺が美味しすぎた日」が“同じ店では”と掘り起こされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
+function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃</h2><div class="m">週刊デジタル ・ 20:49配信</div><img src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。拡散されているプロフィールには、私服の自撮り写真と「ごはんとコーラが好き」という自己紹介。彼とみられる男性が一般女性と都内のカフェで会う様子もキャッチされたが、二人が交際していることを裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>ネットでは早くもお相手のSNS特定が進み、本人のInstagramには数時間で数万件のフォローとコメントが殺到。昨日の投稿「お昼の麺が美味しすぎた日」が“同じ店では”と掘り起こされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
 function addArticleDefault(){}
-function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>事務所がコメント発表「プライベートは本人に任せております」</h2><div class="m">芸能デスク ・ たった今</div><img src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">「一部報道について、プライベートな事柄は本人に任せております。今後の活動に変更はありません」</div><p>交際を否定しないコメントに、SNSでは「認めたってこと？」「活動続けるのは安心」と賛否が割れている。本人の口から何が語られるのか、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">否定しないってことは認めてるようなもの。活動に変更なしが一番安心した</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">r</span> rot***さん</div><div class="yt">複雑だけど、嘘ついて隠されるよりずっとマシ。堂々としてるのは好感</div><div class="yb"><span class="like-btn">👍 そう思う 3,914</span><span>返信 208件</span></div></div>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミで「彼女いない」って言ってたのにな…説明がほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">s</span> sak***さん</div><div class="yt">24歳、大人同士の恋愛。叩くのは違うと思う</div><div class="yb"><span class="like-btn">👍 そう思う 5,102</span><span>返信 156件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
-function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>熱愛が報じられた人気アイドル・井汲大翔（24）と一般女性の出会いについて、新たな情報が浮上した。関係者によると、二人が知り合ったのはマッチングアプリ。彼が相手に送ったとされる「Super Like」がきっかけだったという。</p><p>拡散されている彼のものとされるプロフィール写真は、ステージ写真ではなく私服の自撮りで、本人のInstagramには掲載されていないものだった。お相手の女性は元々彼のファンだったとされるが、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言も出ている。</p><div class="box">知人とされる人物「会った瞬間に本物だと分かって、すごく驚いたそうです。写真がいつもの彼と印象が違ったみたいで…」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「Super Likeのほうから行ったなら本気では」と賛否が分かれている。所属事務所は出会いの経緯についてコメントしていない。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
+function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>事務所がコメント発表「交際の事実はございません」</h2><div class="m">芸能デスク ・ たった今</div><img src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">「お相手とされる方との交際の事実はございません。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」</div><p>交際は明確に否定された一方、アプリ利用への「確認中」という留保に、SNSでは「使ってたのは本当なの？」「大人なんだから自由では」と賛否が割れている。本人の口から何が語られるのか、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">交際否定は信じる。でもアプリ使ってたなら、そこは説明がほしい。活動に変更なしは安心した</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">r</span> rot***さん</div><div class="yt">複雑だけど、交際してないなら相手の子を叩くのは違うと思う</div><div class="yb"><span class="like-btn">👍 そう思う 3,914</span><span>返信 208件</span></div></div>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミで「彼女いない」って言ってたのは本当やったんや…でもアプリの説明はほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">s</span> sak***さん</div><div class="yt">24歳の大人、アプリ使うくらい自由やと思うけどな。叩きすぎは違う</div><div class="yb"><span class="like-btn">👍 そう思う 5,102</span><span>返信 156件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
+function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた人気アイドル・井汲大翔（24）と、一般女性との出会いの経緯について、新たな情報が浮上した。関係者によると、二人が知り合ったのは、そのマッチングアプリ。彼が相手に送ったとされる「Super Like」がきっかけだったという。なお、事務所は二人の交際を否定している。</p><p>拡散されている彼のものとされるプロフィール写真は、ステージ写真ではなく私服の自撮りで、本人のInstagramには掲載されていないものだった。お相手の女性は元々彼のファンだったとされるが、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言も出ている。</p><div class="box">知人とされる人物「会った瞬間に本物だと分かって、すごく驚いたそうです。写真がいつもの彼と印象が違ったみたいで…」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
 function addNewsRow(img,h,m,cb){const d=document.createElement("div");d.className="newsrow";d.innerHTML=`<img src="${img}" alt=""><span><span class="h">${h}</span><br><span class="m">${m}</span></span>`; if(cb){d.style.cursor="pointer";d.addEventListener("click",cb)} $("#news-list").prepend(d); bump("news")}
 /* ============ X ============ */
 const X_POSTS=[
-{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"人気アイドル・井汲大翔に熱愛報道。週刊誌が一般女性との手つなぎデート写真を配信。事務所は「確認中」",m:["💬 8,412","🔁 32,105","❤️ 41,208"],imp:312},
-{n:"芸能ウォッチャー",h:"@geino_watch",t:"大翔の熱愛、お相手のインスタもう特定されてるの早すぎる…。昨日のカフェ投稿が伏線だった説。",m:["💬 1,204","🔁 9,870","❤️ 12,400"]},
-{n:"ロットダン💙",h:"@rottdan_love",t:"正直ショックはある。でもステージでずっと頑張ってきた大翔が、プライベートで笑える相手がいるなら…複雑やけど応援したい",m:["💬 903","🔁 4,102","❤️ 18,930"]},
+{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"人気アイドル・井汲大翔にマッチングアプリ利用疑惑。週刊誌が一般女性とカフェで会う写真を配信。事務所は「確認中」",m:["💬 8,412","🔁 32,105","❤️ 41,208"],imp:312},
+{n:"芸能ウォッチャー",h:"@geino_watch",t:"大翔のTinder疑惑、お相手のインスタもう特定されてるの早すぎる…。昨日のカフェ投稿が伏線だった説。",m:["💬 1,204","🔁 9,870","❤️ 12,400"]},
+{n:"ロットダン💙",h:"@rottdan_love",t:"正直ショックはある。でも交際はしてないって話やし…アプリ使ってたこと自体、どう受け止めたらいいんやろ。複雑やけど、ステージの大翔は応援したい",m:["💬 903","🔁 4,102","❤️ 18,930"]},
 {n:"ゆん",h:"@yun_o0",t:"裏切られた気持ち。ファンミのあの笑顔はなんだったの？　返金してほしいくらいモヤる",m:["💬 2,311","🔁 1,540","❤️ 3,208"]},
-{n:"特定班",h:"@tokutei_work",t:"①カフェの内装が本人の昨日の投稿と一致 ②ネックレスがお揃いっぽい ③「このまま時間が止まればいいのに」←誰との時間？匂わせだった？",m:["💬 5,671","🔁 21,340","❤️ 9,876"]},
-{n:"さくらの推し活",h:"@sakura_act",t:"24歳の大人に恋愛するなは無理があると思う。叩く方向じゃなくて、本人コメント待とうよ",m:["💬 432","🔁 3,987","❤️ 22,150"]},
-{n:"まとめ速報",h:"@matome_soku",t:"事務所コメント「プライベートは本人に任せております」＝事実上認めたと話題に #大翔熱愛",m:["💬 3,020","🔁 18,442","❤️ 7,650"]},
+{n:"特定班",h:"@tokutei_work",t:"①カフェの内装が本人の昨日の投稿と一致 ②拡散中のプロフ写真、本人の私服自撮りで確定っぽい ③「このまま時間が止まればいいのに」←誰との時間？",m:["💬 5,671","🔁 21,340","❤️ 9,876"]},
+{n:"さくらの推し活",h:"@sakura_act",t:"24歳の大人やし、アプリ使うこと自体は悪くないと思う。叩く方向じゃなくて、本人コメント待とうよ",m:["💬 432","🔁 3,987","❤️ 22,150"]},
+{n:"まとめ速報",h:"@matome_soku",t:"事務所コメント「交際の事実はございません」 アプリ利用については「確認中」 #大翔Tinder",m:["💬 3,020","🔁 18,442","❤️ 7,650"]},
 {n:"特定班",h:"@tokutei_work",t:"お相手とはマッチングアプリで出会った説が濃厚。彼のものとされるプロフ写真、私服の自撮りで本人のIGには未掲載のやつ。つまり未公開写真が回ってることに…",m:["💬 6,940","🔁 24,880","❤️ 11,203"]},
-{n:"まとめ速報",h:"@matome_soku",t:"「お相手の女性、最初は彼がアイドルだと知らなかった」証言が拡散中。元々ファンだったのに気づかなかったって…会うまで分からんもんなの？ #大翔熱愛",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
-{n:"ロットダン💙",h:"@rottdan_love",t:"Super Likeから始まったって話、ほんまなら大翔のほうから行ってるやん…。軽いノリだったのが本気になった、って思うと応援したくなる自分がいる",m:["💬 1,180","🔁 5,204","❤️ 21,870"]},
+{n:"まとめ速報",h:"@matome_soku",t:"「お相手の女性、最初は彼がアイドルだと知らなかった」証言が拡散中。元々ファンだったのに気づかなかったって…会うまで分からんもんなの？ #大翔Tinder",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
+{n:"ロットダン💙",h:"@rottdan_love",t:"Super Likeから始まったって話、ほんまなら大翔のほうから行ってるやん…。でも付き合ってへんのなら、ただの知り合いってこと？　複雑やけど、ちょっと安心した自分もいる",m:["💬 1,180","🔁 5,204","❤️ 21,870"]},
 ];
 function avaTxt(name){let h=0;for(const c of name)h=(h*31+c.charCodeAt(0))%360;return `<span class="ava-txt" style="background:hsl(${h},55%,55%)">${name.trim()[0]||"？"}</span>`}
 function postEl(p,hot){const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(p.n)}<span style="min-width:0"><span class="nm">${p.n}</span> <span class="hd">${p.h} ・ ${p.tm||"今"}</span><div class="tx">${p.t}</div><div class="mt"><span class="${hot?'hot':''}">${p.m[0]}</span><span class="rp-btn">${p.m[1]}</span><span class="like-btn">${p.m[2]}</span>${p.imp?`<span>👁 <span id="imp-n">${p.imp}万</span></span>`:""}</div></span>`;
@@ -996,20 +996,20 @@ function postEl(p,hot){const d=document.createElement("div");d.className="post";
  tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); return d}
 function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
 const mine=document.createElement("div"); $("#x-me-posts").appendChild(postEl({n:"なお",h:"@nao_0324",t:"（このアカウント、今めちゃくちゃ見られてる…）",m:["💬 0","🔁 0","❤️ 0"]},false));}
-const TRENDS=[["エンターテイメント ・ トレンド","#大翔熱愛","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","#手つなぎデート","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","ロットダン","29,377 件のポスト"]];
+const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","ロットダン","29,377 件のポスト"]];
 function buildTrends(){const w=$("#x-pane-trend"); w.innerHTML=""; TRENDS.forEach((t,i)=>{const d=document.createElement("div");d.className="trend";d.style.cursor="pointer";d.title="タップで検索";d.addEventListener("click",()=>{ $("#x-q").value=t[1].replace("#",""); doSearch(t[1].replace("#","")); });d.innerHTML=`<div class="cat">${i+1} ・ ${t[0]}</div><div class="kw">${t[1]}</div><div class="cnt">${t[2]}</div>`;w.appendChild(d)})}
 function bumpTrends(){ $$("#x-pane-trend .trend .cnt").forEach(el=>{ const n=parseInt(el.textContent.replace(/[^0-9]/g,"")); if(!isNaN(n)){ const add=Math.floor(Math.random()*900+120); el.textContent=(n+add).toLocaleString("ja-JP")+" 件のポスト"; } }); }
 $$("[data-xtab]").forEach(b=>b.addEventListener("click",()=>{$$("[data-xtab]").forEach(x=>x.classList.remove("act"));b.classList.add("act");$("#x-thread").style.display="none";const cb=$("#x-compose-btn"); if(cb) cb.style.display="";["tl","trend","mention","me","search"].forEach(k=>$("#x-pane-"+k).style.display=k===b.dataset.xtab?"block":"none")}));
 const MENTIONS=[
-["ゆん@yun_o0","@nao_0324 あんたが大翔奪ったの？　説明して"],
-["応援垢@m_support","@nao_0324 叩かれてるけど負けないで。幸せならそれでいい"],
-["特定班@tokutei_work","@nao_0324 そのネックレス、彼のとお揃いだよね？"],
-["古参ファン@old_fan","@nao_0324 彼のこと、どうか大事にしてあげて"],
+["ゆん@yun_o0","@nao_0324 あんたが大翔とマッチしてたの？　説明して"],
+["応援垢@m_support","@nao_0324 叩かれてるけど負けないで。交際してないなら、あなたも被害者やと思う"],
+["特定班@tokutei_work","@nao_0324 拡散されてるプロフ写真、あれ本人のだよね？"],
+["古参ファン@old_fan","@nao_0324 彼のこと、どうか悪く言わないであげて"],
 ["通りすがり@passer_by","@nao_0324 トレンドで見かけて来た。すごい通知量だろうな…"],
 ["アンチ@anti_02","@nao_0324 ファンの気持ちも考えてほしい"],
 ["記者気取り@scoop_mania","@nao_0324 事務所コメントまだ？ 続報待ち"],
 ["通りすがり@pass_by","@nao_0324 フォローした。更新楽しみにしてます（野次馬）"],
-["ロットダン💙@rottdan_love","@nao_0324 大翔のこと、どうか大事にしてあげて"],
+["ロットダン💙@rottdan_love","@nao_0324 大翔は嘘ついてへんかったって、信じたい"],
 ["アンチ予備軍@anti_yobi","@nao_0324 匂わせだけは許せない。昨日の投稿なに？"],
 ["なおの友達@yui_s","@nao_0324 えっっっ、なお！？　LINE見て！？"],
 ["特定班@tokutei_work","@nao_0324 マッチングアプリで出会ったって本当？ 最初は身分を知らなかったって話も出てるけど…"],
@@ -1019,14 +1019,14 @@ const MENTIONS=[
 function floodMentions(){const list=$("#x-men-list"); MENTIONS.forEach((m,i)=>later(()=>{const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(m[0])}<span style="min-width:0"><span class="nm">${m[0].split("@")[0]}</span> <span class="hd">@${m[0].split("@")[1]||""} ・ 今</span><div class="tx">${m[1]}</div><div class="mt"><span>💬</span><span>🔁</span><span>❤️</span></div></span>`;list.prepend(d);bump("x");},5000+i*7000))}
 /* ============ Instagram floods ============ */
 const IG_CMTS=[
-["yun_o0","あんたなの？　大翔の相手って"],["rottdan_a","複雑だけど…大翔をよろしくお願いします"],["tokutei_jp","このカフェ、昨日の彼の投稿と同じ店だよね"],["m_support","炎上してるけど応援してます！"],["pass_fan","フォロワー3万超えおめでとう（違う）"],["hiro_wife（自称）","返して…とは言わない。幸せにして"],["yui_s","なお！？　これなおのアカウントだよね！？"],["geino_otaku","匂わせじゃなくて偶然だと思いたい"],["sakura_act","コメント欄荒れてるけど、あなたの日常はあなたのものだよ"],["anti_01","説明がほしい。ファンは泣いてるよ"],["canvas_mama","娘がファンで…複雑だけど、嘘のない二人でいてね"],["neutral_jp","騒ぎすぎ。そっとしておこうよ"],["hiro_gachi","大翔の笑顔が本物なら、それが答えだと思う"],["watcher_x","通知が止まらないアカウント、初めて見た"],
+["yun_o0","あんたなの？　大翔とマッチした相手って"],["rottdan_a","複雑だけど…交際してないのは信じるよ"],["tokutei_jp","このカフェ、昨日の彼の投稿と同じ店だよね"],["m_support","炎上してるけど応援してます！"],["pass_fan","フォロワー3万超えおめでとう（違う）"],["hiro_wife（自称）","付き合ってないなら、安心していいの…？"],["yui_s","なお！？　これなおのアカウントだよね！？"],["geino_otaku","匂わせじゃなくて偶然だと思いたい"],["sakura_act","コメント欄荒れてるけど、あなたの日常はあなたのものだよ"],["anti_01","説明がほしい。ファンは泣いてるよ"],["canvas_mama","娘がファンで…交際否定は信じたい"],["neutral_jp","騒ぎすぎ。そっとしておこうよ"],["hiro_gachi","ステージの大翔が本物なら、それでいいと思う"],["watcher_x","通知が止まらないアカウント、初めて見た"],
 ["tokutei2","Tinderのプロフ写真って言われてる私服自撮り、本人のっぽい…IGに載せてない写真だよね"],
 ["fan_omo","ファンだったのに気づかなかった、って本当なら逆に運命すぎる"],
 ["m_check","最初知らなかったなら、叩かれ方はちょっと同情する"]
 ];
 function floodComments(){IG_CMTS.forEach((c,i)=>later(()=>{const d=document.createElement("div");d.className="cmt";d.innerHTML=`<b>${c[0]}</b>${c[1]}<span class="tm">今</span>`;$("#ig-cmts").appendChild(d);state.igCmt++;$("#ig-cmt-n").textContent=state.igCmt;$("#ig-bell").textContent="•";bump("ig");const h=document.createElement("div");h.className="cmt";if(i%3===0){h.innerHTML=`<b>${c[0]}</b>例の投稿、掘り返されてるよ…`;$("#his-cmts").appendChild(h)}},4000+i*6500))}
 const DMS=[
-["yun_o0","話聞かせて？　本当なの？"],["geino_scoop","週刊デジタルです。コメントいただけませんか"],["m_support","味方もいるからね"],["tokutei_jp","ネックレスのブランド教えて"],["yui_s","なお電話出て！！"],["hiro_fan_88","大翔の好きなところ教えてください"]
+["yun_o0","話聞かせて？　本当なの？"],["geino_scoop","週刊デジタルです。コメントいただけませんか"],["m_support","味方もいるからね"],["tokutei_jp","プロフ写真の出どころ教えて"],["yui_s","なお電話出て！！"],["hiro_fan_88","大翔の好きなところ教えてください"]
 ];
 function floodDms(){DMS.forEach((m,i)=>later(()=>{ $("#ig-dm-empty")&&$("#ig-dm-empty").remove(); const d=document.createElement("div");d.className="dmrow";d.innerHTML=`${avaTxt(m[0])}<span style="min-width:0"><span class="nm">${m[0]}</span><br><span class="tx">${m[1]}</span></span><span style="margin-left:auto;font-size:11px;color:#8e8e93">今</span>`;$("#ig-dms").appendChild(d);state.igDm++;$("#ig-dm-n").textContent=state.igDm;bump("ig");},9000+i*9000))}
 /* ============ LINE ============ */
@@ -1049,9 +1049,9 @@ askChoices("なおの返信を選んで",[
 }
 async function lineSequence2(){ if(!state.started||state._seq2) return; state._seq2=true;
   await himPhoto("assets/ig-meal.jpg"); await himMsg("これ、なおだけ"); await himStamp("🥺");
-await himMsg("マネージャーと今話した"); await himMsg("事務所、コメント出すって"); await himMsg("「任せてる」ってやつ"); await himMsg("否定はせん、って俺が言った"); await himMsg("なおと別れる気、ないから");
+await himMsg("マネージャーと今話した"); await himMsg("事務所、コメント出すって"); await himMsg("「交際の事実はない」ってやつ"); await himMsg("事実やから、そのまま出すって"); await himMsg("でも…ごめんな、巻き込んで");
 askChoices("これから、どうする？",[
-{label:"堂々と付き合おう",fn:()=>ending("open")},
+{label:"「交際してない」って、堂々と言おう",fn:()=>ending("open")},
 {label:"発表までは静かに待とう",fn:()=>ending("wait")},
 {label:"少しだけ距離を置こう",fn:()=>ending("away")},
 ]);
@@ -1064,12 +1064,12 @@ if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(state.
  const iv=setInterval(()=>{i++; if(i<lines.length){$("#call-sub").textContent=lines[i]; playN(i+1);} else {clearInterval(iv)}},4200); timers.push(iv); }
 else { startCallVoice(); }
 }
-$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("マネージャーと話した？"); await himMsg("ごめんな、心配かけて"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
+$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
 async function ending(kind){ if(state.ended) return; state.ended=true;
-const box={open:{h:"エンディング：堂々と",t:"翌日、ひろとは自分の言葉でファンへ短く報告した。「大事な人がいます」——炎上は続いたけど、応援の声も日に日に増えていった。なおのフォロワーは今も増えている。でも一番大事な通知は、いつもLINEのひとつだけ。",news:"本人が交際を認めるコメント　「大事な人がいます」"},
-wait:{h:"エンディング：静かに待つ",t:"二人は表向き静かに過ごすことにした。コメント欄は少しずつ落ち着いて、ひと月後——ひろとの投稿に、小さくコーヒーの絵文字が増えた。知ってる人だけが、知っている。",news:"熱愛報道は沈静化へ　二人は静観の構え"},
-away:{h:"エンディング：距離を置く",t:"少しだけ距離を置いた二人。それでも三日目の夜、LINEが光る。「カフェオレ、冷蔵庫に入れっぱなしや」——離れるって、たぶんこういうのじゃない。物語はまだ途中。",news:"続報なし　二人の行方は——"}}[kind];
-state.ending=kind; await himMsg(kind==="open"?"わかった。俺も、そのつもりやった":kind==="wait"?"うん。なおがそう言うなら、それでいこ":"…わかった。でも、連絡だけはしてもいい？");
+const box={open:{h:"エンディング：事実を、まっすぐに",t:"翌日、ひろとは自分の言葉でファンへ報告した。「アプリを使っていたのは事実です。相手とは交際していません」——炎上は続いたけど、嘘のない言葉に、応援の声も少しずつ戻り始めた。",news:"本人がコメント　「交際の事実はありません」"},
+wait:{h:"エンディング：静かに待つ",t:"二人は表向き静かに過ごすことにした。コメント欄は少しずつ落ち着いて、ひと月後——彼の投稿から、アプリの気配は消えていた。知ってる人だけが、知っている。",news:"アプリ利用疑惑は沈静化へ　事務所は静観の構え"},
+away:{h:"エンディング：連絡を絶つ",t:"少しだけ、のつもりだった距離は、そのまま戻らなかった。ある夜、LINEのトーク履歴を見返して——なおは、通知をオフにした。物語はここで、一区切り。",news:"続報なし　二人の行方は——"}}[kind];
+state.ending=kind; await himMsg(kind==="open"?"わかった。俺も、そのつもりやった":kind==="wait"?"うん。なおがそう言うなら、それでいこ":"…わかった。もう、連絡せんとく");
 await himMsg("今日はありがとうな");
 later(()=>{ const bs=$$("#chat .msg.him .bub"); const last=bs[bs.length-1]; if(last){ const r=document.createElement("span"); r.textContent=" ❤️"; r.style.fontSize="13px"; last.appendChild(r); } },2500);
 const main=$("#v-home"); setHeat(kind==="open"?88:kind==="wait"?45:60);
@@ -1103,8 +1103,8 @@ const THREAD_REPLIES=[
  ["ゆん@yun_o0","ファンミの直後なのがきつい。タイミング…"],
  ["芸能ウォッチャー@geino_watch","続報待ち。お相手の特定合戦がもう始まってるのが現代"],
  ["さくらの推し活@sakura_act","叩く前に本人コメント待ちなよ、みんな"],
- ["まとめ速報@matome_soku","事務所「確認中」→「本人に任せております」に変わったのが答えな気がする"],
- ["通りすがり@pass_by","手つなぎ写真、彼が笑わせてる感じで微笑ましくはある"],
+ ["まとめ速報@matome_soku","事務所の「交際の事実はございません」、否定が早かったのは事実やからちゃう？"],
+ ["通りすがり@pass_by","カフェの写真、彼が笑わせてる感じではあった"],
 ];
 function openThread(){ ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).style.display="none"); $("#x-thread").style.display="block"; const cb=$("#x-compose-btn"); if(cb) cb.style.display="none"; $("#x-scroll").scrollTop=0;
   const tm=$("#thread-main"); tm.innerHTML=""; tm.appendChild(postEl(X_POSTS[0],true));
@@ -1147,11 +1147,11 @@ $("#pv-close").addEventListener("click",()=>$("#ph-view").classList.remove("on")
 $("#pv-prev").addEventListener("click",()=>pvShow(pvIdx-1));
 $("#pv-next").addEventListener("click",()=>pvShow(pvIdx+1));
 /* ===== v5: X search ===== */
-const X_SUGS=["大翔 熱愛","大翔 彼女","大翔 ネックレス","大翔 一般女性 誰","ひろと なお","大翔 事務所コメント"];
+const X_SUGS=["大翔 Tinder","大翔 アプリ","大翔 一般女性 誰","ひろと なお","大翔 事務所コメント","Super Like"];
 const X_SEARCH_POSTS=[
- {n:"まとめ速報",h:"@matome_soku",tm:"12分",t:"【まとめ】井汲大翔の熱愛報道、事務所コメントまでの流れを時系列で整理。否定なし＝事実上の容認か",m:["💬 1,204","🔁 8,932","❤️ 12,408"]},
+ {n:"まとめ速報",h:"@matome_soku",tm:"12分",t:"【まとめ】井汲大翔のアプリ利用疑惑、事務所コメントまでの流れを時系列で整理。交際は否定、アプリ利用は「確認中」",m:["💬 1,204","🔁 8,932","❤️ 12,408"]},
  {n:"芸能ウォッチャー",h:"@geino_watch",tm:"34分",t:"お相手の特定が進んでるけど、一般の方なので行き過ぎた詮索は控えめに…という声も増えてきた",m:["💬 864","🔁 3,102","❤️ 9,845"]},
- {n:"ファンの声bot",h:"@fan_voice",tm:"1時間",t:"「ステージの大翔は変わらない」「幸せなら応援する」ポジティブな投稿が増加中",m:["💬 432","🔁 2,208","❤️ 15,320"]},
+ {n:"ファンの声bot",h:"@fan_voice",tm:"1時間",t:"「ステージの大翔は変わらない」「嘘つかなかったのは信じる」ポジティブな投稿が増加中",m:["💬 432","🔁 2,208","❤️ 15,320"]},
 ];
 const X_SUGS_PRO=["大翔 ファンミ","大翔 セトリ","大翔 王子様衣装","神戸 グッズ","大翔 追加公演","チムジルバン"];
 const X_PRO_POSTS=[
@@ -1167,7 +1167,7 @@ function doSearch(q){ q=(q||"").trim()||"大翔"; ["tl","trend","mention","me"].
     else if(q.includes("ネックレス")) res.appendChild(postEl(X_NECK_PRO,false));
     else X_PRO_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
   } else {
-    if(q.includes("ネックレス")) res.appendChild(postEl({n:"特定班",h:"@tokutei_jp",tm:"26分",t:"【検証】お揃いネックレス、ブランド特定。彼の10月の投稿と、彼女の投稿に同じものが…",m:["💬 2,314","🔁 18,540","❤️ 9,208"]},false));
+    if(q.includes("ネックレス")) res.appendChild(postEl({n:"特定班",h:"@tokutei_jp",tm:"26分",t:"【検証】拡散中のプロフ写真、過去の私服投稿と耳の形・ほくろが一致。本人のもので確定っぽい",m:["💬 2,314","🔁 18,540","❤️ 9,208"]},false));
     X_SEARCH_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
   }
   $("#x-scroll").scrollTop=0; }
@@ -1202,7 +1202,7 @@ function findLikeBtn(img){ let el=img; for(let k=0;k<4;k++){ el=el.nextElementSi
   const wrap=img.parentElement; if(wrap&&!wrap.classList.contains("scroll")){ const lb2=wrap.querySelector(".like-btn"); if(lb2) return lb2; } return null; }
 /* segmented stories */
 function buildSegs(){ if(state.started) return [{img:"assets/ig-food.jpg",txt:"食べまくってる🍚"},{img:null,txt:"驚かせてしまって、ごめんね。\nいつも本当にありがとう。"}];
-  if(state.phase==="prologue"&&state.chapter>=4) return [{img:"assets/ig-meal.jpg",txt:"内緒やけど、\n幸せやねん"}];
+  if(state.phase==="prologue"&&state.chapter>=4) return [{img:"assets/ig-meal.jpg",txt:"内緒やけど、\n楽しいねん"}];
   return [{img:"assets/ig-drink.jpg",txt:"今日もありがとう😎"},{img:"assets/ig-sushi.jpg",txt:"🍣 また行こ"}]; }
 let storySegs=[], storyIdx=0;
 function storyShow(i){ storyIdx=i; const sg=storySegs[i]; const img=$("#story-img"),txt=$("#story-txt");
@@ -1250,7 +1250,7 @@ document.addEventListener("click",e=>{const b=e.target.closest(".like-btn"); if(
 const GEN_NAMES=["fan_mama","rottdan_2","oshi_katsu_jp","hana_22","mio_p","yume_ko","sora_machi","ebiko_love"];
 const GEN_MEN_HOT=["@nao_0324 まだ信じたくない…","@nao_0324 説明してほしい、ほんとに","@nao_0324 そのカフェ投稿、やっぱ匂わせ？"];
 const GEN_MEN_OK=["@nao_0324 応援してるよ、負けないで","@nao_0324 大翔のこと大事にしてあげてね","@nao_0324 幸せならそれが一番だと思う","@nao_0324 無理しないでね、味方もいるよ","@nao_0324 本人の言葉を信じて待ってます"];
-const GEN_IG_HOT=["やっぱり相手この人か…","匂わせだけはモヤる","説明まだ？","ネックレスの件、答えてほしい","ファンミの発言と矛盾してない？"];
+const GEN_IG_HOT=["やっぱり相手この人か…","匂わせだけはモヤる","説明まだ？","アプリの件、答えてほしい","ファンミの発言と矛盾してない？"];
 const GEN_IG_OK=["応援に来ました！","大翔さんを幸せにしてあげて","炎上落ち着いてきたね","最初は驚いたけど、今は応援派です","二人のペースでいいと思う","コメント欄、平和になってきた"];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function genContent(){ if(state._genN>=16) return; state._genN=(state._genN||0)+1;
@@ -1317,25 +1317,25 @@ function showIncomingCall(caller){ state.caller=caller||"hiroto"; const mgr=stat
   $("#call-inc-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
   $("#call-inc-sub").textContent=mgr?"事務所からの着信。何の話だろう…":"ドキドキの着信。応答する？";
   show("call"); $("#call-incoming").style.display="flex"; $("#call-active").style.display="none"; ringStart(); }
-const MGR_LINES=["「…もしもし、なおさんですか」","「彼は今、事務所で待機しています」","「今日はどうか、静かに過ごしてください」","「彼のことは、私たちが守ります」","「…彼が『心配させるな』って、うるさくて」"];
+const MGR_LINES=["「…もしもし、なおさんですか。私、井汲が所属する事務所の者です」","「確認させてください。アプリで知り合って、彼とお会いになったのは事実でしょうか」","「事務所としては『交際の事実はございません』と、コメントを出します」","「お願いがございます。SNSでの発信は控えていただき、今後、彼とのご連絡もお控えいただけますか」","「…ご協力、感謝します。お嬢さんにご迷惑がかからないよう、私たちも努めますので」"];
 $("#call-answer").addEventListener("click",()=>{ ringStop(); $("#call-incoming").style.display="none"; $("#call-active").style.display="flex"; const mgr=state.caller==="manager";
   $("#call-act-name").textContent=mgr?"マネージャー（事務所）":"ひろと"; $("#call-act-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
   startCall(mgr?MGR_LINES:null); state._answered=true; state._callWho=mgr?"マネージャー（事務所）":"ひろと"; });
 $("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.caller==="manager"?"マネージャー（事務所）":"ひろと")+" ・ 不在着信（拒否） ・ "+nowTime()); ringStop(); if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("マネージャーから電話いった？",300); await himMsg("出んでも大丈夫やで"); await himMsg("内容は俺から聞いて"); return; } show("line"); openChat(); await himMsg("出れんかった？",300); await himMsg("大丈夫、気にせんといて"); await himMsg("文字でも、なおと話せたらいい"); lineSequence2(); });
 /* ===== v2: act2 next morning ===== */
 async function startAct2(kind){ if(state._act2) return; state._act2=true; state.act2=true; $("#lock-date").textContent="11月3日 月曜日";
-  $("#w-title").textContent="🌅 翌朝 —— 少しずつ、日常に"; $("#w-main").textContent="彼の公式コメントが出た。炎上は、応援に変わりつつある。"; setHeat(18); const ec=$("#endcard"); if(ec) ec.remove();
+  $("#w-title").textContent="🌅 翌朝 —— 少しずつ、日常に"; $("#w-main").textContent="彼の公式コメントが出た。謝罪と、交際否定と、アプリ退会と。"; setHeat(18); const ec=$("#endcard"); if(ec) ec.remove();
   $("#w-title").textContent="🌅 翌朝｜少しずつ、日常が戻る";
   $("#w-main").textContent="ひろとが自分の言葉でコメントを出した朝。";
   setHeat(kind==="open"?52:kind==="wait"?28:38);
   addNewsRow("assets/crown.jpg","一夜明けて——ひろと、本人の言葉でコメント　ファンへの感謝に「泣いた」の声","TV・新聞各紙 ・ 翌朝",null);
-  const cap={open:"「大事な人がいます。その人を守ることも、ファンの皆さんへの感謝も、どっちも本当です」",wait:"「今は、歌とダンスに集中します。温かく見守ってくださると嬉しいです」",away:"「少しだけ、時間をください。でも、応援してくれる皆さんのことは毎日思っています」"}[kind];
+  const cap={open:"「マッチングアプリを利用していたのは、事実です。軽率でした。本当にごめんなさい。お相手と交際の事実はありません。アプリは退会しました」",wait:"「今は、歌とダンスに集中します。アプリは退会しました。温かく見守ってくださると嬉しいです」",away:"「アプリは退会しました。お相手とされる方とは、もう連絡も取っていません。心配をかけて、本当にごめんなさい」"}[kind];
   const st=document.createElement("div"); st.className="ig-post"; st.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">NEW</span></div><img class="pimg" src="assets/stage.jpg" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span></div><div class="cap"><b>193.hiroto_jixiang</b> いつも応援してくださっている皆さまへ。<br>今回のことで、驚かせてしまった方、悲しい気持ちにさせてしまった方、本当にごめんなさい。<br>ステージに立てるのは、皆さんがいてくれるからで、その気持ちは毎日、毎日変わりません。${cap}<br>これからも、歌とダンスで返していけるよう、本当に本当に頑張ります。いつもありがとう。——大翔</div><div class="cmt"><b>rottdan_a</b>この長さ…本気のやつだ、泣いた</div><div class="cmt"><b>m_support</b>応援し続けるって決めた</div>`;
   $("#his-statement").appendChild(st);
   push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","ひろとが新しい投稿","「いつも応援してくださっている皆さまへ」——タップで読む",()=>show("hisig"));
   animateCount($("#ig-fol-n"),52814,58920,12000); animateCount($("#w-ig"),52814,58920,12000);
-  later(async()=>{ show("line"); openChat(); await himMsg("おはよ",600); await himMsg(kind==="open"?"投稿、出したで":kind==="wait"?"投稿、見た？":"投稿だけ、先に出した"); await himMsg("なおは、ちゃんと寝れた？"); await himVoice("assets/vm-nextmorning.mp3","0:04"); toast("💬 ここからはLINEで<b>自由に送れる</b>よ。下の入力欄からどうぞ"); },5000);
-  later(()=>{ const d=document.createElement("div"); d.className="endcard"; d.id="endcard2"; d.innerHTML=`<h3>🌅 翌朝 —— fin</h3><p>炎上は、少しずつ日常に変わっていく。トレンドから名前が消えても、LINEのいちばん上は変わらないまま。続きは、なおの言葉で。</p><button class="btn-main" style="background:#111;color:#fff" onclick="location.reload()">🔁 最初からもう一度</button>`; $("#news-scroll").prepend(d); push("ニュース速報","#e60012","N","続報：応援の声が広がる","「本人の言葉」にファンの反応は——タップで結末へ",()=>show("news")); },14000);
+  later(async()=>{ if(kind==="away"){ toast("💬 ひろとからの新しいメッセージは、なかった"); return; } show("line"); openChat(); await himMsg("おはよ",600); await himMsg(kind==="open"?"投稿、出したで":"投稿、見た？"); await himMsg("なおは、ちゃんと寝れた？"); await himVoice("assets/vm-nextmorning.mp3","0:04"); toast("💬 ここからはLINEで<b>自由に送れる</b>よ。下の入力欄からどうぞ"); },5000);
+  later(()=>{ const d=document.createElement("div"); d.className="endcard"; d.id="endcard2"; d.innerHTML=`<h3>🌅 翌朝 —— fin</h3><p>${kind==="away"?"トレンドから名前は消えた。LINEのいちばん上は、もう更新されないまま。それでも、あの数日は本物だった。":"炎上は、少しずつ日常に変わっていく。トレンドから名前が消えても、あの数日のやり取りは消えない。続きは、なおの言葉で。"}</p><button class="btn-main" style="background:#111;color:#fff" onclick="location.reload()">🔁 最初からもう一度</button>`; $("#news-scroll").prepend(d); push("ニュース速報","#e60012","N","続報：本人の言葉に、応援の声も","「嘘をつかなかった」ことにファンの反応は——タップで結末へ",()=>show("news")); },14000);
 }
 function showEnding(box){ if($("#endcard")) return; const d=document.createElement("div"); d.className="endcard"; d.id="endcard"; d.innerHTML=`<h3>${box.h}</h3><p>${box.t}</p><p class="endstats">📊 この夜の記録<br>Instagram フォロワー 342 → ${$("#w-ig").textContent} ／ X フォロワー 189 → ${$("#w-x").textContent}<br>炎上度ピーク ${state._heatPeak||state.heat}% ・ 電池は ${$("#batt-n").textContent}% まで減った</p><button class="btn-main" style="background:#1d9bf0;color:#fff" onclick="shareRecord()">📤 この夜の記録をシェア</button><button class="btn-main" style="background:#06c755;color:#fff" onclick="startAct2(state.ending||'wait')">🌅 翌朝を見る</button><button class="btn-main" style="background:#111;color:#fff" onclick="location.reload()">🔁 最初からもう一度</button>`; $("#news-scroll").prepend(d); show("news");}
 
@@ -1462,7 +1462,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
    {h:"ファンミーティングで見せた“王子様衣装”がSNSで話題に",m:"芸能デスク ・ 17:05配信",img:"assets/crown.jpg",body:`<p>週末に開催されたファンミーティングで井汲大翔が披露した白い王子様衣装が、SNSで大きな話題になっている。投稿された写真は数時間で数万件のいいねを集めた。</p><div class="box">ファンの声「似合いすぎて現実味がない」「この衣装で登場した瞬間、会場の空気が変わった」</div><p>ファンミーティングは今後も各地で開催予定だという。</p>`}
   ];
   $$("#news-list .newsrow").forEach((r,i)=>{ const A=CALM_ARTS[i]; if(!A) return; r.style.cursor="pointer"; r.addEventListener("click",()=>{ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>${A.h}</h2><div class="m">${A.m}</div><img src="${A.img}" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px">${A.body}</div>`; $("#news-scroll").scrollTop=0; }); });
-  const NC=[["手つなぎは決定的すぎる…","3,204"],["24歳、大人同士の恋愛なら良くない？","5,891"],["ネックレスお揃いは、匂わせだったのか","1,102"],["ファンミで見たあの笑顔、彼女に向けられてたのかな","2,468"],["活動は続けてほしい。事務所の対応待ち","4,317"]];
+  const NC=[["プロフ写真は決定的すぎる…","3,204"],["交際してないなら、相手の子も気の毒","5,891"],["現役アイドルがアプリ、時代やなぁ","1,102"],["ファンミで見たあの笑顔、誰にも向けてへんかったんやな","2,468"],["活動は続けてほしい。事務所の対応待ち","4,317"]];
   const _oa=openArticle; openArticle=function(){ _oa(); const art=$("#news-article .article"); if(art&&!art.querySelector(".nc-wrap")){ const w=document.createElement("div"); w.className="nc-wrap"; w.innerHTML=`<h3 style="margin-top:22px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">8,412件</span></h3>`+NC.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #f2f2f7"><div style="font-size:14px;line-height:1.75">${c[0]}</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px"><span class="nc-like" style="cursor:pointer">♡ ${c[1]}</span> ・ 返信</div></div>`).join(""); art.appendChild(w); } };
   document.addEventListener("click",e=>{ const l=e.target.closest(".nc-like"); if(!l) return; const on=l.dataset.on==="1"; const num=parseInt(l.textContent.replace(/[^0-9]/g,""))||0; l.textContent=(on?"♡ ":"❤️ ")+(on?Math.max(0,num-1):num+1).toLocaleString("ja-JP"); l.dataset.on=on?"":"1"; l.style.color=on?"":"#e0245e"; l.style.fontWeight=on?"":"700"; });
 })();
@@ -1838,7 +1838,15 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
 (function(){ const css=document.createElement("style"); css.textContent=
  "@media (min-height:741px) and (max-height:900px){ .home-inner{padding-top:54px} .widget{padding:10px 12px;margin-bottom:10px} .appicon .ic{width:52px;height:52px;font-size:23px;border-radius:13px} .grid{gap:11px 10px} .dock{padding:9px 12px} }";
  document.head.appendChild(css); })();
+/* ===== Tinder ver v10: story pivot — they never date. Ch3 becomes "drawing the line", ch4 an ambiguous distance (no matching necklace), ch5 a widening gap; the scandal is about an active idol using Tinder itself, the agency denies any relationship, his statement apologizes for using the app and confirms he quit it; endings are about not being together ===== */
 /* ===== Tinder ver v9: a touch more heat, focused on the Tinder phase through ch2 — bolder teasing, late-night heat, closer-distance toasts, "don't want to let her go home" (but he does). Attraction without dating: tension only, nothing explicit ===== */
+/* ===== v11 voice slots (files pending in ~/workspace/hiroto-tinder-voice-staging/; do NOT wire until they arrive):
+   1. assets/vm-t-hello.mp3 — ch2 opening, right after his first LINE messages (first voice after the LINE exchange)
+   2. assets/vm-t-line.mp3 — ch3 climax, right after himMsg("付き合うとかは、できへんねん")
+   3. assets/vm-t-sorry.mp3 — scandal lineSequence1, right after himMsg("なおだけが心配やねん"), alongside the existing scandal voices
+   4. assets/vm-t-bye.mp3 — lineSequence2, right before the final askChoices (his last voice before the ending)
+   Lover-premise legacy voices vm-confess / vm-necklace no longer fire anywhere in v10 (files kept, unreferenced).
+   Manager call: MGR_LINES subtitles were rewritten in v10 for the new angle (fact-check -> "no relationship" comment -> please refrain from SNS posts and from contacting him -> polite close). In v11, switch the manager audio prefix in startCall from "assets/mgr-"+n to "assets/mgr-t-"+n (new files mgr-t-1..5.mp3, voice "tsuno-1", arriving via staging) so audio matches the new subtitles; until then the old mgr-1..5 audio still plays under the new subtitles. ===== */
 /* ===== Tinder ver v1 ===== */
 (function(){
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
