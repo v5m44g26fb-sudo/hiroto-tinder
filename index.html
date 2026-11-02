@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v39</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v40</b>（元版v192までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -4737,7 +4737,10 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   ["線、引いた。引いたのは、俺のほう",()=>state.chapter>=3],
   ["それでも会ってしまう。あかんな、俺",()=>state.chapter>=4],
   ["今は連絡、控えめに。でも大丈夫、なはず",()=>state.phase==="scandal"||state.act2],
-  ["アプリは消した。あの子は、悪くない",()=>!!state.act2]];
+  ["アプリは消した。あの子は、悪くない",()=>!!state.act2],
+  ["蜂蜜、買った。ライブ前は、声を大事に",()=>state.chapter>=2],
+  ["3月24日。誕生日……覚えたからな",()=>state.chapter>=4],
+  ["たまには弱音、吐いてもええ日",()=>!!state.act2]];
  const mine=[];
  row.querySelector("#note-btn").addEventListener("click",()=>{
   if(document.querySelector("#note-panel")) return;
@@ -5339,7 +5342,14 @@ app.style.display="flex";},true);
   '<div style="margin-top:26px;display:inline-block;background:rgba(255,255,255,.1);border-radius:999px;padding:8px 18px;font-size:13.5px">ラッキーアイテム：'+item+'</div>'+
   note+'</div>';
   panel.style.display="flex";
-  panel.querySelector("#ur-x").addEventListener("click",()=>panel.style.display="none"); });
+  panel.querySelector("#ur-x").addEventListener("click",()=>panel.style.display="none");
+  /* v173: send the fortune result to him on LINE (prologue only - never after the farewell) */
+  if(!state.ended&&!state.act2&&state.phase==="prologue"){ const sb=document.createElement("button");
+   sb.textContent="💬 結果を彼に送る"; sb.style.cssText="display:block;margin:22px auto 0;background:#06c755;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer";
+   sb.addEventListener("click",()=>{ panel.style.display="none"; show("line"); if(typeof openChat==="function") openChat();
+    setTimeout(()=>{ const inp=document.querySelector("#line-text"); const snd=document.querySelector("#line-send");
+     if(inp&&snd){ inp.value="今日の相性占い、"+pct+"%やって！"; snd.click(); } },700); });
+   panel.appendChild(sb); } });
 })();
 /* --- v155: photo of the day banner in the photos app --- */
 (function(){
@@ -5578,6 +5588,132 @@ app.style.display="flex";},true);
    return _ch(n);
   };
  });
+})();
+</script>
+<script>
+/* ===== Tinder ver v40: original v164-v192 spec sync, retold for the Tinder arc (v165/v191/v192 are new-voice items and stay pending; v169 friend photos move to the photo pass; v174 was already covered by the morning-after IG post) ===== */
+/* --- v164: the free chat remembers - topics she mentions resurface later, long messages earn attentive replies, tiny ones an emoji --- */
+(function(){
+ if(typeof himReply!=="function"||state._v164m) return; state._v164m=true;
+ const _hr=himReply;
+ const TOPICS=[
+  [/プリン/,["そういえばプリン、結局買ったん？","プリンの話すると、なお思い出すわ"]],
+  [/カフェ|コーヒー|カフェオレ/,["この前行ったカフェ、また行きたいな","カフェオレ、飲みたくなってきた"]],
+  [/サウナ/,["サウナ、最近行けてる？","整った？　ちゃんと休めてたらええけど"]],
+  [/エビ|からあげ/,["エビの話、聞いたら腹減ってきた","からあげ、揚げたてが一番やな"]],
+  [/旅行|釜山|韓国/,["釜山の話すると、行きたくなるな","海鮮の醤油漬け、また食べたいな"]],
+  [/ライブ|歌|曲/,["ライブ、次いつ行くん？","新曲、もう聴いた？"]],
+  [/映画|ドラマ/,["そのドラマ、続き気になるな","おすすめ、また教えて"]],
+  [/猫|ねこ/,["猫の話、してたな。元気してる？","猫派なん、意外やったわ"]],
+  [/寒い|さむい/,["寒い日、続くな。風邪ひいてない？","温かくして寝るんやで"]],
+  [/誕生日/,["3月24日、覚えてるで","誕生日、近づいたら教えてな"]],
+  [/買い物|オリーブヤング|オリヤン/,["買い物リスト、増えてない？","オリヤン、また行きたいって言ってたな"]],
+  [/雨/,["雨、やんだかな","濡れて帰ってない？"]]];
+ const NAMES=["プリン","カフェ","サウナ","エビ・からあげ","旅行・釜山","ライブ・音楽","映画・ドラマ","猫","寒い日","誕生日","買い物","雨"];
+ himReply=async function(t){ const r=await _hr(t);
+  state._ftN=(state._ftN||0)+1;
+  if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&typeof t==="string"){
+   state._mem=state._mem||[];
+   TOPICS.forEach(([re],i)=>{ if(re.test(t)&&!state._mem.includes(i)) state._mem.push(i); });
+   if(t.length>=40&&Math.random()<0.3){
+    const L=["ちゃんと全部、読んだで","長文、ありがとう。うれしいわ","……なおの話は、ちゃんと聞きたいねん"];
+    setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(L[Math.floor(Math.random()*L.length)]); },3600);
+   } else if(t.trim().length<=2&&Math.random()<0.4){
+    const E=["🥺","😆","❤️","🫶"];
+    setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(E[Math.floor(Math.random()*E.length)]); },2000);
+   } else if(state._mem.length&&Math.random()<0.25){
+    const i=state._mem[Math.floor(Math.random()*state._mem.length)];
+    const pool=TOPICS[i][1]; const line=pool[Math.floor(Math.random()*pool.length)];
+    setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(line); },4200);
+   }
+  }
+  return r; };
+ window.__memNames=()=> (state._mem||[]).map(i=>NAMES[i]);
+})();
+/* --- v166: presence - his LINE row shows a green online dot in free time --- */
+(function(){
+ const nm=document.querySelector("#talk-hiroto .nm"); if(!nm) return;
+ const dot=document.createElement("span");
+ dot.style.cssText="display:none;width:8px;height:8px;border-radius:50%;background:#06c755;margin-left:6px;vertical-align:middle";
+ dot.title="オンライン"; nm.appendChild(dot);
+ setInterval(()=>{ dot.style.display=(state._vmCalm&&!state.started&&!state.ended&&!state.act2)?"inline-block":"none"; },1500);
+})();
+/* --- v170: his LINE feels like an idol's - a live schedule card on his profile, and work-life beats in free chat --- */
+(function(){
+ const prof=document.querySelector("#hiroto-prof");
+ if(prof){ const card=document.createElement("div");
+  card.style.cssText="background:#fff;border-radius:14px;padding:13px 15px;margin:10px 14px 0;color:#111;text-align:left";
+  const SCHED=[["9:00","ラジオ収録",9],["11:30","ボイトレ",11],["13:00","ダンスレッスン",13],["16:00","衣装合わせ",16],["19:00","ライブリハーサル",19],["22:00","帰宅",22]];
+  const draw=()=>{ const h=new Date().getHours(); let cur=0; SCHED.forEach((s,i)=>{ if(h>=s[2]) cur=i; });
+   card.innerHTML='<b style="font-size:13.5px">📅 今日のスケジュール</b>'+SCHED.map((s,i)=>'<div style="display:flex;gap:9px;padding:6.5px 2px;border-bottom:1px solid #f4f4f6;font-size:13px;'+(i===cur?"font-weight:800":"color:#555")+'"><span style="color:#888;width:40px">'+s[0]+'</span><span>'+s[1]+'</span>'+(i===cur?'<span style="margin-left:auto;color:#e1306c;font-size:11px">← 今ここ</span>':'')+'</div>').join(""); };
+  draw(); setInterval(draw,60000); prof.appendChild(card); }
+ if(typeof himReply==="function"&&!state._v170b){ state._v170b=true; const _hr2=himReply;
+  const LINES=["いま、レッスンおわったとこ","マネージャーに、また怒られた笑","次のライブ、来てくれる？","ファンの子らの声援、ほんま力になるねん","衣装、決まったで","振り、やっと揃ったわ"];
+  const SHOTS=[["assets/stage.jpg","今日のステージ"],["assets/studio.jpg","衣装合わせ、おわった"],["assets/crown.jpg","ファンミ、ありがとう"]];
+  himReply=async function(t){ const r=await _hr2(t);
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&Math.random()<0.15){
+    if(Math.random()<0.35&&typeof himPhoto==="function"){ const sc=SHOTS[Math.floor(Math.random()*SHOTS.length)];
+     setTimeout(async ()=>{ if(!state.started&&!state.ended&&!state.act2){ await himPhoto(sc[0]); himMsg(sc[1]); } },2400);
+    } else { const line=LINES[Math.floor(Math.random()*LINES.length)];
+     setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(line); },2400); } }
+   return r; }; }
+})();
+/* --- v171: a weather strip tops the news list --- */
+(function(){
+ const list=document.querySelector("#news-list"); if(!list) return;
+ const d=new Date(); const seed=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+ const W=[["☀️","晴れ","24° / 16°"],["🌤","晴れ時々くもり","23° / 15°"],["☁️","くもり","21° / 14°"],["🌧","雨のちくもり","19° / 13°"]];
+ const w=W[seed%W.length];
+ const bar=document.createElement("div");
+ bar.style.cssText="display:flex;align-items:center;gap:9px;background:#fff;border-radius:12px;padding:10px 13px;margin:10px 12px 2px;color:#111;font-size:13px";
+ bar.innerHTML='<span style="font-size:19px">'+w[0]+'</span><span><b>大阪</b> '+w[1]+'</span><span style="margin-left:auto;color:#888">'+w[2]+'</span>';
+ list.prepend(bar);
+})();
+/* --- v175: the memories movie gains an optional BGM (his Steady video, looped) --- */
+(function(){
+ const ov=document.querySelector("#mem-movie"); if(!ov) return;
+ const sub=ov.querySelector("#mm-sub"); if(!sub) return;
+ const bgm=document.createElement("video"); bgm.src="assets/tt-steady.mp4"; bgm.loop=true; bgm.playsInline=true; bgm.style.display="none"; ov.appendChild(bgm);
+ let on=false;
+ const btn=document.createElement("button"); btn.type="button"; btn.textContent="🎵 BGM OFF";
+ btn.style.cssText="margin-left:10px;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:4px 12px;font-size:11.5px;cursor:pointer";
+ btn.addEventListener("click",e=>{ e.stopPropagation(); on=!on; btn.textContent=on?"🎵 BGM ON":"🎵 BGM OFF"; if(on) bgm.play().catch(()=>{}); else bgm.pause(); });
+ sub.appendChild(btn);
+ new MutationObserver(()=>{ if(ov.style.display==="none") bgm.pause(); else if(on) bgm.play().catch(()=>{}); }).observe(ov,{attributes:true,attributeFilter:["style"]});
+})();
+/* --- v176 + v189: the records panel grows - free-talk count, topics he remembers, live album count, the day they matched --- */
+(function(){
+ const heat=document.querySelector("#set-heat"); if(!heat) return;
+ const row=heat.closest(".setrow"); if(!row||!row.parentElement) return;
+ const mk=(label,id,val)=>{ const r=document.createElement("div"); r.className="setrow"; r.innerHTML='<span>'+label+'</span><span style="color:#8e8e93;font-size:12.5px" id="'+id+'">'+val+'</span>'; return r; };
+ [mk("📅 マッチした日","set-matchday","9月27日（Super Like）"),mk("📷 アルバムの写真","set-album","0枚"),mk("🧠 彼が覚えている話題","set-mem","まだない"),mk("💬 フリートークした回数","set-ftalk","0回")].forEach(r=>row.after(r));
+ setInterval(()=>{ const a=document.querySelector("#set-ftalk"); if(a) a.textContent=(state._ftN||0)+"回";
+  const m=document.querySelector("#set-mem"); if(m){ const ns=window.__memNames?window.__memNames():[]; m.textContent=ns.length?ns.join("・"):"まだない"; }
+  const al=document.querySelector("#set-album"); if(al) al.textContent=document.querySelectorAll("#ph-grid figure").length+"枚";
+ },2000);
+})();
+/* --- v180-v186: X gets its real bottom navigation - home / search / notifications / messages; the DM envelope moves down and carries the scandal badge (v166), the compose button lifts clear --- */
+(function(){
+ const view=document.querySelector("#v-x"); if(!view) return;
+ const oldBtn=[...view.querySelectorAll(".appbar button")].find(b=>b.textContent.trim()==="✉️");
+ const xs=document.querySelector("#x-scroll"); if(xs) xs.style.paddingBottom="76px";
+ const cb=document.querySelector("#x-compose-btn"); if(cb) cb.style.bottom="84px";
+ const nav=document.createElement("div"); nav.id="x-nav";
+ nav.style.cssText="position:absolute;left:0;right:0;bottom:0;height:58px;background:#fff;border-top:1px solid #eff3f4;display:flex;z-index:65;padding-bottom:6px";
+ const mk=(ic,fn)=>{ const b=document.createElement("button"); b.type="button"; b.textContent=ic;
+  b.style.cssText="flex:1;background:none;border:none;font-size:21px;cursor:pointer;position:relative;color:#0f1419";
+  b.addEventListener("click",fn); nav.appendChild(b); return b; };
+ mk("🏠",()=>{ const tl=view.querySelector('[data-xtab="tl"]'); if(tl) tl.click(); if(xs) xs.scrollTop=0; });
+ mk("🔍",()=>{ const q=document.querySelector("#x-q"); if(q){ q.focus(); q.scrollIntoView({block:"center"}); } });
+ mk("🔔",()=>{ const mn=view.querySelector('[data-xtab="mention"]'); if(mn) mn.click(); });
+ const dmBtn=mk("✉️",()=>{ if(oldBtn) oldBtn.click(); });
+ const bd=document.createElement("span");
+ bd.style.cssText="display:none;position:absolute;top:4px;right:calc(50% - 20px);background:#e0245e;color:#fff;font-size:9.5px;font-weight:800;border-radius:999px;padding:1px 5px";
+ bd.textContent="!"; dmBtn.appendChild(bd);
+ setInterval(()=>{ bd.style.display=(state.phase==="scandal"&&!state.act2)?"block":"none"; },1500);
+ dmBtn.addEventListener("click",()=>{ bd.style.display="none"; });
+ if(oldBtn) oldBtn.style.display="none";
+ view.appendChild(nav);
 })();
 </script>
 </body>
