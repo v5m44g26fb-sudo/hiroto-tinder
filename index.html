@@ -1124,15 +1124,14 @@ if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(state.
  const iv=setInterval(()=>{i++; if(i<lines.length){$("#call-sub").textContent=lines[i]; playN(i+1);} else {clearInterval(iv)}},4200); timers.push(iv); }
 else { startCallVoice(); }
 }
-$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
+$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); if(state.ended||state.act2){ await himMsg("…電話、ありがとう"); await himMsg("元気でな"); return; } await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
 async function ending(kind){ if(state.ended) return; state.ended=true;
 const box={open:{h:"エンディング：事実を、まっすぐに",t:"翌日、ひろとは自分の言葉でファンへ報告した。「アプリを使っていたのは事実です。相手とは交際していません」——炎上は続いたけど、嘘のない言葉に、応援の声も少しずつ戻り始めた。",news:"本人がコメント　「交際の事実はありません」"},
 wait:{h:"エンディング：静かに待つ",t:"二人は表向き静かに過ごすことにした。コメント欄は少しずつ落ち着いて、ひと月後——彼の投稿から、アプリの気配は消えていた。知ってる人だけが、知っている。",news:"アプリ利用疑惑は沈静化へ　事務所は静観の構え"},
 away:{h:"エンディング：連絡を絶つ",t:"少しだけ、のつもりだった距離は、そのまま戻らなかった。ある夜、LINEのトーク履歴を見返して——なおは、通知をオフにした。物語はここで、一区切り。",news:"続報なし　二人の行方は——"},
 half:{h:"エンディング：半年後、遠くのステージ",t:"「遠くから、見守る」——なおが選んだのは、終わらせない終わり方だった。連絡は、もうしない。でも彼が歌う場所までは、ファンとして行く。それが、二人で決めた距離の名前になった。半年後の会場で、もう一度だけ——結末は、翌朝の先にある。",news:"半年後――彼はステージに立ち続けている"}}[kind];
 state.ending=kind; await himMsg(kind==="open"?"わかった。俺も、そのつもりやった":kind==="wait"?"うん。なおがそう言うなら、それでいこ":kind==="half"?"…うん。それが、ええのかもな":"…わかった。もう、連絡せんとく");
-await himMsg("今日はありがとうな");
-later(()=>{ const bs=$$("#chat .msg.him .bub"); const last=bs[bs.length-1]; if(last){ const r=document.createElement("span"); r.textContent=" ❤️"; r.style.fontSize="13px"; last.appendChild(r); } },2500);
+await himMsg("……ほんまに、ありがとうな");
 await showPOV(3); const main=$("#v-home"); setHeat(kind==="open"?88:kind==="wait"?45:kind==="half"?55:60);
 addNewsRow("assets/stage.jpg",box.news,"続報 ・ たった今",null);
 push("ニュース速報","#e60012","N",box.news,"タップで結末を確認",()=>{ show("home"); showEnding(box);});
@@ -1334,9 +1333,26 @@ const REPLY_RULES=[
 ];
 const REPLY_FREE=["うん","聞いてるで","なおの言葉、すきやねん","😎","ほんまに？","それでそれで？"];
 const REPLY_CALM=["うんうん","カフェオレ飲みたいなぁ","なおは今日なにしてたん？","😎笑笑"];
+/* v28: post-ending free-chat pools — after the farewell, replies are short, emoji-free, warm but distant (half/away are the farthest) */
+const POST_RULES=[
+ [/好き|大好き|すき/,["…ありがとう","言ってくれるのは、嬉しいで"]],
+ [/ごめん/,["なおが謝ること、なんもないで"]],
+ [/会いたい|あいたい/,["…ごめん","今は、会われへんねん"]],
+ [/元気|大丈夫/,["大丈夫やで","ちゃんと、やってる"]],
+ [/疲れた|しんどい|つらい|泣きそう/,["無理は、せんといてな","ちゃんと寝るんやで"]],
+ [/ありがとう/,["うん","なおも、元気でな"]],
+ [/おはよ/,["…おはよ"]],
+ [/おやすみ/,["おやすみ","ええ夢、見てな"]],
+ [/電話|声/,["…声は、もうあかんねん","ごめんな"]],
+ [/犬|マロン/,["マロンは元気やで","心配させて、ごめんな"]],
+ [/炎上|ニュース|X|インスタ/,["もう、見んでいいで","終わったことやから"]],
+];
+const POST_FREE=["うん","聞いてるで","…そうか","ほんまに？","そっか","うん、ありがとう"];
+const POST_FREE_FAR=["うん","…そうか","そっか"];
 let replyIdx=0;
 function himReply(text){ if(state.act2&&!state._vmA2){ state._vmA2=true; (async()=>{ await himVoice("assets/vm-act2free.mp3","0:06"); })(); return; }
   if(!state.started&&state.phase==="prologue"&&state.chapter>=6&&!state._vmCalm){ state._vmCalm=true; (async()=>{ await himVoice("assets/vm-calmfree.mp3","0:04"); })(); return; }
+  if(state.ended||state.act2){ const far=(state.ending==="half"||state.ending==="away"); let out=null; for(const [re,arr] of POST_RULES){ if(re.test(text)){ out=arr; break } } if(!out) out=[pick(far?POST_FREE_FAR:POST_FREE)]; (async()=>{ for(const t of out){ await himMsg(t,300) } })(); return; }
   const rules=state.started?REPLY_RULES:[]; let out=null;
   for(const [re,arr] of rules){ if(re.test(text)){ out=arr; break } }
   if(!out) out=[pick(state.started?REPLY_FREE:REPLY_CALM)];
@@ -2172,13 +2188,16 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   function bub(cls,text){ var sc=$("#tchat"); var d=document.createElement("div"); d.className="t-bub "+cls; d.textContent=text; sc.appendChild(d); sc.scrollTop=99999; return d; }
   var REPLIES=[[/コーラ/,"コーラは裏切らへん笑"],[/ごはん|食べ|ラーメン|麺/,"ごはんの話は永遠にできるで😎"],[/サウナ/,"サウナ行きたなってきた"],[/好き|かわいい|可愛い/,"…そういうん、嬉しいねん"],[/会いたい|会お/,"俺も会いたいわ。次の休み、あけとく"],[/おはよ/,"おはよー。今日もがんばろな"],[/おやすみ/,"おやすみ。また明日な"],[/犬|マロン/,"マロンは今日も元気やで🐶"],[/映画/,"映画か、なおの好きそうなん探しとくわ"],[/寝られへん|眠れない|寝れない/,"俺も起きてるで。…声聞いたら、寝れるかもな"],[/ドキドキ|ドキッ/,"…俺もやで、実は笑"],[/仕事|アイドル|本物/,"…その話は、会ってからな笑"]];
   var DEF=["おっけー笑","ほんま？","ええやん、それ","もっと聞かせて","なおと喋ってたら時間早いわ"];
+  var REPLIES_POST=[[/好き|かわいい|可愛い/,"…ありがとう"],[/会いたい|会お/,"…ごめん、今は会われへんねん"],[/おはよ/,"…おはよ"],[/おやすみ/,"おやすみ"],[/犬|マロン/,"マロンは元気やで"],[/元気|大丈夫/,"大丈夫やで"],[/ありがとう/,"うん。なおも、元気でな"],[/電話|声/,"…声は、もうあかんねん"]];
+  var DEF_POST=["うん","…そうか","そっか","聞いてるで"];
   var di=0;
   function sendFree(){
     var inp=$("#tf-text"); var v=(inp.value||"").trim(); if(!v) return;
     if(!(typeof state!=="undefined" && state._tinderDone)){ toast("💬 まずは選択肢の会話を進めてね（LINE交換後に自由に話せるよ）"); return; }
     inp.value=""; bub("me",v);
-    var hit=null; for(var i=0;i<REPLIES.length;i++){ if(REPLIES[i][0].test(v)){ hit=REPLIES[i][1]; break; } }
-    var reply=hit||DEF[di++%DEF.length];
+    var post=(typeof state!=="undefined"&&(state.ended||state.act2));
+    var hit=null; var pool=post?REPLIES_POST:REPLIES; for(var i=0;i<pool.length;i++){ if(pool[i][0].test(v)){ hit=pool[i][1]; break; } }
+    var reply=hit||(post?DEF_POST[di++%DEF_POST.length]:DEF[di++%DEF.length]);
     setTimeout(function(){ bub("them",reply); },900+Math.random()*700);
   }
   $("#tf-send").addEventListener("click",sendFree);
@@ -3716,13 +3735,13 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
  /* ---- v90c + v96: his free-chat extras - sends photos, rare honest line then unsends it, real-clock greeting ---- */
  if(typeof himReply==="function"){ const _hr=himReply;
   himReply=async function(t){ 
-   if((state._vmCalm||state._vmA2)&&!state._greeted){ state._greeted=true;
+   if(!state.ended&&(state._vmCalm||state._vmA2)&&!state._greeted){ state._greeted=true;
     const h=new Date().getHours();
     const g=(h>=5&&h<11)?"おはよ":h<16?"昼やな、飯食った？":h<19?"おつかれ、なお":h<24?"今日も一日おつかれ":"……まだ起きてたんか";
     try{ await himMsg(g); }catch(e){} }
    const r=await _hr(t);
    if((state._vmCalm||state._vmA2)&&!state._lcBusy){ const roll=Math.random();
-    if(roll<0.20){ state._lcBusy=true;
+    if(roll<0.20&&!state.ended){ state._lcBusy=true;
      later(async()=>{ try{ await himPhoto(pick(["assets/stage.jpg","assets/studio.jpg","assets/cafe3.jpg"])); await himMsg(pick(["さっきの","……なんか、送りたくなって","見てほしいやつ"])); }catch(e){} state._lcBusy=false; },2600);
     } else if(roll<0.32){ state._lcBusy=true;
      later(async()=>{ try{ await himMsg("……ほんまは、ずっと一緒にいたい"); const bs=$$("#chat .msg.him .bub"); const bub=bs[bs.length-1];
