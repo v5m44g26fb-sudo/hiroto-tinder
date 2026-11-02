@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v72</b>（元版v279までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v73</b>（元版v282までの仕様を追随）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -6569,6 +6569,49 @@ app.style.display="flex";},true);
   if(ip) ip.querySelectorAll("span").forEach(s=>{ if(s.textContent.trim()==="1日前") s.textContent="11月1日"; });
  };
  setInterval(upd,1000); upd();
+})();
+/* ===== Tinder ver v73 (orig v280+v281): the lock screen and her story obey the calendar too, read against this arc (ch0 9/26 the day before she reinstalls, ch1 9/27 the match, ch2 10/4 the first date, ch3 10/12 the line she draws, ch4 10/18 the blurred distance, ch5 11/1, scandal 11/2, act2 11/3). Orig v280: no 11/1 post notification sits on the lock screen in September - a story notification takes its place until chapter 5, and the itsumen notification ages with the chapters (before the match, the friends are still just pushing her to reinstall). Orig v281: her story is a different "today" for every chapter day; the 9/27 segment is the match day, not the original's party, and the photos stay scenery/food - her own photos remain Tinder-profile/match-screen only ===== */
+(function(){
+ if(state._v73cal) return; state._v73cal=true;
+ const ns=document.querySelectorAll(".lock-notif");
+ if(ns.length>=2){
+  const PIC='style="background:linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)"';
+  const IG_SAFE='<span class="p-ic" '+PIC+'>📷</span><span><b>Instagram</b> ・ 今日<br>193.hiroto_jixiang がストーリーを追加しました</span>';
+  const IG_POST='<span class="p-ic" '+PIC+'>📷</span><span><b>Instagram</b> ・ 今日<br>193.hiroto_jixiang が投稿しました「このまま時間が止まればいいのに🙃」</span>';
+  const G1=ns[0].innerHTML;
+  const G0='<span class="p-ic" style="background:#f59e0b">🍻</span><span><b>いつメン🍻</b> ・ 今日<br>ゆい：Tinder、また入れてみなってば🙌</span>';
+  const G3='<span class="p-ic" style="background:#f59e0b">🍻</span><span><b>いつメン🍻</b> ・ 今日<br>みさき：マッチした人、その後どーなってるの？</span>';
+  ns[0].innerHTML=G0; ns[1].innerHTML=IG_SAFE;
+  const updL=()=>{ if(state.phase!=="prologue") return;
+   const ch=state.chapter||0;
+   const want1=ch>=5?IG_POST:IG_SAFE;
+   if(ns[1].innerHTML!==want1) ns[1].innerHTML=want1;
+   const want0=ch>=3?G3:(ch>=1?G1:G0);
+   if(ns[0].innerHTML!==want0) ns[0].innerHTML=want0; };
+  setInterval(updL,900); updL();
+ }
+ const view=document.querySelector("#nao-story-view");
+ if(view){
+  const img=view.querySelector("img");
+  const cap=Array.prototype.slice.call(view.querySelectorAll("div")).filter(d=>d.id!=="nao-story-viewers"&&!d.classList.contains("sbar"))[0];
+  const vw=document.querySelector("#nao-story-viewers");
+  if(img&&cap){
+   const SEGS={
+    0:{img:"assets/cafe.jpg",cap:"お昼の麺🍜",vw:"👁 12人 ・ yui_s、sauna_m 他"},
+    1:{img:"assets/nao-bridge.jpg",cap:"なんか今日は、いいことがありそうな予感🫣",vw:"👁 15人 ・ yui_s、misaki_a 他"},
+    2:{img:"assets/cafe.jpg",cap:"カフェ☕ たまにはゆっくり",vw:"👁 14人 ・ yui_s、rina___ 他"},
+    3:{img:"assets/nao-seafood.jpg",cap:"釜山いきたい🦐 カンジャンセウ…",vw:"👁 18人 ・ yui_s、misaki_a 他"},
+    4:{img:"assets/nao-matcha.jpg",cap:"抹茶🍵",vw:"👁 16人 ・ yui_s、sauna_m 他"},
+    5:{img:"assets/nao-hotpot.jpg",cap:"おなべの季節🍲",vw:"👁 21人 ・ 193.hiroto_jixiang、yui_s 他"} };
+   const A2={img:"assets/cafe.jpg",cap:"おはよう☀ 今日からまた、普通に"};
+   const updS=()=>{ const hot=(state.phase==="scandal"||state.act2);
+    const seg=state.act2?A2:(SEGS[Math.min(5,state.chapter||0)]||SEGS[0]);
+    if(!img.src.endsWith(seg.img)) img.src=seg.img;
+    if(cap.textContent!==seg.cap) cap.textContent=seg.cap;
+    if(!hot&&vw&&seg.vw&&vw.textContent!==seg.vw) vw.textContent=seg.vw; };
+   setInterval(updS,1000); updS();
+  }
+ }
 })();
 /* ===== Tinder ver v68: his free chat gains two more dives - Korean dramas (the stories she loves) and a light drink topic; each fires at most once, same free-calm gates as the other dives ===== */
 (function(){
