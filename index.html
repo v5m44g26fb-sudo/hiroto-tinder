@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v31</b>（元版v158までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v32</b>（元版v163までの仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5321,6 +5321,160 @@ app.style.display="flex";},true);
   c.textContent = state.ended ? "声明のあとも、フォロワーは少しずつ増え続けている" : state.act2 ? "騒動が落ち着いても、フォロワーは減るどころか増えている" : state.phase==="scandal" ? "アプリの件が報じられたあとも、フォロワーは減っていない" : (state.chapter||0)>=4 ? "秋が深まるにつれて、伸びが加速している" : "デビュー以来、右肩上がり"; };
  new MutationObserver(upd).observe(document.querySelector("#v-hisig"),{attributes:true,attributeFilter:["class"]});
  upd();
+})();
+/* ===== v32 (orig v159): his everyday-life lines follow the real clock - Tinder ver gate: prologue free time only (never mid-scandal, never after the farewell; v28 discipline) ===== */
+(function(){
+ if(typeof openChat!=="function") return;
+ const SLOTS={
+  morning:["おはよ。今日は早起きできた","朝、寒くなかった？","今、移動中。電車ぎゅうぎゅう"],
+  noon:["お昼食べた？","今、休憩。ちょっと寝不足","外、いい天気やな"],
+  evening:["今、コンビニ。プリン買うか迷ってる","帰り道。今日もおつかれさま","お風呂、先入るわ"],
+  night:["シャワー出た。さっぱり","明日の服、出した？","そろそろ寝よか"]};
+ const _oc=openChat;
+ openChat=function(){ _oc();
+  if(state.started||state.ended||state.act2||state.phase!=="prologue") return;
+  if(!(state._vmCalm||(state.chapter||0)>=6)) return;
+  if(state._dayAt&&Date.now()-state._dayAt<18*60000) return;
+  if(Math.random()>0.5) return;
+  state._dayAt=Date.now();
+  const h=new Date().getHours();
+  const slot=h<11?"morning":h<16?"noon":h<22?"evening":"night";
+  const L=SLOTS[slot];
+  setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase==="prologue") himMsg(L[Math.floor(Math.random()*L.length)]); },2200);
+ };
+})();
+/* ===== v32 (orig v160): her X posts show a view count that grows while she browses ===== */
+(function(){
+ const view=document.querySelector("#v-x"); const mine=document.querySelector("#x-me-posts");
+ if(!view||!mine) return;
+ const fmt=n=>n>=10000?(n/10000).toFixed(1).replace(/\.0$/,"")+"万":n>=1000?(n/1000).toFixed(1).replace(/\.0$/,"")+"K":String(n);
+ const add=post=>{ if(post.dataset.vw) return; post.dataset.vw="1";
+  const mt=post.querySelector(".mt"); if(!mt) return;
+  const s=document.createElement("span"); s.className="vw-n";
+  let n=800+Math.floor(Math.random()*4000);
+  s.textContent="👁 "+fmt(n); s.style.cssText="color:#71767b;margin-left:2px";
+  mt.appendChild(s);
+  post._vwIv=setInterval(()=>{ if(!view.classList.contains("on")) return;
+   n+=Math.floor(Math.random()*14); s.textContent="👁 "+fmt(n); },9000); };
+ new MutationObserver(()=>mine.querySelectorAll(".post").forEach(add)).observe(mine,{childList:true,subtree:true});
+ mine.querySelectorAll(".post").forEach(add);
+})();
+/* ===== v32 (orig v161): X gains DMs - his official account (staff tone, restrained during the scandal) and a fellow fan to chat lives, merch and the app scandal with ===== */
+(function(){
+ const view=document.querySelector("#v-x"); if(!view) return;
+ const bar=view.querySelector(".appbar"); if(!bar) return;
+ const btn=document.createElement("button"); btn.type="button"; btn.textContent="✉️";
+ btn.style.cssText="margin-left:6px;background:none;border:none;font-size:20px;cursor:pointer;position:relative";
+ bar.appendChild(btn);
+ const panel=document.createElement("div"); panel.id="xdm-panel";
+ panel.style.cssText="position:absolute;inset:0;z-index:78;background:#fff;display:none;flex-direction:column;color:#111";
+ view.appendChild(panel);
+ const THREADS={
+  hiroto:{name:"井汲大翔",h:"@193hiroto",ava:"assets/ig-avatar.jpg",log:[["f","いつも応援ありがとうございます！"]],
+   calm:["メッセージありがとうございます！","応援が力になっています","次のライブで会いましょう！"],
+   scandal:["現在、DMへの個別の返信は控えさせていただいております"],
+   after:["いつも応援ありがとうございます。今回の件では、ご心配をおかけしました","今後とも、ステージでお返しできるよう努めてまいります"]},
+  sakura:{name:"さくらの推し活",h:"@sakura_act",ava:"assets/default-avatar.svg",log:[["f","なおちゃん、今日のライブ映像見た！？"]],
+   calm:["わかる、尊すぎる","チケット当たりますように🙏","次の現場、一緒に行こ！","グッズ、交換しよ〜"],
+   scandal:["ねえ、ニュース見た…？ アプリ使ってたってやつ","正直ショックやけど、信じて待ちたい","叩いてる人、放っておこ","なおちゃん、落ち込んでない？"],
+   after:["声明、出たね。アプリは退会したって","反省してるの、伝わったよね","これからもステージで応援しよ！","グッズ交換の約束、まだ有効やで笑"]}};
+ let cur=null;
+ const esc=s=>s.replace(/</g,"&lt;");
+ const head=t=>'<div style="padding:56px 14px 10px;display:flex;align-items:center;border-bottom:1px solid #eee"><button id="xdm-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><b style="font-size:16px;margin-left:4px">'+t+'</b><button id="xdm-x" style="margin-left:auto;border:none;background:none;font-size:18px;cursor:pointer">✕</button></div>';
+ const wire=backFn=>{ panel.querySelector("#xdm-x").addEventListener("click",()=>panel.style.display="none");
+  panel.querySelector("#xdm-back").addEventListener("click",backFn); };
+ const list=()=>{ panel.innerHTML=head("✉️ ダイレクトメッセージ")+
+  '<div style="overflow-y:auto;padding:6px 0">'+Object.entries(THREADS).map(([k,t])=>'<div class="xdm-row" data-k="'+k+'" style="display:flex;gap:11px;align-items:center;padding:12px 16px;cursor:pointer;border-bottom:1px solid #f4f4f6"><img src="'+t.ava+'" style="width:46px;height:46px;border-radius:50%;object-fit:cover" alt=""><div style="min-width:0"><div style="font-weight:800;font-size:14.5px">'+t.name+' <span style="color:#71767b;font-weight:400;font-size:12.5px">'+t.h+'</span></div><div style="font-size:13px;color:#536471;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(t.log[t.log.length-1][1])+'</div></div></div>').join("")+'</div>';
+  wire(()=>panel.style.display="none");
+  panel.querySelectorAll(".xdm-row").forEach(r=>r.addEventListener("click",()=>open(r.dataset.k))); };
+ const open=k=>{ cur=THREADS[k]; const t=cur;
+  panel.innerHTML=head(t.name+" "+t.h)+
+  '<div id="xdm-msgs" style="flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:#fff"></div>'+
+  '<div style="display:flex;gap:8px;padding:10px 12px 20px;border-top:1px solid #eee"><input id="xdm-in" placeholder="メッセージを入力" maxlength="120" style="flex:1;border:1px solid #cfd9de;border-radius:999px;padding:9px 14px;font-size:14px;outline:none"><button id="xdm-send" style="background:#1d9bf0;color:#fff;border:none;border-radius:999px;padding:9px 18px;font-weight:700;cursor:pointer">送信</button></div>';
+  wire(list);
+  const box=panel.querySelector("#xdm-msgs");
+  const bub=(who,txt)=>{ const d=document.createElement("div");
+   d.style.cssText=who==="me"?"align-self:flex-end;background:#1d9bf0;color:#fff;border-radius:18px;padding:9px 13px;font-size:14px;line-height:1.55;max-width:76%":"align-self:flex-start;background:#eff3f4;border-radius:18px;padding:9px 13px;font-size:14px;line-height:1.55;max-width:76%";
+   d.textContent=txt; box.appendChild(d); box.scrollTop=box.scrollHeight; };
+  t.log.forEach(m=>bub(m[0]==="me"?"me":"f",m[1]));
+  const send=()=>{ const inp=panel.querySelector("#xdm-in"); const v=inp.value.trim(); if(!v) return; inp.value="";
+   t.log.push(["me",v]); bub("me",v);
+   const post=(state.ended||state.act2), scan=(state.phase==="scandal"&&!post);
+   const pool=post?t.after:(scan?t.scandal:t.calm);
+   const r=pool[Math.floor(Math.random()*pool.length)];
+   setTimeout(()=>{ t.log.push(["f",r]); bub("f",r); },1800+Math.random()*2200); };
+  panel.querySelector("#xdm-send").addEventListener("click",send);
+  panel.querySelector("#xdm-in").addEventListener("keydown",e=>{ if(e.key==="Enter") send(); }); };
+ btn.addEventListener("click",()=>{ panel.style.display="flex"; list(); });
+})();
+/* ===== v32 (orig v162): free-chat realism - quick-reply chips above his chat input (labels follow the phase), friends show a typing state in the header, he sometimes asks a question back ===== */
+(function(){
+ /* (a) quick-reply chips in his chat; after the farewell the chips turn quiet too (v28 tone) */
+ const lc=document.querySelector("#line-chat");
+ if(lc){ const input=lc.querySelector(".line-input");
+  if(input){ const chips=document.createElement("div"); chips.id="qr-chips";
+   chips.style.cssText="display:none;gap:7px;padding:7px 12px 2px;flex-wrap:wrap;background:#8fb3d9";
+   const NORMAL=["おつかれさま","会いたい","明日ひま？","おやすみ","好き"];
+   const POST=["うん","ありがとう","おやすみ","元気でいてね"];
+   const btns=NORMAL.map(t=>{ const b=document.createElement("button");
+    b.type="button"; b.textContent=t;
+    b.style.cssText="background:#fff;border:none;border-radius:999px;padding:6.5px 13px;font-size:13px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.15)";
+    b.addEventListener("click",()=>{ const inp=document.querySelector("#line-text"); const snd=document.querySelector("#line-send");
+     if(inp&&snd){ inp.value=b.textContent; snd.click(); } });
+    chips.appendChild(b); return b; });
+   input.before(chips);
+   setInterval(()=>{ const free=!state.started&&(state._vmCalm||state._vmA2||state.ended||state.act2);
+    chips.style.display=free?"flex":"none";
+    if(free){ const post=(state.ended||state.act2); const set=post?POST:NORMAL;
+     btns.forEach((b,i)=>{ b.textContent=set[i%set.length]; b.style.display=i<set.length?"":"none"; }); } },1200); } }
+ /* (b) friends show a typing state in the header until their reply lands */
+ const fchat=document.querySelector("#fchat"); const fsub=document.querySelector("#f-sub");
+ if(typeof fSend==="function"&&fchat&&fsub){ const _fs2=fSend; let restore=null;
+  const setSub=()=>{ try{ if(typeof FCHATS!=="undefined"&&typeof fCur!=="undefined"&&FCHATS[fCur]) fsub.textContent=FCHATS[fCur].sub; }catch(e){} };
+  fSend=function(){ _fs2(); fsub.textContent="入力中…";
+   clearTimeout(restore); restore=setTimeout(setSub,9000); };
+  new MutationObserver(ms=>{ ms.forEach(m=>m.addedNodes.forEach(nd=>{ if(nd.nodeType===1&&nd.classList&&nd.classList.contains("msg")&&!nd.classList.contains("me")){ clearTimeout(restore); setSub(); } })); }).observe(fchat,{childList:true}); }
+ /* (c) he asks back - only while they are still in touch (never after the farewell) */
+ if(typeof himReply==="function"&&!state._v162q){ state._v162q=true; const _hr3=himReply;
+  himReply=async function(t){ const r=await _hr3(t);
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&Math.random()<0.2){
+    const Q=["なおは今日、なにしてたん？","それで、それで？","……わかるわ、それ","今度、写真送ってや","眠くない？　無理すんなよ"];
+    setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(Q[Math.floor(Math.random()*Q.length)]); },3400); }
+   return r; }; }
+})();
+/* ===== v32 (orig v163): free talk answers her actual words - keyword reactions from him while they are still in touch. After the farewell, himReply's own POST_RULES take priority (e.g. 会いたい -> …ごめん / 今は、会われへんねん), so this layer stays silent ===== */
+(function(){
+ if(typeof himReply==="function"&&!state._v163k){ state._v163k=true; const _hr4=himReply;
+  const RULES=[
+   [/疲れた|つかれた|しんどい/,["無理すんなよ。今日は早く寝な","おつかれさま。ゆっくりしいや"]],
+   [/会いたい|あいたい/,["……俺もやで","もうちょっとだけ、我慢してな"]],
+   [/好き|すき/,["……急に言うなや、照れる","俺のほうがな"]],
+   [/おやすみ/,["おやすみ。いい夢見ろよ"]],
+   [/ありがとう|ありがと/,["ええって。これくらい"]],
+   [/ごはん|食べ|おなか|お腹/,["ちゃんと食べた？","なお、少食やから心配やねん"]],
+   [/仕事|バイト/,["仕事、おつかれさま"]],
+   [/眠い|ねむい/,["眠いなら、寝ていいんやで"]]];
+  himReply=async function(t){ const r=await _hr4(t);
+   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&typeof t==="string"){
+    for(const [re,pool] of RULES){ if(re.test(t)){ if(Math.random()<0.7){
+     const line=pool[Math.floor(Math.random()*pool.length)];
+     setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2) himMsg(line); },2600); } break; } } }
+   return r; }; }
+ /* quick chips in friend chats too */
+ const fc=document.querySelector("#friend-chat");
+ if(fc){ const input=fc.querySelector(".line-input");
+  if(input){ const chips=document.createElement("div");
+   chips.style.cssText="display:flex;gap:7px;padding:7px 12px 2px;flex-wrap:wrap;background:#8fb3d9";
+   ["ありがとう！","行こ行こ","まかせて","おやすみ〜"].forEach(t=>{ const b=document.createElement("button");
+    b.type="button"; b.textContent=t;
+    b.style.cssText="background:#fff;border:none;border-radius:999px;padding:6.5px 13px;font-size:13px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.15)";
+    b.addEventListener("click",()=>{ const inp=document.querySelector("#f-text");
+     if(inp&&typeof fSend==="function"){ inp.value=t; fSend(); } });
+    chips.appendChild(b); });
+   input.before(chips); } }
+ /* keep the input focused after sending to him */
+ const snd=document.querySelector("#line-send");
+ if(snd) snd.addEventListener("click",()=>setTimeout(()=>{ const i=document.querySelector("#line-text"); if(i) i.focus({preventScroll:true}); },350));
 })();
 </script>
 </body>
