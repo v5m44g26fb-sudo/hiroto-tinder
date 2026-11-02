@@ -730,7 +730,7 @@ input,textarea{font-size:16px!important}
 
 <!-- ===== PHOTOS ===== -->
 <section class="view" id="v-photos">
-<div id="ph-view"><button id="pv-share" style="position:absolute;top:52px;right:54px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">↗</button><button id="pv-fav" style="position:absolute;top:52px;right:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">♡</button><button id="pv-close" style="position:absolute;top:52px;left:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">✕</button><button class="pv-nav" id="pv-prev" style="left:8px">‹</button><button class="pv-nav" id="pv-next" style="right:8px">›</button><img class="main" id="pv-img" src="" alt=""><div class="pv-meta"><div class="pv-cap" id="pv-cap"></div><div class="pv-date" id="pv-date"></div></div></div>
+<div id="ph-view"><button id="pv-play" style="position:absolute;top:52px;right:96px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:13px;cursor:pointer;z-index:2">▶</button><button id="pv-share" style="position:absolute;top:52px;right:54px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">↗</button><button id="pv-fav" style="position:absolute;top:52px;right:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">♡</button><button id="pv-close" style="position:absolute;top:52px;left:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">✕</button><button class="pv-nav" id="pv-prev" style="left:8px">‹</button><button class="pv-nav" id="pv-next" style="right:8px">›</button><img class="main" id="pv-img" src="" alt=""><div class="pv-meta"><div class="pv-cap" id="pv-cap"></div><div class="pv-date" id="pv-date"></div></div></div>
 <div class="appbar"><button class="back" data-home>‹</button><span class="t">写真</span><span class="s">ひろと＋思い出</span></div>
 <div class="scroll">
 <div class="album-tabs" id="album-tabs"><button data-album="all" class="act">すべて</button><button data-album="him">彼</button><button data-album="date">デート</button><button data-album="post">投稿</button></div>
@@ -803,7 +803,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v13</b>（元版 v88相当のアプリ仕様に同期中）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v14</b>（アプリ仕様は元版 v88相当に同期済み）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2406,6 +2406,292 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   const d=new Date();
   st.textContent="最終更新 "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");
  },1500);
+})();
+
+/* ===== Tinder ver v14: app-spec sync part 2 (Instagram / home page 2 / album & viewer) — original v59 slideshow ===== */
+(function(){ let pvTimer=null;
+ function pvPlay(on){ const b=document.querySelector("#pv-play");
+  if(on&&!pvTimer){ pvTimer=setInterval(()=>{ if(!document.querySelector("#ph-view").classList.contains("on")){ pvPlay(false); return; } pvShow(pvIdx+1); },2800); if(b) b.textContent="⏸"; }
+  else if(!on&&pvTimer){ clearInterval(pvTimer); pvTimer=null; if(b) b.textContent="▶"; } }
+ const b=document.querySelector("#pv-play"); if(b) b.addEventListener("click",()=>pvPlay(!pvTimer));
+ const c=document.querySelector("#pv-close"); if(c) c.addEventListener("click",()=>pvPlay(false),true);
+})();
+/* ===== original v74: photo viewer set-as-wallpaper (swipe already built into this viewer) ===== */
+(function(){
+ const view=document.querySelector("#ph-view"); if(!view) return;
+ const b=document.createElement("button"); b.id="pv-wall"; b.textContent="🖼";
+ b.style.cssText="position:absolute;top:52px;right:138px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:14px;cursor:pointer;z-index:2";
+ b.setAttribute("aria-label","壁紙にする");
+ b.addEventListener("click",()=>{ const list=pvList(); const f=list[pvIdx]; if(!f) return;
+  const img=f.querySelector("img"); const src=img?img.getAttribute("src"):""; if(!src) return;
+  const home=document.querySelector("#v-home");
+  if(home){ home.style.backgroundImage='url("'+src+'")'; home.style.backgroundSize="cover"; home.style.backgroundPosition="center"; }
+  const wb=document.querySelector("#set-wall"); if(wb) wb.textContent="カスタム";
+  toast("🖼 <b>ホーム画面の壁紙にしたよ</b>"); pop(); });
+ view.appendChild(b);
+})();
+/* ===== original v79: X search history chips + LINE chat photos open the album ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#x-history{display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px 2px}"+
+  "#x-history button{border:1px solid #e6ecf0;background:#f7f9fa;border-radius:999px;padding:5px 11px;font-size:12px;cursor:pointer;font-family:inherit;color:#0f1419}"+
+  "#x-history .hh{font-size:11px;color:#536471;align-self:center;font-weight:700}";
+ document.head.appendChild(css);
+ const bar=document.querySelector(".x-searchbar");
+ if(bar&&typeof doSearch==="function"){ const hist=[]; const box=document.createElement("div"); box.id="x-history"; box.style.display="none";
+  bar.parentNode.insertBefore(box,bar.nextSibling);
+  const render=()=>{ box.style.display=hist.length?"flex":"none";
+   box.innerHTML='<span class="hh">最近の検索</span>'+hist.map(h=>'<button data-h="'+h.replace(/"/g,"")+'">'+h+'</button>').join("");
+   box.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{ const q=b.dataset.h; const inp=document.querySelector("#x-q"); if(inp) inp.value=q; doSearch(q); })); };
+  const _ds=doSearch; doSearch=function(q){ q=(q||"").trim(); if(q){ hist.unshift(q); for(let i=hist.length-1;i>=0;i--) if(hist.indexOf(hist[i])!==i) hist.splice(i,1); if(hist.length>5) hist.length=5; render(); } return _ds(q); };
+ }
+ document.addEventListener("click",e=>{ const img=e.target.closest("#chat .bub img"); if(!img) return;
+  const base=(img.getAttribute("src")||"").split("/").pop(); if(!base) return;
+  const fig=Array.from(document.querySelectorAll("#ph-grid figure")).find(f=>{ const im=f.querySelector("img"); return im&&(im.getAttribute("src")||"").endsWith(base); });
+  if(fig){ show("photos"); setTimeout(()=>fig.click(),80); } });
+})();
+/* ===== original v80: home screen page 2 (calendar / clock / memo / weather — contents remapped to this ver) ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#home-page2{position:absolute;inset:0;padding:96px 20px 16px;display:none;flex-direction:column;z-index:3}"+
+  "#home-page2 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 12px}"+
+  ".hp-panel{position:absolute;inset:0;background:#f7f7fa;z-index:80;display:none;flex-direction:column;padding:64px 16px 16px;overflow-y:auto}"+
+  ".hp-panel .hp-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}"+
+  ".hp-panel .hp-close{border:none;background:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}"+
+  ".cal-row,.memo-row{background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:14px;display:flex;gap:10px;align-items:center}"+
+  ".cal-row .cd{font-weight:800;color:#d62976;min-width:44px}"+
+  ".memo-row.lock,.cal-row.lock{opacity:.5}";
+ document.head.appendChild(css);
+ const home=document.querySelector("#v-home"); if(!home) return;
+ const p2=document.createElement("div"); p2.id="home-page2";
+ p2.innerHTML='<div class="grid">'
+  +'<button class="appicon" data-hp="cal"><span class="ic" style="background:linear-gradient(180deg,#ffffff,#e8e8ee);color:#d92b2b;font-size:24px">📅</span><span class="lb">カレンダー</span></button>'
+  +'<button class="appicon" data-hp="clock"><span class="ic" style="background:#111;font-size:24px">🕐</span><span class="lb">時計</span></button>'
+  +'<button class="appicon" data-hp="memo"><span class="ic" style="background:linear-gradient(180deg,#ffd94d,#f5b81d);font-size:24px">📝</span><span class="lb">メモ</span></button>'
+  +'<button class="appicon" data-hp="wx"><span class="ic" style="background:linear-gradient(180deg,#4a90d9,#7ab648);font-size:24px">🌤</span><span class="lb">天気</span></button>'
+  +'</div><div class="home-pages" style="margin-top:auto"><i></i><i class="on"></i><span class="hp-search">🔍 検索</span></div>';
+ home.appendChild(p2);
+ const inner=home.querySelector(".home-inner");
+ const setPage=n=>{ const two=n===2; p2.style.display=two?"flex":"none"; if(inner) inner.style.visibility=two?"hidden":"visible"; };
+ const dots1=home.querySelector(".home-pages");
+ if(dots1){ const d=dots1.querySelectorAll("i"); if(d[1]){ d[1].style.cursor="pointer"; d[1].addEventListener("click",()=>setPage(2)); } }
+ p2.querySelectorAll(".home-pages i")[0].addEventListener("click",()=>setPage(1));
+ let sx=null;
+ home.addEventListener("touchstart",e=>{ if(e.target.closest(".hp-panel")) { sx=null; return; } sx=e.changedTouches[0].clientX; },{passive:true});
+ home.addEventListener("touchend",e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; sx=null;
+  if(Math.abs(dx)<55) return; setPage(dx<0?2:1); },{passive:true});
+ const panel=document.createElement("div"); panel.className="hp-panel"; panel.id="hp-panel"; home.appendChild(panel);
+ let clockIv=null;
+ const openPanel=(title,html)=>{ panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">'+title+'</b></div>'+html;
+  panel.style.display="flex";
+  panel.querySelector(".hp-close").addEventListener("click",()=>{ panel.style.display="none"; if(clockIv){ clearInterval(clockIv); clockIv=null; } }); };
+ const CAL=[["9/27","🔥 マッチした日",()=>state.chapter>=1],["10/4","☕ 初デート",()=>state.chapter>=2],["10/12","🌙 線引き",()=>state.chapter>=3],["10/18","🌃 あの夜",()=>state.chapter>=5],["11/1","🍜 久しぶりのカフェ",()=>state.chapter>=5],["11/2","🔥 バレた日",()=>state.chapter>=6||state.phase==="scandal"],["11/3","🌅 翌朝",()=>!!state.act2]];
+ const MEMO=[["Super Like、押しちゃったな",()=>state.chapter>=1],["カフェオレ、覚えた",()=>state.chapter>=2],["言わなあかんこと、言えた",()=>state.chapter>=3],["…ごめん、しか言えん",()=>state.chapter>=5],["なおだけは、守る",()=>state.phase==="scandal"],["歌で返す。それしかできん",()=>!!state.act2]];
+ p2.querySelectorAll("[data-hp]").forEach(b=>b.addEventListener("click",()=>{ const k=b.dataset.hp;
+  if(k==="cal") openPanel("📅 カレンダー", CAL.map(c=>{ const un=c[2](); return '<div class="cal-row'+(un?"":" lock")+'"><span class="cd">'+c[0]+'</span><span>'+(un?c[1]:"？？？")+'</span></div>'; }).join(""));
+  if(k==="memo") openPanel("📝 メモ", MEMO.map(m=>{ const un=m[1](); return '<div class="memo-row'+(un?"":" lock")+'"><span>'+(un?("✏️ "+m[0]):"🔒 まだ書かれていない")+'</span></div>'; }).join("")+'<div style="color:#8e8e93;font-size:12px;padding:4px 2px">ひろとのメモ（物語が進むと増える）</div>');
+  if(k==="wx"){ const w= state.act2? ["🌅","15°","晴れ。新しい朝"] : state.phase==="scandal"? ["🌧","13°","雨。傘、忘れんなよ"] : state.chapter>=4? ["⛅","16°","くもりときどき晴れ"] : state.chapter>=2? ["🌤","19°","秋晴れ。デート日和"] : ["☀️","22°","まだ夏の名残"];
+   openPanel("🌤 天気",'<div style="background:linear-gradient(160deg,#4a90d9,#7ab648);border-radius:18px;color:#fff;padding:22px"><div style="font-size:15px">📍 大阪市</div><div style="font-size:56px;font-weight:800;margin:6px 0">'+w[0]+" "+w[1]+'</div><div style="font-size:14.5px">'+w[2]+'</div></div>'); }
+  if(k==="clock"){ openPanel("🕐 時計",'<div style="text-align:center;padding-top:26px"><div style="color:#8e8e93;font-size:13px">大阪 ・ いま</div><div id="hp-clock" style="font-size:54px;font-weight:800;letter-spacing:-1px;margin:8px 0">--:--:--</div><div style="color:#8e8e93;font-size:13.5px">……今、何してる？</div></div>');
+   const tick=()=>{ const el=panel.querySelector("#hp-clock"); if(!el) return; const d=new Date(); el.textContent=[d.getHours(),d.getMinutes(),d.getSeconds()].map(x=>String(x).padStart(2,"0")).join(":"); };
+   tick(); clockIv=setInterval(tick,500); }
+ }));
+})();
+/* ===== original v82: Instagram realism - liked-by list, comment likes, post menu ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#lb-panel{position:absolute;inset:0;background:#fff;z-index:240;display:none;flex-direction:column;padding:64px 0 0}"+
+  ".lb-row{display:flex;align-items:center;gap:10px;padding:10px 16px}"+
+  ".lb-row .fb{margin-left:auto;border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:800;cursor:pointer;border:1px solid #dbdbdb;background:#0095f6;color:#fff}"+
+  ".lb-row .fb.on{background:#fff;color:#111}"+
+  ".cmt-like{float:right;color:#b5b5b5;font-size:13px;cursor:pointer;padding:2px 4px}"+
+  ".cmt-like.on{color:#ff3040}"+
+  "#ig-sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;z-index:250;border-radius:18px 18px 0 0;padding:10px 0 26px;display:none;box-shadow:0 -8px 30px rgba(0,0,0,.25)}"+
+  "#ig-sheet button{display:block;width:100%;background:none;border:none;padding:14px;font-size:15px;font-family:inherit;cursor:pointer}"+
+  ".likes-line{cursor:pointer}";
+ document.head.appendChild(css);
+ const FANS=[["hiroto_fan","👑","#e5c158"],["hrt_dayo","🎤","#7ab648"],["ikumi_ouen","💙","#5aa2d6"],["sing_hiroto","🎧","#b48ec9"],["hrt_1029","🌟","#d9a441"],["weibo_fan","🏆","#d92b2b"],["sg_hrt","🇸🇬","#48b8a8"],["hrt_mama","🍮","#e879a0"],["kp_hrt","📸","#888"]];
+ function likedByPanel(view){ let p=view.querySelector("#lb-panel"); if(p) return p;
+  p=document.createElement("div"); p.id="lb-panel";
+  p.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:0 16px 12px"><button class="lb-close" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b style="font-size:16px">いいね！した人</b></div><div class="lb-list" style="overflow-y:auto"></div>';
+  view.appendChild(p);
+  p.querySelector(".lb-close").addEventListener("click",()=>{ p.style.display="none"; });
+  return p; }
+ function openLikedBy(view,count){ const p=likedByPanel(view); const list=p.querySelector(".lb-list");
+  list.innerHTML=""; const rows=FANS.slice(0,8);
+  rows.forEach(r=>{ const d=document.createElement("div"); d.className="lb-row";
+   d.innerHTML='<span class="ava-txt" style="background:'+r[2]+';width:42px;height:42px;font-size:18px">'+r[1]+'</span><span><b style="font-size:14px">'+r[0]+'</b><br><span style="color:#8e8e93;font-size:12px">フォロワー '+(Math.floor(Math.random()*900+40))+'人</span></span>';
+   const fb=document.createElement("button"); fb.className="fb"; fb.textContent="フォローする";
+   fb.addEventListener("click",()=>{ const on=fb.classList.toggle("on"); fb.textContent=on?"フォロー中":"フォローする"; });
+   d.appendChild(fb); list.appendChild(d); });
+  const more=document.createElement("div"); more.style.cssText="padding:12px 16px;color:#8e8e93;font-size:12.5px";
+  more.textContent="他 "+Math.max(0,count-8).toLocaleString("ja-JP")+" 件"; list.appendChild(more);
+  p.style.display="flex"; }
+ document.addEventListener("click",e=>{ const post=e.target.closest(".ig-post"); if(!post) return;
+  const view=post.closest("#v-hisig,#v-ig"); if(!view) return;
+  const cap=post.querySelector(".cap"); if(!cap) return;
+  const m=(cap.textContent||"").match(/いいね！：([\d,]+)件/);
+  if(m&&e.target.closest(".cap")){ const r=cap.getBoundingClientRect();
+   if(e.clientY<r.top+24){ openLikedBy(view,parseInt(m[1].replace(/,/g,""))); } }
+ });
+ const addHearts=root=>{ root.querySelectorAll(".cmt").forEach(c=>{ if(c.querySelector(".cmt-like")) return;
+   const h=document.createElement("span"); h.className="cmt-like"; h.textContent="♡";
+   h.addEventListener("click",ev=>{ ev.stopPropagation(); h.classList.toggle("on"); h.textContent=h.classList.contains("on")?"♥":"♡"; });
+   c.appendChild(h); }); };
+ ["#v-hisig","#v-ig"].forEach(sel=>{ const v=document.querySelector(sel); if(!v) return; addHearts(v);
+  new MutationObserver(ms=>ms.forEach(x=>x.addedNodes.forEach(n=>{ if(n.nodeType===1) addHearts(n); }))).observe(v,{childList:true,subtree:true}); });
+ const sheet=document.createElement("div"); sheet.id="ig-sheet";
+ sheet.innerHTML='<button data-a="copy">🔗 リンクをコピー</button><button data-a="share">↗ 共有する</button><button data-a="mute" style="color:#d92b2b">🚫 この投稿をミュート</button><button data-a="cancel" style="color:#8e8e93">キャンセル</button>';
+ document.querySelector("#phone").appendChild(sheet);
+ sheet.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{ sheet.style.display="none";
+  if(b.dataset.a==="copy") toast("🔗 <b>リンクをコピーしました</b>");
+  if(b.dataset.a==="share") toast("↗ <b>共有シート</b>（物語の中だけ）");
+  if(b.dataset.a==="mute") toast("🚫 <b>ミュートしました</b>（気分だけ）"); }));
+ document.addEventListener("click",e=>{ const t=e.target;
+  if(t.textContent&&t.textContent.trim()==="…"&&t.closest&&t.closest(".ig-post")){ sheet.style.display="block"; } });
+})();
+/* ===== original v83: Instagram - grid taps jump to posts, her saved-posts tab, follower list ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "@keyframes postflash{0%{box-shadow:0 0 0 3px #0095f6 inset}100%{box-shadow:0 0 0 0 transparent inset}}"+
+  ".post-flash{animation:postflash 1.4s ease}"+
+  ".ig-tabs{display:flex;border-top:1px solid #eee;margin-top:6px}"+
+  ".ig-tabs button{flex:1;background:none;border:none;padding:9px;font-size:14px;cursor:pointer;color:#8e8e93;font-family:inherit}"+
+  ".ig-tabs button.on{color:#111;box-shadow:0 -2px 0 #111 inset;font-weight:700}"+
+  "#ig-saved{display:none}"+
+  "#ig-saved .empty{grid-column:1/-1;text-align:center;color:#8e8e93;font-size:13px;padding:26px 10px}";
+ document.head.appendChild(css);
+ const baseOf=el=>{ const s=el.getAttribute("src")||""; return s.split("/").pop(); };
+ const jumpTo=(view,imgEl)=>{ const b=baseOf(imgEl); if(!b) return;
+  const post=Array.from(view.querySelectorAll(".ig-post")).find(p=>{ const im=p.querySelector("img.pimg"); return im&&baseOf(im)===b; });
+  if(post){ post.scrollIntoView({behavior:"smooth",block:"center"}); post.classList.remove("post-flash"); void post.offsetWidth; post.classList.add("post-flash"); } };
+ ["#v-hisig","#v-ig"].forEach(sel=>{ const v=document.querySelector(sel); if(!v) return;
+  v.addEventListener("click",e=>{ const g=e.target.closest(".ig-grid"); if(!g||g.id==="ig-saved") return;
+   if(e.target.tagName==="IMG") jumpTo(v,e.target); }); });
+ document.addEventListener("click",e=>{ const sb=e.target.closest(".save-btn"); if(!sb) return;
+  const post=sb.closest(".ig-post"); if(post) post.classList.toggle("my-saved"); },true);
+ const ig=document.querySelector("#v-ig"); if(!ig) return;
+ const stories=ig.querySelector(".stories");
+ if(stories&&!ig.querySelector(".ig-tabs")){
+  const tabs=document.createElement("div"); tabs.className="ig-tabs";
+  tabs.innerHTML='<button class="on" data-t="posts">▦ 投稿</button><button data-t="saved">🔖 保存済み</button>';
+  stories.parentNode.insertBefore(tabs,stories.nextSibling);
+  const saved=document.createElement("div"); saved.className="ig-grid"; saved.id="ig-saved"; tabs.parentNode.insertBefore(saved,tabs.nextSibling);
+  const buildSaved=()=>{ saved.innerHTML="";
+   const posts=document.querySelectorAll(".ig-post.my-saved");
+   if(!posts.length){ saved.innerHTML='<div class="empty">保存した投稿はまだないよ<br>投稿の 🔖 で保存できる</div>'; return; }
+   posts.forEach(p=>{ const im=p.querySelector("img.pimg"); if(!im) return;
+    const i=document.createElement("img"); i.src=im.getAttribute("src"); i.alt="";
+    i.addEventListener("click",()=>{ const view=p.closest("#v-hisig,#v-ig"); show(view.id==="v-hisig"?"hisig":"ig");
+     setTimeout(()=>jumpTo(view,i),80); });
+    saved.appendChild(i); }); };
+  tabs.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+   tabs.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
+   const sv=b.dataset.t==="saved"; if(sv) buildSaved();
+   ig.querySelectorAll(".ig-post").forEach(p=>{ p.style.display=sv?"none":""; });
+   saved.style.display=sv?"grid":"none"; }));
+ }
+ const stats=ig.querySelector(".ig-stats");
+ if(stats){ stats.style.cursor="pointer";
+  stats.addEventListener("click",()=>{ let p=ig.querySelector("#ig-fl-panel");
+   if(!p){ p=document.createElement("div"); p.id="ig-fl-panel";
+    p.style.cssText="position:absolute;inset:0;background:#fff;z-index:240;display:none;flex-direction:column;padding:64px 0 0";
+    p.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:0 16px 12px"><button class="fl-close" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b style="font-size:16px">フォロワー</b></div><div class="fl-list" style="overflow-y:auto"></div>';
+    ig.appendChild(p); p.querySelector(".fl-close").addEventListener("click",()=>{ p.style.display="none"; }); }
+   const L=[["yui_s","🍓","#e879a0"],["msa_ki","🌊","#7a9cc6"],["rina_rin","🎀","#b48ec9"],["sauna_m","♨️","#7ab648"],["193.hiroto_jixiang","👑","#111"]];
+   if(state.phase==="scandal") L.push(["hiroto_fan","👀","#e5c158"],["scoop_watch","🔍","#888"]);
+   const list=p.querySelector(".fl-list"); list.innerHTML="";
+   L.forEach(r=>{ const d=document.createElement("div"); d.className="lb-row";
+    d.innerHTML='<span class="ava-txt" style="background:'+r[2]+';width:42px;height:42px;font-size:18px">'+r[1]+'</span><span><b style="font-size:14px">'+r[0]+'</b></span>';
+    const fb=document.createElement("button"); fb.className="fb on"; fb.textContent="フォロー中";
+    fb.addEventListener("click",()=>{ const on=fb.classList.toggle("on"); fb.textContent=on?"フォロー中":"フォローする"; });
+    d.appendChild(fb); list.appendChild(d); });
+   p.style.display="flex"; }); }
+})();
+/* ===== original v84: his IG stats open follower / following lists ===== */
+(function(){
+ const v=document.querySelector("#v-hisig"); if(!v) return;
+ const stats=v.querySelector(".ig-stats"); if(!stats) return;
+ stats.style.cursor="pointer";
+ const FOL=[["hiroto_fan","👑","#e5c158"],["hrt_dayo","🎤","#7ab648"],["ikumi_ouen","💙","#5aa2d6"],["sing_hiroto","🎧","#b48ec9"],["hrt_1029","🌟","#d9a441"],["weibo_fan","🏆","#d92b2b"],["sg_hrt","🇸🇬","#48b8a8"],["nao_0324","☕","#a9744f"]];
+ const ING=[["zuhao_official","🎤","#5aa2d6"],["hiroto_official","📮","#111"],["dance_crew_jp","💃","#e879a0"],["studio_north","🎧","#7a9cc6"],["make_rin","💄","#b48ec9"],["stage_photo","📸","#888"],["korea_music","🇰🇷","#48b8a8"],["fashion_tokyo","👕","#7ab648"],["radio_osaka","📻","#d9a441"],["tv_music_jp","📺","#d92b2b"],["fan_cafe_osaka","☕","#a9744f"],["tour_staff","🚌","#666"]];
+ stats.addEventListener("click",e=>{ const cell=e.target.closest(".ig-stats > div"); if(!cell) return;
+  const idx=Array.from(stats.children).indexOf(cell);
+  if(idx===0){ const g=v.querySelector(".ig-grid"); if(g) g.scrollIntoView({behavior:"smooth",block:"start"}); return; }
+  let p=v.querySelector("#his-fl-panel");
+  if(!p){ p=document.createElement("div"); p.id="his-fl-panel";
+   p.style.cssText="position:absolute;inset:0;background:#fff;z-index:240;display:none;flex-direction:column;padding:64px 0 0";
+   p.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:0 16px 12px"><button class="fl-close" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b class="fl-title" style="font-size:16px"></b></div><div class="fl-list" style="overflow-y:auto"></div>';
+   v.appendChild(p); p.querySelector(".fl-close").addEventListener("click",()=>{ p.style.display="none"; }); }
+  const data=idx===1? FOL : ING;
+  p.querySelector(".fl-title").textContent=idx===1? "フォロワー" : "フォロー中";
+  const list=p.querySelector(".fl-list"); list.innerHTML="";
+  data.forEach(r=>{ const d=document.createElement("div"); d.className="lb-row";
+   d.innerHTML='<span class="ava-txt" style="background:'+r[2]+';width:42px;height:42px;font-size:18px">'+r[1]+'</span><span><b style="font-size:14px">'+r[0]+'</b></span>';
+   const fb=document.createElement("button"); fb.className="fb"+(idx===2?" on":""); fb.textContent=idx===2?"フォロー中":"フォローする";
+   fb.addEventListener("click",()=>{ const on=fb.classList.toggle("on"); fb.textContent=on?"フォロー中":"フォローする"; });
+   d.appendChild(fb); list.appendChild(d); });
+  p.style.display="flex"; });
+})();
+/* ===== original v85: Instagram location tags (this ver: his travel posts + her Busan shot) ===== */
+(function(){
+ const LOC={"nao-hl-08.jpg":"부산광역시","ig-busan.jpg":"Busan, South Korea","ig-osaka.jpg":"Osaka, Japan","ig-singapore.jpg":"Singapore","ig-hanbok.jpg":"Seoul, South Korea"};
+ const tag=v=>{ v.querySelectorAll(".ig-post").forEach(p=>{ if(p.querySelector(".loc-tag")) return;
+   const im=p.querySelector("img.pimg"); if(!im) return;
+   const b=(im.getAttribute("src")||"").split("/").pop(); const loc=LOC[b]; if(!loc) return;
+   const ph=p.querySelector(".ph")||p.firstElementChild; if(!ph) return;
+   const d=document.createElement("div"); d.className="loc-tag"; d.textContent="📍 "+loc;
+   d.style.cssText="font-size:11.5px;color:#666;padding:0 12px 7px;margin-top:-5px";
+   ph.parentNode.insertBefore(d,ph.nextSibling); }); };
+ ["#v-hisig","#v-ig"].forEach(sel=>{ const v=document.querySelector(sel); if(!v) return; tag(v);
+  new MutationObserver(()=>tag(v)).observe(v,{childList:true,subtree:true}); });
+})();
+/* ===== original v86: free chat - he sometimes double-texts ===== */
+(function(){
+ if(typeof himReply!=="function") return;
+ const _hr=himReply;
+ himReply=async function(t){ const r=await _hr(t);
+  if((state._vmCalm||state._vmA2)&&!state._fuWait&&Math.random()<0.18){ state._fuWait=true;
+   const FU=["…なんて","いや、なんでもない","…もうちょっとだけ、話そ","寝る前にもっかい、声聞かせてや"];
+   setTimeout(()=>{ state._fuWait=false; himMsg(FU[Math.floor(Math.random()*FU.length)]); },2800); }
+  return r; };
+})();
+/* ===== original v87: during the scandal, his like counts keep ticking up ===== */
+(function(){
+ setInterval(()=>{ if(state.phase!=="scandal"||state.act2) return;
+  const v=document.querySelector("#v-hisig"); if(!v||!v.classList.contains("on")) return;
+  const caps=v.querySelectorAll(".ig-post .cap"); if(!caps.length) return;
+  const cap=caps[Math.floor(Math.random()*caps.length)];
+  cap.innerHTML=cap.innerHTML.replace(/いいね！：([\d,]+)件/, (m,n)=>"いいね！："+(parseInt(n.replace(/,/g,""))+Math.floor(30+Math.random()*300)).toLocaleString("ja-JP")+"件");
+ },4200);
+})();
+/* ===== original v88: friend icons + calmer video call (friend/group icon assets shared with the original; no avatar changes for nao in this ver) ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  "#v-call.video-on #call-act-img{animation:none!important;border:none!important}";
+ document.head.appendChild(css);
+ const FR={"ゆい":"assets/fr-yui.jpg","みさき":"assets/fr-misaki.jpg","りな":"assets/fr-rina.jpg"};
+ [["#talk-yui","ゆい"],["#talk-misaki","みさき"],["#talk-rina","りな"]].forEach(([sel,nm])=>{
+  const row=document.querySelector(sel); if(!row) return; const s=row.querySelector(".ava-txt"); if(!s) return;
+  const img=document.createElement("img"); img.className="avatar"; img.src=FR[nm]; img.width=48; img.height=48; img.alt="";
+  s.replaceWith(img); });
+ if(typeof avaTxt==="function"){ const _at=avaTxt;
+  avaTxt=function(name){ const k=(name||"").trim(); if(FR[k]) return '<img class="avatar" src="'+FR[k]+'" width="40" height="40" alt="">'; return _at(name); }; }
+ const fc=document.querySelector("#friend-chat");
+ if(fc){ const head=fc.querySelector(".line-head");
+  if(head&&!head.querySelector("#fc-ava")){ const img=document.createElement("img"); img.id="fc-ava"; img.className="avatar";
+   img.width=34; img.height=34; img.alt=""; img.style.display="none";
+   const nm=head.querySelector("#f-name"); const anchor=nm?nm.parentElement:null;
+   if(anchor&&anchor.parentElement===head) head.insertBefore(img,anchor); else head.appendChild(img); }
+  setInterval(()=>{ const img=fc.querySelector("#fc-ava"); if(!img) return;
+   const nm=(fc.querySelector("#f-name")||{}).textContent||"";
+   if(FR[nm]){ img.src=FR[nm]; img.style.display=""; } else img.style.display="none"; },800); }
+ [["#talk-group","assets/grp-itsumen.jpg"]].forEach(([sel,src])=>{
+  const row=document.querySelector(sel); if(!row) return;
+  const s=Array.from(row.querySelectorAll("span,div")).find(e=>e.textContent.trim()==="🍻"&&e.children.length===0);
+  if(!s) return;
+  const img=document.createElement("img"); img.className="avatar"; img.src=src; img.width=48; img.height=48; img.alt="";
+  s.replaceWith(img); });
 })();
 </script>
 </body>
