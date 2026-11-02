@@ -856,7 +856,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v24</b>（元版v131〜v136の仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『熱愛バレた件』Tinder ver <b>v25</b>（元版v137〜v141の仕様を同期）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3977,13 +3977,7 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
   setTimeout(collect,2500); })();
 
  /* ---- v112: talk search filters the list; profile status editable with presets ---- */
- (function(){ const list=$("#line-list"); if(!list||$("#talk-search")) return;
-  const bar=document.createElement("div");
-  bar.style.cssText="padding:10px 12px 2px;background:#fff";
-  bar.innerHTML='<input id="talk-search" placeholder="🔍 トークを検索" style="width:100%;box-sizing:border-box;border:none;background:#f1f1f4;border-radius:999px;padding:8px 14px;font-size:13.5px;outline:none">';
-  list.insertBefore(bar,list.firstChild);
-  bar.querySelector("#talk-search").addEventListener("input",e=>{ const q=e.target.value.trim();
-   list.querySelectorAll("button.talkrow").forEach(r=>{ r.style.display=(!q||r.textContent.includes(q))?"":"none"; }); });
+ (function(){ const list=$("#line-list"); if(!list) return;
   const span=$("#my-status");
   if(span){ span.style.cursor="pointer"; span.title="ステータスを変更";
    span.addEventListener("click",e=>{ e.stopPropagation();
@@ -4656,6 +4650,146 @@ function shareRecord(){ const t="『熱愛バレた件』この夜の記録🔥\
    EXTRA.map(([e,t,f])=>{ const un=f(); return '<div style="display:flex;gap:10px;align-items:center;background:'+(un?"#fff":"#ececf0")+';border-radius:12px;padding:11px 13px;margin-bottom:8px;font-size:13.5px;'+(un?"":"opacity:.55")+'"><span style="font-size:19px">'+e+'</span><span>'+(un?t:"🔒 ？？？")+'</span>'+(un?'<span style="margin-left:auto;color:#06c755;font-weight:800">GET</span>':'')+'</div>'; }).join("");
   panel.appendChild(box);
  }).observe(panel,{attributes:true,attributeFilter:["style"]});
+})();
+/* ===== v137: the dock phone icon was wired to LINE - it now actually calls him ===== */
+(function(){
+const ic=document.querySelector(".ic-tel"); if(!ic) return;
+const btn=ic.closest("button"); if(!btn) return;
+btn.addEventListener("click",e=>{ e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
+if(state._openPhone) state._openPhone(); else if(typeof requestCall==="function") requestCall();},true);
+})();
+/* ===== v138: a real phone app - contacts, history, keypad, favorites ===== */
+(function(){
+const vcall=document.querySelector("#v-call"); if(!vcall) return;
+const app=document.createElement("div"); app.id="phone-app";
+app.style.cssText="position:absolute;inset:0;z-index:70;background:#fff;display:none;flex-direction:column;color:#111";
+app.innerHTML='<div style="padding:56px 16px 8px;display:flex;align-items:center"><b id="pa-title" style="font-size:19px">連絡先</b><button id="pa-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
+'<div id="pa-body" style="flex:1;overflow-y:auto;padding:4px 16px"></div>'+
+'<div style="display:flex;border-top:1px solid #eee;padding:7px 0 12px;background:#fff">'+
+[["⭐","お気に入り","fav"],["🕐","履歴","hist"],["👤","連絡先","contacts"],["🔢","キーパッド","pad"]].map((t,i)=>'<button class="pa-tab" data-tab="'+t[2]+'" style="flex:1;background:none;border:none;font-size:11px;color:'+(i===2?"#007aff":"#8e8e93")+';cursor:pointer"><span style="font-size:19px;display:block">'+t[0]+'</span>'+t[1]+'</button>').join("")+'</div>';
+vcall.appendChild(app);
+const body=app.querySelector("#pa-body"), title=app.querySelector("#pa-title");
+const CONTACTS=[
+["ひろと","assets/line-avatar.jpg","携帯 ・ 090-XXXX-XXXX","hiroto"],
+["マネージャー","assets/default-avatar.svg","事務所 ・ 発信不可","mgr"],
+["ゆい","assets/fr-yui.jpg","LINEで連絡","#talk-yui"],
+["みさき","assets/fr-misaki.jpg","LINEで連絡","#talk-misaki"],
+["りな","assets/fr-rina.jpg","LINEで連絡","#talk-rina"]];
+const callHim=(video)=>{ app.style.display="none";
+if(state.phase==="prologue"&&state.chapter<3){ if(typeof toast==="function") toast("📞 まだ電話する仲じゃないかも…（物語を進めてね）"); return;}
+state.caller="hiroto"; show("call");
+const ans=document.querySelector("#call-answer"); if(ans) ans.click();
+if(video) setTimeout(()=>{ const vb=[...document.querySelectorAll("#v-call.cb")].find(b=>b.textContent.includes("📹")); if(vb) vb.click();},700);
+};
+const rowHtml=c=>'<div style="display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid #f4f4f6"><img src="'+c[1]+'" style="width:46px;height:46px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:15px">'+c[0]+'</div><div style="font-size:12px;color:#8e8e93">'+c[2]+'</div></div>'+
+(c[3]==="hiroto"?'<span style="margin-left:auto;display:flex;gap:8px"><button class="pa-call" style="background:#34c759;color:#fff;border:none;width:40px;height:40px;border-radius:50%;font-size:17px;cursor:pointer">📞</button><button class="pa-vcall" style="background:#007aff;color:#fff;border:none;width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer">📹</button></span>'
+:c[3]==="mgr"?'<button class="pa-mgr" style="margin-left:auto;background:#f2f2f7;border:none;border-radius:999px;padding:8px 13px;font-size:12.5px;cursor:pointer">発信</button>'
+:'<button class="pa-line" data-row="'+c[3]+'" style="margin-left:auto;background:#06c755;color:#fff;border:none;border-radius:999px;padding:8px 13px;font-size:12.5px;font-weight:700;cursor:pointer">LINE</button>')+'</div>';
+const wire=()=>{ body.querySelectorAll(".pa-call").forEach(b=>b.addEventListener("click",()=>callHim(false)));
+body.querySelectorAll(".pa-vcall").forEach(b=>b.addEventListener("click",()=>callHim(true)));
+body.querySelectorAll(".pa-mgr").forEach(b=>b.addEventListener("click",()=>{ if(typeof toast==="function") toast("マネージャーには発信できません");}));
+body.querySelectorAll(".pa-line").forEach(b=>b.addEventListener("click",()=>{ app.style.display="none"; show("line");
+setTimeout(()=>{ const t=document.querySelector(b.dataset.row); if(t) t.click();},60);}));};
+const views={
+fav(){ title.textContent="お気に入り";
+body.innerHTML='<div style="text-align:center;padding:20px 0 6px"><img src="assets/line-avatar.jpg" style="width:92px;height:92px;border-radius:50%" alt=""><div style="font-weight:800;font-size:19px;margin-top:9px">ひろと</div><div style="color:#8e8e93;font-size:12.5px">090-XXXX-XXXX</div>'+
+'<div style="display:flex;gap:10px;justify-content:center;margin-top:14px"><button class="pa-call" style="background:#34c759;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer">📞 音声通話</button><button class="pa-vcall" style="background:#007aff;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer">📹 ビデオ通話</button></div></div>'+rowHtml(CONTACTS[0]); wire();},
+hist(){ title.textContent="履歴";
+const log=document.querySelector("#set-calllog");
+const items=log?[...log.querySelectorAll("div")].map(d=>d.textContent.trim()).filter(Boolean):[];
+body.innerHTML=(items.length?items:["📞 ひろと ・ 通話 3:24","📞 ひろと ・ 不在着信"]).map(t=>'<div style="padding:10px 0;border-bottom:1px solid #f4f4f6;font-size:14px">'+t.replace(/</g,"&lt;")+'</div>').join("")+
+'<div style="font-size:12px;color:#aaa;margin-top:10px">※ 履歴は設定アプリの通話履歴と連動しています</div>';},
+contacts(){ title.textContent="連絡先"; body.innerHTML=CONTACTS.map(rowHtml).join(""); wire();},
+pad(){ title.textContent="キーパッド";
+body.innerHTML='<div id="pa-disp" style="text-align:center;font-size:27px;letter-spacing:2px;min-height:38px;padding:10px 0;font-variant-numeric:tabular-nums"></div>'+
+'<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;max-width:280px;margin:0 auto">'+
+["1","2","3","4","5","6","7","8","9","*","0","#"].map(k=>'<button class="pa-key" style="background:#f2f2f7;border:none;border-radius:50%;width:64px;height:64px;font-size:21px;cursor:pointer;justify-self:center">'+k+'</button>').join("")+'</div>'+
+'<div style="display:flex;gap:12px;justify-content:center;margin-top:14px"><button id="pa-dial" style="background:#34c759;color:#fff;border:none;width:58px;height:58px;border-radius:50%;font-size:22px;cursor:pointer">📞</button><button id="pa-del" style="background:#f2f2f7;border:none;width:58px;height:58px;border-radius:50%;font-size:18px;cursor:pointer">⌫</button></div>'+
+'<div style="text-align:center;font-size:11.5px;color:#aaa;margin-top:10px">ヒント：0927 や 1004 にかけると…？</div>';
+let num="";
+const disp=body.querySelector("#pa-disp");
+body.querySelectorAll(".pa-key").forEach(k=>k.addEventListener("click",()=>{ if(num.length<15){ num+=k.textContent; disp.textContent=num;}}));
+body.querySelector("#pa-del").addEventListener("click",()=>{ num=num.slice(0,-1); disp.textContent=num;});
+body.querySelector("#pa-dial").addEventListener("click",()=>{ if(typeof toast!=="function") return;
+if(num==="0927") toast("9月27日。すべては、あの Super Like から⭐");
+else if(num==="1004") toast("10月4日。初めて会った日、本物やとバレた日");
+else if(num.length>=10) toast("この番号は登録されていません");
+else if(num) toast("番号が短すぎます");
+else toast("番号を入力してね");});
+}};
+app.querySelectorAll(".pa-tab").forEach(b=>b.addEventListener("click",()=>{
+app.querySelectorAll(".pa-tab").forEach(x=>x.style.color="#8e8e93"); b.style.color="#007aff";
+views[b.dataset.tab]();}));
+app.querySelector("#pa-x").addEventListener("click",()=>{ app.style.display="none"; show("home");});
+state._openPhone=()=>{ show("call"); app.style.display="flex"; views.contacts();};
+})();
+/* ===== v140: the dock Safari icon becomes a working mini browser ===== */
+(function(){
+const home=document.querySelector("#v-home"); if(!home) return;
+const btn=document.querySelector(".ic-safari")?.closest("button"); if(!btn) return;
+const app=document.createElement("div"); app.id="safari-app";
+app.style.cssText="position:absolute;inset:0;z-index:75;background:#fff;display:none;flex-direction:column;color:#111";
+app.innerHTML='<div style="padding:54px 14px 8px;border-bottom:1px solid #eee"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:17px">🧭</span><input id="sf-q" placeholder="検索またはWebサイト名を入力" style="flex:1;background:#f1f1f4;border:none;border-radius:999px;padding:9px 14px;font-size:13.5px;outline:none"><button id="sf-x" style="border:none;background:none;font-size:18px;cursor:pointer">✕</button></div></div>'+
+'<div id="sf-body" style="flex:1;overflow-y:auto;padding:13px 16px"></div>';
+home.appendChild(app);
+const body=app.querySelector("#sf-body");
+const HOME_HTML='<div style="font-weight:800;font-size:14.5px;margin-bottom:8px">よく見るサイト</div>'+
+[["📸","彼のInstagram","hisig"],["♪","彼のTikTok","tiktok"],["🗞","ニュース","news"],["💬","LINE","line"]].map(s=>'<div class="sf-short" data-go="'+s[2]+'" style="display:flex;gap:11px;align-items:center;padding:10px 2px;border-bottom:1px solid #f4f4f6;cursor:pointer"><span style="font-size:19px">'+s[0]+'</span><span style="font-size:14px">'+s[1]+'</span><span style="margin-left:auto;color:#bbb">›</span></div>').join("")+
+'<div style="font-weight:800;font-size:14.5px;margin:16px 0 6px">検索履歴</div>'+
+["井汲大翔 Tinder","大翔 マッチングアプリ","現役アイドル アプリ 炎上","井汲大翔 事務所コメント","cafe murmur 大阪"].map(h=>'<div class="sf-hist" style="padding:8px 2px;border-bottom:1px solid #f4f4f6;font-size:13.5px;cursor:pointer">🕐 '+h+'</div>').join("")+
+'<div style="font-size:11.5px;color:#aaa;margin-top:12px">※ 履歴は最近「大翔 Tinder」が増殖中…</div>';
+const results=q=>{ body.innerHTML='<div style="font-size:12.5px;color:#888;margin-bottom:9px">「'+q.replace(/</g,"&lt;")+'」の検索結果 約 128,000 件</div>'+
+[[q+" - Wikipedia","ja.wikipedia.org","井汲大翔（いくみ ひろと）は、日本の歌手、ダンサー。…"],
+[""+q+"まとめ - 芸能ニュース","news.example.jp","アプリ利用の経緯と、事務所の対応を時系列で追う。本人のコメントが待たれる。"],
+[q+" | X の話題","x.com","「現役アイドルがTinder!?」最新のポストが次々と流れている。"]]
+.map((r,i)=>'<div class="sf-res" data-i="'+i+'" style="padding:11px 2px;border-bottom:1px solid #f4f4f6;cursor:pointer"><div style="color:#1a0dab;font-size:15px">'+r[0].replace(/</g,"&lt;")+'</div><div style="color:#006621;font-size:11.5px">'+r[1]+'</div><div style="font-size:12.5px;color:#545454;line-height:1.55;margin-top:2px">'+r[2]+'</div></div>').join("")+
+'<button id="sf-back" style="margin-top:14px;background:#f2f2f7;border:none;border-radius:999px;padding:9px 16px;cursor:pointer">← 戻る</button>';
+body.querySelector("#sf-back").addEventListener("click",home2);
+body.querySelectorAll(".sf-res").forEach(r=>r.addEventListener("click",()=>{ if(typeof toast==="function") toast("このページはゲーム内ブラウザでは開けません");}));};
+const home2=()=>{ body.innerHTML=HOME_HTML;
+body.querySelectorAll(".sf-short").forEach(s=>s.addEventListener("click",()=>{ app.style.display="none"; show(s.dataset.go);}));
+body.querySelectorAll(".sf-hist").forEach(h=>h.addEventListener("click",()=>results(h.textContent.replace("🕐 ",""))));};
+btn.addEventListener("click",e=>{ e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
+app.style.display="flex"; home2();},true);
+app.querySelector("#sf-x").addEventListener("click",()=>app.style.display="none");
+app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ const q=e.target.value.trim(); if(q) results(q);}});
+})();
+/* ===== v141: the dock music icon becomes a working player for his videos ===== */
+(function(){
+const home=document.querySelector("#v-home"); if(!home) return;
+const btn=[...home.querySelectorAll(".dock.appicon")].find(b=>b.textContent.includes("🎵")); if(!btn) return;
+const TRACKS=[
+["assets/tt-shinee.mp4","assets/tt-poster-shinee.jpg","ダンスカバー (SHINee)"],
+["assets/tt-seventeen.mp4","assets/tt-poster-seventeen.jpg","ダンスカバー (SEVENTEEN)"],
+["assets/tt-steady.mp4","assets/tt-poster-steady.jpg","Steady"],
+["assets/tt-treasure.mp4","assets/tt-poster-treasure.jpg","ダンスカバー (TREASURE)"],
+["assets/tt-ng.mp4","assets/tt-poster-ng.jpg","NG集 (bonus track)"]];
+const app=document.createElement("div"); app.id="music-app";
+app.style.cssText="position:absolute;inset:0;z-index:75;background:#111;display:none;flex-direction:column;color:#fff";
+app.innerHTML='<div style="padding:54px 14px 8px;display:flex;align-items:center"><b style="font-size:16.5px">🎵 彼のプレイリスト</b><button id="mu-x" style="margin-left:auto;border:none;background:none;color:#fff;font-size:19px;cursor:pointer">✕</button></div>'+
+'<video id="mu-vid" playsinline style="width:100%;aspect-ratio:16/9;background:#000" poster="'+TRACKS[0][1]+'" src="'+TRACKS[0][0]+'"></video>'+
+'<div style="padding:12px 16px 0"><div id="mu-title" style="font-weight:800;font-size:15.5px">'+TRACKS[0][2]+'</div><div style="color:#aaa;font-size:12px">HIROTO ・ @193hiroto</div>'+
+'<input id="mu-prog" type="range" min="0" max="100" value="0" style="width:100%;margin-top:10px;accent-color:#fe2c55">'+
+'<div style="display:flex;justify-content:center;gap:30px;align-items:center;margin-top:6px"><button id="mu-prev" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer">⏮</button><button id="mu-play" style="background:#fe2c55;border:none;color:#fff;width:56px;height:56px;border-radius:50%;font-size:22px;cursor:pointer">▶</button><button id="mu-next" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer">⏭</button></div></div>'+
+'<div style="flex:1;overflow-y:auto;padding:10px 16px">'+TRACKS.map((t,i)=>'<div class="mu-row" data-i="'+i+'" style="display:flex;gap:11px;align-items:center;padding:8px 2px;border-bottom:1px solid #26262c;cursor:pointer"><img src="'+t[1]+'" style="width:46px;height:46px;object-fit:cover;border-radius:8px" alt=""><span style="font-size:13.5px">'+t[2]+'</span>'+(i===0?'<span class="mu-eq" style="margin-left:auto;color:#fe2c55">♪</span>':'')+'</div>').join("")+'</div>';
+home.appendChild(app);
+const vid=app.querySelector("#mu-vid"); let cur=0;
+const load=i=>{ cur=(i+TRACKS.length)%TRACKS.length; vid.src=TRACKS[cur][0]; vid.poster=TRACKS[cur][1];
+app.querySelector("#mu-title").textContent=TRACKS[cur][2];
+app.querySelectorAll(".mu-eq").forEach(e=>e.remove());
+const row=app.querySelectorAll(".mu-row")[cur]; if(row){ const s=document.createElement("span"); s.className="mu-eq"; s.style.cssText="margin-left:auto;color:#fe2c55"; s.textContent="♪"; row.appendChild(s);}};
+const play=()=>{ vid.play().catch(()=>{}); app.querySelector("#mu-play").textContent="⏸";};
+const pause=()=>{ vid.pause(); app.querySelector("#mu-play").textContent="▶";};
+app.querySelector("#mu-play").addEventListener("click",()=>vid.paused?play():pause());
+app.querySelector("#mu-next").addEventListener("click",()=>{ load(cur+1); play();});
+app.querySelector("#mu-prev").addEventListener("click",()=>{ load(cur-1); play();});
+app.querySelectorAll(".mu-row").forEach(r=>r.addEventListener("click",()=>{ load(+r.dataset.i); play();}));
+vid.addEventListener("ended",()=>{ load(cur+1); play();});
+vid.addEventListener("timeupdate",()=>{ if(vid.duration) app.querySelector("#mu-prog").value=Math.round(vid.currentTime/vid.duration*100);});
+app.querySelector("#mu-prog").addEventListener("input",e=>{ if(vid.duration) vid.currentTime=vid.duration*e.target.value/100;});
+app.querySelector("#mu-x").addEventListener("click",()=>{ pause(); app.style.display="none";});
+btn.addEventListener("click",e=>{ e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
+app.style.display="flex";},true);
 })();
 </script>
 </body>
