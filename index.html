@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v179</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v180</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -943,48 +943,48 @@ async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2�
     {label:"え…本物やん！？",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("騒がんでくれて、ありがとう"); if(!alive(t))return; await himMsg("今日は普通に、楽しもな"); ch2main(t); }},
     {label:"…夢じゃないよね？",fn:async()=>{ if(!alive(t))return; await himMsg("夢ちゃうで笑"); if(!alive(t))return; await himMsg("隠してたんは、謝る"); if(!alive(t))return; await himMsg("でも今日は、普通に楽しも"); ch2main(t); }},
   ]); }
-async function ch2main(t){ if(!alive(t))return; await himMsg("今日、楽しみにしてた",700); if(!alive(t))return; await himMsg("カフェオレの美味い店、見つけてん"); if(!alive(t))return; await himMsg("あ、俺は帽子かぶってくわ"); if(!alive(t))return; await himMsg("人目、ちょっと気になるねん…理由は、もう分かるよな"); if(!alive(t))return; await himMsg("…今、めっちゃ近いな",1500); if(!alive(t))return; await himMsg("分かってる。…ごめん");
+async function ch2main(t){ if(!alive(t))return; await himMsg("今日のこと、ずっと楽しみにしててん",700); if(!alive(t))return; await himMsg("カフェオレの本気な店、見つけたで"); if(!alive(t))return; await himMsg("俺、帽子かぶっていくわ"); if(!alive(t))return; await himMsg("ちょっとだけ、人目が気になるねん…理由は、分かるやろ"); if(!alive(t))return; await himMsg("…今、距離バグってるな",1500); if(!alive(t))return; await himMsg("分かってるって。…ごめん");
   later(()=>{ addPhoto("assets/ig-drink.jpg","初デート☕️"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },6500);
-  later(async()=>{ if(!alive(t))return; await himMsg("今日、楽しかった"); if(!alive(t))return; await himMsg("カフェオレ、なおの好きなやつ覚えたで"); if(!alive(t))return; await himMsg("今日は…帰したくないな"); if(!alive(t))return; await himMsg("…なんて、冗談やで笑"); if(!alive(t))return; await himVoice("assets/vm-date.mp3","0:03");
+  later(async()=>{ if(!alive(t))return; await himMsg("今日、ほんまに楽しかった"); if(!alive(t))return; await himMsg("カフェオレ、なおの好みはもう覚えたで"); if(!alive(t))return; await himMsg("今日は…帰したくないな"); if(!alive(t))return; await himMsg("…なんて、冗談やで笑"); if(!alive(t))return; await himVoice("assets/vm-date.mp3","0:03");
     if(!alive(t))return; askChoices("なおの返信を選んで",[
-      {label:"私も楽しかった！",fn:async()=>{ if(!alive(t))return; await himMsg("よかった"); await himMsg("また行こな"); later(()=>povGate(1,3),2000); }},
-      {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画な、任せて"); await himMsg("なおの好きそうなん、探しとく"); later(()=>povGate(1,3),2000); }},
-      {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>povGate(1,3),2000); }},
+      {label:"私も楽しかった！",fn:async()=>{ if(!alive(t))return; await himMsg("よかった、ほんまに"); await himMsg("また行こな"); later(()=>povGate(1,3),2000); }},
+      {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画は任せて"); await himMsg("なおが好きそうなん、探しとくわ"); later(()=>povGate(1,3),2000); }},
+      {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめん、ごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>povGate(1,3),2000); }},
     ]); },8000); }
 async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","抑えられなくなる前に、引く一線。"); chapterCard("第3話","線引き","好きになる前にブレーキを踏んだのは、彼の方だった。<br><span class=\"cc-when\">10月12日（日）夕方 ・ 帰り道 —— LINEを開いてね</span>"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
-  await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("これ以上会ったら、俺ほんまに…",1300); if(!alive(t))return; await himMsg("…ごめん、なんでもない"); later(()=>toast("✋ <b>（伸びかけた手が、途中で止まって、落ちた）</b>"),1200); if(!alive(t))return; await himMsg("俺、こういう仕事やから"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himVoice("assets/vm-t-line.mp3","0:04"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会うの、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
+  await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、少しだけ歩かへん？"); if(!alive(t))return; await himMsg("…話したいこと、あってん"); if(!alive(t))return; await himMsg("これ以上会ったら、俺ほんまに…",1300); if(!alive(t))return; await himMsg("…ごめん、今のは忘れて"); later(()=>toast("✋ <b>（伸びかけた手が、途中で止まって、落ちた）</b>"),1200); if(!alive(t))return; await himMsg("俺の仕事、知ってるやろ"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himVoice("assets/vm-t-line.mp3","0:04"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会う時間、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
   if(!alive(t))return; const fin=async()=>{ later(async()=>{ if(!alive(t))return; await showPOV(2); if(!alive(t))return; startInterlude(t); },2200); };
   askChoices("なおの答えは——",[
-    {label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); if(!alive(t))return; await himMsg("ほんまは、こんなん言う資格ないんやけど"); if(!alive(t))return; await himMsg("また、ごはんだけでも行ってくれる？"); fin(); }},
-    {label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("なおの気持ち、嬉しいねん"); if(!alive(t))return; await himMsg("でも、守られへん約束はしたくないねん"); fin(); }},
-    {label:"ちょっと考えさせて",fn:async()=>{ if(!alive(t))return; await himMsg("うん、待つで"); await himMsg("急かさんから"); addDayChip("10月13日（月）"); await himMsg("おはよ",1600); if(!alive(t))return; await himMsg("…無理に、答え出さんでいいからな"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう、なお"); fin(); }},{label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("気持ち、受け取ったから"); fin(); }}]); }},
+    {label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); if(!alive(t))return; await himMsg("ほんまは、言う資格ないんやけどな"); if(!alive(t))return; await himMsg("また、ごはんだけでも付き合ってくれる？"); fin(); }},
+    {label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("なおの気持ち、ちゃんと嬉しいねん"); if(!alive(t))return; await himMsg("でも、守れへん約束はしたくないねん"); fin(); }},
+    {label:"ちょっと考えさせて",fn:async()=>{ if(!alive(t))return; await himMsg("うん、待ってる"); await himMsg("急かさんから"); addDayChip("10月13日（月）"); await himMsg("おはよ、起きた？",1600); if(!alive(t))return; await himMsg("…無理に答え、出さんでええからな"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう、なお"); fin(); }},{label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("気持ちは、受け取ったから"); fin(); }}]); }},
   ]); }
 async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『曖昧な距離』","友達未満、でも他人じゃない。"); chapterCard("第4話","曖昧な距離","名前のない関係が、いちばん濃くなる夜。<br><span class=\"cc-when\">10月18日（土） ・ 夜 —— LINEを開いてね</span>");
-  await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("今日の、なおが撮ってくれたやつ"); if(!alive(t))return; await himMsg("この前は、急に誘ってごめんな"); if(!alive(t))return; await himMsg("でも、顔見たかってん"); await himStamp("😎"); if(!alive(t))return; await himMsg("…なぁ、他のやつとも会ってんの？"); if(!alive(t))return; await himMsg("…冗談やで"); later(()=>toast("👀 <b>（笑ってるけど、目が笑ってない気がした）</b>"),1000); if(!alive(t))return; await himMsg("今日の映画、暗いとこやから安心やな"); if(!alive(t))return; await himMsg("ほんまは、もっと普通に歩きたいねんけど"); if(!alive(t))return; await himMsg("俺の、飲む？");
+  await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("今日の写真、なおが撮ってくれたやつやな"); if(!alive(t))return; await himMsg("この前は、急に誘ってごめんやで"); if(!alive(t))return; await himMsg("でも、どうしても顔見たかってん"); await himStamp("😎"); if(!alive(t))return; await himMsg("…なぁ、他のやつとも会ってんの？"); if(!alive(t))return; await himMsg("…冗談、やで"); later(()=>toast("👀 <b>（笑ってるけど、目が笑ってない気がした）</b>"),1000); if(!alive(t))return; await himMsg("映画館は暗いから、ちょっと安心やな"); if(!alive(t))return; await himMsg("ほんまは、普通に並んで歩きたいねんけど"); if(!alive(t))return; await himMsg("俺の、飲む？");
   later(()=>toast("📷 ひろとの<b>ストーリー</b>が更新された（彼の垢から見れる）"),3500);
   later(()=>toast("☔ <b>（帰り道、急な雨。一つの傘に、二人。肩が濡れるくらい、近かった）</b>"),5200);
-  const ch4fade=async()=>{ if(!alive(t))return; toast("🌙 <b>——画面は、ここで静かに暗くなる</b>"); later(async()=>{ if(!alive(t))return; addDayChip("10月19日（日）"); await himMsg("…おはよ",1400); if(!alive(t))return; await himMsg("昨日は、ごめんな"); if(!alive(t))return; await himMsg("線、引いたの俺やのに"); if(!alive(t))return; await himMsg("なおは、悪くないからな"); if(!alive(t))return; await himMsg("…また、会ってくれる？"); later(()=>chapter(5),2000); },3800); };
-  const ch4night=async()=>{ if(!alive(t))return; await himMsg("今日は…帰したくないな",900); if(!alive(t))return; await himMsg("…帰りや。俺が送る"); if(!alive(t))return; toast("🚉 <b>（送る、と言ったのに。駅までの足が、やけにゆっくりだった）</b>"); await himMsg("…なぁ、なお",1300); if(!alive(t))return; await himMsg("ほんまに帰したくなくなる前に、帰りや"); if(!alive(t))return; askChoices("なおの返信を選んで",[
+  const ch4fade=async()=>{ if(!alive(t))return; toast("🌙 <b>——画面は、ここで静かに暗くなる</b>"); later(async()=>{ if(!alive(t))return; addDayChip("10月19日（日）"); await himMsg("…おはよ",1400); if(!alive(t))return; await himMsg("昨日のこと、ごめんな"); if(!alive(t))return; await himMsg("線、引いたの俺やのに"); if(!alive(t))return; await himMsg("なおは、何も悪くないからな"); if(!alive(t))return; await himMsg("…また、会ってくれる？"); later(()=>chapter(5),2000); },3800); };
+  const ch4night=async()=>{ if(!alive(t))return; await himMsg("今日は…帰したくないな",900); if(!alive(t))return; await himMsg("…帰りや、送るわ"); if(!alive(t))return; toast("🚉 <b>（送る、と言ったのに。駅までの足が、やけにゆっくりだった）</b>"); await himMsg("…なぁ、なお",1300); if(!alive(t))return; await himMsg("ほんまに帰したくなくなる前に、帰りや"); if(!alive(t))return; askChoices("なおの返信を選んで",[
     {label:"帰したくないなら、どうするの？",fn:async()=>{ if(!alive(t))return; await himMsg("…っ",1700); if(!alive(t))return; await himMsg("なお"); if(!alive(t))return; await himMsg("ほんまに、帰したくなくなるで"); ch4fade(); }},
     {label:"…うん、帰るね",fn:async()=>{ if(!alive(t))return; await himMsg("…そやな"); if(!alive(t))return; await himMsg("嘘。やっぱ、帰したくない"); ch4fade(); }},
   ]); };
   if(!alive(t))return; askChoices("なおの返信を選んで",[
     {label:"誘ってくれて、嬉しいよ",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); await himMsg("なおだけは、特別やねん"); ch4night(); }},
-    {label:"私たちって、何なんやろ",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("名前、つけられへんねん"); if(!alive(t))return; await himMsg("でも、大事なんはほんまやで"); ch4night(); }},
-    {label:"普通のデートも、したいな",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめんな"); if(!alive(t))return; await himMsg("いつか、帽子なしで"); if(!alive(t))return; await himMsg("その日まで、待っててな"); ch4night(); }},
+    {label:"私たちって、何なんやろ",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("名前は、まだつけられへんねん"); if(!alive(t))return; await himMsg("でも、大事なんはほんまやで"); ch4night(); }},
+    {label:"普通のデートも、したいな",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめんな"); if(!alive(t))return; await himMsg("いつか、帽子なしで堂々と"); if(!alive(t))return; await himMsg("その日まで、待っててな"); ch4night(); }},
   ]); }
 async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5話『少し空いた距離』","会えない日が、少し増えた。"); chapterCard("第5話","少し空いた距離","「後悔はしてへん」——その一言だけが、近くにあった。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェ —— LINEを開いてね</span>");
-  await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("久しぶり"); if(!alive(t))return; await himMsg("仕事、立て込んでて"); if(!alive(t))return; await himMsg("最近、連絡できてなくてごめんな"); if(!alive(t))return; await himMsg("あの夜のこと…"); if(!alive(t))return; await himMsg("ずっと考えててん"); if(!alive(t))return; await himMsg("俺、最低やな"); if(!alive(t))return; await himMsg("…でも、後悔はしてへんねん"); if(!alive(t))return; await himMsg("今日、やっと会えたな"); if(!alive(t))return; await himMsg("今日のカフェ、当たりやったな"); if(!alive(t))return; await himMsg("麺、なおのやつも美味そうやった"); if(!alive(t))return; await himMsg("…今日も帽子、深めでごめんな"); if(!alive(t))return; await himMsg("あんま見られたくない日やってん"); if(!alive(t))return; await himMsg("人混みは、今日は避けて歩こ"); if(!alive(t))return; await himMsg("なおと普通に歩きたいだけやねんけどな");
+  await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("…久しぶりやな"); if(!alive(t))return; await himMsg("仕事が、立て込んでてん"); if(!alive(t))return; await himMsg("連絡、空けてごめんな"); if(!alive(t))return; await himMsg("あの夜のこと…"); if(!alive(t))return; await himMsg("ずっと、頭にあってん"); if(!alive(t))return; await himMsg("俺、最低やな"); if(!alive(t))return; await himMsg("…でも、後悔はしてへんねん"); if(!alive(t))return; await himMsg("今日、やっと会えたわ"); if(!alive(t))return; await himMsg("今日のカフェ、正解やったな"); if(!alive(t))return; await himMsg("麺、なおの分も美味そうやったわ"); if(!alive(t))return; await himMsg("…今日も帽子深めで、ごめん"); if(!alive(t))return; await himMsg("今日は、あんまり見られたくない日やってん"); if(!alive(t))return; await himMsg("人混み、今日は避けて歩こな"); if(!alive(t))return; await himMsg("なおと、ただ普通に歩きたいだけやねんけどな");
   later(()=>{ addPhoto("assets/night.jpg","夜の散歩"); },5000);
   later(()=>toast("📷 ひろとが投稿したよ「このまま時間が止まればいいのに🙃」（彼の垢）"),4000);
   if(!alive(t))return; askChoices("なおの返信を選んで",[
     {label:"今日はありがとう",fn:async()=>{ if(!alive(t))return; ch5end(t); }},
-    {label:"明日も会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も"); if(!alive(t))return; await himMsg("約束はできへんけど、また誘うわ"); ch5end(t); }},
-    {label:"帽子なしで歩ける日がいいな",fn:async()=>{ if(!alive(t))return; await himMsg("うん…"); if(!alive(t))return; await himMsg("ごめんな、窮屈な思いさせて"); ch5end(t); }},
+    {label:"明日も会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も"); if(!alive(t))return; await himMsg("約束はできへんけど、また誘う"); ch5end(t); }},
+    {label:"帽子なしで歩ける日がいいな",fn:async()=>{ if(!alive(t))return; await himMsg("うん…"); if(!alive(t))return; await himMsg("ごめんな、窮屈な思いさせてばっかりで"); ch5end(t); }},
   ]); }
-async function ch5end(t){ if(!alive(t))return; await himMsg("今日はありがとうな😎"); if(!alive(t))return; await himMsg("カフェオレ、また飲みに行こ"); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04");
+async function ch5end(t){ if(!alive(t))return; await himMsg("今日は、ありがとうな😎"); if(!alive(t))return; await himMsg("カフェオレ、また飲みに行こ"); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04");
   later(()=>{ if(!alive(t))return; toast("📸 <b>…シャッター音？</b>　気のせい…だよね"); },2500);
-  later(async()=>{ if(!alive(t))return; await himMsg("…なぁ、今の、なんか光らんかった？"); if(!alive(t))return; await himMsg("気のせいか"); later(()=>{ if(alive(t)) toScandal(); },2600); },4200); }
+  later(async()=>{ if(!alive(t))return; await himMsg("…なぁ、今、光らんかった？"); if(!alive(t))return; await himMsg("気のせいか"); later(()=>{ if(alive(t)) toScandal(); },2600); },4200); }
 /* ============ story start ============ */
 function scheduleFirstPush(){ if(state._pushScheduled) return; state._pushScheduled=true;
   later(()=>{ if(state.started) return;
@@ -2168,82 +2168,82 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChip("9月27日（土）夜 —— マッチした日");
     tNote("（写真、なんか似てる気もしたけど…本人なわけないか。声も聞いてないし）");
     await tThem("マッチありがとう笑",600);
-    await tThem("ひろとです、よろしく");
-    await tThem("暇で始めてん、このアプリ");
-    await tThem("写真、タイプやってん笑");
-    await tThem("カフェでカフェオレのやつ、あの写真は反則やで笑");
-    await tThem("Super Likeは…ノリで押しちゃった");
-    await tThem("…ほんまは、何回か見返しててん笑");
+    await tThem("ひろとやで、よろしくな");
+    await tThem("なんとなく始めてん、このアプリ");
+    await tThem("プロフィールの写真、刺さってん笑");
+    await tThem("カフェオレ持ってる写真、あれはずるいわ笑");
+    await tThem("Super Likeは…気づいたら押しててん");
+    await tThem("…ほんまは、3回くらい見返した笑");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"Super Likeありがとう笑 びっくりした", fn:async()=>{ await tThem("勢いやで笑"); await tThem("でも、嘘ちゃうから"); step2(); }},
-      {label:"よろしく〜 気楽に話そ", fn:async()=>{ await tThem("おっけー"); await tThem("気楽なん、助かるわ笑"); step2(); }},
-      {label:"タイプって、どのへんが？笑", fn:async()=>{ await tThem("雰囲気やな"); await tThem("なんか、楽しそうやった"); step2(); }},
-      {label:"コーラ毎日はほんと？笑", fn:async()=>{ await tThem("ほんまやで"); await tThem("ごはんとコーラはセットやねん笑"); step2(); }},
-      {label:"見返したん？笑 …ちょっと嬉しい", fn:async()=>{ await tThem("内緒やで😎"); await tThem("そういうとこ、ずるいって言われへん？笑"); step2(); }}
+      {label:"Super Likeありがとう笑 びっくりした", fn:async()=>{ await tThem("考える前に手が動いててん笑"); await tThem("そういうとこ、嘘つかれへんねん"); step2(); }},
+      {label:"よろしく〜 気楽に話そ", fn:async()=>{ await tThem("おっけー"); await tThem("気楽なんが一番、助かるわ"); step2(); }},
+      {label:"タイプって、どのへんが？笑", fn:async()=>{ await tThem("雰囲気、やな"); await tThem("写真の中、ずっと笑ってたから"); step2(); }},
+      {label:"コーラ毎日はほんと？笑", fn:async()=>{ await tThem("嘘ちゃうで"); await tThem("ごはんとコーラ、切り離されへんねん笑"); step2(); }},
+      {label:"見返したん？笑 …ちょっと嬉しい", fn:async()=>{ await tThem("内緒やで😎"); await tThem("…そういう返し、ずるいわ笑"); step2(); }}
     ]);
   }
   async function step2(){
-    await tThem("なおは休みの日なにするん？");
+    await tThem("なおは、休みの日なにしてるん？");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"サウナと、美味しいもの食べるのが好き", fn:async()=>{ await tThem("サウナいいな"); await tThem("ごはん好き同士やな笑"); stepWork(); }},
-      {label:"推し活したり、のんびりしてる", fn:async()=>{ await tThem("のんびり派か、ええやん"); await tThem("無理せん感じ、好きやわ"); stepWork(); }}
+      {label:"サウナと、美味しいもの食べるのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); await tThem("美味いもん好き同士やな"); stepWork(); }},
+      {label:"推し活したり、のんびりしてる", fn:async()=>{ await tThem("のんびり派か、気が合いそう"); await tThem("力抜けてる感じ、ええな"); stepWork(); }}
     ]);
   }
   async function stepWork(){
     await tThem("…あ、俺の仕事？");
-    await tThem("不定期な仕事してる");
-    await tThem("夜勤っぽいやつやねん");
+    await tThem("時間バラバラな仕事してて");
+    await tThem("夜に動くことが多いねん");
     await tThem("詳しくは、会ったら言うわ");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"気になるけど、会ったときに聞くね", fn:async()=>{ await tThem("おっけー、ほんまに言うから"); stepFood(); }},
-      {label:"おっけー、無理には聞かない", fn:async()=>{ await tThem("助かるわ、急かさん人ええな"); stepFood(); }}
+      {label:"気になるけど、会ったときに聞くね", fn:async()=>{ await tThem("約束するわ、ほんまに言う"); stepFood(); }},
+      {label:"おっけー、無理には聞かない", fn:async()=>{ await tThem("急かさんとこ、好きやわ"); stepFood(); }}
     ]);
   }
   async function stepFood(){
     tChip("9月28日（日）");
-    await tThem("おはよー");
-    await tPhoto("assets/ig-food.jpg","今日の昼の麺、やばかってん😎");
+    await tThem("おはよ、起きた？");
+    await tPhoto("assets/ig-food.jpg","昼の麺、今日のは当たり😎");
     tChoices("なおの返信を選んで",[
-      {label:"麺好きなの同じ！ 私も昨日麺やった", fn:async()=>{ await tThem("まじか、気が合うな笑"); await tThem("麺の話は永遠にできるで"); stepMaron(); }},
-      {label:"美味しそう…どこの？", fn:async()=>{ await tThem("内緒やで笑"); await tThem("今度、連れてくわ"); stepMaron(); }}
+      {label:"麺好きなの同じ！ 私も昨日麺やった", fn:async()=>{ await tThem("お、気が合うやん笑"); await tThem("麺の話なら何時間でもいけるで"); stepMaron(); }},
+      {label:"美味しそう…どこの？", fn:async()=>{ await tThem("秘密やで笑"); await tThem("今度、連れてったるわ"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
-    await tThem("あ、見て見て");
+    await tThem("あ、うちの子見て");
     await tPhoto("assets/ig-dog.jpg","うちのマロン🐶");
-    await tThem("懐くと早いねん、この子");
-    await tThem("なおにも懐くと思うわ笑");
+    await tThem("人懐っこさは一級品やで");
+    await tThem("なおには、秒で懐くと思うわ笑");
     tChoices("なおの返信を選んで",[
-      {label:"かわいい…！ マロンって名前もかわいい", fn:async()=>{ await tThem("名前呼んだら、尻尾ふりまくりやで"); stepNight(); }},
-      {label:"犬派なんや、私も犬好き", fn:async()=>{ await tThem("ほんま？ 気が合うな"); await tThem("マロンに会わせたいわ"); stepNight(); }}
+      {label:"かわいい…！ マロンって名前もかわいい", fn:async()=>{ await tThem("名前呼んだら、尻尾が取れそうになるで"); stepNight(); }},
+      {label:"犬派なんや、私も犬好き", fn:async()=>{ await tThem("お、犬好き同士や"); await tThem("いつか会わせたいわ"); stepNight(); }}
     ]);
   }
   async function stepNight(){
     tChip("9月29日（月）夜");
-    await tThem("寝られへん…");
+    await tThem("眠気がどっか行ってもた…");
     await tThem("なお、まだ起きてる？");
     tChoices("なおの返信を選んで",[
       {label:"起きてるよ、どしたん？", fn:async()=>{ stepNight2(); }},
-      {label:"眠いけど、少しなら付き合う笑", fn:async()=>{ await tThem("ありがとう笑"); stepNight2(); }}
+      {label:"眠いけど、少しなら付き合う笑", fn:async()=>{ await tThem("助かる笑"); stepNight2(); }}
     ]);
   }
   async function stepNight2(){
-    await tThem("音楽聴いてたら、目覚めてもて");
-    await tThem("音楽は小さい頃から、ずっと聴いてる");
+    await tThem("曲聴いてたら、目が冴えてきて");
+    await tThem("音楽だけは、小さい頃からずっとやねん");
     await tThem("なおの声、どんなんやろって思っててん");
-    await tThem("…今から会えたらな、とか言ったら引く？笑");
-    await tThem("なおは寝る前なにするん？");
-    await tThem("寝る前、ちょっとだけ電話する？");
+    await tThem("…今から顔見れたらな、とか言ったら引く？笑");
+    await tThem("なおは寝る前、なにしてるん？");
+    await tThem("寝る前に、声だけ聞く？");
     tChoices("なおの返信を選んで",[
       {label:"動画見たり、推しの曲聴いたり", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
       {label:"サウナの予定考えてる笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
       {label:"夜にそういうの、ずるい笑", fn:async()=>{ await tThem("ほんまやな笑"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }},
-      {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ごめん、今日は我慢しとくわ笑"); await tThem("おやすみ、また明日な"); stepSuspect(); }}
+      {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("今日は、我慢するわ笑"); await tThem("おやすみ、また明日な"); stepSuspect(); }}
     ]);
   }
   async function stepSuspect(){
     tChip("9月30日（火）");
-    await tThem("仕事終わったー、今日はちょっと疲れたわ");
+    await tThem("仕事おわった…今日はさすがに疲れた");
     tChoices("なおの返信を選んで（冗談で振ってみる）",[
       {label:"実はアイドルやったりして笑", fn:async()=>{ suspectGo(); }},
       {label:"歌う仕事…とか？笑", fn:async()=>{ suspectGo(); }}
@@ -2252,30 +2252,30 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function suspectGo(){
     await tTyping(2600);
     await tThem("ちゃうちゃう笑");
-    await tThem("ただの一般人やで😎");
+    await tThem("ただの一般人やで、ほんまに😎");
     await tThem("…なんでアイドルやと思ったん？");
     tChoices("なおの返信を選んで",[
-      {label:"写真が、なんか雰囲気あったから", fn:async()=>{ await tThem("雰囲気だけやで笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
-      {label:"声も聞いてないのに、なんとなく笑", fn:async()=>{ await tThem("声は、まあ普通やで笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }}
+      {label:"写真が、なんか雰囲気あったから", fn:async()=>{ await tThem("雰囲気だけ先行してるねん笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
+      {label:"声も聞いてないのに、なんとなく笑", fn:async()=>{ await tThem("声は、いたって普通やで笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }}
     ]);
   }
   async function stepMeet(){
     tChip("10月1日（水）");
     await tThem("なぁ、なお");
-    await tThem("そろそろ、ほんまにごはん行こや");
-    await tThem("楽しみにしすぎて、寝られへんかも笑");
+    await tThem("そろそろ文字やめて、ごはん行こや");
+    await tThem("楽しみすぎて、前日寝られへんタイプやねん笑");
     tChoices("なおの返信を選んで",[
-      {label:"行きたい！ 今週末は？", fn:async()=>{ await tThem("土曜、あいてる？"); await tThem("カフェオレの美味い店、探しとくわ"); step3(); }},
-      {label:"いいよ、どこ行く？", fn:async()=>{ await tThem("カフェとか、どう？"); await tThem("土曜あけといてな"); step3(); }}
+      {label:"行きたい！ 今週末は？", fn:async()=>{ await tThem("土曜、あいてる？"); await tThem("カフェオレの本気な店、探しとくわ"); step3(); }},
+      {label:"いいよ、どこ行く？", fn:async()=>{ await tThem("まずカフェ、どう？"); await tThem("土曜あけといてな"); step3(); }}
     ]);
   }
   async function step3(){
-    await tThem("待ち合わせ決めるの、LINEの方が楽やし");
-    await tThem("よかったら気楽にLINEしよ");
-    await tThem("無理やったら全然いいで");
+    await tThem("待ち合わせの相談、LINEの方が楽やし");
+    await tThem("よかったら、LINEも交換しとこ");
+    await tThem("無理やったら、全然ええで");
     tChoices("LINEを交換する？（様子見でOK）",[
-      {label:"いいよ、とりあえず交換しよ", fn:async()=>{ await tThem("ありがとう笑"); await tThem("追加したで、気が向いたら返して"); finishTinder(); }},
-      {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加するわ"); finishTinder(); }}
+      {label:"いいよ、とりあえず交換しよ", fn:async()=>{ await tThem("ありがとう、助かる笑"); await tThem("追加したで。気が向いたら、返してな"); finishTinder(); }},
+      {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加する"); finishTinder(); }}
     ]);
   }
   function finishTinder(){
@@ -8452,7 +8452,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v179";
+ let ver="v180";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -9162,5 +9162,6 @@ setInterval(upd,900); upd();
 </script>
 <!-- ===== Tinder ver v179: ORIGINAL-SYNC batch 3 (orig v315-v332 audit) - home page 2's decorative clock and weather icons removed (orig v328; calendar/memo stay), and the morning-after follow-up news row now opens a full article written for this arc (orig v330's mechanism; the original's 'someone important' text is lover-premise and was NOT carried over). This closes the v315-v332 audit: ported = v317/v318/v320/v321/v324/v328/v330/v332; already-equivalent = v326 (the v20 daily-life post); skipped with reasons in the batch reports = v315/v316/v319-ep4/v325-content/v327/v329/v331 (Christmas-promise and lover-premise story beats) and v322 (superseded by v324's form). Base CSS compared rule-by-rule: all 324 shared selectors identical to the original. ===== -->
 
+<!-- ===== Tinder ver v180: DIALOGUE REFRESH 1/2 - the two main threads re-worded. Tinder chat (match -> LINE exchange, all his lines and branch replies) and the LINE story scenes ch2-ch5 (first date, the drawn line, the ambiguous distance, the widened distance, the scandal lead-in) rewritten in fresh phrasing: 103 lines. Beats, choices, gates and flow unchanged; his short Kansai and restraint kept; the iconic quoted lines the chapter cards cite ('後悔はしてへん', the drawn-line and farewell beats) left as-is; NO voiced line touched - every rewritten line is text-only (himMsg/tThem), voice files, FCV subtitles, call schedules and the manager script are byte-identical. ===== -->
 </body>
 </html>
