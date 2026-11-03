@@ -69,7 +69,7 @@ padding:12px 14px;margin-bottom:16px;border:1px solid rgba(255,255,255,.14);
 .ic-line{background:var(--line)}.ic-x{background:#000;border:1px solid #333;font-weight:900;font-style:normal}
 .ic-ig{background:linear-gradient(45deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4),var(--ig5))}
 .ic-news{background:#e60012}.ic-photo{background:#fff}.ic-tel{background:#34c759}
-.ic-msg{background:#34c759}.ic-safari{background:#fff}.ic-set{background:#8e8e93}.ic-cam{background:#e9e9ee}
+.ic-msg{background:#34c759}.ic-safari{background:#fff}
 .dock{margin-top:auto;background:rgba(255,255,255,.22);backdrop-filter:blur(16px);border-radius:26px;padding:10px 14px;display:flex;justify-content:space-between}
 /* ===== push banner ===== */
 .push{
@@ -91,8 +91,6 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .scroll::-webkit-scrollbar{width:0}
 .tabbar{flex:none;display:flex;border-top:1px solid #e5e5ea;background:#fff;padding:7px 4px 20px}
 .tabbar button{flex:1;background:none;border:none;font-size:19px;cursor:pointer;color:#111;position:relative;padding:3px 0}
-.tabbar .tb-badge{position:absolute;top:-3px;right:calc(50% - 19px);min-width:16px;height:16px;border-radius:8px;background:var(--red);color:#fff;font-size:9.5px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 4px}
-.tabbar .tb-badge.on{display:flex}
 .push .p-head,.push .p-title,.push .p-body{display:block}
 .ava-txt{width:38px;height:38px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
 .avatar{border-radius:50%;object-fit:cover;background:#ddd;flex:none}
@@ -113,9 +111,6 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .trend .cat{font-size:12px;color:#536471}
 .trend .kw{font-size:15.5px;font-weight:800;margin:1px 0}
 .trend .cnt{font-size:12px;color:#536471}
-.x-profile{padding:14px 16px;border-bottom:1px solid #eff3f4}
-.x-profile .counts{display:flex;gap:18px;margin-top:9px;font-size:13px;color:#536471}
-.x-profile .counts b{color:#111;font-size:14.5px}
 /* ===== Instagram ===== */
 .ig-head{padding:56px 14px 9px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #e5e5ea;background:#fff;flex:none}
 .ig-head .t{font-size:16.5px;font-weight:800}
@@ -179,7 +174,6 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .choices button{border:1.5px solid var(--line);color:#07873a;background:#f2fdf5;border-radius:20px;padding:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
 .choices button:active{background:#dcf5e3}
 .line-input{flex:none;background:#fff;display:flex;gap:8px;align-items:center;padding:9px 12px 22px;border-top:1px solid #e5e5ea}
-.line-input .fake{flex:1;background:#f2f2f7;border-radius:18px;padding:9px 13px;font-size:13.5px;color:var(--sub)}
 /* ===== news ===== */
 .news-hero{margin:12px 14px 4px;border-radius:14px;overflow:hidden;background:#111;color:#fff;animation:fadeup.4s ease}
 .news-hero img{width:100%;height:170px;object-fit:cover;opacity:.85;display:block}
@@ -296,7 +290,6 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .tdots i{width:6px;height:6px;border-radius:50%;background:#9db3c8;animation:tblink 1s infinite}
 .tdots i:nth-child(2){animation-delay:.18s}.tdots i:nth-child(3){animation-delay:.36s}
 @keyframes tblink{0%,100%{opacity:.3}50%{opacity:1}}
-.ph-img{width:190px;border-radius:14px;display:block}
 .msg .bub.photo{padding:5px;background:#fff}
 .msg .bub.photo img{width:185px;border-radius:12px;display:block}
 .msg .bub.stamp{background:transparent;font-size:43px;padding:2px 4px}
@@ -443,9 +436,6 @@ input,textarea{font-size:16px!important}
 .super-badge{position:absolute;top:34px;right:12px;left:auto;z-index:4;background:#33c6dd;color:#fff;font-weight:900;font-size:13px;border-radius:999px;padding:7px 12px;box-shadow:0 4px 14px rgba(0,0,0,.3);display:flex;gap:5px;align-items:center}
 .super-banner{position:relative;z-index:3;margin-bottom:10px;background:linear-gradient(90deg,#1299c3,#33c6dd);color:#fff;border-radius:14px;padding:11px 13px;font-size:13.5px;font-weight:800;line-height:1.5;box-shadow:0 6px 18px rgba(51,198,221,.35);animation:fadeup .35s ease}
 .super-banner span{font-weight:400;font-size:12px;opacity:.95}
-.dummy-art{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:12px;gap:4px;box-sizing:border-box}
-.dummy-art .sil{font-size:110px;opacity:.92}
-.dummy-art .ini{font-size:34px;font-weight:900;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.5)}
 .stamp{position:absolute;top:22px;font-size:28px;font-weight:900;padding:5px 12px;border:4px solid;border-radius:10px;opacity:0;transform:rotate(-14deg);z-index:3;letter-spacing:.06em}
 .stamp.like{left:16px;color:#2ee59d;border-color:#2ee59d;transform:rotate(-14deg)}
 .stamp.nope{right:16px;color:#ff3b5c;border-color:#ff3b5c;transform:rotate(14deg)}
@@ -726,7 +716,7 @@ input,textarea{font-size:16px!important}
 <div class="line-head" id="line-head-list"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t" style="font-size:16.5px;font-weight:800">トーク</span></div>
 <div class="line-list" id="line-list">
 <button class="talkrow" id="talk-hiroto">
-<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="48" height="48" alt="">
+<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="48" height="48" alt="">
 <span style="min-width:0"><span class="nm">ひろと <span class="ubadge" id="line-unread" style="display:none"></span></span><br><span class="pv" id="line-preview">（まだトークはない）</span></span>
 <span class="tm">昨日</span>
 </button>
@@ -752,7 +742,7 @@ input,textarea{font-size:16px!important}
 </button>
 </div>
 <div id="line-chat" style="display:none;flex:1;flex-direction:column;min-height:0">
-<div class="line-head" style="padding-top:56px"><button class="back" id="line-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><button id="hiroto-prof-btn" style="display:flex;gap:8px;align-items:center;background:none;border:none;cursor:pointer;text-align:left;padding:0"><img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="32" height="32" alt=""><span><span class="t" style="font-size:15.5px;font-weight:800;display:block">ひろと</span><span class="s" style="font-size:10.5px;color:#8e8e93">ISFPの本音は短い。行動で来る。</span></span></button><button id="line-call-btn" style="margin-left:auto;font-size:18px;background:none;border:none;cursor:pointer">📞</button><button id="line-log-btn" title="バックログ" style="font-size:17px;background:none;border:none;cursor:pointer;margin-left:6px">📜</button></div>
+<div class="line-head" style="padding-top:56px"><button class="back" id="line-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><button id="hiroto-prof-btn" style="display:flex;gap:8px;align-items:center;background:none;border:none;cursor:pointer;text-align:left;padding:0"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="32" height="32" alt=""><span><span class="t" style="font-size:15.5px;font-weight:800;display:block">ひろと</span><span class="s" style="font-size:10.5px;color:#8e8e93">ISFPの本音は短い。行動で来る。</span></span></button><button id="line-call-btn" style="margin-left:auto;font-size:18px;background:none;border:none;cursor:pointer">📞</button><button id="line-log-btn" title="バックログ" style="font-size:17px;background:none;border:none;cursor:pointer;margin-left:6px">📜</button></div>
 <div class="chat-scroll" id="chat">
 <div class="daychip">9月27日（土）</div>
 </div>
@@ -774,7 +764,7 @@ input,textarea{font-size:16px!important}
 <div class="typing" id="f-typing" style="margin:0 12px 8px;display:none"><i></i><i></i><i></i></div>
 <div class="line-input"><span style="font-size:19px">＋</span><input id="f-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="f-send">送信</button></div>
 </div>
-<div id="hiroto-prof"><img loading="lazy" decoding="async" class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div id="hp-status" style="font-size:13px;color:#536471;margin-top:2px">…なおだけ、特別やねん</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div id="hp-photos" style="display:flex;gap:6px;margin-top:14px"><img loading="lazy" decoding="async" src="assets/ig-meal.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/roses.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/insta-post.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"></div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ（11月1日）<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
+<div id="hiroto-prof"><img loading="lazy" decoding="async" class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div id="hp-status" style="font-size:13px;color:#536471;margin-top:2px">…なおだけ、特別やねん</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div id="hp-photos" style="display:flex;gap:6px;margin-top:14px"><img loading="lazy" decoding="async" src="assets/ig-meal.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/roses.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/insta-post.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"></div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ（11月1日）<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
 </section>
 
 <div id="member-panel"><div class="line-head" style="background:#fff"><button class="back" id="mp-close" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t" id="mp-title" style="font-size:15.5px;font-weight:800">メンバー</span></div><div style="overflow-y:auto;flex:1"><div class="mp-sec">メンバー</div><div id="mp-list"></div><div class="mp-sec">ノート</div><div class="mp-note" id="mp-note"></div><div class="mp-sec">アルバム</div><div class="mp-album"><img loading="lazy" decoding="async" id="mp-album-img" src="" alt="グループの写真"></div></div></div>
@@ -869,14 +859,14 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v154</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v155</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
 <!-- ===== CALL ===== -->
 <section class="view" id="v-call">
 <div class="call-wrap" id="call-incoming" style="display:none">
-        <img loading="lazy" decoding="async" src="assets/line-avatar.jpg" alt="" class="ringpulse" id="call-inc-img">
+        <img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" alt="" class="ringpulse" id="call-inc-img">
         <div style="font-size:23px;font-weight:800" id="call-inc-name">ひろと</div>
         <div style="font-size:13.5px;color:#aeb6c6">📱 着信中…</div>
         <div class="call-sub" id="call-inc-sub">ドキドキの着信。応答する？</div>
@@ -886,7 +876,7 @@ input,textarea{font-size:16px!important}
         </div>
       </div>
       <div class="call-wrap" id="call-active">
-<img loading="lazy" decoding="async" src="assets/line-avatar.jpg" alt="" id="call-act-img">
+<img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" alt="" id="call-act-img">
 <div style="font-size:23px;font-weight:800" id="call-act-name">ひろと</div>
 <div style="font-size:13px;color:#aeb6c6" id="call-state">通話中… <span id="call-time">00:00</span></div>
 <div class="call-sub" id="call-sub">「…なおの声、聞きたかってん」</div>
@@ -1119,7 +1109,7 @@ function closeChat(){ $("#line-chat").style.display="none"; $("#line-list").styl
 $("#talk-hiroto").addEventListener("click",openChat);
 $("#line-back").addEventListener("click",closeChat);
 function nowTime(){const d=new Date();return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
-function himMsg(text,delay){ return new Promise(res=>{ later(()=>{ $("#typing").classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight; later(()=>{ $("#typing").classList.remove("on"); const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#chat").appendChild(d); $("#line-preview").textContent=text; $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); }); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res();},1100);},delay||400);})}
+function himMsg(text,delay){ return new Promise(res=>{ later(()=>{ $("#typing").classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight; later(()=>{ $("#typing").classList.remove("on"); const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#chat").appendChild(d); $("#line-preview").textContent=text; $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); }); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res();},1100);},delay||400);})}
 function meMsg(text){ pop();const d=document.createElement("div");d.className="msg me";d.innerHTML=`<span class="bub"></span><span class="meta pr" data-t="${nowTime()}">${nowTime()}</span>`;d.querySelector(".bub").textContent=text;$("#chat").appendChild(d);$("#chat").scrollTop=$("#chat").scrollHeight}
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){
@@ -1200,8 +1190,8 @@ function openThread(){ ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).
 }
 $("#thread-back").addEventListener("click",()=>{ $("#x-thread").style.display="none"; $("#x-pane-tl").style.display="block"; const cb=$("#x-compose-btn"); if(cb) cb.style.display=""; });
 /* ===== v3: LINE photo + stamp ===== */
-function himPhoto(src){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub photo"><img loading="lazy" decoding="async" src="${src}" alt=""></span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },500); }) }
-function himStamp(emoji){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub stamp">${emoji}</span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },400); }) }
+function himPhoto(src){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub photo"><img loading="lazy" decoding="async" src="${src}" alt=""></span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },500); }) }
+function himStamp(emoji){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub stamp">${emoji}</span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },400); }) }
 /* ===== v3: group chat ===== */
 function openGroup(){ const sw=$("#line-search-wrap"); if(sw) sw.style.display="none"; $("#line-list").style.display="none"; $("#line-head-list").style.display="none"; $("#line-chat").style.display="none"; const g=$("#group-chat"); g.style.display="flex"; state.gUnread=0; $("#g-unread").style.display="none"; clearBadge("line"); $("#gchat").scrollTop=$("#gchat").scrollHeight }
 function closeGroup(){ $("#group-chat").style.display="none"; $("#line-list").style.display="block"; $("#line-head-list").style.display="flex"; show("line") }
@@ -1511,12 +1501,12 @@ function stopCallVoice(){ state._callGen=(state._callGen||0)+1; [_cv1,_cv2].forE
 /* ===== v2: incoming call ===== */
 function showIncomingCall(caller){ state._outgoing=!!state._outReq; state._outReq=false; state.caller=caller||"hiroto"; const mgr=state.caller==="manager";
   $("#call-inc-name").textContent=mgr?"マネージャー（事務所）":"ひろと";
-  $("#call-inc-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
+  $("#call-inc-img").src=mgr?"assets/default-avatar.svg":"assets/ig-avatar.jpg";
   $("#call-inc-sub").textContent=mgr?"事務所からの着信。何の話だろう…":"ドキドキの着信。応答する？";
   show("call"); $("#call-incoming").style.display="flex"; $("#call-active").style.display="none"; ringStart(); }
 const MGR_LINES=["「…もしもし、なおさんですか。私、井汲の所属事務所の者です」","「確認させてください。アプリで知り合って、彼とお会いになったのは事実でしょうか」","「事務所としては『交際の事実はございません』と、コメントを出します」","「どうか、SNSでは何も発信せず、今後は彼とのご連絡も控えてください」","「彼には、こちらから伝えます。ご協力、ありがとうございました」"];
 $("#call-answer").addEventListener("click",()=>{ ringStop(); $("#call-incoming").style.display="none"; $("#call-active").style.display="flex"; const mgr=state.caller==="manager";
-  $("#call-act-name").textContent=mgr?"マネージャー（事務所）":"ひろと"; $("#call-act-img").src=mgr?"assets/default-avatar.svg":"assets/line-avatar.jpg";
+  $("#call-act-name").textContent=mgr?"マネージャー（事務所）":"ひろと"; $("#call-act-img").src=mgr?"assets/default-avatar.svg":"assets/ig-avatar.jpg";
   startCall(mgr?MGR_LINES:null); state._answered=true; state._callWho=mgr?"マネージャー（事務所）":"ひろと"; });
 $("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.caller==="manager"?"マネージャー（事務所）":"ひろと")+" ・ 不在着信（拒否） ・ "+nowTime()); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeDeclined) interludeDeclined(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("マネージャーから電話いった？",300); await himMsg("出んでも大丈夫やで"); await himMsg("内容は俺から聞いて"); return; } show("line"); openChat(); await himMsg("出れんかった？",300); await himMsg("大丈夫、気にせんといて"); await himMsg("文字でも、なおと話せたらいい"); lineSequence2(); });
 /* ===== v2: act2 next morning ===== */
@@ -1634,7 +1624,7 @@ const VOICE_SCHED_B=[
 function himVoice(src,durLabel){ return new Promise(res=>{ later(()=>{ const tp=$("#typing"); tp.classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight;
   later(()=>{ tp.classList.remove("on"); const d=document.createElement("div"); d.className="msg him";
     const bars=Array.from({length:16},()=>'<i style="height:'+(5+Math.floor(Math.random()*15))+'px"></i>').join("");
-    d.innerHTML='<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub vbub"><button class="vbtn">▶</button><span class="vwave">'+bars+'</span><span class="vdur">'+durLabel+'</span></span><span class="meta">'+nowTime()+'</span>';
+    d.innerHTML='<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub vbub"><button class="vbtn">▶</button><span class="vwave">'+bars+'</span><span class="vdur">'+durLabel+'</span></span><span class="meta">'+nowTime()+'</span>';
     $("#chat").appendChild(d); $("#line-preview").textContent="🎤 ボイスメッセージ";
     $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); });
     $("#chat").scrollTop=$("#chat").scrollHeight; bump("line");
@@ -1869,7 +1859,7 @@ $("#f-text").addEventListener("keydown",e=>{ if(e.key==="Enter") fSend(); });
   const MEMBERS={
     group:{title:"いつメン🍻",note:"次の飲み：日程調整中🍻<br>決まったらここに書く！",album:"assets/nao-hl-06.jpg",list:[["なお","あなた","def"],["ゆい","",""],["みさき","",""],["りな","",""]]}};
   window.openMembers=function(kind){ const M=MEMBERS[kind]; if(!M) return; $("#mp-title").textContent=M.title+" ・ メンバー";
-    $("#mp-list").innerHTML=M.list.map(m=>{ const ava=m[2]==="pic"?'<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="38" height="38" alt="">':(m[2]==="def"?'<img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="38" height="38" alt="">':avaTxt(m[0]));
+    $("#mp-list").innerHTML=M.list.map(m=>{ const ava=m[2]==="pic"?'<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="38" height="38" alt="">':(m[2]==="def"?'<img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="38" height="38" alt="">':avaTxt(m[0]));
       return `<div class="mp-row">${ava}<span>${m[0]}</span>${m[1]?`<span style="margin-left:auto;color:#8e8e93;font-size:12px">${m[1]}</span>`:""}</div>`; }).join("");
     $("#mp-note").innerHTML=M.note; $("#mp-album-img").src=M.album; $("#member-panel").classList.add("on"); };
   $("#mp-close").addEventListener("click",()=>$("#member-panel").classList.remove("on"));
@@ -2419,7 +2409,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   if(btns){ const vb=document.createElement("button"); vb.className="cb"; vb.textContent="📹"; vb.style.background="#3a3f4d";
    vb.addEventListener("click",()=>{ const v=document.querySelector("#v-call"); const on=v.classList.toggle("video-on");
     const img=document.querySelector("#call-act-img");
-    if(state.caller!=="manager"&&img){ img.src=on?"assets/hoodie.jpg":"assets/line-avatar.jpg"; }
+    if(state.caller!=="manager"&&img){ img.src=on?"assets/hoodie.jpg":"assets/ig-avatar.jpg"; }
     toast(on?"📹 ビデオ通話モード":"📞 音声通話モード"); });
    btns.appendChild(vb); } }
  const log=document.querySelector("#set-calllog");
@@ -4876,7 +4866,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
 
  /* ---- v115 (+v116 fix): his home-icon cycle in settings; two-tap full reset ---- */
  (function(){ const sc=$("#v-settings .scroll"); if(!sc||$("#icon-cur")) return;
-  const OPTS=[["📷 今のアイコン","assets/ig-avatar.jpg"],["いつもの彼","assets/line-avatar.jpg"],["フーディ","assets/hoodie.jpg"],["お仕事","assets/studio.jpg"],["自撮り","assets/selfie.jpg"],["🤴 絵文字",null]];
+  const OPTS=[["📷 今のアイコン","assets/ig-avatar.jpg"],["いつもの彼","assets/ig-avatar.jpg"],["フーディ","assets/hoodie.jpg"],["お仕事","assets/studio.jpg"],["自撮り","assets/selfie.jpg"],["🤴 絵文字",null]];
   let cur=0;
   const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
   row.innerHTML='<span>🖼 「ひろとの垢」アイコン</span><b id="icon-cur">📷 今のアイコン</b>';
@@ -4905,7 +4895,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const player=document.createElement("div"); player.id="hl-player";
   player.style.cssText="position:absolute;inset:0;z-index:90;background:#000;display:none;flex-direction:column";
   player.innerHTML='<div id="hl-bars" style="display:flex;gap:4px;padding:52px 10px 8px"></div>'+
-   '<div style="display:flex;align-items:center;padding:2px 12px;color:#fff;font-size:13.5px"><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:30px;height:30px;border-radius:50%;margin-right:8px" alt=""><b>193.hiroto_jixiang</b><span id="hl-title" style="margin-left:8px;opacity:.75"></span><button id="hl-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button></div>'+
+   '<div style="display:flex;align-items:center;padding:2px 12px;color:#fff;font-size:13.5px"><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:30px;height:30px;border-radius:50%;margin-right:8px" alt=""><b>193.hiroto_jixiang</b><span id="hl-title" style="margin-left:8px;opacity:.75"></span><button id="hl-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button></div>'+
    '<div style="flex:1;position:relative"><img loading="lazy" decoding="async" id="hl-img" style="width:100%;height:100%;object-fit:contain" alt=""><div id="hl-cap" style="position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.9)"></div>'+
    '<div id="hl-prev" style="position:absolute;left:0;top:0;bottom:0;width:35%"></div><div id="hl-next" style="position:absolute;right:0;top:0;bottom:0;width:65%"></div></div>';
   v.appendChild(player);
@@ -4982,7 +4972,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const live=document.createElement("div"); live.id="ig-live";
   live.style.cssText="position:absolute;inset:0;z-index:95;background:#000;display:none;flex-direction:column;color:#fff";
   live.innerHTML='<video id="live-vid" src="assets/tt-shinee.mp4" playsinline loop muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>'+
-   '<div style="position:relative;padding:54px 12px 0;display:flex;align-items:center;gap:8px"><span style="background:#e60012;font-weight:800;font-size:12px;padding:3px 8px;border-radius:5px">LIVE</span><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><b style="font-size:13.5px;text-shadow:0 1px 6px rgba(0,0,0,.8)">193.hiroto_jixiang</b><span id="live-view" style="margin-left:auto;background:rgba(0,0,0,.45);border-radius:999px;padding:4px 10px;font-size:12px">👁 12,483</span><button id="live-x" style="background:none;border:none;color:#fff;font-size:21px;cursor:pointer">✕</button></div>'+
+   '<div style="position:relative;padding:54px 12px 0;display:flex;align-items:center;gap:8px"><span style="background:#e60012;font-weight:800;font-size:12px;padding:3px 8px;border-radius:5px">LIVE</span><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><b style="font-size:13.5px;text-shadow:0 1px 6px rgba(0,0,0,.8)">193.hiroto_jixiang</b><span id="live-view" style="margin-left:auto;background:rgba(0,0,0,.45);border-radius:999px;padding:4px 10px;font-size:12px">👁 12,483</span><button id="live-x" style="background:none;border:none;color:#fff;font-size:21px;cursor:pointer">✕</button></div>'+
    '<div id="live-cmts" style="position:relative;margin-top:auto;padding:0 12px;max-height:38%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"></div>'+
    '<div style="position:relative;display:flex;gap:8px;padding:10px 12px 20px"><input id="live-in" placeholder="コメントを送信…" maxlength="60" style="flex:1;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 14px;color:#fff;font-size:13.5px;outline:none"><button id="live-heart" style="background:none;border:none;font-size:25px;cursor:pointer">❤️</button></div>'+
    '<div id="live-hearts" style="position:absolute;right:14px;bottom:90px;width:50px;height:220px;pointer-events:none;overflow:visible"></div>';
@@ -5057,7 +5047,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const panel=document.createElement("div"); panel.id="line-tab-panel";
   panel.style.cssText="position:absolute;inset:0;z-index:55;background:#fff;display:none;flex-direction:column;color:#111";
   vline.appendChild(panel);
-  const FRIENDS=[["ひろと","assets/line-avatar.jpg","…なおの声、聞きたかってん","#talk-hiroto"],["いつメン🍻","assets/grp-itsumen.jpg","女子会しよ〜","#talk-group"],["ゆい","assets/fr-yui.jpg","サウナいこ♨️","#talk-yui"],["みさき","assets/fr-misaki.jpg","チキン食べたい","#talk-misaki"],["りな","assets/fr-rina.jpg","推し活たのしい","#talk-rina"]];
+  const FRIENDS=[["ひろと","assets/ig-avatar.jpg","…なおの声、聞きたかってん","#talk-hiroto"],["いつメン🍻","assets/grp-itsumen.jpg","女子会しよ〜","#talk-group"],["ゆい","assets/fr-yui.jpg","サウナいこ♨️","#talk-yui"],["みさき","assets/fr-misaki.jpg","チキン食べたい","#talk-misaki"],["りな","assets/fr-rina.jpg","推し活たのしい","#talk-rina"]];
   const open=(title,html)=>{ panel.innerHTML='<div style="padding:58px 16px 10px;border-bottom:1px solid #eee;display:flex;align-items:center"><b style="font-size:16.5px">'+title+'</b><button id="ltp-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div><div style="overflow-y:auto;padding:12px 16px">'+html+'</div>';
    panel.style.display="flex";
    panel.querySelector("#ltp-x").addEventListener("click",()=>panel.style.display="none");
@@ -5093,7 +5083,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   prof.after(bar);
   const dm=document.createElement("div"); dm.id="his-dm";
   dm.style.cssText="position:absolute;inset:0;z-index:85;background:#fff;display:none;flex-direction:column;color:#111";
-  dm.innerHTML='<div style="padding:56px 14px 9px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:9px"><button id="hdm-x" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div><b style="font-size:14px">193.hiroto_jixiang</b><div id="hdm-sub" style="font-size:11px;color:#06c755">オンライン</div></div></div>'+
+  dm.innerHTML='<div style="padding:56px 14px 9px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:9px"><button id="hdm-x" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div><b style="font-size:14px">193.hiroto_jixiang</b><div id="hdm-sub" style="font-size:11px;color:#06c755">オンライン</div></div></div>'+
    '<div id="hdm-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px"></div>'+
    '<div style="display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee"><input id="hdm-in" placeholder="メッセージを送信…" maxlength="100" style="flex:1;border:1px solid #ddd;border-radius:999px;padding:9px 14px;font-size:13.5px;outline:none"><button id="hdm-send" style="background:none;border:none;color:#0095f6;font-weight:800;font-size:14px;cursor:pointer">送信</button></div>';
   v.appendChild(dm);
@@ -5503,7 +5493,7 @@ app.innerHTML='<div style="padding:56px 16px 8px;display:flex;align-items:center
 vcall.appendChild(app);
 const body=app.querySelector("#pa-body"), title=app.querySelector("#pa-title");
 const CONTACTS=[
-["ひろと","assets/line-avatar.jpg","携帯 ・ 090-XXXX-XXXX","hiroto"],
+["ひろと","assets/ig-avatar.jpg","携帯 ・ 090-XXXX-XXXX","hiroto"],
 ["マネージャー","assets/default-avatar.svg","事務所 ・ 発信不可","mgr"],
 ["ゆい","assets/fr-yui.jpg","LINEで連絡","#talk-yui"],
 ["みさき","assets/fr-misaki.jpg","LINEで連絡","#talk-misaki"],
@@ -5525,7 +5515,7 @@ body.querySelectorAll(".pa-line").forEach(b=>b.addEventListener("click",()=>{ ap
 setTimeout(()=>{ const t=document.querySelector(b.dataset.row); if(t) t.click();},60);}));};
 const views={
 fav(){ title.textContent="お気に入り";
-body.innerHTML='<div style="text-align:center;padding:20px 0 6px"><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:92px;height:92px;border-radius:50%" alt=""><div style="font-weight:800;font-size:19px;margin-top:9px">ひろと</div><div style="color:#8e8e93;font-size:12.5px">090-XXXX-XXXX</div>'+
+body.innerHTML='<div style="text-align:center;padding:20px 0 6px"><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:92px;height:92px;border-radius:50%" alt=""><div style="font-weight:800;font-size:19px;margin-top:9px">ひろと</div><div style="color:#8e8e93;font-size:12.5px">090-XXXX-XXXX</div>'+
 '<div style="display:flex;gap:10px;justify-content:center;margin-top:14px"><button class="pa-call" style="background:#34c759;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer">📞 音声通話</button><button class="pa-vcall" style="background:#007aff;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer">📹 ビデオ通話</button></div></div>'+rowHtml(CONTACTS[0]); wire();},
 hist(){ title.textContent="履歴";
 const log=document.querySelector("#set-calllog");
