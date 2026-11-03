@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v162</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v163</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -8300,6 +8300,64 @@ app.style.display="flex";},true);
  const dismiss=()=>{ if(gone) return; gone=true; try{ sessionStorage.setItem("tt_title_seen","1"); }catch(e){}
    ov.classList.add("bye"); setTimeout(()=>ov.remove(),480); };
  ov.addEventListener("click",dismiss);
+})();
+</script>
+
+<script>
+/* ===== Tinder ver v163: CONTENT REFRESH ROUND 2, 2/5 - the home screen becomes a story dashboard. Until now home was an app launcher with a small text widget: to continue the story you had to remember which app the next beat lived in. A story card now leads the home screen: a cover photo that changes with the story phase (his Tinder photo at the match, the cafe on the first date, the sunset at the line-drawing, the night street in ch4, the scandal-day crown shot, the stage after the ending, her bridge photo on the morning after), the current chapter and date set over it, an 8-node progress rail (ch1-5 / scandal / ending / next morning), and one big "▶ つづきを読む" button that takes you straight to the app the story is waiting in (Tinder in ch1, his LINE chat from ch2 on, News at the ending). The old widget keeps its records (followers, heat meter, scandal skip) but its guidance lines are retired - the dashboard says it once, in one place. DELETED as decoration that never did anything: the fake "🔍 検索" pill sitting in the home page dots on both home pages (nothing ever responded to it; the page dots themselves stay - they really switch pages). Presentation/navigation only: no story text, gates, voices or flow changed. ===== */
+(function(){
+ const inner=document.querySelector("#v-home .home-inner"); if(!inner) return;
+ const css=document.createElement("style"); css.textContent=
+  "#story-dash{background:rgba(16,14,26,.55);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);border-radius:20px;overflow:hidden;margin-bottom:12px;color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.28)}"+
+  "#story-dash .sd-cover{position:relative;height:104px;background:#222 center/cover no-repeat}"+
+  "#story-dash .sd-cover::after{content:\"\";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,6,16,.08),rgba(8,6,16,.72))}"+
+  "#story-dash .sd-phase{position:absolute;top:9px;left:12px;z-index:2;font-size:10.5px;font-weight:800;letter-spacing:.14em;background:rgba(253,38,125,.92);border-radius:999px;padding:3px 9px}"+
+  "#story-dash .sd-tt{position:absolute;left:12px;right:12px;bottom:8px;z-index:2}"+
+  "#story-dash .sd-title{font-size:16.5px;font-weight:900;line-height:1.3;text-shadow:0 2px 8px rgba(0,0,0,.5)}"+
+  "#story-dash .sd-date{font-size:11px;color:#d7dbe4;margin-top:1px}"+
+  "#story-dash .sd-row{display:flex;align-items:center;gap:10px;padding:10px 12px 12px}"+
+  "#story-dash .sd-dots{display:flex;gap:5px;flex:1}"+
+  "#story-dash .sd-dots i{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.22)}"+
+  "#story-dash .sd-dots i.on{background:linear-gradient(90deg,#fd267d,#ff7854)}"+
+  "#story-dash .sd-prog{font-size:10.5px;color:#c9cfdd;white-space:nowrap}"+
+  "#sd-go{flex:none;border:none;border-radius:999px;padding:11px 16px;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;font-size:13.5px;font-weight:900;font-family:inherit;cursor:pointer;box-shadow:0 8px 20px rgba(253,38,125,.4)}"+
+  "#sd-go:active{transform:scale(.97)}"+
+  "#v-home .widget #w-title,#v-home .widget #w-main{display:none}"+
+  "@media (max-height:760px){ #story-dash .sd-cover{height:78px} }";
+ document.head.appendChild(css);
+ const dash=document.createElement("div"); dash.id="story-dash";
+ dash.innerHTML='<div class="sd-cover" id="sd-cover"><span class="sd-phase" id="sd-phase">プロローグ</span><div class="sd-tt"><div class="sd-title" id="sd-title">スワイプから始まる出会い</div><div class="sd-date" id="sd-date">9月27日（土） ・ Tinder</div></div></div>'
+  +'<div class="sd-row"><div class="sd-dots" id="sd-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="sd-prog" id="sd-prog">0 / 8</span><button id="sd-go">物語をはじめる ▶</button></div>';
+ inner.insertBefore(dash, inner.firstChild);
+ /* retire the fake search pill in the home page dots (both pages) */
+ document.querySelectorAll(".hp-search").forEach(e=>e.remove());
+ const TABLE={
+  ch0:{ph:"プロローグ",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/tinder-hiroto-1.jpg",btn:"物語をはじめる ▶",go:"tinder",n:0},
+  ch1:{ph:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/tinder-hiroto-1.jpg",btn:"つづきを読む ▶",go:"tinder",n:1},
+  ch2:{ph:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",img:"assets/cafe.jpg",btn:"つづきを読む ▶",go:"line",n:2},
+  ch3:{ph:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",img:"assets/ig-sunset.jpg",btn:"つづきを読む ▶",go:"line",n:3},
+  ch4:{ph:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:4},
+  ch5:{ph:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",img:"assets/cafe3.jpg",btn:"つづきを読む ▶",go:"line",n:5},
+  scandal:{ph:"第6話 ・ 炎上編",tt:"バレた日",dt:"11月2日（日） ・ 夜",img:"assets/crown-full.jpg",btn:"つづきを読む ▶",go:"line",n:6},
+  ended:{ph:"エンディング",tt:"付き合わなかった、という結末",dt:"11月2日（日） ・ 夜の終わり",img:"assets/stage.jpg",btn:"結末を見る ▶",go:"news",n:7},
+  act2:{ph:"翌朝編",tt:"少しずつ、日常が戻る",dt:"11月3日（月） ・ 朝",img:"assets/nao-bridge.jpg",btn:"翌朝のつづき ▶",go:"line",n:8}
+ };
+ let curKey="";
+ const key=()=> state.act2? "act2" : state.ended? "ended" : state.phase==="scandal"? "scandal" : "ch"+Math.min(5,state.chapter||0);
+ const refresh=()=>{ const k=key(); if(k===curKey) return; curKey=k; const d=TABLE[k]; if(!d) return;
+  document.querySelector("#sd-cover").style.backgroundImage="url('"+d.img+"')";
+  document.querySelector("#sd-phase").textContent=d.ph;
+  document.querySelector("#sd-title").textContent=d.tt;
+  document.querySelector("#sd-date").textContent=d.dt;
+  document.querySelector("#sd-go").textContent=d.btn;
+  document.querySelector("#sd-prog").textContent=d.n+" / 8";
+  [...document.querySelectorAll("#sd-dots i")].forEach((el,i)=>el.classList.toggle("on", i<d.n));
+  dash._go=d.go;
+ };
+ document.querySelector("#sd-go").addEventListener("click",()=>{ const g=dash._go||"tinder";
+   if(g==="line"){ show("line"); if(typeof openChat==="function") openChat(); }
+   else show(g); });
+ refresh(); setInterval(refresh,900);
 })();
 </script>
 
