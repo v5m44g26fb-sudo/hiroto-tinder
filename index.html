@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v186</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v187</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2195,140 +2195,135 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tNote("（どっかで見た顔…いやいや、本人なわけない。推し活のしすぎで、目がバグってるだけ）");
     await tThem("マッチありがとう笑",600);
     await tThem("ひろとやで、よろしくな");
-    await tThem("なんとなく始めてん、このアプリ");
-    await tThem("プロフィールの写真、刺さってん笑");
-    await tThem("カフェオレ持ってる写真、あれはずるいわ笑");
-    await tThem("他の写真も、全部見たで");
-    await tThem("猫と写ってるやつ、平和すぎる笑");
-    await tThem("Super Likeは…気づいたら押しててん");
-    await tThem("…ほんまは、3回くらい見返した笑");
+    await tThem("プロフに「暇つぶしで入れた」って書いたの、今さら後悔してる");
+    await tThem("Super Like、押すつもりなかったのに");
+    await tThem("なおのプロフ見てたら、指が先に動いててん");
+    await tThem("文章、最後の一文まで読んだの初めてやで");
+    await tThem("あの言い回し、頭から離れへんねん");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"Super Likeありがとう笑 びっくりした", fn:async()=>{ await tThem("考える前に手が動いててん笑"); await tThem("そういうとこ、嘘つかれへんねん"); step2(); }},
-      {label:"よろしく〜 気楽に話そ", fn:async()=>{ await tThem("おっけー"); await tThem("気楽なんが一番、助かるわ"); step2(); }},
-      {label:"タイプって、どのへんが？笑", fn:async()=>{ await tThem("文章、やな"); await tThem("プロフィール、最後まで読んだの初めてやで"); step2(); }},
-      {label:"アプリ、慣れてそう笑", fn:async()=>{ await tThem("ちゃうで、初めてやねん"); await tThem("マッチ自体、なおが一人目やねん"); step2(); }},
-      {label:"見返したん？笑 …ちょっと嬉しい", fn:async()=>{ await tThem("内緒やで😎"); await tThem("…そういう返し、ずるいわ笑"); step2(); }}
+      {label:"暇つぶしって書いてたくせに笑", fn:async()=>{ await tThem("…バレた？ あれは撤回するわ"); await tThem("暇つぶし相手に、Super Likeは押さんて"); step2(); }},
+      {label:"一人目で本気、重くない？笑", fn:async()=>{ await tThem("軽い気持ちで始めたんやけどな"); await tThem("…なおが悪いわ"); step2(); }},
+      {label:"私のプロフ、どこが刺さったん？", fn:async()=>{ await tThem("笑ってる写真もやけど"); await tThem("最後の一文。…あれ、ずるいわ"); step2(); }},
+      {label:"じゃあ私も、本気出しちゃうよ？", fn:async()=>{ await tTyping(1600); await tThem("…それはずるいな"); await tThem("でも、正直、待ってたのかも"); step2(); }}
     ]);
   }
   async function step2(){
-    await tThem("最近、深夜の散歩にハマっててん");
-    await tThem("マロン連れて、誰もおらん道を歩くやつ");
-    await tThem("なおは最近、ハマってることある？");
+    await tThem("聞いていい？ なおって休みの日、朝は強いほう？");
+    await tThem("俺、休みの日は昼まで死んでるタイプやねん");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"サウナ！ 整うのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); stepSauna(); }},
-      {label:"韓国ドラマ、一気見しちゃう", fn:async()=>{ stepDrama(); }}
+      {label:"私は朝から動きたい派！", fn:async()=>{ stepMorning(); }},
+      {label:"私も昼まで寝てたい…", fn:async()=>{ await tThem("お、仲間やな"); stepLazy(); }}
     ]);
   }
-  async function stepDrama(){
-    await tThem("韓国ドラマか、俺も見るで");
-    await tThem("泣けるやつ、ほんま弱いねん");
+  async function stepMorning(){
+    await tThem("朝型なんや、真逆やな笑");
+    await tThem("早朝のコンビニコーヒーが好き、とか？");
     tChoices("なおの返信を選んで",[
-      {label:"意外！ じゃあ感想戦えるね", fn:async()=>{ await tThem("負けへんで笑"); await tThem("なおの推し作品、今度教えて"); stepWork(); }},
-      {label:"泣けるの、私も弱い…", fn:async()=>{ await tThem("おそろいやな"); stepWork(); }}
+      {label:"朝の空気が好きで、つい早起きしちゃう", fn:async()=>{ await tThem("健康的やな…見習いたい"); await tThem("朝デートってやつなら、起きるかも"); stepWork(); }},
+      {label:"休みの朝カフェが至福なの", fn:async()=>{ await tThem("朝カフェか、大人やな"); await tThem("俺も連れてって。今度、早起き頑張るわ"); stepWork(); }}
     ]);
   }
-  async function stepSauna(){
-    await tThem("サウナってさ、何分入れる派？");
-    await tThem("俺、12分入って水風呂派やねん");
+  async function stepLazy(){
+    await tThem("昼までベッドから出ない休日、最高やろ");
+    await tThem("起きても、しばらくゴロゴロしてる");
     tChoices("なおの返信を選んで",[
-      {label:"私も長め派！ 整うよね", fn:async()=>{ await tThem("わかる笑"); await tThem("サウナの話できる相手、貴重やで"); stepWork(); }},
-      {label:"一緒に行けたらいいのに笑", fn:async()=>{ await tTyping(1800); await tThem("…それは、さすがに無理やろ笑"); await tThem("…想像は、したけど"); stepWork(); }}
+      {label:"わかる…至福の時間だよね", fn:async()=>{ await tThem("分かり合えるの、嬉しいわ"); await tThem("休みの日の正解、近い気がする"); stepWork(); }},
+      {label:"ゴロゴロしながら何してるの？", fn:async()=>{ await tTyping(1700); await tThem("…なおと、こうやって話してる時間も入るな"); await tThem("最近は特に"); stepWork(); }}
     ]);
   }
   async function stepWork(){
     await tThem("…あ、俺の仕事？");
-    await tThem("ちょっとだけ、人前に出ることもある仕事で");
-    await tThem("詳しくは、会ったときに言うわ。約束する");
+    await tThem("夜に強い仕事、とだけ言うとく");
+    await tThem("詳しくは、会ったときに。顔見て言いたいねん");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"人前に出る仕事って…何者？笑", fn:async()=>{ await tThem("秘密やで"); await tThem("でも、悪いやつちゃうから安心して"); stepFood(); }},
-      {label:"おっけー、無理には聞かない", fn:async()=>{ await tThem("急かさんとこ、好きやわ"); stepFood(); }}
+      {label:"顔見て言いたいって、重いな笑", fn:async()=>{ await tThem("秘密って、軽く言える相手に言うもんちゃうやろ"); await tThem("なおには、ちゃんと言いたいねん"); stepFood(); }},
+      {label:"わかった、会うまで楽しみにしとく", fn:async()=>{ await tThem("その言い方、好きやわ"); await tThem("期待は裏切らんようにする"); stepFood(); }}
     ]);
   }
   async function stepFood(){
     tChip("9月28日（日）");
-    await tThem("おはよ、起きた？");
-    await tPhoto("assets/ig-food.jpg","昼の麺、今日のは当たり😎");
-    await tThem("これ、辛さレベル5やねん");
-    await tThem("なおは辛いの、いける口？");
+    await tThem("おはよ。飯テロ、していい？");
+    await tPhoto("assets/ig-food.jpg","昨日の深夜、無性に食べたくなったやつ😎");
+    await tThem("朝から見せられたら、腹減らへん？");
+    await tThem("なおの朝って、ちゃんと食べる派？");
     tChoices("なおの返信を選んで",[
-      {label:"辛いの大好き！ 勝負したい", fn:async()=>{ await tThem("強いな笑"); await tThem("次、辛い店で勝負やな"); stepMaron(); }},
-      {label:"実はちょっと苦手で…", fn:async()=>{ await tThem("ほな甘いのも頼んどくわ"); await tThem("二人でな"); stepMaron(); }}
+      {label:"朝から飯テロ、ひどい笑", fn:async()=>{ await tThem("ごめん笑"); await tThem("でも美味そうやろ。今度は一緒に食べよ"); stepMaron(); }},
+      {label:"私の朝は、まずコーラから笑", fn:async()=>{ await tThem("コーラから始まる朝、強すぎる笑"); await tThem("俺もコーラないと始まらんねん。気が合うな"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
-    await tThem("あ、うちの子見て");
-    await tPhoto("assets/ig-dog.jpg","うちのマロン🐶");
-    await tThem("マロン、靴下泥棒の常習犯やねん");
-    await tThem("なおの靴下も、そのうち狙われるで笑");
+    await tThem("あ、報告。なおの写真、マロンに見せてみた");
+    await tPhoto("assets/ig-dog.jpg","その時のマロン🐶");
+    await tThem("画面、めっちゃ舐められた笑");
+    await tThem("気に入られたみたいやで");
     tChoices("なおの返信を選んで",[
-      {label:"かわいい…！ マロンって名前もかわいい", fn:async()=>{ await tThem("名前呼んだら、尻尾が取れそうになるで"); stepNight(); }},
-      {label:"犬派なんや、私も犬好き", fn:async()=>{ await tThem("お、犬好き同士や"); await tThem("いつか会わせたいわ"); stepNight(); }},
-      {label:"マロンより、私を見て笑", fn:async()=>{ await tTyping(1600); await tThem("…見てるって。ずっと"); await tThem("マロンに嫉妬させんなや笑"); stepNight(); }}
+      {label:"マロンには気に入られたんだ笑", fn:async()=>{ await tThem("俺も負けてられへんな"); stepNight(); }},
+      {label:"じゃあ次は、本物に会わせて", fn:async()=>{ await tThem("…それ、俺も楽しみにしてる"); await tThem("マロンより先に、俺が会いたいけど"); stepNight(); }},
+      {label:"飼い主に似て、積極的やね笑", fn:async()=>{ await tTyping(1600); await tThem("…飼い主は、まだ遠慮してるほうやで"); await tThem("今のところは、な"); stepNight(); }}
     ]);
   }
   async function stepNight(){
     tChip("9月29日（月）夜");
-    await tThem("散歩から帰ってきたとこ");
-    await tThem("全然眠くないねんけど…なお、まだ起きてる？");
+    await tThem("風呂入ってさっぱりしたのに、目が冴えてもうた");
+    await tThem("なお、起こしてない？");
     tChoices("なおの返信を選んで",[
-      {label:"起きてるよ、どしたん？", fn:async()=>{ stepNight2(); }},
-      {label:"眠いけど、少しなら付き合う笑", fn:async()=>{ await tThem("助かる笑"); stepNight2(); }}
+      {label:"起こされてないよ、私も風呂上がり", fn:async()=>{ await tThem("おそろいやな笑"); stepNight2(); }},
+      {label:"寝ようとしてたとこ…でも少しだけ", fn:async()=>{ await tThem("ありがとう。すぐ返すから"); stepNight2(); }}
     ]);
   }
   async function stepNight2(){
-    await tThem("…今から顔見れたらな、とか言ったら引く？笑");
-    await tThem("曲聴いてたら、目が冴えてきて");
-    await tThem("音楽だけは、小さい頃からずっとやねん");
-    await tThem("なおは寝る前、なにしてるん？");
-    await tThem("寝る前に、声だけ聞く？");
-    await tThem("なおの声、どんなんやろって思っててん");
-    await tThem("…なぁ、顔見たいな。今");
+    await tThem("髪、ちゃんと乾かした？");
+    await tThem("濡れたまま寝たら、風邪ひくで");
+    await tThem("…心配の仕方が身内っぽいな、俺");
+    await tThem("なおって、寝る直前までスマホ見る派？");
+    await tThem("画面越しやなくて、声で話したい夜ってない？");
+    await tThem("…俺は今、それ");
     tChoices("なおの返信を選んで",[
-      {label:"動画見たり、推しの曲聴いたり", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
-      {label:"サウナの予定考えてる笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
-      {label:"夜にそういうの、ずるい笑", fn:async()=>{ await tThem("ほんまやな笑"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }},
+      {label:"乾かしたよ。…なんかドキドキする", fn:async()=>{ await tTyping(1800); await tThem("ドキドキしてるの、こっちもやで"); await tThem("…寝よか。おやすみ、また明日な"); stepSuspect(); }},
+      {label:"寝癖つく前に寝なきゃ笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
+      {label:"夜に声聞きたいとか、ずるいな…", fn:async()=>{ await tThem("ずるい自覚はあるねん"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }},
       {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ちょっと待って、静かなとこ行く"); setTimeout(()=>{ try{ state._tinderCall=true; state.caller="hiroto"; state._answered=true; state._callWho="ひろと"; show("call"); document.getElementById("call-incoming").style.display="none"; document.getElementById("call-active").style.display="flex"; document.getElementById("call-act-name").textContent="ひろと"; document.getElementById("call-act-img").src="assets/ig-avatar.jpg"; startCall(null); }catch(e){ stepSuspect(); } },900); }}
     ]);
   }
   async function stepSuspect(){
     tChip("9月30日（火）");
-    await tThem("やっと終わった…今日は長かった");
+    await tThem("やっと終わった…収録、長かってん");
+    await tThem("あ、…仕事の話な");
     tChoices("なおの返信を選んで（冗談で振ってみる）",[
-      {label:"実はアイドルやったりして笑", fn:async()=>{ suspectGo(); }},
-      {label:"歌う仕事…とか？笑", fn:async()=>{ suspectGo(); }}
+      {label:"今、収録って言った？笑", fn:async()=>{ suspectGo(); }},
+      {label:"収録って、テレビの人…？笑", fn:async()=>{ suspectGo(); }}
     ]);
   }
   async function suspectGo(){
     await tTyping(2600);
     await tThem("ちゃうちゃう笑");
-    await tThem("ただの一般人やで、ほんまに😎");
-    await tThem("アイドルやったら、こんな時間にアプリ開いてへんて笑");
-    await tThem("…なんでアイドルやと思ったん？");
+    await tThem("近所の店の、手伝いの話やで😎");
+    await tThem("テレビの人やったら、もっと堂々と写真載せてるわ");
+    await tThem("…なんでテレビやと思ったん？");
     tChoices("なおの返信を選んで",[
-      {label:"写真が、なんか雰囲気あったから", fn:async()=>{ await tThem("雰囲気だけ先行してるねん笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
-      {label:"声も聞いてないのに、なんとなく笑", fn:async()=>{ await tThem("声は、いたって普通やで笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }}
+      {label:"立ち姿が、モデルっぽかったから", fn:async()=>{ await tThem("立ち姿は、ただの楽な格好やで笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
+      {label:"なんとなく、雰囲気が芸能人っぽくて", fn:async()=>{ await tThem("雰囲気だけは、一人前なんよな笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }}
     ]);
   }
   async function stepMeet(){
     tChip("10月1日（水）");
     await tThem("なぁ、なお");
-    await tThem("土曜って、昼あいてる？");
-    await tThem("そろそろ文字やめて、会って話そや");
-    await tThem("来週、レッスン…あ、仕事が詰まってて");
-    await tThem("土曜しか、空いてへんねん");
-    await tThem("楽しみすぎて、前日寝られへんタイプやねん笑");
+    await tThem("土曜、会う話。ほんまにしていい？");
+    await tThem("カフェ、俺が決めてもいい？");
+    await tThem("駅で待ち合わせな。目印は、黒いキャップの男やで");
+    await tThem("見つけられへんかったら、その場で連絡するわ");
     tChoices("なおの返信を選んで",[
-      {label:"行きたい！ 今週末は？", fn:async()=>{ await tThem("土曜、あいてる？"); await tThem("カフェオレの本気な店、探しとくわ"); step3(); }},
-      {label:"いいよ、どこ行く？", fn:async()=>{ await tThem("まずカフェ、どう？"); await tThem("土曜あけといてな"); step3(); }},
-      {label:"前日寝られへんのは、私もかも", fn:async()=>{ await tThem("…おそろいやな笑"); await tThem("当日、楽しもうな"); step3(); }}
+      {label:"目印がキャップって、怪しすぎ笑", fn:async()=>{ await tThem("当日のお楽しみやな笑"); step3(); }},
+      {label:"私が先に見つける自信、あるよ", fn:async()=>{ await tThem("ほな約束な。見つけたほうが、先に声かける"); await tThem("負けたほう、カフェオレ奢りで"); step3(); }},
+      {label:"連絡って、電話番号まだ知らないよ？", fn:async()=>{ await tThem("…あ、そやった"); await tThem("ほな、なおさらやな"); step3(); }}
     ]);
   }
   async function step3(){
-    await tThem("このアプリ、通知が埋もれるねん");
-    await tThem("LINEやったら、すぐ気づけるやろ");
-    await tThem("…交換、してくれる？");
+    await tThem("LINE、交換しよ");
+    await tThem("アプリの通知、正直見逃すねん");
+    await tThem("なおのだけは、見逃したくないから");
     tChoices("LINEを交換する？（様子見でOK）",[
-      {label:"いいよ、とりあえず交換しよ", fn:async()=>{ await tThem("ありがとう、助かる笑"); await tThem("追加したで。気が向いたら、返してな"); finishTinder(); }},
+      {label:"見逃したくない、か…うん、いいよ", fn:async()=>{ await tThem("ありがとう。追加したで"); await tThem("すぐ連絡するわ、ほんまに"); finishTinder(); }},
       {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加する"); finishTinder(); }}
     ]);
   }
@@ -7826,7 +7821,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v186";
+ let ver="v187";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8543,5 +8538,6 @@ setInterval(upd,900); upd();
 <!-- v184: text refresh 2/2 - friends and free chat reworded: FCHATS logs/calm/scandal pools for all three friends, the time-of-day ambience pools plus scandal/after sets, seeded friend logs, group quick replies, and his free-chat REPLY_RULES / REPLY_FREE / REPLY_CALM (same triggers, same beats, same tones; no voice line or FCV subtitle touched) -->
 <!-- v185: the Tinder conversations change SUBJECT, not just wording - opening choices now cover his inexperience with apps (she is his first match) and her profile text; step2 is rebuilt around current obsessions (his late-night walks with Maron, her sauna or a new Korean-drama branch stepDrama); the job mystery is reframed as public-facing work; the 9/28 food photo now starts a spice-tolerance contest; the Maron talk is about the sock-thief habit; the night scene opens on the walk callback. Mandatory beats untouched: Super Like opening incl. the first-message marker line, anonymity, the not-the-idol deflection, the date at the cafe, the LINE exchange, the v183 night call -->
 <!-- v186: the four dummies are DELETED entirely (nao's decision) - deck cards, LIKEBACK and all DM chat data/machinery, dummy match overlay/list/chat pane, settings dummy-match folding, Top Picks POOL rotation and the daily Gold rotation, Gold Likes-You/Top-Picks dummy tiles, match-pane teaser tiles, the v57 dummy presence layer, the free-chat jealousy keyed on dummy chats (JEAL + branch), and the 12 dummy photo assets. Deck is Hiroto alone; Super Like -> match -> Tinder chat -> LINE flow unchanged; itsumen reactions kept -->
+<!-- v187: Tinder main thread rebuilt on NEW SUBJECTS (nao's instruction: change what they talk about, not just the wording; every choice label new; night turned up) - opening is now about his '暇つぶし' profile line and the Super Like he did not mean to send; step2 branches on morning person (stepMorning: early-morning cafe talk) vs fellow night-owl-in-reverse (stepLazy: in-bed till noon talk, warmer); the job mystery is now 'a job that's strong at night' with 'I want to tell you face to face'; 9/28 is a breakfast food-terror photo plus her cola-first mornings; Maron has licked her photo on his phone screen; 9/29 night opens on both of them fresh out of the bath and his voice-at-night ask is franker; the 9/30 slip is the word '収録' and the deflection is a neighbourhood-shop help-out (the old voice-based choice that contradicted the call path is gone - both suspect replies now work with or without the call); 10/1 is meeting-point logistics with a cap landmark and a found-you-first bet; the LINE ask is 'I don't want to miss yours'. Beats, anonymity, the marker first line, the night call mechanism and TINDER_CALL voices untouched -->
 </body>
 </html>
