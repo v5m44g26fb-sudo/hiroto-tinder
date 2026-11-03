@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v194</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v195</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1047,43 +1047,43 @@ later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「
 later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿に「誰と？」の声　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},52000);
 later(()=>{addNewsRow("assets/tinder-hiroto-1.jpg","出会いはマッチングアプリか　彼のものとされる“私服プロフ写真”が拡散","週刊デジタル ・ たった今",()=>openTinderArticle()); setHeat(86); push("ニュース速報","#e60012","N","続報：出会いの経緯が判明？","「マッチングアプリで、Super Likeから」——タップで記事へ",()=>show("news"));},70000);
 later(()=>{addNewsRow("assets/glasses.jpg","お相手「最初はアイドルだと知らなかった」証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},92000);
-later(()=>{addNewsRow("assets/crown.jpg","現役アイドルのアプリ利用に賛否　「恋愛」と「信頼」の線引きはどこか","芸能デスク ・ たった今",null); setHeat(94);},112000);
-later(()=>{addNewsRow("assets/stage.jpg","事務所「アプリの削除・退会を確認」　私生活の管理体制を見直しへ","芸能デスク ・ たった今",null); setHeat(88);},128000);
+later(()=>{addNewsRow("assets/crown.jpg","『アプリを使う自由』か『ファンへの配慮』か　現役アイドルの私生活、議論は続く","芸能デスク ・ たった今",null); setHeat(94);},112000);
+later(()=>{addNewsRow("assets/stage.jpg","事務所『アプリの退会を確認』　今後の活動は予定どおりと発表","芸能デスク ・ たった今",null); setHeat(88);},128000);
 }
 /* ============ NEWS ============ */
-function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔、マッチングアプリ利用か —— 一般女性とカフェで会う姿も</h3><p>昨夜、都内カフェから出てきた二人。交際を裏付ける写真はないが、本人のものとされるアプリのプロフィールが拡散し、騒ぎが広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
+function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔にアプリ利用報道 —— 一般女性との休日写真も</h3><p>都内のカフェで一般女性と会う姿が報じられた。交際を示す写真はないものの、本人のものとされるアプリのプロフィールが拡散し、騒動が一気に広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
 function newsBack(){ $("#news-article").style.display="none"; $("#news-list").style.display="block"; $("#news-scroll").scrollTop=0}
-function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃</h2><div class="m">週刊デジタル ・ 20:49配信</div><img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。拡散されているプロフィールには、私服の自撮り写真と「暇つぶしで入れた。気軽に会える人がええな」という自己紹介。彼とみられる男性が一般女性と都内のカフェで会う様子もキャッチされたが、二人が交際していることを裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>ネットでは早くもお相手のSNS特定が進み、本人のInstagramには数時間で数万件のフォローとコメントが殺到。昨日の投稿「お昼の麺が美味しすぎた日」が“同じ店では”と掘り起こされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
+function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃</h2><div class="m">週刊デジタル ・ 20:49配信</div><img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。拡散中のプロフィールは、私服の自撮り写真と「暇つぶしで入れた。気軽に会える人がええな」という飾らない自己紹介文。彼とみられる男性が一般女性と都内のカフェで過ごす様子も捉えられたが、交際を裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>ネットでは早くもお相手の特定が進み、本人のInstagramには数時間でフォローとコメントが殺到。何気ない日常の投稿までもが、次々と“検証”の対象にされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
 function addArticleDefault(){}
-function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>事務所がコメント発表「交際の事実はございません」</h2><div class="m">芸能デスク ・ たった今</div><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">「お相手とされる方との交際の事実はございません。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」</div><p>交際は明確に否定された一方、アプリ利用への「確認中」という留保に、SNSでは「使ってたのは本当なの？」「大人なんだから自由では」と賛否が割れている。本人の口から何が語られるのか、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">交際否定は信じる。でもアプリ使ってたなら、そこは説明がほしい。活動に変更なしは安心した</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
+function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>事務所がコメント発表「交際の事実はございません」</h2><div class="m">芸能デスク ・ たった今</div><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">「お相手とされる方との交際の事実はございません。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」</div><p>交際は否定された。ただ、アプリ利用については「確認中」の二文字が残り、SNSでは「使っていたなら、そこは正直に」「大人なんだから自由では」と声が割れ続けている。本人が何を語るのかに、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">交際してないのは分かった。でも『確認中』のままなのが一番モヤる。活動に変更なしは安心したけど</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">r</span> rot***さん</div><div class="yt">複雑だけど、交際してないなら相手の子を叩くのは違うと思う</div><div class="yb"><span class="like-btn">👍 そう思う 3,914</span><span>返信 208件</span></div></div>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミで「彼女いない」って言ってたのは本当やったんや…でもアプリの説明はほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミの『彼女いない』は嘘じゃなかったんやね。それは信じる。アプリの方だけ、説明がほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">s</span> sak***さん</div><div class="yt">24歳の大人、アプリ使うくらい自由やと思うけどな。叩きすぎは違う</div><div class="yb"><span class="like-btn">👍 そう思う 5,102</span><span>返信 156件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
-function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた人気アイドル・井汲大翔（24）と、一般女性との出会いの経緯について、新たな情報が浮上した。関係者によると、二人が知り合ったのは、そのマッチングアプリ。彼が相手に送ったとされる「Super Like」がきっかけだったという。なお、事務所は二人の交際を否定している。</p><p>拡散されている彼のものとされるプロフィール写真は、ステージ写真ではなく私服の自撮りで、本人のInstagramには掲載されていないものだった。お相手の女性は元々彼のファンだったとされるが、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言も出ている。</p><div class="box">知人とされる人物「会った瞬間に本物だと分かって、すごく驚いたそうです。写真がいつもの彼と印象が違ったみたいで…」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
+function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた井汲大翔（24）について、出会いの経緯に新たな情報が出てきた。関係者によれば、きっかけはアプリ内の「Super Like」。送ったのは、彼の側だったという。なお、事務所は二人の交際を否定している。</p><p>拡散されているプロフィール写真は、ステージ衣装ではなく私服の自撮りで、本人のInstagramには載っていないものだった。お相手の女性は元々彼のファンだったとされる一方、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言もある。</p><div class="box">知人とされる人物「会った瞬間に本物だと気づいて、頭が真っ白になったそうです。連絡の間は、ただの“感じのいい人”だと思っていたみたいで」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
 function addNewsRow(img,h,m,cb){const d=document.createElement("div");d.className="newsrow";d.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><span><span class="h">${h}</span><br><span class="m">${m}</span></span>`; if(cb){d.style.cursor="pointer";d.addEventListener("click",cb)} $("#news-list").prepend(d); bump("news")}
 /* ============ X ============ */
 const X_POSTS=[
-{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"人気アイドル・井汲大翔にマッチングアプリ利用疑惑。週刊誌が一般女性とカフェで会う写真を配信。事務所は「確認中」",m:["💬 8,412","🔁 32,105","❤️ 41,208"],imp:312},
-{n:"芸能ウォッチャー",h:"@geino_watch",t:"大翔のTinder疑惑、お相手のインスタもう特定されてるの早すぎる…。昨日のカフェ投稿が伏線だった説。",m:["💬 1,204","🔁 9,870","❤️ 12,400"]},
-{n:"ロットダン💙",h:"@rottdan_love",t:"正直ショックはある。でも交際はしてないって話やし…アプリ使ってたこと自体、どう受け止めたらいいんやろ。複雑やけど、ステージの大翔は応援したい",m:["💬 903","🔁 4,102","❤️ 18,930"]},
-{n:"ゆん",h:"@yun_o0",t:"裏切られた気持ち。ファンミのあの笑顔はなんだったの？　返金してほしいくらいモヤる",m:["💬 2,311","🔁 1,540","❤️ 3,208"]},
-{n:"特定班",h:"@tokutei_work",t:"①カフェの内装が本人の昨日の投稿と一致 ②拡散中のプロフ写真、本人の私服自撮りで確定っぽい ③「このまま時間が止まればいいのに」←誰との時間？",m:["💬 5,671","🔁 21,340","❤️ 9,876"]},
-{n:"さくらの推し活",h:"@sakura_act",t:"24歳の大人やし、アプリ使うこと自体は悪くないと思う。叩く方向じゃなくて、本人コメント待とうよ",m:["💬 432","🔁 3,987","❤️ 22,150"]},
-{n:"まとめ速報",h:"@matome_soku",t:"事務所コメント「交際の事実はございません」 アプリ利用については「確認中」 #大翔Tinder",m:["💬 3,020","🔁 18,442","❤️ 7,650"]},
-{n:"特定班",h:"@tokutei_work",t:"お相手とはマッチングアプリで出会った説が濃厚。彼のものとされるプロフ写真、私服の自撮りで本人のIGには未掲載のやつ。つまり未公開写真が回ってることに…",m:["💬 6,940","🔁 24,880","❤️ 11,203"]},
-{n:"まとめ速報",h:"@matome_soku",t:"「お相手の女性、最初は彼がアイドルだと知らなかった」証言が拡散中。元々ファンだったのに気づかなかったって…会うまで分からんもんなの？ #大翔Tinder",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
-{n:"ロットダン💙",h:"@rottdan_love",t:"Super Likeから始まったって話、ほんまなら大翔のほうから行ってるやん…。でも付き合ってへんのなら、ただの知り合いってこと？　複雑やけど、ちょっと安心した自分もいる",m:["💬 1,180","🔁 5,204","❤️ 21,870"]},
-{n:"芸能ウォッチャー",h:"@geino_watch",t:"続報なしで事務所の『確認中』だけが長い…。大翔の件、年単位の恋愛スキャンダルじゃなくて『アプリ使ってた』が論点なのが現代っぽい",m:["💬 861","🔁 5,430","❤️ 8,214"]},
-{n:"まひろ",h:"@mahiro_kk",t:"現役アイドルがTinderしてたって、別に犯罪じゃないのにこの燃え方。推しが普通の24歳みたいに生きたかっただけな気がして、ちょっと切ない",m:["💬 1,540","🔁 7,802","❤️ 26,540"]},
-{n:"特定班",h:"@tokutei_work",t:"プロフ文の『暇つぶしで入れた。気軽に会える人がええな』、現役アイドルの文面じゃなさすぎて逆にリアル。盛ってないあたり本物っぽい",m:["💬 3,208","🔁 15,670","❤️ 12,305"]},
-{n:"さくらの推し活",h:"@sakura_act",t:"同担の子が泣いてた。…気持ちは分かる。でも大翔の言葉を聞くまでは、誰も結論出さんといてほしい",m:["💬 289","🔁 2,410","❤️ 15,980"]},
-{n:"まとめ速報",h:"@matome_soku",t:"【賛否まとめ】『24歳の自由』擁護派 vs 『ファンの信頼』批判派。交際自体は事務所が否定済み #大翔Tinder",m:["💬 2,764","🔁 16,208","❤️ 6,930"]},
-{n:"ゆん",h:"@yun_o0",t:"声明出たね…『利用していたのは事実、軽率でした』って、逃げずに言ったのは認める。でも、しばらくは複雑なまま応援すると思う",m:["💬 1,975","🔁 1,102","❤️ 5,468"]},
-{n:"ロットダン💙",h:"@rottdan_love",t:"アプリ退会したって。…もう会うこともないってことやんね。ステージで返してくれるなら、私はそれを見届ける側でいたい",m:["💬 1,340","🔁 6,540","❤️ 24,310"]},
-{n:"一般の感想",h:"@ippan_no",t:"お相手の一般の子が叩かれてるのだけは違うと思う。Super Like送ったのは彼のほうって話やん",m:["💬 4,120","🔁 11,860","❤️ 19,450"]},
-{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"井汲大翔、本人の言葉でコメント発表『マッチングアプリを利用していたのは事実です。軽率でした』 交際は改めて否定",m:["💬 9,870","🔁 38,540","❤️ 52,300"],imp:428},
-{n:"まひろ",h:"@mahiro_kk",t:"結局いちばん刺さったの、『お相手に迷惑をかけた』って部分。誰かを守ろうとする文章だった気がする",m:["💬 976","🔁 4,320","❤️ 17,260"]}
+{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"【速報】人気アイドル・井汲大翔に“アプリ利用”報道。週刊誌が一般女性とのカフェ写真を掲載、事務所は「事実関係を確認中」",m:["💬 8,412","🔁 32,105","❤️ 41,208"],imp:312},
+{n:"芸能ウォッチャー",h:"@geino_watch",t:"カフェ写真が出た途端、相手のインスタ特定班がもう動いてる。早すぎるって…。掘れば掘るほど『ただの休日』にしか見えないのが、また複雑",m:["💬 1,204","🔁 9,870","❤️ 12,400"]},
+{n:"ロットダン💙",h:"@rottdan_love",t:"寝る前に何回も読み返した。交際は否定されてる。でもアプリの件は『確認中』って…。信じたい気持ちとモヤモヤが、両方ほんま",m:["💬 903","🔁 4,102","❤️ 18,930"]},
+{n:"ゆん",h:"@yun_o0",t:"ファンミで目が合った気がしたの、なんやったんやろ。あの週末にアプリ開いてたって聞くと、さすがに刺さる",m:["💬 2,311","🔁 1,540","❤️ 3,208"]},
+{n:"特定班",h:"@tokutei_work",t:"検証班メモ：①週刊誌のカフェ＝本人の休日投稿の店と内装が一致 ②プロフ写真はIG未掲載の私服自撮り ③問題は『誰と』より『現役がアプリを』の方っぽい",m:["💬 5,671","🔁 21,340","❤️ 9,876"]},
+{n:"さくらの推し活",h:"@sakura_act",t:"24歳、大人、一般の人とコーヒー飲んだだけ。犯罪でもなんでもない。叩く前に、本人の言葉を待とう",m:["💬 432","🔁 3,987","❤️ 22,150"]},
+{n:"まとめ速報",h:"@matome_soku",t:"事務所が第1報コメント『交際の事実はございません』。アプリ利用は『確認中』のまま #大翔Tinder",m:["💬 3,020","🔁 18,442","❤️ 7,650"]},
+{n:"特定班",h:"@tokutei_work",t:"出会いの経緯、アプリ説が濃厚に。しかも彼の側から Super Like が先らしい。それが一番ざわついてるポイント",m:["💬 6,940","🔁 24,880","❤️ 11,203"]},
+{n:"まとめ速報",h:"@matome_soku",t:"『お相手は、会うまでアイドルだと気づかなかった』という証言が拡散。ファンだったのに、という声と、会えば分かるやろという声で真っ二つ #大翔Tinder",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
+{n:"ロットダン💙",h:"@rottdan_love",t:"大翔のほうから行ってた、のね…。でも交際じゃないなら、それは“出会い方”の話でしかないのかも。自分の中で整理がつかん",m:["💬 1,180","🔁 5,204","❤️ 21,870"]},
+{n:"芸能ウォッチャー",h:"@geino_watch",t:"続報はまだなし。事務所の『確認中』が長引くほど憶測が増えるタイプの炎上。年単位の交際報道じゃない分、着地点が見えにくい",m:["💬 861","🔁 5,430","❤️ 8,214"]},
+{n:"まひろ",h:"@mahiro_kk",t:"燃え方の中心が『裏切り』じゃなくて『現役アイドルも普通にアプリする時代』なの、なんか象徴的。切ないけど",m:["💬 1,540","🔁 7,802","❤️ 26,540"]},
+{n:"特定班",h:"@tokutei_work",t:"プロフ文の『暇つぶしで入れた。気軽に会える人がええな』、盛ってなさすぎて逆に本物。アイドルのプロフって、普通もっと飾るやろ",m:["💬 3,208","🔁 15,670","❤️ 12,305"]},
+{n:"さくらの推し活",h:"@sakura_act",t:"同担が泣いてたから、隣に座ってた。気持ちは痛いほど分かる。でも彼の口から聞くまでは、私は結論を出さない",m:["💬 289","🔁 2,410","❤️ 15,980"]},
+{n:"まとめ速報",h:"@matome_soku",t:"【賛否】『24歳の自由やん』擁護派 vs『ファンのお金で立つステージ』批判派。交際自体は事務所が否定済み #大翔Tinder",m:["💬 2,764","🔁 16,208","❤️ 6,930"]},
+{n:"ゆん",h:"@yun_o0",t:"声明、読んだ。『利用していたのは事実、軽率でした』って自分の言葉で言ったのは、逃げてないと思う。…それでも、しばらくは複雑なままやと思う",m:["💬 1,975","🔁 1,102","❤️ 5,468"]},
+{n:"ロットダン💙",h:"@rottdan_love",t:"退会、確認されたって。もう、あの子と会うこともないんやね。…ステージで返してくれるなら、私は見届ける。それだけ",m:["💬 1,340","🔁 6,540","❤️ 24,310"]},
+{n:"一般の感想",h:"@ippan_no",t:"一般の女の子を叩く流れだけは違うと思う。始まりは彼の Super Like って話やん。責めるなら順番が違う",m:["💬 4,120","🔁 11,860","❤️ 19,450"]},
+{n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"井汲大翔がコメント発表『マッチングアプリを利用していたのは事実です。軽率でした』 交際については改めて否定",m:["💬 9,870","🔁 38,540","❤️ 52,300"],imp:428},
+{n:"まひろ",h:"@mahiro_kk",t:"声明で一番残った一文、『お相手に迷惑をかけた』。自分の保身より先に、相手のことを書いてた",m:["💬 976","🔁 4,320","❤️ 17,260"]}
 ];
 function avaTxt(name){let h=0;for(const c of name)h=(h*31+c.charCodeAt(0))%360;return `<span class="ava-txt" style="background:hsl(${h},55%,55%)">${name.trim()[0]||"？"}</span>`}
 function postEl(p,hot){const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(p.n)}<span style="min-width:0"><span class="nm">${p.n}</span> <span class="hd">${p.h} ・ ${p.tm||"今"}</span><div class="tx">${p.t}</div><div class="mt"><span class="${hot?'hot':''}">${p.m[0]}</span><span class="rp-btn">${p.m[1]}</span><span class="like-btn">${p.m[2]}</span>${p.imp?`<span>👁 <span id="imp-n">${p.imp}万</span></span>`:""}</div></span>`;
@@ -1198,12 +1198,12 @@ $("#nao-story-btn").addEventListener("click",()=>{ const v=$("#nao-story-view");
 $("#nao-story-close").addEventListener("click",()=>$("#nao-story-view").classList.remove("on"));
 /* ===== v3: X thread ===== */
 const THREAD_REPLIES=[
- ["ロットダン💙@rottdan_love","ショックだけど…ステージの大翔は本物だった。それは変わらない"],
- ["ゆん@yun_o0","ファンミの直後なのがきつい。タイミング…"],
- ["芸能ウォッチャー@geino_watch","続報待ち。お相手の特定合戦がもう始まってるのが現代"],
- ["さくらの推し活@sakura_act","叩く前に本人コメント待ちなよ、みんな"],
- ["まとめ速報@matome_soku","事務所の「交際の事実はございません」、否定が早かったのは事実やからちゃう？"],
- ["通りすがり@pass_by","カフェの写真、彼が笑わせてる感じではあった"],
+ ["ロットダン💙@rottdan_love","寝れない…。でもステージ袖で見た彼の真剣な顔は、本物やったと思う"],
+ ["ゆん@yun_o0","ファンミ直後のタイミングが一番きつい。せめて終わってから…って、終わる時期なんてないんやけど"],
+ ["芸能ウォッチャー@geino_watch","続報待ちの空気が一番荒れる。特定合戦は程々に"],
+ ["さくらの推し活@sakura_act","みんな、本人の言葉が出るまで深呼吸しよ"],
+ ["まとめ速報@matome_soku","事務所の否定が早かったのは、交際の事実がないから、という読みが多い"],
+ ["通りすがり@pass_by","カフェの写真、彼は楽しそうやった。それだけが、なんか余計に刺さる"],
 ];
 function openThread(){ ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).style.display="none"); $("#x-thread").style.display="block"; const cb=$("#x-compose-btn"); if(cb) cb.style.display="none"; $("#x-scroll").scrollTop=0;
   const tm=$("#thread-main"); tm.innerHTML=""; tm.appendChild(postEl(X_POSTS[0],true));
@@ -1249,9 +1249,9 @@ $("#pv-next").addEventListener("click",()=>pvShow(pvIdx+1));
 /* ===== v5: X search ===== */
 const X_SUGS=["大翔 Tinder","大翔 アプリ","大翔 一般女性 誰","ひろと なお","大翔 事務所コメント","Super Like"];
 const X_SEARCH_POSTS=[
- {n:"まとめ速報",h:"@matome_soku",tm:"12分",t:"【まとめ】井汲大翔のアプリ利用疑惑、事務所コメントまでの流れを時系列で整理。交際は否定、アプリ利用は「確認中」",m:["💬 1,204","🔁 8,932","❤️ 12,408"]},
- {n:"芸能ウォッチャー",h:"@geino_watch",tm:"34分",t:"お相手の特定が進んでるけど、一般の方なので行き過ぎた詮索は控えめに…という声も増えてきた",m:["💬 864","🔁 3,102","❤️ 9,845"]},
- {n:"ファンの声bot",h:"@fan_voice",tm:"1時間",t:"「ステージの大翔は変わらない」「嘘つかなかったのは信じる」ポジティブな投稿が増加中",m:["💬 432","🔁 2,208","❤️ 15,320"]},
+ {n:"まとめ速報",h:"@matome_soku",tm:"12分",t:"【時系列まとめ】カフェ写真掲載→事務所『交際否定・アプリ確認中』→証言拡散→本人の声明まで、井汲大翔のアプリ報道を整理",m:["💬 1,204","🔁 8,932","❤️ 12,408"]},
+ {n:"芸能ウォッチャー",h:"@geino_watch",tm:"34分",t:"お相手は一般の方です。特定や詮索は控えようという声、ようやく増えてきた",m:["💬 864","🔁 3,102","❤️ 9,845"]},
+ {n:"ファンの声bot",h:"@fan_voice",tm:"1時間",t:"「嘘つかなかったのは信じる」「ステージは変わらない」前向きな投稿がじわじわ増加中",m:["💬 432","🔁 2,208","❤️ 15,320"]},
 ];
 const X_SUGS_PRO=["大翔 ファンミ","大翔 セトリ","大翔 王子様衣装","神戸 グッズ","大翔 追加公演","チムジルバン"];
 const X_PRO_POSTS=[
@@ -7840,7 +7840,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v194";
+ let ver="v195";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
