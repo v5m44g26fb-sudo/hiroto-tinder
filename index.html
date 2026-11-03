@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v182</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v183</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1163,7 +1163,7 @@ if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(!state
  timers.push(setTimeout(step,Math.max(4200,Math.round(MGR_DUR[0]*1000)+350))); }
 else { startCallVoice(); }
 }
-$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); if(state.ended||state.act2){ await himMsg("…電話、ありがとう"); await himMsg("元気でな"); return; } await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
+$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state._tinderCall){ state._tinderCall=false; state.caller="hiroto"; show("tinder"); if(window.__tinderAfterCall) __tinderAfterCall(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？"); await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); return; } show("line"); openChat(); if(state.ended||state.act2){ await himMsg("…電話、ありがとう"); await himMsg("元気でな"); return; } await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
 async function ending(kind){ if(state.ended) return; state.ended=true;
 const box={open:{h:"エンディング：事実を、まっすぐに",t:"翌日、ひろとは自分の言葉でファンへ報告した。「アプリを使っていたのは事実です。相手とは交際していません」——炎上は続いたけど、嘘のない言葉に、応援の声も少しずつ戻り始めた。",news:"本人がコメント　「交際の事実はありません」"},
 wait:{h:"エンディング：静かに待つ",t:"二人は表向き静かに過ごすことにした。コメント欄は少しずつ落ち着いて、ひと月後——彼の投稿から、アプリの気配は消えていた。知ってる人だけが、知っている。",news:"アプリ利用疑惑は沈静化へ　事務所は静観の構え"},
@@ -1483,6 +1483,7 @@ const OUT_CALLS={
  evening:[["assets/fc-t-23.mp3","仕事おつかれ。無理すんなよ",1760],["assets/fc-t-24.mp3","コーラ買うてきたで",1800],["assets/fv-12.mp3","なおの声、聞くと落ち着くわ",2080],["assets/fc-t-26.mp3","なあ、次はどこ行く？",1720]],
  night:[["assets/fc-t-25.mp3","今日、月きれいやな",1200],["assets/fv-11.mp3","……なあ、今日はもう寝るん？",2600],["assets/fc-t-7.mp3","おやすみ。ええ夢見てな",1960]],
  after:[["assets/fv-12.mp3","なおの声、聞くと落ち着くわ",2080],["assets/fc-t-7.mp3","おやすみ。ええ夢見てな",1960]]};
+const TINDER_CALL=[["assets/fv-12.mp3","なおの声、聞くと落ち着くわ",2080],["assets/fc-t-25.mp3","今日、月きれいやな",1200],["assets/fc-t-20.mp3","……もうちょっとだけ、話そ",1900],["assets/fc-t-7.mp3","おやすみ。ええ夢見てな",1960]];
 let _plAud=null;
 function playPlaylist(list,gen){
  stopPlaylist();
@@ -1500,6 +1501,7 @@ function startCallVoice(){
   stopCallVoice();
   const gen=state._callGen=(state._callGen||0)+1;
   state._callN=(state._callN||0)+1; const useC=!!state._interludeCall;
+  if(state._tinderCall){ playPlaylist(TINDER_CALL,gen); return; }
   if(state._outgoing&&!useC){
    const h=new Date().getHours();
    const bucket=(state.ended||state.act2)?"after":(h>=5&&h<11)?"morning":(h>=11&&h<17)?"day":(h>=17&&h<22)?"evening":"night";
@@ -2216,8 +2218,16 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("俺は休みの日、マロンと出かけるか寝てるかやな");
     await tThem("なおは、休みの日なにしてるん？");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"サウナと、美味しいもの食べるのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); await tThem("美味いもん好き同士やな"); stepWork(); }},
+      {label:"サウナと、美味しいもの食べるのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); await tThem("美味いもん好き同士やな"); stepSauna(); }},
       {label:"推し活したり、のんびりしてる", fn:async()=>{ await tThem("のんびり派か、気が合いそう"); await tThem("力抜けてる感じ、ええな"); stepWork(); }}
+    ]);
+  }
+  async function stepSauna(){
+    await tThem("サウナってさ、何分入れる派？");
+    await tThem("俺、12分入って水風呂派やねん");
+    tChoices("なおの返信を選んで",[
+      {label:"私も長め派！ 整うよね", fn:async()=>{ await tThem("わかる笑"); await tThem("サウナの話できる相手、貴重やで"); stepWork(); }},
+      {label:"一緒に行けたらいいのに笑", fn:async()=>{ await tTyping(1800); await tThem("…それは、さすがに無理やろ笑"); await tThem("…想像は、したけど"); stepWork(); }}
     ]);
   }
   async function stepWork(){
@@ -2236,7 +2246,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tPhoto("assets/ig-food.jpg","昼の麺、今日のは当たり😎");
     tChoices("なおの返信を選んで",[
       {label:"麺好きなの同じ！ 私も昨日麺やった", fn:async()=>{ await tThem("お、気が合うやん笑"); await tThem("麺の話なら何時間でもいけるで"); stepMaron(); }},
-      {label:"美味しそう…どこの？", fn:async()=>{ await tThem("秘密やで笑"); await tThem("今度、連れてったるわ"); stepMaron(); }}
+      {label:"美味しそう…どこの？", fn:async()=>{ await tThem("秘密やで笑"); await tThem("今度、連れてったるわ"); await tThem("二人でな"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
@@ -2246,7 +2256,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("なおには、秒で懐くと思うわ笑");
     tChoices("なおの返信を選んで",[
       {label:"かわいい…！ マロンって名前もかわいい", fn:async()=>{ await tThem("名前呼んだら、尻尾が取れそうになるで"); stepNight(); }},
-      {label:"犬派なんや、私も犬好き", fn:async()=>{ await tThem("お、犬好き同士や"); await tThem("いつか会わせたいわ"); stepNight(); }}
+      {label:"犬派なんや、私も犬好き", fn:async()=>{ await tThem("お、犬好き同士や"); await tThem("いつか会わせたいわ"); stepNight(); }},
+      {label:"マロンより、私を見て笑", fn:async()=>{ await tTyping(1600); await tThem("…見てるって。ずっと"); await tThem("マロンに嫉妬させんなや笑"); stepNight(); }}
     ]);
   }
   async function stepNight(){
@@ -2265,11 +2276,12 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("なおは寝る前、なにしてるん？");
     await tThem("寝る前に、声だけ聞く？");
     await tThem("なおの声、どんなんやろって思っててん");
+    await tThem("…なぁ、顔見たいな。今");
     tChoices("なおの返信を選んで",[
       {label:"動画見たり、推しの曲聴いたり", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
       {label:"サウナの予定考えてる笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
       {label:"夜にそういうの、ずるい笑", fn:async()=>{ await tThem("ほんまやな笑"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }},
-      {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("今日は、我慢するわ笑"); await tThem("おやすみ、また明日な"); stepSuspect(); }}
+      {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ちょっと待って、静かなとこ行く"); setTimeout(()=>{ try{ state._tinderCall=true; state.caller="hiroto"; state._answered=true; state._callWho="ひろと"; show("call"); document.getElementById("call-incoming").style.display="none"; document.getElementById("call-active").style.display="flex"; document.getElementById("call-act-name").textContent="ひろと"; document.getElementById("call-act-img").src="assets/ig-avatar.jpg"; startCall(null); }catch(e){ stepSuspect(); } },900); }}
     ]);
   }
   async function stepSuspect(){
@@ -2300,7 +2312,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("楽しみすぎて、前日寝られへんタイプやねん笑");
     tChoices("なおの返信を選んで",[
       {label:"行きたい！ 今週末は？", fn:async()=>{ await tThem("土曜、あいてる？"); await tThem("カフェオレの本気な店、探しとくわ"); step3(); }},
-      {label:"いいよ、どこ行く？", fn:async()=>{ await tThem("まずカフェ、どう？"); await tThem("土曜あけといてな"); step3(); }}
+      {label:"いいよ、どこ行く？", fn:async()=>{ await tThem("まずカフェ、どう？"); await tThem("土曜あけといてな"); step3(); }},
+      {label:"前日寝られへんのは、私もかも", fn:async()=>{ await tThem("…おそろいやな笑"); await tThem("当日、楽しもうな"); step3(); }}
     ]);
   }
   async function step3(){
@@ -2312,6 +2325,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加する"); finishTinder(); }}
     ]);
   }
+  window.__tinderAfterCall=()=>{ setTimeout(()=>{ try{ stepSuspect(); }catch(e){} },700); };
   function finishTinder(){
     if(state._tinderDone) return; state._tinderDone=true;
     try{ push("LINE","#06c755","💬","LINEで ひろと と友だちになりました","タップで LINE を開く",()=>{ show("line"); }); }catch(e){}
@@ -8486,7 +8500,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v182";
+ let ver="v183";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -9199,5 +9213,6 @@ setInterval(upd,900); upd();
 <!-- ===== Tinder ver v180: DIALOGUE REFRESH 1/2 - the two main threads re-worded. Tinder chat (match -> LINE exchange, all his lines and branch replies) and the LINE story scenes ch2-ch5 (first date, the drawn line, the ambiguous distance, the widened distance, the scandal lead-in) rewritten in fresh phrasing: 103 lines. Beats, choices, gates and flow unchanged; his short Kansai and restraint kept; the iconic quoted lines the chapter cards cite ('後悔はしてへん', the drawn-line and farewell beats) left as-is; NO voiced line touched - every rewritten line is text-only (himMsg/tThem), voice files, FCV subtitles, call schedules and the manager script are byte-identical. ===== -->
 <!-- v181: Tinder main flow rebuilt (photo study, self-disclosure order, night-scene order, near-slip, LINE ask rework) -->
 <!-- v182: LINE story is now conversation, not monologue - ch2 gains an early reply point, ch3 a reply before the confession, ch4 a reply to the jealousy line and one in the morning-after, ch5 two reply points splitting the long run; all of her choice labels across ch2-ch5 rewritten (branches, endings, voice lines untouched) -->
+<!-- v183: branches and temperature reworked in the Tinder main thread - her phone-call choice on 9/29 now really calls (new TINDER_CALL playlist of existing single-line voices: fv-12/fc-t-25/fc-t-20/fc-t-7, subtitles verbatim; call-end returns to the Tinder chat and continues to the suspect beat); her sauna answer detours into a new sauna topic scene; new tempting choices for her (sauna together / look at me, not Maron / I wont sleep either) with his warmer-but-restrained replies; his extra line on the night scene. No voice line reworded, arc endpoints unchanged -->
 </body>
 </html>
