@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v149</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v150</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -8838,6 +8838,16 @@ app.style.display="flex";},true);
  +"#call-active .call-btns{position:absolute;left:0;right:0;bottom:max(34px,calc(env(safe-area-inset-bottom) + 14px));z-index:5;margin:0}"
  +"#v-call.video-on .call-btns{bottom:max(34px,calc(env(safe-area-inset-bottom) + 14px))}"
  +"#call-incoming>div:last-of-type{position:absolute;left:0;right:0;bottom:max(52px,calc(env(safe-area-inset-bottom) + 22px));display:flex;justify-content:center}";
+ document.head.appendChild(css);
+})();
+</script>
+<script>
+/* ===== Tinder ver v150: non-chat polish batch 3 - two input/scroll traps at the frame level. (1) The decorative Dynamic Island (.island, z-index 200) never had pointer-events:none, so a 112x30px strip at the top centre of the phone silently swallowed taps meant for whatever header sits under it; purely decorative chrome must never intercept touches (the status bar beside it already had pointer-events:none). (2) overscroll-behavior existed only on the inner .scroll areas (contain); the root document had none, so a pull at the top of a view could rubber-band / pull-to-refresh the whole page mid-play and slide the phone frame. The root is now chained off too ===== */
+(function(){
+ if(window.__v150) return; window.__v150=true;
+ const css=document.createElement("style"); css.id="v150css";
+ css.textContent=".island{pointer-events:none}"
+ +"html,body{overscroll-behavior:none}";
  document.head.appendChild(css);
 })();
 </script>
