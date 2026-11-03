@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v164</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v165</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -8406,6 +8406,59 @@ app.style.display="flex";},true);
    if(pend) clearTimeout(pend); pend=setTimeout(()=>{ try{ transform(list); }catch(e){} },90); });
  const arm=()=>{ const list=document.querySelector("#syn-list"); if(list){ mo.observe(list,{childList:true}); } else setTimeout(arm,700); };
  arm();
+})();
+</script>
+
+<script>
+/* ===== Tinder ver v165: CONTENT REFRESH ROUND 2, 4/5 - the ending gets its own screen, and the morning after gets a title card. Until now an ending was a card prepended to the news list - you scrolled past headlines to find the conclusion of the whole story. showEnding is now wrapped: the news endcard is still built exactly as before (it stays as the record, share button included), but on top of it a full-frame ending screen opens - his stage photo breathing in slow zoom under a dark veil, '― END ―', the ending title set large, and the closing text revealed sentence by sentence with a held beat between lines, so the farewell lands as a farewell. Under it, the night's record (followers 342 -> now, X 189 -> now, heat peak) and the same choices the endcard offered: see the morning after / the half-year epilogue (half only) / share the record / start over / close back to the news card. startAct2 is wrapped the same way: entering the next-morning chapter now passes through a proper chapter card ('翌朝編 - 少しずつ、日常が戻る - 11月3日（月）・朝') instead of the home widget silently changing its text. Both wrappers call the originals untouched - endings, act2 content, gates and voices are exactly as before; only the presentation of the two biggest thresholds in the story changed. ===== */
+(function(){
+ const phone=document.querySelector("#phone"); if(!phone) return;
+ const css=document.createElement("style"); css.textContent=
+  "#end-ov{position:absolute;inset:0;z-index:540;display:none;flex-direction:column;color:#f4f2fa;overflow:hidden;background:#07060d}"+
+  "#end-ov.on{display:flex}"+
+  "#end-ov .eo-bg{position:absolute;inset:0;background:url('assets/stage.jpg') center 30%/cover no-repeat;opacity:.4;animation:eozoom 14s ease forwards}"+
+  "@keyframes eozoom{from{transform:scale(1)}to{transform:scale(1.09)}}"+
+  "#end-ov .eo-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,6,13,.72),rgba(7,6,13,.55) 45%,rgba(7,6,13,.92))}"+
+  "#end-ov .eo-in{position:relative;flex:1;display:flex;flex-direction:column;padding:84px 30px 30px;overflow-y:auto}"+
+  "#end-ov .eo-end{font-size:11px;letter-spacing:.5em;color:#cdbcf0;text-align:center;animation:tup .8s ease both}"+
+  "#end-ov .eo-title{margin-top:18px;font-size:25px;font-weight:900;line-height:1.45;text-align:center;animation:tup .8s .15s ease both}"+
+  "#end-ov .eo-rule{width:44px;height:2px;background:linear-gradient(90deg,#fd267d,#ff7854);margin:20px auto 6px;border-radius:2px;animation:tup .8s .3s ease both}"+
+  "#end-ov .eo-line{margin-top:13px;font-size:14.5px;line-height:1.95;color:#e8e6f2;text-align:center;opacity:0;animation:tup .9s ease forwards}"+
+  "#end-ov .eo-stats{margin-top:24px;text-align:center;font-size:12px;line-height:1.9;color:#a49fc0;animation:tup .8s ease both}"+
+  "#end-ov .eo-btns{margin-top:auto;padding-top:26px;display:flex;flex-direction:column;gap:9px;animation:tup .8s ease both}"+
+  "#end-ov .eo-btns button{border:none;border-radius:999px;padding:14px;font-size:14.5px;font-weight:800;font-family:inherit;cursor:pointer;width:100%}"+
+  "#end-ov .eo-x{background:transparent!important;color:#8f8bab!important;font-weight:600!important;font-size:12.5px!important;padding:8px!important}";
+ document.head.appendChild(css);
+ const ov=document.createElement("div"); ov.id="end-ov"; phone.appendChild(ov);
+ const lines=t=>String(t||"").split(/(?<=。)/).map(s=>s.trim()).filter(Boolean);
+ window.__showEndOv=function(box){ if(ov.classList.contains("on")) return;
+   const stats="Instagram フォロワー 342 → "+document.querySelector("#w-ig").textContent+" ／ X フォロワー 189 → "+document.querySelector("#w-x").textContent+"<br>炎上度ピーク "+(state._heatPeak||state.heat||0)+"%";
+   ov.innerHTML='<div class="eo-bg"></div><div class="eo-veil"></div><div class="eo-in">'
+    +'<div class="eo-end">― END ―</div><div class="eo-title"></div><div class="eo-rule"></div>'
+    +'<div class="eo-lines">'+lines(box.t).map((s,i)=>'<p class="eo-line" style="animation-delay:'+(0.55+i*0.6).toFixed(2)+'s"></p>').join("")+'</div>'
+    +'<div class="eo-stats" style="animation-delay:'+(0.7+lines(box.t).length*0.6).toFixed(2)+'s">📊 この夜の記録<br>'+stats+'</div>'
+    +'<div class="eo-btns" style="animation-delay:'+(0.9+lines(box.t).length*0.6).toFixed(2)+'s">'
+    +'<button id="eo-act2" style="background:#06c755;color:#fff">🌅 翌朝を見る</button>'
+    +(state.ending==="half"?'<button id="eo-epi" style="background:linear-gradient(135deg,#5b2a86,#fd267d);color:#fff">🎫 半年後へ ―― 遠くのステージ</button>':"")
+    +'<button id="eo-share" style="background:#1d9bf0;color:#fff">📤 この夜の記録をシェア</button>'
+    +'<button id="eo-re" style="background:rgba(255,255,255,.14);color:#fff">🔁 最初からもう一度</button>'
+    +'<button class="eo-x" id="eo-close">✕ 閉じる（ニュースで記録を見る）</button></div></div>';
+   ov.querySelector(".eo-title").textContent=box.h||"エンディング";
+   [...ov.querySelectorAll(".eo-line")].forEach((p,i)=>{ p.textContent=lines(box.t)[i]; });
+   ov.classList.add("on");
+   const close=()=>ov.classList.remove("on");
+   ov.querySelector("#eo-close").addEventListener("click",close);
+   ov.querySelector("#eo-act2").addEventListener("click",()=>{ close(); startAct2(state.ending||"wait"); });
+   const epi=ov.querySelector("#eo-epi"); if(epi) epi.addEventListener("click",()=>{ close(); if(window.showEpilogueV20) window.showEpilogueV20(); });
+   ov.querySelector("#eo-share").addEventListener("click",()=>{ if(typeof shareRecord==="function") shareRecord(); });
+   ov.querySelector("#eo-re").addEventListener("click",()=>location.reload());
+ };
+ if(typeof showEnding==="function"){ const orig=showEnding;
+   showEnding=function(box){ orig(box); try{ window.__showEndOv(box); }catch(e){} }; }
+ if(typeof startAct2==="function"){ const orig2=startAct2;
+   startAct2=function(kind){ const fresh=!state._act2; const r=orig2(kind);
+     if(fresh && typeof chapterCard==="function"){ try{ chapterCard("翌朝編","少しずつ、日常が戻る","まっさらな朝。彼の投稿と、LINEをチェックしてね<br><span class=\"cc-when\">11月3日（月） ・ 朝</span>"); }catch(e){} }
+     return r; }; }
 })();
 </script>
 
