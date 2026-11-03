@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v166</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v167</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -8488,7 +8488,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v166";
+ let ver="v167";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8530,6 +8530,49 @@ app.style.display="flex";},true);
  head.querySelector("#wp-credits").addEventListener("click",()=>{ ov.classList.add("on");
    const s=ov.querySelector(".cr-scroll"); const a=s.style.animation; s.style.animation="none"; void s.offsetWidth; s.style.animation=a; });
  ov.addEventListener("click",()=>ov.classList.remove("on"));
+})();
+</script>
+
+<script>
+/* ===== Tinder ver v167: CONTENT REFRESH ROUND 3, 1/5 - the two chats learn to breathe. Until now the Tinder chat's typing indicator was a dead text glyph ("・・・" at 60% opacity) while LINE's three dots bounced; his voice bubbles in LINE sat frozen while they played; and in both chats, scrolling up to re-read meant thumbing all the way back down by hand. This layer fixes the feel of both inboxes without touching a single line of story: (1) the Tinder typing bubble becomes the same living three-dot indicator LINE uses (MutationObserver swaps the glyph the moment tTyping/free-typing appends it); (2) a voice bubble's waveform now dances as an equalizer while its audio plays (.vbub.playing already existed as a hook - it just never moved); (3) both chats gain a floating "↓ 最新へ" pill that appears once you are 260px+ above the bottom, grows a pink "新着" dot when a new message lands while you are up there, and smooth-scrolls home on tap; (4) his photo bubbles in the Tinder chat get the framed, softly-shadowed film look his LINE photos already had. No story text, gates, voices or flow changed. ===== */
+(function(){
+ const css=document.createElement("style"); css.textContent=
+  ".t-bub.r3-typing{opacity:1!important;padding:12px 14px}"+
+  ".r3-dots{display:inline-flex;gap:4px;align-items:center}"+
+  ".r3-dots i{width:7px;height:7px;border-radius:50%;background:#b9b9c0;animation:r3ty 1s infinite}"+
+  ".r3-dots i:nth-child(2){animation-delay:.15s}.r3-dots i:nth-child(3){animation-delay:.3s}"+
+  "@keyframes r3ty{0%,60%,100%{transform:translateY(0);opacity:.45}30%{transform:translateY(-4px);opacity:1}}"+
+  ".vbub.playing .vwave i{animation:r3eq .7s ease-in-out infinite alternate}"+
+  ".vbub.playing .vwave i:nth-child(3n){animation-delay:.12s}.vbub.playing .vwave i:nth-child(4n){animation-delay:.24s}.vbub.playing .vwave i:nth-child(5n){animation-delay:.06s}"+
+  "@keyframes r3eq{from{transform:scaleY(.45)}to{transform:scaleY(1.25)}}"+
+  ".vbub .vwave i{transform-origin:center;display:inline-block}"+
+  "#line-chat{position:relative}#tinder-chat-wrap{position:relative}"+
+  ".r3-jump{position:absolute;right:12px;bottom:80px;z-index:40;border:none;cursor:pointer;font-family:inherit;background:#111;color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:8px 13px 8px 11px;box-shadow:0 4px 14px rgba(0,0,0,.28);opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .22s,transform .22s;display:flex;align-items:center;gap:6px}"+
+  ".r3-jump.on{opacity:1;pointer-events:auto;transform:none}"+
+  ".r3-jump .r3-jd{width:8px;height:8px;border-radius:50%;background:#fd267d;display:none;box-shadow:0 0 0 0 rgba(253,38,125,.6);animation:r3pulse 1.2s infinite}"+
+  ".r3-jump.new .r3-jd{display:block}"+
+  "@keyframes r3pulse{0%{box-shadow:0 0 0 0 rgba(253,38,125,.55)}100%{box-shadow:0 0 0 7px rgba(253,38,125,0)}}"+
+  "#tchat .t-bub.them:has(img){box-shadow:0 3px 10px rgba(20,10,30,.18);border:1px solid rgba(0,0,0,.05)}";
+ document.head.appendChild(css);
+ /* (1) Tinder typing bubble -> living dots */
+ const tc=document.querySelector("#tchat");
+ if(tc){ const fix=n=>{ if(n.nodeType!==1||!n.classList||!n.classList.contains("t-bub")) return;
+    if(n.textContent.trim()==="・・・"||n.textContent.trim()==="..."){ n.innerHTML='<span class="r3-dots"><i></i><i></i><i></i></span>'; n.classList.add("r3-typing"); n.style.opacity="1"; } };
+  new MutationObserver(ms=>ms.forEach(mu=>mu.addedNodes.forEach(fix))).observe(tc,{childList:true});
+  tc.querySelectorAll(".t-bub").forEach(fix); }
+ /* (3) jump-to-latest pills */
+ function jump(scrollEl,host){
+  if(!scrollEl||!host) return;
+  const b=document.createElement("button"); b.className="r3-jump"; b.type="button";
+  b.innerHTML="↓ 最新へ<span class=\"r3-jd\"></span>"; host.appendChild(b);
+  const dist=()=>scrollEl.scrollHeight-scrollEl.scrollTop-scrollEl.clientHeight;
+  const upd=()=>{ const on=dist()>260; b.classList.toggle("on",on); if(!on) b.classList.remove("new"); };
+  scrollEl.addEventListener("scroll",upd,{passive:true});
+  new MutationObserver(()=>{ if(dist()>260) b.classList.add("on","new"); }).observe(scrollEl,{childList:true});
+  b.addEventListener("click",()=>{ scrollEl.scrollTo({top:scrollEl.scrollHeight,behavior:"smooth"}); b.classList.remove("new"); setTimeout(upd,450); });
+ }
+ jump(document.querySelector("#chat"), document.querySelector("#line-chat"));
+ jump(document.querySelector("#tchat"), document.querySelector("#tinder-chat-wrap"));
 })();
 </script>
 
