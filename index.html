@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v220</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v223</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9195,6 +9195,52 @@ setInterval(upd,900); upd();
     const acts=t.closest(".ig-post .acts"); if(!acts) return;
     if((t.textContent||"").indexOf("✈")>=0){ sheet.style.display="block"; bd.style.display="block"; }
   });
+})();
+</script>
+<script>
+/* ===== Tinder ver v223: Instagram precision pass 5 (Playwright audit of v222) - (1) The three v54 real posts (ig-jul2023 / ig-may25 / ig-may15) still used their legacy template while every other his-post uses the standard one: no action row at all (like / comment / share / save were all unreachable from the feed; the bold "いいね！N件" line itself was the like-btn, so tapping it toggled a class but never moved any count - the v222 handler needs a .cap, which these posts lacked), no verified badge, no … menu, and zero-padded dates ("2023年05月25日" vs the standard "2023年5月25日" style). Fix normalises them in place to the standard structure: verified + … in the header, a real .acts row (♡ like-btn / 💬 comment icon wired to the v272 sheet / ✈️ share / 🔖 save), and a standard .cap ("いいね！：N件" + caption + date, date de-padded). The comment total is preserved via dataset.v272base (576 / 627 / 1,606) so the view-all line keeps its number, and the v272 sheet seeds its usual two sample comments on open, like every other post. (2) Saved-tab jump to HIS posts was a dead landing: buildSaved jumps at 80ms but show("hisig") re-applies grid mode at 400ms, so the player landed on the grid with all posts hidden and no outline. Fix: 600ms after a saved-cell tap, if the target post is still hidden, switch his profile back to feed mode and re-jump to the post with the outline flash. (3) Settings footer still read v220 while the game was v222, so the work-head version badge (which reads that footer) was stale too; footer now reads v223. No story text, choices, voices, gates or save format changed. ===== */
+(function(){
+  if(window.__v223) return; window.__v223=true;
+  const hv=document.querySelector("#v-hisig"); if(!hv) return;
+  const baseOf=el=>(el.getAttribute("src")||"").split("/").pop();
+  const norm=post=>{
+    if(post.querySelector(".acts")) return;
+    const img=post.querySelector("img.pimg"); if(!img) return;
+    const header=post.children[0];
+    if(header&&!header.querySelector(".verified")){
+      const v=document.createElement("span"); v.className="verified"; v.textContent="☑"; header.appendChild(v);
+      const dots=document.createElement("span"); dots.style.cssText="margin-left:auto;color:#8e8e93"; dots.textContent="…"; header.appendChild(dots); }
+    const bottom=[...post.children].find(c=>c.querySelector&&c.querySelector(".like-btn"));
+    if(bottom){
+      const likeEl=bottom.querySelector(".like-btn");
+      const m=(likeEl?likeEl.textContent:"").match(/([\d,]+)/); const likes=m?m[1]:"0";
+      const capDiv=bottom.children[1]; const capText=capDiv?capDiv.textContent.replace(/^193\.hiroto_jixiang\s*/,""):"";
+      const dateDiv=bottom.children[2]; let dateText=dateDiv?(dateDiv.textContent||"").trim():"";
+      const cm=dateText.match(/コメント\s*([\d,]+)\s*件/);
+      if(cm&&post.dataset.v272base===undefined) post.dataset.v272base=cm[1].replace(/,/g,"");
+      dateText=dateText.replace(/\s*[·・]\s*コメント\s*[\d,]+\s*件/,"").replace(/年0(\d)/,"年$1").replace(/月0(\d)/,"月$1");
+      const cap=document.createElement("div"); cap.className="cap";
+      cap.innerHTML="いいね！："+likes+"件<br><b>193.hiroto_jixiang</b> ";
+      cap.appendChild(document.createTextNode(capText));
+      cap.appendChild(document.createElement("br"));
+      const ds=document.createElement("span"); ds.style.cssText="color:#8e8e93;font-size:12px"; ds.textContent=dateText; cap.appendChild(ds);
+      bottom.replaceWith(cap); }
+    const acts=document.createElement("div"); acts.className="acts";
+    acts.innerHTML='<span class="like-btn">♡</span><span class="v272-cmtic" style="cursor:pointer">💬</span><span>✈️</span><span class="save-btn">🔖</span>';
+    img.after(acts);
+    const lb=acts.querySelector(".like-btn"); if(lb) lb.dataset.v222liked="0"; };
+  hv.querySelectorAll(".ig-post").forEach(norm);
+  new MutationObserver(ms=>ms.forEach(x=>x.addedNodes.forEach(n=>{ if(n.nodeType!==1) return; if(n.matches&&n.matches(".ig-post")) norm(n); if(n.querySelectorAll) n.querySelectorAll(".ig-post").forEach(norm); }))).observe(hv,{childList:true,subtree:true});
+  document.addEventListener("click",e=>{
+    const cell=e.target.closest?e.target.closest("#ig-saved .sv-cell"):null; if(!cell) return;
+    const im=cell.querySelector("img"); if(!im) return; const src=baseOf(im);
+    setTimeout(()=>{
+      const v=document.querySelector("#v-hisig"); if(!v||!v.classList.contains("on")) return;
+      const post=[...v.querySelectorAll(".ig-post")].find(p=>{ const pi=p.querySelector("img.pimg"); return pi&&baseOf(pi)===src; });
+      if(!post) return;
+      if(post.style.display==="none"&&typeof state!=="undefined"&&state._v251setMode) state._v251setMode("feed");
+      setTimeout(()=>{ post.scrollIntoView({block:"center"}); post.style.outline="3px solid #ffd94d"; setTimeout(()=>post.style.outline="",1400); },80);
+    },600); });
 })();
 </script>
 </body>
