@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v185</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v186</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2119,10 +2119,6 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   const photos=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
   let photoIdx=0;
   const deck=[
-    {name:"そうた",age:25,distKm:5,dist:"5 km",work:"アパレル",bio:"今日会える人。ライブの話しながら飲みたい。下北・高円寺あたり、家近い人だと最高",tags:["音楽","古着","ライブ"],grad:"linear-gradient(160deg,#11998e,#38ef7d)",ini:"そ",photos:["assets/dummy-sota-1.jpg","assets/dummy-sota-2.jpg","assets/dummy-sota-3.jpg"],scenes:[{e:"🎸",cap:"下北のライブハウス通い"},{e:"👕",cap:"古着屋めぐりが休日"},{e:"🎧",cap:"最近はシティポップ沼"}],promptQ:"休みの日は…",promptA:"昼まで寝て、夕方からレコード屋とライブ"},
-    {name:"しゅん",age:28,distKm:12,dist:"12 km",work:"エンジニア",bio:"夜型。今夜会える人、静かに飲も。深夜ドライブも可。多くは語らんタイプ",tags:["ゲーム","コーヒー","映画"],grad:"linear-gradient(160deg,#232526,#414345)",ini:"し",photos:["assets/dummy-shun-1.jpg","assets/dummy-shun-2.jpg","assets/dummy-shun-3.jpg"],scenes:[{e:"🌙",cap:"夜型です"},{e:"🚬",cap:"煙と夜景"},{e:"🌃",cap:"静かな時間が好き"}],promptQ:"理想のデートは…",promptA:"カフェでだらだらして、夜は家で映画"},
-    {name:"たくみ",age:29,distKm:18,dist:"18 km",work:"料理人",bio:"小さな居酒屋の料理人。店終わり、今日会える人。うまいもん食べさせたい。迎えに行くよ",tags:["料理","魚","居酒屋"],grad:"linear-gradient(160deg,#cb2d3e,#ef473a)",ini:"た",photos:["assets/dummy-takumi-1.jpg","assets/dummy-takumi-2.jpg","assets/dummy-takumi-3.jpg"],scenes:[{e:"🍳",cap:"料理人やってます"},{e:"🐟",cap:"出汁にはうるさいです"},{e:"🧑‍🍳",cap:"休みの日も台所に立ちがち"}],promptQ:"実は…",promptA:"休みの日も結局、台所に立ってしまう"},
-    {name:"そうま",age:22,distKm:2,dist:"2 km",work:"大学生",bio:"○○大2年、カフェでバイトしてます。今夜バイト終わりに会える人探し中。自転車でどこでも行くよ",tags:["カフェ","自転車","イラスト"],grad:"linear-gradient(160deg,#f7971e,#ffd200)",ini:"そ",photos:["assets/dummy-soma-1.jpg","assets/dummy-soma-2.jpg","assets/dummy-soma-3.jpg"],scenes:[{e:"☕",cap:"カフェでバイトしてます"},{e:"🚲",cap:"ラテアート練習中"},{e:"🎨",cap:"窓側の席が落ち着く"}],promptQ:"理想のデートは…",promptA:"川沿いサイクリングして、気になるカフェに入る",prompt2Q:"実は…",prompt2A:"働いてるカフェの常連さんの顔、だいたい覚えてます"},
     {hiroto:true,name:"ひろと",age:24,distKm:1,dist:"1 km ・ 大阪",bio:"大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き",tags:["お酒","コーラ","ごはん","犬","サウナ"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。誘われたら、だいたい行くで",prompt2Q:"仕事は…",prompt2A:"不定期なやつ。詳しくは、会ったら言うわ"}
   ];
   let idx=0, matched=false, chatStarted=false;
@@ -3211,9 +3207,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     var nr=$("#tm-newrow"); if(!nr) return;
     var m=window.__tinder && window.__tinder.matched;
     if(!m){ nr.innerHTML='<div style="font-size:12.5px;color:#8e8e93;padding:8px 2px">まだ新規マッチはありません</div>'; return; }
-    nr.innerHTML='<button class="newtile" id="tm-tile-h"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt=""><span>ひろと ⭐</span></button>'
-      +'<button class="newtile" data-gold="1"><span class="ph blurme" style="background:linear-gradient(160deg,#667eea,#764ba2)">？</span><span>？？？ 🔒</span></button>'
-      +'<button class="newtile" data-gold="1"><span class="ph blurme" style="background:linear-gradient(160deg,#11998e,#38ef7d)">？</span><span>？？？ 🔒</span></button>';
+    nr.innerHTML='<button class="newtile" id="tm-tile-h"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt=""><span>ひろと ⭐</span></button>';
     var th=$("#tm-tile-h"); if(th) th.addEventListener("click",function(){ showPane("chat"); clearUnread(); });
     nr.querySelectorAll("[data-gold]").forEach(function(t2){ t2.addEventListener("click",function(){ openGold(); }); });
   }
@@ -3286,15 +3280,10 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       +'<div class="gold-plan plat"><div style="font-weight:900;font-size:15px">Tinder Platinum　<span style="color:#5b7ba5">月額 ¥3,400〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">マッチ前にメッセージ送信／あなたのLikeを優先表示／スーパーいいね週5回</div><button class="gold-buy" style="margin-top:9px;background:#5b7ba5;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Platinumにアップグレード</button></div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">💛 あなたを Like した人</div><div class="pickrow">'
       + himTile
-      +'<button class="picktile" data-blur="1"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/dummy-takumi-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
-      +'<button class="picktile" data-blur="1"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/dummy-sota-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
-      +'<button class="picktile" data-blur="1"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/dummy-soma-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
-      +'</div>'
+                        +'</div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">🔥 Top Picks（本日のおすすめ）</div><div class="pickrow">'
       + himTile.replace('id="gp-him"','id="gp-him2"')
-      +'<button class="picktile" data-pick="しゅん"><span class="im"><img loading="lazy" decoding="async" src="assets/dummy-shun-1.jpg" alt=""></span><span>しゅん 28</span></button>'
-      +'<button class="picktile" data-pick="たくみ"><span class="im"><img loading="lazy" decoding="async" src="assets/dummy-takumi-1.jpg" alt=""></span><span>たくみ 29</span></button>'
-      +'</div>'
+                  +'</div>'
       +'<button class="sheet-close" id="gold-close">閉じる</button>';
     gsheet.classList.add("on");
     document.getElementById("gold-close").addEventListener("click",function(){ gsheet.classList.remove("on"); });
@@ -3675,617 +3664,12 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
 })();
 </script>
 <script>
-/* ===== Tinder ver v96 (nao's instruction): the dummy cast is cut from twelve to four - the four who stay are picked so no two types overlap: そうた (25, apparel, same-generation frank), しゅん (28, night-owl engineer, the quiet cool one), たくみ (29, chef, the older enveloping type), そうま (22, cafe part-timer, the sweet clingy younger one). The other eight （けんた/れん/だいき/はると/ゆうき/りく/かいと/はやて) are removed everywhere they existed: the swipe deck, LIKEBACK, all chat rounds DM..DM8 (script1-7 + night/morning pools), DM_PACE, the Gold sheet's Likes-You blur tiles and Top Picks (static tiles + POOL rotation + the daily ALL rotation), the v57 presence DIST map, the settings match count (it folds order.length, so it follows automatically), and their 24 photo assets are deleted. The four who stay keep every round intact. His free-chat jealousy reads window.__lastDmChat generically (no names), so it needs no change and now only ever fires for the four ===== */
-/* ===== Tinder ver v21: dummy matches (some dummies like you back — pushy, flirtatious, straight-to-the-point chats that make hiroto's restraint stand out; temperature rewritten in v39) + itsumen staged reactions (match report buzz / after the first date / support after the ending) ===== */
+/* ===== Tinder ver v186 (nao's decision 'ダミーいらんかも、けして'): the remaining four dummies are now deleted entirely - deck cards, LIKEBACK, all dummy chat data and machinery (former v21 block), Top Picks POOL rotation + daily Gold rotation, Gold/Likes-You dummy tiles, the v57 presence layer, the free-chat jealousy that keyed on dummy chats, and their 12 photo assets. The deck is Hiroto's card alone; the Super Like -> match -> main chat flow is untouched. The itsumen staged reactions that shared the old v21 IIFE stay. ===== */
+/* ===== Tinder ver v21: itsumen staged reactions (match report buzz / after the first date / support after the ending). The dummy matches that originally shared this IIFE were deleted in v186 ===== */
 (function(){
   function $(q){ return document.querySelector(q); }
   function $$(q){ return Array.prototype.slice.call(document.querySelectorAll(q)); }
   var T=window.__tinder; if(!T) return;
-  var css=document.createElement("style"); css.textContent=
-   "#dm-overlay{position:absolute;inset:0;background:linear-gradient(160deg,#fd267d,#ff7854);z-index:250;display:none;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:28px}"+
-   "#dm-overlay.on{display:flex}"+
-      ".dm-rowdot{background:#fd267d;color:#fff;font-size:10px;font-weight:900;border-radius:999px;padding:2px 7px;flex:none}";
-  document.head.appendChild(css);
-
- /* ================= dummy matches ================= */
-  var LIKEBACK={"そうた":1,"しゅん":1,"たくみ":1,"そうま":1};
-  var DM={
-   
-   
-   
-   "そうた":{open:["マッチありがとう！そうたです","プロフィール見て、音楽の趣味 近そうだなって思って。即、右スワイプでした笑 今日、下北で飲めたりしません？"],
-    script:[["下北でアパレルやってるんだけど","なおさんはライブ行く？ 好きなバンド被ったら、今夜 語り明かしたいな"],["📷:assets/dummy-sota-2.jpg","この前、車の中で撮ったやつ。ドライブも好きなんだ","助手席、空いてるよ？笑"],["古着屋めぐりも休みの定番で","なおさんと行ったら、似合うの選びたいな"],["最近シティポップにハマってて","おすすめ一曲ずつ交換しない？ …通話で"],["📷:assets/dummy-sota-3.jpg","行きつけのライブハウス。小さいとこ、音が近くて最高","今度のライブ、一緒にどう？"],["今日、仕事 早上がりなんだよね","夕方から空いてる。…ね、会わない？"],["下北、ちょうどいい店 知ってるよ","一杯だけでも。返事、待ってる"]],
-    keys:[[/ライブ|バンド|音楽/,"話 合うね！じゃあ今夜、下北集合にしない？ ライブ帰りの店、知ってるよ"],[/古着|服|アパレル/,"服の話できるの嬉しい。今度、古着屋 一緒に回ろ？ コーデも見たいな"],[/車|ドライブ/,"ドライブ行く？ 海まで1時間くらい。今夜でもいいよ"],[/仕事/,"アパレル、今日は早上がり。だから狙って声かけた笑"]],
-    def:["話してて楽しいな","なおさんの返信、早いの嬉しい","次は声も聞きたいな。通話しよ？","会って話したら絶対楽しいと思う","今夜の予定、まだ空いてる？笑","また送るね。既読つくと安心する","下北の店、キープして待ってるよ"]},
-   
-   "しゅん":{open:["マッチ、ありがとう。しゅんです","夜型で悪いけど…今夜、会える人探してた。静かに飲まない？"],
-    script:[["普段、あまり喋らないほう","でも、なおさんには興味ある。正直に言うと、タイプ"],["📷:assets/dummy-shun-2.jpg","さっき撮った。今、こんな感じ","…見せたくなっただけ"],["深夜ドライブ、よく行く","隣、空いてる。今からでも走れるよ"],["コーヒーは深煎り派","なおさんは？ …会って話すほうが早いか"],["📷:assets/dummy-shun-3.jpg","夜の街。静かなとこ、知ってる","連れて行きたい"],["終電、気にしなくていい","送るから。…帰したくなくなるかもだけど"],["で、今夜どうする？","待ってる。返事、短くていいから"]],
-    keys:[[/ドライブ|夜|深夜/,"じゃあ今夜。迎えに行く。場所だけ決めて"],[/コーヒー|カフェ/,"深夜のカフェ、静かでいいよ。今からでも開いてるとこ知ってる"],[/静か|落ち着/,"静かな時間、合うね。なおさんとは、そういう夜がいい"],[/仕事/,"エンジニア。今日はもう終わり。夜は、自由"]],
-    def:["…悪くない時間","なおさんの返信、待ってた","声、聞きたい。通話、短くてもいい","会ったら、もっと話すかも","今夜、まだ起きてる？","また送る。…気になってるんだと思う","夜の約束、決めよう"]},
-   "たくみ":{open:["マッチありがとうございます、たくみです","小さな居酒屋で料理人をしてます。店が終わったら、今日会える人探してて。…うまいもん、食べさせたいな"],
-    script:[["仕込みの合間に返信してます","なおさんは、食べるの好き？ だったら話が早い"],["📷:assets/dummy-takumi-2.jpg","今日の賄い。出汁には、ちょっとうるさいです","なおさんにも作りたいな"],["店、22時には閉めるんで","そのあと、迎えに行けます。少し飲み直しません？"],["年上、大丈夫ですか","…落ち着いてるねって、よく言われます。甘えてくれていいですよ"],["📷:assets/dummy-takumi-3.jpg","休みの日も結局、台所に立ってしまう","誰かのために作るのが、いちばん楽しい"],["エビ、好きって書いてあったね","いい店…というか、うちで出せます。今夜、どう？"],["無理強いはしません","でも、今日のなおさんに会えたら嬉しい。返事、待ってます"]],
-    keys:[[/エビ|魚|海鮮/,"海鮮、任せて。今夜、いいの仕入れてある。店、寄ってく？"],[/料理|ごはん|食べ/,"食べるの好きな人、大歓迎。今夜、腕ふるいますよ"],[/居酒屋|飲み|お酒/,"店終わり、一杯だけ付き合って。今夜、空いてるよ"],[/仕事/,"料理人です。今日は22時上がり。そのあと、会えます"]],
-    def:["話してて、落ち着きますね","なおさんの『美味しそう』が聞きたいな","次は店で。…いや、まずは外で会いましょう","会って話したら、距離縮まりそう","今夜の予定、まだ決まってないなら","また送ります。返信、楽しみにしてる","約束、忘れてないですからね"]},
-   
-   
-   
-   "そうま":{open:["マッチありがとうございます！そうまです","カフェでバイトしてて、プロフィールの写真見て即右でした笑 今夜バイト終わりに会える人、探し中です！"],
-    script:[["ラテアート、練習中なんです","なおさんが来てくれたら、ハート描きますよ笑"],["📷:assets/dummy-soma-2.jpg","バイト先で撮ってもらったやつです","窓側の席、落ち着くんでおすすめですよ"],["自転車、どこでも行きます！","迎えも行けます。なおさんの家の近くまで笑"],["常連さんの顔、だいたい覚えちゃうんです","なおさんの顔は、特に。…なんて笑"],["📷:assets/dummy-soma-3.jpg","お気に入りの一枚。カフェ巡りが趣味です","今度、なおさんと行ってみたい店あるんです"],["バイト、20時に終わります！","そのあと、夜カフェしません？ 少しだけでも"],["返信、ドキドキしながら待ってます笑","今日の夜、空いてますよね…？ 空いててほしい"]],
-    keys:[[/カフェ|コーヒー/,"カフェの話、嬉しいです！今夜、バイト終わりに夜カフェどうですか？"],[/自転車|サイクリング/,"サイクリング行きましょう！川沿いコース、案内します。今夜でも笑"],[/スイーツ|甘|ケーキ/,"甘いの好きなんですね。バイト先のケーキ、内緒でおすすめありますよ"],[/大学|バイト/,"○○大2年です。今日は20時にバイト終わり。そのあと、会えます！"]],
-    def:["え、ほんとですか！嬉しいです","なおさん、話しやすすぎます","次は写真じゃなく直接…！待ってます","会えたらラテアート、成功させます笑","今夜の予定、決まってないですよね？","また送ります！返信、待ってますね","カフェの約束、忘れてないですから！"]}
-   
-  };
- /* ===== Tinder ver v50: dummy chats round 2 - a second lap of script beats (one photo resend each) + extra default lines incl. late-night ones; same eager tone, nothing explicit, everyone 20+ ===== */
-  var DM2={
-   
-   
-   
-   "そうた":{s:[["今日、ライブのチケット取れたんだ","2枚。…誰を誘うかは、決まってるんだけどね"],["📷:assets/dummy-sota-2.jpg","ドライブの途中で撮ったやつ。海、見に行かない？","今夜じゃなくても、今週末でもいいよ"]],d:["夜の下北、まだ賑やかだよ。来ない？","なおさんの好きな曲、もっと知りたい"]},
-   
-   "しゅん":{s:[["今、起きたとこ。夜型でごめん","なおさんは、まだ起きてる？"],["📷:assets/dummy-shun-2.jpg","今の俺。部屋、静かだよ","…ここより、外で会いたいけど"]],d:["夜中、眠れないなら付き合うよ","なおさんの短い返信、嫌いじゃない"]},
-   "たくみ":{s:[["今日の仕入れ、エビが当たりだった","なおさんの顔、浮かんだよ"],["📷:assets/dummy-takumi-2.jpg","今日の賄いは豪華版","これ、なおさんに食べさせたいな"]],d:["店終わり。今からなら、まだ会えるよ","なおさんの『美味しい』が、いちばんの褒め言葉"]},
-   
-   
-   
-   "そうま":{s:[["バイト終わりました！今日はラテアート、成功したんです","なおさんに淹れる日が、楽しみで"],["📷:assets/dummy-soma-3.jpg","お気に入りの一枚、また送っちゃいます","今夜、カフェの話の続きしません？"]],d:["夜カフェ、まだ間に合いますよ！","なおさんの返信、今日いちばんの楽しみなんです"]}
-   
-  };
-  Object.keys(DM2).forEach(function(n){ if(DM[n]){ DM[n].script2=DM2[n].s; DM[n].def=DM[n].def.concat(DM2[n].d); } });
- /* ===== Tinder ver v59: dummy chats round 3 - a third lap of script beats + extra defaults, plus a late-night-only pool (23:00-3:59) that only surfaces after the scripts run out; same eager tone, nothing explicit, everyone 20+ ===== */
-  var DM3={
-   
-   
-   
-   "そうた":{s:[["チケット2枚、無事に手元にあるよ","日程、送るね。…今夜じゃなくても、会う口実にしたい"],["📷:assets/dummy-sota-3.jpg","行きつけの店、店員さんに顔覚えられた","なおさん連れて行ったら、自慢できそう"]],d:["下北、今日も音が漏れてる。なおさんの分まで聞いとく","古着、なおさんに似合いそうなの見つけたら写真送るね"],n:["夜の下北、歩いてるだけで楽しいんだ","起きてる？ 一曲、おすすめ送りつけていい？"]},
-   
-   "しゅん":{s:[["今日も夜型。なおさんに合わせて起きてる","…嘘。もともと、この時間がいちばん冴える"],["📷:assets/dummy-shun-3.jpg","夜の街、今夜も静かだよ","隣に乗せるなら、なおさんがいい"]],d:["短い返信でも、来ると違う","なおさんには、言葉数 増えるほう"],n:["この時間のドライブ、誘うの2人目とかじゃない。…1人目","眠れないなら、朝まで付き合う"]},
-   "たくみ":{s:[["今日のエビ、活きが良すぎて。なおさんの顔が浮かんだ","店に来なくても、届けに行きたいくらい"],["📷:assets/dummy-takumi-3.jpg","休みの台所。結局、誰かのために作りたいんだなって","なおさんの『美味しい』、早く聞きたい"]],d:["年上らしく、急かしはしません。でも、待ってます","店終わりの連絡が、なおさんには一番早いかも"],n:["仕込み終わり。この時間の静けさ、好きなんです","夜食、作りすぎた日は、なおさんを思い出します"]},
-   
-   
-   
-   "そうま":{s:[["ラテアート、今日は両面ハート成功しました！","なおさんの一杯は、本番にとってあります"],["📷:assets/dummy-soma-2.jpg","バイト先の窓側、この席キープしたい","なおさんの席って、もう決めてるんです笑"]],d:["バイト中も、なおさんからの通知が一番嬉しいです","自転車、夜風が気持ちいい季節ですよ。迎えに行きます"],n:["夜カフェのバイト終わり、この時間が一番そわそわします","まだ起きてます？ カフェの話、あと少しだけ"]}
-   
-  };
-  Object.keys(DM3).forEach(function(n){ if(DM[n]){ DM[n].script3=DM3[n].s; DM[n].def=DM[n].def.concat(DM3[n].d); DM[n].night=DM3[n].n; } });
- /* ===== Tinder ver v62: dummy chats round 4 - one more lap per person, each leaning into their own flavour; same eager 'free tonight' tone, nothing explicit, everyone 20+ ===== */
-  var DM4={
-   
-   
-   
-   "そうた":[["ライブの日程、決まったよ","なおさんの隣、空けとく。返事は早めが嬉しいな"]],
-   
-   "しゅん":[["今日の夜、月が綺麗だって","…月より、なおさんと話すほうが楽しみだけど"]],
-   "たくみ":[["新メニュー、試作中。名前、まだない","一号店のお客さんは、なおさんに決めてる"]],
-   
-   
-   
-   "そうま":[["窓側の席、常連さんに勝ちました笑","なおさんの席、キープ継続中です！"]]
-   
-  };
-  Object.keys(DM4).forEach(function(n){ if(DM[n]) DM[n].script4=DM4[n]; });
- /* ===== Tinder ver v75: dummy chats gain a morning-only pool (6:00-9:59) mirroring the v59 late-night pool - it only surfaces after the scripts run out, one line at a time per dummy, same eager-but-light tone, nothing explicit, everyone 20+, no story content. Orig v283 reviewed in this same pass and NOT ported: the original gates a second copy of her 10/4 cafe post (found by the "cafe murmur" location tag), but this version has no such post - "cafe murmur" appears here only as an X search-history string, her feed holds a single static ramen post plus the two guarded-once v64 fan posts, her story is one view whose image/caption swap per chapter (not duplicated DOM copies), and her posts carry no date gate that could be half-applied - so there is no second copy to gate ===== */
-  var DM5={
-   
-   
-   
-   "そうた":["おはよ！朝のプレイリスト、なおさんにおすすめ送りたい曲あるんだ","昨日のライブの余韻、朝まで残ってる。…なおさんと語りたいな"],
-   
-   "しゅん":["…朝か。なおさんの朝の返信、珍しくて嬉しい","夜型の俺が朝に送るの、珍しい。…なおさんだから、起きてた"],
-   "たくみ":["おはようございます。朝の仕込み、始まりました。なおさんの分も…なんて笑","朝ごはん、ちゃんと食べました？ …今度、うちのモーニング食べさせたいな"],
-   
-   
-   
-   "そうま":["おはようございます！今日は早番で、カフェの窓側 空いてますよ笑","モーニングのラテアート、今日は成功しそう。なおさんの一杯、とっときます"]
-   
-  };
-  Object.keys(DM5).forEach(function(n){ if(DM[n]) DM[n].morning=DM5[n]; });
- /* ===== Tinder ver v86: dummy chats round 5 - a fifth lap per person, autumn check-ins that lean on each one's flavour and circle back to their profile photo (the -1 framing, re-sent as a 'remember this one?' beat); same eager 'free tonight' tone, nothing explicit, everyone 20+ ===== */
-  var DM6={
-   
-   
-   
-   "そうた":[["古着屋で、なおさんに似合いそうなの見つけたんだ","写真より実物。一緒に見に行かない？"],["📷:assets/dummy-sota-1.jpg","最初のやつ、懐かしい","実物のほうがノリいいよ。今夜、下北で確かめない？"]],
-   
-   "しゅん":[["朝型に矯正中だったけど…無理だった","やっぱり夜のほうが、なおさんと話せる"],["📷:assets/dummy-shun-1.jpg","プロフィールのやつ、静かすぎるでしょ","実物は、なおさんの前だともうちょい喋る。今夜、確認して"]],
-   "たくみ":[["秋メニュー、始まりました。出汁が冴える季節です","最初のお客さんは、やっぱりなおさんがいいな"],["📷:assets/dummy-takumi-1.jpg","最初の写真、若く見えるって言われます","実物は、もうちょい大人ですよ。今夜、店に確かめに来ませんか"]],
-   
-   
-   
-   "そうま":[["秋の限定メニュー出ました！栗のやつです","なおさんに最初に食べてほしいな"],["📷:assets/dummy-soma-1.jpg","最初の写真、初々しいでしょ笑","ラテアート、だいぶ上達しました。今夜、実物で証明します！"]]
-   
-  };
-  Object.keys(DM6).forEach(function(n){ if(DM[n]) DM[n].script5=DM6[n]; });
- /* ===== Tinder ver v89: dummy chats round 6 - the temperature goes up a notch (nao's instruction): the dummies lean in harder - voice asks, sit-next-to-me invitations, direct 'tonight' closers and heart-flutter lines, each still in their own flavour, closing again on the profile-photo resend (-1 framing) and an even more direct invitation. Seduction and tension in words only: no explicit acts, no body descriptions, everyone 20+. Hiroto himself is untouched - his restraint is the contrast ===== */
-  var DM7={
-   
-   
-   
-   "そうた":[["なおと話してると、時間あっという間だよね","…もっと近くで話したい。今夜、下北で待ち合わせしない？"],["📷:assets/dummy-sota-1.jpg","最初の写真、懐かしい","実物はもっと笑わせるよ。今夜、隣の席で証明する"]],
-   
-   "しゅん":[["…なおと話す夜が、一番好きだ","今夜も、長く話そう。…寝かせる気、ないよ"],["📷:assets/dummy-shun-1.jpg","写真の俺、静かそうだろ","実物は、なおの前だともっと欲張り。今夜、もっと話そ"]],
-   "たくみ":[["店終わり、なおさんの顔が浮かぶんです","今夜、カウンターの特等席。…隣じゃなくて、目の前でどうですか"],["📷:assets/dummy-takumi-1.jpg","写真より、実物のほうが大人ですよ","味見だけじゃ、終わらせません。今夜、確かめに来てください"]],
-   
-   
-   
-   "そうま":[["なおさんの一杯、ハートのラテアート練習中です","…渡すとき、ドキドキするんですよね。今夜、閉店前に来ませんか"],["📷:assets/dummy-soma-1.jpg","最初の写真、初々しいでしょ笑","実物は、もうちょっと攻めます。今夜、証明します！"]]
-   
-  };
-  Object.keys(DM7).forEach(function(n){ if(DM[n]) DM[n].script6=DM7[n]; });
- /* ===== Tinder ver v94: dummy chats round 7 - a more personal lap: each dummy opens up a little (a small weakness, a dream, a past they do not usually tell) and turns the question back to her, so the lap closes on her answer instead of another invitation. A different shape from rounds 5/6 (no photo resend this time); same eager tone underneath, nothing explicit, everyone 20+ ===== */
-  var DM8={
-   
-   
-   
-   "そうた":{s:[["チケット2枚取るの、実は最初から決めてたんだ","誘う相手、間違えたくないからさ"],["なおさんは、誰かを誘うとき緊張するほう？","…俺は、なおを誘うとき毎回だよ"]],d:["なおの緊張する顔、ちょっと見てみたい笑"]},
-   
-   "しゅん":{s:[["夜型って言ってるけど、本当は朝に弱いだけ","なおと話してる夜が、一日のピーク"],["なおは、誰にも言ってないことってある？","…俺からも、もっと話すよ。順番に"]],d:["なおの秘密、聞く準備はできてる"]},
-   "たくみ":{s:[["料理は、誰かに食べてもらうために覚えたんです","一人だと、適当なんですよ。…正直な話"],["なおさんは、誰かのために作るほうですか","…なおさんの手料理、いつか食べてみたいな"]],d:["手料理の話、楽しみにしてますから"]},
-   
-   
-   
-   "そうま":{s:[["バイト、実は将来 自分のお店を持ちたくて続けてます！","常連さん第一号は、なおさんって決めてるんです"],["なおさんの夢って、聞いてもいいですか","…応援させてください。カフェの話以外も、もっとしたいです"]],d:["夢の話、もっと聞かせてください！"]}
-   
-  };
-  Object.keys(DM8).forEach(function(n){ if(DM[n]){ DM[n].script7=DM8[n].s; DM[n].def=DM[n].def.concat(DM8[n].d); } });
- /* ===== Tinder ver v106: dummy chats round 8 - the callback lap. Each dummy picks up his own round-7 thread (the personal lap) and one earlier beat of his, so the chats remember themselves: Sota's two tickets finally get a date and a setlist bet, Shun keeps his 'in turn' promise and tells a small secret first, Takumi's unnamed trial dish (round 4) has a name now and the first-customer promise stands, Soma has sketched his future shop's logo and keeps her window seat (rounds 1/5/7) reserved in it. Episode cross-references inside each dummy's own arc only - no story content, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
-  var DM9={
-
-
-   "そうた":{s:[["あのチケットのライブ、もうすぐなんだ","セトリ予想、当てっこしない？ なおの予想、聞きたい"],["誘う相手、間違えたくないって言ったの覚えてる？","…今も全然、迷ってないよ。返事、急かさないけどさ"]],d:["セトリ予想、なおの分も聞かせて"]},
-
-   "しゅん":{s:[["この前『順番に』って言ったろ","俺から一つ。…実は、けっこう人見知り。なおには、最初から平気だった"],["次は、なおの番","小さいことでいい。…待ってる"]],d:["なおの番、忘れてないから"]},
-   "たくみ":{s:[["例の試作メニュー、名前が決まりました","発表は店で。一号店のお客さんのなおさんに、一番最初に教えます"],["手料理の話、その後 考えました？","急ぎません。でも、なおさんの『美味しい』、やっぱり早く聞きたいな"]],d:["新メニューの名前、店で教えますね"]},
-
-
-
-   "そうま":{s:[["自分の店のロゴ、こっそり描いてみたんです！","常連さん第一号のなおさんに、最初に見てほしいな"],["窓側の席、将来の店でも特等席にします","…なおさんの席、ずっと空けときます"]],d:["ロゴの感想、聞かせてくださいね"]}
-
-  };
-  Object.keys(DM9).forEach(function(n){ if(DM[n]){ DM[n].script8=DM9[n].s; DM[n].def=DM[n].def.concat(DM9[n].d); } });
- /* ===== Tinder ver v107: dummy chats round 9 - the two-choice lap. Each dummy hands her a small decision tied to his own round-8 thread, so the chats turn from reporting to asking her taste: Sota lets her pick the setlist bet's stakes (and his live-day outfit), Shun lets her choose which small secret he tells next, Takumi lets her pick the first dish of his newly named menu (the name itself still waits for the shop, per round 8) with a one-letter hint, Soma lets her pick between his two logo drafts and promises the winner a place on the window-seat menu. Cross-references stay inside each dummy's own arc, no cross-dummy talk; same eager tone, nothing explicit, everyone 20+ ===== */
-  var DM10={
-   "そうた":{s:[["セトリ予想の賭け、決めよう","外れたほうが次のドリンク奢りか、おすすめ一曲の交換か……なおが決めて"],["あと、ライブ当日の服も迷ってる","古着のジャケットか、いつものバンドTか。なおの好み、聞きたいな"]],d:["二択、なおの答え待ちだよ"]},
-   "しゅん":{s:[["次の秘密、なおが選んでいいよ","好きな夜食の話か、苦手な朝の話か。……どっちがいい？"],["選ばなかったほうは、また今度","……なおにだけ、順番に話すから"]],d:["二択、なおの選んだほうから話す"]},
-   "たくみ":{s:[["例の新メニュー、最初の一皿で迷ってます","エビの香ばしいやつか、旬の魚のあっさりしたやつか。なおさんの好みで決めたいな"],["名前は店で発表って言いましたけど","ヒントだけ。一文字目は、季節の言葉です"]],d:["最初の一皿、なおさんの答えで決めます"]},
-   "そうま":{s:[["ロゴの候補、二つまで絞れたんです！","丸くてやさしいやつか、窓の形のやつか。なおさんの直感で決めてほしいな"],["決めてもらったほう、窓側の席のメニュー表にも使います","……常連さん第一号の特権ですよ"]],d:["ロゴの二択、なおさんの直感待ちです"]}
-  };
-  Object.keys(DM10).forEach(function(n){ if(DM[n]){ DM[n].script9=DM10[n].s; DM[n].def=DM[n].def.concat(DM10[n].d); } });
- /* ===== Tinder ver v110: dummy chats round 12 - the looking-back lap. A different shape from rounds 8-11 (no new errand, no new choice): each dummy looks back across his own whole chat arc and names how far it has come - Sota from the two tickets (rounds 1/7) to the setlist playlist (round 11), Shun from the first night talks to both small secrets told (rounds 9/10) with her turn still open whenever, Takumi from the unnamed trial dish (round 4) to the named, passed, dated menu with the first-customer promise intact, Soma from the round-1 window seat to the logo feedback and the placed trial menu (round 11), the seat still hers. ===== */
-  var DM13={
-   "そうた":{s:[["チケット2枚の話から始まったのにさ","プレイリストまで作って聴き込む仲になるとは思わなかったよ"],["当日、封を開けるの楽しみにしてて","……隣で語れるの、俺はもう決めてるけどな"]],d:["振り返ると、けっこう進んだよな、俺ら"]},
-   "しゅん":{s:[["最初の夜の話から、秘密まで両方言っちゃったな","なおには、隠しごと向いてないみたいだ"],["なおの番は、いつでもいいから","……この夜の続き、まだ何回でも話そう"]],d:["夜の話、積み重なってきたな"]},
-   "たくみ":{s:[["名前のなかった試作が、始まる日まで決まったんですよ","最初のお客さんは、ずっと決めたままです"],["メニューブックの一ページ目、なおさんのためにあります","……大げさじゃなく、本当の話です"]],d:["ここまでの話、一皿に込めますね"]},
-   "そうま":{s:[["窓側の席の話から、ロゴの相談までするようになりましたね","常連さん第一号って、最初に言ったの覚えてます？"],["試作メニュー、席に置かれてます","ロゴが決まったら完成です。……あと少し、付き合ってください"]],d:["窓側の席、いつでも空いてますよ"]}
-  };
-  Object.keys(DM13).forEach(function(n){ if(DM[n]){ DM[n].script12=DM13[n].s; DM[n].def=DM[n].def.concat(DM13[n].d); } });
- /* ===== Tinder ver v112: dummy chats round 14 - the small-stumble lap. A different shape from rounds 8-13 (no choice, no report, no countdown): right before his own milestone, each dummy owns up to one small slip in it and laughs it off, which softens the countdown tension of round 13 - Sota nearly opened the sealed setlist envelope half-asleep and re-taped it in a panic (the live-day opening survives), Shun followed his one early-morning success with a record second sleep and ate into the stocked pudding at 2am, Takumi caught a one-letter typo in the menu book proof just before print and over-sauced one final plating check, Soma's first batch of logo stickers came back mirrored and one trial-menu page sat upside down on the window seat until a customer kindly pointed it out. ===== */
-  var DM15={
-   "そうた":{s:[["やらかし報告。封したセトリ予想、寝ぼけて開けかけた","慌ててテープで封し直した。当日まで、開けない約束は守る"],["プレイリストもシャッフル押しちゃって順番ぐちゃぐちゃ","……でも、その順で当たったら笑うよな"]],d:["封のテープ、二重にしといた"]},
-   "しゅん":{s:[["早起き成功の翌日、盛大に二度寝した","アラーム、三つとも止めてた。……報告は以上"],["買い置きのプリンも、深夜2時に一つ減った","なおの秘密を聞く体制は、プリン以外 万全なのに"]],d:["二度寝の記録、更新しちゃったな"]},
-   "たくみ":{s:[["メニューブックの校正、一文字だけ誤字を見つけました","印刷に出す直前で、ほんとに冷や汗かきました"],["盛り付けの最終確認も、一皿だけソースが濃すぎて作り直し","本番じゃなくてよかった。……最初のお客さんの皿は、完璧にします"]],d:["誤字チェック、今夜もう一周します"]},
-   "そうま":{s:[["ロゴのシール、第一弾が鏡文字で届いたんです","お店の名前、逆さまに読めるやつが50枚……笑うしかなかった"],["窓側の席の試作メニューも、一ページ逆さまでした","常連さんに優しく指摘されました。……完成まで、まだ一山ありますね"]],d:["鏡文字シール、記念に一枚残します"]}
-  };
-  Object.keys(DM15).forEach(function(n){ if(DM[n]){ DM[n].script14=DM15[n].s; DM[n].def=DM[n].def.concat(DM15[n].d); } });
- /* ===== Tinder ver v114: dummy chats round 16 - the result-report lap. A different shape from rounds 8-15 (the milestone itself is now behind each dummy and he reports how it landed, picking up round 15's logistics one by one): Sota opened the envelope after the live - half the setlist predictions hit, the jacket survived the day and the playlist order that got shuffled in round 14 turned out closer than his own, Shun's day-off early-morning rematch worked (curtains-open plus the separate morning pudding did it; he was back to night rhythm by evening, honestly reported), Takumi's menu has started - the first day sold through the prep list without a hitch and the name was announced on the shop floor as promised with the first-customer seat kept, Soma's corrected stickers arrived readable and the logo question resolved without presuming her round-9 pick: the round logo went to the shop sign, the window-shaped one to the window-seat menu, so both drafts she weighed live somewhere in the shop. ===== */
-  var DM17={
-   "そうた":{s:[["結果報告。封、ライブ終わりに開けた","予想、半分当たってた。……シャッフルされたプレイリストの順番のほうが近かったのは、内緒な"],["ジャケットも無事だったし、当日の段取り勝ちだな","答え合わせ、楽しかった。……次のライブの予想も、もう書き始めてる"]],d:["次のセトリ予想、封の準備中"]},
-   "しゅん":{s:[["早起きリベンジ、結果報告。……成功した","カーテン開けて寝たのと、朝プリンが効いた。奇跡じゃなく段取り勝ち"],["まあ、その日の夜はいつも通りの夜更かしだったけど","一回勝てば、次もいける気がする。……なおの秘密の体制も、変わらず待機中"]],d:["早起き、まず一勝だな"]},
-   "たくみ":{s:[["メニュー、始まりました。結果報告です","初日、段取りリスト通りに回って、仕込みも売り切れまで持ちました"],["名前も、店で発表してきました","最初のお客さんの席も、守れたんですよ。……あとは、なおさんの『美味しい』待ちです"]],d:["メニュー初日、乗り切りました"]},
-   "そうま":{s:[["ロゴの結果報告です！ 直したシール、文字ちゃんと読めました","で、決着のつき方が面白くて。丸いほうは店の看板に、窓のほうは窓側の席のメニューに決まったんです"],["二択で迷った分、両方とも店のどこかにいるんですよ","窓側の席、完成しました。……常連さん第一号の席、ここにあります"]],d:["窓側の席、完成しましたよ"]}
-  };
-  Object.keys(DM17).forEach(function(n){ if(DM[n]){ DM[n].script16=DM17[n].s; DM[n].def=DM[n].def.concat(DM17[n].d); } });
- /* ===== Tinder ver v116: dummy chats round 18 - the next-small-goal lap. A different shape from rounds 8-17 (nothing is reported or looked back on - each dummy sets one small next goal that grows straight out of his finished milestone, so the chats keep a forward thread): Sota aims to beat half on the next live's predictions and now builds the playlist shuffle-first (round 16's lesson), with a second envelope already in the drawer, Shun upgrades the early morning from a one-off win to a once-a-week pace and restocks the morning pudding to match - her secret gets the same weekly, pressure-free waiting, Takumi has started the second dish's trial with the first-customer tasting promise renewed and two name candidates saved until he hears her verdict, Soma has begun sketching his own shop's floor plan in a notebook (the window seat is in it, as promised in rounds 1/8) and opened a savings envelope toward the round-logo sign. ===== */
-  var DM19={
-   "そうた":{s:[["次の目標、決めた。次のライブの予想は『半分以上』当てる","前回はシャッフルの順番に負けたからな。……今度は最初からシャッフル前提で組む"],["封筒はもう二通目が引き出しにあります","当日のジャケットも、もう一着 増やそうか迷い中。……相談のる？"]],d:["次の予想、精度上げてくよ"]},
-   "しゅん":{s:[["次の目標。早起きを、週一ペースに増やす","朝プリンの買い置きも、週一仕様に変えた。……段取りは、もう勝ち筋あるから"],["なおの秘密も、週一ペースで待つことにする","急かさないのは変わらない。……ただ、楽しみが増えただけ"]],d:["週一早起き、挑戦中"]},
-   "たくみ":{s:[["次の目標ができました。第二弾の試作、始めます","一品目はもう回ってる。……二品目は、最初のお客さんに最初に味見してもらう約束で"],["名前も、もう候補が二つあります","決めるのは、味見の感想を聞いてから。……急ぎませんよ"]],d:["第二弾の試作、進めてます"]},
-   "そうま":{s:[["次の目標、言っちゃいます。自分の店の間取り、ノートに描き始めました","窓側の席は、自分の店でも絶対作ります。……約束です"],["貯金用の封筒も用意しました","丸いロゴの看板、出せる日まで。……完成した席、まずはこっちで座っててください"]],d:["間取りのノート、少しずつ増えてます"]}
-  };
-  Object.keys(DM19).forEach(function(n){ if(DM[n]){ DM[n].script18=DM19[n].s; DM[n].def=DM[n].def.concat(DM19[n].d); } });
- /* ===== Tinder ver v118: dummy chats round 20 - the what-changed-in-me lap. A different shape from rounds 8-19 (no errand, report or goal - each dummy names one small change the whole run of these chats has left in him, tied to his own thread): Sota has picked up an envelope habit for even small predictions and has learned that taking time over the second jacket is not wasted time, Shun is no longer scared to tell a small secret first (the round 9/10 habit) and the weekly morning pudding has become a reason to get up, Takumi now names even his trial dishes (round 8 taught him what a name does) and cooking-for-someone has come back to him, Soma now notices window seats and floor plans everywhere he goes and his notebook habit stuck. ===== */
-  var DM21={
-   "そうた":{s:[["ふと思ったんだけど。俺、小さい予想も封筒に書く癖がついた","当たる外れるより、書いて待つ時間が楽しくなって"],["ジャケットの二着目、まだ迷ってるけど","迷う時間も悪くないって思えるようになった。……前は即決しかなかったのに"]],d:["封筒の癖、なおのせいでもある"]},
-   "しゅん":{s:[["変わったこと、ひとつ。小さい秘密を、先に言うのが怖くなくなった","前は順番待ちばっかりしてた。……なおと話して変わった"],["朝は相変わらず弱いけどね","週一の朝プリンが、起きる理由になってる。……小さい理由って、強い"]],d:["先に言う勇気、つきました"]},
-   "たくみ":{s:[["変わったことがあります。試作の段階でも、名前を付けるようになりました","名前があると、料理が急に『誰かのためのもの』になるんです"],["一人だと適当、は卒業しました","誰かのために作るって感覚、戻ってきました。……報告でした"]],d:["試作にも名前、付けてます"]},
-   "そうま":{s:[["変わったこと。どこへ行っても窓側の席と間取りが目に入ります","カフェに入ると、まず席の配置を見ちゃう。……職業病の芽生えです"],["ノートに描く癖も、つきました","将来の店のページ、少しずつ増えてます。……窓側の席は、いつも描いてあります"]],d:["窓側の席、目で追っちゃいます"]}
-  };
-  Object.keys(DM21).forEach(function(n){ if(DM[n]){ DM[n].script20=DM21[n].s; DM[n].def=DM[n].def.concat(DM21[n].d); } });
- /* ===== Tinder ver v119 (orig audit: the original is still at v305 - v304/v305 were already audited in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): dummy chats round 21 - the teach-me lap. A different shape from rounds 8-20 (no report, goal or reflection - each dummy teaches her one small thing from his own specialty and asks to be taught one thing back, so the chats turn into an exchange): Sota teaches his shuffle-first playlist method (the round 18/19 lesson) and asks her how to style the second jacket he still has not decided on, Shun teaches his separate-shelf morning-pudding stocking trick (so the night-snack hand stays off it) and asks her pre-sleep wind-down routine, Takumi teaches his name-a-dish trick from round 20 (decide who it is for first) and asks her favourite way to eat shrimp as a hint for the second dish, Soma teaches his two-point window-seat check (how the light comes in, the distance to the next seat) and asks how she keeps her notebook, for his floor-plan notes. ===== */
-  var DM22={
-   "そうた":{s:[["教え合いしよ。まずは俺から。プレイリストの組み方、シャッフル前提のコツ","最初に『順番ぐちゃぐちゃでも当たる曲』から並べると、当日シャッフル踏んでも慌てない"],["次は、なおの番","ジャケットの合わせ方、教えて。……二着目、まだ決めきれてないんだよ"]],d:["教え合い、続きはなおの番な"]},
-   "しゅん":{s:[["教え合いってことで。俺からは、朝プリンの買い置き術","週一分だけ、別の棚に分けておく。……夜食に手が伸びない仕組みづくり"],["次は、なおに教えてほしい","寝る前の切り替え方。……夜型同士でも、なおは翌日ちゃんとしてるやろ"]],d:["寝る前の切り替え方、待ってる"]},
-   "たくみ":{s:[["教え合い、しましょう。僕からは、試作に名前を付けるコツ","最初に『誰に食べてほしいか』を決めると、名前は自然と決まるんです"],["次は、なおさんに教えてほしいです","エビの、いちばん好きな食べ方。……第二弾の参考に、なんて言ったら大げさですかね"]],d:["エビの好きな食べ方、参考にします"]},
-   "そうま":{s:[["教え合いってことで、僕からは窓側の席の見分け方","光の入り方と、隣の席との距離。この二つで、だいたい決まります"],["次は、なおさんに教えてほしいんです","手帳とかノートの使い方。……間取りノート、もう少し上手くまとめたいんです"]],d:["ノートの使い方、教えてくださいね"]}
-  };
-  Object.keys(DM22).forEach(function(n){ if(DM[n]){ DM[n].script21=DM22[n].s; DM[n].def=DM[n].def.concat(DM22[n].d); } });
- /* ===== Tinder ver v120: dummy chats round 22 - the someday lap. A different shape from rounds 8-21 (the goals in rounds 18/19 were small and dated - this lap has no deadline at all: each dummy says one far-off someday dream out loud for the first time, growing straight out of his own thread): Sota someday wants a setlist prediction with every song right and that envelope framed, overseas festival next, Shun someday wants a trip taken just to watch the sunrise (the far end of his weekly early mornings) and a day when telling a secret first is just everyday, Takumi someday wants a small shop of his own with a first-customer seat and a dish carrying her name on its menu, Soma someday wants his own cafe built window-seat-first from the floor-plan notebook with the round-logo sign up and her in the regular-no.1 seat on opening day. ===== */
-  var DM23={
-   "そうた":{s:[["『いつか』の話、していい？","いつか、セトリ予想を全曲当ててみたい。全曲当たった封筒は、額に入れて飾る"],["そんときは、なおにも見せたい","……まあ、その前に二通目の結果やな。夢は、順番に叶えてく"]],d:["いつかの夢、封筒と一緒に保管中"]},
-   "しゅん":{s:[["『いつか』の話。いつか、朝日を見るためだけに旅行したい","夜型の俺が言うと笑うやろ。……でも、週一早起きの延長に、ある気がする"],["いつか、秘密を先に言うのが日常になるといいな","なおの番も、その頃には聞けてるといい。……急かして言ってないで"]],d:["いつかの朝日、楽しみにしてる"]},
-   "たくみ":{s:[["『いつか』の話、していいですか","いつか、小さな自分の店を持ちたいんです。最初のお客さんの席、一つだけある店"],["その店のメニューに、なおさんの名前の一皿を","……大げさじゃなく、本気の夢のほうです。順番に、叶えます"]],d:["いつかの店、夢のほうも進めてます"]},
-   "そうま":{s:[["『いつか』の話、僕もしていいですか","いつか、自分のカフェを開く日。間取りノートの窓側の席を、最初に作る店"],["開店の日、丸いロゴの看板を下げて","常連さん第一号の席に、なおさんが座ってる。……それが、いつかの完成形です"]],d:["いつかの開店、ノートに書きました"]}
-  };
-  Object.keys(DM23).forEach(function(n){ if(DM[n]){ DM[n].script22=DM23[n].s; DM[n].def=DM[n].def.concat(DM23[n].d); } });
- /* ===== Tinder ver v121 (orig audit: the original is still at v305 - v304/v305 were already audited in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): dummy chats round 23 - the thank-you lap. A different shape from rounds 8-22 (no goal, dream, report or lesson - each dummy stops and says a proper thank-you for one concrete thing this whole run of chats has given him, tied to his own thread and never presuming any answer she gave): Sota thanks her for listening to the setlist predictions and envelope talk so the hobby has an audience, and for hearing out the second-jacket dithering without laughing so he did not rush a bad buy, Shun thanks her for never rushing the turn order on secrets (which is why telling first got easy) and for laughing along with small talk like the morning-pudding stock, Takumi thanks her for listening until the trial dish got its name and the first-customer promise took shape, and for simply remembering the tasting promise, Soma thanks her for listening to the window-seat, logo and floor-plan notebook talk all this way so the notebook is more than doodles, and asks her to see the someday opening through. Plus one new default line each; cross-references stay inside each dummy's own arc, no cross-dummy talk, same eager tone, nothing explicit, everyone 20+ ===== */
-  var DM24={
-   "そうた":{s:[["ありがとう、って改めて言いたくて","セトリの予想も封筒の話も、聞いてくれる人がおるから続いてるねん"],["ジャケットで迷ってる時間も、笑わず聞いてくれたやろ","……おかげで、焦って変なん買わずに済んでる。ありがとうな"]],d:["ありがとう、ちゃんと言えた"]},
-   "しゅん":{s:[["改めて、ありがとうって言いたくて","秘密の順番、急かさず待ってくれたこと。……あれ、すごく楽やった"],["朝プリンの買い置きみたいな小さい話も、笑って聞いてくれるやろ","だから先に言えるようになったんやと思う。……ありがとう"]],d:["ありがとう、伝えられた"]},
-   "たくみ":{s:[["改めて、お礼を言いたくて","試作の名前も、最初のお客さんの約束も、聞いてくれる人がいたから形になったんです"],["味見の約束、覚えててくれるだけで励みになります","……第二弾も、ちゃんと届けますね。ありがとうございます"]],d:["お礼、ちゃんと言えました"]},
-   "そうま":{s:[["改めて、ありがとうございますって言いたくて","窓側の席の話、ずっと聞いてくれましたよね。ロゴのことも、ノートのことも"],["聞いてくれる人がいるから、間取りノートがただの落書きで終わらないんです","……いつかの開店まで、見届けてくださいね"]],d:["ありがとう、見届けてくださいね"]}
-  };
-  Object.keys(DM24).forEach(function(n){ if(DM[n]){ DM[n].script23=DM24[n].s; DM[n].def=DM[n].def.concat(DM24[n].d); } });
- /* ===== Tinder ver v122: dummy chats round 24 - the recommendation lap. A different shape from rounds 8-23 (no goal, report, lesson, dream or thank-you - each dummy simply leaves her one recommendation from inside his own world and asks for her verdict back, so the chats gain a small give-and-take souvenir): Sota recommends his shuffle-first playlist as live homework (built the round 18/19 way, order-proof) and jokes it may add one more prediction envelope, Shun recommends trying the weekly morning pudding once (a small pleasure waiting in the morning changes how a night person gets up) and asks for her own morning report either way, Takumi recommends his way with shrimp - first bite plain with salt, where the sweetness shows - the same order he tastes the second dish by, and wants to compare with the favourite way he asked her for in round 21, Soma recommends a specific window seat at a neighbourhood cafe (two stars by his own round-21 two-point check) and asks her to verify the seat-distance half of his method. ===== */
-  var DM25={
-   "そうた":{s:[["おすすめ、ひとつ置いてく","次のライブの予習に、このプレイリスト。シャッフル前提で組んだやつやから、順番ぐちゃぐちゃでも楽しめるで"],["聞いたら感想ちょうだい","セトリ予想の封筒、また一通増えるかもしれんけどな"]],d:["おすすめ、置いてったで"]},
-   "しゅん":{s:[["おすすめ、ひとつ。週一の朝プリン、なおもやってみて","夜型でも、朝に小さい楽しみがあると起き方が変わるねん"],["合わんかったら、笑って報告して","なおの朝の話、聞くのも楽しみにしてる"]],d:["朝プリン、おすすめしといた"]},
-   "たくみ":{s:[["おすすめ、ひとつ置いていきます","エビは、まず塩でひと口。素材の甘さが、いちばん分かります"],["第二弾の試作でも、その順番で味見してるんです","なおさんの好きな食べ方と、答え合わせしたいですね"]],d:["おすすめ、塩でひと口です"]},
-   "そうま":{s:[["おすすめ、ひとつ置いていきます","近所のカフェの窓側の席。光の入り方、二つ星でした"],["行ったら、隣との距離もチェックしてみてください","僕の見分け方、合ってたか答え合わせしましょう"]],d:["窓側の席、おすすめしました"]}
-  };
-  Object.keys(DM25).forEach(function(n){ if(DM[n]){ DM[n].script24=DM25[n].s; DM[n].def=DM[n].def.concat(DM25[n].d); } });
- /* ===== Tinder ver v123 (orig audit: the original is still at v305 - v304/v305 were already audited in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): dummy chats round 25 - the ranking lap. A different shape from rounds 8-24 (no goal, report, lesson, dream, thank-you or recommendation - each dummy publishes his own best-3 ranking from inside his own world and asks for hers back, so the souvenir is a ranking exchange): Sota ranks the three songs he keeps coming back to on his shuffle-first playlist (the live-would-cry one at no.1, reasons on request), Shun ranks his night-companions best-3 (convenience-store pudding no.3, the midnight walk no.2, no.1 kept secret as first-telling practice, offered in exchange for her no.1), Takumi ranks his secret-seasoning best-3 (miso no.3, butter no.2, no.1 is the one inside the second trial dish), Soma ranks the window seats he has actually sat in by his round-21 two-point check (light and distance) with the surprise that the seat he recommended her in round 24 is not his no.1. ===== */
-  var DM26={
-   "そうた":{s:[["俺のベスト3、発表していい？","シャッフル前提で組んだプレイリスト、その中でも結局いちばん聴き返してる曲、3つに絞れたねん"],["1位は、ライブで聴いたら泣くやつ","理由は長いから、聞いてくれるなら話す。なおのベスト3も、そのあと聞かせてな"]],d:["ベスト3、置いてったで"]},
-   "しゅん":{s:[["俺のベスト3、発表するわ","『夜のお供』ベスト3。3位コンビニのプリン、2位は夜中の散歩、1位は……"],["1位は秘密。先に言う練習、まだ続いてるからな","なおの夜のお供ベスト3も聞きたい。1位だけ、俺と交換しよ"]],d:["ベスト3、1位は秘密のまま"]},
-   "たくみ":{s:[["僕のベスト3、発表していいですか","『隠し味』ベスト3です。3位は味噌、2位はバター、1位は内緒のあれです"],["1位は、第二弾の試作に入れたやつなんです","なおさんの『これだけは外せない』調味料も聞きたいです。答え合わせ、しましょう"]],d:["ベスト3、1位は試作の中です"]},
-   "そうま":{s:[["僕のベスト3、発表します","今まで座った窓側の席、ベスト3です。光と距離、二つの物差しで本気で順位つけました"],["1位は、前にすすめたあの席じゃないんです","……意外でしょ。なおさんの『座ってよかった席』ベスト3も、聞いてみたいです"]],d:["ベスト3、1位は意外な席です"]}
-  };
-  Object.keys(DM26).forEach(function(n){ if(DM[n]){ DM[n].script25=DM26[n].s; DM[n].def=DM[n].def.concat(DM26[n].d); } });
- /* ===== Tinder ver v124: dummy chats round 26 - the one-question lap. A different shape from rounds 8-25 (no goal, report, lesson, dream, thank-you, recommendation or ranking - each dummy finally asks the one question he has been holding, specific to his own arc, and leaves it open without presuming any answer): Sota asks whether she is the type to cry at a live and what her cry-song would be (swearing it will not feed the setlist predictions), Shun asks the mirror of his round-21 question - not her pre-sleep routine, which he already asked, but the very first thing she does in the morning - Takumi asks whether she has a food she loves enough to put her own name on it (growing out of his round-20/21 name-a-dish thread, and it may hint the next dish's name), Soma asks what place she would open someday if she had one, the mirror of the someday cafe he confessed in round 22. ===== */
-  var DM27={
-   "そうた":{s:[["ずっと聞きたかったこと、ひとつ聞いていい？","なおって、ライブで泣くタイプ？"],["泣く曲がある人って、その曲との歴史がある気がして","……なおの『泣く曲』、いつか教えて。セトリ予想の参考には、せんからな"]],d:["聞きたかったこと、聞けたで"]},
-   "しゅん":{s:[["ずっと聞きたかったこと、聞いていい？","なおが朝いちばんにすることって、なんやろって思ってて"],["寝る前のことは前に質問したやろ。朝のほうは、まだやねん","夜型同士でも朝は違う気がする。……答え、楽しみにしてる"]],d:["朝の質問、置いといた"]},
-   "たくみ":{s:[["ずっと聞きたかったこと、聞いていいですか","なおさんが『自分の名前をつけたいくらい好きな食べ物』って、ありますか"],["名前をつけるって、誰かのためって前に決めたんです","……なおさんの答え、次の名前のヒントになるかもしれません"]],d:["聞きたかったこと、聞けました"]},
-   "そうま":{s:[["ずっと聞きたかったこと、ひとつ聞いていいですか","なおさんが『いつか開きたい場所』があるなら、何の場所ですか"],["僕の『いつか』は前に話しましたよね。なおさんのも聞いてみたくて","お店じゃなくても、なんでもいいんです。……答え、楽しみにしてます"]],d:["いつかの質問、置いていきました"]}
-  };
-  Object.keys(DM27).forEach(function(n){ if(DM[n]){ DM[n].script26=DM27[n].s; DM[n].def=DM[n].def.concat(DM27[n].d); } });
- /* ===== Tinder ver v126: dummy chats round 28 - the swap lap. A different shape from rounds 8-27 (no goal, report, lesson, dream, thank-you, recommendation, ranking, question or snapshot - each dummy proposes one small fair trade from inside his own world and leaves the yes or no entirely to her): Sota trades his shuffle-first playlist for the one song she currently has on repeat (swearing the traded song stays out of the prediction envelopes), Shun trades his morning-pudding stock intel for word of her night companion (which might update his round-25 best-3), Takumi trades the tasting-seat for his next trial dish against one recipe of hers (a one-line verdict is enough, and he will learn the recipe properly), Soma trades his two-star window-seat list, no holding back, against window-seat intel from her regular cafe. ===== */
-  var DM29={
-   "そうた":{s:[["交換っこ、提案していい？","俺のシャッフル前提プレイリストと、なおが今いちばん回してる曲。一曲同士で交換せん？"],["交換した曲は、封筒には入れんとくわ。……これは予想やなくて、ただの交換やから","なおの今のヘビロテ、楽しみにしてるで"]],d:["交換っこ、提案しといた"]},
-   "しゅん":{s:[["交換っこ、提案していい？","俺の『朝プリンの在庫情報』と、なおの『夜のお供』。情報交換せん？"],["秘密の交換やなくて、ただの情報交換やで。……無理のないやつだけな","なおの夜の相棒が分かれば、俺のベスト3も更新されるかもしれん"]],d:["情報交換、提案しといた"]},
-   "たくみ":{s:[["交換っこ、提案していいですか","僕の次の試作の味見役と、なおさんの得意料理の作り方ひとつ。交換しませんか"],["味見の感想は一言で大丈夫です。その代わり、レシピは本気で覚えます","……交換、成立したら嬉しいです"]],d:["交換っこ、提案しました"]},
-   "そうま":{s:[["交換っこ、提案していいですか","僕の『窓側の席リスト』と、なおさんの行きつけのカフェの窓側情報。交換しませんか"],["リストは光と距離の二つ星つきです。……出し惜しみなしで渡します","なおさんのカフェの窓側、どんな光か楽しみにしてます"]],d:["席リストの交換、提案しました"]}
-  };
-  Object.keys(DM29).forEach(function(n){ if(DM[n]){ DM[n].script28=DM29[n].s; DM[n].def=DM[n].def.concat(DM29[n].d); } });
- /* ===== Tinder ver v127 (orig audit: the original is still at v305 - v304/v305 were already synced in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): dummy chats round 29 - the keepsake lap. A different shape from rounds 8-28 (no goal, report, lesson, dream, thank-you, recommendation, ranking, question, snapshot or swap - each dummy shows one small physical keepsake left over from his own milestone and asks what she keeps): Sota keeps the opened setlist envelope from the round-16 result (half the predictions hit) in his desk drawer and cannot throw it away, Shun keeps the receipt from the first morning-pudding morning in his wallet, Takumi keeps the corrected menu proof (the one-letter typo caught in round 14) folded in his apron pocket, Soma keeps one mirrored sticker from the failed round-14 batch stuck inside his floor-plan notebook as a reminder. ===== */
-  var DM30={
-   "そうた":{s:[["大事にしてる小物、話していい？","結果報告した時のセトリ予想の封筒、開けた後も机の引き出しに残してあんねん。……半分当たったやつ、捨てられへんくて"],["当たった半分も外れた半分も、両方が大事な気がして","なおにも『捨てられへん小物』ってある？ ……あったら聞かせてな"]],d:["大事な小物、見せといたで"]},
-   "しゅん":{s:[["大事にしてる小物、話していい？","朝プリン始めた朝のレシート、財布に入れたままにしてんねん。……ただの紙やねんけどな"],["初めて朝に勝った日の証拠、みたいなもんやねん","なおにも、そういう『ただの紙やけど捨てられへんやつ』ある？"]],d:["レシートの話、しといた"]},
-   "たくみ":{s:[["大事にしてる小物、話していいですか","印刷直前に一文字のミスに気づいたメニュー校正、用紙をエプロンのポケットに畳んで入れてます"],["直した跡を見ると、ちゃんと確認しようって思い出せるんです","なおさんにも、仕事の相棒みたいな小物ってありますか"]],d:["校正の話、しました"]},
-   "そうま":{s:[["大事にしてる小物、話していいですか","鏡文字で届いた失敗ステッカー、一枚だけ間取りノートに貼ってあるんです。……戒めとして"],["うまくいかなかったやつほど、残しておくと次に効く気がして","なおさんにも『失敗やけど残してるもの』ってありますか"]],d:["失敗ステッカーの話、置いていきました"]}
-  };
-  Object.keys(DM30).forEach(function(n){ if(DM[n]){ DM[n].script29=DM30[n].s; DM[n].def=DM[n].def.concat(DM30[n].d); } });
- /* ===== Tinder ver v130: dummy chats round 32 - the small-luxury lap. A different shape from rounds 8-31 (no everyday regular order like round 31, no goal, dream, ranking or keepsake - each dummy confesses the one small luxury he allows himself only sometimes, with the line he draws around it, inside his own world, and asks for hers back): Sota buys exactly one record on the way home only on days a setlist prediction hit (never on a miss - the line is what keeps it a luxury), Shun swaps his morning pudding for the pricey one just once a month, Takumi buys good shrimp just for his own plate apart from the trial dishes, Soma sometimes closes the floor-plan notebook at his window seat and simply enjoys the view and a cake set with no two-point check. ===== */
-  var DM33={
-   "そうた":{s:[["小さな贅沢の話、していい？","セトリ予想が当たった日だけ、帰りにレコードを一枚買うのが俺の小さな贅沢やねん"],["外れた日は買わん。その線引きが、贅沢を贅沢にしてる気がするねん","……なおの小さな贅沢も聞かせてな"]],d:["当たった日の一枚、今日は買えたで"]},
-   "しゅん":{s:[["小さな贅沢の話。俺は月一回だけやねん","いつもの朝プリンを、月一回だけ高いやつに替える。それが俺の小さな贅沢"],["夜型の俺が、朝のために贅沢すんの。……笑うやろ","なおの小さな贅沢も教えて。月一のやつ、気になるねん"]],d:["今月の贅沢プリン、もう決めた"]},
-   "たくみ":{s:[["小さな贅沢の話、していいですか","試作とは別に、自分が食べる分だけ、いいエビを買う日があります"],["作る人の贅沢は、材料に正直になることやと思ってます","なおさんの小さな贅沢も、よかったら聞かせてください"]],d:["自分用のいいエビ、今日は買いました"]},
-   "そうま":{s:[["小さな贅沢の話、していいですか","窓側の席で、間取りノートを閉じる日があります。二つ星チェックなしで、景色とケーキだけの日です"],["調べないで座る日も、たまにはいいんです","なおさんの小さな贅沢も聞いてみたいです"]],d:["今日はノートなしの一席でした"]}
-  };
-  Object.keys(DM33).forEach(function(n){ if(DM[n]){ DM[n].script32=DM33[n].s; DM[n].def=DM[n].def.concat(DM33[n].d); } });
- /* ===== Tinder ver v132: dummy chats round 34 - the rain-day lap. A different shape from rounds 8-33 (no detour like round 33, no regular order, luxury, goal, dream, ranking or keepsake - each dummy names the one small way a rainy day switches his routine, inside his own world, and asks for hers back): Sota stays in on rainy days and re-sorts the setlist-prediction envelopes (the live-house poster detour rests), Shun sleeps even later when rain sounds stack on his night-owl hours and treats the umbrella trip for a morning pudding as the day's small mission, Takumi finds the market fish livelier on rainy days and picks up trial hints more easily, Soma adds a single rain-day note to the two-point check because a window seat feels like a different seat in the rain. ===== */
-  var DM35={
-   "そうた":{s:[["雨の日の話、していい？","雨の日は家でセトリ予想の封筒を並べ替える日やねん。ポスターの寄り道も、雨の日は休み"],["窓の音を聞きながら聞くシャッフルも、雨の日だけの感じがするねん","……なおの雨の日の過ごし方も聞かせてな"]],d:["雨の日モード、今日は封筒の日やった"]},
-   "しゅん":{s:[["雨の日の話。俺、雨の日はもっと起きるのが遅うなるねん","夜型に雨の音が重なると、完全に朝プリンまで一直線やねん"],["傘さして朝プリンを買うのが、雨の日の小さな任務やねん","なおの雨の日も聞かせて。家派？ 出る派？"]],d:["雨の日の任務、プリンは守れた"]},
-   "たくみ":{s:[["雨の日の話、していいですか","雨の日は市場の魚が元気に見えるんです。シフト前に並びを見るのが、雨の日だけ少し楽しくなるんです"],["試作のヒントも、雨の日はなぜか出やすいんです","なおさんの雨の日の過ごし方も聞いてみたいです"]],d:["雨の日の市場、今日も収穫ありました"]},
-   "そうま":{s:[["雨の日の話、していいですか","雨の日は窓側の席が特別なんです。窓の雨粒を見ながら、二つ星チェックに『雨の日』って一言足します"],["晴れの日とは別の席みたいになるんです","なおさんの雨の日の窓側も、よかったら聞かせてください"]],d:["雨の日の一席、ノートに足しました"]}
-  };
-  Object.keys(DM35).forEach(function(n){ if(DM[n]){ DM[n].script34=DM35[n].s; DM[n].def=DM[n].def.concat(DM35[n].d); } });
- /* ===== Tinder ver v134: dummy chats round 36 - the saved-post lap. A different shape from rounds 8-35 (no photo he took himself like round 27, no recommendation like round 24, no first phone check like round 35 - each dummy names the kind of post he saves to look back at, and what he actually does with the saves, inside his own world, and asks what she saves): Sota saves live-report posts but opens them only after his own setlist-prediction envelope is sealed (spoiler discipline, folder named 'answer-check later'), Shun saves every morning-pudding new-release post and admits the folder is overflowing and saving itself is half the satisfaction, Takumi saves recipe and plating posts and actually retries exactly one a month as a trial, Soma saves cafe interior and window-seat posts and files them by nearest station so they become two-point-check candidates. ===== */
-  var DM37={
-   "そうた":{s:[["保存した投稿の話、していい？","ライブのレポ投稿、全部保存してんねん。でも開くのは、自分の予想の封筒を閉じた後だけやで"],["ネタバレ避けの『あとで答え合わせ』フォルダやねん","……なおがつい保存してまう投稿って、どんなやつ？"]],d:["保存フォルダ、今日も答え合わせ待ちや"]},
-   "しゅん":{s:[["保存した投稿の話。俺のは、ほぼプリンやねん","朝プリンの新作投稿、見つけたら全部保存してまう。……フォルダ、もう溢れてるで"],["開き直す前に、保存した時点で半分満足してんねん","なおの保存フォルダにも、偏りある？ 聞かせて"]],d:["保存フォルダ、プリンで満杯や"]},
-   "たくみ":{s:[["保存した投稿の話、していいですか","レシピと盛り付けの投稿を保存してます。月に一本だけ、本当に試作で再現してみるんです"],["保存したままにしないのが、自分の中の決まりです","なおさんの保存フォルダ、どんなジャンルが多いですか"]],d:["今月の再現枠、もう決めました"]},
-   "そうま":{s:[["保存した投稿の話、していいですか","カフェの内装と窓側の席の投稿を保存してます。最寄り駅ごとに分けて、二つ星チェックの候補にしてるんです"],["保存が、そのまま次の寄り道の地図になるんです","なおさんの保存した投稿も、よかったら聞かせてください"]],d:["保存フォルダ、駅ごとに増えてます"]}
-  };
-  Object.keys(DM37).forEach(function(n){ if(DM[n]){ DM[n].script36=DM37[n].s; DM[n].def=DM[n].def.concat(DM37[n].d); } });
- /* ===== Tinder ver v135 (orig audit: the original is still at v305 - v304/v305 were already synced in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): dummy chats round 37 - the always-in-my-bag lap. A different shape from rounds 8-36 (no saved post like round 36, no first phone check, photo, recommendation or keepsake - each dummy names the one thing that is always in his bag, tied to his own world, and asks what is always in hers): Sota always carries the setlist-prediction envelopes plus a spare pen (a prediction can strike on the train, and an envelope not sealed on the spot does not count), Shun always carries a small cooler bag so a morning pudding found on the way home from a night shift survives the trip (and an eye mask for the train doze), Takumi always carries a small tasting spoon and a pocket notebook so a trial idea or a market taste never gets away, Soma always carries a small tape measure so the seat-to-window distance half of his two-point check can be measured on the spot instead of guessed. ===== */
-  var DM38={
-   "そうた":{s:[["カバンの中身の話、していい？","俺のカバン、セトリ予想の封筒と予備のペンが常駐やねん。電車で思いついた予想は、その場で封をせな予想に入らへんねん"],["カバン開けたらだいたいライブの話になるねん","……なおのカバンに必ず入ってるものも聞かせてな"]],d:["カバンの封筒、今日も一通増えた"]},
-   "しゅん":{s:[["カバンの中身、俺のはだいたい夜勤仕様やねん","小さい保冷バッグが常駐。夜勤帰りに朝プリン見つけても、家まで持って帰れるようにやで"],["あとアイマスク。電車で落ちる用やねん","なおのカバンの常備品も教えて。……その人の生活、出るやろ"]],d:["保冷バッグ、今日もプリンを守った"]},
-   "たくみ":{s:[["カバンの中身の話、していいですか","味見用の小さいスプーンと、ポケットサイズのメモ帳が常駐です。試作のアイデアも、市場の味見も、逃がしたくないんです"],["メモ帳の半分は、試作の走り書きなんです","なおさんのカバンに必ず入っているものも聞いてみたいです"]],d:["カバンのメモ帳、今日も一行増えました"]},
-   "そうま":{s:[["カバンの中身の話、していいですか","小さいメジャーが常駐なんです。窓側の席と窓の距離、二つ星チェックの半分はその場で測らないと目測ではずれるんです"],["測ってから、ノートに書くんです","なおさんのカバンの常備品も、よかったら聞かせてください"]],d:["メジャー持参、今日の席も測れました"]}
-  };
-  Object.keys(DM38).forEach(function(n){ if(DM[n]){ DM[n].script37=DM38[n].s; DM[n].def=DM[n].def.concat(DM38[n].d); } });
- /* ===== Tinder ver v137: dummy chats round 39 - the good-buy lap. A different shape from rounds 8-38 (no blunder like round 38, no bag contents, saved post or regular order - each dummy names one small recent purchase that quietly paid off, inside his own world, and what small daily thing changed because of it, and asks for hers back): Sota finally bought live-house earplugs and found the lyrics come through clearer (protecting his ears so the predictions can go on for years), Shun bought a tiny spoon made just for pudding and the last bite of a morning pudding now scoops clean, Takumi bought a small digital scale so trial seasonings are decided in grams, not just instinct (a taste you cannot reproduce is not a recipe), Soma bought index tabs for the floor-plan notebook so each cafe's page opens at once (the round-38 wrong-page blunder, answered with stationery). ===== */
-  var DM40={
-   "そうた":{s:[["最近買ってよかったもの、言っていい？","ライブ用の耳栓、やっと買ってん。今まで素で聞いてたのが嘘みたいに、歌詞がクリアに聞こえるねん"],["耳を大事にせな、予想も長く続けられへんしな","……なおの最近買ってよかったものも聞かせてな"]],d:["耳栓デビュー、今日のライブも耳が楽やった"]},
-   "しゅん":{s:[["最近買ってよかったもの。プリン専用の小さいスプーン、買ってん","朝プリンの最後の一口まで、きれいにすくえるねん"],["小さい買い物ほど、毎日の嬉しさが残るよな","なおの買ってよかったものも教えてな"]],d:["専用スプーン完備、今日の朝プリンも完璧やった"]},
-   "たくみ":{s:[["最近買ってよかったもの、言っていいですか","小さなデジタルスケール買いました。試作の調味料が、勘だけじゃなくグラムで決められるようになったんです"],["再現できない味は、レシピにならないんですよね","なおさんの買ってよかったものも、よかったら聞いてみたいです"]],d:["スケール様々、今日の試作も量ぴったりでした"]},
-   "そうま":{s:[["最近買ってよかったもの、言っていいですか","間取りノート用のインデックスシールを買いました。カフェごとに、ページがすぐ開けるんです"],["前に別のカフェのページに書いてしまったので、ページの迷子をなくしたくて","なおさんの買ってよかったものも、よかったら聞かせてください"]],d:["インデックス完備、今日のページも一発でした"]}
-  };
-  Object.keys(DM40).forEach(function(n){ if(DM[n]){ DM[n].script39=DM40[n].s; DM[n].def=DM[n].def.concat(DM40[n].d); } });
- /* ===== Tinder ver v138: dummy chats round 40 - the childhood-dream lap. A different shape from rounds 8-39 (no purchase like round 39, no blunder, bag or saved post - each dummy names what he wanted to be as a kid, inside his own world, and the small way that origin still shows in who he is now, and asks for hers back): Sota wanted to be a radio DJ, the voice that runs a room on sound alone, and still catches himself doing solo play-by-play on the walk home from a live, Shun wanted to be a patissier (the people who make sweet things looked like magicians), which he now calls the true origin of the morning-pudding habit, Takumi wanted to cook school lunches because lunch was the hour he loved most, and feeding a crowd is still the root under his trial dishes, Soma wanted to be an architect, a kid who stared at floor plans for fun, and the floor-plan notebook is that dream still going in pencil. ===== */
-  var DM41={
-   "そうた":{s:[["子どもの頃の夢、言っていい？","俺、小さい頃はラジオのDJになりたかってん。声だけで場を回すの、かっこよくて"],["今も、ライブの帰りに一人口実況みたいに喋ってまう癖あんねん","……なおの子どもの頃の夢も聞かせてな"]],d:["口実況の癖、今日も帰り道で出た"]},
-   "しゅん":{s:[["子どもの頃の夢。パティシエになりたかってん","甘いもの作る人、小さい頃は魔法使いに見えてたんやろな"],["朝プリン好きの原点、多分ここやねん","なおの子どもの頃の夢も教えてな"]],d:["原点はパティシエ、今日の朝プリンも美味かった"]},
-   "たくみ":{s:[["子どもの頃の夢、言っていいですか","給食を作る人になりたかったんです。昼休みが一番楽しみな子どもだったので"],["大勢に食べてもらう、っていう原点は今の試作にも残ってます","なおさんの子どもの頃の夢も、よかったら聞いてみたいです"]],d:["原点は給食、今日の試作も誰かの昼を思って作りました"]},
-   "そうま":{s:[["子どもの頃の夢、言っていいですか","建築家になりたかったんです。間取り図を眺めるのが好きな子どもでした"],["今の間取りノート、あの頃の続きみたいなものなんです","なおさんの子どもの頃の夢も、よかったら聞かせてください"]],d:["原点は建築家、今日の窓際も図に残しました"]}
-  };
-  Object.keys(DM41).forEach(function(n){ if(DM[n]){ DM[n].script40=DM41[n].s; DM[n].def=DM[n].def.concat(DM41[n].d); } });
- /* ===== Tinder ver v140: dummy chats round 42 - the next-year small-goal lap. A different shape from rounds 8-41 (no reward ritual like round 41, no childhood dream or purchase - each dummy names one small goal for next year inside his own world, and asks for hers back): Sota wants a live-house trip out of town to test his prediction arm nationwide (and a slightly better hit rate), Shun aims to grow his morning-pudding shop list to fifty, Takumi wants to fill one whole recipe notebook with trial records, Soma wants his visited-cafe log to reach a hundred (the floor-plan notebook entering its third volume). ===== */
-  var DM43={
-   "そうた":{s:[["来年の小さな目標、言っていい？","地方のライブハウスに遠征すること。予想の腕、全国で試したいねん"],["あと、的中率ももう少し上げたいな","……なおの来年の目標も聞かせてな"]],d:["遠征計画、来年の楽しみが増えた"]},
-   "しゅん":{s:[["来年の目標。朝プリンのお店リスト、50軒まで増やすこと","今もだいぶ埋まってきたけど、まだまだやねん"],["なおの来年の小さな目標、ある？","あったら教えてな、応援するから"]],d:["50軒計画進行中、今朝は38軒目やった"]},
-   "たくみ":{s:[["来年の小さな目標、言っていいですか","自分のレシピノートを、一冊まるごと埋めることです"],["試作の記録が、財産になる気がして","なおさんの来年の目標も、よかったら聞いてみたいです"]],d:["レシピノート、今日も一品分埋まりました"]},
-   "そうま":{s:[["来年の小さな目標、言っていいですか","行ったカフェの記録を、100軒まで増やすことです"],["間取りノートも三冊目に入りそうです","なおさんの来年の目標も、よかったら聞かせてください"]],d:["100軒計画、あと少しで折り返しです"]}
-  };
-  Object.keys(DM43).forEach(function(n){ if(DM[n]){ DM[n].script42=DM43[n].s; DM[n].def=DM[n].def.concat(DM43[n].d); } });
- /* ===== Tinder ver v141: dummy chats round 43 - the hometown lap. A different shape from rounds 8-42 (no goal like round 42, no reward or dream - each dummy opens his hometown inside his own world, the place that made his flavour, and asks for hers back): Sota's hometown live house is where he first heard live sound and where his prediction ear grew up, Shun's hometown shopping-street pudding shop is the true origin of the morning-pudding habit, Takumi's hometown diner is still the benchmark his trial dishes chase, Soma's hometown kissaten fills the very first page of his floor-plan notebook. ===== */
-  var DM44={
-   "そうた":{s:[["地元の話、していい？","俺の地元、駅前に小さいライブハウスがあってな。初めて生で音を浴びたん、あこやねん"],["予想の耳はあこで育ったんやと思う","……なおの地元はどんなとこや？ 聞かせてな"]],d:["地元のライブハウス、遠征の前に一回帰りたいな"]},
-   "しゅん":{s:[["地元の話。俺の地元、商店街に昔ながらのプリン屋があってな","朝プリンの原点、言い換えたらあの店やねん"],["今も帰るたびに寄ってまう","なおの地元にも、そういう店ある？"]],d:["地元のプリン屋、帰省したら真っ先に行く"]},
-   "たくみ":{s:[["地元の話、していいですか","実家の近くに小さい定食屋があって、そこの味が今も基準なんです"],["試作で迷うと、あの店の味を思い出すんです","なおさんの地元はどんなところですか"]],d:["地元の定食屋、帰省のたびに味の答え合わせしてます"]},
-   "そうま":{s:[["地元の話、していいですか","地元に、学生の頃よく通った喫茶店があるんです"],["間取りノートの最初の一ページ、あの店なんです","なおさんの地元にも、思い出の場所はありますか"]],d:["地元の喫茶店、間取りノートの原点は今も現役です"]}
-  };
-  Object.keys(DM44).forEach(function(n){ if(DM[n]){ DM[n].script43=DM44[n].s; DM[n].def=DM[n].def.concat(DM44[n].d); } });
- /* ===== Tinder ver v142: dummy chats round 44 - the cold-day craving lap. A different shape from rounds 8-43 (no hometown like round 43, no goal or purchase - each dummy names the one thing he craves on a cold day inside his own world, and asks for hers back): Sota ends a winter live with convenience-store oden on the way home (daikon and egg are non-negotiable), Shun comes off a winter night shift to a hot can of oshiruko, Takumi cooks a loaded tonjiru when the cold sets in, Soma takes the window seat with a hot chocolate. ===== */
-  var DM45={
-   "\u305d\u3046\u305f":{s:[["\u5bd2\u3044\u65e5\u306e\u8a71\u3001\u3057\u3066\u3044\u3044\uff1f","\u51ac\u306e\u30e9\u30a4\u30d6\u5e30\u308a\u306f\u3001\u30b3\u30f3\u30d3\u30cb\u306e\u304a\u3067\u3093\u304c\u6c81\u307f\u308b\u306d\u3093\u3002\u5927\u6839\u3068\u5375\u306f\u5916\u305b\u3078\u3093"],["\u97f3\u3067\u6e29\u307e\u3063\u3066\u3001\u6700\u5f8c\u306f\u304a\u3067\u3093\u3067\u7de0\u3081\u308b\u306e\u304c\u4ffa\u306e\u51ac\u3084\u306a","\u2026\u2026\u306a\u304a\u306f\u5bd2\u3044\u65e5\u3001\u306a\u306b\u98df\u3079\u305f\u304f\u306a\u308b\uff1f"]],d:["\u4eca\u591c\u3082\u304a\u3067\u3093\u65e5\u548c\u3001\u30e9\u30a4\u30d6\u306e\u3042\u3068\u306e\u697d\u3057\u307f\u3084"]},
-   "\u3057\u3085\u3093":{s:[["\u5bd2\u3044\u65e5\u306e\u8a71\u3002\u591c\u52e4\u660e\u3051\u306e\u51ac\u306e\u671d\u306f\u3001\u6e29\u304b\u3044\u304a\u3057\u308b\u3053\u304c\u6c81\u307f\u308b\u306d\u3093","\u624b\u304c\u304b\u3058\u304b\u3093\u3067\u308b\u6642\u306b\u98f2\u3080\u4e00\u53e3\u76ee\u3001\u6700\u9ad8\u3084\u308d"],["\u306a\u304a\u306f\u5bd2\u3044\u65e5\u3001\u306a\u306b\u3067\u6e29\u307e\u308b\uff1f","\u6e29\u307e\u308b\u3084\u3064\u3001\u6559\u3048\u3066\u306a"]],d:["\u304a\u3057\u308b\u3053\u88dc\u7d66\u5b8c\u4e86\u3001\u4eca\u591c\u306e\u591c\u52e4\u3082\u4e57\u308a\u5207\u308c\u308b"]},
-   "\u305f\u304f\u307f":{s:[["\u5bd2\u3044\u65e5\u306e\u8a71\u3001\u3057\u3066\u3044\u3044\u3067\u3059\u304b","\u51ac\u306f\u8c5a\u6c41\u3092\u4f5c\u308a\u305f\u304f\u306a\u308a\u307e\u3059\u3002\u5177\u3060\u304f\u3055\u3093\u3067\u3001\u5473\u564c\u306e\u9999\u308a\u304c\u7acb\u3064\u3084\u3064\u3067\u3059"],["\u8ab0\u304b\u306e\u300c\u6e29\u307e\u308b\u300d\u306e\u305f\u3081\u306b\u4f5c\u308b\u306e\u304c\u3001\u4e00\u756a\u597d\u304d\u306a\u3093\u3067\u3059","\u306a\u304a\u3055\u3093\u306f\u5bd2\u3044\u65e5\u3001\u306a\u306b\u304c\u98df\u3079\u305f\u304f\u306a\u308a\u307e\u3059\u304b"]],d:["\u4eca\u591c\u306e\u8cc4\u3044\u306f\u8c5a\u6c41\u3001\u8a66\u4f5c\u3088\u308a\u6c17\u6301\u3061\u304c\u5165\u3063\u3066\u307e\u3059"]},
-   "\u305d\u3046\u307e":{s:[["\u5bd2\u3044\u65e5\u306e\u8a71\u3001\u3057\u3066\u3044\u3044\u3067\u3059\u304b","\u51ac\u306e\u30ab\u30d5\u30a7\u306f\u3001\u7a93\u969b\u3067\u30db\u30c3\u30c8\u30c1\u30e7\u30b3\u30ec\u30fc\u30c8\u304c\u5b9a\u756a\u3067\u3059"],["\u66c7\u3063\u305f\u7a93\u3068\u6e29\u304b\u3044\u30ab\u30c3\u30d7\u3002\u3042\u306e\u666f\u8272\u304c\u597d\u304d\u306a\u3093\u3067\u3059","\u306a\u304a\u3055\u3093\u306f\u5bd2\u3044\u65e5\u3001\u306a\u306b\u3067\u6e29\u307e\u308a\u307e\u3059\u304b"]],d:["\u4eca\u65e5\u306e\u7a93\u969b\u3001\u30db\u30c3\u30c8\u30c1\u30e7\u30b3\u30ec\u30fc\u30c8\u304c\u6b63\u89e3\u3067\u3057\u305f"]}
-  };
-  Object.keys(DM45).forEach(function(n){ if(DM[n]){ DM[n].script44=DM45[n].s; DM[n].def=DM[n].def.concat(DM45[n].d); } });
- /* ===== Tinder ver v143: dummy chats round 45 - the quietly-moved lap. A different shape from rounds 8-44 (no craving like round 44, no hometown or goal - each dummy shares one small moment that quietly moved him recently inside his own world, and asks for hers back): Sota's setlist prediction overlapped one song with an audience request and he still remembers the stir when it started, Shun was thanked by a regular on a night-shift morning and the sleepiness vanished, Takumi's trial dish was said to taste like a regular's late wife's cooking, Soma's kissaten master thanked him for treasuring the floor-plan notebook. ===== */
-  var DM46={
-   "そうた":{s:[["最近じーんときた話、していい？","この前のライブ、お客さんのリクエスト曲と俺の予想が一曲だけ重なっててな"],["演奏が始まった瞬間のざわつき、今も覚えてるわ","……なおは最近、じーんときたことある？"]],d:["じーんの続報、リクエストの曲が次のセトリにも入ってた"]},
-   "しゅん":{s:[["最近じーんときた話。夜勤明けに、常連さんから『いつもありがとう』って言われてな"],["眠気、一瞬で吹っ飛んだわ","なおは最近、言われて嬉しかった言葉ある？"]],d:["あの一言、まだ効いてる。今夜の夜勤もいけそうや"]},
-   "たくみ":{s:[["最近じーんときた話、していいですか","試作を食べた常連さんが、『亡くなった奥さんの味に似てる』って言ってくださって"],["料理って、誰かの記憶に届くんですね","なおさんは最近、じーんときたことありますか"]],d:["あの常連さん、今日も来てくださいました"]},
-   "そうま":{s:[["最近じーんときた話、していいですか","行きつけの喫茶店のマスターに間取りノートを見せたら、『大事にしてくれてありがとう』って"],["長く通う意味って、こういうことなんですね","なおさんは最近、心が動いたことありますか"]],d:["マスターの一言、ノートの余白に書き写しました"]}
-  };
-  Object.keys(DM46).forEach(function(n){ if(DM[n]){ DM[n].script45=DM46[n].s; DM[n].def=DM[n].def.concat(DM46[n].d); } });
- /* ===== Tinder ver v146: dummy chats round 48 - the favourite-sound lap. A different shape from rounds 8-47 (no ritual, no fail, no craving - each dummy names one sound he likes inside his own world, and asks for hers back): Sota likes the tuning sound before a live, Shun likes the spoon-on-pudding sound after a night shift, Takumi likes the sizzle when a trial dish hits the pan, Soma likes the kissaten door bell. ===== */
-  var DM49={
-   "そうた":{s:[["好きな音の話、していい？","ライブ前に聞く、音合わせの音が好きなんや。あの音で、今日のライブが始まる気がする"],["セトリ予想が当たるかどうかより、まずあの音やな","……なおは好きな音、ある？"]],d:["音合わせの音、今日もライブ前に聞けた"]},
-   "しゅん":{s:[["好きな音の話。夜勤明け、プリンのスプーンがカンって当たる音が好きや"],["あの音で、やっと一日が終わった気がするわ","なおは好きな音、ある？"]],d:["プリンの音、夜勤明けのご褒美や"]},
-   "たくみ":{s:[["好きな音の話、していいですか","試作で、フライパンからジュッと音が立つ瞬間が好きなんです"],["あの音がすると、料理が動き出した気がします","なおさんは好きな音、ありますか"]],d:["ジュッという音、今日の試作でも聞けました"]},
-   "そうま":{s:[["好きな音の話、していいですか","行きつけの喫茶店、ドアのベルが好きなんです"],["あの音がすると、間取りノートを開く時間だなと思います","なおさんは好きな音、ありますか"]],d:["喫茶店のベル、今日もいい音でした"]}
-  };
-  Object.keys(DM49).forEach(function(n){ if(DM[n]){ DM[n].script48=DM49[n].s; DM[n].def=DM[n].def.concat(DM49[n].d); } });
-  var matched={}, order=[], unmatchedForever={}, chatState={}, current=null;
-  window.__dummyMatches=function(){ return order.slice(); };
-
- /* --- dummy chat pane --- */
-  var vt=$("#v-tinder");
-  var dmWrap=document.createElement("div"); dmWrap.id="dm-chat-wrap";
-  dmWrap.style.cssText="display:none;flex-direction:column;flex:1;min-height:0;background:#fff;position:relative";
-  dmWrap.innerHTML='<div style="padding:10px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center;flex:none">'
-   +'<button id="dm-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button>'
-   +'<span id="dm-ava" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;flex:none"></span>'
-   +'<span style="min-width:0"><span id="dm-name" style="font-weight:800;font-size:15px;display:block"></span><span style="font-size:11px;color:#8e8e93">マッチしました ・ Tinder</span></span>'
-   +'<button id="dm-unmatch" style="margin-left:auto;background:#fff0f0;color:#ff3b30;border:none;border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer;font-family:inherit;font-size:12px;flex:none">アンマッチ</button></div>'
-   +'<div class="t-chat-scroll" id="dm-scroll"></div>'
-   +'<div style="padding:9px 12px 22px;border-top:1px solid #eee;display:flex;gap:8px;background:#fff;flex:none"><input id="dm-text" placeholder="メッセージ…" autocomplete="off" style="flex:1;border:1px solid #e5e5ea;border-radius:999px;padding:10px 13px;font-size:13.5px;font-family:inherit;min-width:0"><button id="dm-send" style="background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:800;cursor:pointer;font-family:inherit">送信</button></div>';
-  vt.appendChild(dmWrap);
-  var dmScroll=dmWrap.querySelector("#dm-scroll");
-
- /* --- dummy match overlay --- */
-  var dmOv=document.createElement("div"); dmOv.id="dm-overlay";
-  vt.appendChild(dmOv);
-  function showDummyMatch(c){
-    var SUBS=["（この人も、なおを Like していたみたい）","（お互い、気になっていたみたい）","（スワイプした瞬間、その場でマッチ！）","（向こうも、なおの写真で止まったみたい）","（今日の新規マッチです）"];
-    var sub=SUBS[order.length%SUBS.length];
-    dmOv.innerHTML='<h2 style="font-size:30px;font-weight:900;font-style:italic">It\'s a Match!</h2>'
-     +'<p style="margin-top:8px;font-size:14px;line-height:1.6">なお と '+c.name+' がマッチしました<br><span style="font-size:12px;opacity:.85">'+sub+'</span></p>'
-     +'<div style="display:flex;gap:14px;align-items:center;margin:20px 0 8px"><img loading="lazy" decoding="async" src="assets/nao-tinder-3.jpg" alt="なお" style="width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff">'+(c.photos?'<img loading="lazy" decoding="async" src="'+c.photos[0]+'" alt="'+c.name+'" style="width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff">':'<span style="width:92px;height:92px;border-radius:50%;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;border:3px solid #fff;color:#fff">'+c.ini+'</span>')+'</div>'
-     +'<button id="dm-ov-msg" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button>'
-     +'<button id="dm-ov-keep" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button>';
-    dmOv.classList.add("on");
-    document.getElementById("dm-ov-msg").addEventListener("click",function(){ dmOv.classList.remove("on"); openDummyChat(c.name); });
-    document.getElementById("dm-ov-keep").addEventListener("click",function(){ dmOv.classList.remove("on"); });
-  }
-
- /* --- detect dummy likes by watching the shared swipe stats --- */
- /* v91 fix: the like used to be attributed to whatever card the previous 200ms tick had seen (lastCard). Fast swiping (nope -> like within one tick, e.g. right after the 380ms card animation) attributed the like to the PREVIOUS card - a phantom match with someone she had just noped, its overlay stacking over Hiroto's real match overlay and blocking the tabs. The swipe history records the actual card swiped ({idx,kind,name} for every non-Hiroto swipe), so likes are now read from there and the card snapshot is looked up in the deck by name. */
-  var st0=T.stats(); var prevTot=(st0.like||0)+(st0.super||0);
-  var seenHist=(T.history||[]).length;
-  setInterval(function(){
-    var st=T.stats(); var tot=(st.like||0)+(st.super||0);
-    if(tot>prevTot){
-      prevTot=tot;
-      var hist=T.history||[];
-      if(hist.length<seenHist) seenHist=hist.length;
-      for(var i=seenHist;i<hist.length;i++){ var h=hist[i];
-        if(h.kind!=="like"&&h.kind!=="super") continue;
-        if(!LIKEBACK[h.name]||matched[h.name]||unmatchedForever[h.name]) continue;
-        var card=null; var dk=T.deck||[]; for(var j=0;j<dk.length;j++){ if(dk[j].name===h.name){ card=dk[j]; break; } }
-        if(!card) continue;
-        var snap={name:card.name,age:card.age,grad:card.grad,ini:card.ini,work:card.work,photos:card.photos};
-        (function(s){ setTimeout(function(){ registerDummyMatch(s); },480); })(snap);
-      }
-      seenHist=hist.length;
-    }
-  },200);
-  function registerDummyMatch(c){
-    if(matched[c.name]) return;
-    matched[c.name]=c; order.push(c.name);
-    chatState[c.name]={opened:false,step:0,defIdx:0,usedKeys:{},unread:true,log:[]};
-    try{ pop(); }catch(e){}
-    showDummyMatch(c);
-    paintMatchUI();
-  }
-
- /* --- match list / new-matches row painting --- */
-  function paintMatchUI(){ paintMatchList(); paintNewRow(); updateRowStates(); }
-  function paintMatchList(){
-    var list=$("#match-list"); if(!list) return;
-    $$("#match-list > div").forEach(function(d){ if(d.textContent.indexOf("まだマッチはありません")>=0) d.style.display=order.length?"none":""; });
-    order.forEach(function(name){
-      if(document.getElementById("dm-row-"+name)) return;
-      var m=matched[name]; if(!m) return;
-      var row=document.createElement("div"); row.id="dm-row-"+name;
-      row.style.cssText="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px;margin-top:10px";
-      row.innerHTML=(m.photos?'<img loading="lazy" decoding="async" src="'+m.photos[0]+'" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none">':'<span style="width:52px;height:52px;border-radius:50%;background:'+m.grad+';display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;flex:none">'+m.ini+'</span>')
-       +'<span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">'+name+' <span style="font-weight:600;font-size:12.5px;color:#8e8e93">'+m.age+'</span></span><span class="dm-pv" style="font-size:12px;color:#8e8e93">マッチしました ・ メッセージしてみよう</span></span>'
-       +'<span class="dm-rowdot" style="display:none">NEW</span>'
-       +'<button style="margin-left:auto;background:#f2f2f7;color:#111;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button>';
-      row.querySelector("button").addEventListener("click",function(){ openDummyChat(name); });
-      list.appendChild(row);
-    });
-  }
-  function paintNewRow(){
-    var nr=$("#tm-newrow"); if(!nr) return;
-    if(order.length) $$("#tm-newrow > div").forEach(function(d){ if(d.textContent.indexOf("まだ新規マッチはありません")>=0) d.remove(); });
-    order.forEach(function(name){
-      if(document.getElementById("dm-tile-"+name)) return;
-      var m=matched[name]; if(!m) return;
-      var b=document.createElement("button"); b.className="newtile"; b.id="dm-tile-"+name;
-      b.innerHTML=(m.photos?'<img loading="lazy" decoding="async" src="'+m.photos[0]+'" alt="">':'<span class="ph" style="background:'+m.grad+'">'+m.ini+'</span>')+'<span>'+name+'</span>';
-      b.addEventListener("click",function(){ openDummyChat(name); });
-      nr.appendChild(b);
-    });
-  }
-  function updateRowStates(){
-    order.forEach(function(name){
-      var cs=chatState[name]; if(!cs) return;
-      var row=document.getElementById("dm-row-"+name); if(!row) return;
-      var pv=row.querySelector(".dm-pv");
-      if(pv && cs.log.length) pv.textContent=cs.log[cs.log.length-1].text;
-      var dot=row.querySelector(".dm-rowdot");
-      if(dot) dot.style.display=(cs.unread && current!==name)?"":"none";
-    });
-  }
-  var ml=$("#match-list"); if(ml) new MutationObserver(function(){ paintMatchList(); updateRowStates(); }).observe(ml,{childList:true});
-  var mw=$("#tinder-match-wrap"); if(mw) new MutationObserver(function(){ paintNewRow(); }).observe(mw,{childList:true,subtree:true});
-
- /* --- settings match count: fold dummy matches in --- */
-  var stm=$("#set-t-match");
-  if(stm) new MutationObserver(function(){
-    var d=order.length; if(!d) return;
-    var h=(window.__tinder && window.__tinder.matched)?1:0;
-    var want=(h+d)+"組（ひろと "+h+" ・ 他 "+d+"）";
-    if(stm.textContent!==want) stm.textContent=want;
-  }).observe(stm,{childList:true,characterData:true,subtree:true});
-
- /* --- dummy chat behaviour --- */
-  function hidePanes(){ ["#tinder-deck-wrap","#tinder-chat-wrap","#tinder-match-wrap","#tinder-prof-wrap"].forEach(function(s){ var el=$(s); if(el) el.style.display="none"; }); }
-  ["#tinder-deck-wrap","#tinder-chat-wrap","#tinder-match-wrap","#tinder-prof-wrap"].forEach(function(s){ var el=$(s); if(!el) return;
-    new MutationObserver(function(){ if(el.style.display!=="none" && dmWrap.style.display!=="none") dmWrap.style.display="none"; }).observe(el,{attributes:true,attributeFilter:["style"]}); });
-  ["ttab-discover","ttab-match","ttab-msg","ttab-prof"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(){ dmWrap.style.display="none"; dmOv.classList.remove("on"); }); });
- /* ===== Tinder ver v68: dummy chats gain a typing bubble before the other side's messages - same .typing dots his LINE chat and the friend chats already use; nothing to do with the v50/v59/v62 script rounds or the v57 presence line, and no story content ===== */
-  function dmTyping(){ var old=dmScroll.querySelector(".dm-typing"); if(old) old.remove();
-    if(current===null||dmWrap.style.display==="none") return;
-    var ty=document.createElement("div"); ty.className="typing on dm-typing"; ty.innerHTML="<i></i><i></i><i></i>";
-    dmScroll.appendChild(ty); dmScroll.scrollTop=99999; }
-  function dmUntype(){ var old=dmScroll.querySelector(".dm-typing"); if(old) old.remove(); }
- /* ===== Tinder ver v70: each dummy types at his own pace - quick talkers answer fast, the deliberate ones keep her waiting a little ===== */
-  var DM_PACE={"そうた":0.8,"しゅん":1.3,"たくみ":1.2,"そうま":0.85};
-  function dmPush(name,cls,text){
-    var cs=chatState[name]; if(!cs) return;
- /* ===== Tinder ver v70: a photo he already sent comes back in a different framing next time - his other shots of the same set ===== */
-    if(cls==="them" && typeof text==="string" && text.indexOf("📷:")===0){
-      cs.sentPh=cs.sentPh||{}; var src0=text.slice(3);
-      if(cs.sentPh[src0]){ var ph=(matched[name]&&matched[name].photos)||[];
-        for(var pi=0;pi<ph.length;pi++){ if(!cs.sentPh[ph[pi]]){ text="📷:"+ph[pi]; break; } } }
-      cs.sentPh[text.slice(3)]=1; }
-    cs.log.push({cls:cls,text:text});
-    if(cls==="them" && current!==name) cs.unread=true;
-    if(current===name && dmWrap.style.display!=="none"){
-      var d=document.createElement("div");
-      if(text.indexOf("📷:")===0){ d.className="t-bub "+cls; d.style.padding="4px"; var im=document.createElement("img"); im.src=text.slice(3); im.alt="写真"; im.style.cssText="width:170px;height:215px;object-fit:cover;border-radius:11px;display:block"; d.appendChild(im); }
-      else { d.className="t-bub "+cls; d.textContent=text; }
-      dmScroll.appendChild(d); dmScroll.scrollTop=99999;
-    }
-    updateRowStates();
-  }
-  function renderDmChat(name){
-    dmScroll.innerHTML="";
-    var cs=chatState[name]; if(!cs) return;
-    var chip=document.createElement("div"); chip.className="daychip"; chip.style.cssText="align-self:center;margin:4px 0 2px"; chip.textContent="9月27日（土） —— マッチした日"; dmScroll.appendChild(chip);
-    cs.log.forEach(function(m){ var d=document.createElement("div"); d.className="t-bub "+m.cls;
-      if(typeof m.text==="string"&&m.text.indexOf("📷:")===0){ d.style.padding="4px"; var im=document.createElement("img"); im.src=m.text.slice(3); im.alt="写真"; im.style.cssText="width:170px;height:215px;object-fit:cover;border-radius:11px;display:block"; d.appendChild(im); }
-      else d.textContent=m.text;
-      dmScroll.appendChild(d); });
-    dmScroll.scrollTop=99999;
-  }
-  function openDummyChat(name){
-    var m=matched[name]; if(!m) return;
-    current=name; hidePanes(); dmOv.classList.remove("on"); dmWrap.style.display="flex";
-    ["discover","match","msg","prof"].forEach(function(k){ var b=document.getElementById("ttab-"+k); if(b) b.classList.toggle("act",k==="match"); });
-    var dav=dmWrap.querySelector("#dm-ava");
-    if(m.photos){ dav.style.backgroundImage="url("+m.photos[0]+")"; dav.style.backgroundSize="cover"; dav.style.backgroundPosition="center"; dav.textContent=""; }
-    else { dav.style.backgroundImage=""; dav.style.background=m.grad; dav.textContent=m.ini; }
-    dmWrap.querySelector("#dm-name").textContent=name+" "+m.age;
-    var ub=dmWrap.querySelector("#dm-unmatch"); ub.textContent="アンマッチ"; ub.dataset.arm="";
-    var cs=chatState[name]; cs.unread=false; renderDmChat(name); updateRowStates();
-    if(!cs.opened){
-      cs.opened=true;
-      var D=DM[name];
-      dmTyping();
-      D.open.forEach(function(t,i){ setTimeout(function(){ dmUntype(); dmPush(name,"them",t); try{ pop(); }catch(e){} if(i<D.open.length-1) dmTyping(); },600+i*1300*(DM_PACE[name]||1)); });
-    }
-  }
-  dmWrap.querySelector("#dm-back").addEventListener("click",function(){
-    current=null; dmWrap.style.display="none";
-    var mt=document.getElementById("ttab-match"); if(mt) mt.click();
-  });
-  dmWrap.querySelector("#dm-unmatch").addEventListener("click",function(){
-    var ub=this; if(!current) return;
-    if(ub.dataset.arm!=="1"){ ub.dataset.arm="1"; ub.textContent="本当にアンマッチ？"; setTimeout(function(){ ub.dataset.arm=""; ub.textContent="アンマッチ"; },2600); return; }
-    var name=current; current=null;
-    delete matched[name]; order=order.filter(function(n){ return n!==name; });
-    unmatchedForever[name]=1; chatState[name]=null;
-    var r=document.getElementById("dm-row-"+name); if(r) r.remove();
-    var t=document.getElementById("dm-tile-"+name); if(t) t.remove();
-    dmWrap.style.display="none"; paintMatchUI();
-    toast("🚫 <b>"+name+" をアンマッチしました</b><br>マッチ一覧から消えたよ");
-    var mt=document.getElementById("ttab-match"); if(mt) mt.click();
-  });
-  function dmSend(){
-    var inp=dmWrap.querySelector("#dm-text"); var v=(inp.value||"").trim(); if(!v||!current) return;
-    var name=current; inp.value="";
-    dmPush(name,"me",v);
-    window.__lastDmChat={name:name,at:Date.now()};
-    var cs=chatState[name]; var D=DM[name]; if(!cs||!D) return;
-    var msgs=null;
-    for(var i=0;i<D.keys.length;i++){ if(D.keys[i][0].test(v) && !cs.usedKeys[i]){ cs.usedKeys[i]=1; msgs=[D.keys[i][1]]; break; } }
-    if(!msgs && cs.step<D.script.length){ msgs=D.script[cs.step]; cs.step++; }
-    else if(!msgs && D.script2 && cs.step<D.script.length+D.script2.length){ msgs=D.script2[cs.step-D.script.length]; cs.step++; }
-    else if(!msgs && D.script3 && cs.step<D.script.length+(D.script2?D.script2.length:0)+D.script3.length){ msgs=D.script3[cs.step-D.script.length-(D.script2?D.script2.length:0)]; cs.step++; }
-    else if(!msgs && D.script4 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+D.script4.length){ var off4=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0); msgs=D.script4[cs.step-off4]; cs.step++; }
-    else if(!msgs && D.script5 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+D.script5.length){ var off5=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0); msgs=D.script5[cs.step-off5]; cs.step++; }
-    else if(!msgs && D.script6 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+D.script6.length){ var off6=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0); msgs=D.script6[cs.step-off6]; cs.step++; }
-    else if(!msgs && D.script7 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+D.script7.length){ var off7=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0); msgs=D.script7[cs.step-off7]; cs.step++; }
-    else if(!msgs && D.script8 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+D.script8.length){ var off8=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0); msgs=D.script8[cs.step-off8]; cs.step++; }
-    else if(!msgs && D.script9 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+D.script9.length){ var off9=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0); msgs=D.script9[cs.step-off9]; cs.step++; }
-    else if(!msgs && D.script12 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+D.script12.length){ var off12=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0); msgs=D.script12[cs.step-off12]; cs.step++; }
-    else if(!msgs && D.script14 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+D.script14.length){ var off14=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0); msgs=D.script14[cs.step-off14]; cs.step++; }
-    else if(!msgs && D.script16 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+D.script16.length){ var off16=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0); msgs=D.script16[cs.step-off16]; cs.step++; }
-    else if(!msgs && D.script18 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+D.script18.length){ var off18=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0); msgs=D.script18[cs.step-off18]; cs.step++; }
-    else if(!msgs && D.script20 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+D.script20.length){ var off20=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0); msgs=D.script20[cs.step-off20]; cs.step++; }
-    else if(!msgs && D.script21 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+D.script21.length){ var off21=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0); msgs=D.script21[cs.step-off21]; cs.step++; }
-    else if(!msgs && D.script22 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+D.script22.length){ var off22=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0); msgs=D.script22[cs.step-off22]; cs.step++; }
-    else if(!msgs && D.script23 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+D.script23.length){ var off23=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0); msgs=D.script23[cs.step-off23]; cs.step++; }
-    else if(!msgs && D.script24 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+D.script24.length){ var off24=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0); msgs=D.script24[cs.step-off24]; cs.step++; }
-    else if(!msgs && D.script25 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+D.script25.length){ var off25=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0); msgs=D.script25[cs.step-off25]; cs.step++; }
-    else if(!msgs && D.script26 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+D.script26.length){ var off26=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0); msgs=D.script26[cs.step-off26]; cs.step++; }
-    else if(!msgs && D.script28 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+D.script28.length){ var off28=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0); msgs=D.script28[cs.step-off28]; cs.step++; }
-    else if(!msgs && D.script29 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+D.script29.length){ var off29=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0); msgs=D.script29[cs.step-off29]; cs.step++; }
-    else if(!msgs && D.script32 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+D.script32.length){ var off32=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0); msgs=D.script32[cs.step-off32]; cs.step++; }
-    else if(!msgs && D.script34 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+D.script34.length){ var off34=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0); msgs=D.script34[cs.step-off34]; cs.step++; }
-    else if(!msgs && D.script36 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length){ var off36=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0); msgs=D.script36[cs.step-off36]; cs.step++; }
-    else if(!msgs && D.script37 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length){ var off37=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0); msgs=D.script37[cs.step-off37]; cs.step++; }
-else if(!msgs && D.script39 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length){ var off39=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0); msgs=D.script39[cs.step-off39]; cs.step++; }
-else if(!msgs && D.script40 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length+D.script40.length){ var off40=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0)+(D.script39?D.script39.length:0); msgs=D.script40[cs.step-off40]; cs.step++; }
-else if(!msgs && D.script42 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length+D.script40.length+D.script41.length+D.script42.length){ var off42=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0)+(D.script39?D.script39.length:0)+D.script40.length+D.script41.length; msgs=D.script42[cs.step-off42]; cs.step++; }
-else if(!msgs && D.script43 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length+D.script40.length+D.script41.length+D.script42.length+D.script43.length){ var off43=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0)+(D.script39?D.script39.length:0)+D.script40.length+D.script41.length+D.script42.length; msgs=D.script43[cs.step-off43]; cs.step++; }
-else if(!msgs && D.script44 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length+D.script40.length+D.script41.length+D.script42.length+D.script43.length+D.script44.length){ var off44=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0)+(D.script39?D.script39.length:0)+D.script40.length+D.script41.length+D.script42.length+D.script43.length; msgs=D.script44[cs.step-off44]; cs.step++; }
-else if(!msgs && D.script45 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length+D.script40.length+D.script41.length+D.script42.length+D.script43.length+D.script44.length+D.script45.length){ var off45=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0)+(D.script39?D.script39.length:0)+D.script40.length+D.script41.length+D.script42.length+D.script43.length+D.script44.length; msgs=D.script45[cs.step-off45]; cs.step++; }
-else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+D.script36.length+D.script37.length+D.script38.length+D.script39.length+D.script40.length+D.script41.length+D.script42.length+D.script43.length+D.script44.length+D.script45.length+D.script46.length+D.script47.length+D.script48.length){ var off48=D.script.length+(D.script2?D.script2.length:0)+(D.script3?D.script3.length:0)+(D.script4?D.script4.length:0)+(D.script5?D.script5.length:0)+(D.script6?D.script6.length:0)+(D.script7?D.script7.length:0)+(D.script8?D.script8.length:0)+(D.script9?D.script9.length:0)+(D.script10?D.script10.length:0)+(D.script11?D.script11.length:0)+(D.script12?D.script12.length:0)+(D.script13?D.script13.length:0)+(D.script14?D.script14.length:0)+(D.script15?D.script15.length:0)+(D.script16?D.script16.length:0)+(D.script17?D.script17.length:0)+(D.script18?D.script18.length:0)+(D.script19?D.script19.length:0)+(D.script20?D.script20.length:0)+(D.script21?D.script21.length:0)+(D.script22?D.script22.length:0)+(D.script23?D.script23.length:0)+(D.script24?D.script24.length:0)+(D.script25?D.script25.length:0)+(D.script26?D.script26.length:0)+(D.script27?D.script27.length:0)+(D.script28?D.script28.length:0)+(D.script29?D.script29.length:0)+(D.script30?D.script30.length:0)+(D.script31?D.script31.length:0)+(D.script32?D.script32.length:0)+(D.script33?D.script33.length:0)+(D.script34?D.script34.length:0)+(D.script35?D.script35.length:0)+(D.script36?D.script36.length:0)+(D.script37?D.script37.length:0)+(D.script38?D.script38.length:0)+(D.script39?D.script39.length:0)+D.script40.length+D.script41.length+D.script42.length+D.script43.length+D.script44.length+D.script45.length+D.script46.length+D.script47.length; msgs=D.script48[cs.step-off48]; cs.step++; }
-    if(!msgs && D.night){ var hr=new Date().getHours(); var ni=cs.nightIdx||0;
-      if((hr>=23||hr<4) && ni<D.night.length && Math.random()<0.65){ msgs=[D.night[ni]]; cs.nightIdx=ni+1; } }
-    if(!msgs && D.morning){ var mh=new Date().getHours(); var mi=cs.morningIdx||0;
-      if(mh>=6 && mh<10 && mi<D.morning.length && Math.random()<0.65){ msgs=[D.morning[mi]]; cs.morningIdx=mi+1; } }
-    if(!msgs){ msgs=[D.def[cs.defIdx%D.def.length]]; cs.defIdx++; }
-    dmTyping();
-    var pace=DM_PACE[name]||1, acc=0;
-    msgs.forEach(function(t,j){ var isPh=(typeof t==="string"&&t.indexOf("📷:")===0);
-      acc+=(j===0? Math.max(650,(isPh?1500:600+t.length*38)*pace) : (isPh?1500:500+t.length*38)*pace+450);
-      setTimeout(function(){ dmUntype(); dmPush(name,"them",t); if(j<msgs.length-1) dmTyping(); },acc); });
-  }
-  dmWrap.querySelector("#dm-send").addEventListener("click",dmSend);
-  dmWrap.querySelector("#dm-text").addEventListener("keydown",function(e){ if(e.key==="Enter") dmSend(); });
-
  /* ================= itsumen staged reactions ================= */
   var FLOODS={
    A:[["ゆい","えっ、報告！？ マッチしたの！？"],["ゆい","しかも向こうから Super Like！？ すごいじゃん"],["みさき","どんな人！？ 写真、写真見せて！"],["りな","なおのタイプな感じ？"],["ゆい","で、会うの？ ねえ会うの？"],["みさき","続報まってるからね！！"]],
@@ -5911,24 +5295,6 @@ app.style.display="flex";},true);
       else if(fmAwait && n.classList.contains("t-bub") && n.classList.contains("them") && n.textContent==="マッチありがとう笑"){ n.textContent=fmPayload.him; fmAwait=false; fmApplied=true; }
     }); });
   }).observe(tchat,{childList:true}); }
- /* ---------- 4. Top Picks rotation + push ---------- */
-  var POOL=[{n:"そうた",a:25,e:"🎸",g:"linear-gradient(160deg,#11998e,#38ef7d)"},{n:"そうま",a:22,e:"☕",g:"linear-gradient(160deg,#f7971e,#ffd200)"},{n:"しゅん",a:28,e:"💻",g:"linear-gradient(160deg,#232526,#414345)"},{n:"たくみ",a:29,e:"🍳",g:"linear-gradient(160deg,#cb2d3e,#ef473a)"}];
-  var rot=0;
-  function applyPicks(){
-    var gbox=$("#tgold-box"); if(!gbox) return;
-    var pair=[POOL[rot%POOL.length], POOL[(rot+3)%POOL.length]];
-    gbox.querySelectorAll("[data-pick]").forEach(function(tile,i){ var p=pair[i%2]; tile.dataset.pick=p.n;
-      var im=tile.querySelector(".im > span"); if(im){ im.textContent=p.e; im.style.background=p.g; }
-      var lb=tile.querySelector("span:last-child"); if(lb) lb.textContent=p.n+" "+p.a; });
-  }
-  var gsheet=$("#tgold-sheet");
-  if(gsheet){ new MutationObserver(function(){ if(gsheet.classList.contains("on")) setTimeout(applyPicks,30); }).observe(gsheet,{attributes:true,attributeFilter:["class"]}); }
-  var nCount=0;
-  function rotatePicks(){
-    rot++;
-    try{ push("Tinder","linear-gradient(135deg,#fd267d,#ff7854)","🔥","Top Picksが更新されました","新しいおすすめが届いてるよ。Gold画面でチェックしてね",function(){ try{ show("tinder"); }catch(e){} if(window.__openGold) window.__openGold(); }); }catch(e){}
-  }
-  setTimeout(function(){ rotatePicks(); nCount++; var iv=setInterval(function(){ if(nCount>=3){ clearInterval(iv); return; } rotatePicks(); nCount++; },110000); },50000);
  /* ---------- tick ---------- */
   setInterval(function(){ updBar(); updPresence(); updProf(); },900);
   updBar(); updProf();
@@ -6633,21 +5999,6 @@ app.style.display="flex";},true);
    const hit=RULES.find(r2=>r2[0].test(t));
    if(hit&&Math.random()<0.55) setTimeout(()=>{ if(!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(hit[1]); },3200); }
   return r; };
-})();
-/* the Gold panel's Top Picks and blurred Likes-You faces rotate daily across the four dummies */
-(function(){
- var box=document.querySelector("#tgold-box"); if(!box||!window.MutationObserver) return;
- var ALL=[["そうた",25,"sota"],["しゅん",28,"shun"],["たくみ",29,"takumi"],["そうま",22,"soma"]];
- var seed=new Date().getDate();
- var R=ALL.map(function(_,i){ return ALL[(i+seed)%ALL.length]; });
- function apply(){
-  var picks=box.querySelectorAll("[data-pick]"); if(!picks.length) return;
-  if(picks[0].dataset.pick===R[0][0]&&box.querySelector(".sub")&&box.querySelector(".sub").textContent.indexOf("日替わり")>=0) return;
-  picks.forEach(function(t,i){ var p=R[(i*3)%R.length]; t.dataset.pick=p[0]; var img=t.querySelector("img"); if(img) img.src="assets/dummy-"+p[2]+"-1.jpg"; var lb=t.querySelector("span:last-child"); if(lb) lb.textContent=p[0]+" "+p[1]; });
-  box.querySelectorAll("[data-blur]").forEach(function(t,i){ var p=R[(i*4+1)%R.length]; var img=t.querySelector("img"); if(img) img.src="assets/dummy-"+p[2]+"-1.jpg"; });
-  var sub=box.querySelector(".sub"); if(sub&&sub.textContent.indexOf("日替わり")<0) sub.textContent+="（Top Picks の顔ぶれは日替わりです）";
- }
- new MutationObserver(function(){ try{ apply(); }catch(e){} }).observe(box,{childList:true,subtree:true});
 })();
 /* ===== Tinder ver v62: her favourites get their own free-chat layer - Busan / shrimp / karaage / cafe au lait, each a small two-beat dive, plus a quiet day-before profile cross-reference; same farewell/scandal gates as v219/v229/v50 ===== */
 (function(){
@@ -7585,29 +6936,7 @@ app.style.display="flex";},true);
  const iv=setInterval(()=>{ if(hideBar()||Date.now()-t0>20000) clearInterval(iv); },600);
  hideBar();
 })();
-/* ===== Tinder ver v57: dummy match rows gain a presence line - online / recently active + distance, rotating daily (same date-seeded rotation idea as v50's Gold panel, but on the match list; story-free, nothing explicit, everyone 20+) ===== */
-(function(){
- const DIST={ "そうた":"5 km","しゅん":"12 km","たくみ":"18 km","そうま":"2 km"};
- const dayOfYear=()=>{ const n=new Date(); return Math.floor((n-new Date(n.getFullYear(),0,0))/86400000); };
- const presence=(name)=>{ let h=dayOfYear()*7; for(let i=0;i<name.length;i++) h+=name.charCodeAt(i)*(i+3);
-  const m=h%3, d=DIST[name]?(" ・ "+DIST[name]+"先"):"";
-  if(m===0) return {t:"🟢 オンライン中"+d, on:true};
-  if(m===1) return {t:"⚪ "+(5+(h%46))+"分前にアクティブ"+d, on:false};
-  return {t:"⚪ "+(1+(h%8))+"時間前にアクティブ"+d, on:false}; };
- const decorate=()=>{ document.querySelectorAll('#match-list > div[id^="dm-row-"]').forEach(row=>{
-   if(row.querySelector(".v57-pres")) return;
-   const pv=row.querySelector(".dm-pv"); if(!pv) return;
-   const name=row.id.replace("dm-row-","");
-   const s=document.createElement("span"); s.className="v57-pres";
-   s.style.cssText="display:block;font-size:11px;margin-top:2px";
-   pv.parentNode.insertBefore(s, pv.nextSibling); row.dataset.v57name=name; }); };
- const refresh=()=>{ document.querySelectorAll('#match-list > div[id^="dm-row-"] .v57-pres').forEach(s=>{
-   const row=s.closest('div[id^="dm-row-"]'); const p=presence(row.dataset.v57name||"");
-   s.textContent=p.t; s.style.color=p.on?"#34c759":"#8e8e93"; }); };
- const list=document.querySelector("#match-list");
- if(list) new MutationObserver(()=>{ decorate(); refresh(); }).observe(list,{childList:true});
- decorate(); refresh(); setInterval(refresh,60000);
-})(); 
+ 
 </script>
 <script>
 /* ===== Tinder ver v58 (orig v254): comments work like the real Instagram - a comment sheet on every post ===== */
@@ -7731,25 +7060,11 @@ app.style.display="flex";},true);
 (function(){
  if(typeof himReply!=="function"||typeof state==="undefined"||state._v59j) return; state._v59j=true;
  const _hr=himReply;
- const JEAL=[
-  ["…さっき、誰と話してたん？","べつに。気になっただけや"],
-  ["また、アプリの人と話してたんやろ","…楽しそうで、何よりや"],
-  ["…ふーん","俺も、負けてられへんな"]];
  himReply=async function(t,cb){ const r=await _hr(t,cb);
   try{
    if(state.ended||state.act2||state.phase==="scandal") return r;
    const calm=state._vmCalm||state.started;
    if(!calm||state.chapter<2) return r;
-   // jealousy: she chatted with a dummy in the last 10 minutes, not yet reacted to
-   const ld=window.__lastDmChat;
-   if(ld && (Date.now()-ld.at)<600000 && ld.at>(state._jealSeen||0)){
-     state._jealSeen=ld.at;
-     const n=state._jealN||0;
-     if(n<JEAL.length){ state._jealN=n+1; const lines=JEAL[n];
-       setTimeout(async ()=>{ if(state.ended||state.act2||state.phase==="scandal") return;
-         for(const s of lines){ await himMsg(s,350); } },3400);
-       return r; }
-   }
    // cross-references to the bonus episodes, one-shot each
    if(typeof t==="string" && /スーパーライク|Super\s?Like/i.test(t) && !state._xrefSL){ state._xrefSL=true;
      setTimeout(async ()=>{ if(state.ended||state.act2||state.phase==="scandal") return;
@@ -8511,7 +7826,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v185";
+ let ver="v186";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -9227,5 +8542,6 @@ setInterval(upd,900); upd();
 <!-- v183: branches and temperature reworked in the Tinder main thread - her phone-call choice on 9/29 now really calls (new TINDER_CALL playlist of existing single-line voices: fv-12/fc-t-25/fc-t-20/fc-t-7, subtitles verbatim; call-end returns to the Tinder chat and continues to the suspect beat); her sauna answer detours into a new sauna topic scene; new tempting choices for her (sauna together / look at me, not Maron / I wont sleep either) with his warmer-but-restrained replies; his extra line on the night scene. No voice line reworded, arc endpoints unchanged -->
 <!-- v184: text refresh 2/2 - friends and free chat reworded: FCHATS logs/calm/scandal pools for all three friends, the time-of-day ambience pools plus scandal/after sets, seeded friend logs, group quick replies, and his free-chat REPLY_RULES / REPLY_FREE / REPLY_CALM (same triggers, same beats, same tones; no voice line or FCV subtitle touched) -->
 <!-- v185: the Tinder conversations change SUBJECT, not just wording - opening choices now cover his inexperience with apps (she is his first match) and her profile text; step2 is rebuilt around current obsessions (his late-night walks with Maron, her sauna or a new Korean-drama branch stepDrama); the job mystery is reframed as public-facing work; the 9/28 food photo now starts a spice-tolerance contest; the Maron talk is about the sock-thief habit; the night scene opens on the walk callback. Mandatory beats untouched: Super Like opening incl. the first-message marker line, anonymity, the not-the-idol deflection, the date at the cafe, the LINE exchange, the v183 night call -->
+<!-- v186: the four dummies are DELETED entirely (nao's decision) - deck cards, LIKEBACK and all DM chat data/machinery, dummy match overlay/list/chat pane, settings dummy-match folding, Top Picks POOL rotation and the daily Gold rotation, Gold Likes-You/Top-Picks dummy tiles, match-pane teaser tiles, the v57 dummy presence layer, the free-chat jealousy keyed on dummy chats (JEAL + branch), and the 12 dummy photo assets. Deck is Hiroto alone; Super Like -> match -> Tinder chat -> LINE flow unchanged; itsumen reactions kept -->
 </body>
 </html>
