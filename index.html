@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v178</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v179</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2712,9 +2712,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const p2=document.createElement("div"); p2.id="home-page2";
  p2.innerHTML='<div class="grid">'
   +'<button class="appicon" data-hp="cal"><span class="ic" style="background:linear-gradient(180deg,#ffffff,#e8e8ee);color:#d92b2b;font-size:24px">📅</span><span class="lb">カレンダー</span></button>'
-  +'<button class="appicon" data-hp="clock"><span class="ic" style="background:#111;font-size:24px">🕐</span><span class="lb">時計</span></button>'
   +'<button class="appicon" data-hp="memo"><span class="ic" style="background:linear-gradient(180deg,#ffd94d,#f5b81d);font-size:24px">📝</span><span class="lb">メモ</span></button>'
-  +'<button class="appicon" data-hp="wx"><span class="ic" style="background:linear-gradient(180deg,#4a90d9,#7ab648);font-size:24px">🌤</span><span class="lb">天気</span></button>'
   +'</div><div class="home-pages" style="margin-top:auto"><i></i><i class="on"></i><span class="hp-search">🔍 検索</span></div>';
  home.appendChild(p2);
  const inner=home.querySelector(".home-inner");
@@ -8454,7 +8452,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v178";
+ let ver="v179";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -9137,5 +9135,32 @@ setInterval(upd,900); upd();
 
 
 <!-- ===== Tinder ver v178: ORIGINAL-SYNC batch 2 (orig v315-v332 audit) - quiz, DM and dead-code alignment: the Hiroto quiz grows 5 -> 8 questions (catchphrase / birthday / height, all learnable in-app; Marron was already here) with shuffled options and ranks rescaled (orig v317, minus the original's necklace question - lover premise); his IG DM answers on-topic from seven pools (orig v320, Christmas and romance pools left out for this arc) instead of one flat round-robin; startAct2's overwritten first widget assignments and five dead CSS rules (.tabbar x2, .x-tabs x3 - no element uses either) removed (orig v318). ===== -->
+
+<script>
+/* ===== Tinder ver v179: ORIGINAL-SYNC batch 3 (orig v328+v330) - the morning-after news row opens a full article.
+   In the original, the act2 follow-up row was inert until v330 gave it an article; this version's
+   morning-after row (added by startAct2) was inert the same way. It now opens a full article written
+   for THIS arc: his own comment (the app use admitted and apologised for, the dating denied, the
+   account closed), the agency standing behind it, and fans answering honesty with support - no
+   'someone important' confession, no romance framing, because that is not what happened here.
+   Also in this batch (markup above): home page 2 loses its decorative clock and weather icons,
+   exactly as orig v328 - calendar and memo stay. ===== */
+(function(){
+ const iv=setInterval(()=>{ if(state._v330t) { clearInterval(iv); return; }
+  if(!state.act2) return;
+  const rows=document.querySelectorAll("#news-list .newsrow");
+  let row=null; rows.forEach(r=>{ if(r.textContent.includes("一夜明けて")) row=r; });
+  if(!row) return;
+  state._v330t=true; clearInterval(iv);
+  row.style.cursor="pointer";
+  row.addEventListener("click",()=>{ const list=document.querySelector("#news-list"); if(list) list.style.display="none";
+   const a=document.querySelector("#news-article"); if(!a) return; a.style.display="block";
+   a.innerHTML='<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>一夜明けて——ひろと、本人の言葉でコメント　ファンへの感謝に「泣いた」の声</h2><div class="m">TV・新聞各紙 ・ 翌朝</div><img src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリの利用が報じられた人気アイドル・井汲大翔が、自身のSNSでコメントを発表した。アプリの利用は事実と認めて謝罪し、お相手とされる女性との交際は否定。アプリはすでに退会したという。</p><div class="box">「ステージに立てるのは、皆さんがいてくれるから。その気持ちは毎日変わりません」——本人のコメントより</div><p>事務所も本人のコメントを支持する姿勢を示した。SNSでは「正直に話してくれてありがとう」「隠されるよりずっと応援できる」「歌とダンスで返してほしい」といった声が広がり、前夜の騒ぎは少しずつ静まっている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント</h3><div style="padding:10px 0;border-bottom:1px solid #f2f2f7"><div style="font-size:14px;line-height:1.75">嘘をつかなかった。それだけで十分だと思う</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px">♡ 2,861 ・ 返信</div></div><div style="padding:10px 0"><div style="font-size:14px;line-height:1.75">次のステージ、絶対に行く。待ってて</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px">♡ 1,502 ・ 返信</div></div></div>';
+   const sc=document.querySelector("#news-scroll"); if(sc) sc.scrollTop=0; });
+ },1200);
+})();
+</script>
+<!-- ===== Tinder ver v179: ORIGINAL-SYNC batch 3 (orig v315-v332 audit) - home page 2's decorative clock and weather icons removed (orig v328; calendar/memo stay), and the morning-after follow-up news row now opens a full article written for this arc (orig v330's mechanism; the original's 'someone important' text is lover-premise and was NOT carried over). This closes the v315-v332 audit: ported = v317/v318/v320/v321/v324/v328/v330/v332; already-equivalent = v326 (the v20 daily-life post); skipped with reasons in the batch reports = v315/v316/v319-ep4/v325-content/v327/v329/v331 (Christmas-promise and lover-premise story beats) and v322 (superseded by v324's form). Base CSS compared rule-by-rule: all 324 shared selectors identical to the original. ===== -->
+
 </body>
 </html>
