@@ -327,7 +327,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .x-searchbar button{background:#1d9bf0;color:#fff;border:none;border-radius:999px;padding:8px 15px;font-weight:800;font-size:13px;cursor:pointer;font-family:inherit}
 .sug{display:flex;flex-wrap:wrap;gap:7px;padding:10px 14px}
 .sug button{border:1px solid #cfd9de;background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
-#hiroto-prof{position:absolute;inset:0;background:#fff;z-index:206;display:none;flex-direction:column}
+#hiroto-prof{position:absolute;inset:0;background:#fff;z-index:206;display:none;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #hiroto-prof.on{display:flex}
 #hiroto-prof .hp-bg{height:210px;object-fit:cover;width:100%}
 .cmt-input{display:flex;gap:8px;padding:9px 14px;border-top:1px solid #efefef;background:#fff}
@@ -869,7 +869,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v150</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v151</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -8849,6 +8849,17 @@ app.style.display="flex";},true);
  css.textContent=".island{pointer-events:none}"
  +"html,body{overscroll-behavior:none}";
  document.head.appendChild(css);
+})();
+</script>
+<script>
+/* ===== Tinder ver v151 (orig v312 synced): his profile now scrolls, and the notebook keeps its extra pages inside the scroll area. (1) The base #hiroto-prof rule gained overflow-y:auto above - its stacked cards (data card, notebook button, memories entry) overflow a short phone frame and were unreachable before. (2) Two notebook layers append their extra pages to the panel ROOT (note-extra6 推し活のページ, note-extra7 これからのページ): the panel is a flex column (header / scroll flex:1 / input bar), so each root-level extra sat outside the scroll child and crushed the reading area from below. This mover keeps every direct-child [id^=note-extra] inside the panel's own scroll child, exactly the original's v312 arrangement; note-extra3 already injected itself into the scroll child and is untouched. No story text, chat content, gates or voices touched ===== */
+(function(){
+ if(window.__v151) return; window.__v151=true;
+ const fix=()=>{ const p=document.querySelector("#note-panel"); if(!p) return;
+  const sc=[...p.children].find(c=>getComputedStyle(c).overflowY==="auto"); if(!sc) return;
+  [...p.children].filter(c=>/^note-extra/.test(c.id||"")).forEach(x=>sc.appendChild(x));
+ };
+ new MutationObserver(()=>{ try{ fix(); }catch(e){} }).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 </body>
