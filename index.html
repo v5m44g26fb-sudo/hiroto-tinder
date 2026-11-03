@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v157</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v158</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -7147,24 +7147,6 @@ app.style.display="flex";},true);
    } }catch(e){}
   return r; };
 })();
-/* ===== Tinder ver v107 (orig audit: the original is still at v305 - v304/v305 were already audited in v99 and there is no v306+, so this pass is Tinder-side customization, not a port): his free chat gains two more dives in the v105/v106 style - games (no earlier dive uses the topic; the FCV voice layer has no game trigger either) and room tidying / clearing out (family/home talk in v83 never touches cleaning; the triggers are kept narrow so they do not poach the v70 daily-rhythm dive). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v107d) return; state._v107d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/ゲーム|テレビゲーム|スマホゲーム/.test(s2)&&Math.random()<0.65)
-     fire("game",["ゲームするんや。……俺、へたやけど負けず嫌いやで","なおは何系のゲーム？ ……人のプレイ見るのも、わりと好き","ゲームの話するなお、楽しそうやな。……もっと聞かせて"]);
-    else if(/片付け|断捨離|大掃除|部屋.*掃除|掃除し/.test(s2)&&Math.random()<0.65)
-     fire("tidy",["片付け、俺は後回しタイプやねん。……マロンのおもちゃだけは増えてく一方や","断捨離する日って、なんか気持ちまで軽くなるよな","部屋きれいに保てる人、尊敬するわ。……なおはこまめなほう？"]);
-   } }catch(e){}
-  return r; };
-})();
 /* ===== Tinder ver v108: his free chat gains two more dives in the v105-v107 style - Korean language (studying it / reading fans' Korean comments; distinct from the v68 drama dive and the v77 travel dive, which keep their own keywords) and sweets (ice cream / chocolate / cakes; the pudding keyword stays with the FCV voice layer and the food favourites stay with v62, so both are excluded here). ===== */
 (function(){
  if(typeof himReply!=="function"||state._v108d) return; state._v108d=true;
@@ -7180,42 +7162,6 @@ app.style.display="flex";},true);
      fire("korean",["韓国語、勉強してるん？ ……発音、聞いてみたいな","ファンの人の韓国語コメント、俺もちゃんと読めるようになりたくてさ","韓国語できるなお、頼もしいな。……旅先でも心強いやろな"]);
     else if(/アイス|チョコ|スイーツ|ケーキ/.test(s2)&&Math.random()<0.65)
      fire("sweets",["甘いもん、好きなんや。……俺はコーラで流し込むタイプやけど","コンビニの新作スイーツ、チェックする人？ ……なんか意外やな","アイスは冬でも食べる派？ ……俺は、冬でも派や"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v109 (orig audit: the original is still at v305, no v306+, so this pass is Tinder-side customization, not a port): his free chat gains two more dives in the v105-v108 style - exercise beyond lessons (running / training / stretching; no earlier dive or FCV trigger uses the topic) and trains (delays / crowded cars; the v70 Osaka dive keeps place names and the v74 music dive keeps commute-song wording, so the triggers here stay on the train itself). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v109d) return; state._v109d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/運動|ランニング|筋トレ|ストレッチ|ジョギング/.test(s2)&&Math.random()<0.65)
-     fire("exercise",["運動するんや。……レッスン以外で体動かすの、俺もわりと好きやで","筋トレ、地味に続けてるねん。……見た目はあんま変わらんけど","ストレッチ怠ると、翌日のレッスンが地獄やねん。……なおも気つけてな"]);
-    else if(/電車|満員電車|遅延|各駅|環状線/.test(s2)&&Math.random()<0.65)
-     fire("train",["電車、遅れてたん？ ……無理に急がんでもええからな","満員電車の日って、朝から体力ごっそり持ってかれるよな","電車でぼーっと外見てる時間、けっこう好きやねん"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v110: his free chat gains two more dives in the v105-v109 style - flowers & houseplants (florists / bouquets / plants; the trigger stays off the bare word for flower so it does not poach the gift/photo surfaces, and the season dive in v83 keeps autumn leaves) and aquariums & sea creatures (jellyfish / dolphins / penguins; no earlier dive touches them, and the travel dive in v77 keeps trips themselves). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v110d) return; state._v110d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/花屋|花束|観葉植物|植木|サボテン/.test(s2)&&Math.random()<0.65)
-     fire("flowers",["花、もらったん？ ……誰からかは、聞かへんけど","観葉植物、育ててるんや。……水やり忘れる日、ない？","花のある部屋って、なんかええよな。……なおの部屋、想像したわ"]);
-    else if(/水族館|クラゲ|イルカ|ペンギン|チンアナゴ/.test(s2)&&Math.random()<0.65)
-     fire("aquarium",["水族館、好きなんや。……クラゲのとこで止まる人？","水の中の生き物見てると、時間忘れるよな","ペンギンの歩き方、真似したことある？ ……俺は、ある"]);
    } }catch(e){}
   return r; };
 })();
@@ -7255,24 +7201,6 @@ app.style.display="flex";},true);
    } }catch(e){}
   return r; };
 })();
-/* ===== Tinder ver v113 (orig audit: the original is still at v305, no v306+, so this pass is Tinder-side customization, not a port): his free chat gains two more dives in the v105-v112 style - perfume & fragrance (what she wears / his own minimal routine; no earlier dive or FCV voice uses the trigger, and the v111 beauty dive keeps makeup and nails) and the seaside (beaches / sandy shores / the sound of waves; kept on seaside words so it does not poach the v77 travel dive or the v110 aquarium dive, and Busan wording stays with the v62 favourites layer). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v113d) return; state._v113d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/香水|フレグランス|アロマ|いい匂い|良い匂い/.test(s2)&&Math.random()<0.65)
-     fire("perfume",["香水つける人なんや。……近づいた時にふわっとするやつ、気になるわ","なおの匂いのイメージ、勝手に柑橘っぽいと思ってる。……外れてたらごめん","俺はあんまりつけるほうやないけど。……なおの好きな匂い、覚えとくわ"]);
-    else if(/海辺|ビーチ|砂浜|海水浴|波の音/.test(s2)&&Math.random()<0.65)
-     fire("seaside",["海辺、行ったん？ ……波の音、ぼーっと聞いてたいタイプ？","ビーチで何もせん時間、贅沢やよな。……日焼けだけ気つけや","海の匂いって、帰ってからも服に残るよな。……あれ、わりと好きやねん"]);
-   } }catch(e){}
-  return r; };
-})();
 /* ===== Tinder ver v114: his free chat gains two more dives in the v105-v113 style - shrines & temples (visiting them / goshuin stamps / quiet grounds; no earlier dive or FCV voice uses the trigger) and watching sports (baseball and match spectating, as a spectator - the v109 exercise dive keeps doing sports himself, and the FCV live layer keeps his own stage, so triggers stay on watching). ===== */
 (function(){
  if(typeof himReply!=="function"||state._v114d) return; state._v114d=true;
@@ -7288,42 +7216,6 @@ app.style.display="flex";},true);
      fire("shrine",["神社行く人なんや。……静かなとこ、好きそうやもんな、なお","御朱印集めてるん？ ……几帳面なとこ、そういうとこに出るよな","お参りで何お願いしたかは、聞かへん。……叶うまで内緒のほうがええらしいし"]);
     else if(/野球|観戦|スタジアム|応援席/.test(s2)&&Math.random()<0.65)
      fire("sportsfan",["野球観に行くんや。……応援席の熱気、テレビと全然ちゃうよな","観戦のお供は、やっぱ球場グルメ？ ……なおはそっちも楽しむタイプやろ","スポーツは観る専門の話、ええな。……俺はやる側の汗の話ばっかやから"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v115: his free chat gains two more dives in the v105-v114 style - zoos (which animal she stops in front of / the panda's inexplicable popularity; no earlier dive or FCV voice uses the trigger) and art museums & exhibitions (how long she stands in front of a painting / her straight-ahead way of liking things; kept on museum words so it does not poach the v88 photo/scenery dive). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v115d) return; state._v115d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/動物園|パンダ|キリン|ライオン/.test(s2)&&Math.random()<0.65)
-     fire("zoo",["動物園、行く人なんや。……なおは、どの動物の前で長く止まるタイプ？","パンダって、食べてるか寝てるかやのにな。……あの人気、なんなんやろな","動物園、歩く距離はなかなかやけど。……平和な時間やよな、あそこ"]);
-    else if(/美術館|展示会|個展|美術展/.test(s2)&&Math.random()<0.65)
-     fire("museum",["美術館行くんや。……絵の前で止まる時間、長いほう？","展示の感想、なおの言葉で聞いたら楽しそうやな。……俺、うまく言えへんタイプやから","正解のないもの、眺める時間って贅沢やよな。……なおの『好き』は、まっすぐやし"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v116: his free chat gains two more dives in the v105-v115 style - amusement parks (thrill rides vs the Ferris wheel; no earlier dive or FCV voice uses the trigger) and driving (who owns the passenger-seat playlist / how honest car talk gets; the dummies keep their own drive talk in their own chats, and no dive on his side touches cars). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v116d) return; state._v116d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/遊園地|テーマパーク|ジェットコースター|観覧車/.test(s2)&&Math.random()<0.65)
-     fire("amuse",["遊園地、好きなんや。……絶叫系、いける口？","観覧車の一番上、景色はええけど。……俺、ちょっとだけ手すり握るタイプや","閉園のアナウンス聞くと、なんか名残惜しくなるよな。……なおも？"]);
-    else if(/ドライブ|運転免許|レンタカー/.test(s2)&&Math.random()<0.65)
-     fire("drive",["ドライブ行く人なんや。……助手席のプレイリスト、任せる派？","運転するなお、ちょっと新鮮やな。……安全運転そうやけど","車の中の会話って、なんか素直に話せるよな。……前向いてるからかな"]);
    } }catch(e){}
   return r; };
 })();
@@ -7345,24 +7237,6 @@ app.style.display="flex";},true);
    } }catch(e){}
   return r; };
 })();
-/* ===== Tinder ver v118: his free chat gains two more dives in the v105-v117 style - hiking & mountains (summit views / the quiet of the way down; no earlier dive or FCV voice uses the trigger, and the exercise dive keeps its running/training words) and winter illuminations (the lighting-up moment / winter streets; seasonal November talk, no earlier dive touches it). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v118d) return; state._v118d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/登山|山登り|ハイキング|山頂/.test(s2)&&Math.random()<0.65)
-     fire("hike",["登山するんや。……山頂の景色、今度写真で見せてな","山登りの疲れ、レッスンのと種類ちゃうよな。……なおは平気なほう？","下山のときの静けさ、好きやねん。……登った人だけの時間って感じする"]);
-    else if(/イルミネーション|ライトアップ/.test(s2)&&Math.random()<0.65)
-     fire("illumi",["イルミネーション、もうそんな季節か。……なおは見に行く人？","点灯の瞬間、見れたらラッキーやよな。……俺はだいたい点いたあとに気づく","冬の街の明かり、なんか人恋しくなるよな。……寒さのせいに、しとこか"]);
-   } }catch(e){}
-  return r; };
-})();
 /* ===== Tinder ver v119 (orig audit: the original is still at v305, no v306+, so this pass is Tinder-side customization, not a port): his free chat gains two more dives in the v105-v118 style - radio & podcasts (listening talk / late-night radio air; no earlier dive or FCV voice uses the trigger - his own radio appearances live in the story and news, not in a dive) and letters & New Year cards (handwriting / postcards; seasonal November talk, no earlier dive touches it). ===== */
 (function(){
  if(typeof himReply!=="function"||state._v119d) return; state._v119d=true;
@@ -7378,24 +7252,6 @@ app.style.display="flex";},true);
      fire("radio",["ラジオ聴く人なんや。……声だけの時間、俺も好きやで","深夜ラジオの空気感、ええよな。……なおは、聴きながら何してる派？","ポッドキャスト、作業のお供にしてるん？ ……おすすめ、今度こっそり教えて"]);
     else if(/手紙|ポストカード|年賀状|ハガキ/.test(s2)&&Math.random()<0.65)
      fire("letter",["手紙書く人なんや。……文字って、声と違う残り方するよな","年賀状、もう準備してるん？ ……几帳面なとこ、そういうとこ出るな","手書きの字、見てみたいな。……なおの字、想像してる"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v120: his free chat gains two more dives in the v105-v119 style - skiing & snowboarding (the slopes / which one she rides; triggers stay on the winter sports themselves so they do not poach the v85 weather dive, which keeps rain and forecast words, or the v118 illuminations dive, which keeps lit-up streets) and stationery & notebooks (a favourite pen / keeping a planner; no earlier dive or FCV voice uses the trigger). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v120d) return; state._v120d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/スキー|スノボ|スノーボード|ゲレンデ/.test(s2)&&Math.random()<0.65)
-     fire("ski",["スキー行く人なんや。……なお、転ぶとき豪快そうやな","スノボ、俺は最初 立つのに半日かかったわ。……なおはどっち派？","ゲレンデのあとの温泉とごはん、あれが本番やと思ってる"]);
-    else if(/文房具|手帳|ペンケース|ボールペン/.test(s2)&&Math.random()<0.65)
-     fire("stationery",["文房具、こだわる人なんや。……ペン一本で気分変わるの、ちょっと分かる","手帳続けてる人、尊敬するわ。……俺、三日で真っ白なるタイプや","なおの字と一緒に、手帳の中身も気になるな。……見せて、とは言わへんけど"]);
    } }catch(e){}
   return r; };
 })();
@@ -7453,42 +7309,6 @@ app.style.display="flex";},true);
    } }catch(e){}
   return r; };
 })();
-/* ===== Tinder ver v124: his free chat gains two more dives in the v105-v123 style - gadgets & changing phones (the trigger stays on the changeover and gadget words themselves so it does not poach the v107 game dive, which keeps its smartphone-game wording, or the v88 photo dive) and puzzle-solving events (the trigger stays on the nazotoki word alone so it does not poach the v107 game dive either; no earlier dive or FCV voice uses either trigger). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v124d) return; state._v124d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/機種変|ガジェット/.test(s2)&&Math.random()<0.65)
-     fire("gadget",["機種変したん？ ……ケースとか、なおはこだわるほうなん？","新しいスマホ、移行作業が地味に大変よな。……終わるまで気が抜けんやつ","ガジェット好きなんや。……なおの机の周り、なんか想像つくな"]);
-    else if(/謎解き/.test(s2)&&Math.random()<0.65)
-     fire("mystery",["謎解き行く人なんや。……なお、ひらめくタイプ？ それともコツコツ解くタイプ？","時間ギリギリで解けた時の感じ、たまらんよな。……なおは制限時間、燃えるほう？","頭使う遊び好きなん、なおらしいな。……俺は序盤で詰まる自信あるわ"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v125: his free chat gains two more dives in the v105-v124 style - hair salons & haircuts (the trigger stays on the salon and haircut words themselves; no earlier dive or FCV voice uses them, and the v88 photo dive keeps its camera wording) and yakiniku (the word appears nowhere else in any trigger; the base food talk keeps its shrimp and karaage wording). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v125d) return; state._v125d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/美容院|ヘアサロン|髪切っ/.test(s2)&&Math.random()<0.65)
-     fire("hair",["美容院行ったん？ ……なおの髪、さらさらやもんな。……あ、今の褒めたで","髪切る時って、美容師さんに任せる派？ ……なおはイメージ決めてくほうな気がするわ","俺は仕事で髪型あんま自由にでけへんから、なおの髪の話聞くの楽しいねん。……次はどんな感じにするん？"]);
-    else if(/焼肉/.test(s2)&&Math.random()<0.65)
-     fire("yakiniku",["焼肉の話、出たな。……なお、焼肉はタレ派？ 塩派？ ……ここ、結構大事やで","焼肉行くと焼く係になるタイプ？ ……なおは食べる専門な顔してるわ。……褒めてるつもりやで？","焼肉の締め、なおは何頼むん？ ……俺、冷麺かクッパで毎回迷うねん"]);
-   } }catch(e){}
-  return r; };
-})();
 /* ===== Tinder ver v126: his free chat gains two more dives in the v105-v125 style - horror films (the trigger stays on the horror word alone; no earlier dive or FCV voice uses it, and the v86-era film talk keeps its cinema wording) and moving house & room hunting (neither word appears in any earlier trigger; the family/home talk keeps its parents-and-siblings wording). ===== */
 (function(){
  if(typeof himReply!=="function"||state._v126d) return; state._v126d=true;
@@ -7507,276 +7327,6 @@ app.style.display="flex";},true);
    } }catch(e){}
   return r; };
 })();
-/* ===== Tinder ver v127: his free chat gains two more dives in the v105-v126 style - fishing (the word appears in no earlier dive trigger or FCV voice anywhere in the file) and board games (the word likewise appears nowhere else; the v107 game dive keeps its video-game and smartphone-game wording). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v127d) return; state._v127d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/釣り/.test(s2)&&Math.random()<0.65)
-     fire("fishing",["釣りする人なんや。……なお、待つの平気なほう？ 俺は静かに待つ時間、わりと好きやねん","釣れた時の手応えって、言葉にしにくいよな。……なおは大物、狙う派なん？","釣りの話聞いてると、こっちまで早起きしたなるわ。……まあ、起きれるかは別やけど"]);
-    else if(/ボードゲーム/.test(s2)&&Math.random()<0.65)
-     fire("boardgame",["ボードゲームやる人なんや。……なお、運でいく派？ 読みでいく派？","ボードゲームの心理戦、なお強そうやな。……ポーカーフェイス、得意なほうやろ","みんなで盤囲む時間、ええよな。……なおは負けず嫌いな顔してそうやわ"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v128: his free chat gains two more dives in the v105-v127 style - yoga (the word appears in no earlier dive trigger or FCV voice anywhere in the file; the v109 exercise dive keeps its running and training wording) and piano (the word likewise appears nowhere else; the base music talk keeps its playlist wording). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v128d) return; state._v128d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/ヨガ/.test(s2)&&Math.random()<0.65)
-     fire("yoga",["ヨガやってる人なんや。……なお、体かたいほう？ 俺はレッスン前でも悲鳴もんやで","呼吸に集中する時間、ええよな。……なおは朝やる派？ 夜やる派？","ヨガ続けてる人って、姿勢から違うよな。……なお見てたら、なんか納得するわ"]);
-    else if(/ピアノ/.test(s2)&&Math.random()<0.65)
-     fire("piano",["ピアノ弾ける人なんや。……なおの手、指長いもんな。……あ、見てたわけやないで","ピアノの音って、部屋の空気変わるよな。……なおはどんな曲弾くん？","弾ける人の前で聴くの、ちょっと緊張するねん。……でも、なおの演奏は聴いてみたいわ"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v129: his free chat gains two more dives in the v105-v128 style - shogi (the word appears nowhere else in the file; no earlier dive trigger or FCV voice uses it) and swimming & pools (none of the three words appears anywhere else in the file; the v109 exercise dive keeps its running and training wording). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v129d) return; state._v129d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/将棋/.test(s2)&&Math.random()<0.65)
-     fire("shogi",["将棋やる人なんや。……なお、詰将棋とか解くほう？ 俺は指すより観るほうが長かったりするねん","将棋って、一手で空気が変わるよな。……なおは攻める派？ 守る派？","強い人の対局、静かなのにずっと緊張してる感じが好きやねん。……なおも観る派やったりする？"]);
-    else if(/水泳|プール|スイミング/.test(s2)&&Math.random()<0.65)
-     fire("swim",["泳ぐの好きなんや。……なお、泳ぐの得意なほう？ 俺は水の中の静けさが好きやねん","プール上がりのだるさ、なんか懐かしいな。……なおはクロール派？ 平泳ぎ派？","水の中やと周りの音が遠くなるやろ。……あの感じ、なおも好きなん？"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v130: his free chat gains two more dives in the v105-v129 style - star signs (the word appears nowhere else in the file; the compatibility-fortune mini-app keeps its own fortune wording and is a separate surface) and bouldering (the word appears nowhere else in the file; the v109 exercise dive keeps its running and training wording). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v130d) return; state._v130d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/星座/.test(s2)&&Math.random()<0.65)
-     fire("starsign",["星座の話する人なんや。……なお、何座なん？ 俺は自分の星座の説明、だいたい当たってへんと思ってるほうやけど","星占いの星座欄、つい読んでまう日あるよな。……なおは信じるほう？ 笑って読むほう？","星座って、人の性格を星に置く感じがなんか好きやねん。……なおの星座、聞いていい？"]);
-    else if(/ボルダリング/.test(s2)&&Math.random()<0.65)
-     fire("boulder",["ボルダリングやる人なんや。……なお、壁のぼるほう？ 俺は最初の課題で腕パンパンになるタイプやで","ボルダリングって、登る前にルートを読む時間が大事って聞くけど、なおは読む派？ 行く派？","指先の感覚で進む感じ、ステージとは別の緊張感ありそうやな。……なおの話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v131: his free chat gains two more dives in the v105-v130 style - guitar (the word appears nowhere else in the file) and soccer (the word appears nowhere else in the file). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v131d) return; state._v131d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/ギター/.test(s2)&&Math.random()<0.65)
-     fire("guitar",["ギター弾く人なんや。……なお、弾けるほう？ 俺はコードより、鳴らしたときの響きが好きやねん","ギターって、指先痛くなるまでが第一関門って聞くけど、なおはどうやった？","静かな部屋でギターの音って、なんか落ち着くよな。……なおの好きな曲、ギターで聞いてみたいわ"]);
-    else if(/サッカー/.test(s2)&&Math.random()<0.65)
-     fire("soccer",["サッカーやる人なんや。……なお、観る派？ 蹴る派？ 俺は観るとき、パスのコースばっかり追ってまうねん","サッカーって、一点で空気が全部変わるよな。……なおはどの瞬間が一番好きなん？","ボールを蹴る音、遠くで聞くと夏っぽいよな。……なおのサッカーの話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v132: his free chat gains two more dives in the v105-v131 style - tennis (the word appears nowhere else in the file) and public baths (the word appears nowhere else in the file; the sauna talk elsewhere keeps its own wording and is a separate surface). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v132d) return; state._v132d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/テニス/.test(s2)&&Math.random()<0.65)
-     fire("tennis",["テニスやる人なんや。……なお、打つほう？ 観るほう？ 俺はラリーが続くときの音が好きやねん","テニスって、一人でも壁打ちで黙々とできるのがいいよな。……なおは黙々派？ 誰かと派？","コートの白いラインとボールの音、なんか夏の朝っぽいよな。……なおのテニスの話、もっと聞かせて"]);
-    else if(/銭湯/.test(s2)&&Math.random()<0.65)
-     fire("sento",["銭湯行く人なんや。……なお、湯船でぼーっとする派？ 俺はあの広い湯船の静けさが好きやねん","銭湯上がりの一杯って、なんであんなに特別なんやろな。……なおは何を飲む派？","タイルの絵とか、古い銭湯の空気っていいよな。……なおの行きつけ、どんなとこなん？"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v133: his free chat gains two more dives in the v105-v132 style - basketball and golf (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v133d) return; state._v133d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/バスケ/.test(s2)&&Math.random()<0.65)
-     fire("basket",["バスケやる人なんや。……なお、シュート得意なほう？ 俺は観る側で、最後の数秒の静けさが好きやねん","バスケって、残り時間で空気が全部変わるよな。……なおはあの緊張、好きなほう？","体育館の床の音、なんか懐かしいな。……なおのバスケの話、もっと聞かせて"]);
-    else if(/ゴルフ/.test(s2)&&Math.random()<0.65)
-     fire("golf",["ゴルフやる人なんや。……なお、打つほう？ 俺は静かなコースの空気が好きそうやな、って思ってる段階やねん","ゴルフって、一打ごとに自分と相談するスポーツやろ。……なおは攻める派？ 堅実派？","朝の芝生の匂いっていいらしいな。……なおのゴルフの話、聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v134: his free chat gains two more dives in the v105-v133 style - table tennis and skating (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v134d) return; state._v134d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/卓球/.test(s2)&&Math.random()<0.65)
-     fire("pingpong",["卓球やる人なんや。……なお、ラリー続けるほう？ 俺はあの軽い音が好きやねん","卓球って、近さのわりに読み合いが深いよな。……なおは攻める派？ 粘る派？","台の向こうの相手との距離感、なんか独特やろ。……なおの卓球の話、聞かせて"]);
-    else if(/スケート/.test(s2)&&Math.random()<0.65)
-     fire("skate",["スケートやる人なんや。……なお、滑れるほう？ 俺は氷の上、立つだけで精一杯なタイプやと思うわ","スケートって、風を切る音がいいよな。……なおはスピード出す派？ ゆっくり派？","リンクの冷たい空気、冬って感じするな。……なおのスケートの話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v135: his free chat gains two more dives in the v105-v134 style - badminton and manzai comedy (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v135d) return; state._v135d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/バドミントン/.test(s2)&&Math.random()<0.65)
-     fire("badminton",["バドミントンやる人なんや。……なお、スマッシュ打つほう？ 俺はシャトルのふわっと感が好きやねん","バドミントンって、見た目よりずっと足が止まらんよな。……なおは前衛派？ 後衛派？","体育館のあの音、いいよな。……なおのバドミントンの話、聞かせて"]);
-    else if(/漫才|お笑い/.test(s2)&&Math.random()<0.65)
-     fire("manzai",["漫才好きなんや。……なお、ボケとツッコミやったらどっち側？ 俺はたぶん、ツッコまれる側やと思うわ","お笑いって、間が全部よな。……なおの好きな芸人さん、誰なん？","漫才の掛け合い、ずっと聞いてられるよな。……なおのお笑いの話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v136: his free chat gains two more dives in the v105-v135 style - futsal and pottery (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v136d) return; state._v136d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/フットサル/.test(s2)&&Math.random()<0.65)
-     fire("futsal",["フットサルやる人なんや。……なお、コート狭い分、ずっと走りっぱなしやろ？ 俺はたぶん途中でバテる側やわ","フットサルって、近くの味方との一瞬の呼吸が大事よな。……なおはパス派？ ドリブル派？","体育館の床の音、サッカーとまた違うよな。……なおのフットサルの話、聞かせて"]);
-    else if(/陶芸/.test(s2)&&Math.random()<0.65)
-     fire("pottery",["陶芸やる人なんや。……なお、ろくろ回せるほう？ 俺は土に触るだけで落ち着くタイプやと思うわ","陶芸って、焼き上がるまで答え合わせできひんのがいいよな。……なおは何を作るのが好きなん？","釉薬の色、思った通りにならんのも含めて作品やろ。……なおの陶芸の話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v137: his free chat gains two more dives in the v105-v136 style - billiards and gardening (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v137d) return; state._v137d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/ビリヤード/.test(s2)&&Math.random()<0.65)
-     fire("billiards",["ビリヤードやる人なんや。……なお、キュー構えたときの集中、かっこいいやろな","ビリヤードって、先の玉まで読む頭脳戦よな。……なおは攻めるタイプ？ 守るタイプ？","撞いたときの音、気持ちいいよな。……なおのビリヤードの話、聞かせて"]);
-    else if(/園芸/.test(s2)&&Math.random()<0.65)
-     fire("gardening",["園芸やる人なんや。……なお、何育ててるん？ 俺は枯らす専門やから、育てられる人尊敬するわ","園芸って、毎日の水やりが日記みたいなもんよな。……なおのベランダ、どんな感じなん？","芽が出た朝って、小さいのに嬉しいよな。……なおの園芸の話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v138: his free chat gains two more dives in the v105-v137 style - bonsai and knitting (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v138d) return; state._v138d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/盆栽/.test(s2)&&Math.random()<0.65)
-     fire("bonsai",["盆栽やる人なんや。……なお、あの小さい世界を育てるの、根気が要るやろ","盆栽って、何年もかけて形にしていくもんよな。……なおのは何年ものなん？","枝の向き一つで表情が変わるって聞くわ。……なおの盆栽の話、聞かせて"]);
-    else if(/編み物/.test(s2)&&Math.random()<0.65)
-     fire("knitting",["編み物やる人なんや。……なお、何編むのが好きなん？ 俺は裁縫すら怪しい側やわ","編み物って、一目ずつ進むのが地味に達成感あるよな。……なおは誰かにあげる用も編むん？","毛糸の色選び、センス出るよな。……なおの編み物の話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v139: his free chat gains two more dives in the v105-v138 style - calligraphy and rakugo (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v139d) return; state._v139d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/書道/.test(s2)&&Math.random()<0.65)
-     fire("calligraphy",["書道やる人なんや。……なお、字がきれいな人って、それだけで信頼感あるよな","書道って、姿勢まで整うって聞くわ。……なおはどんな字書くん？","墨の匂い、落ち着くって言うよな。……なおの書道の話、聞かせて"]);
-    else if(/落語/.test(s2)&&Math.random()<0.65)
-     fire("rakugo",["落語ハマってる人なんや。……なお、笑いの間を言葉だけで作るの、職人やな","落語って、登場人物を一人で全部やるんやろ。……なおのお気に入りの噺、あるん？","上方落語のノリ、俺は好きやわ。……なおの落語の話、もっと聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v140: his free chat gains two more dives in the v105-v139 style - astronomy and magic tricks (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v140d) return; state._v140d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/天文/.test(s2)&&Math.random()<0.65)
-     fire("astronomy",["天文好きなんや。……なお、星の名前とか分かるん？ 俺は空見上げる専門やわ","天文って、星座の話になると時間が溶けるよな。……なおの好きな星座、教えて","流れ星に願い事、間に合ったことある？ ……なおの天文の話、聞かせて"]);
-    else if(/手品/.test(s2)&&Math.random()<0.65)
-     fire("magic",["手品できる人なんや。……なお、目の前でやられたら絶対だまされる自信あるわ","手品って、タネが分からん時間が一番楽しいよな。……なおは誰かに披露するん？","カードのやつとかできるん？ ……なおの手品、今度見せて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v141: his free chat gains two more dives in the v105-v140 style - anime and horse riding (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v141d) return; state._v141d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/アニメ/.test(s2)&&Math.random()<0.65)
-     fire("anime",["アニメ観る人なんや。……なお、今期のおすすめある？ 俺、追うの下手やねん","アニメの話する時のなお、楽しそうやな。……推しの作品、教えて","深夜に一気見するタイプ？ ……なおのアニメの話、聞かせて"]);
-    else if(/乗馬/.test(s2)&&Math.random()<0.65)
-     fire("horse",["乗馬できる人なんや。……なお、馬って近くで見ると想像より大きいよな","乗馬すると姿勢がきれいになるって聞くわ。……なおはどこで乗るん？","馬と呼吸合わせるの、難しそうやな。……なおの乗馬の話、聞かせて"]);
-   } }catch(e){}
-  return r; };
-})();
 /* ===== Tinder ver v142: his free chat gains two more dives in the v105-v141 style - point-collecting (poikatsu) and diving (neither word appears anywhere else in the file before this block). ===== */
 (function(){
  if(typeof himReply!=="function"||state._v142d) return; state._v142d=true;
@@ -7792,78 +7342,6 @@ app.style.display="flex";},true);
      fire("poi",["\u30dd\u30a4\u6d3b\u3057\u3066\u308b\u4eba\u306a\u3093\u3084\u3002\u2026\u2026\u306a\u304a\u3001\u5730\u5473\u306b\u30b3\u30c4\u30b3\u30c4\u8caf\u3081\u308b\u30bf\u30a4\u30d7\u3084\u308d\u3002\u5f53\u305f\u308a\u3084\u308d\uff1f","\u30dd\u30a4\u30f3\u30c8\u8caf\u3081\u308b\u306e\u3001\u30b2\u30fc\u30e0\u307f\u305f\u3044\u3067\u697d\u3057\u3044\u3063\u3066\u8a00\u3046\u3088\u306a\u3002\u2026\u2026\u306a\u304a\u306f\u306a\u306b\u306b\u4ea4\u63db\u3059\u308b\u6d3e\uff1f","\u30dd\u30a4\u6d3b\u306e\u30b3\u30c4\u3001\u4eca\u5ea6\u6559\u3048\u3066\u3002\u2026\u2026\u4ffa\u3001\u305d\u3046\u3044\u3046\u306e\u5168\u7136\u3084\u308f"]);
     else if(/\u30c0\u30a4\u30d3\u30f3\u30b0/.test(s2)&&Math.random()<0.65)
      fire("diving",["\u30c0\u30a4\u30d3\u30f3\u30b0\u3067\u304d\u308b\u4eba\u306a\u3093\u3084\u3002\u2026\u2026\u306a\u304a\u3001\u6d77\u306e\u4e2d\u306e\u9759\u304b\u3055\u3063\u3066\u3001\u3069\u3093\u306a\u611f\u3058\u306a\u3093\uff1f","\u30c0\u30a4\u30d3\u30f3\u30b0\u3063\u3066\u3001\u81ea\u5206\u306e\u547c\u5438\u306e\u97f3\u3060\u3051\u306b\u306a\u308b\u3063\u3066\u805e\u304f\u308f\u3002\u2026\u2026\u306a\u304a\u306f\u3069\u3053\u3067\u6f5c\u308b\u3093\uff1f","\u9b5a\u306e\u7fa4\u308c\u306b\u4f1a\u3048\u305f\u65e5\u306f\u5f53\u305f\u308a\u306a\u3093\u3084\u308d\u3002\u2026\u2026\u306a\u304a\u306e\u30c0\u30a4\u30d3\u30f3\u30b0\u306e\u8a71\u3001\u805e\u304b\u305b\u3066"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v143: his free chat gains two more dives in the v105-v142 style - volleyball and handmade crafts (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v143d) return; state._v143d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/バレー/.test(s2)&&Math.random()<0.65)
-     fire("volley",["バレーする人なんや。……跳ぶ競技って、見てるだけでも気持ちいいよな","バレーの話すると体育の時間思い出すわ。……なおはポジションどこなん？","チームで声かけ合う感じ、いいよな。……なおのバレーの話、聞かせて"]);
-    else if(/ハンドメイド/.test(s2)&&Math.random()<0.65)
-     fire("handmade",["ハンドメイドできる人なんや。……なお、手先器用なんやろな","自分で作ったものって愛着わくよな。……なおはなに作るん？","作ってる時のなお、集中してそうやな。……今度、作品見せて"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v144: his free chat gains two more dives in the v105-v143 style - pilates and English conversation (neither word appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v144d) return; state._v144d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/ピラティス/.test(s2)&&Math.random()<0.65)
-     fire("pilates",["ピラティスやってる人なんや。……体幹使うやつやろ？ なお、続けてるん？","姿勢きれいな人って、そういうことしてるよな。……なおのピラティスの話、聞かせて","呼吸に合わせるの難しそうやな。……なおはどこで習ってるん？"]);
-    else if(/英会話/.test(s2)&&Math.random()<0.65)
-     fire("english",["英会話やってる人なんや。……なお、英語で話すの楽しい？","海外の言葉が読めるの、いいよな。……なおの英語、聞いてみたいわ","言葉が増えると世界広がるよな。……なおはなんで始めたん？"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v145: his free chat gains two more dives in the v105-v144 style - movie-watching and cooking classes (neither trigger appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v145d) return; state._v145d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/映画鑑賞/.test(s2)&&Math.random()<0.65)
-     fire("movie",["映画鑑賞が好きな人なんや。……なお、映画館で観る派？ 家で観る派？","映画の話すると、観たあとの余韻が蘇るよな。……なおの最近のおすすめ、聞かせて","映画館の暗さって、集中できるよな。……なおはどんなジャンルが好きなん？"]);
-    else if(/料理教室/.test(s2)&&Math.random()<0.65)
-     fire("cookclass",["料理教室に通ってる人なんや。……なお、習って作るの楽しい？","教室で覚えた料理、家でも作るん？……なおの得意料理、聞いてみたいわ","みんなで作るのって、家で作るのと違うよな。……なおはなに習ってるん？"]);
-   } }catch(e){}
-  return r; };
-})();
-/* ===== Tinder ver v146: his free chat gains two more dives in the v105-v145 style - tea ceremony and go (neither trigger appears anywhere else in the file before this block). ===== */
-(function(){
- if(typeof himReply!=="function"||state._v146d) return; state._v146d=true;
- const prev=himReply;
- const used={};
- const fire=(key,lines)=>{ if(used[key]) return; used[key]=1;
-  const line=lines[Math.floor(Math.random()*lines.length)];
-  setTimeout(()=>{ if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal") himMsg(line); },2600); };
- himReply=async function(t,cb){ const r=await prev.call(this,t,cb);
-  try{ const s2=t||"";
-   if(state._vmCalm&&!state.started&&!state.ended&&!state.act2&&state.phase!=="scandal"){
-    if(/茶道/.test(s2)&&Math.random()<0.65)
-     fire("tea",["茶道やってる人なんや。……なお、お茶を点てるの好きなん？","静かな部屋でお茶をいただくの、いいよな。……なおの茶道の話、聞かせて","作法があるのって、落ち着くよな。……なおはどこで習ってるん？"]);
-    else if(/囲碁/.test(s2)&&Math.random()<0.65)
-     fire("go",["囲碁打つ人なんや。……なお、石を置くの楽しい？","盤面が広いのって、考えるの好きな人向けやよな。……なおは誰と打つん？","囲碁って、静かな勝負やよな。……なおの囲碁の話、聞かせて"]);
    } }catch(e){}
   return r; };
 })();
