@@ -9113,6 +9113,48 @@ setInterval(upd,900); upd();
   setInterval(()=>{ try{ fixLists(); fixHisDm(); }catch(e){} },1000);
   fixLists(); fixHisDm();
 })();
+/* ===== Tinder ver v221: Instagram precision pass 3 - her feed likes behave like real Instagram =====
+   Found by Playwright audit: the v246 normaliser treated the old ❤️ glyph in the action row as
+   "already liked", so every one of her feed posts opened with a red heart (as if she had liked
+   her own posts), and tapping it only toggled the class - the いいね！N件 count in the caption
+   never moved, unlike real Instagram where the count follows the heart. Fix: (1) at load, clear
+   the converted liked state on her posts (a ❤️ glyph in the old row was an icon, not a like);
+   (2) a document-level handler, registered after the global like toggle, moves the caption count
+   by +1/-1 whenever her post's heart actually flips, and swaps the glyph ♡/♥ to match.
+   No story text, choices, voices, gates or save format changed. ===== */
+(function(){
+  if(window.__v221) return; window.__v221=true;
+  const ig=document.querySelector("#v-ig"); if(!ig) return;
+  const countSpan=post=>{
+    const inner=post.querySelector("#nao-like-n");
+    if(inner) return inner;
+    const spans=[...post.querySelectorAll(".cap span")];
+    return spans.find(s=>/いいね！[\d,]+件/.test(s.textContent||""))||null;
+  };
+  const normCount=(el,delta)=>{
+    const m=(el.textContent||"").match(/([\d,]+)/); if(!m) return;
+    const n=Math.max(0,parseInt(m[1].replace(/,/g,""))+delta);
+    if(el.id==="nao-like-n") el.textContent=String(n);
+    else el.textContent=el.textContent.replace(/[\d,]+/,n.toLocaleString("ja-JP"));
+  };
+  ig.querySelectorAll(".ig-post .like-btn").forEach(b=>{
+    b.classList.remove("liked");
+    if(b.textContent.trim()==="❤️") b.textContent="♡";
+    b.dataset.v221liked="0";
+  });
+  document.addEventListener("click",e=>{
+    const b=e.target.closest?e.target.closest("#v-ig .ig-post .like-btn"):null; if(!b) return;
+    const post=b.closest(".ig-post"); if(!post) return;
+    if(/\d/.test(b.textContent||"")) return;
+    const nowLiked=b.classList.contains("liked")?"1":"0";
+    const prev=b.dataset.v221liked;
+    if(prev===undefined){ b.dataset.v221liked=nowLiked; return; }
+    if(prev===nowLiked) return;
+    b.dataset.v221liked=nowLiked;
+    b.textContent=nowLiked==="1"?"♥":"♡";
+    const cs=countSpan(post); if(cs) normCount(cs, nowLiked==="1"?1:-1);
+  });
+})();
 </script>
 <!-- ===== Tinder ver v220: lightweight pass (after the v219 IG pass) - assets only, no code behaviour changed. JPGs re-encoded only where the new file is actually smaller (max side 1600px, quality 82, keep-smaller rule): 28 of 78 JPGs replaced, JPG total 11.52 -> 9.62 MB, assets total 25.39 -> 23.49 MB (-1.90 MB, -7.5%). The other 50 JPGs were left byte-identical because re-encoding at quality 82 made them larger. No file deleted: all 147 assets are referenced (including dynamically built names like mgr-t-N and ig-jul2023/may15/may25); stage.jpg and stage-may.jpg are byte-identical but kept both because the album dates them differently (stage vs 翌年5月 ・ ライブ会場). Videos (11.91 MB) and audio (1.95 MB) untouched in this pass. ===== -->
 </body>
