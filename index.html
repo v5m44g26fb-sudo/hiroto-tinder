@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v210</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v211</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3435,7 +3435,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const past=()=> state.phase==="scandal"||!!state.act2;
  const SYN=[
   {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。何人かスワイプした先で、ひとりの男の子から Super Like が届いていた。アイドルみたいな顔立ち。でも、私服の自撮りはどこか印象が違って——「本人なわけない」と、なおは打ち消す。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
-  {no:"幕間",tt:"井汲かも？",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してから、初デートまでの3日間。彼の仕事の休みが、推しのグループの収録日と重なって——夜、彼女はまた検索してしまう。送られてきた\"間違い写真\"は、ステージの袖だった。偶然が重なりすぎて、もう「気のせい」では片づかない。それでも、確証はまだない。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
+  {no:"幕間",tt:"井汲かも？",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してから、初デートまでの3日間。彼の仕事の日が、推しのグループの収録日と重なって——既読だけがつく昼、夜の失言、スクショして見比べる公式スケジュール。送られてきた\"間違い写真\"は、ステージの袖だった。偶然が重なりすぎて、もう「気のせい」では片づかない。それでも、確証はまだない。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
   {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",sy:"数日のやり取りの末、LINEを交換して初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。元々ファンだった なお は、会った瞬間に気づいてしまう。彼は最初、アイドルだということを隠していた。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
   {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"会うたびに距離は縮まるのに、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——抑えられなくなる前にと、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
   {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
@@ -7898,7 +7898,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v210";
+ let ver="v211";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8836,21 +8836,26 @@ setInterval(upd,900); upd();
   ]); }); if(!alive(t))return;
   await himMsg("ほな、今日は寝るわ"); if(!alive(t))return;
   await himMsg("おやすみ、なお"); if(!alive(t))return;
+  toast("💭 <b>（寝る前に、グループの公式サイトのスケジュールを開いた。明日の欄——「音楽番組 収録」。スクショ、撮ってしまった）</b>");
+  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
   /* --- 10/2: read nothing all day, then he lets it slip --- */
   addDayChip("10月2日（木）");
   await himMsg("行ってくるわ",1600); if(!alive(t))return;
-  toast("💭 <b>（それきり、夜まで既読がつかなかった）</b>");
+  meMsg("いってらっしゃい！ 休憩とれたら、顔見せてね"); if(!alive(t))return;
+  await new Promise(r=>setTimeout(r,2800)); if(!alive(t))return;
+  try{ const ms=$$("#chat .msg.me .meta.pr"); const m=ms[ms.length-1]; if(m){ m.innerHTML="既読<br>13:12"; m.classList.remove("pr"); } }catch(e){}
+  toast("💭 <b>（お昼過ぎ、既読だけついた。返信は、ないまま夜になった——収録の合間に、開くだけ開いたんかな）</b>");
   await himMsg("…やっと終わった",2400); if(!alive(t))return;
   await himMsg("今日は一日、歌って踊ってた"); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"歌って踊ってた…？",fn:async()=>{ await himMsg("あ、ちゃうちゃう",1500); await himMsg("近所のカラオケ大会やで"); await himMsg("朝から晩まで、ガチのやつ"); toast("💭 <b>（平日に、朝から晩までカラオケ大会…？　そんなの、ある…？）</b>"); res(); }},
    {label:"おつかれさま、ゆっくり休んで",fn:async()=>{ await himMsg("ありがとう"); await himMsg("…明日は、もうちょい話せる日やから"); res(); }}
   ]); }); if(!alive(t))return;
-  toast("💭 <b>（寝る前に、また検索してしまった）</b>");
+  toast("💭 <b>（寝る前に、また調べてしまった。「カラオケ大会 平日 朝から」で検索——近所で、そんな大会、出てこなかった）</b>");
   await new Promise(r=>setTimeout(r,2300)); if(!alive(t))return;
-  toast("💭 <b>（グループの公式スケジュール。今日の欄に——『音楽番組 収録』って、書いてあった）</b>");
+  toast("💭 <b>（昨日の夜スクショした公式スケジュールと、今日の分を見比べた。今日の欄も「音楽番組 収録」。彼の「歌って踊ってた」と並べて、3回見直した）</b>");
   await new Promise(r=>setTimeout(r,2300)); if(!alive(t))return;
-  toast("💭 <b>（偶然って、こんなに重なるものなん…？）</b>");
+  toast("💭 <b>（検索履歴、また消した。ここまでしてる時点で、私の中ではもう「半分」どころじゃないのかも）</b>");
   /* --- 10/3: the photo he sent by mistake, and the eve of the date --- */
   addDayChip("10月3日（金）");
   await himMsg("おはよ。昨日は変な言い方して、ごめんな",1500); if(!alive(t))return;
@@ -8861,10 +8866,16 @@ setInterval(upd,900); upd();
   await himMsg("送る写真、間違えた"); if(!alive(t))return;
   await himMsg("これは前に、仕事の手伝い行ったとこの写真やで"); if(!alive(t))return;
   toast("💭 <b>（ステージの袖、照明の機材、積まれたスピーカー——『手伝い』の規模じゃ、ない気がした）</b>");
+  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
+  toast("💭 <b>（拡大して見た。壁に貼られた紙は曲順みたいな並びで、端にはラミネートされた関係者パスみたいなのも写ってた）</b>");
+  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
+  toast("💭 <b>（スピーカーの上に、黒いキャップ。……明日の「目印」と、同じやつに見えたのは、気のせい？）</b>");
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"ステージの写真…だよね？",fn:async()=>{ await himMsg("文化祭の、な？",1900); await himMsg("規模は、だいぶ大きめやけど"); toast("💭 <b>（今の間。目を逸らした、気がした）</b>"); res(); }},
    {label:"間違えて送るなんて、ドジだね笑",fn:async()=>{ await himMsg("ほんまやで笑"); await himMsg("内緒の写真ばっかり、増えていくな"); res(); }}
   ]); }); if(!alive(t))return;
+  toast("💭 <b>（送られてすぐ、保存してた。自分でも引くくらい、指が早かった。——「証拠」フォルダが、増えていく）</b>");
+  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
   toast("💬 <b>（ゆいに『相談』って打ちかけて、消した。まだ何も、確かめてないことだらけで）</b>");
   await himMsg("明日の待ち合わせ、確認しとくな",1800); if(!alive(t))return;
   await himMsg("12時に、駅の柱のとこ"); if(!alive(t))return;
@@ -8873,6 +8884,7 @@ setInterval(upd,900); upd();
    {label:"楽しみ。…明日、全部わかる気がする",fn:async()=>{ await himMsg("…全部、な",1900); await himMsg("明日、ちゃんと話すわ"); res(); }},
    {label:"私が先に見つけるからね",fn:async()=>{ await himMsg("約束、覚えてるで"); await himMsg("負けたほう、カフェオレ奢りな"); res(); }}
   ]); }); if(!alive(t))return;
+  toast("💭 <b>（結局、2時過ぎまで起きてた。もう検索はしなかった。……したくて、うずうずはしたけど）</b>");
   toast("💭 <b>（明日、会えば分かる。帽子の奥の目元が『あの人』かどうか——分かって、どうするつもりなんやろ、私）</b>");
  }
  var _chSus=window.chapter;
@@ -8890,6 +8902,7 @@ setInterval(upd,900); upd();
 <!-- ===== Tinder ver v207: ROUTE VERIFICATION (Playwright full runs of the open / wait / away routes, the three endings the half-centred passes had not driven end to end). All v199 plants -> payoffs, both v198 aftermath paths plus its guard, all three act2 morning branches (vt-morning / vt-morning2 / the away silence) and the v203 collection (record 1 -> 2 -> 3, settings row 1/4 -> 2/4 -> 3/4 in one persistent profile) verified live; no 404s, no page errors beyond the known headless vibrate artifact. ONE real defect found and fixed: hang up the manager call and tap an ending choice inside the handler's two opener lines, and the v198 guard sampled #choices AFTER the ending click had already cleared .on - so the aftermath reply choices were offered on top of a decided ending and lingered into act2 unanswered. Both manager handlers (answer + decline) now also require !state.ended && !state.act2 before offering the choices; the plain closer lines play instead, exactly the fallback the v339 guard intended. Also finished: startAct2's shared texts were still written for the open ending on every route - the home widget line, the next-morning news headline and the fin push subtitle are now per-ending (open keeps its 'his own words' texts; wait / away / half get lines matching their own statement captions). No story flow, gates, voices or saves changed. ===== -->
 <!-- ===== Tinder ver v208 (nao's instruction, 2026-11-03): 'make the Ikumi...? suspicion STRONGER - in Tinder too'. The v192 arc thickens at every existing beat and gains a whole new step. stepWork: an inner note at 'a job that's strong at night' (収録 / ライブ / 舞台 are all she can think of) and a new third choice '舞台に立つ人とか？' - he does NOT deny it ('まぁ、"立ってる"時間は長いかもな笑', deep-dive postponed to the meeting) and her note catches the non-denial. stepFood (9/28): he mentions working until late Saturday night, and her note matches it against the group's late-night radio broadcast - coincidence, surely. stepNight2 (9/29): the '歌う人の声' branch gains a note that his denial sounded practised. NEW stepSearch (10/1 morning, between suspectGo and stepMeet; suspectGo's three exits now route through it and stepMeet's own date chip moved here): she admits (to herself) she searched him last night - compared his photos with Ikumi's, scrolled back to debut-era videos - and his morning greeting asks if she slept badly over it; her answers range from a lying '別人だったよ笑' (note: still caught on it) to '正直、まだ半分は疑ってる', which he meets head-on ('ほな、会って確かめたらええやん / 土曜、その目で見てな'). Still never confirmed - certainty stays with the first date (ch2), exactly as nao's rule requires. Beats, gates, voices, the night call and the LINE exchange are unchanged. ===== -->
 <!-- ===== Tinder ver v209 (nao's instruction, 2026-11-03): 'not straight to a date after the LINE exchange - more of the Ikumi...? part'. NEW interlude 幕間『井汲かも？』: chapter(2) is wrapped (the v35/ch3b pattern) so the three LINE days 10/1 night -> 10/3 play BEFORE ch2's 10/4 station scene. 10/1: his 'packed from morning to night tomorrow' lands on the group's music-show recording day (her inner note), and the 'what work?' answer is 'a job that uses voice and stamina both'. 10/2: he is silent and unread all day, then slips '今日は一日、歌って踊ってた' and covers with an all-day weekday karaoke contest; that night she checks the official schedule - '音楽番組 収録' - in toasts. 10/3: he sends a stage-side photo 'by mistake' (assets/stage.jpg), covers with a festival help-out story; she types a consultation to Yui and deletes it unsent; the eve closes on the meeting confirmation and her resolve to see with her own eyes. A synopsis entry (幕間『井汲かも？』, unlocks at chapter>=2, jumps to the 10/1 chip) joins the timeline between chapters 1 and 2. He never names himself, nothing is confirmed - ch2's 'met him and knew' beat, all date gates, voices and later chapters are untouched. New-voice proposals for this segment (not generated; quota ~3 min left): (1) 10/2 slip as a tired voice '……やっと終わった。今日は一日、歌って踊ってた' (~4s), (2) 10/3 eve closer '明日、ちゃんと話すわ。……待っててな' (~3.5s). ===== -->
+<!-- ===== Tinder ver v211 (nao's instruction, 2026-11-03): 'more realism', batch 2 - the LINE interlude '井汲かも？' (10/1-10/3) gets behavioural realism. 10/1 night: before bed she opens the group's official schedule and screenshots tomorrow's entry ('音楽番組 収録') - the screenshot becomes her reference for the next two days. 10/2: her sent-off message is read at 13:12 (a lunch-break glance, receipt flipped in the DOM without a reply) and then nothing until night - read-but-no-reply, the way a recording day actually feels; that night she stress-tests his cover story by searching for the weekday karaoke contest (nothing exists), compares today's official schedule against last night's screenshot next to his '歌って踊ってた' slip three times over, and deletes her search history again, admitting 'half' no longer covers it. 10/3: the 'mistake' stage photo is pinched to zoom - a setlist-like sheet on the wall, a laminated staff pass at the frame's edge, and a black cap on the speakers that looks like tomorrow's 'landmark' cap; she saved the photo the instant it arrived ('証拠' folder). The eve now ends with her awake past 2am, resisting one more search. The synopsis entry is reworded to match. Beats, gates, his lines, voices and the ch2 merge are unchanged; still never confirmed. ===== -->
 <!-- ===== Tinder ver v210 (nao's instruction, 2026-11-03): 'more realism' for the suspicion arc, batch 1 - the Tinder phase. Every clue is now something she can actually check on her phone, the way a real fan verifies: stepFood (9/28) - after matching his 'worked until late Saturday' against the group's late-night radio in her head, she actually opens the programme guide (Sat 25:00, live) and finds the end time overlaps, then closes it before it becomes a habit. stepNight2 (9/29) - his typing indicator flickers on, off, on again before the choices: he started to say something and stopped, behavioural realism instead of another line. suspectGo (9/30) - the crack in his cover story is named in her note: nobody calls helping at a neighbourhood shop '収録'; the question reaches her throat and stops. stepSearch (10/1) - the overnight search becomes a verification session: screenshots taken and compared side by side, a matching mole by his ear, his second photo pinched to zoom - a familiar-logo towel on the shelf behind him, letters just too small to read - and afterwards she deletes the search history, realising she cannot tell anyone, not even Yui, yet. Still never confirmed; certainty stays with the first date (ch2). Text-only notes; no beats, gates, voices or choices changed. ===== -->
 </body>
 </html>
