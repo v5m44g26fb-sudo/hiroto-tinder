@@ -593,7 +593,7 @@ input,textarea{font-size:16px!important}
 <div class="swipe-actions"><button id="btn-rewind" aria-label="巻き戻し" style="color:#ffb302;font-size:20px">↩️</button><button class="nope" id="btn-nope" aria-label="Nope">✕</button><button class="super" id="btn-super" aria-label="Super Like">⭐</button><button class="like" id="btn-like" aria-label="Like">❤️</button><button id="btn-boost" aria-label="ブースト" style="color:#7b2ff7;font-size:20px">⚡</button></div>
 </div>
 <div id="tinder-chat-wrap" style="display:none;flex-direction:column;flex:1;min-height:0">
-<div style="padding:10px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center"><img class="avatar" id="tchat-ava" src="assets/tinder-hiroto-1.jpg" width="36" height="36" alt=""><span><span style="font-weight:800;font-size:15px;display:block">ひろと</span><span id="tchat-status" style="font-size:11px;color:#2ee59d">● マッチしました</span></span><button id="t-log-btn" title="バックログ" style="margin-left:auto;font-size:17px;background:none;border:none;cursor:pointer">📜</button></div><div id="tchat-banner" style="display:none;background:#f2f2f7;color:#6e6e73;font-size:12px;line-height:1.6;padding:9px 14px;flex:none">🔒 ひろとは退会しました。このチャットは思い出として読み取り専用で残っています。</div>
+<div style="padding:10px 14px;border-bottom:1px solid #f0f0f0;display:flex;gap:10px;align-items:center"><img loading="lazy" decoding="async" class="avatar" id="tchat-ava" src="assets/tinder-hiroto-1.jpg" width="36" height="36" alt=""><span><span style="font-weight:800;font-size:15px;display:block">ひろと</span><span id="tchat-status" style="font-size:11px;color:#2ee59d">● マッチしました</span></span><button id="t-log-btn" title="バックログ" style="margin-left:auto;font-size:17px;background:none;border:none;cursor:pointer">📜</button></div><div id="tchat-banner" style="display:none;background:#f2f2f7;color:#6e6e73;font-size:12px;line-height:1.6;padding:9px 14px;flex:none">🔒 ひろとは退会しました。このチャットは思い出として読み取り専用で残っています。</div>
 <div class="t-chat-scroll" id="tchat"></div>
 <div class="t-choices" id="t-choices"></div>
 <div style="padding:9px 12px 22px;border-top:1px solid #eee;color:#8e8e93;font-size:13px">メッセージを入力…（v1では選択肢で返信）</div>
@@ -607,18 +607,18 @@ input,textarea{font-size:16px!important}
 </div>
 <div id="tinder-prof-wrap" style="display:none;flex-direction:column;flex:1;min-height:0;overflow-y:auto;padding:14px">
 <div style="font-weight:900;font-size:17px;margin-bottom:10px">プロフィール</div>
-<div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;overflow:hidden;margin-bottom:14px"><img src="assets/tinder-hiroto-1.jpg" style="width:100%;height:240px;object-fit:cover" alt=""><div style="padding:13px 14px"><div style="font-weight:900;font-size:18px">ひろと <span style="font-weight:600;font-size:15px">24</span> <span style="background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px">⭐ Super Like済み</span></div><div style="font-size:12.5px;color:#8e8e93;margin:4px 0 10px">📍 大阪 ・ 1 km ／ 身長 175 cm ／ 仕事は…会ったら言うわ</div><div style="font-size:13.5px;line-height:1.7">大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き</div><div style="margin-top:10px;font-size:13px;line-height:1.8"><b>休みの日は…</b> マロン（犬）と散歩か、家でごろごろ。誘われたら、だいたい行く<br><b>理想のデートは…</b> 美味い店はしごして、帰りにコンビニでコーラ<br><b>実は…</b> 人見知りっぽいけど、慣れたらよく喋ります<br><b>Super Likeした理由は…</b> カフェの写真見て、気になってん。カフェオレのやつ</div><div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px"><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">お酒</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">コーラ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">ごはん</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">犬</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">サウナ</span></div><div style="display:flex;gap:8px;margin-top:14px"><button id="prof-unmatch" style="flex:1;background:#f2f2f7;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">アンマッチする</button><button id="prof-report" style="flex:1;background:#fff0f0;color:#ff3b30;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">通報する</button></div></div></div>
-<div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:14px"><span style="display:block;position:relative;height:250px;overflow:hidden;border-radius:12px;margin-bottom:11px"><img id="nao-prof-photo" src="assets/nao-tinder-3.jpg" alt="なおのTinderプロフィール写真" style="width:100%;height:100%;object-fit:cover;object-position:center top"><span id="nao-prof-count" style="position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 10px">1 / 5</span><span style="position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.45);color:#fff;font-size:11px;border-radius:999px;padding:3px 10px">タップで次の写真</span></span><div style="display:flex;gap:11px;align-items:center"><img id="nao-prof-ava" src="assets/nao-tinder-3.jpg" width="46" height="46" alt="" style="border-radius:50%;object-fit:cover;object-position:center"><span><span style="font-weight:900;font-size:15.5px;display:block">なお</span><span style="font-size:12px;color:#8e8e93">あなたのプロフィール ・ 写真5枚 ・ ひろとに Super Like されたプロフィール</span></span></div><div id="nao-bio" style="font-size:13px;line-height:1.7;margin-top:10px">大阪の会社員。今日ひましてます🙌 サウナとエビとお酒が好き。ノリの合う人と気軽に飲みたいな。会って話す派です</div><div id="nao-tags" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:9px"><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">サウナ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">エビ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">お酒</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">ごはん</span></div><button id="prof-edit" style="margin-top:11px;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px 16px;font-weight:800;cursor:pointer;font-family:inherit;width:100%">プロフィールを編集</button><div id="nao-edit-panel" style="display:none;margin-top:12px;border-top:1px dashed #eee;padding-top:12px"><div style="font-weight:800;font-size:13.5px;margin-bottom:7px">自己紹介を編集</div><textarea id="nao-bio-input" rows="3" style="width:100%;border:1.5px solid #e5e5ea;border-radius:12px;padding:10px;font-family:inherit;font-size:13.5px;line-height:1.6;box-sizing:border-box">大阪の会社員。今日ひましてます🙌 サウナとエビとお酒が好き。ノリの合う人と気軽に飲みたいな。会って話す派です</textarea><div style="font-weight:800;font-size:13.5px;margin:11px 0 7px">興味（タップで付け外し）</div><div id="nao-interest-chips" style="display:flex;gap:7px;flex-wrap:wrap"></div><div style="font-weight:800;font-size:13.5px;margin:13px 0 7px">プレビュー</div><div style="background:#fff5f7;border-radius:12px;padding:11px 12px"><div id="nao-preview-bio" style="font-size:13px;line-height:1.7"></div><div id="nao-preview-tags" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"></div></div><div style="display:flex;gap:8px;margin-top:12px"><button id="nao-edit-save" style="flex:1;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">保存する</button><button id="nao-edit-cancel" style="flex:1;background:#f2f2f7;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">閉じる</button></div><div style="font-size:11.5px;color:#8e8e93;margin-top:9px;line-height:1.6">写真は許可済みの5枚だけ（変更はできません）。他のアプリのアイコンは初期アイコンのままです。</div></div></div>
+<div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;overflow:hidden;margin-bottom:14px"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" style="width:100%;height:240px;object-fit:cover" alt=""><div style="padding:13px 14px"><div style="font-weight:900;font-size:18px">ひろと <span style="font-weight:600;font-size:15px">24</span> <span style="background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px">⭐ Super Like済み</span></div><div style="font-size:12.5px;color:#8e8e93;margin:4px 0 10px">📍 大阪 ・ 1 km ／ 身長 175 cm ／ 仕事は…会ったら言うわ</div><div style="font-size:13.5px;line-height:1.7">大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き</div><div style="margin-top:10px;font-size:13px;line-height:1.8"><b>休みの日は…</b> マロン（犬）と散歩か、家でごろごろ。誘われたら、だいたい行く<br><b>理想のデートは…</b> 美味い店はしごして、帰りにコンビニでコーラ<br><b>実は…</b> 人見知りっぽいけど、慣れたらよく喋ります<br><b>Super Likeした理由は…</b> カフェの写真見て、気になってん。カフェオレのやつ</div><div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px"><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">お酒</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">コーラ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">ごはん</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">犬</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">サウナ</span></div><div style="display:flex;gap:8px;margin-top:14px"><button id="prof-unmatch" style="flex:1;background:#f2f2f7;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">アンマッチする</button><button id="prof-report" style="flex:1;background:#fff0f0;color:#ff3b30;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">通報する</button></div></div></div>
+<div style="background:#fff;border:1px solid #f0f0f0;border-radius:16px;padding:14px"><span style="display:block;position:relative;height:250px;overflow:hidden;border-radius:12px;margin-bottom:11px"><img loading="lazy" decoding="async" id="nao-prof-photo" src="assets/nao-tinder-3.jpg" alt="なおのTinderプロフィール写真" style="width:100%;height:100%;object-fit:cover;object-position:center top"><span id="nao-prof-count" style="position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 10px">1 / 5</span><span style="position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.45);color:#fff;font-size:11px;border-radius:999px;padding:3px 10px">タップで次の写真</span></span><div style="display:flex;gap:11px;align-items:center"><img loading="lazy" decoding="async" id="nao-prof-ava" src="assets/nao-tinder-3.jpg" width="46" height="46" alt="" style="border-radius:50%;object-fit:cover;object-position:center"><span><span style="font-weight:900;font-size:15.5px;display:block">なお</span><span style="font-size:12px;color:#8e8e93">あなたのプロフィール ・ 写真5枚 ・ ひろとに Super Like されたプロフィール</span></span></div><div id="nao-bio" style="font-size:13px;line-height:1.7;margin-top:10px">大阪の会社員。今日ひましてます🙌 サウナとエビとお酒が好き。ノリの合う人と気軽に飲みたいな。会って話す派です</div><div id="nao-tags" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:9px"><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">サウナ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">エビ</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">お酒</span><span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">ごはん</span></div><button id="prof-edit" style="margin-top:11px;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px 16px;font-weight:800;cursor:pointer;font-family:inherit;width:100%">プロフィールを編集</button><div id="nao-edit-panel" style="display:none;margin-top:12px;border-top:1px dashed #eee;padding-top:12px"><div style="font-weight:800;font-size:13.5px;margin-bottom:7px">自己紹介を編集</div><textarea id="nao-bio-input" rows="3" style="width:100%;border:1.5px solid #e5e5ea;border-radius:12px;padding:10px;font-family:inherit;font-size:13.5px;line-height:1.6;box-sizing:border-box">大阪の会社員。今日ひましてます🙌 サウナとエビとお酒が好き。ノリの合う人と気軽に飲みたいな。会って話す派です</textarea><div style="font-weight:800;font-size:13.5px;margin:11px 0 7px">興味（タップで付け外し）</div><div id="nao-interest-chips" style="display:flex;gap:7px;flex-wrap:wrap"></div><div style="font-weight:800;font-size:13.5px;margin:13px 0 7px">プレビュー</div><div style="background:#fff5f7;border-radius:12px;padding:11px 12px"><div id="nao-preview-bio" style="font-size:13px;line-height:1.7"></div><div id="nao-preview-tags" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"></div></div><div style="display:flex;gap:8px;margin-top:12px"><button id="nao-edit-save" style="flex:1;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">保存する</button><button id="nao-edit-cancel" style="flex:1;background:#f2f2f7;border:none;border-radius:999px;padding:11px;font-weight:800;cursor:pointer;font-family:inherit">閉じる</button></div><div style="font-size:11.5px;color:#8e8e93;margin-top:9px;line-height:1.6">写真は許可済みの5枚だけ（変更はできません）。他のアプリのアイコンは初期アイコンのままです。</div></div></div>
 </div>
 <div class="t-sheet" id="tdisc-sheet"><div class="box"><h3>🎛️ 発見設定</h3><div class="sub">ここで変えた条件は、実際にカードの表示に反映されるよ（ひろとは特別枠でいつも出てきます）。</div><div class="t-setrow"><span>最大距離</span><span id="tdisc-dist-v">100 km</span></div><input type="range" class="t-range" id="tdisc-dist" min="1" max="100" value="100"><div class="t-setrow"><span>年齢の下限</span><span id="tdisc-amin-v">18歳</span></div><input type="range" class="t-range" id="tdisc-amin" min="18" max="40" value="18"><div class="t-setrow"><span>年齢の上限</span><span id="tdisc-amax-v">40歳以上</span></div><input type="range" class="t-range" id="tdisc-amax" min="18" max="40" value="40"><div class="t-setrow"><span>⭐ Super Like を優先表示</span><span><button class="tgl-chip sel" id="tdisc-super">ON</button></span></div><div class="t-setrow"><span>🔥 最近アクティブな人を優先</span><span><button class="tgl-chip sel" id="tdisc-active">ON</button></span></div><button id="tdisc-apply" style="width:100%;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:13px;font-weight:900;cursor:pointer;font-family:inherit;margin-top:18px">この条件で探す</button><button class="sheet-close" id="tdisc-close">閉じる</button></div></div>
 <div class="t-sheet" id="tdetail-sheet"><div class="box" id="tdetail-box"></div></div>
 <div class="t-sheet" id="tgold-sheet"><div class="box" id="tgold-box"></div></div>
-<div id="match-overlay"><h2>It's a Match!</h2><p style="margin-top:8px;font-size:14px;line-height:1.6">ひろと とマッチしました ⭐ Super Likeから<br>2026年9月27日</p><div class="avatars"><img src="assets/nao-tinder-3.jpg" alt="なお" style="object-fit:cover;object-position:center"><img src="assets/tinder-hiroto-1.jpg" alt="ひろと"></div><button id="match-msg-btn" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button><button id="match-keep-btn" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button></div>
+<div id="match-overlay"><h2>It's a Match!</h2><p style="margin-top:8px;font-size:14px;line-height:1.6">ひろと とマッチしました ⭐ Super Likeから<br>2026年9月27日</p><div class="avatars"><img loading="lazy" decoding="async" src="assets/nao-tinder-3.jpg" alt="なお" style="object-fit:cover;object-position:center"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt="ひろと"></div><button id="match-msg-btn" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button><button id="match-keep-btn" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button></div>
 </section>
 
 <!-- ===== X ===== -->
 <section class="view" id="v-x">
-<div class="appbar"><button class="back" data-home>‹</button><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""><span class="t">𝕏 ホーム</span><span class="s" style="margin-left:auto" id="x-head-note"></span></div>
+<div class="appbar"><button class="back" data-home>‹</button><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""><span class="t">𝕏 ホーム</span><span class="s" style="margin-left:auto" id="x-head-note"></span></div>
 <div class="x-searchbar"><input id="x-q" placeholder="キーワード検索（例：大翔）" autocomplete="off"><button id="x-search-btn">検索</button></div><div class="xtabs" style="border-top:none"><button data-xtab="tl" class="act">タイムライン</button>
 <button data-xtab="trend">トレンド</button>
 <button data-xtab="mention">メンション <span id="x-men-n"></span></button>
@@ -632,7 +632,7 @@ input,textarea{font-size:16px!important}
         <div id="x-pane-search" style="display:none"><div style="padding:10px 14px 0;font-weight:800;font-size:13.5px;color:#536471">おすすめワード</div><div class="sug" id="x-sug"></div><div id="x-search-results"></div></div>
         <div id="x-pane-me" style="display:none">
           <div style="height:96px;background:url(assets/night.jpg) center 30%/cover"></div>
-          <div style="padding:0 14px"><img class="avatar" src="assets/nao-avatar4.jpg" width="62" height="62" style="margin-top:-28px;border:3px solid #fff" alt=""><div style="font-size:18px;font-weight:900;margin-top:4px">なお</div><div style="color:#536471;font-size:13px">@nao_0324</div><div style="font-size:13px;margin-top:5px">ふつうの会社員。推し活とサウナとエビが好き🍤</div><div class="counts" style="margin-top:9px;display:flex;gap:18px"><span><b id="x-fol-n">189</b> フォロワー</span><span><b>96</b> フォロー中</span></div></div>
+          <div style="padding:0 14px"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="62" height="62" style="margin-top:-28px;border:3px solid #fff" alt=""><div style="font-size:18px;font-weight:900;margin-top:4px">なお</div><div style="color:#536471;font-size:13px">@nao_0324</div><div style="font-size:13px;margin-top:5px">ふつうの会社員。推し活とサウナとエビが好き🍤</div><div class="counts" style="margin-top:9px;display:flex;gap:18px"><span><b id="x-fol-n">189</b> フォロワー</span><span><b>96</b> フォロー中</span></div></div>
 <div id="x-me-posts"></div>
 </div>
 </div>
@@ -643,11 +643,11 @@ input,textarea{font-size:16px!important}
 <div class="ig-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t">nao_0324</span><button id="ig-bell-btn" style="margin-left:auto;font-size:19px;background:none;border:none;cursor:pointer">🔔<span id="ig-bell"></span></button></div>
 <div class="scroll" id="ig-scroll">
         <div class="act-panel" id="ig-activity"><div style="padding:2px 14px 6px;font-weight:800;font-size:14.5px">お知らせ</div><div id="act-list">
-          <div class="act-row"><img class="avatar" src="assets/default-avatar.svg" width="40" height="40" alt=""><span><b>yui_s</b>さんがあなたの投稿にいいねしました <span class="tm">2時間前</span></span><img class="thumb" src="assets/cafe.jpg" alt=""></div>
-          <div class="act-row"><img class="avatar" src="assets/default-avatar.svg" width="40" height="40" alt=""><span><b>sauna_m</b>さんがあなたをフォローし始めました <span class="tm">昨日</span></span><button class="fb">フォローバック</button></div>
+          <div class="act-row"><img loading="lazy" decoding="async" class="avatar" src="assets/default-avatar.svg" width="40" height="40" alt=""><span><b>yui_s</b>さんがあなたの投稿にいいねしました <span class="tm">2時間前</span></span><img loading="lazy" decoding="async" class="thumb" src="assets/cafe.jpg" alt=""></div>
+          <div class="act-row"><img loading="lazy" decoding="async" class="avatar" src="assets/default-avatar.svg" width="40" height="40" alt=""><span><b>sauna_m</b>さんがあなたをフォローし始めました <span class="tm">昨日</span></span><button class="fb">フォローバック</button></div>
         </div></div>
 <div class="ig-prof">
-<img class="avatar" src="assets/nao-avatar4.jpg" width="76" height="76" alt="">
+<img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="76" height="76" alt="">
 <div class="ig-stats">
 <div><div class="n">20</div><div class="l">投稿</div></div>
 <div><div class="n" id="ig-fol-n">342</div><div class="l">フォロワー</div></div>
@@ -655,13 +655,13 @@ input,textarea{font-size:16px!important}
 </div>
 </div>
 <div class="ig-bio">なお｜大阪<br>NCT WISH サクヤ💚 と 井汲大翔🤍 がすき</div>
-<div class="stories"><button id="nao-story-btn"><span class="ring"><img src="assets/nao-avatar4.jpg" alt=""></span>ストーリー</button></div>
-<div class="hl-row"><button class="hl-btn" data-hl="food"><span class="hl-ring"><img src="assets/nao-hl-01.jpg" alt=""></span>ごはん</button><button class="hl-btn" data-hl="trip"><span class="hl-ring"><img src="assets/nao-hl-17.jpg" alt=""></span>おでかけ</button><button class="hl-btn" data-hl="oshi"><span class="hl-ring"><img src="assets/nao-hl-06.jpg" alt=""></span>推し活</button><button class="hl-btn" data-hl="dog"><span class="hl-ring"><img src="assets/nao-hl-09.jpg" alt=""></span>わんこ</button><button class="hl-btn" data-hl="fanmi"><span class="hl-ring"><img src="assets/fanmeet-1.jpg" alt=""></span>ファンミ</button></div>
-        <div class="cmt-input" style="margin:0 0 4px"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""><input id="nao-cmt-text" placeholder="コメントを追加…（返信もここから）" autocomplete="off"><button id="nao-cmt-send">投稿</button></div>
+<div class="stories"><button id="nao-story-btn"><span class="ring"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" alt=""></span>ストーリー</button></div>
+<div class="hl-row"><button class="hl-btn" data-hl="food"><span class="hl-ring"><img loading="lazy" decoding="async" src="assets/nao-hl-01.jpg" alt=""></span>ごはん</button><button class="hl-btn" data-hl="trip"><span class="hl-ring"><img loading="lazy" decoding="async" src="assets/nao-hl-17.jpg" alt=""></span>おでかけ</button><button class="hl-btn" data-hl="oshi"><span class="hl-ring"><img loading="lazy" decoding="async" src="assets/nao-hl-06.jpg" alt=""></span>推し活</button><button class="hl-btn" data-hl="dog"><span class="hl-ring"><img loading="lazy" decoding="async" src="assets/nao-hl-09.jpg" alt=""></span>わんこ</button><button class="hl-btn" data-hl="fanmi"><span class="hl-ring"><img loading="lazy" decoding="async" src="assets/fanmeet-1.jpg" alt=""></span>ファンミ</button></div>
+        <div class="cmt-input" style="margin:0 0 4px"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""><input id="nao-cmt-text" placeholder="コメントを追加…（返信もここから）" autocomplete="off"><button id="nao-cmt-send">投稿</button></div>
         <div style="padding:0 14px 10px"><span class="chip">最新投稿へのコメント <b id="ig-cmt-n">3</b>件</span> <span class="chip">DMリクエスト <b id="ig-dm-n">0</b>件</span></div>
 <div class="ig-post">
-<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div>
-<img class="pimg" src="assets/cafe.jpg" alt="なおの最新投稿（匂わせ疑惑で掘られた麺の写真）">
+<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div>
+<img loading="lazy" decoding="async" class="pimg" src="assets/cafe.jpg" alt="なおの最新投稿（匂わせ疑惑で掘られた麺の写真）">
 <div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div>
 <div class="cap"><b>nao_0324</b> お昼の麺が美味しすぎた日🍜 <span style="color:#8e8e93">いいね！<span id="nao-like-n">48</span>件</span></div>
 <div id="ig-cmts">
@@ -675,15 +675,15 @@ input,textarea{font-size:16px!important}
 </div>
 </section>
 
-<div id="dm-thread"><div class="line-head" style="padding-top:56px;background:#fff"><button class="back" id="dm-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img class="avatar" src="assets/default-avatar.svg" width="30" height="30" alt=""><span class="t" style="font-size:15px;font-weight:800">yui_s</span></div><div class="dm-scroll" id="dm-scroll"><div class="dm-bub them">なお！？　ニュース見たんだけど…</div><div class="dm-bub them">あれ、なおだよね？　心配でDMした</div></div><div class="cmt-input"><input id="dm-text" placeholder="メッセージを送信…" autocomplete="off"><button id="dm-send">送信</button></div></div>
-    <div id="nao-story-view"><div class="sbar"><i></i></div><button id="nao-story-close" style="position:absolute;top:66px;right:14px;background:rgba(0,0,0,.4);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">✕</button><img src="assets/cafe.jpg" alt="" style="flex:1;width:100%;object-fit:cover;min-height:0"><div style="position:absolute;left:0;right:0;bottom:110px;text-align:center;color:#fff;font-size:19px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,.8)">お昼の麺🍜</div><div id="nao-story-viewers" style="padding:14px 16px 30px;color:#fff;font-size:12.5px">👁 12人 ・ yui_s、sauna_m 他</div></div>
-<div id="hl-view"><div class="sbar" id="hl-bars"></div><button id="hl-close">✕</button><img id="hl-img" src="" alt=""><div id="hl-txt"></div><div style="padding:14px 16px 30px;color:#fff;font-size:13px;display:flex;gap:9px;align-items:center"><img class="avatar" id="hl-fimg" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> <span id="hl-fname">nao_0324 ・ ハイライト</span></div></div>
+<div id="dm-thread"><div class="line-head" style="padding-top:56px;background:#fff"><button class="back" id="dm-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img loading="lazy" decoding="async" class="avatar" src="assets/default-avatar.svg" width="30" height="30" alt=""><span class="t" style="font-size:15px;font-weight:800">yui_s</span></div><div class="dm-scroll" id="dm-scroll"><div class="dm-bub them">なお！？　ニュース見たんだけど…</div><div class="dm-bub them">あれ、なおだよね？　心配でDMした</div></div><div class="cmt-input"><input id="dm-text" placeholder="メッセージを送信…" autocomplete="off"><button id="dm-send">送信</button></div></div>
+    <div id="nao-story-view"><div class="sbar"><i></i></div><button id="nao-story-close" style="position:absolute;top:66px;right:14px;background:rgba(0,0,0,.4);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">✕</button><img loading="lazy" decoding="async" src="assets/cafe.jpg" alt="" style="flex:1;width:100%;object-fit:cover;min-height:0"><div style="position:absolute;left:0;right:0;bottom:110px;text-align:center;color:#fff;font-size:19px;font-weight:800;text-shadow:0 2px 10px rgba(0,0,0,.8)">お昼の麺🍜</div><div id="nao-story-viewers" style="padding:14px 16px 30px;color:#fff;font-size:12.5px">👁 12人 ・ yui_s、sauna_m 他</div></div>
+<div id="hl-view"><div class="sbar" id="hl-bars"></div><button id="hl-close">✕</button><img loading="lazy" decoding="async" id="hl-img" src="" alt=""><div id="hl-txt"></div><div style="padding:14px 16px 30px;color:#fff;font-size:13px;display:flex;gap:9px;align-items:center"><img loading="lazy" decoding="async" class="avatar" id="hl-fimg" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> <span id="hl-fname">nao_0324 ・ ハイライト</span></div></div>
     <!-- ===== Instagram (hiroto) ===== -->
 <section class="view" id="v-hisig">
 <div class="ig-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t">193.hiroto_jixiang <span class="verified">☑</span></span></div>
 <div class="scroll">
 <div class="ig-prof">
-<img class="avatar" src="assets/ig-avatar.jpg" width="76" height="76" alt="">
+<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="76" height="76" alt="">
 <div class="ig-stats">
 <div><div class="n">98</div><div class="l">投稿</div></div>
 <div><div class="n" id="his-fol-n">8.1万</div><div class="l">フォロワー</div></div>
@@ -691,18 +691,18 @@ input,textarea{font-size:16px!important}
 </div>
 </div>
 <div class="ig-bio"><b>井汲大翔　Hiroto</b><br>contact📮: 193hiroto23@gmail.com<br>한국어 中文🙆</div>
-        <div class="stories"><button id="story-btn"><span class="ring"><img src="assets/ig-avatar.jpg" alt=""></span>ひろと</button></div>
+        <div class="stories"><button id="story-btn"><span class="ring"><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" alt=""></span>ひろと</button></div>
         <div id="his-statement"></div>
 <div class="ig-grid">
-<img src="assets/ig-necklace.jpg" alt=""><img src="assets/ig-hbd.jpg" alt=""><img src="assets/ig-child.jpg" alt=""><img src="assets/ig-sunset.jpg" alt=""><img src="assets/ig-singapore.jpg" alt=""><img src="assets/ig-busan.jpg" alt=""><img src="assets/ig-uniform.jpg" alt=""><img src="assets/ig-memories.jpg" alt=""><img src="assets/ig-dog.jpg" alt=""><img src="assets/ig-bday2023.jpg" alt=""><img src="assets/ig-osaka.jpg" alt=""><img src="assets/ig-hanbok.jpg" alt="">
-<img src="assets/stage.jpg" alt=""><img src="assets/crown.jpg" alt=""><img src="assets/selfie.jpg" alt="">
-<img src="assets/crown-full.jpg" alt=""><img src="assets/insta-post.jpg" alt=""><img src="assets/roses.jpg" alt="">
-<img src="assets/studio.jpg" alt=""><img src="assets/glasses.jpg" alt=""><img src="assets/cafe3.jpg" alt="">
-<img src="assets/hoodie.jpg" alt=""><img src="assets/night.jpg" alt=""><img src="assets/ig-food.jpg" alt="">
+<img loading="lazy" decoding="async" src="assets/ig-necklace.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-hbd.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-child.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-sunset.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-singapore.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-busan.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-uniform.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-memories.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-dog.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-bday2023.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-osaka.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-hanbok.jpg" alt="">
+<img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><img loading="lazy" decoding="async" src="assets/crown.jpg" alt=""><img loading="lazy" decoding="async" src="assets/selfie.jpg" alt="">
+<img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt=""><img loading="lazy" decoding="async" src="assets/insta-post.jpg" alt=""><img loading="lazy" decoding="async" src="assets/roses.jpg" alt="">
+<img loading="lazy" decoding="async" src="assets/studio.jpg" alt=""><img loading="lazy" decoding="async" src="assets/glasses.jpg" alt=""><img loading="lazy" decoding="async" src="assets/cafe3.jpg" alt="">
+<img loading="lazy" decoding="async" src="assets/hoodie.jpg" alt=""><img loading="lazy" decoding="async" src="assets/night.jpg" alt=""><img loading="lazy" decoding="async" src="assets/ig-food.jpg" alt="">
 </div>
 <div class="ig-post" style="margin-top:4px">
-<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div>
-<img class="pimg" src="assets/insta-post.jpg" alt="ひろとの投稿スクリーンショット">
+<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div>
+<img loading="lazy" decoding="async" class="pimg" src="assets/insta-post.jpg" alt="ひろとの投稿スクリーンショット">
 <div class="acts"><span class="like-btn">❤️</span><span>💬 43</span><span>🔁 50</span><span class="save-btn">🔖</span></div>
 <div class="cap">いいね！：<b>__m2326</b>、他<br><b>193.hiroto_jixiang</b> このまま時間が止まればいいのに🙃<br><span style="color:#8e8e93;font-size:12px">1日前</span></div>
 <div id="his-cmts">
@@ -711,8 +711,8 @@ input,textarea{font-size:16px!important}
           </div>
         </div>
         <div class="ig-post">
-          <div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span></div>
-          <img class="pimg" src="assets/ig-food.jpg" alt="本人の実際の投稿">
+          <div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span></div>
+          <img loading="lazy" decoding="async" class="pimg" src="assets/ig-food.jpg" alt="本人の実際の投稿">
           <div class="acts"><span class="like-btn">❤️</span><span>💬 61</span><span>🔁</span><span class="save-btn">🔖</span></div>
           <div class="cap">いいね！：3,499件<br><b>193.hiroto_jixiang</b> 食べまくってる🍚 いつもコーラ ご飯も お肉も🍖<br><span style="color:#8e8e93;font-size:12px">実際の投稿より</span></div>
 </div>
@@ -720,13 +720,13 @@ input,textarea{font-size:16px!important}
 </div>
 </section>
 
-    <div id="story-view"><div class="sbar" id="story-bars"></div><button id="story-close">✕</button><img id="story-img" src="assets/stage.jpg" alt=""><div id="story-txt"></div><div style="padding:14px 16px 30px;color:#fff;font-size:13px;display:flex;gap:9px;align-items:center"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang</div></div>
+    <div id="story-view"><div class="sbar" id="story-bars"></div><button id="story-close">✕</button><img loading="lazy" decoding="async" id="story-img" src="assets/stage.jpg" alt=""><div id="story-txt"></div><div style="padding:14px 16px 30px;color:#fff;font-size:13px;display:flex;gap:9px;align-items:center"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang</div></div>
     <!-- ===== LINE ===== -->
 <section class="view" id="v-line">
 <div class="line-head" id="line-head-list"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t" style="font-size:16.5px;font-weight:800">トーク</span></div>
 <div class="line-list" id="line-list">
 <button class="talkrow" id="talk-hiroto">
-<img class="avatar" src="assets/line-avatar.jpg" width="48" height="48" alt="">
+<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="48" height="48" alt="">
 <span style="min-width:0"><span class="nm">ひろと <span class="ubadge" id="line-unread" style="display:none"></span></span><br><span class="pv" id="line-preview">（まだトークはない）</span></span>
 <span class="tm">昨日</span>
 </button>
@@ -752,7 +752,7 @@ input,textarea{font-size:16px!important}
 </button>
 </div>
 <div id="line-chat" style="display:none;flex:1;flex-direction:column;min-height:0">
-<div class="line-head" style="padding-top:56px"><button class="back" id="line-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><button id="hiroto-prof-btn" style="display:flex;gap:8px;align-items:center;background:none;border:none;cursor:pointer;text-align:left;padding:0"><img class="avatar" src="assets/line-avatar.jpg" width="32" height="32" alt=""><span><span class="t" style="font-size:15.5px;font-weight:800;display:block">ひろと</span><span class="s" style="font-size:10.5px;color:#8e8e93">ISFPの本音は短い。行動で来る。</span></span></button><button id="line-call-btn" style="margin-left:auto;font-size:18px;background:none;border:none;cursor:pointer">📞</button><button id="line-log-btn" title="バックログ" style="font-size:17px;background:none;border:none;cursor:pointer;margin-left:6px">📜</button></div>
+<div class="line-head" style="padding-top:56px"><button class="back" id="line-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><button id="hiroto-prof-btn" style="display:flex;gap:8px;align-items:center;background:none;border:none;cursor:pointer;text-align:left;padding:0"><img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="32" height="32" alt=""><span><span class="t" style="font-size:15.5px;font-weight:800;display:block">ひろと</span><span class="s" style="font-size:10.5px;color:#8e8e93">ISFPの本音は短い。行動で来る。</span></span></button><button id="line-call-btn" style="margin-left:auto;font-size:18px;background:none;border:none;cursor:pointer">📞</button><button id="line-log-btn" title="バックログ" style="font-size:17px;background:none;border:none;cursor:pointer;margin-left:6px">📜</button></div>
 <div class="chat-scroll" id="chat">
 <div class="daychip">9月27日（土）</div>
 </div>
@@ -764,7 +764,7 @@ input,textarea{font-size:16px!important}
         <div class="line-head" style="padding-top:56px"><button class="back" id="group-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span><span class="t" style="font-size:15.5px;font-weight:800;display:block">いつメン🍻</span><span class="s" style="font-size:10.5px;color:#8e8e93">ゆい ・ みさき ・ りな</span></span></div>
         <div class="chat-scroll" id="gchat">
           <div class="daychip">月曜日</div>
-          <div class="msg him"><img class="avatar" src="assets/fr-yui.jpg" width="34" height="34" alt=""><span><div class="gname">ゆい</div><span class="bub">次の飲みいつにする？</span></span></div>
+          <div class="msg him"><img loading="lazy" decoding="async" class="avatar" src="assets/fr-yui.jpg" width="34" height="34" alt=""><span><div class="gname">ゆい</div><span class="bub">次の飲みいつにする？</span></span></div>
         </div>
         <div class="line-input"><span style="font-size:19px">＋</span><input id="g-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="g-send">送信</button></div>
       </div>
@@ -774,18 +774,18 @@ input,textarea{font-size:16px!important}
 <div class="typing" id="f-typing" style="margin:0 12px 8px;display:none"><i></i><i></i><i></i></div>
 <div class="line-input"><span style="font-size:19px">＋</span><input id="f-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="f-send">送信</button></div>
 </div>
-<div id="hiroto-prof"><img class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img class="avatar" src="assets/line-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div id="hp-status" style="font-size:13px;color:#536471;margin-top:2px">…なおだけ、特別やねん</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div id="hp-photos" style="display:flex;gap:6px;margin-top:14px"><img src="assets/ig-meal.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img src="assets/roses.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img src="assets/insta-post.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"></div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ（11月1日）<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
+<div id="hiroto-prof"><img loading="lazy" decoding="async" class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div id="hp-status" style="font-size:13px;color:#536471;margin-top:2px">…なおだけ、特別やねん</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div id="hp-photos" style="display:flex;gap:6px;margin-top:14px"><img loading="lazy" decoding="async" src="assets/ig-meal.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/roses.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/insta-post.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"></div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ（11月1日）<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
 </section>
 
-<div id="member-panel"><div class="line-head" style="background:#fff"><button class="back" id="mp-close" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t" id="mp-title" style="font-size:15.5px;font-weight:800">メンバー</span></div><div style="overflow-y:auto;flex:1"><div class="mp-sec">メンバー</div><div id="mp-list"></div><div class="mp-sec">ノート</div><div class="mp-note" id="mp-note"></div><div class="mp-sec">アルバム</div><div class="mp-album"><img id="mp-album-img" src="" alt="グループの写真"></div></div></div>
+<div id="member-panel"><div class="line-head" style="background:#fff"><button class="back" id="mp-close" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t" id="mp-title" style="font-size:15.5px;font-weight:800">メンバー</span></div><div style="overflow-y:auto;flex:1"><div class="mp-sec">メンバー</div><div id="mp-list"></div><div class="mp-sec">ノート</div><div class="mp-note" id="mp-note"></div><div class="mp-sec">アルバム</div><div class="mp-album"><img loading="lazy" decoding="async" id="mp-album-img" src="" alt="グループの写真"></div></div></div>
 <div id="rxn-picker"></div>
 <!-- ===== NEWS ===== -->
 <section class="view" id="v-news">
 <div class="appbar"><button class="back" data-home>‹</button><span class="t">ニュース</span><span class="s" id="news-note">9月27日（土）夜</span></div>
 <div class="scroll" id="news-scroll">
 <div id="news-list">
-<div class="newsrow"><img src="assets/stage.jpg" alt=""><span><span class="h">人気アイドル、ワールドツアーの追加公演を発表　チケット争奪戦へ</span><br><span class="m">エンタメ通信 ・ 18:20</span></span></div>
-<div class="newsrow"><img src="assets/crown.jpg" alt=""><span><span class="h">ファンミーティングで見せた“王子様衣装”がSNSで話題に</span><br><span class="m">芸能デスク ・ 17:05</span></span></div>
+<div class="newsrow"><img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><span><span class="h">人気アイドル、ワールドツアーの追加公演を発表　チケット争奪戦へ</span><br><span class="m">エンタメ通信 ・ 18:20</span></span></div>
+<div class="newsrow"><img loading="lazy" decoding="async" src="assets/crown.jpg" alt=""><span><span class="h">ファンミーティングで見せた“王子様衣装”がSNSで話題に</span><br><span class="m">芸能デスク ・ 17:05</span></span></div>
 <div style="padding:26px 18px;color:#8e8e93;font-size:13px" id="news-calm">——まだ、嵐の前。静かな夜。</div>
 </div>
 <div id="news-article" style="display:none"></div>
@@ -794,30 +794,30 @@ input,textarea{font-size:16px!important}
 
 <!-- ===== PHOTOS ===== -->
 <section class="view" id="v-photos">
-<div id="ph-view"><button id="pv-play" style="position:absolute;top:52px;right:96px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:13px;cursor:pointer;z-index:2">▶</button><button id="pv-share" style="position:absolute;top:52px;right:54px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">↗</button><button id="pv-fav" style="position:absolute;top:52px;right:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">♡</button><button id="pv-close" style="position:absolute;top:52px;left:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">✕</button><button class="pv-nav" id="pv-prev" style="left:8px">‹</button><button class="pv-nav" id="pv-next" style="right:8px">›</button><img class="main" id="pv-img" src="" alt=""><div class="pv-meta"><div class="pv-cap" id="pv-cap"></div><div class="pv-date" id="pv-date"></div></div></div>
+<div id="ph-view"><button id="pv-play" style="position:absolute;top:52px;right:96px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:13px;cursor:pointer;z-index:2">▶</button><button id="pv-share" style="position:absolute;top:52px;right:54px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">↗</button><button id="pv-fav" style="position:absolute;top:52px;right:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">♡</button><button id="pv-close" style="position:absolute;top:52px;left:12px;background:rgba(255,255,255,.14);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2">✕</button><button class="pv-nav" id="pv-prev" style="left:8px">‹</button><button class="pv-nav" id="pv-next" style="right:8px">›</button><img loading="lazy" decoding="async" class="main" id="pv-img" src="" alt=""><div class="pv-meta"><div class="pv-cap" id="pv-cap"></div><div class="pv-date" id="pv-date"></div></div></div>
 <div class="appbar"><button class="back" data-home>‹</button><span class="t">写真</span><span class="s">ひろと＋思い出</span></div>
 <div class="scroll">
 <div class="album-tabs" id="album-tabs"><button data-album="all" class="act">すべて</button><button data-album="him">彼</button><button data-album="date">デート</button><button data-album="post">投稿</button></div>
 <div class="ph-grid" id="ph-grid">
-<figure><img src="assets/crown.jpg" alt=""><figcaption>ファンミの日🤴</figcaption></figure>
-<figure><img src="assets/stage.jpg" alt=""><figcaption>ステージ</figcaption></figure>
-<figure><img src="assets/selfie.jpg" alt=""><figcaption>送ってくれた自撮り</figcaption></figure>
-<figure><img src="assets/insta-post.jpg" alt=""><figcaption>例の投稿（1日前）</figcaption></figure>
-<figure><img src="assets/crown-full.jpg" alt=""><figcaption>保存用</figcaption></figure>
-<figure><img src="assets/ig-meal.jpg" alt=""><figcaption>カフェの彼☕</figcaption></figure>
-          <figure><img src="assets/ig-drink.jpg" alt=""><figcaption>本人の投稿🥤</figcaption></figure>
-          <figure><img src="assets/ig-bday.jpg" alt=""><figcaption>HBD to me🎂</figcaption></figure>
-          <figure><img src="assets/ig-sushi.jpg" alt=""><figcaption>寿司🍣</figcaption></figure>
-          <figure><img src="assets/roses.jpg" alt=""><figcaption>バラと彼🌹</figcaption></figure>
-          <figure><img src="assets/night.jpg" alt=""><figcaption>夜の散歩</figcaption></figure>
-          <figure><img src="assets/glasses.jpg" alt=""><figcaption>メガネの日</figcaption></figure>
-          <figure><img src="assets/studio.jpg" alt=""><figcaption>お仕事ショット</figcaption></figure>
-          <figure><img src="assets/cafe3.jpg" alt=""><figcaption>カフェで腕組み</figcaption></figure>
-          <figure><img src="assets/hoodie.jpg" alt=""><figcaption>フーディ姿</figcaption></figure>
-<figure><img src="assets/gift-glasses.jpg" alt=""><figcaption>メガネの自撮り👓</figcaption></figure>
-<figure><img src="assets/gift-jacket.jpg" alt=""><figcaption>公園の彼</figcaption></figure>
-<figure><img src="assets/gift-shanghai.jpg" alt=""><figcaption>上海の夜景と彼🌃</figcaption></figure>
-<figure><img src="assets/gift-snow.jpg" alt=""><figcaption>雪の日の彼❄️</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/crown.jpg" alt=""><figcaption>ファンミの日🤴</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><figcaption>ステージ</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/selfie.jpg" alt=""><figcaption>送ってくれた自撮り</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/insta-post.jpg" alt=""><figcaption>例の投稿（1日前）</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt=""><figcaption>保存用</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/ig-meal.jpg" alt=""><figcaption>カフェの彼☕</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/ig-drink.jpg" alt=""><figcaption>本人の投稿🥤</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/ig-bday.jpg" alt=""><figcaption>HBD to me🎂</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/ig-sushi.jpg" alt=""><figcaption>寿司🍣</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/roses.jpg" alt=""><figcaption>バラと彼🌹</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/night.jpg" alt=""><figcaption>夜の散歩</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/glasses.jpg" alt=""><figcaption>メガネの日</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/studio.jpg" alt=""><figcaption>お仕事ショット</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/cafe3.jpg" alt=""><figcaption>カフェで腕組み</figcaption></figure>
+          <figure><img loading="lazy" decoding="async" src="assets/hoodie.jpg" alt=""><figcaption>フーディ姿</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/gift-glasses.jpg" alt=""><figcaption>メガネの自撮り👓</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/gift-jacket.jpg" alt=""><figcaption>公園の彼</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/gift-shanghai.jpg" alt=""><figcaption>上海の夜景と彼🌃</figcaption></figure>
+<figure><img loading="lazy" decoding="async" src="assets/gift-snow.jpg" alt=""><figcaption>雪の日の彼❄️</figcaption></figure>
 </div>
 <div style="padding:14px 16px;font-size:13px;line-height:1.8;color:#3a3a3c">
 ※週刊誌に載ったカフェの写真はここにはない。でもXでは、昨日のカフェと、拡散中のプロフ写真と、この投稿のキャプションが掘られていく…。
@@ -831,7 +831,7 @@ input,textarea{font-size:16px!important}
 <div class="appbar" style="background:#000;color:#fff"><button class="back" data-home style="color:#fff">‹</button><span class="t">TikTok</span><span class="s">@193hiroto</span></div>
 <div class="scroll" style="background:#000;color:#fff">
 <div style="text-align:center;padding:20px 16px 6px">
-<img class="avatar" src="assets/ig-avatar.jpg" width="86" height="86" alt="" style="border-radius:50%">
+<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="86" height="86" alt="" style="border-radius:50%">
 <div style="font-size:19px;font-weight:800;margin-top:10px">HIROTO</div>
 <div style="color:#a8a8b3;font-size:13.5px">@193hiroto</div>
 <div style="display:flex;justify-content:center;gap:34px;margin-top:14px">
@@ -869,14 +869,14 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v146</b>（ダミー4人の雑談に第48周「好きな音」――各人が自分の世界の中で好きな音を一つ挙げる周＋彼のフリーチャットに新しいダイブ2本追加）<br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v147</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
 <!-- ===== CALL ===== -->
 <section class="view" id="v-call">
 <div class="call-wrap" id="call-incoming" style="display:none">
-        <img src="assets/line-avatar.jpg" alt="" class="ringpulse" id="call-inc-img">
+        <img loading="lazy" decoding="async" src="assets/line-avatar.jpg" alt="" class="ringpulse" id="call-inc-img">
         <div style="font-size:23px;font-weight:800" id="call-inc-name">ひろと</div>
         <div style="font-size:13.5px;color:#aeb6c6">📱 着信中…</div>
         <div class="call-sub" id="call-inc-sub">ドキドキの着信。応答する？</div>
@@ -886,7 +886,7 @@ input,textarea{font-size:16px!important}
         </div>
       </div>
       <div class="call-wrap" id="call-active">
-<img src="assets/line-avatar.jpg" alt="" id="call-act-img">
+<img loading="lazy" decoding="async" src="assets/line-avatar.jpg" alt="" id="call-act-img">
 <div style="font-size:23px;font-weight:800" id="call-act-name">ひろと</div>
 <div style="font-size:13px;color:#aeb6c6" id="call-state">通話中… <span id="call-time">00:00</span></div>
 <div class="call-sub" id="call-sub">「…なおの声、聞きたかってん」</div>
@@ -948,7 +948,7 @@ function chapterCard(no,title,sub){ $("#cc-no").textContent=no+(no.includes("話
 function addDayChip(t){ const d=document.createElement("div"); d.className="daychip"; d.textContent=t; $("#chat").appendChild(d); }
 function setChapterWidget(no,main){ $("#w-title").textContent="📖 "+no; $("#w-main").textContent=main; }
 function alive(t){ return t===state._token && state.phase==="prologue"; }
-function addPhoto(src,cap){ const f=document.createElement("figure"); f.dataset.cat="date"; f.innerHTML=`<img src="${src}" alt=""><figcaption>${cap}</figcaption>`; $("#ph-grid").prepend(f); }
+function addPhoto(src,cap){ const f=document.createElement("figure"); f.dataset.cat="date"; f.innerHTML=`<img loading="lazy" decoding="async" src="${src}" alt=""><figcaption>${cap}</figcaption>`; $("#ph-grid").prepend(f); }
 function schedulePrologue(){ if(state._proStarted) return; state._proStarted=true; $("#skip-btn").style.display="inline-block"; later(()=>chapter(1),1300); }
 $("#skip-btn").addEventListener("click",()=>{ if(state.phase!=="prologue") return; state._token++; toScandal(); });
 function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal"; $("#lock-date").textContent="11月2日 日曜日"; $("#news-note").textContent="11月2日（日）夜"; $("#skip-btn").style.display="none"; chapterCard("第6話","バレた日","11月2日（日）夜 —— 。LINEを開いて様子を見てね"); addDayChip("11月2日（日）"); scheduleFirstPush(); }
@@ -1040,17 +1040,17 @@ later(()=>{addNewsRow("assets/crown.jpg","現役アイドルのアプリ利用�
 later(()=>{addNewsRow("assets/stage.jpg","事務所「アプリの削除・退会を確認」　私生活の管理体制を見直しへ","芸能デスク ・ たった今",null); setHeat(88);},128000);
 }
 /* ============ NEWS ============ */
-function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔、マッチングアプリ利用か —— 一般女性とカフェで会う姿も</h3><p>昨夜、都内カフェから出てきた二人。交際を裏付ける写真はないが、本人のものとされるアプリのプロフィールが拡散し、騒ぎが広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
+function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔、マッチングアプリ利用か —— 一般女性とカフェで会う姿も</h3><p>昨夜、都内カフェから出てきた二人。交際を裏付ける写真はないが、本人のものとされるアプリのプロフィールが拡散し、騒ぎが広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
 function newsBack(){ $("#news-article").style.display="none"; $("#news-list").style.display="block"; $("#news-scroll").scrollTop=0}
-function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃</h2><div class="m">週刊デジタル ・ 20:49配信</div><img src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。拡散されているプロフィールには、私服の自撮り写真と「暇つぶしで入れた。気軽に会える人がええな」という自己紹介。彼とみられる男性が一般女性と都内のカフェで会う様子もキャッチされたが、二人が交際していることを裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>ネットでは早くもお相手のSNS特定が進み、本人のInstagramには数時間で数万件のフォローとコメントが殺到。昨日の投稿「お昼の麺が美味しすぎた日」が“同じ店では”と掘り起こされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
+function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃</h2><div class="m">週刊デジタル ・ 20:49配信</div><img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。拡散されているプロフィールには、私服の自撮り写真と「暇つぶしで入れた。気軽に会える人がええな」という自己紹介。彼とみられる男性が一般女性と都内のカフェで会う様子もキャッチされたが、二人が交際していることを裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>ネットでは早くもお相手のSNS特定が進み、本人のInstagramには数時間で数万件のフォローとコメントが殺到。昨日の投稿「お昼の麺が美味しすぎた日」が“同じ店では”と掘り起こされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
 function addArticleDefault(){}
-function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>事務所がコメント発表「交際の事実はございません」</h2><div class="m">芸能デスク ・ たった今</div><img src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">「お相手とされる方との交際の事実はございません。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」</div><p>交際は明確に否定された一方、アプリ利用への「確認中」という留保に、SNSでは「使ってたのは本当なの？」「大人なんだから自由では」と賛否が割れている。本人の口から何が語られるのか、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
+function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><button class="btn-main" style="background:#111;color:#fff;width:auto;padding:7px 14px;margin:0 0 12px 6px" onclick="toast('🔗 <b>記事のリンクをコピーしました</b>')">共有</button><h2>事務所がコメント発表「交際の事実はございません」</h2><div class="m">芸能デスク ・ たった今</div><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">「お相手とされる方との交際の事実はございません。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」</div><p>交際は明確に否定された一方、アプリ利用への「確認中」という留保に、SNSでは「使ってたのは本当なの？」「大人なんだから自由では」と賛否が割れている。本人の口から何が語られるのか、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">交際否定は信じる。でもアプリ使ってたなら、そこは説明がほしい。活動に変更なしは安心した</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">r</span> rot***さん</div><div class="yt">複雑だけど、交際してないなら相手の子を叩くのは違うと思う</div><div class="yb"><span class="like-btn">👍 そう思う 3,914</span><span>返信 208件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミで「彼女いない」って言ってたのは本当やったんや…でもアプリの説明はほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">s</span> sak***さん</div><div class="yt">24歳の大人、アプリ使うくらい自由やと思うけどな。叩きすぎは違う</div><div class="yb"><span class="like-btn">👍 そう思う 5,102</span><span>返信 156件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
-function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた人気アイドル・井汲大翔（24）と、一般女性との出会いの経緯について、新たな情報が浮上した。関係者によると、二人が知り合ったのは、そのマッチングアプリ。彼が相手に送ったとされる「Super Like」がきっかけだったという。なお、事務所は二人の交際を否定している。</p><p>拡散されている彼のものとされるプロフィール写真は、ステージ写真ではなく私服の自撮りで、本人のInstagramには掲載されていないものだった。お相手の女性は元々彼のファンだったとされるが、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言も出ている。</p><div class="box">知人とされる人物「会った瞬間に本物だと分かって、すごく驚いたそうです。写真がいつもの彼と印象が違ったみたいで…」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
-function addNewsRow(img,h,m,cb){const d=document.createElement("div");d.className="newsrow";d.innerHTML=`<img src="${img}" alt=""><span><span class="h">${h}</span><br><span class="m">${m}</span></span>`; if(cb){d.style.cursor="pointer";d.addEventListener("click",cb)} $("#news-list").prepend(d); bump("news")}
+function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた人気アイドル・井汲大翔（24）と、一般女性との出会いの経緯について、新たな情報が浮上した。関係者によると、二人が知り合ったのは、そのマッチングアプリ。彼が相手に送ったとされる「Super Like」がきっかけだったという。なお、事務所は二人の交際を否定している。</p><p>拡散されている彼のものとされるプロフィール写真は、ステージ写真ではなく私服の自撮りで、本人のInstagramには掲載されていないものだった。お相手の女性は元々彼のファンだったとされるが、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言も出ている。</p><div class="box">知人とされる人物「会った瞬間に本物だと分かって、すごく驚いたそうです。写真がいつもの彼と印象が違ったみたいで…」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
+function addNewsRow(img,h,m,cb){const d=document.createElement("div");d.className="newsrow";d.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><span><span class="h">${h}</span><br><span class="m">${m}</span></span>`; if(cb){d.style.cursor="pointer";d.addEventListener("click",cb)} $("#news-list").prepend(d); bump("news")}
 /* ============ X ============ */
 const X_POSTS=[
 {n:"ニュース速報 @NewsFlash",h:"@news_flash_jp ☑",t:"人気アイドル・井汲大翔にマッチングアプリ利用疑惑。週刊誌が一般女性とカフェで会う写真を配信。事務所は「確認中」",m:["💬 8,412","🔁 32,105","❤️ 41,208"],imp:312},
@@ -1119,7 +1119,7 @@ function closeChat(){ $("#line-chat").style.display="none"; $("#line-list").styl
 $("#talk-hiroto").addEventListener("click",openChat);
 $("#line-back").addEventListener("click",closeChat);
 function nowTime(){const d=new Date();return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
-function himMsg(text,delay){ return new Promise(res=>{ later(()=>{ $("#typing").classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight; later(()=>{ $("#typing").classList.remove("on"); const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#chat").appendChild(d); $("#line-preview").textContent=text; $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); }); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res();},1100);},delay||400);})}
+function himMsg(text,delay){ return new Promise(res=>{ later(()=>{ $("#typing").classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight; later(()=>{ $("#typing").classList.remove("on"); const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#chat").appendChild(d); $("#line-preview").textContent=text; $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); }); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res();},1100);},delay||400);})}
 function meMsg(text){ pop();const d=document.createElement("div");d.className="msg me";d.innerHTML=`<span class="bub"></span><span class="meta pr" data-t="${nowTime()}">${nowTime()}</span>`;d.querySelector(".bub").textContent=text;$("#chat").appendChild(d);$("#chat").scrollTop=$("#chat").scrollHeight}
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){
@@ -1177,7 +1177,7 @@ const ACTS=[
 ];
 function genAct(){ if(state._actN>=14) return; state._actN=(state._actN||0)+1; const nm=pick(GEN_NAMES); const t=pick(ACTS);
   const d=document.createElement("div"); d.className="act-row"; d.dataset.t0=Date.now();
-  d.innerHTML=avaTxt(nm)+"<span><b>"+nm+"</b>"+t[1]+' <span class="tm">今</span></span>'+(t[0]==="follow"?'<button class="fb">フォローバック</button>':'<img class="thumb" src="assets/cafe.jpg" alt="">');
+  d.innerHTML=avaTxt(nm)+"<span><b>"+nm+"</b>"+t[1]+' <span class="tm">今</span></span>'+(t[0]==="follow"?'<button class="fb">フォローバック</button>':'<img loading="lazy" decoding="async" class="thumb" src="assets/cafe.jpg" alt="">');
   const list=$("#act-list"); list.insertBefore(d,list.children[2]||null); $("#ig-bell").textContent="•"; bump("ig");
   const lk=$("#nao-like-n"); if(lk && t[0]==="like") lk.textContent=(parseInt(lk.textContent)+Math.floor(Math.random()*40+3));
 }
@@ -1200,15 +1200,15 @@ function openThread(){ ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).
 }
 $("#thread-back").addEventListener("click",()=>{ $("#x-thread").style.display="none"; $("#x-pane-tl").style.display="block"; const cb=$("#x-compose-btn"); if(cb) cb.style.display=""; });
 /* ===== v3: LINE photo + stamp ===== */
-function himPhoto(src){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub photo"><img src="${src}" alt=""></span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },500); }) }
-function himStamp(emoji){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub stamp">${emoji}</span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },400); }) }
+function himPhoto(src){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub photo"><img loading="lazy" decoding="async" src="${src}" alt=""></span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },500); }) }
+function himStamp(emoji){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub stamp">${emoji}</span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },400); }) }
 /* ===== v3: group chat ===== */
 function openGroup(){ const sw=$("#line-search-wrap"); if(sw) sw.style.display="none"; $("#line-list").style.display="none"; $("#line-head-list").style.display="none"; $("#line-chat").style.display="none"; const g=$("#group-chat"); g.style.display="flex"; state.gUnread=0; $("#g-unread").style.display="none"; clearBadge("line"); $("#gchat").scrollTop=$("#gchat").scrollHeight }
 function closeGroup(){ $("#group-chat").style.display="none"; $("#line-list").style.display="block"; $("#line-head-list").style.display="flex"; show("line") }
 $("#talk-group").addEventListener("click",openGroup);
 $("#group-back").addEventListener("click",closeGroup);
 const FRIENDS={ゆい:["#e879a0","ゆ"],みさき:["#7a9cc6","み"],りな:["#8fbf7a","り"]};
-function gMsg(name,text){ const f=FRIENDS[name]; const FRG={"ゆい":"assets/fr-yui.jpg","みさき":"assets/fr-misaki.jpg","りな":"assets/fr-rina.jpg"}; const ava=FRG[name]?`<img class="avatar" src="${FRG[name]}" width="34" height="34" alt="">`:`<span class="ava-txt" style="background:${f[0]};width:34px;height:34px;font-size:14px">${f[1]}</span>`; const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`${ava}<span><div class="gname">${name}</div><span class="bub"></span></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text;
+function gMsg(name,text){ const f=FRIENDS[name]; const FRG={"ゆい":"assets/fr-yui.jpg","みさき":"assets/fr-misaki.jpg","りな":"assets/fr-rina.jpg"}; const ava=FRG[name]?`<img loading="lazy" decoding="async" class="avatar" src="${FRG[name]}" width="34" height="34" alt="">`:`<span class="ava-txt" style="background:${f[0]};width:34px;height:34px;font-size:14px">${f[1]}</span>`; const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`${ava}<span><div class="gname">${name}</div><span class="bub"></span></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text;
   const _sib=$$("#gchat .msg.him"); const _prev=_sib[_sib.length-1];
   if(_prev&&_prev.querySelector(".gname")&&_prev.querySelector(".gname").textContent===name){ const _gn=d.querySelector(".gname"); if(_gn) _gn.style.display="none"; if(d.firstElementChild) d.firstElementChild.style.visibility="hidden"; d.style.marginTop="-5px"; }
   $("#gchat").appendChild(d); $("#g-preview").textContent=name+"："+text; $("#gchat").scrollTop=$("#gchat").scrollHeight;
@@ -1221,7 +1221,7 @@ $("#g-text").addEventListener("keydown",e=>{ if(e.key==="Enter") sendGroup(); })
 async function groupFlood(){ const seq=[["ゆい","なお！？"],["ゆい","ニュース見た！？　あれ、なお！？"],["みさき","待って、相手って…なおのこと？"],["ゆい","例のTinderの人、本物やったんかい"],["みさき","連絡してる間、気づかんかったって本当！？"],["りな","ファンやのに気づかんって、どんだけ私服が別人なん…"],["りな","インスタのフォロワー増え方が異常なんだけど"],["ゆい","電話出れる？　心配で"],["みさき","「出会いはマッチングアプリ」って記事出てるよ…叩かれてるけど、私たちは味方だから"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
 /* ===== v5: his IG extra posts ===== */
 (function(){ const hs=$("#v-hisig .scroll"); if(!hs) return;
-  const mk=(img,cap,likes,date)=>{ const d=document.createElement("div"); d.className="ig-post"; d.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date}</span></div>`; hs.appendChild(d); };
+  const mk=(img,cap,likes,date)=>{ const d=document.createElement("div"); d.className="ig-post"; d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date}</span></div>`; hs.appendChild(d); };
   mk("assets/roses.jpg","🌹","3,863","2026年10月18日"); mk("assets/hoodie.jpg","寒くなってきた","4,023","2026年10月5日");
 })();
 /* ===== v5: photo viewer ===== */
@@ -1491,7 +1491,7 @@ async function startAct2(kind){ if(state._act2) return; state._act2=true; state.
   setHeat(kind==="open"?52:kind==="wait"?28:38);
   addNewsRow("assets/crown.jpg","一夜明けて——ひろと、本人の言葉でコメント　ファンへの感謝に「泣いた」の声","TV・新聞各紙 ・ 翌朝",null);
   const cap={open:"「マッチングアプリを利用していたのは、事実です。軽率でした。本当にごめんなさい。お相手と交際の事実はありません。アプリは退会しました」",wait:"「今は、歌とダンスに集中します。アプリは退会しました。温かく見守ってくださると嬉しいです」",away:"「アプリは退会しました。お相手とされる方とは、もう連絡も取っていません。心配をかけて、本当にごめんなさい」",half:"「アプリは退会しました。お相手とは交際の事実はなく、今後も一人のファンとして見守ってくださるそうです。僕も、ステージで返していきます」"}[kind];
-  const st=document.createElement("div"); st.className="ig-post"; st.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">NEW</span></div><img class="pimg" src="assets/stage.jpg" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span></div><div class="cap"><b>193.hiroto_jixiang</b> いつも応援してくださっている皆さまへ。<br>今回のことで、驚かせてしまった方、悲しい気持ちにさせてしまった方、本当にごめんなさい。<br>ステージに立てるのは、皆さんがいてくれるからで、その気持ちは毎日、毎日変わりません。${cap}<br>これからも、歌とダンスで返していけるよう、本当に本当に頑張ります。いつもありがとう。——大翔</div><div class="cmt"><b>rottdan_a</b>この長さ…本気のやつだ、泣いた</div><div class="cmt"><b>m_support</b>応援し続けるって決めた</div>`;
+  const st=document.createElement("div"); st.className="ig-post"; st.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">NEW</span></div><img loading="lazy" decoding="async" class="pimg" src="assets/stage.jpg" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span></div><div class="cap"><b>193.hiroto_jixiang</b> いつも応援してくださっている皆さまへ。<br>今回のことで、驚かせてしまった方、悲しい気持ちにさせてしまった方、本当にごめんなさい。<br>ステージに立てるのは、皆さんがいてくれるからで、その気持ちは毎日、毎日変わりません。${cap}<br>これからも、歌とダンスで返していけるよう、本当に本当に頑張ります。いつもありがとう。——大翔</div><div class="cmt"><b>rottdan_a</b>この長さ…本気のやつだ、泣いた</div><div class="cmt"><b>m_support</b>応援し続けるって決めた</div>`;
   $("#his-statement").appendChild(st);
   push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","ひろとが新しい投稿","「いつも応援してくださっている皆さまへ」——タップで読む",()=>show("hisig"));
   animateCount($("#ig-fol-n"),52814,58920,12000); animateCount($("#w-ig"),52814,58920,12000);
@@ -1504,7 +1504,7 @@ async function startAct2(kind){ if(state._act2) return; state._act2=true; state.
   ];
   CALM_X.forEach((c,i)=>later(()=>{ const tl=$("#x-pane-tl"); if(tl) tl.prepend(postEl({n:c[1],h:c[2],tm:"今",t:c[3],m:["💬 "+(40+i*37),"🔁 "+(210+i*160),"❤️ "+(1400+i*900).toLocaleString("ja-JP")]},false)); if(i===0) push("X","#000","𝕏","ロットダン💙 がポスト","「やっぱり、ステージの大翔が好きだ」——空気が変わり始めた",()=>show("x")); },c[0]));
   /* v20: days later, an ordinary post on his IG — just daily life, nothing to read into */
-  later(()=>{ const mp=document.createElement("div"); mp.className="ig-post"; mp.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">NEW</span></div><img class="pimg" src="assets/ig-food.jpg" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span></div><div class="cap"><b>193.hiroto_jixiang</b> 今日のごはん。ちゃんと食べてます。次のステージに向けて、練習がんばるで💪</div><div class="cmt"><b>m_support</b>ちゃんと食べててえらい…！</div><div class="cmt"><b>rottdan_a</b>日常が戻ってきた感じ、嬉しい</div>`; const hs=$("#his-statement"); if(hs) hs.prepend(mp); push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","ひろとが新しい投稿","「今日のごはん。ちゃんと食べてます」——何気ない日常の一枚",()=>show("hisig")); },95000);
+  later(()=>{ const mp=document.createElement("div"); mp.className="ig-post"; mp.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">NEW</span></div><img loading="lazy" decoding="async" class="pimg" src="assets/ig-food.jpg" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span></div><div class="cap"><b>193.hiroto_jixiang</b> 今日のごはん。ちゃんと食べてます。次のステージに向けて、練習がんばるで💪</div><div class="cmt"><b>m_support</b>ちゃんと食べててえらい…！</div><div class="cmt"><b>rottdan_a</b>日常が戻ってきた感じ、嬉しい</div>`; const hs=$("#his-statement"); if(hs) hs.prepend(mp); push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","ひろとが新しい投稿","「今日のごはん。ちゃんと食べてます」——何気ない日常の一枚",()=>show("hisig")); },95000);
   later(()=>{ const d=document.createElement("div"); d.className="endcard fincard"; d.id="endcard2"; d.innerHTML=`<h3>🌅 翌朝 —— fin</h3><p>${kind==="away"?"トレンドから名前は消えた。LINEのいちばん上は、もう更新されないまま。それでも、あの数日は本物だった。":kind==="half"?"トレンドから名前は消えた。連絡も、もう来ない。それでも、半年後の会場で——なおは、もう一度だけ彼に会いに行く。ファンとして。":"炎上は、少しずつ日常に変わっていく。トレンドから名前が消えても、あの数日のやり取りは消えない。続きは、なおの言葉で。"}</p>${kind==="half"?'<button class="btn-main" style="background:linear-gradient(135deg,#5b2a86,#fd267d);color:#fff" onclick="window.showEpilogueV20&&window.showEpilogueV20()">🎫 半年後へ —— 遠くのステージ</button>':""}<div class="fin-credits"><div class="fc-t">『現役アイドル、Tinderやってた件』</div><div class="fc-l">出演　なお ／ ひろと</div><div class="fc-l">物語　Super Like から始まった、付き合わなかった二人の話</div><div class="fc-l">声　AI生成音声（AnyVoice）</div><div class="fc-n">※ この作品は創作フィクションです。実在の人物・団体とは関係ありません。</div></div><button class="btn-main" style="background:#111;color:#fff" onclick="location.reload()">🔁 最初からもう一度</button>`; $("#news-scroll").prepend(d); push("ニュース速報","#e60012","N","続報：本人の言葉に、応援の声も","「嘘をつかなかった」ことにファンの反応は——タップで結末へ",()=>show("news")); },14000);
 }
 function showEnding(box){ if($("#endcard")) return; const d=document.createElement("div"); d.className="endcard"; d.id="endcard"; d.innerHTML=`<h3>${box.h}</h3><p>${box.t}</p><p class="endstats">📊 この夜の記録<br>Instagram フォロワー 342 → ${$("#w-ig").textContent} ／ X フォロワー 189 → ${$("#w-x").textContent}<br>炎上度ピーク ${state._heatPeak||state.heat}% ・ 電池は ${$("#batt-n").textContent}% まで減った</p><button class="btn-main" style="background:#1d9bf0;color:#fff" onclick="shareRecord()">📤 この夜の記録をシェア</button><button class="btn-main" style="background:#06c755;color:#fff" onclick="startAct2(state.ending||'wait')">🌅 翌朝を見る</button>${state.ending==="half"?'<button class="btn-main" style="background:linear-gradient(135deg,#5b2a86,#fd267d);color:#fff" onclick="window.showEpilogueV20&&window.showEpilogueV20()">🎫 半年後へ —— 遠くのステージ</button>':""}<button class="btn-main" style="background:#111;color:#fff" onclick="location.reload()">🔁 最初からもう一度</button>`; $("#news-scroll").prepend(d); show("news");}
@@ -1534,7 +1534,7 @@ $("#pv-fav").addEventListener("click",()=>{ const list=pvList(); const f=list[pv
 })();
 /* X thread reply */
 (function(){ const th=$("#x-thread"); if(!th) return; const row=document.createElement("div"); row.className="th-reply";
-  row.innerHTML='<img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""><input id="th-text" placeholder="返信をポスト" autocomplete="off"><button id="th-send">返信</button>'; th.appendChild(row);
+  row.innerHTML='<img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""><input id="th-text" placeholder="返信をポスト" autocomplete="off"><button id="th-send">返信</button>'; th.appendChild(row);
   function send(){ const inp=row.querySelector("#th-text"); const v=inp.value.trim(); if(!v) return; inp.value=""; const el=postEl({n:"なお",h:"@nao_0324",t:v,m:["💬 0","🔁 0","❤️ 0"]},false); $("#thread-replies").prepend(el); toast("🐦 <b>返信しました</b>");
     if(state.started){ const lb=el.querySelector(".like-btn"); let n=0; const iv=setInterval(()=>{ n+=Math.floor(Math.random()*25+4); if(lb) lb.textContent="❤️ "+n.toLocaleString("ja-JP"); if(n>260) clearInterval(iv); },2800); timers.push(iv); } }
   row.querySelector("#th-send").addEventListener("click",send);
@@ -1598,7 +1598,7 @@ const VOICE_SCHED_B=[
 function himVoice(src,durLabel){ return new Promise(res=>{ later(()=>{ const tp=$("#typing"); tp.classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight;
   later(()=>{ tp.classList.remove("on"); const d=document.createElement("div"); d.className="msg him";
     const bars=Array.from({length:16},()=>'<i style="height:'+(5+Math.floor(Math.random()*15))+'px"></i>').join("");
-    d.innerHTML='<img class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub vbub"><button class="vbtn">▶</button><span class="vwave">'+bars+'</span><span class="vdur">'+durLabel+'</span></span><span class="meta">'+nowTime()+'</span>';
+    d.innerHTML='<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="34" height="34" alt=""><span class="bub vbub"><button class="vbtn">▶</button><span class="vwave">'+bars+'</span><span class="vdur">'+durLabel+'</span></span><span class="meta">'+nowTime()+'</span>';
     $("#chat").appendChild(d); $("#line-preview").textContent="🎤 ボイスメッセージ";
     $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); });
     $("#chat").scrollTop=$("#chat").scrollHeight; bump("line");
@@ -1631,7 +1631,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
    {h:"人気アイドル、ワールドツアーの追加公演を発表　チケット争奪戦へ",m:"エンタメ通信 ・ 18:20配信",img:"assets/stage.jpg",body:`<p>人気アイドル・井汲大翔（24）のワールドツアーに追加公演が発表された。大阪と東京での2公演で、ファンクラブ先行は来週から受け付ける。</p><div class="box">本人コメント「待っててくれてありがとう。絶対に来てよかったって思えるステージにします」</div><p>前回のツアーは全公演が完売。今回もチケットの争奪戦が予想される。</p>`},
    {h:"ファンミーティングで見せた“王子様衣装”がSNSで話題に",m:"芸能デスク ・ 17:05配信",img:"assets/crown.jpg",body:`<p>週末に開催されたファンミーティングで井汲大翔が披露した白い王子様衣装が、SNSで大きな話題になっている。投稿された写真は数時間で数万件のいいねを集めた。</p><div class="box">ファンの声「似合いすぎて現実味がない」「この衣装で登場した瞬間、会場の空気が変わった」</div><p>ファンミーティングは今後も各地で開催予定だという。</p>`}
   ];
-  $$("#news-list .newsrow").forEach((r,i)=>{ const A=CALM_ARTS[i]; if(!A) return; r.style.cursor="pointer"; r.addEventListener("click",()=>{ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>${A.h}</h2><div class="m">${A.m}</div><img src="${A.img}" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px">${A.body}</div>`; $("#news-scroll").scrollTop=0; }); });
+  $$("#news-list .newsrow").forEach((r,i)=>{ const A=CALM_ARTS[i]; if(!A) return; r.style.cursor="pointer"; r.addEventListener("click",()=>{ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>${A.h}</h2><div class="m">${A.m}</div><img loading="lazy" decoding="async" src="${A.img}" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px">${A.body}</div>`; $("#news-scroll").scrollTop=0; }); });
   const NC=[["プロフ写真は決定的すぎる…","3,204"],["交際してないなら、相手の子も気の毒","5,891"],["現役アイドルがアプリ、時代やなぁ","1,102"],["ファンミで見たあの笑顔、誰にも向けてへんかったんやな","2,468"],["活動は続けてほしい。事務所の対応待ち","4,317"]];
   const _oa=openArticle; openArticle=function(){ _oa(); const art=$("#news-article .article"); if(art&&!art.querySelector(".nc-wrap")){ const w=document.createElement("div"); w.className="nc-wrap"; w.innerHTML=`<h3 style="margin-top:22px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">8,412件</span></h3>`+NC.map(c=>`<div style="padding:10px 0;border-bottom:1px solid #f2f2f7"><div style="font-size:14px;line-height:1.75">${c[0]}</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px"><span class="nc-like" style="cursor:pointer">♡ ${c[1]}</span> ・ 返信</div></div>`).join(""); art.appendChild(w); } };
   document.addEventListener("click",e=>{ const l=e.target.closest(".nc-like"); if(!l) return; const on=l.dataset.on==="1"; const num=parseInt(l.textContent.replace(/[^0-9]/g,""))||0; l.textContent=(on?"♡ ":"❤️ ")+(on?Math.max(0,num-1):num+1).toLocaleString("ja-JP"); l.dataset.on=on?"":"1"; l.style.color=on?"":"#e0245e"; l.style.fontWeight=on?"":"700"; });
@@ -1640,7 +1640,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 (function(){ const grid=$("#ph-grid"); if(!grid) return;
   const VIDS=[["tt-poster-shinee.jpg","SHINee「누나 너무 예뻐」🎵",0],["tt-poster-ng.jpg","NGバージョン🙅‍♀️",1],["tt-poster-steady.jpg","NCT WISH「Steady」🎵",2],["tt-poster-seventeen.jpg","SEVENTEEN練習曲🎵",3],["tt-poster-treasure.jpg","TREASUREチャレンジ🎵",4]];
   VIDS.forEach(([img,cap,idx])=>{ const f=document.createElement("figure"); f.dataset.cat="video"; f.dataset.vidx=idx;
-    f.innerHTML=`<img src="assets/${img}" alt=""><span style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.55);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px">▶</span><figcaption>${cap}</figcaption>`;
+    f.innerHTML=`<img loading="lazy" decoding="async" src="assets/${img}" alt=""><span style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.55);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px">▶</span><figcaption>${cap}</figcaption>`;
     grid.appendChild(f); });
   const tabs=$("#album-tabs"); const b=document.createElement("button"); b.dataset.album="video"; b.textContent="動画"; tabs.appendChild(b);
   b.addEventListener("click",()=>{ $$("#album-tabs button").forEach(x=>x.classList.remove("act")); b.classList.add("act"); tagPhotos(); $$("#ph-grid figure").forEach(f=>{ f.style.display=(f.dataset.cat==="video")?"":"none"; }); });
@@ -1671,10 +1671,10 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
    ["assets/nao-hl-08.jpg","釜山の上から🌊 また行けますように","74"]];
   let anchor=scroll.querySelector(".ig-post");
   POSTS.forEach(([img,cap,likes])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
     if(anchor&&anchor.parentNode===scroll){ anchor.after(d); anchor=d; } else scroll.appendChild(d); });
   const grid=$("#ph-grid");
-  if(grid){ [["assets/nao-hl-01.jpg","牛タン🐮"],["assets/nao-hl-06.jpg","推し活の遠征💚"],["assets/nao-hl-08.jpg","釜山の景色🌊"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
+  if(grid){ [["assets/nao-hl-01.jpg","牛タン🐮"],["assets/nao-hl-06.jpg","推し活の遠征💚"],["assets/nao-hl-08.jpg","釜山の景色🌊"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
   Object.assign(PHOTO_DATES,{"nao-hl-01.jpg":"ごはん ・ 牛タン","nao-hl-06.jpg":"推し活 ・ 遠征","nao-hl-08.jpg":"釜山 ・ おでかけ"});
 })();
 /* ===== v50: more of nao's photos as IG posts + album entries ===== */
@@ -1686,10 +1686,10 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
    ["assets/nao-hl-09.jpg","もふもふに癒された日🐶 かわいすぎた…","132"]];
   const v18first=Array.from(scroll.querySelectorAll(".ig-post")).find(p=>p.textContent.includes("釜山きたら"));
   POSTS.forEach(([img,cap,likes])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
     if(v18first) scroll.insertBefore(d,v18first); else scroll.appendChild(d); });
   const grid=$("#ph-grid");
-  if(grid){ [["assets/nao-hl-17.jpg","韓屋の路地"],["assets/nao-hl-20.jpg","韓国のチキン🍗"],["assets/nao-hl-03.jpg","散歩道🌿"],["assets/nao-hl-09.jpg","わんこ🐶"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
+  if(grid){ [["assets/nao-hl-17.jpg","韓屋の路地"],["assets/nao-hl-20.jpg","韓国のチキン🍗"],["assets/nao-hl-03.jpg","散歩道🌿"],["assets/nao-hl-09.jpg","わんこ🐶"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
   Object.assign(PHOTO_DATES,{"nao-hl-17.jpg":"韓国 ・ 韓屋の路地","nao-hl-20.jpg":"韓国 ・ チキン","nao-hl-03.jpg":"おでかけ ・ 散歩道","nao-hl-09.jpg":"わんこ ・ もふもふ"});
 })();
 /* ===== v51: nao's cooking & cafe photos complete the highlight set ===== */
@@ -1701,10 +1701,10 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
    ["assets/nao-hl-15.jpg","ぐつぐつ🍲 ロールキャベツのポトフ","83"]];
   const v18first=Array.from(scroll.querySelectorAll(".ig-post")).find(p=>p.textContent.includes("釜山きたら"));
   POSTS.forEach(([img,cap,likes])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
     if(v18first) scroll.insertBefore(d,v18first); else scroll.appendChild(d); });
   const grid=$("#ph-grid");
-  if(grid){ [["assets/nao-hl-11.jpg","クリスマスのお菓子🎄"],["assets/nao-hl-12.jpg","手作りワンタン🥟"],["assets/nao-hl-14.jpg","蒸籠蒸し"],["assets/nao-hl-15.jpg","ポトフ🍲"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
+  if(grid){ [["assets/nao-hl-11.jpg","クリスマスのお菓子🎄"],["assets/nao-hl-12.jpg","手作りワンタン🥟"],["assets/nao-hl-14.jpg","蒸籠蒸し"],["assets/nao-hl-15.jpg","ポトフ🍲"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
   Object.assign(PHOTO_DATES,{"nao-hl-11.jpg":"カフェ ・ クリスマス","nao-hl-12.jpg":"ごはん ・ 手作り","nao-hl-14.jpg":"ごはん ・ 蒸籠","nao-hl-15.jpg":"ごはん ・ ポトフ"});
 })();
 /* ===== v53: manager call gets a real (preset) voice, synced to subtitles ===== */
@@ -1725,7 +1725,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
   if(grid){ const gi=grid.querySelector('img[src$="'+n.before+'"]'); if(gi){ const g=document.createElement("img"); g.src="assets/"+n.img; grid.insertBefore(g, gi); } }
  });
  function POSTHTML(n){ const jp=n.date.replace("-","年").replace("-","月")+"日";
-  return '<div class="ig-post" data-date="'+n.date+'" style="border-top:1px solid #eee"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px"><img src="assets/ig-avatar.jpg" style="width:30px;height:30px;border-radius:50%"><b style="font-size:13px">193.hiroto_jixiang</b></div><img class="pimg" src="assets/'+n.img+'" style="width:100%;display:block"><div style="padding:8px 12px;font-size:13px"><b class="like-btn" style="cursor:pointer">いいね！'+n.likes+'件</b><div style="margin-top:2px"><b>193.hiroto_jixiang</b> '+n.cap+'</div><div style="color:#999;font-size:11px;margin-top:2px">'+jp+' · コメント'+n.cmts+'件</div></div></div>'; }
+  return '<div class="ig-post" data-date="'+n.date+'" style="border-top:1px solid #eee"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px"><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:30px;height:30px;border-radius:50%"><b style="font-size:13px">193.hiroto_jixiang</b></div><img loading="lazy" decoding="async" class="pimg" src="assets/'+n.img+'" style="width:100%;display:block"><div style="padding:8px 12px;font-size:13px"><b class="like-btn" style="cursor:pointer">いいね！'+n.likes+'件</b><div style="margin-top:2px"><b>193.hiroto_jixiang</b> '+n.cap+'</div><div style="color:#999;font-size:11px;margin-top:2px">'+jp+' · コメント'+n.cmts+'件</div></div></div>'; }
 })();
 /* ===== v31 (orig v157): slice-of-life LINE ambience - friends send mundane, time-aware messages (Tinder ver: pools switch by story period - quiet during the scandal, gentle after the farewell) ===== */
 (function(){
@@ -1789,7 +1789,7 @@ let fCur=null;
 const FRF={"ゆい":"assets/fr-yui.jpg","みさき":"assets/fr-misaki.jpg","りな":"assets/fr-rina.jpg"};
 function fRender(){ const box=$("#fchat"); box.innerHTML='<div class="daychip">トーク</div>'; const fc=FCHATS[fCur]; if(!fc) return;
   fc.log.forEach(([who,text])=>{ const d=document.createElement("div");
-    if(who==="f"){ d.className="msg him"; d.innerHTML=`<img class="avatar" src="${FRF[fc.name]||""}" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; }
+    if(who==="f"){ d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="${FRF[fc.name]||""}" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; }
     else { d.className="msg me"; d.innerHTML=`<span class="bub"></span><span class="meta">既読<br>${nowTime()}</span>`; }
     d.querySelector(".bub").textContent=text; box.appendChild(d); });
   box.scrollTop=box.scrollHeight; }
@@ -1833,7 +1833,7 @@ $("#f-text").addEventListener("keydown",e=>{ if(e.key==="Enter") fSend(); });
   const MEMBERS={
     group:{title:"いつメン🍻",note:"次の飲み：日程調整中🍻<br>決まったらここに書く！",album:"assets/nao-hl-06.jpg",list:[["なお","あなた","def"],["ゆい","",""],["みさき","",""],["りな","",""]]}};
   window.openMembers=function(kind){ const M=MEMBERS[kind]; if(!M) return; $("#mp-title").textContent=M.title+" ・ メンバー";
-    $("#mp-list").innerHTML=M.list.map(m=>{ const ava=m[2]==="pic"?'<img class="avatar" src="assets/line-avatar.jpg" width="38" height="38" alt="">':(m[2]==="def"?'<img class="avatar" src="assets/nao-avatar4.jpg" width="38" height="38" alt="">':avaTxt(m[0]));
+    $("#mp-list").innerHTML=M.list.map(m=>{ const ava=m[2]==="pic"?'<img loading="lazy" decoding="async" class="avatar" src="assets/line-avatar.jpg" width="38" height="38" alt="">':(m[2]==="def"?'<img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="38" height="38" alt="">':avaTxt(m[0]));
       return `<div class="mp-row">${ava}<span>${m[0]}</span>${m[1]?`<span style="margin-left:auto;color:#8e8e93;font-size:12px">${m[1]}</span>`:""}</div>`; }).join("");
     $("#mp-note").innerHTML=M.note; $("#mp-album-img").src=M.album; $("#member-panel").classList.add("on"); };
   $("#mp-close").addEventListener("click",()=>$("#member-panel").classList.remove("on"));
@@ -1861,7 +1861,7 @@ function attachRxn(bub,emoji){ if(!bub) return; let r=bub.querySelector(".rxn");
 /* ===== v27: hiroto's real posts dug from Instagram ===== */
 (function(){ const sc=$("#v-hisig .scroll"); if(!sc) return;
   const mk=(img,cap,likes,cmts,date,fan)=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="${img}" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 ${cmts}</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date} ・ 実際の投稿より</span></div>`+fan.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 ${cmts}</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date} ・ 実際の投稿より</span></div>`+fan.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
     return d; };
   const firstPost=sc.querySelector(".ig-post");
   const neck=mk("assets/ig-necklace.jpg","with ヒカリくん<br>この写真がお気に入り<br>コーヒー大好き<br>このネックレスはおばあちゃんから貰った笑笑<br>ロックやろ","1,939",47,"10月24日",[["hiro_pyon","ネックレス似合ってる！"],["fan_mama","おばあちゃんのネックレス大事にしてて素敵"]]);
@@ -1874,7 +1874,7 @@ function attachRxn(bub,emoji){ if(!bub) return; let r=bub.querySelector(".rxn");
 /* ===== v31: more of hiroto's real posts (hbd / sunset / memories) ===== */
 (function(){ const sc=$("#v-hisig .scroll"); if(!sc) return;
   const mk=(img,cap,likes,cmts,date,fan)=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="${img}" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 ${cmts}</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date} ・ 実際の投稿より</span></div>`+fan.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 ${cmts}</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date} ・ 実際の投稿より</span></div>`+fan.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
     return d; };
   const hbd=mk("assets/ig-hbd.jpg","HBD to me🎂<br>いつもありがとうございます！🙇‍♂️","4,914",174,"8月23日",[["fan_mama","お誕生日おめでとう🎂"],["hiro_pyon","24歳も応援するよ！"]]);
   const sunset=mk("assets/ig-sunset.jpg","노을☀️","4,135",49,"3月14日",[["sakura_act","海と夕焼け似合いすぎ"],["yume_ko","ウインクずるい…"]]);
@@ -1888,20 +1888,20 @@ function attachRxn(bub,emoji){ if(!bub) return; let r=bub.querySelector(".rxn");
 /* ===== v32: singapore red carpet post + gifted selfies ===== */
 (function(){ const sc=$("#v-hisig .scroll"); if(!sc) return;
   const d=document.createElement("div"); d.className="ig-post";
-  d.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="assets/ig-singapore.jpg" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 80</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：4,191件<br><b>193.hiroto_jixiang</b> レッドカーペット!! inシンガポール🇸🇬<br><span style="color:#8e8e93;font-size:12px">2025年11月16日 ・ 実際の投稿より</span></div><div class="cmt"><b>weibo_fan</b>WEIBO GALA受賞おめでとう🏆</div><div class="cmt"><b>sg_hrt</b>青スーツ似合いすぎ</div>`;
+  d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="assets/ig-singapore.jpg" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 80</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：4,191件<br><b>193.hiroto_jixiang</b> レッドカーペット!! inシンガポール🇸🇬<br><span style="color:#8e8e93;font-size:12px">2025年11月16日 ・ 実際の投稿より</span></div><div class="cmt"><b>weibo_fan</b>WEIBO GALA受賞おめでとう🏆</div><div class="cmt"><b>sg_hrt</b>青スーツ似合いすぎ</div>`;
   const statPost=sc.querySelector('.ig-post img.pimg[src$="insta-post.jpg"]'); const statEl=statPost?statPost.closest(".ig-post"):null;
   if(statEl) sc.insertBefore(d, statEl); else sc.appendChild(d);
 })();
 /* ===== v35: 2023 hanbok post (feed tail) ===== */
 (function(){ const sc=$("#v-hisig .scroll"); if(!sc) return;
   const d=document.createElement("div"); d.className="ig-post";
-  d.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="assets/ig-hanbok.jpg" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 1,203</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：70,816件<br><b>193.hiroto_jixiang</b> 첫 한복😎<br><span style="color:#8e8e93;font-size:12px">2023年4月28日 ・ 実際の投稿より</span></div><div class="cmt"><b>pon_cha</b>한복似合いすぎ…</div><div class="cmt"><b>hrt_0823</b>この頃から完成してる</div>`;
+  d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="assets/ig-hanbok.jpg" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 1,203</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：70,816件<br><b>193.hiroto_jixiang</b> 첫 한복😎<br><span style="color:#8e8e93;font-size:12px">2023年4月28日 ・ 実際の投稿より</span></div><div class="cmt"><b>pon_cha</b>한복似合いすぎ…</div><div class="cmt"><b>hrt_0823</b>この頃から完成してる</div>`;
   sc.appendChild(d);
 })();
 /* ===== v36: 2023 posts (dog / birthday cafe / fanmeet stage) ===== */
 (function(){ const sc=$("#v-hisig .scroll"); if(!sc) return;
   const mk=(img,cap,likes,cmts,date,fan)=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="${img}" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 ${cmts}</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date} ・ 実際の投稿より</span></div>`+fan.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt="本人の実際の投稿"><div class="acts"><span class="like-btn">❤️</span><span>💬 ${cmts}</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date} ・ 実際の投稿より</span></div>`+fan.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
     return d; };
   sc.appendChild(mk("assets/ig-dog.jpg","My cute dog🥰","18,810",169,"2023年11月30日",[["wan_love","わんこ誕生日おめでとう🐶"],["hrt_mama","舌出てるのかわいい"]]));
   sc.appendChild(mk("assets/ig-bday2023.jpg","沢山の応援広告やカフェなどお誕生日祝いありがとうございました！😊","39,010",453,"2023年8月23日",[["cafe_hbd","カフェ行ったよ！"],["seoul_fan","写真の壁すごかった"]]));
@@ -1976,13 +1976,13 @@ document.addEventListener("click",e=>{ const fb=e.target.closest?e.target.closes
    ["assets/nao-western.jpg","洋食ランチ🍽 チーズとんかつ、とろけた",71,[["yui_s","チェックのテーブルクロスかわいい"]]]
   ];
   POSTS.forEach(([img,cap,likes,cmts])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324<span style="margin-left:auto;color:#8e8e93">…</span></div><img class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">♡ ${likes}</span><span>💬</span><span>✈</span><span class="sv" style="cursor:pointer">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap}</div>`+cmts.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324<span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">♡ ${likes}</span><span>💬</span><span>✈</span><span class="sv" style="cursor:pointer">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap}</div>`+cmts.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
     const sv=d.querySelector(".sv"); sv.addEventListener("click",()=>{ const on=sv.textContent==="🔖"; sv.textContent=on?"📌":"🔖"; toast(on?"📌 <b>保存しました</b>":"保存を取り消しました"); });
     sc.appendChild(d); });
 })();
 /* ===== v17: realism (comment avatars) ===== */
 function decorateCmt(c){ if(!c||c.dataset.ava) return; const b=c.querySelector("b"); if(!b) return; c.dataset.ava="1";
-  if(b.textContent.trim()==="nao_0324"){ c.insertAdjacentHTML("afterbegin",'<img class="cmt-ava" src="assets/nao-avatar4.jpg" width="24" height="24" alt="">'); }
+  if(b.textContent.trim()==="nao_0324"){ c.insertAdjacentHTML("afterbegin",'<img loading="lazy" decoding="async" class="cmt-ava" src="assets/nao-avatar4.jpg" width="24" height="24" alt="">'); }
   else c.insertAdjacentHTML("afterbegin",avaTxt(b.textContent)); }
 function decorateCmts(root){ (root||document).querySelectorAll(".cmt").forEach(decorateCmt); }
 decorateCmts(document);
@@ -2091,7 +2091,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     if(idx!==lastCardIdx){ sceneIdx=0; lastCardIdx=idx; }
     if(c.hiroto){
       if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","ひろと があなたに Super Like しました！","あなたを Super Like した人がいます —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} setTimeout(()=>toast("💭 <b>（…似てるけど、まさか本人なわけないか。Tinderにいるはずないし）</b>"),1400); }
-      w.innerHTML=`<div class="super-banner">⭐ ひろと があなたに Super Like しました！<br><span>通常のLikeじゃなく、Super Like で来てくれた人だよ</span></div><div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><div class="prompt"><b>${c.prompt2Q}</b>${c.prompt2A}</div><div style="font-size:11px;opacity:.85;margin-top:8px">写真はタップで切り替え ・ マロン🐶と暮らしてます</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      w.innerHTML=`<div class="super-banner">⭐ ひろと があなたに Super Like しました！<br><span>通常のLikeじゃなく、Super Like で来てくれた人だよ</span></div><div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><div class="prompt"><b>${c.prompt2Q}</b>${c.prompt2A}</div><div style="font-size:11px;opacity:.85;margin-top:8px">写真はタップで切り替え ・ マロン🐶と暮らしてます</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
       const img=document.getElementById("hiroto-photo");
       img.addEventListener("click",()=>{ photoIdx=(photoIdx+1)%photos.length; render(); });
       const _tzl=document.getElementById("tz-l"), _tzr=document.getElementById("tz-r");
@@ -2103,7 +2103,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       if(_card) _card.addEventListener("click",e=>{ if(e.target.closest(".info")) return; if(e.target.id==="hiroto-photo") return; photoIdx=(photoIdx+1)%photos.length; render(); });
     } else {
       const sc=c.scenes[sceneIdx%c.scenes.length];
-      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img class="mainphoto" src="${c.photos?c.photos[sceneIdx%c.photos.length]:''}" alt="${c.name}"><div class="scene-cap" style="position:absolute;top:26px;left:12px;z-index:3">${sc.cap}</div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" src="${c.photos?c.photos[sceneIdx%c.photos.length]:''}" alt="${c.name}"><div class="scene-cap" style="position:absolute;top:26px;left:12px;z-index:3">${sc.cap}</div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
       const _zl=document.getElementById("tz-l"), _zr=document.getElementById("tz-r");
       if(_zl) _zl.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+c.scenes.length-1)%c.scenes.length; render(); });
       if(_zr) _zr.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+1)%c.scenes.length; render(); });
@@ -2143,7 +2143,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   function tMe(text){ try{pop();}catch(e){} const d=document.createElement("div"); d.className="t-bub me"; d.textContent=text; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; }
   function tNote(text){ const d=document.createElement("div"); d.style.cssText="align-self:center;background:#f2f2f7;color:#6e6e73;font-size:12px;border-radius:12px;padding:7px 11px;max-width:88%;text-align:center;line-height:1.55;font-style:italic"; d.textContent=text; document.getElementById("tchat").appendChild(d); }
   function tChip(text){ const d=document.createElement("div"); d.className="daychip"; d.style.cssText="align-self:center;margin:8px 0 2px"; d.textContent=text; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; }
-  function tPhoto(src,cap){ return new Promise(res=>{ setTimeout(()=>{ const d=document.createElement("div"); d.className="t-bub them"; d.style.padding="6px"; d.innerHTML='<img src="'+src+'" alt="" style="width:190px;max-width:100%;border-radius:12px;display:block">'+(cap?'<div style="padding:5px 4px 2px"></div>':''); if(cap) d.querySelector("div").textContent=cap; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; res(); },500); }); }
+  function tPhoto(src,cap){ return new Promise(res=>{ setTimeout(()=>{ const d=document.createElement("div"); d.className="t-bub them"; d.style.padding="6px"; d.innerHTML='<img loading="lazy" decoding="async" src="'+src+'" alt="" style="width:190px;max-width:100%;border-radius:12px;display:block">'+(cap?'<div style="padding:5px 4px 2px"></div>':''); if(cap) d.querySelector("div").textContent=cap; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; res(); },500); }); }
   function tTyping(ms){ return new Promise(res=>{ const d=document.createElement("div"); d.className="t-bub them"; d.textContent="・・・"; d.style.opacity=".6"; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; setTimeout(()=>{ d.remove(); res(); }, ms||2000); }); }
   function tChoices(q,opts){ const w=document.getElementById("t-choices"); w.innerHTML=`<div class="q">${q}</div>`; opts.forEach(o=>{ const b=document.createElement("button"); b.textContent=o.label; b.addEventListener("click",()=>{ w.classList.remove("on"); w.innerHTML=""; tMe(o.label); o.fn(); }); w.appendChild(b); }); w.classList.add("on"); }
   async function startChat(){
@@ -2298,7 +2298,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     var w=$("#match-list"); if(!w) return;
     var m = window.__tinder && window.__tinder.matched;
     if(!m){ w.innerHTML='<div style="background:#f8f8fa;border-radius:14px;padding:16px;font-size:13.5px;color:#8e8e93;line-height:1.7">まだマッチはありません。<br>「発見」で ひろと を Like すると、ここに表示されます。</div>'; return; }
-    w.innerHTML='<div style="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px"><img src="assets/tinder-hiroto-1.jpg" width="52" height="52" style="border-radius:50%;object-fit:cover" alt=""><span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">ひろと ⭐</span><span style="font-size:12px;color:#8e8e93">'+(typeof state!=="undefined"&&state._tinderDone?"LINE交換済み ・ 初デートは10/4":"マッチしました ・ メッセージしてみよう")+'</span></span><button id="ml-chat" style="margin-left:auto;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button></div>';
+    w.innerHTML='<div style="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" width="52" height="52" style="border-radius:50%;object-fit:cover" alt=""><span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">ひろと ⭐</span><span style="font-size:12px;color:#8e8e93">'+(typeof state!=="undefined"&&state._tinderDone?"LINE交換済み ・ 初デートは10/4":"マッチしました ・ メッセージしてみよう")+'</span></span><button id="ml-chat" style="margin-left:auto;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button></div>';
     var b=$("#ml-chat"); if(b) b.addEventListener("click",function(){ panes("chat"); });
   }
   document.getElementById("ttab-match").addEventListener("click",function(){ setTimeout(function(){ renderMatchList(); panes("match"); },30); });
@@ -2549,7 +2549,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   const rel=items.slice(0,3); if(!rel.length) return;
   const w=document.createElement("div"); w.className="rel-wrap"; w.innerHTML="<h3>関連記事</h3>";
   rel.forEach(it=>{ const b=document.createElement("button"); b.className="rel-item";
-   b.innerHTML='<img src="'+it.img+'" alt=""><span class="rh">'+it.t+"</span>";
+   b.innerHTML='<img loading="lazy" decoding="async" src="'+it.img+'" alt=""><span class="rh">'+it.t+"</span>";
    b.addEventListener("click",()=>{ it.go(); const s=document.querySelector("#news-scroll"); if(s) s.scrollTop=0; });
    w.appendChild(b); });
   art.appendChild(w);
@@ -2955,7 +2955,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   const img=document.createElement("img"); img.className="avatar"; img.src=FR[nm]; img.width=48; img.height=48; img.alt="";
   s.replaceWith(img); });
  if(typeof avaTxt==="function"){ const _at=avaTxt;
-  avaTxt=function(name){ const k=(name||"").trim(); if(FR[k]) return '<img class="avatar" src="'+FR[k]+'" width="40" height="40" alt="">'; return _at(name); }; }
+  avaTxt=function(name){ const k=(name||"").trim(); if(FR[k]) return '<img loading="lazy" decoding="async" class="avatar" src="'+FR[k]+'" width="40" height="40" alt="">'; return _at(name); }; }
  const fc=document.querySelector("#friend-chat");
  if(fc){ const head=fc.querySelector(".line-head");
   if(head&&!head.querySelector("#fc-ava")){ const img=document.createElement("img"); img.id="fc-ava"; img.className="avatar";
@@ -3048,8 +3048,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   window.openTDetail=function(c){
     if(!c||!dbox) return;
     var photosHtml = c.hiroto
-      ? '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"].map(function(s){ return '<img src="'+s+'" style="width:110px;height:140px;object-fit:cover;border-radius:12px;flex:none" alt="">'; }).join("")+"</div>"
-      : '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+(c.photos||[]).map(function(p,i){ return '<div style="position:relative;width:110px;height:140px;border-radius:12px;flex:none;overflow:hidden"><img src="'+p+'" style="width:100%;height:100%;object-fit:cover" alt=""><span style="position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);color:#fff;font-size:10.5px;font-weight:700;text-align:center;padding:4px 5px">'+(c.scenes[i]?c.scenes[i].cap:"")+'</span></div>'; }).join("")+"</div>";
+      ? '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"].map(function(s){ return '<img loading="lazy" decoding="async" src="'+s+'" style="width:110px;height:140px;object-fit:cover;border-radius:12px;flex:none" alt="">'; }).join("")+"</div>"
+      : '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+(c.photos||[]).map(function(p,i){ return '<div style="position:relative;width:110px;height:140px;border-radius:12px;flex:none;overflow:hidden"><img loading="lazy" decoding="async" src="'+p+'" style="width:100%;height:100%;object-fit:cover" alt=""><span style="position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);color:#fff;font-size:10.5px;font-weight:700;text-align:center;padding:4px 5px">'+(c.scenes[i]?c.scenes[i].cap:"")+'</span></div>'; }).join("")+"</div>";
     var prompts = '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:9px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.promptQ+"</b>"+c.promptA+"</div>"
       + (c.prompt2Q ? '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:8px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.prompt2Q+"</b>"+c.prompt2A+"</div>" : "");
     dbox.innerHTML = "<h3>"+c.name+" <span style='font-weight:600;font-size:16px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px'>⭐ Super Like済み</span>":"")+"</h3>"
@@ -3164,7 +3164,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     var nr=$("#tm-newrow"); if(!nr) return;
     var m=window.__tinder && window.__tinder.matched;
     if(!m){ nr.innerHTML='<div style="font-size:12.5px;color:#8e8e93;padding:8px 2px">まだ新規マッチはありません</div>'; return; }
-    nr.innerHTML='<button class="newtile" id="tm-tile-h"><img src="assets/tinder-hiroto-1.jpg" alt=""><span>ひろと ⭐</span></button>'
+    nr.innerHTML='<button class="newtile" id="tm-tile-h"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt=""><span>ひろと ⭐</span></button>'
       +'<button class="newtile" data-gold="1"><span class="ph blurme" style="background:linear-gradient(160deg,#667eea,#764ba2)">？</span><span>？？？ 🔒</span></button>'
       +'<button class="newtile" data-gold="1"><span class="ph blurme" style="background:linear-gradient(160deg,#11998e,#38ef7d)">？</span><span>？？？ 🔒</span></button>';
     var th=$("#tm-tile-h"); if(th) th.addEventListener("click",function(){ showPane("chat"); clearUnread(); });
@@ -3219,7 +3219,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
         if(window.__tWithdrawn){ toast("🔒 チャットは思い出として残っています（おまけは下のボタンから）"); return; }
         if(!(typeof state!=="undefined" && state._tinderDone)){ toast("💬 まずは選択肢の会話を進めてね（LINE交換後に写真も送れるよ）"); return; }
         var d=document.createElement("div"); d.className="t-bub me"; d.style.padding="6px";
-        d.innerHTML='<img src="'+PHOTOS[pi%PHOTOS.length]+'" alt="" style="width:180px;max-width:100%;border-radius:12px;display:block">';
+        d.innerHTML='<img loading="lazy" decoding="async" src="'+PHOTOS[pi%PHOTOS.length]+'" alt="" style="width:180px;max-width:100%;border-radius:12px;display:block">';
         pi++; tchat.appendChild(d); tchat.scrollTop=99999;
         var rp=PREPLY[(pi-1)%PREPLY.length];
         setTimeout(function(){ var r=document.createElement("div"); r.className="t-bub them"; r.textContent=rp; tchat.appendChild(r); tchat.scrollTop=99999; },1100);
@@ -3232,21 +3232,21 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     if(!gbox) return;
     var m=window.__tinder && window.__tinder.matched;
     var himTile = m
-      ? '<button class="picktile" id="gp-him"><span class="im"><img src="assets/tinder-hiroto-1.jpg" alt=""></span><span>ひろと ⭐ マッチ済み</span></button>'
-      : '<button class="picktile" id="gp-him"><span class="im"><img class="blurme" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>⭐ Super Like</span></button>';
+      ? '<button class="picktile" id="gp-him"><span class="im"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>ひろと ⭐ マッチ済み</span></button>'
+      : '<button class="picktile" id="gp-him"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/tinder-hiroto-1.jpg" alt=""></span><span>⭐ Super Like</span></button>';
     gbox.innerHTML='<h3>⭐ Tinder Gold / Platinum</h3><div class="sub">あなたを Like した人が見放題…という設定の画面です。課金はできません（演出）。</div><div style="font-size:11.5px;color:#8e8e93;margin:-2px 0 10px">💛 なおは 9/26 から Gold（初月の無料トライアルに、ノリで入った）。ひろとも同じ日に Gold にしていたらしい</div>'
       +'<div class="gold-plan"><div style="font-weight:900;font-size:15px">Tinder Gold　<span style="color:#b8860b">月額 ¥2,200〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">あなたをLikeした人が見える／無制限のLike／月1ブースト</div><button class="gold-buy" style="margin-top:9px;background:#e8a33d;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Goldにアップグレード</button></div>'
       +'<div class="gold-plan plat"><div style="font-weight:900;font-size:15px">Tinder Platinum　<span style="color:#5b7ba5">月額 ¥3,400〜</span></div><div style="font-size:12.5px;line-height:1.7;margin-top:4px">マッチ前にメッセージ送信／あなたのLikeを優先表示／スーパーいいね週5回</div><button class="gold-buy" style="margin-top:9px;background:#5b7ba5;color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:900;cursor:pointer;font-family:inherit">Platinumにアップグレード</button></div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">💛 あなたを Like した人</div><div class="pickrow">'
       + himTile
-      +'<button class="picktile" data-blur="1"><span class="im"><img class="blurme" src="assets/dummy-takumi-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
-      +'<button class="picktile" data-blur="1"><span class="im"><img class="blurme" src="assets/dummy-sota-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
-      +'<button class="picktile" data-blur="1"><span class="im"><img class="blurme" src="assets/dummy-soma-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/dummy-takumi-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/dummy-sota-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
+      +'<button class="picktile" data-blur="1"><span class="im"><img loading="lazy" decoding="async" class="blurme" src="assets/dummy-soma-1.jpg" alt=""></span><span>？？？ 🔒</span></button>'
       +'</div>'
       +'<div style="font-weight:900;font-size:15px;margin:14px 0 8px">🔥 Top Picks（本日のおすすめ）</div><div class="pickrow">'
       + himTile.replace('id="gp-him"','id="gp-him2"')
-      +'<button class="picktile" data-pick="しゅん"><span class="im"><img src="assets/dummy-shun-1.jpg" alt=""></span><span>しゅん 28</span></button>'
-      +'<button class="picktile" data-pick="たくみ"><span class="im"><img src="assets/dummy-takumi-1.jpg" alt=""></span><span>たくみ 29</span></button>'
+      +'<button class="picktile" data-pick="しゅん"><span class="im"><img loading="lazy" decoding="async" src="assets/dummy-shun-1.jpg" alt=""></span><span>しゅん 28</span></button>'
+      +'<button class="picktile" data-pick="たくみ"><span class="im"><img loading="lazy" decoding="async" src="assets/dummy-takumi-1.jpg" alt=""></span><span>たくみ 29</span></button>'
       +'</div>'
       +'<button class="sheet-close" id="gold-close">閉じる</button>';
     gsheet.classList.add("on");
@@ -3422,7 +3422,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  document.head.appendChild(css);
 
  const ov=document.createElement("div"); ov.id="pov-ov";
- ov.innerHTML='<div class="pov-head"><img src="assets/ig-avatar.jpg" alt=""><span><div class="nm">井汲 大翔</div><div class="sb" id="pov-sub"></div></span><button id="pov-skip">スキップ</button></div><div id="pov-body"></div><div class="pov-foot" id="pov-foot">タップで進む ▽</div>';
+ ov.innerHTML='<div class="pov-head"><img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" alt=""><span><div class="nm">井汲 大翔</div><div class="sb" id="pov-sub"></div></span><button id="pov-skip">スキップ</button></div><div id="pov-body"></div><div class="pov-foot" id="pov-foot">タップで進む ▽</div>';
  const anchor=$("#chapter-card"); if(anchor&&anchor.parentElement) anchor.parentElement.appendChild(ov);
 
  const POVS={
@@ -3600,7 +3600,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   ".epi-close{margin:10px 22px 30px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);color:#fff;border-radius:999px;padding:13px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;width:calc(100% - 44px)}";
  document.head.appendChild(css);
  const ov=document.createElement("div"); ov.id="epi-ov";
- ov.innerHTML='<div class="epi-hero"><img src="assets/stage.jpg" alt=""><div class="epi-title"><div class="big">半年後</div><div class="sub">—— 遠くのステージ</div></div></div><div class="epi-body" id="epi-body"></div><button class="epi-close" id="epi-close">閉じる</button>';
+ ov.innerHTML='<div class="epi-hero"><img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><div class="epi-title"><div class="big">半年後</div><div class="sub">—— 遠くのステージ</div></div></div><div class="epi-body" id="epi-body"></div><button class="epi-close" id="epi-close">閉じる</button>';
  const anchor=document.querySelector(".phone")||document.body; anchor.appendChild(ov);
  const PARAS=[
   "5月。ツアーの大阪公演。一般発売で、やっと取れた一枚を握って、なおは会場のいちばん後ろにいた。",
@@ -4142,7 +4142,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     var sub=SUBS[order.length%SUBS.length];
     dmOv.innerHTML='<h2 style="font-size:30px;font-weight:900;font-style:italic">It\'s a Match!</h2>'
      +'<p style="margin-top:8px;font-size:14px;line-height:1.6">なお と '+c.name+' がマッチしました<br><span style="font-size:12px;opacity:.85">'+sub+'</span></p>'
-     +'<div style="display:flex;gap:14px;align-items:center;margin:20px 0 8px"><img src="assets/nao-tinder-3.jpg" alt="なお" style="width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff">'+(c.photos?'<img src="'+c.photos[0]+'" alt="'+c.name+'" style="width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff">':'<span style="width:92px;height:92px;border-radius:50%;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;border:3px solid #fff;color:#fff">'+c.ini+'</span>')+'</div>'
+     +'<div style="display:flex;gap:14px;align-items:center;margin:20px 0 8px"><img loading="lazy" decoding="async" src="assets/nao-tinder-3.jpg" alt="なお" style="width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff">'+(c.photos?'<img loading="lazy" decoding="async" src="'+c.photos[0]+'" alt="'+c.name+'" style="width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid #fff">':'<span style="width:92px;height:92px;border-radius:50%;background:'+c.grad+';display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:900;border:3px solid #fff;color:#fff">'+c.ini+'</span>')+'</div>'
      +'<button id="dm-ov-msg" class="btn-main" style="background:#fff;color:#fd267d;max-width:280px">メッセージを送る</button>'
      +'<button id="dm-ov-keep" style="margin-top:12px;background:none;border:none;color:#fff;font-weight:700;cursor:pointer;font-family:inherit">スワイプを続ける</button>';
     dmOv.classList.add("on");
@@ -4190,7 +4190,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       var m=matched[name]; if(!m) return;
       var row=document.createElement("div"); row.id="dm-row-"+name;
       row.style.cssText="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px;margin-top:10px";
-      row.innerHTML=(m.photos?'<img src="'+m.photos[0]+'" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none">':'<span style="width:52px;height:52px;border-radius:50%;background:'+m.grad+';display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;flex:none">'+m.ini+'</span>')
+      row.innerHTML=(m.photos?'<img loading="lazy" decoding="async" src="'+m.photos[0]+'" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none">':'<span style="width:52px;height:52px;border-radius:50%;background:'+m.grad+';display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;flex:none">'+m.ini+'</span>')
        +'<span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">'+name+' <span style="font-weight:600;font-size:12.5px;color:#8e8e93">'+m.age+'</span></span><span class="dm-pv" style="font-size:12px;color:#8e8e93">マッチしました ・ メッセージしてみよう</span></span>'
        +'<span class="dm-rowdot" style="display:none">NEW</span>'
        +'<button style="margin-left:auto;background:#f2f2f7;color:#111;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button>';
@@ -4205,7 +4205,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       if(document.getElementById("dm-tile-"+name)) return;
       var m=matched[name]; if(!m) return;
       var b=document.createElement("button"); b.className="newtile"; b.id="dm-tile-"+name;
-      b.innerHTML=(m.photos?'<img src="'+m.photos[0]+'" alt="">':'<span class="ph" style="background:'+m.grad+'">'+m.ini+'</span>')+'<span>'+name+'</span>';
+      b.innerHTML=(m.photos?'<img loading="lazy" decoding="async" src="'+m.photos[0]+'" alt="">':'<span class="ph" style="background:'+m.grad+'">'+m.ini+'</span>')+'<span>'+name+'</span>';
       b.addEventListener("click",function(){ openDummyChat(name); });
       nr.appendChild(b);
     });
@@ -4431,7 +4431,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    img.width=el.classList.contains("ig-ava")?38:34; img.height=img.width; img.alt="";
    el.replaceWith(img); }); }
  if(typeof avaTxt==="function"){ const _at=avaTxt;
-  avaTxt=function(name){ const k=(name||"").trim(); if(FR[k]) return '<img class="avatar" src="'+FR[k]+'" width="40" height="40" alt="">'; return _at(name); }; }
+  avaTxt=function(name){ const k=(name||"").trim(); if(FR[k]) return '<img loading="lazy" decoding="async" class="avatar" src="'+FR[k]+'" width="40" height="40" alt="">'; return _at(name); }; }
  new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{ if(n.nodeType===1) swapIn(n); }))).observe(document.body,{childList:true,subtree:true});
  swapIn(document);
  let _swN=0; const _swIv=setInterval(()=>{ swapIn(document); if(++_swN>9) clearInterval(_swIv); },700);
@@ -4440,7 +4440,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
  (function(){ const list=$("#line-list"); if(!list||$("#my-prof")) return;
   const row=document.createElement("div"); row.id="my-prof";
   row.style.cssText="display:flex;align-items:center;gap:11px;padding:10px 16px 12px;border-bottom:8px solid #f2f2f7;cursor:pointer";
-  row.innerHTML='<img src="assets/nao-avatar4.jpg" style="width:44px;height:44px;border-radius:50%" alt=""><span><b style="font-size:15px">なお</b><br><span id="my-status" style="color:#8e8e93;font-size:12.5px">☕ カフェオレとサウナが好き</span></span>';
+  row.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:44px;height:44px;border-radius:50%" alt=""><span><b style="font-size:15px">なお</b><br><span id="my-status" style="color:#8e8e93;font-size:12.5px">☕ カフェオレとサウナが好き</span></span>';
   row.addEventListener("click",()=>toast("👤 <b>なお</b>のプロフィール（物語の中だけ）"));
   list.insertBefore(row,list.firstChild);
   const head=$("#line-head-list");
@@ -4519,7 +4519,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    const img=f.querySelector("img"); const src=img.getAttribute("src");
    pv.classList.remove("on"); show("line"); openChat();
    const d=document.createElement("div"); d.className="msg me";
-   d.innerHTML='<span class="bub photo"><img src="'+src+'" alt=""></span><span class="meta">'+nowTime()+'</span>';
+   d.innerHTML='<span class="bub photo"><img loading="lazy" decoding="async" src="'+src+'" alt=""></span><span class="meta">'+nowTime()+'</span>';
    $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight;
    toast("💬 <b>写真を送ったよ</b>");
    if(state._vmCalm||state._vmA2){ clearTimeout(state._replyT); state._replyT=setTimeout(()=>himReply("（写真を送った）"),1300); }
@@ -4593,7 +4593,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const FILTS=[["そのまま",""],["🌅 夕日","sepia(.55) saturate(1.3)"],["🎞 フィルム","contrast(1.1) saturate(.75)"],["❄️ クール","hue-rotate(18deg) saturate(1.15)"]];
   let sc=0, fl=0;
   b.addEventListener("click",()=>{ panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">📷 カメラ</b></div>'+
-   '<div style="border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center"><img id="cam-img" src="'+SCENES[0][1]+'" style="width:100%;height:100%;object-fit:cover" alt=""></div>'+
+   '<div style="border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center"><img loading="lazy" decoding="async" id="cam-img" src="'+SCENES[0][1]+'" style="width:100%;height:100%;object-fit:cover" alt=""></div>'+
    '<div style="display:flex;gap:7px;flex-wrap:wrap;margin:12px 0">'+SCENES.map((s,i)=>'<button class="cam-sc" data-i="'+i+'" style="border:1px solid #ddd;background:#fff;border-radius:999px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:inherit">'+s[0]+'</button>').join("")+'</div>'+
    '<div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px">'+FILTS.map((f,i)=>'<button class="cam-fl" data-i="'+i+'" style="border:1px solid #ddd;background:#fff;border-radius:999px;padding:6px 11px;font-size:12px;cursor:pointer;font-family:inherit">'+f[0]+'</button>').join("")+'</div>'+
    '<button id="cam-shut" style="display:block;margin:0 auto;width:66px;height:66px;border-radius:50%;border:5px solid #111;background:#fff;cursor:pointer;font-size:24px">📸</button>';
@@ -4605,7 +4605,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    panel.querySelector("#cam-shut").addEventListener("click",()=>{
     const gridEl=$("#ph-grid"); if(!gridEl) return;
     const fig=document.createElement("figure");
-    fig.innerHTML='<img src="'+SCENES[sc][1]+'" alt=""><figcaption>'+SCENES[sc][0]+' 📷</figcaption>';
+    fig.innerHTML='<img loading="lazy" decoding="async" src="'+SCENES[sc][1]+'" alt=""><figcaption>'+SCENES[sc][0]+' 📷</figcaption>';
     if(FILTS[fl][1]) fig.querySelector("img").style.filter=FILTS[fl][1];
     gridEl.prepend(fig); toast("📸 <b>アルバムに保存したよ</b>"); });
   }); })();
@@ -4680,7 +4680,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
     im.src=f.querySelector("img").getAttribute("src"); });
    function finish(){ const url=cv.toDataURL("image/jpeg",0.85);
     const fig=document.createElement("figure");
-    fig.innerHTML='<img src="'+url+'" alt=""><figcaption>コラージュ 🧩</figcaption>';
+    fig.innerHTML='<img loading="lazy" decoding="async" src="'+url+'" alt=""><figcaption>コラージュ 🧩</figcaption>';
     gridEl.prepend(fig);
     const home=$("#v-home"); if(home) home.style.backgroundImage='url("'+url+'")';
     bar.style.display="none"; sel.forEach(f=>f.style.outline=""); sel=[];
@@ -4721,7 +4721,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    const nEl=vig.querySelector(".ig-stats .n"); if(nEl&&posts.length) nEl.textContent=posts.length; };
   const build=()=>{ collect();
    g.innerHTML=posts.map((p,i)=>{ const im=p.querySelector("img.pimg"); if(!im) return ""; const car=+p.dataset.carousel>1;
-    return '<span class="ng-cell" data-pi="'+i+'" style="position:relative;display:block;cursor:pointer"><img src="'+im.getAttribute("src")+'" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" alt="">'+(car?'<i class="car-badge">⧉ '+p.dataset.carousel+'</i>':"")+'</span>'; }).join("");
+    return '<span class="ng-cell" data-pi="'+i+'" style="position:relative;display:block;cursor:pointer"><img loading="lazy" decoding="async" src="'+im.getAttribute("src")+'" style="width:100%;aspect-ratio:1;object-fit:cover;display:block" alt="">'+(car?'<i class="car-badge">⧉ '+p.dataset.carousel+'</i>':"")+'</span>'; }).join("");
    g.querySelectorAll(".ng-cell").forEach(cell=>cell.addEventListener("click",()=>{ const p=posts[+cell.dataset.pi]; state._v248list=true; setMode(false);
     if(p){ p.scrollIntoView({block:"center"}); p.style.outline="3px solid #ffd94d"; setTimeout(()=>p.style.outline="",1400); } })); };
   const setMode=gridOn=>{ window.__naoGridOn=gridOn; if(gridOn) build(); else collect();
@@ -4768,7 +4768,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    const box=document.createElement("div"); box.id="my-cmt-form";
    box.style.cssText="margin:16px 0 6px;border-top:1px solid #eee;padding-top:12px";
    box.innerHTML='<div style="font-weight:800;font-size:14.5px;margin-bottom:8px">💬 コメントを書く</div>'+
-    '<div style="display:flex;gap:8px"><img src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt="">'+
+    '<div style="display:flex;gap:8px"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt="">'+
     '<input id="my-cmt-in" placeholder="当事者として、一言…" maxlength="120" style="flex:1;border:1px solid #ddd;border-radius:999px;padding:8px 13px;font-size:13.5px;outline:none">'+
     '<button id="my-cmt-btn" style="background:#111;color:#fff;border:none;border-radius:999px;padding:8px 15px;font-size:13px;font-weight:700;cursor:pointer">投稿</button></div>'+
     '<div id="my-cmt-list"></div>';
@@ -4777,7 +4777,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
     let likes=0;
     const row=document.createElement("div");
     row.style.cssText="display:flex;gap:9px;margin-top:12px;background:#fff8e6;border:1px solid #f0e2ac;border-radius:12px;padding:10px 12px";
-    row.innerHTML='<img src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div style="flex:1"><b style="font-size:13px">nao_0324</b> <span style="color:#999;font-size:11px">・ たった今 ・ あなたのコメント</span><div class="mc-text" style="font-size:13.5px;line-height:1.55;margin-top:2px"></div><div style="font-size:12px;color:#e0245e;margin-top:4px">♡ <span class="mc-likes">0</span></div></div>';
+    row.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div style="flex:1"><b style="font-size:13px">nao_0324</b> <span style="color:#999;font-size:11px">・ たった今 ・ あなたのコメント</span><div class="mc-text" style="font-size:13.5px;line-height:1.55;margin-top:2px"></div><div style="font-size:12px;color:#e0245e;margin-top:4px">♡ <span class="mc-likes">0</span></div></div>';
     row.querySelector(".mc-text").textContent=v;
     box.querySelector("#my-cmt-list").prepend(row);
     toast("コメントを投稿したよ");
@@ -4847,7 +4847,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   sc.appendChild(row);
   const apply=()=>{ const ic=$('[data-open="hisig"] .ic'); if(!ic) return;
    const [label,src]=OPTS[cur];
-   if(src){ ic.innerHTML='<img src="'+src+'" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit" alt="">'; ic.style.overflow="hidden"; }
+   if(src){ ic.innerHTML='<img loading="lazy" decoding="async" src="'+src+'" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit" alt="">'; ic.style.overflow="hidden"; }
    else { ic.innerHTML="🤴"; }
    const b=$("#icon-cur"); if(b) b.textContent=label; };
   row.addEventListener("click",()=>{ cur=(cur+1)%OPTS.length; apply(); toast("アイコンを「"+OPTS[cur][0].replace(/^[^ ]+ /,"")+"」に変えたよ"); });
@@ -4869,8 +4869,8 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const player=document.createElement("div"); player.id="hl-player";
   player.style.cssText="position:absolute;inset:0;z-index:90;background:#000;display:none;flex-direction:column";
   player.innerHTML='<div id="hl-bars" style="display:flex;gap:4px;padding:52px 10px 8px"></div>'+
-   '<div style="display:flex;align-items:center;padding:2px 12px;color:#fff;font-size:13.5px"><img src="assets/line-avatar.jpg" style="width:30px;height:30px;border-radius:50%;margin-right:8px" alt=""><b>193.hiroto_jixiang</b><span id="hl-title" style="margin-left:8px;opacity:.75"></span><button id="hl-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button></div>'+
-   '<div style="flex:1;position:relative"><img id="hl-img" style="width:100%;height:100%;object-fit:contain" alt=""><div id="hl-cap" style="position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.9)"></div>'+
+   '<div style="display:flex;align-items:center;padding:2px 12px;color:#fff;font-size:13.5px"><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:30px;height:30px;border-radius:50%;margin-right:8px" alt=""><b>193.hiroto_jixiang</b><span id="hl-title" style="margin-left:8px;opacity:.75"></span><button id="hl-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:20px;cursor:pointer">✕</button></div>'+
+   '<div style="flex:1;position:relative"><img loading="lazy" decoding="async" id="hl-img" style="width:100%;height:100%;object-fit:contain" alt=""><div id="hl-cap" style="position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.9)"></div>'+
    '<div id="hl-prev" style="position:absolute;left:0;top:0;bottom:0;width:35%"></div><div id="hl-next" style="position:absolute;right:0;top:0;bottom:0;width:65%"></div></div>';
   v.appendChild(player);
   let segs=[], idx=0, timer=null;
@@ -4884,7 +4884,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   player.querySelector("#hl-next").addEventListener("click",()=>step(1));
   player.querySelector("#hl-prev").addEventListener("click",()=>step(-1));
   HLS.forEach(([label,cover,ss])=>{ const b=document.createElement("button");
-   b.innerHTML='<span class="ring"><img src="'+cover+'" alt=""></span>'+label;
+   b.innerHTML='<span class="ring"><img loading="lazy" decoding="async" src="'+cover+'" alt=""></span>'+label;
    b.addEventListener("click",()=>{ segs=ss; idx=0; player.querySelector("#hl-title").textContent=label; player.style.display="flex"; draw(); });
    row.appendChild(b); }); })();
 
@@ -4922,9 +4922,9 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    sec.style.cssText="padding:2px 14px 14px;background:#111";
    sec.innerHTML='<button class="tt-cmt-open" style="background:none;border:none;color:#9db3c8;font-size:13px;cursor:pointer;padding:4px 0">💬 コメント '+cmts.length+' 件を見る</button>'+
     '<div class="tt-cmts" style="display:none">'+
-    cmts.map((c,i)=>'<div style="display:flex;gap:8px;margin-top:9px"><img src="assets/default-avatar.svg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">'+NAMES[(idx+i)%NAMES.length]+'</b> <span style="color:#ddd">'+c+'</span></div></div>').join("")+
+    cmts.map((c,i)=>'<div style="display:flex;gap:8px;margin-top:9px"><img loading="lazy" decoding="async" src="assets/default-avatar.svg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">'+NAMES[(idx+i)%NAMES.length]+'</b> <span style="color:#ddd">'+c+'</span></div></div>').join("")+
     '<div class="tt-mine"></div>'+
-    '<div style="display:flex;gap:7px;margin-top:11px"><img src="assets/nao-avatar4.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><input class="tt-in" placeholder="コメントを追加…" maxlength="80" style="flex:1;background:#222;border:1px solid #333;border-radius:999px;padding:7px 12px;color:#fff;font-size:13px;outline:none"><button class="tt-send" style="background:#fe2c55;color:#fff;border:none;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer">投稿</button></div></div>';
+    '<div style="display:flex;gap:7px;margin-top:11px"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><input class="tt-in" placeholder="コメントを追加…" maxlength="80" style="flex:1;background:#222;border:1px solid #333;border-radius:999px;padding:7px 12px;color:#fff;font-size:13px;outline:none"><button class="tt-send" style="background:#fe2c55;color:#fff;border:none;border-radius:999px;padding:7px 14px;font-size:12.5px;font-weight:700;cursor:pointer">投稿</button></div></div>';
    card.appendChild(sec);
    const listEl=sec.querySelector(".tt-cmts");
    sec.querySelector(".tt-cmt-open").addEventListener("click",e=>{ const open=listEl.style.display!=="none";
@@ -4932,7 +4932,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    sec.querySelector(".tt-send").addEventListener("click",()=>{ const inp=sec.querySelector(".tt-in"); const v=inp.value.trim(); if(!v) return; inp.value="";
     const d=document.createElement("div");
     d.style.cssText="display:flex;gap:8px;margin-top:9px";
-    d.innerHTML='<img src="assets/nao-avatar4.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">nao_0324</b> <span style="color:#ffd94d"></span></div>';
+    d.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">nao_0324</b> <span style="color:#ffd94d"></span></div>';
     d.querySelector("span").textContent=v;
     sec.querySelector(".tt-mine").appendChild(d);
     toast("コメントを投稿したよ"); });
@@ -4946,7 +4946,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const live=document.createElement("div"); live.id="ig-live";
   live.style.cssText="position:absolute;inset:0;z-index:95;background:#000;display:none;flex-direction:column;color:#fff";
   live.innerHTML='<video id="live-vid" src="assets/tt-shinee.mp4" playsinline loop muted style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>'+
-   '<div style="position:relative;padding:54px 12px 0;display:flex;align-items:center;gap:8px"><span style="background:#e60012;font-weight:800;font-size:12px;padding:3px 8px;border-radius:5px">LIVE</span><img src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><b style="font-size:13.5px;text-shadow:0 1px 6px rgba(0,0,0,.8)">193.hiroto_jixiang</b><span id="live-view" style="margin-left:auto;background:rgba(0,0,0,.45);border-radius:999px;padding:4px 10px;font-size:12px">👁 12,483</span><button id="live-x" style="background:none;border:none;color:#fff;font-size:21px;cursor:pointer">✕</button></div>'+
+   '<div style="position:relative;padding:54px 12px 0;display:flex;align-items:center;gap:8px"><span style="background:#e60012;font-weight:800;font-size:12px;padding:3px 8px;border-radius:5px">LIVE</span><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><b style="font-size:13.5px;text-shadow:0 1px 6px rgba(0,0,0,.8)">193.hiroto_jixiang</b><span id="live-view" style="margin-left:auto;background:rgba(0,0,0,.45);border-radius:999px;padding:4px 10px;font-size:12px">👁 12,483</span><button id="live-x" style="background:none;border:none;color:#fff;font-size:21px;cursor:pointer">✕</button></div>'+
    '<div id="live-cmts" style="position:relative;margin-top:auto;padding:0 12px;max-height:38%;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:6px"></div>'+
    '<div style="position:relative;display:flex;gap:8px;padding:10px 12px 20px"><input id="live-in" placeholder="コメントを送信…" maxlength="60" style="flex:1;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 14px;color:#fff;font-size:13.5px;outline:none"><button id="live-heart" style="background:none;border:none;font-size:25px;cursor:pointer">❤️</button></div>'+
    '<div id="live-hearts" style="position:absolute;right:14px;bottom:90px;width:50px;height:220px;pointer-events:none;overflow:visible"></div>';
@@ -4974,7 +4974,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const sendLive=()=>{ const inp=live.querySelector("#live-in"); const t=inp.value.trim(); if(!t) return; inp.value=""; addCmt("nao_0324",t,true); };
   live.querySelector("#live-in").addEventListener("keydown",e=>{ if(e.key==="Enter") sendLive(); });
   const b=document.createElement("button");
-  b.innerHTML='<span class="ring" style="background:conic-gradient(#e60012,#ff7a00,#e60012)"><img src="assets/stage.jpg" alt=""></span>🔴 LIVE';
+  b.innerHTML='<span class="ring" style="background:conic-gradient(#e60012,#ff7a00,#e60012)"><img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""></span>🔴 LIVE';
   b.addEventListener("click",open);
   row.appendChild(b);
   state._openLive=open; })();
@@ -5028,10 +5028,10 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    panel.querySelectorAll("[data-row]").forEach(r=>r.addEventListener("click",()=>{ panel.style.display="none";
     const t=$(r.dataset.row); if(t) t.click(); }));
    const pc=panel.querySelector("#pts-card"); if(pc) pc.addEventListener("click",()=>open("🎁 LINEポイント",ptsHtml())); };
-  const homeHtml=()=>'<div style="display:flex;align-items:center;gap:12px;background:#f7f7fa;border-radius:14px;padding:14px"><img src="assets/nao-avatar4.jpg" style="width:56px;height:56px;border-radius:50%" alt=""><div><div style="font-weight:800;font-size:16.5px">なお</div><div style="font-size:12.5px;color:#666;margin-top:2px">'+((($("#my-status")||{}).textContent)||"☕ カフェオレとサウナが好き")+'</div></div><span style="margin-left:auto;font-size:19px">🎵</span></div>'+
+  const homeHtml=()=>'<div style="display:flex;align-items:center;gap:12px;background:#f7f7fa;border-radius:14px;padding:14px"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:56px;height:56px;border-radius:50%" alt=""><div><div style="font-weight:800;font-size:16.5px">なお</div><div style="font-size:12.5px;color:#666;margin-top:2px">'+((($("#my-status")||{}).textContent)||"☕ カフェオレとサウナが好き")+'</div></div><span style="margin-left:auto;font-size:19px">🎵</span></div>'+
    '<div id="pts-card" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:14px;padding:13px 14px;margin-top:12px;cursor:pointer"><span style="font-size:19px">🎁</span><div><div style="font-size:11.5px;opacity:.9">LINEポイント残高</div><div style="font-weight:800;font-size:17px">1,240 pt</div></div><span style="margin-left:auto">›</span></div>'+
    '<div style="font-weight:800;font-size:14px;margin:18px 0 6px">友だち '+FRIENDS.length+'</div>'+
-   FRIENDS.map(f=>'<div data-row="'+f[3]+'" style="display:flex;align-items:center;gap:11px;padding:9px 2px;cursor:pointer"><img src="'+f[1]+'" style="width:44px;height:44px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:14.5px">'+f[0]+'</div><div style="font-size:12px;color:#8e8e93;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+f[2]+'</div></div></div>').join("");
+   FRIENDS.map(f=>'<div data-row="'+f[3]+'" style="display:flex;align-items:center;gap:11px;padding:9px 2px;cursor:pointer"><img loading="lazy" decoding="async" src="'+f[1]+'" style="width:44px;height:44px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:14.5px">'+f[0]+'</div><div style="font-size:12px;color:#8e8e93;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+f[2]+'</div></div></div>').join("");
   const ptsHtml=()=>'<div style="background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:16px;padding:18px"><div style="font-size:12.5px;opacity:.9">LINEポイント残高</div><div style="font-size:32px;font-weight:800;margin-top:2px">1,240 <span style="font-size:15px">pt</span></div><div style="font-size:12px;opacity:.85;margin-top:4px">今月末で 120pt が失効します</div></div>'+
    '<div style="font-weight:800;font-size:14px;margin:18px 0 6px">履歴</div>'+
    [["キャンペーン参加","+500","11/1"],["コンビニでお買い物","+12","10/30"],["アンケート回答","+30","10/28"],["スタンプ購入","-120","10/25"]].map(h=>'<div style="display:flex;padding:9px 2px;border-bottom:1px solid #f2f2f4;font-size:13.5px"><span>'+h[0]+'</span><span style="margin-left:auto;font-weight:700;color:'+(h[1][0]==="+"?"#06c755":"#e60012")+'">'+h[1]+' pt</span><span style="color:#aaa;font-size:12px;margin-left:9px">'+h[2]+'</span></div>').join("");
@@ -5057,7 +5057,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   prof.after(bar);
   const dm=document.createElement("div"); dm.id="his-dm";
   dm.style.cssText="position:absolute;inset:0;z-index:85;background:#fff;display:none;flex-direction:column;color:#111";
-  dm.innerHTML='<div style="padding:56px 14px 9px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:9px"><button id="hdm-x" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div><b style="font-size:14px">193.hiroto_jixiang</b><div id="hdm-sub" style="font-size:11px;color:#06c755">オンライン</div></div></div>'+
+  dm.innerHTML='<div style="padding:56px 14px 9px;border-bottom:1px solid #eee;display:flex;align-items:center;gap:9px"><button id="hdm-x" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><div><b style="font-size:14px">193.hiroto_jixiang</b><div id="hdm-sub" style="font-size:11px;color:#06c755">オンライン</div></div></div>'+
    '<div id="hdm-msgs" style="flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px"></div>'+
    '<div style="display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee"><input id="hdm-in" placeholder="メッセージを送信…" maxlength="100" style="flex:1;border:1px solid #ddd;border-radius:999px;padding:9px 14px;font-size:13.5px;outline:none"><button id="hdm-send" style="background:none;border:none;color:#0095f6;font-weight:800;font-size:14px;cursor:pointer">送信</button></div>';
   v.appendChild(dm);
@@ -5100,7 +5100,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
   const CHOICES=["assets/nao-hl-01.jpg","assets/nao-hl-03.jpg","assets/nao-hl-06.jpg","assets/nao-hl-08.jpg","assets/nao-hl-11.jpg","assets/nao-hl-20.jpg"];
   const cp=mkPanel("nao-composer","＋ 新規投稿",
    '<div style="font-size:13px;color:#666;margin-bottom:8px">写真は複数選べるよ（最大6枚・タップした順に並びます）</div><div id="nc-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px">'+
-   CHOICES.map(s=>'<span class="nc-cell" data-s="'+s+'" style="position:relative;display:block;cursor:pointer"><img src="'+s+'" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;opacity:.75" alt=""><i class="nc-num" style="display:none;position:absolute;top:5px;right:5px;width:21px;height:21px;border-radius:50%;background:#0095f6;color:#fff;font-size:12px;font-weight:800;font-style:normal;align-items:center;justify-content:center;border:2px solid #fff;box-sizing:border-box"></i></span>').join("")+'</div>'+
+   CHOICES.map(s=>'<span class="nc-cell" data-s="'+s+'" style="position:relative;display:block;cursor:pointer"><img loading="lazy" decoding="async" src="'+s+'" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;opacity:.75" alt=""><i class="nc-num" style="display:none;position:absolute;top:5px;right:5px;width:21px;height:21px;border-radius:50%;background:#0095f6;color:#fff;font-size:12px;font-weight:800;font-style:normal;align-items:center;justify-content:center;border:2px solid #fff;box-sizing:border-box"></i></span>').join("")+'</div>'+
    '<div id="nc-count" style="font-size:12.5px;color:#666;margin-top:8px">選択中：1枚</div>'+
    '<textarea id="nc-cap" rows="3" placeholder="キャプションを書く…" style="width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:10px;padding:10px;font-size:14px;margin-top:12px"></textarea>'+
    '<button id="nc-post" style="width:100%;background:#0095f6;color:#fff;border:none;border-radius:999px;padding:11px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:10px">投稿する</button>');
@@ -5129,13 +5129,13 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
    const first=vig.querySelector(".ig-post"); if(!first) return;
    const d=document.createElement("div"); d.className="ig-post";
    let media;
-   if(picks.length===1){ media='<img class="pimg" src="'+picks[0]+'" alt="">'; }
+   if(picks.length===1){ media='<img loading="lazy" decoding="async" class="pimg" src="'+picks[0]+'" alt="">'; }
    else { d.dataset.carousel=picks.length;
-    media='<div class="ig-carousel"><div class="ig-car-track">'+picks.map((s,j)=>'<img class="'+(j===0?"pimg":"cimg")+'" src="'+s+'" alt="">').join("")+'</div>'+
+    media='<div class="ig-carousel"><div class="ig-car-track">'+picks.map((s,j)=>'<img loading="lazy" decoding="async" class="'+(j===0?"pimg":"cimg")+'" src="'+s+'" alt="">').join("")+'</div>'+
      '<span class="ig-car-count">1 / '+picks.length+'</span>'+
      '<button class="ig-car-nav prev" aria-label="前の写真">‹</button><button class="ig-car-nav next" aria-label="次の写真">›</button>'+
      '<div class="ig-car-dots">'+picks.map((_,j)=>'<i'+(j===0?' class="on"':"")+'></i>').join("")+'</div></div>'; }
-   d.innerHTML='<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div>'+
+   d.innerHTML='<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div>'+
     media+
     '<div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div>'+
     '<div class="cap"><b>nao_0324</b> <span class="nc-cap-t"></span> <span style="color:#8e8e93">いいね！0件</span></div><div class="nc-cmts"></div>';
@@ -5339,7 +5339,7 @@ else if(!msgs && D.script48 && cs.step<D.script.length+(D.script2?D.script2.leng
  const setup=p=>{ if(p.dataset.v132) return; p.dataset.v132="1";
   const row=document.createElement("div");
   row.style.cssText="display:flex;gap:8px;align-items:center;padding:7px 14px 11px";
-  row.innerHTML='<img src="assets/nao-avatar4.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><input placeholder="コメントを追加…" maxlength="80" style="flex:1;border:none;background:#f6f6f8;border-radius:999px;padding:7px 12px;font-size:13px;outline:none"><button style="background:none;border:none;color:#0095f6;font-weight:800;font-size:13px;cursor:pointer">投稿</button>';
+  row.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><input placeholder="コメントを追加…" maxlength="80" style="flex:1;border:none;background:#f6f6f8;border-radius:999px;padding:7px 12px;font-size:13px;outline:none"><button style="background:none;border:none;color:#0095f6;font-weight:800;font-size:13px;cursor:pointer">投稿</button>';
   p.appendChild(row);
   const post=()=>{ const inp=row.querySelector("input"); const t=inp.value.trim(); if(!t) return; inp.value="";
    let host=p.querySelector(".ig-cmts")||p.querySelector("[id^=ig-cmts]")||[...p.querySelectorAll("div")].find(d=>d.querySelector(":scope > .cmt"));
@@ -5478,7 +5478,7 @@ state.caller="hiroto"; show("call");
 const ans=document.querySelector("#call-answer"); if(ans) ans.click();
 if(video) setTimeout(()=>{ const vb=[...document.querySelectorAll("#v-call.cb")].find(b=>b.textContent.includes("📹")); if(vb) vb.click();},700);
 };
-const rowHtml=c=>'<div style="display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid #f4f4f6"><img src="'+c[1]+'" style="width:46px;height:46px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:15px">'+c[0]+'</div><div style="font-size:12px;color:#8e8e93">'+c[2]+'</div></div>'+
+const rowHtml=c=>'<div style="display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid #f4f4f6"><img loading="lazy" decoding="async" src="'+c[1]+'" style="width:46px;height:46px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:15px">'+c[0]+'</div><div style="font-size:12px;color:#8e8e93">'+c[2]+'</div></div>'+
 (c[3]==="hiroto"?'<span style="margin-left:auto;display:flex;gap:8px"><button class="pa-call" style="background:#34c759;color:#fff;border:none;width:40px;height:40px;border-radius:50%;font-size:17px;cursor:pointer">📞</button><button class="pa-vcall" style="background:#007aff;color:#fff;border:none;width:40px;height:40px;border-radius:50%;font-size:16px;cursor:pointer">📹</button></span>'
 :c[3]==="mgr"?'<button class="pa-mgr" style="margin-left:auto;background:#f2f2f7;border:none;border-radius:999px;padding:8px 13px;font-size:12.5px;cursor:pointer">発信</button>'
 :'<button class="pa-line" data-row="'+c[3]+'" style="margin-left:auto;background:#06c755;color:#fff;border:none;border-radius:999px;padding:8px 13px;font-size:12.5px;font-weight:700;cursor:pointer">LINE</button>')+'</div>';
@@ -5489,7 +5489,7 @@ body.querySelectorAll(".pa-line").forEach(b=>b.addEventListener("click",()=>{ ap
 setTimeout(()=>{ const t=document.querySelector(b.dataset.row); if(t) t.click();},60);}));};
 const views={
 fav(){ title.textContent="お気に入り";
-body.innerHTML='<div style="text-align:center;padding:20px 0 6px"><img src="assets/line-avatar.jpg" style="width:92px;height:92px;border-radius:50%" alt=""><div style="font-weight:800;font-size:19px;margin-top:9px">ひろと</div><div style="color:#8e8e93;font-size:12.5px">090-XXXX-XXXX</div>'+
+body.innerHTML='<div style="text-align:center;padding:20px 0 6px"><img loading="lazy" decoding="async" src="assets/line-avatar.jpg" style="width:92px;height:92px;border-radius:50%" alt=""><div style="font-weight:800;font-size:19px;margin-top:9px">ひろと</div><div style="color:#8e8e93;font-size:12.5px">090-XXXX-XXXX</div>'+
 '<div style="display:flex;gap:10px;justify-content:center;margin-top:14px"><button class="pa-call" style="background:#34c759;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer">📞 音声通話</button><button class="pa-vcall" style="background:#007aff;color:#fff;border:none;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:700;cursor:pointer">📹 ビデオ通話</button></div></div>'+rowHtml(CONTACTS[0]); wire();},
 hist(){ title.textContent="履歴";
 const log=document.querySelector("#set-calllog");
@@ -5568,7 +5568,7 @@ app.innerHTML='<div style="padding:54px 14px 8px;display:flex;align-items:center
 '<div style="padding:12px 16px 0"><div id="mu-title" style="font-weight:800;font-size:15.5px">'+TRACKS[0][2]+'</div><div style="color:#aaa;font-size:12px">HIROTO ・ @193hiroto</div>'+
 '<input id="mu-prog" type="range" min="0" max="100" value="0" style="width:100%;margin-top:10px;accent-color:#fe2c55">'+
 '<div style="display:flex;justify-content:center;gap:30px;align-items:center;margin-top:6px"><button id="mu-prev" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer">⏮</button><button id="mu-play" style="background:#fe2c55;border:none;color:#fff;width:56px;height:56px;border-radius:50%;font-size:22px;cursor:pointer">▶</button><button id="mu-next" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer">⏭</button></div></div>'+
-'<div style="flex:1;overflow-y:auto;padding:10px 16px">'+TRACKS.map((t,i)=>'<div class="mu-row" data-i="'+i+'" style="display:flex;gap:11px;align-items:center;padding:8px 2px;border-bottom:1px solid #26262c;cursor:pointer"><img src="'+t[1]+'" style="width:46px;height:46px;object-fit:cover;border-radius:8px" alt=""><span style="font-size:13.5px">'+t[2]+'</span>'+(i===0?'<span class="mu-eq" style="margin-left:auto;color:#fe2c55">♪</span>':'')+'</div>').join("")+'</div>';
+'<div style="flex:1;overflow-y:auto;padding:10px 16px">'+TRACKS.map((t,i)=>'<div class="mu-row" data-i="'+i+'" style="display:flex;gap:11px;align-items:center;padding:8px 2px;border-bottom:1px solid #26262c;cursor:pointer"><img loading="lazy" decoding="async" src="'+t[1]+'" style="width:46px;height:46px;object-fit:cover;border-radius:8px" alt=""><span style="font-size:13.5px">'+t[2]+'</span>'+(i===0?'<span class="mu-eq" style="margin-left:auto;color:#fe2c55">♪</span>':'')+'</div>').join("")+'</div>';
 home.appendChild(app);
 const vid=app.querySelector("#mu-vid"); let cur=0;
 const load=i=>{ cur=(i+TRACKS.length)%TRACKS.length; vid.src=TRACKS[cur][0]; vid.poster=TRACKS[cur][1];
@@ -5599,7 +5599,7 @@ app.style.display="flex";},true);
  tabs.appendChild(btn);
  const ov=document.createElement("div"); ov.id="mem-movie";
  ov.style.cssText="position:absolute;inset:0;z-index:65;background:#000;display:none;flex-direction:column;color:#fff;overflow:hidden";
- ov.innerHTML='<img id="mm-img" style="width:100%;flex:1;object-fit:cover;min-height:0" alt="">'+
+ ov.innerHTML='<img loading="lazy" decoding="async" id="mm-img" style="width:100%;flex:1;object-fit:cover;min-height:0" alt="">'+
   '<div style="padding:14px 18px 26px;background:linear-gradient(transparent,#000 40%)"><div id="mm-cap" style="font-size:16.5px;font-weight:700;text-shadow:0 1px 8px #000"></div>'+
   '<div id="mm-sub" style="font-size:12px;color:#ccc;margin-top:3px">🎬 思い出ムービー ・ タップで閉じる</div>'+
   '<div style="height:3px;background:#333;border-radius:2px;margin-top:11px"><div id="mm-bar" style="height:100%;width:0;background:#ffd94d;border-radius:2px;transition:width .3s"></div></div></div>';
@@ -5918,7 +5918,7 @@ app.style.display="flex";},true);
     initProf(); if(!profCard) return;
     var ph=profPhase(); if(!ph||ph.key===lastProfKey) return; lastProfKey=ph.key;
     if(profHead && profHead.getAttribute("src")!==ph.head) profHead.src=ph.head;
-    if(profStrip) profStrip.innerHTML=ph.strip.map(function(s){ return '<img src="'+s+'" style="width:62px;height:78px;object-fit:cover;border-radius:10px;flex:none" alt="">'; }).join("");
+    if(profStrip) profStrip.innerHTML=ph.strip.map(function(s){ return '<img loading="lazy" decoding="async" src="'+s+'" style="width:62px;height:78px;object-fit:cover;border-radius:10px;flex:none" alt="">'; }).join("");
     if(profBio) profBio.textContent=ph.bio;
   }
   var _otd=window.openTDetail;
@@ -6022,7 +6022,7 @@ app.style.display="flex";},true);
   setTimeout(()=>{ const t=REPLIES[Math.floor(Math.random()*REPLIES.length)];
    const d=document.createElement("div");
    d.style.cssText="display:flex;gap:8px;margin-top:9px";
-   d.innerHTML='<img src="assets/ig-avatar.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">193hiroto</b> <span style="color:#7ee2a8"></span></div>';
+   d.innerHTML='<img loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:28px;height:28px;border-radius:50%" alt=""><div style="font-size:13px;line-height:1.5"><b style="color:#fff">193hiroto</b> <span style="color:#7ee2a8"></span></div>';
    d.querySelector("span").textContent=t;
    mine.appendChild(d);
    if(typeof push==="function") push("TikTok","#111","♪","ひろとがコメントに返信しました","「"+t+"」");
@@ -6070,7 +6070,7 @@ app.style.display="flex";},true);
  const cap=(f.querySelector("figcaption")||{}).textContent||"";
  const bn=document.createElement("div");
  bn.style.cssText="margin:10px 12px 2px;border-radius:14px;overflow:hidden;position:relative;cursor:pointer";
- bn.innerHTML='<img src="'+img.getAttribute("src")+'" style="width:100%;height:118px;object-fit:cover;display:block" alt="">'+
+ bn.innerHTML='<img loading="lazy" decoding="async" src="'+img.getAttribute("src")+'" style="width:100%;height:118px;object-fit:cover;display:block" alt="">'+
   '<div style="position:absolute;left:0;right:0;bottom:0;padding:16px 12px 8px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff"><div style="font-size:11px;letter-spacing:1.5px">✨ 今日の1枚</div><div style="font-size:13.5px;font-weight:700">'+cap.replace(/</g,"&lt;")+'</div></div>';
  bn.addEventListener("click",()=>{ const im=f.querySelector("img"); if(im) im.click(); });
  grid.before(bn);
@@ -6152,7 +6152,7 @@ app.style.display="flex";},true);
  const wire=backFn=>{ panel.querySelector("#xdm-x").addEventListener("click",()=>panel.style.display="none");
   panel.querySelector("#xdm-back").addEventListener("click",backFn); };
  const list=()=>{ panel.innerHTML=head("✉️ ダイレクトメッセージ")+
-  '<div style="overflow-y:auto;padding:6px 0">'+Object.entries(THREADS).map(([k,t])=>'<div class="xdm-row" data-k="'+k+'" style="display:flex;gap:11px;align-items:center;padding:12px 16px;cursor:pointer;border-bottom:1px solid #f4f4f6"><img src="'+t.ava+'" style="width:46px;height:46px;border-radius:50%;object-fit:cover" alt=""><div style="min-width:0"><div style="font-weight:800;font-size:14.5px">'+t.name+' <span style="color:#71767b;font-weight:400;font-size:12.5px">'+t.h+'</span></div><div style="font-size:13px;color:#536471;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(t.log[t.log.length-1][1])+'</div></div></div>').join("")+'</div>';
+  '<div style="overflow-y:auto;padding:6px 0">'+Object.entries(THREADS).map(([k,t])=>'<div class="xdm-row" data-k="'+k+'" style="display:flex;gap:11px;align-items:center;padding:12px 16px;cursor:pointer;border-bottom:1px solid #f4f4f6"><img loading="lazy" decoding="async" src="'+t.ava+'" style="width:46px;height:46px;border-radius:50%;object-fit:cover" alt=""><div style="min-width:0"><div style="font-weight:800;font-size:14.5px">'+t.name+' <span style="color:#71767b;font-weight:400;font-size:12.5px">'+t.h+'</span></div><div style="font-size:13px;color:#536471;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(t.log[t.log.length-1][1])+'</div></div></div>').join("")+'</div>';
   wire(()=>panel.style.display="none");
   panel.querySelectorAll(".xdm-row").forEach(r=>r.addEventListener("click",()=>open(r.dataset.k))); };
  const open=k=>{ cur=THREADS[k]; const t=cur;
@@ -6760,8 +6760,8 @@ app.style.display="flex";},true);
  const ig=document.querySelector("#v-ig"); if(!ig) return;
  const mkPost=(img,likes,cap,date,cmts)=>{
   const p=document.createElement("div"); p.className="ig-post";
-  p.innerHTML='<div class="ph"><img class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div>'
-   +'<img class="pimg" src="'+img+'" alt="">'
+  p.innerHTML='<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div>'
+   +'<img loading="lazy" decoding="async" class="pimg" src="'+img+'" alt="">'
    +'<div class="acts"><span class="like-btn">♡ '+likes+'</span><span>💬</span><span>✈</span><span class="sv" style="cursor:pointer">🔖</span></div>'
    +'<div class="cap"><b>nao_0324</b> '+cap+'</div>'
    +'<div style="color:#8e8e93;font-size:12px;padding:0 12px 6px">'+date+'</div>'
@@ -6790,7 +6790,7 @@ app.style.display="flex";},true);
  const grid=document.querySelector("#ph-grid"); if(!grid) return;
  if(!grid.querySelector("[data-v267]")){
   const f=document.createElement("figure"); f.dataset.v267="1";
-  f.innerHTML='<img src="assets/sakuya-post.jpg" alt=""><figcaption>サクヤ💚</figcaption>';
+  f.innerHTML='<img loading="lazy" decoding="async" src="assets/sakuya-post.jpg" alt=""><figcaption>サクヤ💚</figcaption>';
   grid.appendChild(f); }
  const RULES=[["送ってくれた",()=> (state.chapter||0)>=2],
               ["カフェの彼",()=> (state.chapter||0)>=2],
@@ -6872,7 +6872,7 @@ app.style.display="flex";},true);
   +'<div id="v272-list" style="overflow-y:auto;padding:6px 14px;flex:1"></div>'
   +'<div id="v272-emo" style="display:flex;justify-content:space-between;padding:7px 16px 2px;font-size:23px;border-top:1px solid #f3f3f3"></div>'
   +'<div style="display:flex;gap:9px;align-items:center;padding:9px 12px 20px">'
-  +'<img src="assets/nao-avatar4.jpg" style="width:33px;height:33px;border-radius:50%;object-fit:cover" alt="">'
+  +'<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:33px;height:33px;border-radius:50%;object-fit:cover" alt="">'
   +'<input id="v272-inp" placeholder="コメントを追加…" autocomplete="off" style="flex:1;border:1px solid #dbdbdb;border-radius:999px;padding:8px 13px;font-size:13.5px;font-family:inherit">'
   +'<button id="v272-send" style="display:none;background:none;border:none;color:#0095f6;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit">投稿</button>'
   +'</div></div>';
@@ -8168,7 +8168,7 @@ app.style.display="flex";},true);
   let ov=v.querySelector("#v251-ov");
   if(!ov){ ov=document.createElement("div"); ov.id="v251-ov";
    ov.style.cssText="position:absolute;inset:0;background:#000;z-index:300;display:none;align-items:center;justify-content:center;cursor:pointer";
-   ov.innerHTML='<img style="max-width:100%;max-height:100%;object-fit:contain" alt="">';
+   ov.innerHTML='<img loading="lazy" decoding="async" style="max-width:100%;max-height:100%;object-fit:contain" alt="">';
    ov.addEventListener("click",()=>ov.style.display="none");
    v.appendChild(ov); }
   ov.querySelector("img").src=src; ov.style.display="flex";
@@ -8246,7 +8246,7 @@ app.style.display="flex";},true);
   +'<div id="v254-list" style="overflow-y:auto;padding:6px 14px;flex:1"></div>'
   +'<div id="v254-emo" style="display:flex;justify-content:space-between;padding:7px 16px 2px;font-size:23px;border-top:1px solid #f3f3f3"></div>'
   +'<div style="display:flex;gap:9px;align-items:center;padding:9px 12px 20px">'
-  +'<img src="assets/nao-avatar4.jpg" style="width:33px;height:33px;border-radius:50%;object-fit:cover" alt="">'
+  +'<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:33px;height:33px;border-radius:50%;object-fit:cover" alt="">'
   +'<input id="v254-inp" placeholder="コメントを追加…" autocomplete="off" style="flex:1;border:1px solid #dbdbdb;border-radius:999px;padding:8px 13px;font-size:13.5px;font-family:inherit">'
   +'<button id="v254-send" style="display:none;background:none;border:none;color:#0095f6;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit">投稿</button>'
   +'</div></div>';
@@ -8795,6 +8795,23 @@ app.style.display="flex";},true);
    }catch(e){}
  },1500);
  window.__ov104=true;
+})();
+</script>
+<script>
+/* ===== Tinder ver v147: non-chat polish batch 1 - (orig v307+v308 port) her IG post count follows the tiles she can actually see; safe-area bottom insets on notched phones; static off-screen images lazy-load from this version's markup ===== */
+(function(){
+ if(window.__v147) return; window.__v147=true;
+ const css=document.createElement("style"); css.id="v147css";
+ css.textContent=".line-input{padding-bottom:max(22px,env(safe-area-inset-bottom))!important}"
+ +".swipe-actions{padding-bottom:max(18px,env(safe-area-inset-bottom))!important}"
+ +"#v-call .call-btns{bottom:max(34px,calc(env(safe-area-inset-bottom) + 14px))!important}";
+ document.head.appendChild(css);
+ const vig=document.querySelector("#v-ig"); if(!vig) return;
+ const nEl=vig.querySelector(".ig-stats .n"); if(!nEl) return;
+ const sync=()=>{ const g=vig.querySelector("#nao-grid"); if(!g) return;
+  const n=[...g.children].filter(el=>getComputedStyle(el).display!=="none").length;
+  if(n>0&&nEl.textContent!==String(n)) nEl.textContent=n; };
+ setInterval(sync,1000);
 })();
 </script>
 </body>
