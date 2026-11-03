@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v180</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v181</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2166,12 +2166,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function startChat(){
     if(chatStarted) return; chatStarted=true;
     tChip("9月27日（土）夜 —— マッチした日");
-    tNote("（写真、なんか似てる気もしたけど…本人なわけないか。声も聞いてないし）");
+    tNote("（どっかで見た顔…いやいや、本人なわけない。推し活のしすぎで、目がバグってるだけ）");
     await tThem("マッチありがとう笑",600);
     await tThem("ひろとやで、よろしくな");
     await tThem("なんとなく始めてん、このアプリ");
     await tThem("プロフィールの写真、刺さってん笑");
     await tThem("カフェオレ持ってる写真、あれはずるいわ笑");
+    await tThem("他の写真も、全部見たで");
+    await tThem("猫と写ってるやつ、平和すぎる笑");
     await tThem("Super Likeは…気づいたら押しててん");
     await tThem("…ほんまは、3回くらい見返した笑");
     tChoices("なおの返信を選んで（気楽に様子見）",[
@@ -2183,6 +2185,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     ]);
   }
   async function step2(){
+    await tThem("俺は休みの日、マロンと出かけるか寝てるかやな");
     await tThem("なおは、休みの日なにしてるん？");
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"サウナと、美味しいもの食べるのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); await tThem("美味いもん好き同士やな"); stepWork(); }},
@@ -2228,12 +2231,12 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     ]);
   }
   async function stepNight2(){
+    await tThem("…今から顔見れたらな、とか言ったら引く？笑");
     await tThem("曲聴いてたら、目が冴えてきて");
     await tThem("音楽だけは、小さい頃からずっとやねん");
-    await tThem("なおの声、どんなんやろって思っててん");
-    await tThem("…今から顔見れたらな、とか言ったら引く？笑");
     await tThem("なおは寝る前、なにしてるん？");
     await tThem("寝る前に、声だけ聞く？");
+    await tThem("なおの声、どんなんやろって思っててん");
     tChoices("なおの返信を選んで",[
       {label:"動画見たり、推しの曲聴いたり", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
       {label:"サウナの予定考えてる笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
@@ -2253,6 +2256,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tTyping(2600);
     await tThem("ちゃうちゃう笑");
     await tThem("ただの一般人やで、ほんまに😎");
+    await tThem("アイドルやったら、こんな時間にアプリ開いてへんて笑");
     await tThem("…なんでアイドルやと思ったん？");
     tChoices("なおの返信を選んで",[
       {label:"写真が、なんか雰囲気あったから", fn:async()=>{ await tThem("雰囲気だけ先行してるねん笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
@@ -2263,6 +2267,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChip("10月1日（水）");
     await tThem("なぁ、なお");
     await tThem("そろそろ文字やめて、ごはん行こや");
+    await tThem("来週、レッスン…あ、仕事が詰まってて");
+    await tThem("土曜しか、空いてへんねん");
     await tThem("楽しみすぎて、前日寝られへんタイプやねん笑");
     tChoices("なおの返信を選んで",[
       {label:"行きたい！ 今週末は？", fn:async()=>{ await tThem("土曜、あいてる？"); await tThem("カフェオレの本気な店、探しとくわ"); step3(); }},
@@ -2270,9 +2276,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     ]);
   }
   async function step3(){
-    await tThem("待ち合わせの相談、LINEの方が楽やし");
-    await tThem("よかったら、LINEも交換しとこ");
-    await tThem("無理やったら、全然ええで");
+    await tThem("このアプリ、通知が埋もれるねん");
+    await tThem("LINEやったら、すぐ気づけるやろ");
+    await tThem("…交換、してくれる？");
     tChoices("LINEを交換する？（様子見でOK）",[
       {label:"いいよ、とりあえず交換しよ", fn:async()=>{ await tThem("ありがとう、助かる笑"); await tThem("追加したで。気が向いたら、返してな"); finishTinder(); }},
       {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加する"); finishTinder(); }}
@@ -8452,7 +8458,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v180";
+ let ver="v181";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -9163,5 +9169,6 @@ setInterval(upd,900); upd();
 <!-- ===== Tinder ver v179: ORIGINAL-SYNC batch 3 (orig v315-v332 audit) - home page 2's decorative clock and weather icons removed (orig v328; calendar/memo stay), and the morning-after follow-up news row now opens a full article written for this arc (orig v330's mechanism; the original's 'someone important' text is lover-premise and was NOT carried over). This closes the v315-v332 audit: ported = v317/v318/v320/v321/v324/v328/v330/v332; already-equivalent = v326 (the v20 daily-life post); skipped with reasons in the batch reports = v315/v316/v319-ep4/v325-content/v327/v329/v331 (Christmas-promise and lover-premise story beats) and v322 (superseded by v324's form). Base CSS compared rule-by-rule: all 324 shared selectors identical to the original. ===== -->
 
 <!-- ===== Tinder ver v180: DIALOGUE REFRESH 1/2 - the two main threads re-worded. Tinder chat (match -> LINE exchange, all his lines and branch replies) and the LINE story scenes ch2-ch5 (first date, the drawn line, the ambiguous distance, the widened distance, the scandal lead-in) rewritten in fresh phrasing: 103 lines. Beats, choices, gates and flow unchanged; his short Kansai and restraint kept; the iconic quoted lines the chapter cards cite ('後悔はしてへん', the drawn-line and farewell beats) left as-is; NO voiced line touched - every rewritten line is text-only (himMsg/tThem), voice files, FCV subtitles, call schedules and the manager script are byte-identical. ===== -->
+<!-- v181: Tinder main flow rebuilt - he studies her photos first, volunteers his own days off before asking hers, the night scene leads with the boldest line and lets the voice line linger before her choice, a self-aware deflection joins the not-the-idol beat, the date proposal gains a near-slip (lesson... work), and the LINE exchange is re-asked as notifications-first then a direct question; her inner denial note reworded, beat kept -->
 </body>
 </html>
