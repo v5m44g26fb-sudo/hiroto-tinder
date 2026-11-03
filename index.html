@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v171</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v172</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -8486,7 +8486,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v171";
+ let ver="v172";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8752,5 +8752,82 @@ app.style.display="flex";},true);
 </script>
 
 <!-- ===== Tinder ver v171: CONTENT REFRESH ROUND 3, 5/5 - deletions: pretend features removed. (1) The photo viewer's share button - it only ever showed a 'link copied' toast and copied nothing; the viewer keeps its real controls (slideshow / favourite / close / prev-next). (2) The same fake share button inside both news article templates (scandal scoop + agency statement). (3) The Tinder profile tab's toast-only base handler ('プロフィールを開いたよ') - the tab itself is real and still opens her profile pane via the later panes() layer. (4) The dock music icon's stale data-toast ('彼のプレイリストは、また今度') left over from before the playlist player worked - the button now opens the real player (v141/v152) with no contradictory toast. Nothing else removed: every remaining button does what it claims. ===== -->
+
+<script>
+/* ===== Tinder ver v172: CONTENT REFRESH ROUND 4, 1/5 - the call becomes a scene, not a screen.
+   Before: the call view was a flat dark form - small avatar, a name, a timer, subtitles, three buttons.
+   Now: (1) his photo blooms behind the whole call as a blurred backdrop, so the call feels like being
+   inside the moment instead of looking at a settings page; (2) the incoming screen gains a context chip
+   that says WHY this call exists right now (her outgoing call / a late-night interlude / mid-scandal /
+   the agency), read live from state; (3) the active call gains a small equalizer next to the timer that
+   dances while a subtitle line is actually being spoken (driven by #call-sub changes) and idles otherwise;
+   (4) hanging up no longer cuts to black - a quiet end card slides in with who it was, how long it lasted
+   and the last spoken line, then fades on its own. Presentation only: voices, schedules, gates, the
+   manager chain and every call flow are untouched. ===== */
+(function(){
+ const vc=document.querySelector("#v-call"); if(!vc||document.querySelector("#r4-eq")) return;
+ const css=document.createElement("style");
+ css.textContent=
+  "#r4-call-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(34px) brightness(.5) saturate(1.2);opacity:0;transition:opacity .8s;pointer-events:none}"+
+  "#r4-call-bg.on{opacity:1}"+
+  "#v-call .call-wrap{position:relative;z-index:1}"+
+  "#v-call.video-on #r4-call-bg{opacity:0}"+
+  "#call-inc-img{width:118px!important;height:118px!important;border:3px solid rgba(255,255,255,.85);box-shadow:0 0 0 0 rgba(255,255,255,.35);animation:r4ring 1.9s ease-out infinite}"+
+  "@keyframes r4ring{0%{box-shadow:0 0 0 0 rgba(255,255,255,.35),0 0 0 0 rgba(253,38,125,.25)}100%{box-shadow:0 0 0 26px rgba(255,255,255,0),0 0 0 52px rgba(253,38,125,0)}}"+
+  "#call-inc-name{font-size:27px!important;letter-spacing:.02em}"+
+  "#r4-inc-chip{align-self:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;font-weight:700;border-radius:999px;padding:5px 13px;margin-bottom:14px;backdrop-filter:blur(4px)}"+
+  "#r4-eq{display:none;align-items:flex-end;gap:3px;height:18px;margin:9px auto 1px}"+
+  "#r4-eq i{display:block;width:4px;border-radius:2px;background:linear-gradient(180deg,#ff7eb0,#fd267d);height:30%;animation:r4eq 1.15s ease-in-out infinite alternate}"+
+  "#r4-eq i:nth-child(2){animation-delay:.18s}#r4-eq i:nth-child(3){animation-delay:.36s}#r4-eq i:nth-child(4){animation-delay:.1s}#r4-eq i:nth-child(5){animation-delay:.28s}"+
+  "#r4-eq.live i{animation-duration:.34s}"+
+  "@keyframes r4eq{from{height:16%}to{height:100%}}"+
+  "#r4-endcard{position:absolute;left:16px;right:16px;top:64px;z-index:500;background:rgba(22,24,32,.92);border:1px solid rgba(255,255,255,.16);border-radius:18px;color:#fff;padding:15px 17px;box-shadow:0 14px 34px rgba(0,0,0,.4);opacity:0;transform:translateY(-10px);pointer-events:none;transition:opacity .45s,transform .45s;backdrop-filter:blur(6px)}"+
+  "#r4-endcard.on{opacity:1;transform:none;pointer-events:auto}"+
+  "#r4-endcard .t{font-size:13px;color:#c9cedb;letter-spacing:.06em}"+
+  "#r4-endcard .w{font-size:17.5px;font-weight:800;margin:3px 0 2px}"+
+  "#r4-endcard .l{font-size:12.5px;color:#aeb6c6;line-height:1.6;margin-top:4px}";
+ document.head.appendChild(css);
+ const bg=document.createElement("div"); bg.id="r4-call-bg"; vc.insertBefore(bg,vc.firstChild);
+ const inc=document.querySelector("#call-incoming"), act=document.querySelector("#call-active");
+ const chip=document.createElement("div"); chip.id="r4-inc-chip"; chip.textContent="💗 ひろとからの着信";
+ const incImg=document.querySelector("#call-inc-img"); if(inc&&incImg) inc.insertBefore(chip,incImg);
+ const eq=document.createElement("div"); eq.id="r4-eq"; eq.innerHTML="<i></i><i></i><i></i><i></i><i></i>";
+ const cst=document.querySelector("#call-state"); if(cst&&cst.parentElement) cst.parentElement.insertBefore(eq,cst.nextSibling);
+ const phone=document.querySelector("#phone");
+ const card=document.createElement("div"); card.id="r4-endcard";
+ card.innerHTML='<div class="t">📞 通話が終わりました</div><div class="w"></div><div class="l"></div>';
+ if(phone) phone.appendChild(card);
+ card.addEventListener("click",()=>card.classList.remove("on"));
+ let lastSub="", lastDur="00:00", wasActive=false, hideT=null;
+ const sub=document.querySelector("#call-sub");
+ if(sub) new MutationObserver(()=>{ lastSub=sub.textContent.trim();
+   eq.classList.add("live"); clearTimeout(eq._t); eq._t=setTimeout(()=>eq.classList.remove("live"),1500);
+ }).observe(sub,{childList:true,characterData:true,subtree:true});
+ const secs=t=>{ const m=/^(\d+):(\d{2})$/.exec(t||""); return m?(+m[1])*60+(+m[2]):0; };
+ setInterval(()=>{
+  const on=vc.classList.contains("on");
+  const incVis=on&&inc&&inc.style.display==="flex", actVis=on&&act&&act.style.display==="flex";
+  bg.classList.toggle("on",on&&!vc.classList.contains("video-on"));
+  if(on){ const img=incVis?document.querySelector("#call-inc-img"):document.querySelector("#call-act-img");
+   if(img&&img.getAttribute("src")) bg.style.backgroundImage='url("'+img.getAttribute("src")+'")'; }
+  if(incVis){ chip.textContent = state.caller==="manager" ? "🏢 事務所からの着信"
+    : state._outgoing ? "📞 ひろとへ発信中…"
+    : state._interludeCall ? "🌙 深夜 ・ 寝る前の電話"
+    : state.phase==="scandal" ? "🔥 炎上中 ・ 大事な電話"
+    : "💗 ひろとからの着信"; }
+  eq.style.display=actVis?"flex":"none";
+  if(actVis){ const tt=document.querySelector("#call-time"); if(tt) lastDur=tt.textContent.trim(); wasActive=true; }
+  else if(wasActive){ wasActive=false;
+   { if(!incVis&&secs(lastDur)>=2){ const who=state._callWho||"ひろと";
+     card.querySelector(".w").textContent=who+" ・ "+lastDur;
+     const line=lastSub.replace(/^[「『]/,"").replace(/[」』]$/,"");
+     card.querySelector(".l").textContent=line?("最後のひとこと：「"+line+"」"):"";
+     card.classList.add("on"); clearTimeout(hideT); hideT=setTimeout(()=>card.classList.remove("on"),5200); } }
+   lastDur="00:00"; }
+ },450);
+})();
+</script>
+<!-- ===== Tinder ver v172: CONTENT REFRESH ROUND 4, 1/5 - call experience rebuilt as a scene: blurred photo backdrop behind the whole call view, a live context chip on the incoming screen (agency / outgoing / late-night interlude / mid-scandal / ordinary), a speaking equalizer beside the timer driven by real subtitle changes, and a quiet end card (who / duration / last spoken line) after hangup instead of a hard cut. Voices, schedules, gates and call flows untouched. ===== -->
+
 </body>
 </html>
