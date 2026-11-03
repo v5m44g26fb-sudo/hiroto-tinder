@@ -626,7 +626,7 @@ input,textarea{font-size:16px!important}
 <div class="ig-head"><button class="back" data-home style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span class="t">nao_0324</span><button id="ig-bell-btn" style="margin-left:auto;font-size:19px;background:none;border:none;cursor:pointer">🔔<span id="ig-bell"></span></button></div>
 <div class="scroll" id="ig-scroll">
         <div class="act-panel" id="ig-activity"><div style="padding:2px 14px 6px;font-weight:800;font-size:14.5px">お知らせ</div><div id="act-list">
-          <div class="act-row"><img loading="lazy" decoding="async" class="avatar" src="assets/default-avatar.svg" width="40" height="40" alt=""><span><b>yui_s</b>さんがあなたの投稿にいいねしました <span class="tm">2時間前</span></span><img loading="lazy" decoding="async" class="thumb" src="assets/cafe.jpg" alt=""></div>
+          <div class="act-row"><img loading="lazy" decoding="async" class="avatar" src="assets/fr-yui.jpg" width="40" height="40" alt=""><span><b>yui_s</b>さんがあなたの投稿にいいねしました <span class="tm">2時間前</span></span><img loading="lazy" decoding="async" class="thumb" src="assets/cafe.jpg" alt=""></div>
           <div class="act-row"><img loading="lazy" decoding="async" class="avatar" src="assets/default-avatar.svg" width="40" height="40" alt=""><span><b>sauna_m</b>さんがあなたをフォローし始めました <span class="tm">昨日</span></span><button class="fb">フォローバック</button></div>
         </div></div>
 <div class="ig-prof">
@@ -687,7 +687,7 @@ input,textarea{font-size:16px!important}
 <div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div>
 <img loading="lazy" decoding="async" class="pimg" src="assets/insta-post.jpg" alt="ひろとの投稿スクリーンショット">
 <div class="acts"><span class="like-btn">❤️</span><span>💬 43</span><span>🔁 50</span><span class="save-btn">🔖</span></div>
-<div class="cap">いいね！：<b>__m2326</b>、他<br><b>193.hiroto_jixiang</b> このまま時間が止まればいいのに🙃<br><span style="color:#8e8e93;font-size:12px">1日前</span></div>
+<div class="cap">いいね！：<b>m2326</b>、他<br><b>193.hiroto_jixiang</b> このまま時間が止まればいいのに🙃<br><span style="color:#8e8e93;font-size:12px">1日前</span></div>
 <div id="his-cmts">
 <div class="cmt"><b>rottdan_a</b>この写真すき！</div>
 <div class="cmt"><b>hiro_pyon</b>ほんとそれ〜！ずっとこの笑顔見てたい</div>
@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v216</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v217</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2974,13 +2974,22 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  }
  const stats=ig.querySelector(".ig-stats");
  if(stats){ stats.style.cursor="pointer";
-  stats.addEventListener("click",()=>{ let p=ig.querySelector("#ig-fl-panel");
+  stats.addEventListener("click",e=>{ const cell=e.target.closest?e.target.closest(".ig-stats > div"):null;
+   const idx=cell?Array.from(stats.children).indexOf(cell):1;
+   if(idx===0){ const g=ig.querySelector("#nao-grid"); const sc=ig.querySelector("#ig-scroll");
+    if(g&&g.style.display==="grid"){ g.scrollIntoView({behavior:"smooth",block:"start"}); }
+    else { const p0=ig.querySelector(".ig-post"); if(p0) p0.scrollIntoView({behavior:"smooth",block:"center"}); else if(sc) sc.scrollTop=0; }
+    return; }
+   let p=ig.querySelector("#ig-fl-panel");
    if(!p){ p=document.createElement("div"); p.id="ig-fl-panel";
     p.style.cssText="position:absolute;inset:0;background:#fff;z-index:240;display:none;flex-direction:column;padding:64px 0 0";
-    p.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:0 16px 12px"><button class="fl-close" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b style="font-size:16px">フォロワー</b></div><div class="fl-list" style="overflow-y:auto"></div>';
+    p.innerHTML='<div style="display:flex;align-items:center;gap:12px;padding:0 16px 12px"><button class="fl-close" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b class="fl-title" style="font-size:16px">フォロワー</b></div><div class="fl-list" style="overflow-y:auto"></div>';
     ig.appendChild(p); p.querySelector(".fl-close").addEventListener("click",()=>{ p.style.display="none"; }); }
-   const L=[["yui_s","🍓","#e879a0"],["msa_ki","🌊","#7a9cc6"],["rina_rin","🎀","#b48ec9"],["sauna_m","♨️","#7ab648"],["193.hiroto_jixiang","👑","#111"]];
-   if(state.phase==="scandal") L.push(["hiroto_fan","👀","#e5c158"],["scoop_watch","🔍","#888"]);
+   const FOL=[["yui_s","🍓","#e879a0"],["msa_ki","🌊","#7a9cc6"],["rina_rin","🎀","#b48ec9"],["sauna_m","♨️","#7ab648"]];
+   if(state.phase==="scandal") FOL.push(["hiroto_fan","👀","#e5c158"],["scoop_watch","🔍","#888"]);
+   const ING=[["yui_s","🍓","#e879a0"],["msa_ki","🌊","#7a9cc6"],["rina_rin","🎀","#b48ec9"],["sauna_m","♨️","#7ab648"],["193.hiroto_jixiang","👑","#111"]];
+   const L=idx===2?ING:FOL;
+   p.querySelector(".fl-title").textContent=idx===2?"フォロー中":"フォロワー";
    const list=p.querySelector(".fl-list"); list.innerHTML="";
    L.forEach(r=>{ const d=document.createElement("div"); d.className="lb-row";
     d.innerHTML='<span class="ava-txt" style="background:'+r[2]+';width:42px;height:42px;font-size:18px">'+r[1]+'</span><span><b style="font-size:14px">'+r[0]+'</b></span>';
@@ -7905,7 +7914,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v216";
+ let ver="v217";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8973,5 +8982,79 @@ setInterval(upd,900); upd();
 <!-- ===== Tinder ver v214: toast pacing - inner-monologue toasts live 3.4s each, but the realism batches (v210/v211) and the ch2 opening fired them every ~2.1-2.3s, so two or three long notes stacked over the chat before the first could be read. The ch2 opening loses its one redundant note (the '🎩 帽子が深い' toast repeated the 💭 line before it and the chapter card; nao authorised cutting waste lines) and its remaining four beats are re-timed to 0.5/2.4/4.7/6.9s. In the interlude, the gaps between the 10/2 verification trio, the 10/3 zoom trio and the save -> unsent-consultation pair widen 2.1-2.3s -> 3.1s so each note lands as the previous one fades, and the interlude's two back-to-back closing notes merge into a single toast. No story content, choices, voices or gates changed - one duplicated line deleted, the rest is timing. ===== -->
 <!-- ===== Tinder ver v215:導線 fix (Playwright drive of v214 found it) - during the v209 LINE interlude '井汲かも？', state.chapter is still 1 until the interlude finishes, so the home dashboard's key() kept returning ch1 and its big continue button sent the player back to Tinder, where the story has nothing left to do - the interlude's choices live in LINE's #choices, hidden until the LINE chat is opened. A player who followed the dashboard (instead of tapping the LINE icon by hand) landed in a dead end. Fix: key() now returns a new 'sus' dashboard entry while state._susLineRun is set (幕間『井汲かも？』 / 10月1日〜10月3日 ・ LINE / go:"line", progress kept at 1/8 since ch2 has not started), so the continue button opens his LINE chat directly. No story text, choices, voices, gates or save format changed. ===== -->
 <!-- ===== Tinder ver v216: fan-reaction realism batch (nao 17:03 '当時のおたくの反応も取ってくれば？') - light web check of the era's fandom texture, no real posts copied, no real account names used. X_POSTS: ゆん and ロットダン now use the fans' own nickname 'いくみん' (already in this game's free-chat vocabulary); new posts add four era-true fan behaviours - 現場レポ垢 (field-report voice: knowing the fanmeet distance makes the story harder to swallow), 布教垢 (flooding a flaming timeline with a performance clip as counter-speech), 海外ファン垢 (overseas fans circulating translated statements; Chuang-era '吉祥弟弟' nickname), みお (担降り ambivalence: won't quit, but can't search his name today). News comments NC: '活動は続けてほしい。事務所の対応待ち' -> '担降りする気はない。説明だけは、本人の口から聞きたい' + one more ambivalent fan comment. IG flood + GEN pools gain 同担 / search-inflow / 布教回帰 lines. Friends' dialogue untouched (the no-いくみん-from-friends rule stands - these are fan personas, not friends). No beats, gates, voices, choices or save format changed. ===== -->
+<script>
+/* ===== Tinder ver v217: Instagram precision pass 1 (Playwright audit of v216) - (1) his profile post count was a fixed 98 while the grid shows 27 tiles in the scandal phase and fewer earlier (calendar gate): the count now follows the visible grid tiles, so count == tiles on every phase. (2) Settings' Instagram follower row froze at 342 while the profile animates 342 -> 52,814 -> 58,920 in the scandal: it now mirrors the profile number. (3) Her profile stats cells now behave like real Instagram: 投稿 scrolls to her posts, フォロワー opens her followers, フォロー中 opens her following (friends + 193.hiroto_jixiang, whom she follows as a fan); his row leaves her followers list, because he never follows her account in this arc (it even showed pre-match, contradicting the account lock). (4) DM request rows other than yui_s were dead taps: tapping one now opens a request detail with 承認 / 削除 - accepting opens a thread for that sender (their message only, no invented replies), deleting removes the row and decrements the request count; yui_s behaviour is unchanged. The shared thread shell's send handler auto-replies in yui's voice, so sends inside a stranger thread are intercepted (button + Enter) and append only the player's bubble. (5) Static fixes: his 11/1 post liked-by '__m2326' -> 'm2326' (the handle used everywhere else), and her activity row for yui_s uses her photo (fr-yui.jpg) instead of the default icon. No story text, choices, voices, gates or save format changed. ===== */
+(function(){
+ const hv=document.querySelector("#v-hisig");
+ const syncHisCount=()=>{ if(!hv||!hv.classList.contains("on")) return;
+  const n=hv.querySelector(".ig-stats > div:first-child .n"); if(!n) return;
+  const c=String([...hv.querySelectorAll(".ig-grid img")].filter(im=>im.style.display!=="none").length);
+  if(n.textContent!==c) n.textContent=c; };
+ setInterval(syncHisCount,1000);
+ setInterval(()=>{ const fol=document.querySelector("#ig-fol-n"), st=document.querySelector("#set-ig");
+  if(fol&&st&&st.textContent!==fol.textContent) st.textContent=fol.textContent; },1000);
+ const ig=document.querySelector("#v-ig"); if(!ig) return;
+ const dms=ig.querySelector("#ig-dms"); if(!dms) return;
+ const css=document.createElement("style"); css.textContent="#ig-dms .dmrow{cursor:pointer}"; document.head.appendChild(css);
+ const det=document.createElement("div"); det.id="ig-req-detail";
+ det.style.cssText="position:absolute;inset:0;background:#fff;z-index:300;display:none;flex-direction:column;padding:64px 20px 24px;gap:12px";
+ det.innerHTML='<div style="display:flex;align-items:center;gap:12px"><button id="ig-req-back" style="border:none;background:none;font-size:20px;cursor:pointer">‹</button><b style="font-size:16px">メッセージリクエスト</b></div><div style="display:flex;align-items:center;gap:12px;padding:6px 0"><span id="ig-req-av"></span><b id="ig-req-name" style="font-size:15.5px"></b></div><div id="ig-req-msg" style="background:#f2f2f7;border-radius:16px;padding:12px 14px;font-size:14px;line-height:1.6"></div><div style="color:#8e8e93;font-size:12px;line-height:1.7">承認すると、この人とメッセージのやり取りができます。削除するとリクエストは消えます。</div><div style="margin-top:auto;display:flex;flex-direction:column;gap:9px"><button id="ig-req-accept" style="background:#0095f6;color:#fff;border:none;border-radius:12px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit">承認する</button><button id="ig-req-decline" style="background:#fff;color:#ff3b30;border:1px solid #ffd9d7;border-radius:12px;padding:13px;font-size:14.5px;font-weight:800;cursor:pointer;font-family:inherit">削除する</button></div>';
+ ig.appendChild(det);
+ const avEl=det.querySelector("#ig-req-av"), nmEl=det.querySelector("#ig-req-name"), msgEl=det.querySelector("#ig-req-msg");
+ const threadEl=document.querySelector("#dm-thread");
+ const accepted=new Set(), threads={};
+ let cur=null, baseScroll=null;
+ window.__igReqCurrent=null;
+ const restoreYui=()=>{ if(!threadEl) return; const sc=threadEl.querySelector("#dm-scroll");
+  if(window.__igReqCurrent&&sc) threads[window.__igReqCurrent]=sc.innerHTML;
+  if(baseScroll!==null&&sc) sc.innerHTML=baseScroll;
+  const hd=threadEl.querySelector(".line-head .t"); if(hd) hd.textContent="yui_s";
+  const hav=threadEl.querySelector(".line-head img.avatar"); if(hav) hav.setAttribute("src","assets/default-avatar.svg");
+  window.__igReqCurrent=null; };
+ const openThread=(name,preview)=>{ if(!threadEl) return; const sc=threadEl.querySelector("#dm-scroll");
+  if(baseScroll===null&&sc) baseScroll=sc.innerHTML;
+  const hd=threadEl.querySelector(".line-head .t"); if(hd) hd.textContent=name;
+  const hav=threadEl.querySelector(".line-head img.avatar"); if(hav) hav.setAttribute("src","assets/default-avatar.svg");
+  if(sc){ if(threads[name]) sc.innerHTML=threads[name];
+   else { sc.innerHTML=""; const d=document.createElement("div"); d.className="dm-bub them"; d.textContent=preview; sc.appendChild(d); } }
+  window.__igReqCurrent=name; threadEl.classList.add("on"); };
+ dms.addEventListener("click",e=>{ const row=e.target.closest?e.target.closest(".dmrow"):null; if(!row) return;
+  const nm=row.querySelector(".nm"); if(!nm) return; const name=nm.textContent.trim();
+  const tx=row.querySelector(".tx"); const preview=tx?tx.textContent.trim():"";
+  if(name==="yui_s"){ if(window.__igReqCurrent) restoreYui(); return; }
+  if(accepted.has(name)){ openThread(name,preview); return; }
+  cur={name:name,preview:preview,row:row};
+  if(avEl) avEl.innerHTML=(typeof avaTxt==="function")?avaTxt(name):name.slice(0,1).toUpperCase();
+  if(nmEl) nmEl.textContent=name;
+  if(msgEl) msgEl.textContent=preview;
+  det.style.display="flex"; });
+ det.querySelector("#ig-req-back").addEventListener("click",()=>{ det.style.display="none"; cur=null; });
+ det.querySelector("#ig-req-accept").addEventListener("click",()=>{ if(!cur) return;
+  accepted.add(cur.name);
+  if(!cur.row.querySelector(".req-ok")){ const s=document.createElement("span"); s.className="req-ok"; s.textContent="承認済み";
+   s.style.cssText="font-size:11px;color:#0095f6;border:1px solid #0095f6;border-radius:999px;padding:2px 8px;margin-left:6px";
+   const wrap=cur.row.querySelector(".nm").parentElement; if(wrap) wrap.appendChild(s); }
+  const c2=cur; det.style.display="none"; cur=null; openThread(c2.name,c2.preview); });
+ det.querySelector("#ig-req-decline").addEventListener("click",()=>{ if(!cur) return;
+  cur.row.remove();
+  if(typeof state!=="undefined"&&state.igDm>0) state.igDm--;
+  const nEl=document.querySelector("#ig-dm-n"); if(nEl) nEl.textContent=String(typeof state!=="undefined"?state.igDm:0);
+  det.style.display="none"; cur=null;
+  if(typeof toast==="function") toast("リクエストを削除しました"); });
+ const dmBack=document.querySelector("#dm-back");
+ if(dmBack) dmBack.addEventListener("click",()=>{ if(window.__igReqCurrent) restoreYui(); });
+ /* v217 fix: the shared DM shell's send handler auto-replies in yui's voice 1.5s later - wrong in a stranger's thread. While a stranger thread is open, intercept send (button + Enter) at capture phase and append only the player's own bubble, with no auto-reply. */
+ const sendStranger=()=>{ if(!threadEl) return; const inp=threadEl.querySelector("#dm-text"); if(!inp) return;
+  const v=inp.value.trim(); if(!v) return; inp.value="";
+  const sc=threadEl.querySelector("#dm-scroll"); if(!sc) return;
+  const d=document.createElement("div"); d.className="dm-bub me"; d.textContent=v; sc.appendChild(d); sc.scrollTop=sc.scrollHeight; };
+ document.addEventListener("click",e=>{ if(!window.__igReqCurrent||!threadEl) return;
+  const t=e.target.closest?e.target.closest("#dm-send"):null;
+  if(t&&threadEl.contains(t)){ e.stopPropagation(); e.preventDefault(); sendStranger(); } },true);
+ document.addEventListener("keydown",e=>{ if(!window.__igReqCurrent||!threadEl||e.key!=="Enter") return;
+  const t=e.target;
+  if(t&&t.id==="dm-text"&&threadEl.contains(t)){ e.stopPropagation(); e.preventDefault(); sendStranger(); } },true);
+})();
+</script>
 </body>
 </html>
