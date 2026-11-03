@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v207</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v208</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2260,10 +2260,12 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function stepWork(){
     await tThem("…あ、俺の仕事？");
     await tThem("夜に強い仕事、とだけ言うとく");
+    tNote("（夜に強い仕事…収録とか、ライブとか、舞台とか。なんでそっち系ばっかり浮かぶんやろ、私）");
     await tThem("詳しくは、会ったときに。顔見て言いたいねん");
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"顔見て言いたいって、重いな笑", fn:async()=>{ await tThem("秘密って、軽く言える相手に言うもんちゃうやろ"); await tThem("なおには、ちゃんと言いたいねん"); stepFood(); }},
-      {label:"わかった、会うまで楽しみにしとく", fn:async()=>{ await tThem("その言い方、好きやわ"); await tThem("期待は裏切らんようにする"); stepFood(); }}
+      {label:"わかった、会うまで楽しみにしとく", fn:async()=>{ await tThem("その言い方、好きやわ"); await tThem("期待は裏切らんようにする"); stepFood(); }},
+      {label:"夜に強い仕事…舞台に立つ人とか？", fn:async()=>{ await tTyping(1900); await tThem("舞台…まぁ、\"立ってる\"時間は長いかもな笑"); await tThem("深掘りは、会ってからな"); tNote("（否定、しなかった。今の、否定じゃなかったよね…？）"); stepFood(); }}
     ]);
   }
   async function stepFood(){
@@ -2271,6 +2273,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("おはよ。飯テロ、していい？");
     await tPhoto("assets/ig-food.jpg","昨日の深夜、無性に食べたくなったやつ😎");
     await tThem("朝から見せられたら、腹減らへん？");
+    await tThem("昨日、仕事が深夜までやってん");
+    await tThem("帰りにこの店の前通ったら、我慢できんかった");
+    tNote("（土曜の深夜まで仕事…。推しのグループ、昨日の夜は深夜ラジオの生放送があった気がする。——偶然、だよね）");
     await tThem("なおの朝って、ちゃんと食べる派？");
     tChoices("なおの返信を選んで",[
       {label:"朝から飯テロ、ひどい笑", fn:async()=>{ await tThem("ごめん笑"); await tThem("でも美味そうやろ。今度は一緒に食べよ"); stepMaron(); }},
@@ -2312,7 +2317,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       {label:"乾かしたよ。…なんかドキドキする", fn:async()=>{ await tTyping(1800); await tThem("ドキドキしてるの、こっちもやで"); await tThem("…寝よか。おやすみ、また明日な"); stepSuspect(); }},
       {label:"寝癖つく前に寝なきゃ笑", fn:async()=>{ await tThem("おやすみ、また明日な"); stepSuspect(); }},
       {label:"夜に声聞きたいとか、ずるいな…", fn:async()=>{ await tThem("ずるい自覚はあるねん"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }},
-      {label:"歌う人の声、してそうだね", fn:async()=>{ await tTyping(1700); await tThem("歌は風呂限定やで笑"); await tThem("上手いかどうかは、保証せえへんけど"); stepSuspect(); }},
+      {label:"歌う人の声、してそうだね", fn:async()=>{ await tTyping(1700); await tThem("歌は風呂限定やで笑"); await tThem("上手いかどうかは、保証せえへんけど"); tNote("（違うって、言い慣れてる感じがしたのは……気のせい？）"); stepSuspect(); }},
       {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ちょっと待って、静かなとこ行く"); setTimeout(()=>{ try{ state._tinderCall=true; state.caller="hiroto"; state._answered=true; state._callWho="ひろと"; show("call"); document.getElementById("call-incoming").style.display="none"; document.getElementById("call-active").style.display="flex"; document.getElementById("call-act-name").textContent="ひろと"; document.getElementById("call-act-img").src="assets/ig-avatar.jpg"; startCall(null); }catch(e){ stepSuspect(); } },900); }}
     ]);
   }
@@ -2332,13 +2337,25 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("テレビの人やったら、もっと堂々と写真載せてるわ");
     await tThem("…なんでテレビやと思ったん？");
     tChoices("なおの返信を選んで",[
-      {label:"立ち姿が、モデルっぽかったから", fn:async()=>{ await tThem("立ち姿は、ただの楽な格好やで笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
-      {label:"なんとなく、雰囲気が芸能人っぽくて", fn:async()=>{ await tThem("雰囲気だけは、一人前なんよな笑"); tNote("（…今の間、なんやったんやろ）"); stepMeet(); }},
-      {label:"……井汲大翔って人に、似てるよね", fn:async()=>{ await tTyping(2400); await tThem("おるわけないやん笑"); await tThem("会ったこともないけど、似てる言われたら、そら嬉しいわ"); tNote("（うん、そうだよね。本人なわけ、ない）"); stepMeet(); }}
+      {label:"立ち姿が、モデルっぽかったから", fn:async()=>{ await tThem("立ち姿は、ただの楽な格好やで笑"); tNote("（…今の間、なんやったんやろ）"); stepSearch(); }},
+      {label:"なんとなく、雰囲気が芸能人っぽくて", fn:async()=>{ await tThem("雰囲気だけは、一人前なんよな笑"); tNote("（…今の間、なんやったんやろ）"); stepSearch(); }},
+      {label:"……井汲大翔って人に、似てるよね", fn:async()=>{ await tTyping(2400); await tThem("おるわけないやん笑"); await tThem("会ったこともないけど、似てる言われたら、そら嬉しいわ"); tNote("（うん、そうだよね。本人なわけ、ない）"); stepSearch(); }}
+    ]);
+  }
+  async function stepSearch(){
+    tChip("10月1日（水）");
+    tNote("（昨日の夜、寝る前に——つい、検索してしまった）");
+    tNote("（「井汲大翔」で出てくる写真と、ひろとの写真。笑ったときの目元とか、少し垂れる感じとか、ほんまにそっくりで）");
+    tNote("（デビュー当時の動画まで遡って、私服の雰囲気まで重ねてしまった。……似てる人なんて、世の中に3人はいるって言うけど）");
+    await tThem("おはよ。昨日は変な言い方して、ごめんな笑",900);
+    await tThem("気にしすぎて、眠れんかったりした？");
+    tChoices("なおの返信を選んで",[
+      {label:"調べてみたけど…別人だったよ笑", fn:async()=>{ await tThem("やろ？ ただの、ひろとです笑"); tNote("（……嘘。まだ、心のどこかで引っかかってる）"); stepMeet(); }},
+      {label:"正直、まだ半分は疑ってる", fn:async()=>{ await tTyping(2000); await tThem("…半分、な"); await tThem("ほな、会って確かめたらええやん"); await tThem("土曜、その目で見てな"); tNote("（「確かめる」って、言った。逃げも隠れもしない言い方だった）"); stepMeet(); }},
+      {label:"気のせいだった、もう忘れた笑", fn:async()=>{ await tThem("おっけー、忘れよ笑"); stepMeet(); }}
     ]);
   }
   async function stepMeet(){
-    tChip("10月1日（水）");
     await tThem("なぁ、なお");
     await tThem("土曜、会う話。ほんまにしていい？");
     await tThem("カフェ、俺が決めてもいい？");
@@ -7874,7 +7891,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v207";
+ let ver="v208";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8793,5 +8810,6 @@ setInterval(upd,900); upd();
 </script>
 <!-- ===== Tinder ver v206: OVERHAUL - memories grow 9 -> 12 (the 9/30 suspicion beat, ch4's one-umbrella walk, the half-year venue), the settings counter and completion ring recount to the same 12, and the album gains the epilogue's May stage photograph once the epilogue has been seen. ===== -->
 <!-- ===== Tinder ver v207: ROUTE VERIFICATION (Playwright full runs of the open / wait / away routes, the three endings the half-centred passes had not driven end to end). All v199 plants -> payoffs, both v198 aftermath paths plus its guard, all three act2 morning branches (vt-morning / vt-morning2 / the away silence) and the v203 collection (record 1 -> 2 -> 3, settings row 1/4 -> 2/4 -> 3/4 in one persistent profile) verified live; no 404s, no page errors beyond the known headless vibrate artifact. ONE real defect found and fixed: hang up the manager call and tap an ending choice inside the handler's two opener lines, and the v198 guard sampled #choices AFTER the ending click had already cleared .on - so the aftermath reply choices were offered on top of a decided ending and lingered into act2 unanswered. Both manager handlers (answer + decline) now also require !state.ended && !state.act2 before offering the choices; the plain closer lines play instead, exactly the fallback the v339 guard intended. Also finished: startAct2's shared texts were still written for the open ending on every route - the home widget line, the next-morning news headline and the fin push subtitle are now per-ending (open keeps its 'his own words' texts; wait / away / half get lines matching their own statement captions). No story flow, gates, voices or saves changed. ===== -->
+<!-- ===== Tinder ver v208 (nao's instruction, 2026-11-03): 'make the Ikumi...? suspicion STRONGER - in Tinder too'. The v192 arc thickens at every existing beat and gains a whole new step. stepWork: an inner note at 'a job that's strong at night' (収録 / ライブ / 舞台 are all she can think of) and a new third choice '舞台に立つ人とか？' - he does NOT deny it ('まぁ、"立ってる"時間は長いかもな笑', deep-dive postponed to the meeting) and her note catches the non-denial. stepFood (9/28): he mentions working until late Saturday night, and her note matches it against the group's late-night radio broadcast - coincidence, surely. stepNight2 (9/29): the '歌う人の声' branch gains a note that his denial sounded practised. NEW stepSearch (10/1 morning, between suspectGo and stepMeet; suspectGo's three exits now route through it and stepMeet's own date chip moved here): she admits (to herself) she searched him last night - compared his photos with Ikumi's, scrolled back to debut-era videos - and his morning greeting asks if she slept badly over it; her answers range from a lying '別人だったよ笑' (note: still caught on it) to '正直、まだ半分は疑ってる', which he meets head-on ('ほな、会って確かめたらええやん / 土曜、その目で見てな'). Still never confirmed - certainty stays with the first date (ch2), exactly as nao's rule requires. Beats, gates, voices, the night call and the LINE exchange are unchanged. ===== -->
 </body>
 </html>
