@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v159</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v160</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5648,12 +5648,12 @@ app.style.display="flex";},true);
  vs.appendChild(panel);
  const openList=()=>{ panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:16.5px">📖 ボーナスエピソード</b><button id="ep-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
   '<div style="overflow-y:auto;padding:8px 16px">'+EPS.map((e,i)=>{ const un=e.un();
-   return '<div class="ep-row" data-i="'+i+'" style="background:#fff;border-radius:13px;padding:14px 15px;margin-bottom:9px;cursor:'+(un?"pointer":"default")+';'+(un?"":"opacity:.55")+'"><div style="font-weight:800;font-size:14.5px">'+(un?e.t:"🔒 ？？？")+'</div><div style="font-size:12px;color:#888;margin-top:3px">'+e.sub+(un?"":" ・ まだ解放されていません")+'</div></div>'; }).join("")+'</div>';
+   return '<div class="ep-row" data-i="'+i+'" style="background:#fff;border-radius:13px;padding:14px 15px;margin-bottom:9px;cursor:'+(un?"pointer":"default")+';'+(un?"":"opacity:.55")+'"><div style="font-weight:800;font-size:14.5px">'+(un?e.t:"🔒 ？？？")+'</div><div style="font-size:12px;color:#888;margin-top:3px">'+e.sub+(un?((window.__epRead&&window.__epRead.has(i))?' ・ <span style="color:#06c755;font-weight:800">✓ 既読</span>':" ・ 未読"):" ・ まだ解放されていません")+'</div></div>'; }).join("")+'</div>';
   panel.style.display="flex";
   panel.querySelector("#ep-x").addEventListener("click",()=>panel.style.display="none");
   panel.querySelectorAll(".ep-row").forEach(r=>r.addEventListener("click",()=>{ const e=EPS[+r.dataset.i]; if(e.un()) read(e); })); };
- const read=e=>{ let i=0;
-  panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:15.5px">'+e.t+'</b><button id="ep-x2" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
+ const read=e=>{ let i=0; window.__epRead=window.__epRead||new Set(); window.__epRead.add(EPS.indexOf(e));
+  panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:15.5px">'+e.t+'</b><span id="ep-count" style="margin-left:auto;font-size:11.5px;color:#8e8e93;font-weight:700"></span><button id="ep-x2" style="margin-left:10px;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
   '<div id="ep-msgs" style="flex:1;overflow-y:auto;padding:10px 16px;display:flex;flex-direction:column;gap:8px"></div>'+
   '<div style="padding:10px 16px 22px"><button id="ep-next" style="width:100%;background:#111;color:#fff;border:none;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700;cursor:pointer">すすむ ▶</button></div>';
   const box=panel.querySelector("#ep-msgs");
@@ -5664,9 +5664,11 @@ app.style.display="flex";},true);
    else if(w==="him"){ d.style.cssText="align-self:flex-start;background:#fff;border:1px solid #e5e5ea;border-radius:16px;padding:9px 13px;font-size:14px;line-height:1.6;max-width:78%"; }
    else { d.style.cssText="align-self:flex-end;background:#06c755;color:#fff;border-radius:16px;padding:9px 13px;font-size:14px;line-height:1.6;max-width:78%"; }
    d.textContent=t; box.appendChild(d); box.scrollTop=box.scrollHeight;
+   const cnt=panel.querySelector("#ep-count"); if(cnt) cnt.textContent=i+" / "+e.lines.length;
    if(i>=e.lines.length) panel.querySelector("#ep-next").textContent="― おわり ―　一覧へ戻る"; };
   add();
   panel.querySelector("#ep-next").addEventListener("click",()=>{ if(i>=e.lines.length){ openList(); } else add(); });
+  box.addEventListener("click",()=>{ if(i>=e.lines.length){ openList(); } else add(); });
   panel.querySelector("#ep-x2").addEventListener("click",openList); };
  row.addEventListener("click",openList);
 })();
@@ -8221,6 +8223,20 @@ app.style.display="flex";},true);
  "#chapter-card:after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,#fd267d,#ff7854);transform-origin:left;transform:scaleX(0);opacity:.85}"+
  "#chapter-card.on:after{animation:ovCcBar 3.4s linear both}"+
  "@keyframes ovCcBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}";
+ document.head.appendChild(css); })();
+</script>
+<script>
+/* ===== Tinder ver v160: CONTENT REFRESH 2/3 - episode list, his-screen cards and the bonus reader. Synopsis cards gain a pink spine and a soft lift so the chapter list reads as a table of contents; the POV ('his screen') cards switch to a dark navy skin - visually a different device from her bright list, which is the point of the feature. The bonus-episode reader now marks read episodes (✓ 既読 / 未読 in the list), shows a line counter while reading, and advances on a tap anywhere in the message area as well as the button. Presentation only - unlock conditions, texts, gates and flow unchanged. ===== */
+(function(){ const css=document.createElement("style"); css.textContent=
+ ".syn-card{border-left:3px solid #fd267d;box-shadow:0 1px 5px rgba(20,16,40,.07)}"+
+ ".syn-card.lock{border-left-color:#d9d9de;box-shadow:none}"+
+ ".syn-card .sdt{letter-spacing:.03em}"+
+ ".syn-card.pov-card{background:linear-gradient(160deg,#191926,#101019);border-left-color:#5b83d6;box-shadow:0 2px 10px rgba(5,5,20,.35)}"+
+ ".syn-card.pov-card .sno{color:#8fb0ff}"+
+ ".syn-card.pov-card .stt{color:#f0eef8}"+
+ ".syn-card.pov-card .sdt{color:#9a9aad}"+
+ ".syn-card.pov-card .sgo{color:#a8c0ff}"+
+ ".ep-row{box-shadow:0 1px 5px rgba(20,16,40,.06)}";
  document.head.appendChild(css); })();
 </script>
 </body>
