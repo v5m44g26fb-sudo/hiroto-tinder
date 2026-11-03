@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v158</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v159</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -934,17 +934,17 @@ function push(app,color,icon,title,body,cb){ pop(); $("#push-app").textContent=a
 $("#push").addEventListener("click",()=>{ $("#push").classList.remove("in"); if(pushCb) pushCb();});
 /* ============ v4: prologue (from the beginning) ============ */
 state.phase="prologue"; state.chapter=0; state._token=0;
-function chapterCard(no,title,sub){ $("#cc-no").textContent=no+(no.includes("話")?" ／ 全6話":""); $("#cc-title").textContent=title; $("#cc-sub").innerHTML=sub||""; const c=$("#chapter-card"); c.classList.add("on"); clearTimeout(chapterCard._t); chapterCard._t=setTimeout(()=>c.classList.remove("on"),2500); }
+function chapterCard(no,title,sub){ $("#cc-no").textContent=no+(no.includes("話")?" ／ 全6話":""); $("#cc-title").textContent=title; $("#cc-sub").innerHTML=sub||""; const c=$("#chapter-card"); c.classList.add("on"); clearTimeout(chapterCard._t); chapterCard._t=setTimeout(()=>c.classList.remove("on"),3400); }
 function addDayChip(t){ const d=document.createElement("div"); d.className="daychip"; d.textContent=t; $("#chat").appendChild(d); }
 function setChapterWidget(no,main){ $("#w-title").textContent="📖 "+no; $("#w-main").textContent=main; }
 function alive(t){ return t===state._token && state.phase==="prologue"; }
 function addPhoto(src,cap){ const f=document.createElement("figure"); f.dataset.cat="date"; f.innerHTML=`<img loading="lazy" decoding="async" src="${src}" alt=""><figcaption>${cap}</figcaption>`; $("#ph-grid").prepend(f); }
 function schedulePrologue(){ if(state._proStarted) return; state._proStarted=true; $("#skip-btn").style.display="inline-block"; later(()=>chapter(1),1300); }
 $("#skip-btn").addEventListener("click",()=>{ if(state.phase!=="prologue") return; state._token++; toScandal(); });
-function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal"; $("#lock-date").textContent="11月2日 日曜日"; $("#news-note").textContent="11月2日（日）夜"; $("#skip-btn").style.display="none"; chapterCard("第6話","バレた日","11月2日（日）夜 —— 。LINEを開いて様子を見てね"); addDayChip("11月2日（日）"); scheduleFirstPush(); }
+function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal"; $("#lock-date").textContent="11月2日 日曜日"; $("#news-note").textContent="11月2日（日）夜"; $("#skip-btn").style.display="none"; chapterCard("第6話","バレた日","バレたのは、恋じゃなかった。アプリを開いていた、その事実だった。<br><span class=\"cc-when\">11月2日（日）夜 —— LINEを開いて様子を見てね</span>"); addDayChip("11月2日（日）"); scheduleFirstPush(); }
 function chapter(n){ if(state.phase!=="prologue") return; state.chapter=n; const LD={1:"9月27日 土曜日",2:"10月4日 土曜日",3:"10月12日 日曜日",4:"10月18日 土曜日",5:"11月1日 土曜日"}; if(LD[n]) $("#lock-date").textContent=LD[n]; const ND={1:"9月27日（土）夜",2:"10月4日（土）夜",3:"10月12日（日）夜",4:"10月18日（土）夜",5:"11月1日（土）夜"}; if(ND[n]) $("#news-note").textContent=ND[n]; const t=state._token; if(n===1) ch1(t); else if(n===2) ch2(t); else if(n===3) ch3(t); else if(n===4) ch4(t); else if(n===5) ch5(t); }
-async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","9月27日（土） —— Tinderで出会った日。<br>ホームの Tinder を開いてね"); state._tinderWaiting=true; toast("🔥 <b>Tinder</b>を開いて、スワイプしてみて"); }
-async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","10月4日（土） —— 待ち合わせ場所。<br>顔を上げたら——え、本物やん！？<br>LINEを開いてね"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2100); later(()=>toast("🎩 <b>帽子が深い</b>：それでも、目元だけですぐ分かった"),3900); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),5600); later(()=>toast("🚶 <b>（人混み。流されそうになったら、袖を掴まれた。…近い）</b>"),7400);
+async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","「本人なわけない」——そう打ち消した出会いほど、忘れられない。<br><span class=\"cc-when\">9月27日（土） ・ Tinderで出会った日 —— ホームの Tinder を開いてね</span>"); state._tinderWaiting=true; toast("🔥 <b>Tinder</b>を開いて、スワイプしてみて"); }
+async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","帽子とマスクの下から、見覚えのある目元が笑った。<br><span class=\"cc-when\">10月4日（土） ・ 待ち合わせ場所 —— LINEを開いてね</span>"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2100); later(()=>toast("🎩 <b>帽子が深い</b>：それでも、目元だけですぐ分かった"),3900); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),5600); later(()=>toast("🚶 <b>（人混み。流されそうになったら、袖を掴まれた。…近い）</b>"),7400);
   await himMsg("…なお？",700); if(!alive(t))return; await himMsg("ごめんな、隠してて"); if(!alive(t))return; await himMsg("会ってから言お思ててん"); if(!alive(t))return; await himMsg("びっくりしたよな"); if(!alive(t))return; await himMsg("帽子とマスクで、ごめん"); if(!alive(t))return; await himMsg("人目がな…でも、会いたかってん"); if(!alive(t))return; await himVoice("assets/vm-t-hello.mp3","0:07");
   if(!alive(t))return; askChoices("なおの反応は——",[
     {label:"え…本物やん！？",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("騒がんでくれて、ありがとう"); if(!alive(t))return; await himMsg("今日は普通に、楽しもな"); ch2main(t); }},
@@ -958,7 +958,7 @@ async function ch2main(t){ if(!alive(t))return; await himMsg("今日、楽しみ
       {label:"次は映画もいいな",fn:async()=>{ if(!alive(t))return; await himMsg("映画な、任せて"); await himMsg("なおの好きそうなん、探しとく"); later(()=>povGate(1,3),2000); }},
       {label:"…今の、ドキッとした（照）",fn:async()=>{ if(!alive(t))return; await himMsg("ごめんごめん笑"); if(!alive(t))return; await himMsg("でも楽しかったのは、ほんまやで"); later(()=>povGate(1,3),2000); }},
     ]); },8000); }
-async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","抑えられなくなる前に、引く一線。"); chapterCard("第3話","線引き","10月12日（日）夕方 —— 帰り道。<br>LINEを開いてね"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
+async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","抑えられなくなる前に、引く一線。"); chapterCard("第3話","線引き","好きになる前にブレーキを踏んだのは、彼の方だった。<br><span class=\"cc-when\">10月12日（日）夕方 ・ 帰り道 —— LINEを開いてね</span>"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400);
   await himMsg("なお",700); if(!alive(t))return; await himMsg("今日の帰り、ちょっと歩こ"); if(!alive(t))return; await himMsg("…大事な話、あってん"); if(!alive(t))return; await himMsg("これ以上会ったら、俺ほんまに…",1300); if(!alive(t))return; await himMsg("…ごめん、なんでもない"); later(()=>toast("✋ <b>（伸びかけた手が、途中で止まって、落ちた）</b>"),1200); if(!alive(t))return; await himMsg("俺、こういう仕事やから"); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん"); if(!alive(t))return; await himVoice("assets/vm-t-line.mp3","0:04"); if(!alive(t))return; await himMsg("ごめんな"); if(!alive(t))return; await himMsg("でも、なおと会うの、ほんまに楽しいねん"); if(!alive(t))return; await himMsg("それは、嘘ちゃうから");
   if(!alive(t))return; const fin=async()=>{ later(async()=>{ if(!alive(t))return; await showPOV(2); if(!alive(t))return; startInterlude(t); },2200); };
   askChoices("なおの答えは——",[
@@ -966,7 +966,7 @@ async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3
     {label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("なおの気持ち、嬉しいねん"); if(!alive(t))return; await himMsg("でも、守られへん約束はしたくないねん"); fin(); }},
     {label:"ちょっと考えさせて",fn:async()=>{ if(!alive(t))return; await himMsg("うん、待つで"); await himMsg("急かさんから"); addDayChip("10月13日（月）"); await himMsg("おはよ",1600); if(!alive(t))return; await himMsg("…無理に、答え出さんでいいからな"); if(!alive(t))return; askChoices("なおの答えは——",[{label:"…わかってる。ファンやもん",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう、なお"); fin(); }},{label:"それでも、好きやけど…",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("気持ち、受け取ったから"); fin(); }}]); }},
   ]); }
-async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『曖昧な距離』","友達未満、でも他人じゃない。"); chapterCard("第4話","曖昧な距離","10月18日（土） —— 名前のない、ふたりの関係。<br>LINEを開いてね");
+async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『曖昧な距離』","友達未満、でも他人じゃない。"); chapterCard("第4話","曖昧な距離","名前のない関係が、いちばん濃くなる夜。<br><span class=\"cc-when\">10月18日（土） ・ 夜 —— LINEを開いてね</span>");
   await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("今日の、なおが撮ってくれたやつ"); if(!alive(t))return; await himMsg("この前は、急に誘ってごめんな"); if(!alive(t))return; await himMsg("でも、顔見たかってん"); await himStamp("😎"); if(!alive(t))return; await himMsg("…なぁ、他のやつとも会ってんの？"); if(!alive(t))return; await himMsg("…冗談やで"); later(()=>toast("👀 <b>（笑ってるけど、目が笑ってない気がした）</b>"),1000); if(!alive(t))return; await himMsg("今日の映画、暗いとこやから安心やな"); if(!alive(t))return; await himMsg("ほんまは、もっと普通に歩きたいねんけど"); if(!alive(t))return; await himMsg("俺の、飲む？");
   later(()=>toast("📷 ひろとの<b>ストーリー</b>が更新された（彼の垢から見れる）"),3500);
   later(()=>toast("☔ <b>（帰り道、急な雨。一つの傘に、二人。肩が濡れるくらい、近かった）</b>"),5200);
@@ -980,7 +980,7 @@ async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4
     {label:"私たちって、何なんやろ",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("名前、つけられへんねん"); if(!alive(t))return; await himMsg("でも、大事なんはほんまやで"); ch4night(); }},
     {label:"普通のデートも、したいな",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめんな"); if(!alive(t))return; await himMsg("いつか、帽子なしで"); if(!alive(t))return; await himMsg("その日まで、待っててな"); ch4night(); }},
   ]); }
-async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5話『少し空いた距離』","会えない日が、少し増えた。"); chapterCard("第5話","少し空いた距離","11月1日（土） —— 久しぶりの、カフェ。<br>LINEを開いてね");
+async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5話『少し空いた距離』","会えない日が、少し増えた。"); chapterCard("第5話","少し空いた距離","「後悔はしてへん」——その一言だけが、近くにあった。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェ —— LINEを開いてね</span>");
   await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("久しぶり"); if(!alive(t))return; await himMsg("仕事、立て込んでて"); if(!alive(t))return; await himMsg("最近、連絡できてなくてごめんな"); if(!alive(t))return; await himMsg("あの夜のこと…"); if(!alive(t))return; await himMsg("ずっと考えててん"); if(!alive(t))return; await himMsg("俺、最低やな"); if(!alive(t))return; await himMsg("…でも、後悔はしてへんねん"); if(!alive(t))return; await himMsg("今日、やっと会えたな"); if(!alive(t))return; await himMsg("今日のカフェ、当たりやったな"); if(!alive(t))return; await himMsg("麺、なおのやつも美味そうやった"); if(!alive(t))return; await himMsg("…今日も帽子、深めでごめんな"); if(!alive(t))return; await himMsg("あんま見られたくない日やってん"); if(!alive(t))return; await himMsg("人混みは、今日は避けて歩こ"); if(!alive(t))return; await himMsg("なおと普通に歩きたいだけやねんけどな");
   later(()=>{ addPhoto("assets/night.jpg","夜の散歩"); },5000);
   later(()=>toast("📷 ひろとが投稿したよ「このまま時間が止まればいいのに🙃」（彼の垢）"),4000);
@@ -3557,7 +3557,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  ];
  window.startInterlude=async function(t){
    if(state._interludeDone) return; state._interludeStage="line";
-   chapterCard("幕間","引いたはずの線","10月12日（日） 深夜 —— 。<br>LINEを開いてね");
+   chapterCard("幕間","引いたはずの線","引いたはずの線の上で、深夜に電話が鳴る。<br><span class=\"cc-when\">10月12日（日） 深夜 —— LINEを開いてね</span>");
    addDayChip("10月12日（日）深夜");
    await himMsg("…起きてる？",1700); if(!alive(t))return;
    await himMsg("寝てたら、ごめん",700); if(!alive(t))return;
@@ -6141,7 +6141,7 @@ app.style.display="flex";},true);
   if(typeof window.chapter!=="function"||typeof himMsg!=="function"||typeof askChoices!=="function") return;
   async function ch3b(t){
    setChapterWidget("特別編『近づく休日』","線は引かれたまま。それでも、明日が待ち遠しい。");
-   chapterCard("特別編","近づく休日","10月13日（月）〜17日（金） —— 線を引かれた、翌日からの数日間。<br>LINEを開いてね");
+   chapterCard("特別編","近づく休日","「おはよ」の一言に、指が何度も止まる一週間。<br><span class=\"cc-when\">10月13日（月）〜17日（金） ・ 線を引かれた翌日からの数日間 —— LINEを開いてね</span>");
    addDayChip("10月13日（月）");
    await himMsg("おはよ",1200); if(!alive(t))return;
    await himMsg("…昨日は、ごめんな"); if(!alive(t))return;
@@ -8211,6 +8211,17 @@ app.style.display="flex";},true);
 <script>
 /* ===== v154: iOS focus-zoom fix - every text input in the phone renders at 13-14.5px, below Safari's 16px auto-zoom threshold, so tapping any chat/comment field made the whole phone frame lurch on real iPhones (the v91 pin only handled the scroll rewind after the keyboard closed). On coarse pointers the fields now compute at 16px; desktop rendering is untouched ===== */
 (function(){ const css=document.createElement("style"); css.textContent="@media (pointer:coarse){ .phone input[type=\"text\"],.phone input:not([type]),.phone textarea{font-size:16px !important} }"; document.head.appendChild(css); })();
+</script>
+<script>
+/* ===== Tinder ver v159: CONTENT REFRESH 1/3 - chapter cards reworked. Every chapter intro now leads with one fresh line written for this arc, with the date/place/guide demoted to a quiet .cc-when line; the card stays a beat longer (2.5s -> 3.4s) and a thin progress thread runs along the bottom so the pause reads as a held breath, not a loading stall. Story facts, dates, titles, gates and flow are unchanged - only the wording and staging of the intro cards. ===== */
+(function(){ const css=document.createElement("style"); css.textContent=
+ "#chapter-card .cc-sub{font-size:14.5px;line-height:1.9;color:#e6e9f2;max-width:300px}"+
+ "#chapter-card .cc-when{display:inline-block;margin-top:12px;font-size:11.5px;color:#9aa3b8;letter-spacing:.05em;line-height:1.6}"+
+ "#chapter-card{overflow:hidden}"+
+ "#chapter-card:after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,#fd267d,#ff7854);transform-origin:left;transform:scaleX(0);opacity:.85}"+
+ "#chapter-card.on:after{animation:ovCcBar 3.4s linear both}"+
+ "@keyframes ovCcBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}";
+ document.head.appendChild(css); })();
 </script>
 </body>
 </html>
