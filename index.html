@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v202</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v203</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1039,7 +1039,7 @@ floodComments(); floodMentions(); floodDms(); every(genContent,15000); every(gen
   state._imp=312; every(()=>{ if(state._imp<1480){ state._imp+=Math.floor(Math.random()*26+7); const el=$("#imp-n"); if(el) el.textContent=state._imp.toLocaleString("ja-JP")+"万"; } },3000);
   state._batt=43; every(()=>{ if(state._batt>36){ state._batt--; $("#batt-n").textContent=state._batt; const bf=document.querySelector(".batt .fill"); bf.style.width=state._batt+"%"; bf.style.background=state._batt<=37?"#ff453a":state._batt<=39?"#ff9f0a":"#fff"; if(state._batt===38&&!state._battWarned){ state._battWarned=true; toast("🪫 <b>電池残量わずか</b>： 通知の嵐で電池がピンチ"); } } },25000);
   $("#nao-story-viewers").innerHTML="👁 2,314人 ・ <b>193.hiroto_jixiang</b>、yui_s、sauna_m 他 —— 彼、見てる…";
-  later(groupFlood,23000); later(()=>{ if(!state._mgrDone){ state._mgrDone=true; showIncomingCall("manager"); } },85000);
+  later(groupFlood,23000); later(()=>{ if(!state._mgrDone&&!state.ended){ state._mgrDone=true; showIncomingCall("manager"); } },85000);
 later(()=>push("X","#000","𝕏","トレンド1位 #大翔Tinder","「アイドルがアプリはやばい」「交際はしてないらしい」賛否が真っ二つ",()=>show("x")),6000);
 later(()=>push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","フォロワーが+10,000人突破","コメントとDMリクエストが殺到している",()=>show("ig")),12000);
 later(()=>{lineSequence1()},16000);
@@ -1553,7 +1553,7 @@ $("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.ca
    else { await himMsg("内容は俺から聞いて"); }
    return; } show("line"); openChat(); await himMsg("出れんかった？",300); await himMsg("大丈夫、気にせんといて"); await himMsg("文字でも、なおと話せたらいい"); lineSequence2(); });
 /* ===== v2: act2 next morning ===== */
-async function startAct2(kind){ if(state._act2) return; state._act2=true; state.act2=true; $("#lock-date").textContent="11月3日 月曜日";
+async function startAct2(kind){ if(state._act2) return; state._act2=true; state.act2=true; state._mgrDone=true; $("#lock-date").textContent="11月3日 月曜日";
   const ec=$("#endcard"); if(ec) ec.remove();
   $("#w-title").textContent="🌅 翌朝｜少しずつ、日常が戻る";
   $("#w-main").textContent="ひろとが自分の言葉でコメントを出した朝。";
@@ -5001,9 +5001,9 @@ app.style.display="flex";},true);
  const iv=setInterval(()=>{ let ok=false; try{ ok=(typeof FCHATS!=="undefined"&&!!FCHATS.yui); }catch(e){}
   if(!ok) return; clearInterval(iv);
   try{
-   FCHATS.yui.log.push(["f","今週の飲み、店ほぼ決まり〜"],["f","なおの席、端っこの静かな方にしといた"]);
-   FCHATS.misaki.log.push(["f","あのカフェ、また行こ？"],["f","写真、雰囲気よく撮れてたよ"]);
-   FCHATS.rina.log.push(["f","なおの推し活レポ、待ってる〜"],["f","次に会える日、はよ決めよ"]);
+   FCHATS.yui.log.push(["f","なおの席、端っこの静かな方にしといた"]);
+   FCHATS.misaki.log.push(["f","あのカフェ、また行こ？"]);
+   FCHATS.rina.log.push(["f","次に会える日、はよ決めよ"]);
   }catch(e){}
  },600);
 })();
@@ -5090,9 +5090,20 @@ app.style.display="flex";},true);
    ["n","送信ボタンは、押されなかった。"],
    ["him","送ったら、迷惑やもんな"],
    ["n","代わりに彼は、事務所の声明文を何度も読み返した。"],
-   ["him","ごめんな、なお"]]}];
+   ["him","ごめんな、なお"]]},
+  {t:"その後 ― ステージの上から", sub:"半年後 ・ 彼の画面", un:()=>!!state._epilogue, lines:[
+   ["n","半年後、ツアーの大阪公演。ステージの上からの、彼の画面。"],
+   ["him","（……客席、後ろのほう）"],
+   ["n","MCの合間、水を飲みながら客席をゆっくり見渡したとき――視線が、一瞬だけ止まった。"],
+   ["him","（気のせい、やんな）"],
+   ["him","（……でも、なんか）"],
+   ["n","確かめる術はない。あの番号は、もう開いていない。"],
+   ["him","（元気で、おってくれたらええな）"],
+   ["n","アンコールが終わって、楽屋。彼はステージの写真を選んで、投稿した。"],
+   ["him","「今日も、ありがとうございました」"],
+   ["n","その「ありがとう」が誰に向けられたものかは、彼だけが知っている。"]]}];
  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
- row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">4本</b>';
+ row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">5本</b>';
  sc.appendChild(row);
  const panel=document.createElement("div"); panel.id="ep-panel";
  panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
@@ -7860,7 +7871,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v202";
+ let ver="v203";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8591,5 +8602,65 @@ setInterval(upd,900); upd();
 <!-- ===== Tinder ver v200: PLAYTHROUGH FIX (nao asked for a real full playthrough; Playwright run of v199, 486s, title -> half ending -> act2) - found a real collision: a fast player can reach ending() while the 85s manager call is still pending; ending() awaits POV3, the call rings during the POV, and ending()'s later(showEnding,6000) then fires MID-CALL: showEnding's show('news') yanked the call screen away (manager audio kept playing invisibly over the news/LINE views and overlapped the act2 morning voice), and the call-end handler never ran, silently skipping the v198 manager aftermath. Fixes: (1) showEnding defers while a call is answered or ringing, while story #choices are on screen, or while the POV reader is open - retrying every 1.5s, capped at 40 tries; (2) show() itself refuses to switch views while state._answered (a call is in progress) except to the call view - the call-end/decline handlers clear _answered before their own show() calls, so ending a call still works; (3) push taps are ignored while an incoming call is ringing (pushes render above the call UI and their callbacks switch views). Verified in the same run: all 25 story mp3 loads returned 200 (vt-night1-4, vt-greet, vt-line2, interlude C set with vt-line-call, scandal set, mgr-t-1..5, vt-morning), subtitles matched the playing voices, the epilogue gate refusal toast fired correctly before the act2 morning, and the only console error was a headless vibrate artifact. ===== -->
 <!-- ===== Tinder ver v201: PLAYTHROUGH GRADE-UP - the scandal-night incoming call from him played the wrong voice set. startCallVoice picks VOICE_SCHED_B (a morning-after set: 'ohayo, nao / sorry about yesterday / can we LINE like normal from today') for any second incoming call, and because the interlude call already increments _callN, the scripted scandal call (her '声、聞きたい' choice on 11/2 night) came out as a morning-after apology - wrong scene, wrong day. The A set is the one written for this scene ('...nao? I wanted to hear your voice / I won't run / you're as important as the fans / I won't sleep tonight / can I call tomorrow too / goodnight'). Fix: the scandal phase never uses B for incoming calls (useB is now act2, or a repeat incoming call outside the scandal); B's morning-after content still fits the prologue's post-interlude mornings and act2, so the set and files stay. Subtitles come from the same schedule, so subtitle = voice still holds. Spotted in the v199 full playthrough (voice-b1/b2 requested at the scandal call, subtitle 'ohayo' at 11/2 night). ===== -->
 <!-- ===== Tinder ver v202: the act2 morning PHONE branch gets its dedicated voice, closing the v199/v340-pattern audit for real. The phone branch was the one place still reusing vt-morning ('おはよ。……声、聞けてよかった', a LINE-morning greeting) under a phone-greeting text line; it now plays the newly recorded vt-morning2.mp3 ('もしもし。……おはよ、なお。起きたばっかの声、聞かせて', measured 4.00s, label 0:04) - the voice itself is the phone greeting now, so the old bridging text line ('もしもし。……朝の声、聞きたかってん') is removed and only his closer ('短くていい。聞けたから、もう大丈夫') follows. The other two morning branches (read the comments together / ordinary morning talk) and the memories-panel '翌朝' replay keep vt-morning untouched, exactly as specified. Subtitle = voice holds: the played line is the greeting the branch is about, and no remaining text line duplicates it. ===== -->
+<script>
+/* ===== Tinder ver v203: ORIGINAL-SYNC (orig v341-v344 audit, batch 1) - the post-epilogue layer, read into this arc.
+   (1) orig v341's fix, ported above: the 85s manager-call timer now also requires !state.ended, and startAct2
+   marks the manager call done - a fast clear can no longer be yanked into a post-ending call during act2.
+   (2) orig v343's friend-history trim: the seeded history pushes for yui/misaki/rina drop from two lines to one
+   each (the most personal line stays). (3) orig v343's bonus-after-epilogue: a fifth bonus episode,
+   'その後 ― ステージの上から' (his screen at the half-year venue), unlocks once the epilogue has been seen,
+   and the settings row now counts 5. (4) orig v344's ending collection: a settings row reads the endings the
+   v176 device record (localStorage r4-record-v1) has stored and shows X / 4 with a per-ending check/lock toast.
+   (5) orig v343+v344's post-epilogue presence, re-read for this arc: once the epilogue is seen, his stage post
+   (the very one the epilogue text describes - '今日も、ありがとうございました') tops his IG, a follow-up news
+   article reports the finished tour and the fans' quiet support (she is never named as anything but 'the woman
+   in the reports', the distance holds), and the notebook gains a half-year page. The original's Christmas
+   countdown is NOT ported: it is a lover-premise in an arc where they part without dating. ===== */
+(function(){
+ /* ending collection row in settings, fed by the v176 device record */
+ const NAMES={open:"自分の言葉で、伝えた",wait:"静かに、待った",away:"少し、距離を置いた",half:"遠くから、見守った"};
+ const sc=document.querySelector("#v-settings .scroll");
+ if(sc&&!document.querySelector("#set-endings-t")){
+  const row=document.createElement("div"); row.className="setrow"; row.id="set-endings-t"; row.style.cursor="pointer";
+  const read=()=>{ try{ const r=JSON.parse(localStorage.getItem("r4-record-v1")||"{}"); return r.endings||[]; }catch(e){ return []; } };
+  const render=()=>{ const got=read(); row.innerHTML='<span>🏁 エンディング到達コレクション</span><b style="color:#8e8e93">'+got.length+' / 4</b>'; };
+  render(); setInterval(render,2000);
+  row.addEventListener("click",()=>{ const got=read(); toast("🏁 "+Object.keys(NAMES).map(k=>(got.indexOf(k)>=0?"✅ ":"🔒 ")+NAMES[k]).join("　")); });
+  sc.appendChild(row);
+ }
+ /* after the epilogue: his stage post + the follow-up article */
+ const iv=setInterval(()=>{
+  if(!state._epilogue) return;
+  if(!state._v203ig){ state._v203ig=true;
+   try{ const hs=$("#his-statement"); if(hs){ const mp=document.createElement("div"); mp.className="ig-post";
+    mp.innerHTML='<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">NEW</span></div><img loading="lazy" decoding="async" class="pimg" src="assets/stage.jpg" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span></div><div class="cap"><b>193.hiroto_jixiang</b> ツアー大阪公演、ありがとうございました。……今日も、ありがとうございました</div><div class="cmt"><b>mio_wish</b>おつかれさま！ 最高やった</div><div class="cmt"><b>rottdan_a</b>MCで客席をゆっくり見てたの、なんか泣けた</div>';
+    hs.prepend(mp); }
+   push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","ひろとが新しい投稿","「ツアー大阪公演、ありがとうございました」——半年後のステージ写真",()=>show("hisig")); }catch(e){}
+  }
+  if(!state._v203news){ state._v203news=true;
+   try{ addNewsRow("assets/stage.jpg","【半年後】井汲大翔、ツアー完走――変わらぬステージに、静かなエール","音楽ナタリー ・ 翌日",()=>{
+     $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block";
+     a.innerHTML='<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>井汲大翔、ツアー完走――あの騒ぎから半年、変わらぬステージに静かなエール</h2><div class="m">音楽ナタリー ・ 翌日配信</div><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気アイドル・井汲大翔（24）の全国ツアーが、大阪公演でファイナルを迎えた。半年前、マッチングアプリの利用が報じられ大きな話題となった彼だが、活動を休止することなくステージに立ち続け、この日の公演も満員の客席を前に堂々と歌いきった。</p><div class="box">ファン「騒ぎのあとも、ステージは何も変わらなかった。それが一番の答えだと思う」</div><p>あの報道以来、彼が私生活について語ることはなかった。お相手とされた女性の近況も伝えられておらず、二人の関係について新たな情報はない。本人はMCで「今日も、ありがとうございました」と短く述べ、深く頭を下げた。</p><p>SNSでは「#変わらないステージ」という穏やかなタグとともに、公演の感想が静かに広がっている。騒ぎのあとに残ったのは、案外、変わらない日常と、変わらないステージだったのかもしれない。</p></div>';
+     $("#news-scroll").scrollTop=0; });
+   push("ニュース速報","#e60012","N","続報：ツアー完走","「変わらぬステージに、静かなエール」——タップで記事へ",()=>show("news")); }catch(e){}
+  }
+  if(state._v203ig&&state._v203news) clearInterval(iv);
+ },1500);
+ /* the notebook's half-year page, epilogue days only */
+ const nobs=new MutationObserver(()=>{ const p=document.querySelector("#note-panel");
+  if(!p||p.querySelector("#note-extra8")) return; if(!state._epilogue) return;
+  const d=document.createElement("div"); d.id="note-extra8";
+  d.style.cssText="background:#f6f2fc;border:1px solid #ddd0f2;border-radius:12px;padding:12px 14px;margin-top:10px;font-size:13.5px;line-height:1.9;color:#333";
+  d.innerHTML="<b>🎫 半年後のページ</b><br>"
+   +"・一般発売で取ったチケット、後ろの席<br>"
+   +"・会わなかった。声も、かけなかった<br>"
+   +"・ステージの彼は、眩しかった<br>"
+   +"・投稿に、いいねをひとつ<br>"
+   +"・……それで、十分だった";
+  p.appendChild(d); });
+ nobs.observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<!-- ===== Tinder ver v203: ORIGINAL-SYNC (orig v341-v344 audit, batch 1) - manager-timer guard + act2 _mgrDone (orig v341), friend history trims to one seeded line each (orig v343), a fifth bonus episode unlocked by the epilogue (orig v343), the ending collection row in settings fed by the v176 device record (orig v344), and after the epilogue: his stage post on his IG, a follow-up tour article in the news, and a half-year page in the notebook (orig v343+v344). NOT ported: the original's Christmas countdown (lover premise; this pair parts without dating) and its hotpot-party bonus (an itsumen get-together he attends - this arc has no such reunion). ===== -->
 </body>
 </html>
