@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v184</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v185</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2209,17 +2209,26 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"Super Likeありがとう笑 びっくりした", fn:async()=>{ await tThem("考える前に手が動いててん笑"); await tThem("そういうとこ、嘘つかれへんねん"); step2(); }},
       {label:"よろしく〜 気楽に話そ", fn:async()=>{ await tThem("おっけー"); await tThem("気楽なんが一番、助かるわ"); step2(); }},
-      {label:"タイプって、どのへんが？笑", fn:async()=>{ await tThem("雰囲気、やな"); await tThem("写真の中、ずっと笑ってたから"); step2(); }},
-      {label:"コーラ毎日はほんと？笑", fn:async()=>{ await tThem("嘘ちゃうで"); await tThem("ごはんとコーラ、切り離されへんねん笑"); step2(); }},
+      {label:"タイプって、どのへんが？笑", fn:async()=>{ await tThem("文章、やな"); await tThem("プロフィール、最後まで読んだの初めてやで"); step2(); }},
+      {label:"アプリ、慣れてそう笑", fn:async()=>{ await tThem("ちゃうで、初めてやねん"); await tThem("マッチ自体、なおが一人目やねん"); step2(); }},
       {label:"見返したん？笑 …ちょっと嬉しい", fn:async()=>{ await tThem("内緒やで😎"); await tThem("…そういう返し、ずるいわ笑"); step2(); }}
     ]);
   }
   async function step2(){
-    await tThem("俺は休みの日、マロンと出かけるか寝てるかやな");
-    await tThem("なおは、休みの日なにしてるん？");
+    await tThem("最近、深夜の散歩にハマっててん");
+    await tThem("マロン連れて、誰もおらん道を歩くやつ");
+    await tThem("なおは最近、ハマってることある？");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"サウナと、美味しいもの食べるのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); await tThem("美味いもん好き同士やな"); stepSauna(); }},
-      {label:"推し活したり、のんびりしてる", fn:async()=>{ await tThem("のんびり派か、気が合いそう"); await tThem("力抜けてる感じ、ええな"); stepWork(); }}
+      {label:"サウナ！ 整うのが好き", fn:async()=>{ await tThem("サウナか、わかるわ"); stepSauna(); }},
+      {label:"韓国ドラマ、一気見しちゃう", fn:async()=>{ stepDrama(); }}
+    ]);
+  }
+  async function stepDrama(){
+    await tThem("韓国ドラマか、俺も見るで");
+    await tThem("泣けるやつ、ほんま弱いねん");
+    tChoices("なおの返信を選んで",[
+      {label:"意外！ じゃあ感想戦えるね", fn:async()=>{ await tThem("負けへんで笑"); await tThem("なおの推し作品、今度教えて"); stepWork(); }},
+      {label:"泣けるの、私も弱い…", fn:async()=>{ await tThem("おそろいやな"); stepWork(); }}
     ]);
   }
   async function stepSauna(){
@@ -2232,11 +2241,10 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   }
   async function stepWork(){
     await tThem("…あ、俺の仕事？");
-    await tThem("時間バラバラな仕事してて");
-    await tThem("夜に動くことが多いねん");
-    await tThem("詳しくは、会ったら言うわ");
+    await tThem("ちょっとだけ、人前に出ることもある仕事で");
+    await tThem("詳しくは、会ったときに言うわ。約束する");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"気になるけど、会ったときに聞くね", fn:async()=>{ await tThem("約束するわ、ほんまに言う"); stepFood(); }},
+      {label:"人前に出る仕事って…何者？笑", fn:async()=>{ await tThem("秘密やで"); await tThem("でも、悪いやつちゃうから安心して"); stepFood(); }},
       {label:"おっけー、無理には聞かない", fn:async()=>{ await tThem("急かさんとこ、好きやわ"); stepFood(); }}
     ]);
   }
@@ -2244,16 +2252,18 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChip("9月28日（日）");
     await tThem("おはよ、起きた？");
     await tPhoto("assets/ig-food.jpg","昼の麺、今日のは当たり😎");
+    await tThem("これ、辛さレベル5やねん");
+    await tThem("なおは辛いの、いける口？");
     tChoices("なおの返信を選んで",[
-      {label:"麺好きなの同じ！ 私も昨日麺やった", fn:async()=>{ await tThem("お、気が合うやん笑"); await tThem("麺の話なら何時間でもいけるで"); stepMaron(); }},
-      {label:"美味しそう…どこの？", fn:async()=>{ await tThem("秘密やで笑"); await tThem("今度、連れてったるわ"); await tThem("二人でな"); stepMaron(); }}
+      {label:"辛いの大好き！ 勝負したい", fn:async()=>{ await tThem("強いな笑"); await tThem("次、辛い店で勝負やな"); stepMaron(); }},
+      {label:"実はちょっと苦手で…", fn:async()=>{ await tThem("ほな甘いのも頼んどくわ"); await tThem("二人でな"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
     await tThem("あ、うちの子見て");
     await tPhoto("assets/ig-dog.jpg","うちのマロン🐶");
-    await tThem("人懐っこさは一級品やで");
-    await tThem("なおには、秒で懐くと思うわ笑");
+    await tThem("マロン、靴下泥棒の常習犯やねん");
+    await tThem("なおの靴下も、そのうち狙われるで笑");
     tChoices("なおの返信を選んで",[
       {label:"かわいい…！ マロンって名前もかわいい", fn:async()=>{ await tThem("名前呼んだら、尻尾が取れそうになるで"); stepNight(); }},
       {label:"犬派なんや、私も犬好き", fn:async()=>{ await tThem("お、犬好き同士や"); await tThem("いつか会わせたいわ"); stepNight(); }},
@@ -2262,8 +2272,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   }
   async function stepNight(){
     tChip("9月29日（月）夜");
-    await tThem("眠気がどっか行ってもた…");
-    await tThem("なお、まだ起きてる？");
+    await tThem("散歩から帰ってきたとこ");
+    await tThem("全然眠くないねんけど…なお、まだ起きてる？");
     tChoices("なおの返信を選んで",[
       {label:"起きてるよ、どしたん？", fn:async()=>{ stepNight2(); }},
       {label:"眠いけど、少しなら付き合う笑", fn:async()=>{ await tThem("助かる笑"); stepNight2(); }}
@@ -2286,7 +2296,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   }
   async function stepSuspect(){
     tChip("9月30日（火）");
-    await tThem("仕事おわった…今日はさすがに疲れた");
+    await tThem("やっと終わった…今日は長かった");
     tChoices("なおの返信を選んで（冗談で振ってみる）",[
       {label:"実はアイドルやったりして笑", fn:async()=>{ suspectGo(); }},
       {label:"歌う仕事…とか？笑", fn:async()=>{ suspectGo(); }}
@@ -2306,7 +2316,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function stepMeet(){
     tChip("10月1日（水）");
     await tThem("なぁ、なお");
-    await tThem("そろそろ文字やめて、ごはん行こや");
+    await tThem("土曜って、昼あいてる？");
+    await tThem("そろそろ文字やめて、会って話そや");
     await tThem("来週、レッスン…あ、仕事が詰まってて");
     await tThem("土曜しか、空いてへんねん");
     await tThem("楽しみすぎて、前日寝られへんタイプやねん笑");
@@ -8500,7 +8511,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v184";
+ let ver="v185";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -9215,5 +9226,6 @@ setInterval(upd,900); upd();
 <!-- v182: LINE story is now conversation, not monologue - ch2 gains an early reply point, ch3 a reply before the confession, ch4 a reply to the jealousy line and one in the morning-after, ch5 two reply points splitting the long run; all of her choice labels across ch2-ch5 rewritten (branches, endings, voice lines untouched) -->
 <!-- v183: branches and temperature reworked in the Tinder main thread - her phone-call choice on 9/29 now really calls (new TINDER_CALL playlist of existing single-line voices: fv-12/fc-t-25/fc-t-20/fc-t-7, subtitles verbatim; call-end returns to the Tinder chat and continues to the suspect beat); her sauna answer detours into a new sauna topic scene; new tempting choices for her (sauna together / look at me, not Maron / I wont sleep either) with his warmer-but-restrained replies; his extra line on the night scene. No voice line reworded, arc endpoints unchanged -->
 <!-- v184: text refresh 2/2 - friends and free chat reworded: FCHATS logs/calm/scandal pools for all three friends, the time-of-day ambience pools plus scandal/after sets, seeded friend logs, group quick replies, and his free-chat REPLY_RULES / REPLY_FREE / REPLY_CALM (same triggers, same beats, same tones; no voice line or FCV subtitle touched) -->
+<!-- v185: the Tinder conversations change SUBJECT, not just wording - opening choices now cover his inexperience with apps (she is his first match) and her profile text; step2 is rebuilt around current obsessions (his late-night walks with Maron, her sauna or a new Korean-drama branch stepDrama); the job mystery is reframed as public-facing work; the 9/28 food photo now starts a spice-tolerance contest; the Maron talk is about the sock-thief habit; the night scene opens on the walk callback. Mandatory beats untouched: Super Like opening incl. the first-message marker line, anonymity, the not-the-idol deflection, the date at the cafe, the LINE exchange, the v183 night call -->
 </body>
 </html>
