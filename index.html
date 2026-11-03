@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v213</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v214</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -937,7 +937,7 @@ $("#skip-btn").addEventListener("click",()=>{ if(state.phase!=="prologue") retur
 function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal"; $("#lock-date").textContent="11月2日 日曜日"; $("#news-note").textContent="11月2日（日）夜"; $("#skip-btn").style.display="none"; chapterCard("第6話","バレた日","バレたのは、恋じゃなかった。アプリを開いていた、その事実だった。<br><span class=\"cc-when\">11月2日（日）夜 —— LINEを開いて様子を見てね</span>"); addDayChip("11月2日（日）"); scheduleFirstPush(); }
 function chapter(n){ if(state.phase!=="prologue") return; state.chapter=n; const LD={1:"9月27日 土曜日",2:"10月4日 土曜日",3:"10月12日 日曜日",4:"10月18日 土曜日",5:"11月1日 土曜日"}; if(LD[n]) $("#lock-date").textContent=LD[n]; const ND={1:"9月27日（土）夜",2:"10月4日（土）夜",3:"10月12日（日）夜",4:"10月18日（土）夜",5:"11月1日（土）夜"}; if(ND[n]) $("#news-note").textContent=ND[n]; const t=state._token; if(n===1) ch1(t); else if(n===2) ch2(t); else if(n===3) ch3(t); else if(n===4) ch4(t); else if(n===5) ch5(t); }
 async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","「本人なわけない」——そう打ち消した出会いほど、忘れられない。<br><span class=\"cc-when\">9月27日（土） ・ Tinderで出会った日 —— ホームの Tinder を開いてね</span>"); state._tinderWaiting=true; toast("🔥 <b>Tinder</b>を開いて、スワイプしてみて"); }
-async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","帽子とマスクの下から、見覚えのある目元が笑った。<br><span class=\"cc-when\">10月4日（土） ・ 待ち合わせ場所 —— LINEを開いてね</span>"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2100); later(()=>toast("🎩 <b>帽子が深い</b>：それでも、目元だけですぐ分かった"),3900); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),5600); later(()=>toast("🚶 <b>（人混み。流されそうになったら、袖を掴まれた。…近い）</b>"),7400);
+async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","帽子とマスクの下から、見覚えのある目元が笑った。<br><span class=\"cc-when\">10月4日（土） ・ 待ち合わせ場所 —— LINEを開いてね</span>"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2400); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),4700); later(()=>toast("🚶 <b>（人混み。流されそうになったら、袖を掴まれた。…近い）</b>"),6900);
   await himMsg("…なお？",700); if(!alive(t))return; await himMsg("ごめんな、隠してて"); if(!alive(t))return; await himMsg("会ってから言お思ててん"); if(!alive(t))return; await himMsg("びっくりしたよな"); if(!alive(t))return; await himMsg("帽子とマスクで、ごめん"); if(!alive(t))return; await himMsg("人目がな…でも、会いたかってん"); if(!alive(t))return; await himVoice("assets/vt-greet.mp3","0:05");
   if(!alive(t))return; askChoices("なおの反応は——",[
     {label:"目が、笑ってる…本物やん",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("騒がんでくれて、ありがとう"); if(!alive(t))return; await himMsg("今日は普通のデート、しよな"); ch2main(t); }},
@@ -7898,7 +7898,7 @@ app.style.display="flex";},true);
   "#credits-ov .cr-x{position:absolute;top:60px;right:16px;font-size:11px;color:#8f8bab;letter-spacing:.14em}";
  document.head.appendChild(css);
  /* find + absorb the old info box (its text moves into the header, then it is deleted) */
- let ver="v213";
+ let ver="v214";
  const kids=[...sc.children];
  const infoBox=kids.find(d=>d.classList && !d.classList.contains("setrow") && (d.textContent||"").includes("フォロワー数などは物語上の演出です"));
  if(infoBox){ const m=(infoBox.textContent||"").match(/v\d+/); if(m) ver=m[0]; }
@@ -8852,9 +8852,9 @@ setInterval(upd,900); upd();
    {label:"おつかれさま、ゆっくり休んで",fn:async()=>{ await himMsg("ありがとう"); await himMsg("…明日は、もうちょい話せる日やから"); res(); }}
   ]); }); if(!alive(t))return;
   toast("💭 <b>（寝る前に、また調べてしまった。「カラオケ大会 平日 朝から」で検索——近所で、そんな大会、出てこなかった）</b>");
-  await new Promise(r=>setTimeout(r,2300)); if(!alive(t))return;
+  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💭 <b>（昨日の夜スクショした公式スケジュールと、今日の分を見比べた。今日の欄も「音楽番組 収録」。彼の「歌って踊ってた」と並べて、3回見直した）</b>");
-  await new Promise(r=>setTimeout(r,2300)); if(!alive(t))return;
+  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💭 <b>（検索履歴、また消した。ここまでしてる時点で、私の中ではもう「半分」どころじゃないのかも）</b>");
   /* --- 10/3: the photo he sent by mistake, and the eve of the date --- */
   addDayChip("10月3日（金）");
@@ -8866,16 +8866,16 @@ setInterval(upd,900); upd();
   await himMsg("送る写真、間違えた"); if(!alive(t))return;
   await himMsg("これは前に、仕事の手伝い行ったとこの写真やで"); if(!alive(t))return;
   toast("💭 <b>（ステージの袖、照明の機材、積まれたスピーカー——『手伝い』の規模じゃ、ない気がした）</b>");
-  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
+  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💭 <b>（拡大して見た。壁に貼られた紙は曲順みたいな並びで、端にはラミネートされた関係者パスみたいなのも写ってた）</b>");
-  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
+  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💭 <b>（スピーカーの上に、黒いキャップ。……明日の「目印」と、同じやつに見えたのは、気のせい？）</b>");
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"ステージの写真…だよね？",fn:async()=>{ await himMsg("文化祭の、な？",1900); await himMsg("規模は、だいぶ大きめやけど"); toast("💭 <b>（今の間。目を逸らした、気がした）</b>"); res(); }},
    {label:"間違えて送るなんて、ドジだね笑",fn:async()=>{ await himMsg("ほんまやで笑"); await himMsg("内緒の写真ばっかり、増えていくな"); res(); }}
   ]); }); if(!alive(t))return;
   toast("💭 <b>（送られてすぐ、保存してた。自分でも引くくらい、指が早かった。——「証拠」フォルダが、増えていく）</b>");
-  await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
+  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💬 <b>（ゆいに『相談』って打ちかけて、消した。まだ何も、確かめてないことだらけで）</b>");
   await himMsg("明日の待ち合わせ、確認しとくな",1800); if(!alive(t))return;
   await himMsg("12時に、駅の柱のとこ"); if(!alive(t))return;
@@ -8884,8 +8884,7 @@ setInterval(upd,900); upd();
    {label:"楽しみ。…明日、全部わかる気がする",fn:async()=>{ await himMsg("…全部、な",1900); await himMsg("明日、ちゃんと話すわ"); res(); }},
    {label:"私が先に見つけるからね",fn:async()=>{ await himMsg("約束、覚えてるで"); await himMsg("負けたほう、カフェオレ奢りな"); res(); }}
   ]); }); if(!alive(t))return;
-  toast("💭 <b>（結局、2時過ぎまで起きてた。もう検索はしなかった。……したくて、うずうずはしたけど）</b>");
-  toast("💭 <b>（明日、会えば分かる。帽子の奥の目元が『あの人』かどうか——分かって、どうするつもりなんやろ、私）</b>");
+  toast("💭 <b>（結局、2時過ぎまで起きてた。もう検索はしなかった。……したくて、うずうずはしたけど。明日、会えば分かる。帽子の奥の目元が『あの人』かどうか——分かって、どうするつもりなんやろ、私）</b>");
  }
  var _chSus=window.chapter;
  window.chapter=async function(n){
@@ -8964,5 +8963,6 @@ setInterval(upd,900); upd();
 })();
 </script>
 <!-- ===== Tinder ver v213: short-height safety - title / lock / call surfaces compact + scrollable under short viewports (320x568 and 360x640 verified); tall screens unchanged. ===== -->
+<!-- ===== Tinder ver v214: toast pacing - inner-monologue toasts live 3.4s each, but the realism batches (v210/v211) and the ch2 opening fired them every ~2.1-2.3s, so two or three long notes stacked over the chat before the first could be read. The ch2 opening loses its one redundant note (the '🎩 帽子が深い' toast repeated the 💭 line before it and the chapter card; nao authorised cutting waste lines) and its remaining four beats are re-timed to 0.5/2.4/4.7/6.9s. In the interlude, the gaps between the 10/2 verification trio, the 10/3 zoom trio and the save -> unsent-consultation pair widen 2.1-2.3s -> 3.1s so each note lands as the previous one fades, and the interlude's two back-to-back closing notes merge into a single toast. No story content, choices, voices or gates changed - one duplicated line deleted, the rest is timing. ===== -->
 </body>
 </html>
