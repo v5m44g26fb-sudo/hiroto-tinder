@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v280</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v281</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2166,8 +2166,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     const c=deck[idx];
     if(idx!==lastCardIdx){ sceneIdx=0; lastCardIdx=idx; }
     if(c.hiroto){
-      if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","ひろと があなたに Super Like しました！","あなたを Super Like した人がいます —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} }
-      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><span class="area-chip">近隣のエリア</span><div class="nm">${c.name} <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km</div><div class="bio">${c.bio}</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
+      if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","Super Like が届いています","ひろと から —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} }
+      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ Super Like</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><span class="area-chip">近隣のエリア</span><div class="nm">${c.name} <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km</div><div class="bio">${c.bio}</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
       const img=document.getElementById("hiroto-photo");
       img.addEventListener("click",()=>{ photoIdx=(photoIdx+1)%photos.length; render(); });
       const _tzl=document.getElementById("tz-l"), _tzr=document.getElementById("tz-r");
@@ -2225,15 +2225,11 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     if(chatStarted) return; chatStarted=true;
     tChip("9月27日（土）夜 —— マッチした日");
     tNote("（どっかで見た顔…いやいや、本人なわけない。推し活のしすぎで目がバグってるだけ）");
-    await tThem("マッチありがとう笑",600);
-    await tThem("ひろとやで、よろしくな");
-    await tThem("プロフに「暇つぶしで入れた」って書いたの、さっそく後悔してる");
-    await tThem("Super Like、押すつもりなかったのに");
-    await tThem("なおの写真見て、文章読んでたら、指が先に動いててん");
-    await tThem("誰かのプロフ、最後の一文まで読んだの初めてやで");
-    await tThem("あの言い回し、頭から離れへんねん");
+    await tThem("…マッチ、ありがとう",600);
+    await tThem("ひろとです。よろしく");
+    await tThem("プロフの「暇つぶし」、書いたの……ちょっと後悔してる");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"暇つぶしって書いてたくせに笑", fn:async()=>{ await tThem("…バレた？ あれは撤回やわ"); await tThem("暇つぶし相手に、Super Likeは押さんて"); step2(); }},
+      {label:"暇つぶしって書いてたくせに笑", fn:async()=>{ await tThem("…バレた？ あれは撤回やわ"); step2(); }},
       {label:"一人目で本気、重くない？笑", fn:async()=>{ await tThem("軽い気持ちで始めたんやけどな"); await tThem("…なおが悪いわ"); step2(); }},
       {label:"私のプロフ、どこが刺さったん？", fn:async()=>{ await tThem("笑ってる写真もやけど"); await tThem("最後の一文。…あれ、ずるいわ"); step2(); }},
       {label:"じゃあ私も、本気出しちゃうよ？", fn:async()=>{ await tTyping(1600); await tThem("…それはずるいな"); await tThem("でも正直、言ってほしかったのかも"); step2(); }}
@@ -2294,7 +2290,6 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("あ、報告。なおの写真、マロンに見せてみてん");
     await tPhoto("assets/ig-dog.jpg","その時のマロン🐶");
     await tThem("画面、めっちゃ舐められたわ笑");
-    await tThem("気に入られたみたいやで");
     await tThem("俺の歌には全然反応せえへんのに");
     tNote("（……歌？　この人、歌う側の人なん？）");
     await tThem("あ、カラオケの話な。十八番、あるねん");
@@ -2314,9 +2309,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     ]);
   }
   async function stepNight2(){
-    await tThem("髪、ちゃんと乾かした？");
-    await tThem("濡れたまま寝たら、風邪ひくで");
-    await tThem("…心配の仕方が、身内っぽいな俺");
+    await tThem("髪、乾かした？ 濡れたまま寝たら風邪ひくで");
     await tThem("なおって、寝る直前までスマホ見る派？");
     await tThem("文字やなくて、声で話したい夜って、ない？");
     await tThem("…俺は今、それ");
@@ -2381,11 +2374,10 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     ]);
   }
   async function step3(){
-    await tThem("LINE、交換しよ");
-    await tThem("このアプリの通知、正直よく見逃すねん");
-    await tThem("なおのだけは、見逃したくないから");
+    await tThem("…LINE、交換せえへん？");
+    await tThem("このアプリ、通知見逃しがちで");
     tChoices("LINEを交換する？（様子見でOK）",[
-      {label:"見逃したくない、か…うん、いいよ", fn:async()=>{ await tThem("ありがとう、追加したで"); await tThem("すぐ連絡するわ。ほんまに"); finishTinder(); }},
+      {label:"うん、いいよ", fn:async()=>{ await tThem("ありがとう、追加したで"); finishTinder(); }},
       {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加する"); finishTinder(); }}
     ]);
   }
@@ -5397,7 +5389,7 @@ app.style.display="flex";},true);
  /* ---------- 2. match celebration + first-message choice ---------- */
   var overlay=$("#match-overlay"), fmPayload=null, fmAwait=false, fmApplied=false;
   var FM=[
-    {me:"はじめまして！ Super Likeありがとう😊", him:"こちらこそ、ありがとう笑　最初の一文、ちゃんとしてる人、好きやわ"},
+    {me:"はじめまして！ Super Likeありがとう😊", him:"こちらこそ、ありがとう"},
     {me:"写真のカフェオレ、私も好きなやつ！", him:"え、ほんま？　あの店のカフェオレ、反則級にうまいねん笑"},
     {me:"…なんか、見たことある気がする笑", him:"え？　どこでやろ笑　……心当たり、多すぎるんやけど"}
   ];
@@ -5425,7 +5417,7 @@ app.style.display="flex";},true);
   if(tchat){ new MutationObserver(function(muts){ if(!fmPayload||fmApplied) return;
     muts.forEach(function(mu){ mu.addedNodes.forEach(function(n){ if(n.nodeType!==1||!n.classList) return;
       if(n.classList.contains("daychip") && !fmAwait){ fmAwait=true; var d=document.createElement("div"); d.className="t-bub me"; d.textContent=fmPayload.me; tchat.appendChild(d); tchat.scrollTop=99999; }
-      else if(fmAwait && n.classList.contains("t-bub") && n.classList.contains("them") && n.textContent==="マッチありがとう笑"){ n.textContent=fmPayload.him; fmAwait=false; fmApplied=true; }
+      else if(fmAwait && n.classList.contains("t-bub") && n.classList.contains("them") && n.textContent==="…マッチ、ありがとう"){ n.textContent=fmPayload.him; fmAwait=false; fmApplied=true; }
     }); });
   }).observe(tchat,{childList:true}); }
  /* ---------- tick ---------- */
@@ -11631,7 +11623,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v280"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v281"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12059,5 +12051,8 @@ dock.addEventListener("click",function(e){
 })();
 </script>
 <!-- ===== Tinder ver v280 (nao's screenshot, 2026-11-07): tapping a search field no longer bursts in with the real iOS keyboard and Safari's form bar. The X keyword bar, IG search, TikTok discover search and the in-game Safari bar are read-only pickers now - every one of them already had a complete tap path (X suggestion chips and trend rows set the query and run doSearch; IG suggestions open accounts; TikTok cells open on tap; Safari history rows run the search). The X bar additionally flips to the search tab so its chips are on screen. Message inputs and the profile editor still take real typing. ===== -->
+<script>
+/* v281: his messages re-toned - shy ISFP-T, sparse and short; the Super Like is never announced by him */
+</script>
 </body>
 </html>
