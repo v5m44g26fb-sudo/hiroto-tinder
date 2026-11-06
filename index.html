@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v240</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v241</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9846,6 +9846,39 @@ setInterval(upd,900); upd();
   if(t==="likes") cloneInto(likeBox,collectLikes(),"いいねしたポストは、ここに出るよ");
  };
  bar.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>select(b.dataset.t)));
+})();
+</script>
+<script>
+/* ===== Tinder ver v241: final-stage pass over the remaining apps (nao, 2026-11-06) - the emoji furniture that was left. The LINE bottom tab bar (home / talk / call / news / more) trades its emoji for monochrome stroke SVGs in the real app's manner, labels kept; the Tinder header's filter and bell buttons get real SVG glyphs too (the bell keeps its badge span; the Gold pill is a labelled button in the real app as well and stays). Everything else was audited in passing and already sits at level: news, photos, settings, call and the lock/home chrome from the earlier passes. Handlers, panels and gates are untouched - only the glyphs change. ===== */
+(function(){
+ if(window.__v241) return; window.__v241=true;
+ const css=document.createElement("style");
+ css.textContent="#line-tabbar button svg{display:block;margin:0 auto}"
+ +"#tdisc-open svg,#tbell svg{display:block;margin:0 auto}";
+ document.head.appendChild(css);
+ const S=(inner)=>'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+inner+'</svg>';
+ const G=[
+  S('<path d="M3.5 11 12 3.5 20.5 11"/><path d="M6 9.3V20h12V9.3"/>'),
+  S('<path d="M12 4c-4.7 0-8.5 3.1-8.5 7 0 2.5 1.6 4.6 4 5.8-.1 1-.5 2-1.2 2.9-.2.25 0 .6.3.5 1.9-.3 3-1.1 3.9-1.8.5.06 1 .1 1.5.1 4.7 0 8.5-3.1 8.5-7s-3.8-7-8.5-7Z"/>'),
+  S('<path d="M5.6 3.9c.4-.4 1-.4 1.4 0l1.6 1.6c.4.4.4 1 .1 1.4L7.4 8.2c.6 1.2 1.6 2.2 2.8 2.8l1.3-1.3c.4-.3 1-.3 1.4.1l1.6 1.6c.4.4.4 1 0 1.4l-.9.9c-.5.5-1.2.7-1.9.5C7.6 13.4 5 10.8 4.2 6.6c-.1-.7.1-1.4.6-1.9l.8-.8Z" transform="translate(1.8,1.8) scale(0.85)"/>'),
+  S('<rect x="3.5" y="5" width="13" height="14" rx="1.6"/><path d="M6.8 9h6.4M6.8 12h6.4M6.8 15h4"/><path d="M16.5 8.5H19a1.5 1.5 0 0 1 1.5 1.5v7a2 2 0 0 1-2 2H16.5"/>'),
+  '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>'];
+ const swapBar=()=>{ const bar=document.querySelector("#line-tabbar"); if(!bar) return;
+  [...bar.querySelectorAll("button")].forEach((b,i)=>{
+   if(b.dataset.v241||!G[i]) return; b.dataset.v241="1";
+   const lab=b.querySelector("div");
+   b.innerHTML=""; const w=document.createElement("span"); w.innerHTML=G[i]; b.appendChild(w);
+   if(lab) b.appendChild(lab);
+  }); };
+ swapBar(); setInterval(swapBar,1500);
+ const disc=document.querySelector("#tdisc-open");
+ if(disc && !disc.dataset.v241){ disc.dataset.v241="1";
+  disc.innerHTML='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M4 7.5h9M17.5 7.5H20M4 16.5h3M11.5 16.5H20"/><circle cx="15" cy="7.5" r="2.3" fill="#fff"/><circle cx="9" cy="16.5" r="2.3" fill="#fff"/></svg>'; }
+ const bell=document.querySelector("#tbell");
+ if(bell && !bell.dataset.v241){ bell.dataset.v241="1";
+  const badge=bell.querySelector(".badge");
+  bell.innerHTML='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18.1 15.6c-.7-.9-1.1-1.7-1.1-3.6a5 5 0 1 0-10 0c0 1.9-.4 2.7-1.1 3.6-.25.32.02.8.46.8h11.3c.44 0 .71-.48.45-.8Z"/><path d="M10.2 19.2a2 2 0 0 0 3.6 0"/></svg>';
+  if(badge) bell.appendChild(badge); }
 })();
 </script>
 </body>
