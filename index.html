@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v258</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v259</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -10600,6 +10600,234 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>70)clearInterval(iv)},1
     r.style.display=show?"":"none"; });
   });
  }
+})();
+</script>
+
+<!-- v259: IG refresh to the current app UI -->
+<style>
+.igx-nav{position:absolute;left:16px;right:16px;bottom:14px;height:52px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:none;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.22);display:flex;z-index:45;padding:5px}
+.igx-nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#262626;border-radius:999px}
+.igx-nav button.on{background:#e7e7ec}
+.igx-nav img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.ig-note-b{position:absolute;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.18);padding:5px 9px;font-size:11px;color:#262626;z-index:3}
+.ig-note-b::after{content:"";position:absolute;left:20px;bottom:-5px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
+.ig-pbtn{flex:1;background:#efefef;border:none;border-radius:10px;padding:9px 4px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.igr{position:absolute;inset:0;background:#000;z-index:60;display:none;color:#fff}
+.igr.on{display:block}
+.igr .rail{position:absolute;right:10px;bottom:110px;display:flex;flex-direction:column;gap:17px;align-items:center;z-index:3}
+.igr .rail button{background:none;border:none;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.6);font-family:inherit}
+.igr .cntchip{position:absolute;top:64px;right:12px;background:rgba(0,0,0,.55);border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:700;z-index:3}
+.cap-more-b{background:none;border:none;color:#8e8e93;font-size:12.5px;cursor:pointer;font-family:inherit;padding:0}
+</style>
+<script>
+/* v259: IG refreshed to the current app frame — floating pill nav (home /
+   reels / DM / search / avatar) on both views, profile header furniture
+   (note bubble, + badge, edit/share/add buttons, highlight +), monochrome
+   action rows with the new repost action, caption read-more, discover view
+   counts, DM inbox furniture and a reels surface over the existing posts.
+   Posts, comments, likes, the v235 account switch and his lock gate are
+   all untouched. */
+(function(){
+ if(window.__v259) return; window.__v259=true;
+ const $=q=>document.querySelector(q), $$=q=>[...document.querySelectorAll(q)];
+ const IC={
+  home:'<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9v11h13V9"/></svg>',
+  reels:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="17" rx="3"/><path d="M3 8.5h18M8 3.5 6 8.5M13.5 3.5 11.5 8.5M18.5 3.5 16.5 8.5"/><path d="m10.5 12 4.5 2.6-4.5 2.6z" fill="currentColor" stroke="none"/></svg>',
+  plane:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>',
+  search:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>',
+  heart:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  heartF:'<svg width="21" height="21" viewBox="0 0 24 24" fill="#ff3040"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+  cmt:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+  rp:'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg>',
+  bmk:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>',
+  bmkF:'<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>'};
+ const hash=s=>{ let h=0; for(const ch of String(s||"")) h=(h*31+ch.charCodeAt(0))>>>0; return h; };
+ /* ---------- reels surface ---------- */
+ function buildReels(view,uname,av){
+  const ov=document.createElement("div"); ov.className="igr";
+  ov.innerHTML='<div style="position:absolute;top:52px;left:0;right:0;display:flex;align-items:center;padding:0 14px;z-index:3"><span style="font-size:16px;font-weight:900">リール</span><button class="igr-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:19px;cursor:pointer">✕</button></div>'
+   +'<img class="igr-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" alt="">'
+   +'<span class="cntchip"></span>'
+   +'<div class="rail"><button class="r-like">'+IC.heart+'いいね！</button><button class="r-cmt">'+IC.cmt+'<span>0</span></button><button class="r-rp">'+IC.rp+'<span>0</span></button><button class="r-pl">'+IC.plane+'</button><button class="r-me">≡</button><img class="r-mu" style="width:29px;height:29px;border-radius:8px;border:2px solid #fff;object-fit:cover" alt=""></div>'
+   +'<div style="position:absolute;left:12px;right:84px;bottom:26px;z-index:3"><div style="display:flex;align-items:center;gap:8px"><img src="'+av+'" style="width:31px;height:31px;border-radius:50%;object-fit:cover" alt=""><b style="font-size:13.5px">'+uname+'</b><button class="igr-fol" style="background:none;border:1.4px solid #fff;color:#fff;border-radius:9px;padding:4px 11px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">フォロー</button></div><div class="igr-cap" style="font-size:12.5px;margin-top:8px;line-height:1.55;text-shadow:0 1px 4px rgba(0,0,0,.7)"></div></div>'
+   +'<button class="igr-prev" style="position:absolute;left:0;top:0;bottom:0;width:34%;background:none;border:none;cursor:pointer;z-index:2" aria-label="前へ"></button><button class="igr-next" style="position:absolute;right:0;top:0;bottom:0;width:34%;background:none;border:none;cursor:pointer;z-index:2" aria-label="次へ"></button>';
+  view.appendChild(ov);
+  let idx=0, posts=[];
+  const img=ov.querySelector(".igr-img"), cap=ov.querySelector(".igr-cap"), chip=ov.querySelector(".cntchip");
+  function data(){ return [...view.querySelectorAll(".ig-post")].map(p=>{ const im=p.querySelector(".pimg"); const cp=p.querySelector(".cap"); return {img:im?im.getAttribute("src"):"", cap:cp?(cp.textContent||"").replace(/\s+/g," ").trim().slice(0,90):"", post:p}; }).filter(d=>d.img); }
+  function show(i){ posts=data(); if(!posts.length) return; idx=((i%posts.length)+posts.length)%posts.length; const d=posts[idx];
+   img.src=d.img; cap.textContent=d.cap; chip.textContent=(idx+1)+"/"+posts.length;
+   ov.querySelector(".r-mu").src=d.img;
+   const cm=d.post.querySelector(".vall"); ov.querySelector(".r-cmt span").textContent=cm?(cm.textContent.match(/\d+/)||["0"])[0]:"0";
+   ov.querySelector(".r-rp span").textContent=(3+hash(d.img)%60);
+   ov.querySelector(".r-like").innerHTML=(d.post.querySelector(".like-btn.liked")?IC.heartF:IC.heart)+"いいね！";
+  }
+  ov.querySelector(".igr-x").addEventListener("click",()=>ov.classList.remove("on"));
+  ov.querySelector(".igr-prev").addEventListener("click",()=>show(idx-1));
+  ov.querySelector(".igr-next").addEventListener("click",()=>show(idx+1));
+  ov.querySelector(".r-like").addEventListener("click",()=>{ const lb=posts[idx]&&posts[idx].post.querySelector(".like-btn"); if(lb) lb.click(); show(idx); });
+  ov.querySelector(".r-cmt").addEventListener("click",()=>{ const p=posts[idx]&&posts[idx].post; if(!p) return; const c=[...p.querySelectorAll(".acts > span")][1]; if(c) c.click(); });
+  ov.querySelector(".r-rp").addEventListener("click",function(){ const sp=this.querySelector("span"); sp.textContent=+sp.textContent+1; if(window.toast) toast("🔁 リポストしました"); });
+  ov.querySelector(".r-pl").addEventListener("click",()=>{ if(window.toast) toast("✈️ 送信先は物語の進行で開くよ"); });
+  ov.querySelector(".r-me").addEventListener("click",()=>{ if(window.toast) toast("≡ オプション（この物語では固定）"); });
+  const fol=ov.querySelector(".igr-fol");
+  fol.addEventListener("click",()=>{ fol.textContent=fol.textContent==="フォロー"?"フォロー中":"フォロー"; });
+  return {open:()=>{ show(0); ov.classList.add("on"); }, el:ov};
+ }
+ /* ---------- pill nav ---------- */
+ $$(".igx-nav").forEach(n=>n.remove());
+ function pillNav(viewSel,av,isHis){
+  const view=$(viewSel); if(!view) return null;
+  const reels=buildReels(view, isHis?"193.hiroto_jixiang":"nao_0324", av);
+  if(isHis){ const f=reels.el.querySelector(".igr-fol"); if(f) f.style.display=""; }
+  else { const f=reels.el.querySelector(".igr-fol"); if(f) f.style.display="none"; }
+  const bar=document.createElement("div"); bar.className="igx-nav";
+  bar.innerHTML='<button data-n="home" class="on" aria-label="ホーム">'+IC.home+'</button><button data-n="reels" aria-label="リール">'+IC.reels+'</button><button data-n="dm" aria-label="DM">'+IC.plane+'</button><button data-n="srch" aria-label="検索">'+IC.search+'</button><button data-n="prof" aria-label="プロフィール"><img src="'+av+'" alt=""></button>';
+  view.appendChild(bar);
+  const scroll=view.querySelector(".scroll");
+  bar.addEventListener("click",e=>{
+   const b=e.target.closest("button"); if(!b) return;
+   bar.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+   const n=b.dataset.n;
+   if(n==="reels"){ reels.open(); return; }
+   if(n==="srch"){ const sb=view.querySelector(".ig-search-btn"); if(sb){ sb.click(); return; } const pn=$("#ig-search-panel"); if(pn) pn.style.display="block"; return; }
+   if(n==="dm"){
+     if(isHis){ const pl=view.querySelector("#v258-plane"); if(pl){ pl.click(); return; } }
+     const dm=$("#ig-dms"); if(dm) dm.scrollIntoView({block:"start"}); return;
+   }
+   const pn=$("#ig-search-panel"); if(pn&&!isHis) pn.style.display="none";
+   if(scroll) scroll.scrollTop=0;
+  });
+  return bar;
+ }
+ pillNav("#v-ig","assets/nao-avatar4.jpg",false);
+ pillNav("#v-hisig","assets/ig-avatar.jpg",true);
+ /* ---------- headers ---------- */
+ const herHead=$("#v-ig .ig-head");
+ if(herHead && !herHead.dataset.v259){
+  herHead.dataset.v259="1";
+  const plus=document.createElement("button"); plus.textContent="＋";
+  plus.style.cssText="border:none;background:none;font-size:21px;cursor:pointer;margin-right:2px";
+  plus.addEventListener("click",()=>{ if(window.toast) toast("＋ 投稿の作成はこの物語では固定だよ"); });
+  herHead.insertBefore(plus, herHead.children[1]||null);
+  const t=herHead.querySelector(".t"); if(t && !t.textContent.includes("▽")) t.innerHTML="🔒 nao_0324 <span style='font-size:11px'>▽</span>";
+  const bell=$("#ig-bell-btn"); if(bell){ const bd=bell.querySelector("#ig-bell"); bell.innerHTML=IC.heart; if(bd) bell.appendChild(bd); }
+  const th=document.createElement("button"); th.innerHTML='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.6"/><path d="M8.5 12.2c.6-2 2-3 3.5-3 1.8 0 3 1.3 3 3.2 0 2-1.3 3.3-3 3.3-1 0-1.9-.5-2.4-1.3" stroke-linecap="round"/></svg>';
+  th.style.cssText="border:none;background:none;cursor:pointer;margin-left:auto";
+  th.addEventListener("click",()=>{ if(window.toast) toast("◎ Threads（この物語では表示だけ）"); });
+  herHead.insertBefore(th, bell||null);
+  const ham=document.createElement("button"); ham.textContent="≡";
+  ham.style.cssText="border:none;background:none;font-size:19px;cursor:pointer";
+  ham.addEventListener("click",()=>{ if(t) t.click(); });
+  herHead.appendChild(ham);
+ }
+ const hisHead=$("#v-hisig .ig-head");
+ if(hisHead && !hisHead.dataset.v259){ hisHead.dataset.v259="1"; const t=hisHead.querySelector(".t"); if(t&&!t.textContent.includes("▽")) t.insertAdjacentHTML("beforeend"," <span style='font-size:11px'>▽</span>"); }
+ /* ---------- her profile furniture ---------- */
+ const prof=$("#v-ig .ig-prof");
+ if(prof && !prof.dataset.v259){
+  prof.dataset.v259="1"; prof.style.position="relative";
+  const note=document.createElement("div"); note.className="ig-note-b"; note.style.cssText+="left:8px;top:-16px"; note.textContent="サクヤ💚 と 大翔🤍 がすき";
+  prof.appendChild(note);
+  const badge=document.createElement("span"); badge.textContent="＋";
+  badge.style.cssText="position:absolute;left:72px;top:64px;width:21px;height:21px;border-radius:50%;background:#0095f6;color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;border:2.4px solid #fff;z-index:2;cursor:pointer";
+  badge.addEventListener("click",()=>{ const sb=$("#nao-story-btn"); if(sb) sb.click(); });
+  prof.appendChild(badge);
+  const row=document.createElement("div");
+  row.style.cssText="display:flex;gap:7px;padding:10px 14px 2px";
+  row.innerHTML='<button class="ig-pbtn" id="igp-edit">プロフィールを編集</button><button class="ig-pbtn" id="igp-share">プロフィールをシェア</button><button class="ig-pbtn" id="igp-add" style="flex:none;padding:9px 12px" aria-label="フォロワー">＋<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="vertical-align:-2px"><circle cx="11" cy="8" r="3.4"/><path d="M4.5 19.5c1-3 3.4-4.5 6.5-4.5s5.5 1.5 6.5 4.5"/></svg></button>';
+  const bio=$("#v-ig .ig-bio"); if(bio){ bio.style.fontStyle="italic"; bio.parentNode.insertBefore(row, bio.nextSibling); }
+  row.querySelector("#igp-edit").addEventListener("click",()=>{ if(window.toast) toast("✏️ プロフィール編集（この物語では固定だよ）"); });
+  row.querySelector("#igp-share").addEventListener("click",()=>{ if(window.toast) toast("🔗 プロフィールのリンクをコピーしました"); });
+  row.querySelector("#igp-add").addEventListener("click",()=>{ const fn=$("#ig-fol-n"); if(fn) fn.click(); });
+  const hl=$("#v-ig .hl-row");
+  if(hl){ const nb=document.createElement("button"); nb.className="hl-btn";
+   nb.innerHTML='<span class="hl-ring" style="display:flex;align-items:center;justify-content:center;font-size:21px;color:#8e8e93;background:#fafafa">＋</span>新規';
+   nb.addEventListener("click",()=>{ if(window.toast) toast("＋ ハイライトの追加は物語の進行で増えるよ"); });
+   hl.insertBefore(nb, hl.firstChild); }
+ }
+ /* tagged section (his posts, gated by the same unlock as the switcher) */
+ const igScroll=$("#ig-scroll");
+ if(igScroll && !$("#ig-tagged-sec")){
+  const sec=document.createElement("div"); sec.id="ig-tagged-sec";
+  sec.innerHTML='<div style="padding:14px 14px 8px;font-weight:800;font-size:14px">タグ付けされた写真</div><div class="igt-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:0 2px"></div>';
+  igScroll.appendChild(sec);
+  const unlocked=()=>{ try{ return !(window.state&&state.phase==="prologue"&&(state.chapter||0)<2); }catch(e){ return false; } };
+  const fill=()=>{ const g=sec.querySelector(".igt-grid"); if(!unlocked()){ sec.style.display="none"; return; } sec.style.display="";
+   if(g.dataset.done) return; g.dataset.done="1";
+   $$("#v-hisig .ig-post .pimg").slice(0,6).forEach(im=>{ const b=document.createElement("button");
+    b.style.cssText="border:none;padding:0;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#eee";
+    b.innerHTML='<img src="'+im.getAttribute("src")+'" style="width:100%;height:100%;object-fit:cover" alt="">';
+    b.addEventListener("click",()=>{ if(window.show) show("hisig"); });
+    g.appendChild(b); });
+  };
+  fill(); setInterval(fill,2500);
+ }
+ /* ---------- DM furniture ---------- */
+ const dmHead=(()=>{ const els=$$("#ig-scroll > div"); return els.find(el=>el.textContent&&el.textContent.includes("DMリクエスト")&&el.querySelector(":scope")==null)||null; })();
+ const dms=$("#ig-dms");
+ if(dms && !dms.dataset.v259){
+  dms.dataset.v259="1";
+  const wrap=document.createElement("div");
+  wrap.innerHTML='<div style="display:flex;align-items:center;padding:12px 14px 4px"><span style="font-weight:900;font-size:15.5px">メッセージ</span><button id="igd-req" style="margin-left:auto;background:none;border:none;color:#0095f6;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit">リクエスト</button><button id="igd-new" style="background:none;border:none;cursor:pointer;margin-left:6px" aria-label="新規メッセージ"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button></div>'
+   +'<div style="padding:8px 14px 2px"><input id="igd-q" placeholder="検索する、またはMeta AIに聞く" autocomplete="off" style="width:100%;box-sizing:border-box;background:#efefef;border:none;border-radius:10px;padding:9px 13px;font-size:13px;font-family:inherit"></div>'
+   +'<div style="display:flex;gap:14px;padding:10px 14px 2px;align-items:flex-start"><div style="text-align:center"><div style="position:relative;width:56px;height:56px"><img src="assets/nao-avatar4.jpg" style="width:56px;height:56px;border-radius:50%;object-fit:cover" alt=""><span class="ig-note-b" style="left:-6px;top:-13px;white-space:nowrap">サクヤ💚 と 大翔🤍</span></div><div style="font-size:11px;color:#8e8e93;margin-top:3px">自分のノート</div></div></div>';
+  dms.parentNode.insertBefore(wrap, dms);
+  wrap.querySelector("#igd-req").addEventListener("click",()=>dms.scrollIntoView({block:"center"}));
+  wrap.querySelector("#igd-new").addEventListener("click",()=>{ if(window.toast) toast("✏️ 新規メッセージ（この物語では固定）"); });
+  wrap.querySelector("#igd-q").addEventListener("input",e=>{ const q=e.target.value.trim();
+   dms.querySelectorAll(":scope > div").forEach(r=>{ r.style.display=(!q||r.textContent.includes(q))?"":"none"; }); });
+ }
+ /* ---------- post action rows + caption read-more ---------- */
+ function sweepPosts(){
+  $$(".ig-post").forEach(p=>{
+   const acts=p.querySelector(".acts"); if(!acts) return;
+   const lk=acts.querySelector(".like-btn");
+   if(lk && !lk.dataset.v259){ lk.dataset.v259="1"; lk.innerHTML=lk.classList.contains("liked")?IC.heartF:IC.heart; }
+   const spans=[...acts.querySelectorAll(":scope > span")];
+   const cm=spans.find(x=>!x.classList.contains("like-btn")&&!x.classList.contains("save-btn")&&x.textContent.includes("💬"));
+   if(cm && !cm.dataset.v259){ cm.dataset.v259="1";
+    let c=(cm.textContent.match(/\d+/)||[])[0];
+    if(!c){ const v=p.querySelector(".vall"); if(v) c=(v.textContent.match(/\d+/)||[])[0]; }
+    cm.innerHTML=IC.cmt+(c?' <b style="font-size:12.5px">'+c+"</b>":"");
+    const rp=document.createElement("span"); rp.style.cursor="pointer"; const base=2+hash((p.querySelector(".pimg")||{}).src)%48; let on=false;
+    rp.innerHTML=IC.rp+' <b style="font-size:12.5px">'+base+"</b>";
+    rp.addEventListener("click",()=>{ on=!on; rp.querySelector("b").textContent=base+(on?1:0); rp.style.color=on?"#00a35c":""; if(on&&window.toast) toast("🔁 リポストしました"); });
+    cm.after(rp);
+   }
+   const pl=spans.find(x=>x.textContent.includes("✈"));
+   if(pl && !pl.dataset.v259){ pl.dataset.v259="1"; pl.innerHTML=IC.plane; }
+   const sv=acts.querySelector(".save-btn");
+   if(sv && !sv.querySelector("svg")){ const on=sv.textContent.includes("📌"); sv.innerHTML=(on?IC.bmkF:IC.bmk)+'<span style="display:none">'+(on?"📌":"🔖")+"</span>"; }
+   const cap=p.querySelector(".cap");
+   if(cap && !cap.dataset.v259){ cap.dataset.v259="1";
+    [...cap.childNodes].forEach(nd=>{ if(nd.nodeType!==3) return; const tx=nd.textContent; if(tx.trim().length<58) return;
+     const cut=tx.indexOf(" ",40); if(cut<0) return;
+     const a=document.createElement("span"); a.textContent=tx.slice(0,cut);
+     const b=document.createElement("span"); b.textContent=tx.slice(cut); b.style.display="none";
+     const btn=document.createElement("button"); btn.className="cap-more-b"; btn.textContent="…続きを読む";
+     btn.addEventListener("click",()=>{ b.style.display=""; btn.remove(); });
+     nd.replaceWith(a,b,btn);
+    });
+   }
+  });
+ }
+ sweepPosts(); setInterval(sweepPosts,1700);
+ /* discover: view counts + bookmark shortcut */
+ function sweepDisc(){
+  const pn=$("#ig-search-panel"); if(!pn) return;
+  pn.querySelectorAll("button").forEach(b=>{ const im=b.querySelector("img"); if(!im||b.dataset.v259) return; b.dataset.v259="1";
+   if(getComputedStyle(b).position==="static") b.style.position="relative";
+   const o=document.createElement("span"); o.style.cssText="position:absolute;left:5px;bottom:4px;color:#fff;font-size:11px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.75)";
+   const v=1+(hash(im.getAttribute("src"))%180); o.textContent="👁 "+(v>=10?(v/10).toFixed(1).replace(/\.0$/,"")+"万":v*1000); b.appendChild(o); });
+  if(!pn.dataset.v259h){ pn.dataset.v259h="1";
+   const bk=document.createElement("button"); bk.innerHTML=IC.bmk; bk.style.cssText="position:absolute;top:10px;right:12px;background:none;border:none;cursor:pointer;z-index:3";
+   bk.setAttribute("aria-label","保存済み");
+   bk.addEventListener("click",()=>{ pn.style.display="none"; const svb=document.querySelector('#v-ig [data-t="saved"]'); if(svb) svb.click(); });
+   if(getComputedStyle(pn).position==="static") pn.style.position="relative";
+   pn.appendChild(bk); }
+ }
+ sweepDisc(); setInterval(sweepDisc,2000);
 })();
 </script>
 </body>
