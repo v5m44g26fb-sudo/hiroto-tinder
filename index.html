@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v254</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v255</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -10275,6 +10275,63 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>40)clearInterval(iv)},1
   card.style.display=m?"":"none"; ph.style.display=m?"none":"";
  }
  upd(); setInterval(upd,900);
+})();
+</script>
+
+<!-- v255: IG depth (bottom nav, comment likes) -->
+<style>
+.igx-nav{position:absolute;left:0;right:0;bottom:0;height:52px;background:#fff;border-top:1px solid #e5e5ea;display:flex;z-index:40}
+.igx-nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#262626}
+.igx-nav button.on{color:#000}
+.igx-nav img{width:27px;height:27px;border-radius:50%;object-fit:cover}
+#v-ig .scroll,#v-hisig .scroll{padding-bottom:56px}
+.clike{display:inline-flex;flex-direction:column;align-items:center;gap:0;margin-left:auto;flex:none;background:none;border:none;cursor:pointer;color:#8e8e93;font-size:10.5px;padding:2px 0 0 8px;font-family:inherit}
+.clike .h{font-size:15px;line-height:1.1}
+.clike.on{color:#ff3040}
+</style>
+<script>
+/* v255: IG depth — a real bottom nav on both IG views (home / explore / profile;
+   explore reuses the v231 search-and-discover surface, his search still routes
+   through the gated cross-view path), and likeable comments in the comment
+   sheet (heart + count, toggle), the sakuya sheet pattern. */
+(function(){
+ if(window.__v255) return; window.__v255=true;
+ const HOME='<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9v11h13V9"/></svg>';
+ const SRCH='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>';
+ function nav(viewSel,avSrc,isHis){
+  const view=document.querySelector(viewSel); if(!view||view.querySelector(".igx-nav")) return;
+  const bar=document.createElement("div"); bar.className="igx-nav";
+  bar.innerHTML='<button data-n="home" class="on" aria-label="ホーム">'+HOME+'</button><button data-n="srch" aria-label="検索と発見">'+SRCH+'</button><button data-n="prof" aria-label="プロフィール"><img src="'+avSrc+'" alt=""></button>';
+  view.appendChild(bar);
+  const scroll=view.querySelector(".scroll");
+  bar.addEventListener("click",e=>{
+   const b=e.target.closest("button"); if(!b) return;
+   bar.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+   if(b.dataset.n==="srch"){
+     const sb=view.querySelector(".ig-search-btn"); if(sb){ sb.click(); return; }
+   }
+   const panel=document.querySelector("#ig-search-panel"); if(panel&&!isHis) panel.style.display="none";
+   if(scroll) scroll.scrollTop=0;
+  });
+ }
+ nav("#v-ig","assets/nao-avatar4.jpg",false);
+ nav("#v-hisig","assets/ig-avatar.jpg",true);
+ /* comment likes in the v272 sheet */
+ function addLikes(){
+  const list=document.querySelector("#v272-list"); if(!list) return;
+  list.querySelectorAll(":scope > div").forEach(row=>{
+   if(row.querySelector(".clike")||row.dataset.clk) return; row.dataset.clk="1";
+   const txt=row.textContent||""; let h=0; for(const ch of txt) h=(h*31+ch.charCodeAt(0))>>>0;
+   let n=1+(h%46), on=false;
+   const b=document.createElement("button"); b.className="clike";
+   b.innerHTML='<span class="h">♡</span><span class="n">'+n+'</span>';
+   b.addEventListener("click",ev=>{ ev.stopPropagation(); on=!on; b.classList.toggle("on",on); b.querySelector(".h").textContent=on?"♥":"♡"; b.querySelector(".n").textContent=n+(on?1:0); });
+   row.style.display="flex"; row.appendChild(b);
+  });
+ }
+ const mo=new MutationObserver(()=>addLikes());
+ const startObs=()=>{ const l=document.querySelector("#v272-list"); if(l){ mo.observe(l,{childList:true}); addLikes(); } };
+ startObs(); setTimeout(startObs,1500); setTimeout(startObs,4000);
 })();
 </script>
 </body>
