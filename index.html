@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v288</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v289</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11632,7 +11632,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v288"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v289"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12177,6 +12177,52 @@ dock.addEventListener("click",function(e){
    state._ch2bDone=true; state._ch2bRun=false;
   }
   return _ch2b(n);
+ };
+})();
+</script>
+
+<script>
+/* ===== Tinder ver v289: dating-route-only special episode "内緒の二週間" - the two weeks between the dating chapter 4 (10/18) and chapter 5 (11/1), played once before chapter 5 only when state._route==="dating". Secret-couple daily beats: the hand he held, Maron, his stream she watches as a fan, Halloween plans, and the eve of the cafe date that ch5 cancels. No gates, endings or voices touched. ===== */
+(function(){
+ if(window.__v289) return; window.__v289=true;
+ if(typeof window.chapter!=="function"||typeof himMsg!=="function"||typeof askChoices!=="function") return;
+ async function datingMid(t){
+  setChapterWidget("特別編『内緒の二週間』","誰にも言えない、ふたりだけの日々。");
+  chapterCard("特別編","内緒の二週間","付き合ってから、すれ違うまで。<br><span class=\"cc-when\">10月19日（日）〜31日（金） ・ 内緒の関係の二週間 —— LINEを開いてね</span>");
+  addDayChip("10月19日（日）");
+  await himMsg("昨日はありがとう",1200); if(!alive(t))return;
+  await himMsg("手、繋いだの思い出してた",1000); if(!alive(t))return;
+  await himMsg("…すぐ離してもうたけど",900); if(!alive(t))return;
+  addDayChip("10月22日（水）");
+  await himMsg("マロン、なおの写真見せたら尻尾振ってた",1500); if(!alive(t))return;
+  await himPhoto("assets/ig-dog.jpg"); if(!alive(t))return;
+  await himMsg("マロンには、もうバレてるな",900); if(!alive(t))return;
+  addDayChip("10月25日（土）");
+  await himMsg("今日の配信、見た？",1500); if(!alive(t))return;
+  await himMsg("コメント欄、探したけど分からんかったわ",1000); if(!alive(t))return;
+  await new Promise(res=>{ askChoices("なおの返信を選んで",[
+   {label:"ちゃんと見てたよ",fn:async()=>{ await himMsg("…ほんまに？"); await himMsg("次は、見つけるわ"); res(); }},
+   {label:"ファンとして、ね笑",fn:async()=>{ await himMsg("ファン、か"); await himMsg("…複雑やな、それ"); res(); }}
+  ]); }); if(!alive(t))return;
+  addDayChip("10月28日（火）");
+  await himMsg("ハロウィン、なんかする？",1400); if(!alive(t))return;
+  await new Promise(res=>{ askChoices("なおの返信を選んで",[
+   {label:"家で映画とか？",fn:async()=>{ await himMsg("…それ、ええな"); await himMsg("マロンも一緒に、な"); res(); }},
+   {label:"仕事やろ？笑",fn:async()=>{ await himMsg("夜は空けてる"); await himMsg("…なおのためなら"); res(); }}
+  ]); }); if(!alive(t))return;
+  addDayChip("10月31日（金）");
+  await himMsg("明日、カフェな",1400); if(!alive(t))return;
+  await himMsg("楽しみにしてる。…ほんまにやで",1100); if(!alive(t))return;
+  toast("🎃 <b>（内緒の二週間は、穏やかに過ぎていった）</b>");
+ }
+ var _chDm=window.chapter;
+ window.chapter=async function(n){
+  if(n===5&&typeof state!=="undefined"&&state.phase==="prologue"&&state._route==="dating"&&!state._datingMidDone&&!state._datingMidRun){
+   state._datingMidRun=true;
+   try{ await datingMid(state._token); }catch(e){}
+   state._datingMidDone=true; state._datingMidRun=false;
+  }
+  return _chDm(n);
  };
 })();
 </script>
