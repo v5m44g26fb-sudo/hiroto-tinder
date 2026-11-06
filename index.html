@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v232</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v233</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5792,7 +5792,7 @@ app.style.display="flex";},true);
   b.addEventListener("click",fn); nav.appendChild(b); return b; };
  mk("🏠",()=>{ const tl=view.querySelector('[data-xtab="tl"]'); if(tl) tl.click(); if(xs) xs.scrollTop=0; });
  mk("🔍",()=>{ const q=document.querySelector("#x-q"); if(q){ q.focus(); q.scrollIntoView({block:"center"}); } });
- mk("🔔",()=>{ const mn=view.querySelector('[data-xtab="mention"]'); if(mn) mn.click(); });
+ mk("🔔",()=>{ const bell=document.querySelector("#x-bell"); if(bell){ bell.click(); return; } const mn=view.querySelector('[data-xtab="mention"]'); if(mn) mn.click(); });
  const dmBtn=mk("✉️",()=>{ if(oldBtn) oldBtn.click(); });
  const bd=document.createElement("span");
  bd.style.cssText="display:none;position:absolute;top:4px;right:calc(50% - 20px);background:#e0245e;color:#fff;font-size:9.5px;font-weight:800;border-radius:999px;padding:1px 5px";
@@ -9462,6 +9462,23 @@ setInterval(upd,900); upd();
    toast("🔒 <b>まだLINEを交換していない</b><br>Tinderで交換したら、ここに表示される"); }
  },true);
  setInterval(apply,800);
+})();
+</script>
+<script>
+/* ===== Tinder ver v233: X top-right cleanup, aligned with the original (its v185). The bottom tab bar already covers notifications, but the old floating circle buttons (bell at right:14px, bookmark at right:60px, both stamped on top of the feed) were never retired in this version, so they sat over the timeline looking nothing like the real app. Like the original, both circles are hidden for good; the nav bell now opens the notification panel by clicking the hidden bell (the mention tab stays one tap away in the tab row), and per-post bookmark toggles keep working with the list panel retired alongside its button, also as in the original. No posts, data or gates changed. ===== */
+(function(){
+ if(window.__v233) return; window.__v233=true;
+ const view=document.querySelector("#v-x"); if(!view) return;
+ let tries=0;
+ const iv=setInterval(()=>{ tries++;
+  let done=0;
+  [...view.querySelectorAll("button")].forEach(b=>{
+   if(b.parentElement!==view) return;
+   if(b.style.position!=="absolute") return;
+   if(b.textContent.includes("🔔")||b.textContent.includes("🔖")){ b.style.display="none"; done++; }
+  });
+  if(done>=2||tries>24) clearInterval(iv);
+ },300);
 })();
 </script>
 </body>
