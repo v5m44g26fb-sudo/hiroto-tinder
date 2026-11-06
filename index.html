@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v263</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v264</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11254,6 +11254,43 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>70)clearInterval(iv)},1
  /* keep card sizing fresh when feed mode flips */
  if(window.MutationObserver){ var mo=new MutationObserver(function(){ setTimeout(function(){ window.dispatchEvent(new Event("resize")); },70); });
   mo.observe(view,{attributes:true,attributeFilter:["class"]}); }
+})();
+</script>
+<!-- v264: Tinder deck to the current app frame - real action glyphs and sizes, card typography, slimmer banner, match overlay polish -->
+<style id="v264-css">
+/* v264 hotfix: home children never squash (flex-shrink off); overflow scrolls instead */
+#v-home .home-inner{overflow-y:auto}
+#v-home .home-inner>*{flex:none!important}
+#v-home .dock .appicon .ic{border-radius:13.5px;overflow:hidden}
+</style>
+<script>
+(function(){
+if(window.__v264) return; window.__v264=true;
+/* dock: restore the original 4 icons (phone / Safari / messages / music) with correct
+   self-contained glyphs. The v251 sweep keyed glyphs off data-open, so both line-wired
+   buttons became LINE logos and the music note stayed white-on-white. */
+var TEL='<svg viewBox="0 0 60 60" style="display:block;width:100%;height:100%"><defs><linearGradient id="dkTel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fe86e"/><stop offset="1" stop-color="#23cc3e"/></linearGradient></defs><rect width="60" height="60" fill="url(#dkTel)"/><path transform="translate(10.5 10.5) scale(1.625)" fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
+var MSG='<svg viewBox="0 0 60 60" style="display:block;width:100%;height:100%"><defs><linearGradient id="dkMsg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fe86e"/><stop offset="1" stop-color="#23cc3e"/></linearGradient></defs><rect width="60" height="60" fill="url(#dkMsg)"/><path fill="#fff" d="M30 12c-9.4 0-17 6-17 13.4 0 4.2 2.4 7.9 6.2 10.3-.2 2-1 4.1-2.3 5.7-.3.4 0 .9.5.8 2.9-.4 5.4-1.5 7.2-2.7 1.7.4 3.5.6 5.4.6 9.4 0 17-6 17-13.4S39.4 12 30 12z"/></svg>';
+var SAF='<svg viewBox="0 0 60 60" style="display:block;width:100%;height:100%"><rect width="60" height="60" fill="#fff"/><circle cx="30" cy="30" r="21.5" fill="none" stroke="#d9d9de" stroke-width="1.6"/><path d="M41 19 34.5 34.5 19 41l6.5-15.5z" fill="#e8e8ec"/><path d="M41 19 34.5 34.5 25.5 25.5z" fill="#ff3b30"/><circle cx="30" cy="30" r="2.6" fill="#8e8e93"/></svg>';
+var MUS='<svg viewBox="0 0 60 60" style="display:block;width:100%;height:100%"><rect width="60" height="60" fill="#fff"/><path transform="translate(9 9) scale(1.75)" fill="#fa2d48" d="M9 18.6A2.6 2.6 0 1 1 6.4 16c.55 0 1.07.17 1.5.47V5.2L19 3v11.6a2.6 2.6 0 1 1-2-2.5V6.6L9 8.4v10.2z"/></svg>';
+function paint(){
+ var dock=document.querySelector("#v-home .dock"); if(!dock) return;
+ var btns=[].slice.call(dock.querySelectorAll(".appicon"));
+ /* re-insert the Safari button the Tinder ver lost (original order: tel, safari, msg, music) */
+ if(!dock.querySelector(".ic-safari") && btns.length>=2){
+   var sb=document.createElement("button"); sb.className="appicon";
+   sb.setAttribute("data-toast","Safari：検索履歴『大翔 熱愛』が増殖中…");
+   sb.innerHTML='<span class="ic ic-safari">🧭</span>';
+   dock.insertBefore(sb, btns[1]); btns=[].slice.call(dock.querySelectorAll(".appicon"));
+ }
+ var jobs=[[ ".ic-tel",TEL],[".ic-safari",SAF],[".ic-msg",MSG]];
+ jobs.forEach(function(j){ var ic=dock.querySelector(j[0]); if(ic){ ic.innerHTML=j[1]; ic.style.background="transparent"; ic.dataset.s15="1"; } });
+ var mus=dock.querySelectorAll(".appicon .ic")[3]||dock.querySelectorAll(".appicon .ic")[2];
+ if(mus && !mus.closest("[data-open]")){ mus.innerHTML=MUS; mus.style.background="transparent"; mus.dataset.s15="1"; }
+}
+paint(); setTimeout(paint,600); setTimeout(paint,1800);
+var dk=document.querySelector("#v-home .dock");
+if(dk && window.MutationObserver){ var n=0; var mo=new MutationObserver(function(){ if(++n<12) paint(); }); mo.observe(dk,{childList:true,subtree:true}); }
 })();
 </script>
 </body>
