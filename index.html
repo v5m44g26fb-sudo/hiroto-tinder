@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v274</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v275</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2167,7 +2167,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     if(idx!==lastCardIdx){ sceneIdx=0; lastCardIdx=idx; }
     if(c.hiroto){
       if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","ひろと があなたに Super Like しました！","あなたを Super Like した人がいます —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} }
-      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
+      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><span class="area-chip">近隣のエリア</span><div class="nm">${c.name} <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km</div><div class="bio">${c.bio}</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
       const img=document.getElementById("hiroto-photo");
       img.addEventListener("click",()=>{ photoIdx=(photoIdx+1)%photos.length; render(); });
       const _tzl=document.getElementById("tz-l"), _tzr=document.getElementById("tz-r");
@@ -11586,7 +11586,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v274"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v275"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -11693,8 +11693,109 @@ dock.addEventListener("click",function(e){
  document.querySelectorAll(".p-ic,.lk-ic").forEach(function(ic){
    var a=ic.closest("[data-open]"); if(a && a.dataset.open==="tinder") dress(ic);
  });
+ /* the icon sweeps keep only .bdg children, so every home badge span (class .badge)
+    has been wiped since v251 - re-create the five the markup shipped with */
+ var BD={line:"bd-line",tinder:"bd-tinder",x:"bd-x",ig:"bd-ig",news:"bd-news"};
+ Object.keys(BD).forEach(function(k){
+   var b=document.querySelector('.appicon[data-open="'+k+'"]'); if(!b) return;
+   var ic=b.querySelector(".ic"); if(!ic || ic.querySelector("#"+BD[k])) return;
+   var sp=document.createElement("span"); sp.className="badge"; sp.id=BD[k]; ic.appendChild(sp);
+ });
 })();
 </script>
 <!-- ===== Tinder ver v274 (nao's material, 2026-11-07): the home-screen Tinder icon is now the real app icon from the image nao provided - red rounded square, white flame (assets/tinder-icon.png, cropped out of her image with the white exterior cut to transparency). It replaces the gradient-flame glyph on the home grid (badge kept, the icon sweep leaves it alone) and on any lock/push mini icon for Tinder. Nothing else moves. ===== -->
+
+<style id="v275-css">
+/* v275: nao's own current-Tinder screenshots are the reference now - real deck header,
+   floating pill nav instead of the tab row, face and glyph colours per her deck shot */
+#v-tinder .tinder-tabs{display:none}
+#v-tinder.tdeck-dark .tinder-head{display:none}
+#v-tinder #tinder-deck-wrap{padding-bottom:88px}
+#v-tinder #tinder-chat-wrap{padding-bottom:88px}
+#v-tinder #tinder-match-wrap,#v-tinder #tinder-prof-wrap{padding-bottom:104px}
+#tdeck-head{padding:56px 10px 0}
+#tdeck-head .tdh-row{display:flex;align-items:center;gap:8px}
+#tdeck-head button{background:none;border:none;cursor:pointer;font-family:inherit;color:#fff;display:flex;align-items:center;justify-content:center;flex:none;padding:3px}
+#tdeck-head #tdh-bolt{color:#ec4be8}
+#tdeck-head .tdh-pills{display:flex;gap:7px;overflow-x:auto;flex:1;scrollbar-width:none;padding:2px 1px}
+#tdeck-head .tdh-pills::-webkit-scrollbar{display:none}
+#tdeck-head .tdh-pills span{flex:none;font-size:13px;font-weight:700;color:#ececf1;background:rgba(255,255,255,.10);border-radius:999px;padding:6px 12px;white-space:nowrap;cursor:pointer}
+#tdeck-head .tdh-pills span.on{background:rgba(255,255,255,.26);color:#fff}
+#tdeck-head .tdh-dots{display:flex;gap:5px;justify-content:center;padding:6px 0 2px}
+#tdeck-head .tdh-dots i{width:15px;height:3px;border-radius:2px;background:rgba(255,255,255,.32)}
+#tdeck-head .tdh-dots i.on{background:#fff}
+#v-tinder .swipe-card .area-chip{display:inline-block;background:#fff;color:#161823;font-size:12px;font-weight:800;border-radius:999px;padding:5px 11px;margin-bottom:8px;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+#v-tinder .swipe-card .bio{font-size:13.5px;line-height:1.55;margin-top:7px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#v-tinder .swipe-card .topen{background:#fff;border:none}
+#v-tinder .swipe-card .topen svg{stroke:#161823}
+#tpill{position:absolute;left:12px;right:12px;bottom:12px;z-index:65;display:flex;gap:2px;background:rgba(255,255,255,.95);border:1px solid rgba(20,20,30,.07);border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.22);padding:6px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+#v-tinder.tdeck-dark #tpill{background:rgba(28,28,34,.92);border-color:rgba(255,255,255,.09);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+#tpill button{flex:1;background:none;border:none;border-radius:999px;display:flex;flex-direction:column;align-items:center;gap:1px;padding:5px 0 4px;font-size:9.5px;font-weight:700;color:#161823;cursor:pointer;font-family:inherit;position:relative}
+#v-tinder.tdeck-dark #tpill button{color:#f2f2f5}
+#tpill button.act{background:rgba(20,20,30,.07)}
+#v-tinder.tdeck-dark #tpill button.act{background:rgba(0,0,0,.5)}
+#tpill .tp-dot{position:absolute;top:3px;right:calc(50% - 18px);width:8px;height:8px;border-radius:50%;background:#fe2c55;display:none}
+</style>
+<script>
+(function(){
+ if(window.__v275) return; window.__v275=true;
+ var view=document.querySelector("#v-tinder"); if(!view) return;
+ /* action glyph colours per the real deck: white rewind, white nope, pale-blue super,
+    red like, pale send */
+ var paint=function(id,col){ var b=document.getElementById(id); if(b) b.style.color=col; };
+ paint("btn-rewind","#ffffff"); paint("btn-nope","#ffffff"); paint("btn-super","#aacbf7"); paint("btn-like","#fe2c55"); paint("btn-boost","#d9d9de");
+ /* deck header: back, sliders, category pills, boost - same sheets underneath */
+ var deck=document.getElementById("tinder-deck-wrap");
+ if(deck && !document.getElementById("tdeck-head")){
+   var CHEV='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>';
+   var SLID='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 7.5h9M17.5 7.5H20M4 16.5h3M11.5 16.5H20"/><circle cx="15" cy="7.5" r="2.3" fill="#000"/><circle cx="9" cy="16.5" r="2.3" fill="#000"/></svg>';
+   var BOLT='<svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9.8 22 19 10h-6.5z"/></svg>';
+   var hd=document.createElement("div"); hd.id="tdeck-head";
+   hd.innerHTML='<div class="tdh-row"><button type="button" id="tdh-back" aria-label="戻る">'+CHEV+'</button>'
+     +'<button type="button" id="tdh-disc" aria-label="発見設定">'+SLID+'</button>'
+     +'<div class="tdh-pills"><span class="on">おすすめ</span><span>Double Date</span><span>占星術</span><span>ミュージック</span><span>スポーツ</span></div>'
+     +'<button type="button" id="tdh-bolt" aria-label="ブースト">'+BOLT+'</button></div>'
+     +'<div class="tdh-dots"><i class="on"></i><i></i></div>';
+   deck.insertBefore(hd, deck.firstChild);
+   hd.querySelector("#tdh-back").addEventListener("click",function(){ var b=view.querySelector(".tinder-head .back"); if(b) b.click(); });
+   hd.querySelector("#tdh-disc").addEventListener("click",function(){ var b=document.getElementById("tdisc-open"); if(b) b.click(); });
+   hd.querySelector("#tdh-bolt").addEventListener("click",function(){ var b=document.getElementById("tgold-open"); if(b) b.click(); });
+   hd.querySelectorAll(".tdh-pills span").forEach(function(p){ p.addEventListener("click",function(){ if(!p.classList.contains("on") && typeof toast==="function") toast("この特集は、この世界にはまだありません"); }); });
+ }
+ /* floating pill nav - every button clicks the tab it replaces, so all routes,
+    toasts and gates behave exactly as before */
+ var FLAME='<svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M13.7 1.6s.6 2.6-.9 5.1c-.9 1.5-2.3 2.6-3.4 4C8.2 12.2 7.5 13.6 7.5 15.2c0 2.6 2 4.7 4.5 4.7s4.5-2.1 4.5-4.7c0-1-.3-1.9-.8-2.7-.4.5-.9.9-1.5 1.1.3-1.7-.3-3.7-1.4-5.2.9.3 2.9-1.4 3.4-3.5.2-1 .1-2.2-.2-3.3 1.9 1.3 4.5 4.3 4.5 8 0 4.5-3.8 8.4-8.5 8.4S3.5 17.1 3.5 12.6c0-2.5 1.2-4.4 2.6-6.2C7.7 4.4 9.6 2.8 10.4.9c1.2 1 2.7 2.2 3.3.7z" transform="scale(.92) translate(1,1)"/></svg>';
+ var COMP='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M15.8 8.2l-2.3 5.3-5.3 2.3 2.3-5.3z" fill="currentColor" stroke="none"/></svg>';
+ var HEART='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.2C6.3 16.6 3.2 13.4 3.2 10 3.2 7.4 5.1 5.4 7.7 5.4c1.7 0 3.3.9 4.3 2.4.9-1.5 2.5-2.4 4.3-2.4 2.5 0 4.5 2 4.5 4.6 0 3.4-3.1 6.6-8.8 10.2z"/></svg>';
+ var CHAT='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c4.97 0 9 3.36 9 7.5S16.97 19 12 19c-1.03 0-2.02-.15-2.94-.42L4 20l.62-3.28C3.63 15.28 3 13.47 3 11.5 3 7.36 7.03 4 12 4z"/></svg>';
+ var PERS='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.2" r="3.9"/><path d="M5 20.2c1.2-3.4 3.8-5.2 7-5.2s5.8 1.8 7 5.2"/></svg>';
+ var pill=document.createElement("nav"); pill.id="tpill";
+ pill.innerHTML='<button type="button" data-p="deck">'+FLAME+'<span>スワイプ</span></button>'
+   +'<button type="button" data-p="explore">'+COMP+'<span>Explore</span></button>'
+   +'<button type="button" data-p="match">'+HEART+'<span>Like</span></button>'
+   +'<button type="button" data-p="chat">'+CHAT+'<span>チャット</span><i class="tp-dot" id="tp-chat-dot"></i></button>'
+   +'<button type="button" data-p="prof">'+PERS+'<span>プロフィール</span></button>';
+ view.appendChild(pill);
+ var routes={deck:"ttab-discover", match:"ttab-match", chat:"ttab-msg", prof:"ttab-prof"};
+ pill.querySelectorAll("button").forEach(function(b){ b.addEventListener("click",function(){
+   if(b.dataset.p==="explore"){ var d=document.getElementById("tdisc-open"); if(d) d.click(); return; }
+   var t=document.getElementById(routes[b.dataset.p]); if(t) t.click();
+ }); });
+ var wraps={deck:deck, chat:document.getElementById("tinder-chat-wrap"), match:document.getElementById("tinder-match-wrap"), prof:document.getElementById("tinder-prof-wrap")};
+ var syncPill=function(){
+   var cur="deck";
+   if(wraps.chat && wraps.chat.style.display==="flex") cur="chat";
+   else if(wraps.match && wraps.match.style.display==="block") cur="match";
+   else if(wraps.prof && wraps.prof.style.display==="block") cur="prof";
+   pill.querySelectorAll("button").forEach(function(b){ b.classList.toggle("act", b.dataset.p===cur); });
+   var dot=document.getElementById("ttab-msg-dot"), pd=document.getElementById("tp-chat-dot");
+   if(dot && pd) pd.style.display=(dot.style.display && dot.style.display!=="none") ? "block" : "none";
+ };
+ Object.keys(wraps).forEach(function(k){ var w=wraps[k]; if(w && window.MutationObserver) new MutationObserver(syncPill).observe(w,{attributes:true,attributeFilter:["style"]}); });
+ var md=document.getElementById("ttab-msg-dot"); if(md && window.MutationObserver) new MutationObserver(syncPill).observe(md,{attributes:true,attributeFilter:["style"]});
+ syncPill(); setInterval(syncPill,1200);
+})();
+</script>
+<!-- ===== Tinder ver v275 (nao's own research, 2026-11-07): nao registered for the real Tinder and sent its current UI, which supersedes the Atlas reference for the deck and navigation. The deck header is now the real one (sliders, category pills おすすめ/Double Date/占星術/ミュージック, violet bolt, page dots; the logo header hides while the deck is up), the top tab row is replaced by the real floating pill nav (スワイプ/Explore/Like/チャット/プロフィール) whose buttons click the very tabs they replace, so every route, toast and gate behaves as before (Explore opens the discovery settings). The card face follows her deck screenshot: the 近隣のエリア chip and a short bio (3-line clamp) are back on the face - tags and prompts stay in the detail sheet - the up-arrow is now a white circle with a dark arrow, and the five action glyphs take the real colours (white rewind, white nope, pale-blue star, red heart, pale send). Wraps gain bottom padding so nothing hides under the pill. The v274 block also gained a repair: the home badge spans the icon sweeps had wiped (bd-line/bd-tinder/bd-x/bd-ig/bd-news) are re-created. His photos, the general-person framing and all story gates are unchanged. ===== -->
 </body>
 </html>
