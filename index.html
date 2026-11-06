@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v275</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v276</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3159,24 +3159,69 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   var dsheet=$("#tdetail-sheet"), dbox=$("#tdetail-box");
   window.openTDetail=function(c){
     if(!c||!dbox) return;
-    var photosHtml = c.hiroto
-      ? '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"].map(function(s){ return '<img loading="lazy" decoding="async" src="'+s+'" style="width:110px;height:140px;object-fit:cover;border-radius:12px;flex:none" alt="">'; }).join("")+"</div>"
-      : '<div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px">'+(c.photos||[]).map(function(p,i){ return '<div style="position:relative;width:110px;height:140px;border-radius:12px;flex:none;overflow:hidden"><img loading="lazy" decoding="async" src="'+p+'" style="width:100%;height:100%;object-fit:cover" alt=""><span style="position:absolute;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);color:#fff;font-size:10.5px;font-weight:700;text-align:center;padding:4px 5px">'+(c.scenes[i]?c.scenes[i].cap:"")+'</span></div>'; }).join("")+"</div>";
-    var prompts = '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:9px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.promptQ+"</b>"+c.promptA+"</div>"
-      + (c.prompt2Q ? '<div style="background:#f8f8fa;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.6;margin-top:8px"><b style="display:block;font-size:11px;color:#8e8e93">'+c.prompt2Q+"</b>"+c.prompt2A+"</div>" : "");
-    dbox.innerHTML = "<h3>"+c.name+" <span style='font-weight:600;font-size:16px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:2px'>⭐ Super Like済み</span>":"")+"</h3>"
-      + '<div class="sub">📍 '+(c.dist||"")+(c.work?" ・ "+c.work:"")+(c.hiroto?" ／ 身長 175 cm":"")+"</div>"
-      + photosHtml
-      + '<div style="font-size:13.5px;line-height:1.7;margin-top:10px">'+c.bio+"</div>"
-      + '<div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:10px">'+c.tags.map(function(t){ return '<span style="background:#f2f2f7;border-radius:999px;padding:5px 10px;font-size:12px">'+t+"</span>"; }).join("")+"</div>"
-      + prompts
-      + '<div style="display:flex;gap:10px;margin-top:16px"><button id="td-nope" style="flex:1;background:#fff0f0;color:#ff3b30;border:none;border-radius:999px;padding:12px;font-weight:900;cursor:pointer;font-family:inherit">✕ Nope</button><button id="td-like" style="flex:1;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:12px;font-weight:900;cursor:pointer;font-family:inherit">❤️ Like</button></div>'
-      + '<button class="sheet-close" id="td-close">閉じる</button>';
+    var PH6=["assets/tinder-hiroto-1.jpg","assets/tinder-hiroto-2.jpg","assets/glasses.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
+    var list = c.hiroto ? PH6 : (c.photos||[]);
+    var stripHtml = '<div class="td-strip" id="td-strip" style="display:flex;overflow-x:auto">'
+      + list.map(function(src){ return '<img loading="lazy" decoding="async" src="'+src+'" alt="">'; }).join("") + "</div>";
+    var IC = {
+      search:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.6"/><path d="M15.8 15.8 20.6 20.6"/></svg>',
+      quote:'<svg width="16" height="16" viewBox="0 0 24 24" fill="#6e6e73"><path d="M10.2 7.5c-2.9.7-4.7 2.9-4.7 6v3.7h5.2v-5.2H8.2c.2-1.5 1.1-2.5 2.6-3l-.6-1.5zm8.5 0c-2.9.7-4.7 2.9-4.7 6v3.7h5.2v-5.2h-2.5c.2-1.5 1.1-2.5 2.6-3l-.6-1.5z" transform="translate(0,1)"/></svg>',
+      person:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8.2" r="3.9"/><path d="M5 20.2c1.2-3.4 3.8-5.2 7-5.2s5.8 1.8 7 5.2"/></svg>',
+      pin:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="1.9"><path d="M12 21s-6.5-6.1-6.5-10.8A6.5 6.5 0 0 1 12 4a6.5 6.5 0 0 1 6.5 6.2C18.5 14.9 12 21 12 21z"/><circle cx="12" cy="10.2" r="2.3"/></svg>',
+      brief:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="1.9"><rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M9 7.5V6a3 3 0 0 1 6 0v1.5M3.5 12.5h17"/></svg>',
+      ruler:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8.5 6.5 12 3l3.5 3.5M8.5 17.5 12 21l3.5-3.5"/></svg>',
+      tag:'<svg width="16" height="16" viewBox="0 0 24 24" fill="#6e6e73"><path d="M3.5 3.5H12L20.5 12a2 2 0 0 1 0 2.8l-5.7 5.7a2 2 0 0 1-2.8 0L3.5 12V3.5z"/><circle cx="8" cy="8" r="1.7" fill="#fff"/></svg>',
+      dots:'<svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><circle cx="5" cy="12" r="2.1"/><circle cx="12" cy="12" r="2.1"/><circle cx="19" cy="12" r="2.1"/></svg>',
+      nope:'<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#161823" stroke-width="3.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+      star:'<svg width="24" height="24" viewBox="0 0 24 24" fill="#4f9be0"><path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.3l-6 3.3 1.3-6.7-5-4.7 6.8-.8z"/></svg>',
+      heart:'<svg width="27" height="27" viewBox="0 0 24 24" fill="#e60023"><path d="M12 20.7C6.4 17 3.4 13.6 3.4 9.9 3.4 7.2 5.4 5.2 7.9 5.2c1.7 0 3.2.9 4.1 2.3.9-1.4 2.4-2.3 4.1-2.3 2.5 0 4.5 2 4.5 4.7 0 3.7-3 7.1-8.6 10.8z"/></svg>'
+    };
+    var rows = '<div class="td-row">'+IC.pin+'<span>'+(c.distKm? c.distKm+" km 先" : (c.dist||""))+'</span></div>'
+      + (c.hiroto ? '<div class="td-row">'+IC.ruler+'<span>175 cm</span></div>' : (c.work ? '<div class="td-row">'+IC.brief+'<span>'+c.work+'</span></div>' : ""));
+    dbox.innerHTML = "<h3>"+c.name+" <span style='font-weight:600;font-size:19px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:3px'>⭐ Super Like済み</span>":"")+"</h3>"
+      + '<button class="sheet-close" id="td-close">閉じる</button>'
+      + '<div class="td-photo"><div class="td-bars" id="td-bars"></div><button type="button" class="td-dots" aria-label="その他">'+IC.dots+'</button>'
+      + stripHtml + "</div>"
+      + (c.hiroto ? '<div class="td-card"><div class="td-card-h">'+IC.search+'求めるものは</div><div class="td-card-b">気軽に会える人</div></div>' : "")
+      + '<div class="td-card"><div class="td-card-h">'+IC.quote+'自己紹介</div><div class="td-card-b">'+c.bio+"</div></div>"
+      + '<div class="td-card"><div class="td-card-h">'+IC.person+'基本情報</div>'+rows+"</div>"
+      + '<div class="td-card"><div class="td-card-h">'+IC.quote+c.promptQ+'</div><div class="td-card-big">'+c.promptA+"</div></div>"
+      + (c.prompt2Q ? '<div class="td-card"><div class="td-card-h">'+IC.quote+c.prompt2Q+'</div><div class="td-card-big">'+c.prompt2A+"</div></div>" : "")
+      + '<div class="td-card"><div class="td-card-h">'+IC.tag+'ライフスタイル</div><div class="td-chips">'+c.tags.map(function(t){ return "<span>"+t+"</span>"; }).join("")+"</div></div>"
+      + '<button type="button" class="td-act" id="td-block">'+c.name+"をブロックする</button>"
+      + '<button type="button" class="td-act rep" id="td-report">'+c.name+"を報告する</button>"
+      + '<div class="td-trio"><button type="button" id="td-nope" aria-label="Nope">'+IC.nope+'</button>'
+      + '<button type="button" id="td-super" aria-label="Super Like">'+IC.star+'</button>'
+      + '<button type="button" id="td-like" aria-label="Like">'+IC.heart+'</button></div>';
     dsheet.classList.add("on");
+    try{ dbox.scrollTop=0; }catch(e){}
+    var strip=document.getElementById("td-strip"), bars=document.getElementById("td-bars");
+    function drawBars(){
+      if(!strip||!bars) return;
+      var vis=[].slice.call(strip.querySelectorAll("img")).filter(function(im){ return im.style.display!=="none"; });
+      var idx=vis.length? Math.min(vis.length-1, Math.round(strip.scrollLeft/Math.max(1,strip.clientWidth))) : 0;
+      bars.innerHTML=vis.map(function(_,i){ return '<i class="'+(i===idx?"act":"")+'"></i>'; }).join("");
+    }
+    if(strip){ strip.addEventListener("scroll",function(){ window.requestAnimationFrame(drawBars); }); }
+    drawBars(); setTimeout(drawBars,90);
+    var photo=dbox.querySelector(".td-photo");
+    if(photo) photo.addEventListener("click",function(e){
+      if(e.target.closest(".td-dots")) return;
+      if(!strip) return;
+      var w=strip.clientWidth; var max=strip.scrollWidth-w;
+      var nx=strip.scrollLeft+w; if(nx>max+4) nx=0;
+      strip.scrollTo({left:nx,behavior:"smooth"});
+    });
+    var dotsB=dbox.querySelector(".td-dots");
+    if(dotsB) dotsB.addEventListener("click",function(e){ e.stopPropagation(); var a=document.getElementById("td-actions"); if(a) a.classList.add("on"); });
     document.getElementById("td-close").addEventListener("click",function(){ dsheet.classList.remove("on"); });
     document.getElementById("td-nope").addEventListener("click",function(){ dsheet.classList.remove("on"); window.__tinder.swipe("nope"); });
-    document.getElementById("td-like").addEventListener("click",function(){ dsheet.classList.remove("on"); window.__tinder.swipe(c.hiroto?"super":"like"); });
+    document.getElementById("td-super").addEventListener("click",function(){ dsheet.classList.remove("on"); window.__tinder.swipe("super"); });
+    document.getElementById("td-like").addEventListener("click",function(){ dsheet.classList.remove("on"); window.__tinder.swipe("like"); });
+    document.getElementById("td-block").addEventListener("click",function(){ toast("今はブロックできない（物語の都合）"); });
+    document.getElementById("td-report").addEventListener("click",function(){ toast("報告フォームはこの世界にはありません"); });
   };
+
   if(dsheet) dsheet.addEventListener("click",function(e){ if(e.target===dsheet) dsheet.classList.remove("on"); });
  /* --- own profile editing --- */
   var pe=$("#prof-edit");
@@ -11586,7 +11631,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v275"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v276"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -11797,5 +11842,38 @@ dock.addEventListener("click",function(e){
 })();
 </script>
 <!-- ===== Tinder ver v275 (nao's own research, 2026-11-07): nao registered for the real Tinder and sent its current UI, which supersedes the Atlas reference for the deck and navigation. The deck header is now the real one (sliders, category pills おすすめ/Double Date/占星術/ミュージック, violet bolt, page dots; the logo header hides while the deck is up), the top tab row is replaced by the real floating pill nav (スワイプ/Explore/Like/チャット/プロフィール) whose buttons click the very tabs they replace, so every route, toast and gate behaves as before (Explore opens the discovery settings). The card face follows her deck screenshot: the 近隣のエリア chip and a short bio (3-line clamp) are back on the face - tags and prompts stay in the detail sheet - the up-arrow is now a white circle with a dark arrow, and the five action glyphs take the real colours (white rewind, white nope, pale-blue star, red heart, pale send). Wraps gain bottom padding so nothing hides under the pill. The v274 block also gained a repair: the home badge spans the icon sweeps had wiped (bd-line/bd-tinder/bd-x/bd-ig/bd-news) are re-created. His photos, the general-person framing and all story gates are unchanged. ===== -->
+
+<style id="v276-css">
+/* v276: the profile detail is the real full-screen one - grey ground, white cards,
+   a photo carousel on top and the floating nope / super / like trio */
+#tdetail-sheet .box{background:#f1f1f4;max-height:97%;height:97%;padding:16px 12px 20px;border-radius:24px 24px 0 0}
+#tdetail-box h3{color:#161823;font-size:25px}
+#tdetail-box .td-photo{position:relative;border-radius:16px;overflow:hidden;margin-top:10px;background:#ddd}
+#tdetail-box .td-strip{scroll-snap-type:x mandatory;scrollbar-width:none}
+#tdetail-box .td-strip::-webkit-scrollbar{display:none}
+#tdetail-box .td-strip img{width:100%;height:350px;object-fit:cover;flex:none;scroll-snap-align:start}
+#tdetail-box .td-bars{position:absolute;top:8px;left:10px;right:10px;display:flex;gap:5px;z-index:3;pointer-events:none}
+#tdetail-box .td-bars i{flex:1;height:3.5px;border-radius:2px;background:rgba(255,255,255,.45)}
+#tdetail-box .td-bars i.act{background:#fff}
+#tdetail-box .td-dots{top:18px}
+#tdetail-box .td-card{background:#fff;border-radius:16px;padding:14px 16px;margin-top:12px}
+#tdetail-box .td-card-h{display:flex;align-items:center;gap:7px;font-size:13px;color:#6e6e73;font-weight:700;margin-bottom:7px}
+#tdetail-box .td-card-h svg{flex:none}
+#tdetail-box .td-card-b{font-size:15px;line-height:1.65;color:#161823}
+#tdetail-box .td-card-big{font-size:23px;font-weight:800;color:#161823;line-height:1.45}
+#tdetail-box .td-row{display:flex;align-items:center;gap:9px;font-size:15px;color:#161823;padding:8px 0;border-top:1px solid #f0f0f3}
+#tdetail-box .td-row:first-of-type{border-top:none;padding-top:1px}
+#tdetail-box .td-row svg{flex:none}
+#tdetail-box .td-chips{display:flex;flex-wrap:wrap;gap:7px}
+#tdetail-box .td-chips span{background:#f2f2f7;border-radius:999px;padding:5px 11px;font-size:12.5px;color:#161823}
+#tdetail-box .td-act{display:block;width:100%;background:#fff;border:none;border-radius:16px;padding:16px;font-size:15.5px;font-weight:700;color:#161823;cursor:pointer;font-family:inherit;margin-top:12px}
+#tdetail-box .td-act.rep{color:#d70015}
+#tdetail-box .td-trio{position:sticky;bottom:8px;display:flex;justify-content:center;align-items:flex-start;gap:16px;margin-top:16px;z-index:6}
+#tdetail-box .td-trio button{border:none;border-radius:50%;background:#fff;box-shadow:0 8px 22px rgba(0,0,0,.22);cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;padding:0}
+#tdetail-box #td-nope{width:58px;height:58px}
+#tdetail-box #td-super{width:48px;height:48px;margin-top:5px}
+#tdetail-box #td-like{width:58px;height:58px}
+</style>
+<!-- ===== Tinder ver v276 (nao's click-through, 2026-11-07): the profile detail is rebuilt as the real full-screen view she sent - name row with the black down-chevron close, a snap photo carousel with segment bars and the ... menu (same action sheet), then white cards on grey: 求めるものは (his is 気軽に会える人, from his own bio), 自己紹介, 基本情報 (pin + 1 km 先, height 175 cm - his job stays off the profile, as the general-person framing requires), both prompt cards with the big answer type, ライフスタイル chips, and the block / report cards. The floating trio (nope / super / like, white circles) swipes exactly like the old sheet buttons. The story's profile-evolution wrapper still finds its overflow-x strip and swaps/hides photos per phase; bars recount visible photos. ===== -->
 </body>
 </html>
