@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v285</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v286</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1247,7 +1247,7 @@ const FRIEND_REPLIES=["ちょ、詳しく聞かせて","それ大丈夫なやつ
 function sendGroup(){ pop(); const inp=$("#g-text"); const v=inp.value.trim(); if(!v) return; inp.value=""; gMe(v); setTimeout(()=>gMsg(pick(Object.keys(FRIENDS)),pick(FRIEND_REPLIES)),1400); }
 $("#g-send").addEventListener("click",sendGroup);
 $("#g-text").addEventListener("keydown",e=>{ if(e.key==="Enter") sendGroup(); });
-async function groupFlood(){ const seq=[["りな","なお！！ 電話出て！！"],["ゆい","ニュースの見出し、なおの名前出てる…"],["みさき","待って、相手って…あの紹介してくれた人？"],["りな","本物やったんかい！！ そりゃ気づかんわ！！"],["みさき","ずっと連絡してたのに、気づかなかったの…？"],["ゆい","記事、最後まで読んだ。「交際はしてない」って書いてある"],["りな","コメント欄、荒れてる…なおは見ないで"],["みさき","私たちは、なおの言うことだけ信じるから"],["ゆい","今夜、うちに来な。話はそれからでいい"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
+async function groupFlood(){ const seq=[["りな","なお！！ 電話出て！！"],["ゆい","ニュースの見出し、なおの名前出てる…"],["みさき","待って、相手って…アプリの人？"],["りな","本物やったんかい！！ そりゃ気づかんわ！！"],["みさき","ずっと連絡してたのに、気づかなかったの…？"],["ゆい","記事、最後まで読んだ。「交際はしてない」って書いてある"],["りな","コメント欄、荒れてる…なおは見ないで"],["みさき","私たちは、なおの言うことだけ信じるから"],["ゆい","今夜、うちに来な。話はそれからでいい"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
 /* ===== v5: his IG extra posts ===== */
 (function(){ const hs=$("#v-hisig .scroll"); if(!hs) return;
   const mk=(img,cap,likes,date)=>{ const d=document.createElement("div"); d.className="ig-post"; d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date}</span></div>`; hs.appendChild(d); };
@@ -3571,24 +3571,24 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"mono",t:"（帰り道。別れたばっかりやのに、もうスマホ見てる）"},
    {k:"mgr",t:"明日の入り、9時やからな。寝坊すんなよ"},
    {k:"him",t:"分かってる。もう帰ってる"},
-   {k:"mgr",t:"珍しいな、今日は返事が早いやん"},
-   {k:"him",t:"…たまたま"},
-   {k:"mono",t:"（たまたま、ちゃう。通知、待ってたんやろ、俺）"},
-   {k:"draft",t:"今日、楽しかった。俺も——って、なんでその場で言われへんかったんやろ"},
-   {k:"draft",t:"隠してること、ある。ごめん"},
+   {k:"mgr",t:"今日は機嫌ええな"},
+   {k:"him",t:"…そう見える？"},
+   {k:"mono",t:"（見えるんやろな。隠すの下手やねん、俺）"},
+   {k:"draft",t:"今日のカフェ、また行きたい"},
+   {k:"draft",t:"プリンのやつ、目輝いてたな"},
    {k:"mono",t:"（送ったのは『おつかれ、また明日な』だけ。……ずるいな、俺）"}
   ]},
   2:{sub:"彼のスマホ —— 10月12日（日）夜",steps:[
    {k:"note",t:"10月12日（日）21:48"},
    {k:"mono",t:"（レッスン室。帰るって言ったのに、まだ残ってる）"},
    {k:"draft",t:"さっきの言葉、取り消させて"},
-   {k:"draft",t:"『友達でおろう』なんて、俺の本音ちゃう"},
+   {k:"draft",t:"線の内側って、なんやねん"},
    {k:"mgr",t:"振り、もう一回だけ確認しよか"},
    {k:"him",t:"…お願いします"},
    {k:"mgr",t:"今日のお前、なんか精彩ないぞ"},
    {k:"him",t:"気のせいです"},
    {k:"mono",t:"（線は引いた。引いたのは、俺や。やのに）"},
-   {k:"mono",t:"（『おやすみ』が、こんなに重い日が来るとは）"}
+   {k:"mono",t:"（駅までの道、短すぎた）"}
   ]},
   3:{sub:"彼のスマホ —— 11月2日（日）深夜",steps:[
    {k:"note",t:"11月2日（日）23:31"},
@@ -3597,7 +3597,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"him",t:"あの子が矢面に立つような文は、嫌や"},
    {k:"mgr",t:"…分かった。事務所で調整する"},
    {k:"mono",t:"（守り方、これしかあらへんのが情けない）"},
-   {k:"draft",t:"ごめん"},
+   {k:"draft",t:"巻き込んで、ごめん"},
    {k:"draft",t:"俺と知り合わんかったら、普通の毎日やったのに"},
    {k:"draft",t:"せめて、俺の名前だけ見て泣かんといて"},
    {k:"mono",t:"（送られへん。送ったら、また火がつく）"},
@@ -3612,7 +3612,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"him",t:"大丈夫です"},
    {k:"mono",t:"（大丈夫、ちゃうくせに）"},
    {k:"draft",t:"昨日は、冷たい言い方してごめん"},
-   {k:"draft",t:"あれが正解やと思い込ませてるだけや"},
+   {k:"draft",t:"電話、鳴らしたの後悔してへん"},
    {k:"mono",t:"（消した。送ったのは『おはよ、今日も頑張ろな』——仕事みたいな文やった）"}
   ]},
   5:{sub:"彼のスマホ —— 11月2日（日）深夜 ・ 声明のあと",steps:[
@@ -3622,9 +3622,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"mgr",t:"お相手の子には、こっちから伝えた。…大丈夫そうか"},
    {k:"him",t:"…分かりません"},
    {k:"mono",t:"（彼女の投稿、見に行ってしまった。鍵は、かかってなかった）"},
-   {k:"draft",t:"ごめん。…笑ってて"},
+   {k:"draft",t:"マロンは元気やで"},
    {k:"mono",t:"（指が、送信の上で止まったままやった）"},
-   {k:"mono",t:"（マロンは元気やで。それだけは、言いたかった）"}
+   {k:"mono",t:"（犬の近況くらい、ええやろって思う自分がおる）"}
   ]}
  };
  function povEl(s){
@@ -3674,8 +3674,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    if(state._interludeDone) return; state._interludeStage="line";
    chapterCard("幕間","引いたはずの線","引いたはずの線の上で、深夜に電話が鳴る。<br><span class=\"cc-when\">10月12日（日） 深夜 —— LINEを開いてね</span>");
    addDayChip("10月12日（日）深夜");
-   await himMsg("…まだ、起きてる？",1700); if(!alive(t))return;
-   await himMsg("寝てたら、朝でいいねん",700); if(!alive(t))return;
+   await himMsg("…起きてる？",1700); if(!alive(t))return;
+   await himMsg("寝てたら、無視して",700); if(!alive(t))return;
    state._interludeStage="ring";
    push("着信","#111111","📞","ひろと","「いま、電話できる？」—— タップで出る",()=>{ if(state._interludeStage==="ring"){ state._interludeStage="call"; state._interludeCall=true; showIncomingCall("hiroto"); } });
    later(()=>{ if(state._interludeStage==="ring"&&alive(t)){ state._interludeStage="call"; state._interludeCall=true; showIncomingCall("hiroto"); } },12000);
@@ -3693,9 +3693,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  };
  window.interludeDeclined=async function(){
    state._interludeStage="done"; state._interludeDone=true; const t=state._token;
-   await himMsg("寝てた？",400); if(!alive(t))return;
-   await himMsg("起こしたら、ごめん"); if(!alive(t))return;
-   await himMsg("…なんでもない、忘れて。寝てな"); if(!alive(t))return;
+   await himMsg("寝てたんやな",400); if(!alive(t))return;
+   await himMsg("鳴らしたの、俺や"); if(!alive(t))return;
+   await himMsg("用事は、ないねん。…寝てな"); if(!alive(t))return;
    toast("🌙 <b>（かかってきた電話は、鳴り止んだ）</b>");
    later(()=>{ if(alive(t)) chapter(4); },2400);
  };
@@ -9965,7 +9965,7 @@ setInterval(upd,900); upd();
   show("line"); openChat();
   addDayChip("10月12日（日）深夜");
   await himMsg("…まだ起きてる？",1000); if(!alive(t))return;
-  await himMsg("さっきの話、帰ってからもずっと考えててん",1400); if(!alive(t))return;
+  await himMsg("帰ってからも、ずっと考えててん",1400); if(!alive(t))return;
   await himMsg("線、引いたの俺やのに",1100); if(!alive(t))return;
   await himMsg("引いたそばから、自分で消したくなってる",1500); if(!alive(t))return;
   const confess=async()=>{ if(!alive(t))return;
@@ -9980,7 +9980,7 @@ setInterval(upd,900); upd();
       state._route="dating";
       await himMsg("…ほんまに？",900); if(!alive(t))return;
       await himMsg("ありがとう、なお",1100); if(!alive(t))return;
-      await himMsg("内緒やで。…俺と、なおだけの",1300);
+      await himMsg("誰にも言わんでな。…二人だけの秘密や",1300);
       toast("💑 <b>付き合うことになった</b>（二人だけの秘密）");
       setTimeout(()=>{ try{ chapter(4); }catch(e){} },1700); }},
     {label:"ごめん、今は無理",fn:async()=>{ if(!alive(t))return;
@@ -10006,8 +10006,8 @@ setInterval(upd,900); upd();
   addDayChip("10月18日（土）");
   show("line"); openChat();
   await himMsg("今日、空いてる？",900); if(!alive(t))return;
-  await himMsg("個室のカフェ、取れたねん",1100); if(!alive(t))return;
-  await himMsg("人目、気にせんでええとこ",1000); if(!alive(t))return;
+  await himMsg("カフェ、個室のとこ取れたで",1100); if(!alive(t))return;
+  await himMsg("人目、気にせんでええやつ",1000); if(!alive(t))return;
   later(()=>toast("☕ <b>（個室のカフェ。向かいに座る距離が、もう『友達』の距離じゃなかった）</b>"),2600);
   later(()=>toast("💭 <b>（マロンの写真を見せたら、嬉しそうに笑った。…この顔、独り占めしたい）</b>"),5200);
   await himMsg("…なあ、なお",2600); if(!alive(t))return;
@@ -10088,7 +10088,7 @@ setInterval(upd,900); upd();
   chapterCard("第5話","すれ違い","楽しみにしていた日が、仕事で流れた。小さな喧嘩と、仲直りの電話。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェの約束 —— LINEを開いてね</span>");
   addDayChip("11月1日（土）");
   show("line"); openChat();
-  await himMsg("ごめん、今日の収録、押してて",1100); if(!alive(t))return;
+  await himMsg("ごめん、今日の収録、終わらん",1100); if(!alive(t))return;
   await himMsg("終わるの、夜になりそう",1100); if(!alive(t))return;
   await himMsg("カフェ、また今度でもええ？",1200); if(!alive(t))return;
   const fight=async()=>{ if(!alive(t))return;
@@ -11620,7 +11620,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v285"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v286"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12104,6 +12104,9 @@ dock.addEventListener("click",function(e){
 </script>
 <script>
 /* v285: all Tinder/LINE dialogue rewritten with new topics and exchanges on both sides; structure, routing, gates and voices preserved */
+</script>
+<script>
+/* v286: POV episodes, interlude, dating-route chapters and the itsumen scandal flood rewritten/refreshed; structure and voices preserved */
 </script>
 </body>
 </html>
