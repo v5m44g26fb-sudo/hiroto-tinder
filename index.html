@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v228</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v229</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -969,50 +969,51 @@ async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3
     {label:"言わなあかんことって、何？",fn:async()=>{ if(!alive(t))return; await himMsg("うまく言えるか、分からんけど",1100); cont3(); }},
     {label:"…なんか、怖いな",fn:async()=>{ if(!alive(t))return; await himMsg("怖がらせて、ごめん",900); cont3(); }},
   ]); }
-async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『曖昧な距離』","友達未満、でも他人じゃない。"); chapterCard("第4話","曖昧な距離","名前のない関係が、いちばん濃くなる夜。<br><span class=\"cc-when\">10月18日（土） ・ 夜 —— LINEを開いてね</span>");
-  await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("写真、送るわ。この前の、なおが撮ってくれたやつ"); if(!alive(t))return; await himMsg("俺、こんな顔してたんやな"); if(!alive(t))return; await himMsg("マロンな、なおの写真見てから玄関ばっか見てるねん"); await himStamp("😎"); if(!alive(t))return; await himMsg("…なぁ、なお。あのアプリ、もう開いてへんよな？"); if(!alive(t))return; await himMsg("他の人と、会ったりしてへんよな"); later(()=>toast("👀 <b>（笑ってるけど、目が笑ってない気がした）</b>"),1000);
-  if(!alive(t))return; const cont4=async()=>{ if(!alive(t))return; await himMsg("今度の休み、マロンに会いに来る？"); if(!alive(t))return; await himMsg("なおに会いたがってるし"); if(!alive(t))return; await himMsg("…俺も");
-  later(()=>toast("📷 ひろとの<b>ストーリー</b>が更新された（彼の垢から見れる）"),3500);
-  later(()=>toast("🐶 <b>（マロンは即、懐いた。帰り際、急な雨。一つの傘に、二人きりだった）</b>"),5200);
-  const ch4fade=async()=>{ if(!alive(t))return; toast("🌙 <b>——画面は、ここで静かに暗くなる</b>"); later(async()=>{ if(!alive(t))return; addDayChip("10月19日（日）"); await himMsg("…おはよ",1400); if(!alive(t))return; await himMsg("昨日のこと、ごめんな"); if(!alive(t))return; await himMsg("線、引いたの俺やのに"); if(!alive(t))return; await himMsg("なおは、何も悪くないからな"); if(!alive(t))return; const last5=async()=>{ if(!alive(t))return; await himMsg("…また、会ってくれる？"); later(()=>chapter(5),2000); }; askChoices("なおの返信を選んで",[
-    {label:"ううん、私も止めなかったもん",fn:async()=>{ if(!alive(t))return; await himMsg("…ありがとう、なお"); last5(); }},
-    {label:"なかったことには、できないよ",fn:async()=>{ if(!alive(t))return; await himMsg("…うん。できないな"); last5(); }},
+async function ch4(t){ addDayChip("10月18日（土）"); setChapterWidget("第4話『曖昧な距離』","友達未満、でも他人じゃない。"); chapterCard("第4話","曖昧な距離","名前のない関係が、いちばん濃くなる夜。<br><span class=\"cc-when\">10月18日（土） ・ 夜 —— LINEを開いてね</span>"); later(()=>toast("🌆 <b>（休日の夕方。スマホが光って、ひろとから写真が届いた）</b>"),1300);
+  await himPhoto("assets/ig-meal.jpg"); if(!alive(t))return; await himMsg("写真、送るわ。この前の、なおが撮ってくれたやつ",800); if(!alive(t))return; await himMsg("俺、こんな顔してたんやな",1000); if(!alive(t))return; await himMsg("マロンな、なおの写真見てから玄関ばっか見てるねん",1100); await himStamp("😎"); if(!alive(t))return; await himMsg("…なぁ、なお。あのアプリ、もう開いてへんよな？",1300); if(!alive(t))return; await himMsg("他の人と、会ったりしてへんよな",1200); later(()=>toast("👀 <b>（笑ってるけど、目が笑ってない気がした）</b>"),1400);
+  if(!alive(t))return; const cont4=async()=>{ if(!alive(t))return; await himMsg("今度の休み、マロンに会いに来る？",900); if(!alive(t))return; await himMsg("なおに会いたがってるし",800); if(!alive(t))return; await himMsg("…俺も",1400);
+  later(()=>toast("📷 ひろとの<b>ストーリー</b>が更新された（彼の垢から見れる）"),4200);
+  later(()=>toast("🐶 <b>（マロンは即、懐いた。帰り際、急な雨。一つの傘に、二人きりだった）</b>"),8000);
+  const ch4fade=async()=>{ if(!alive(t))return; toast("🌙 <b>——画面は、ここで静かに暗くなる</b>"); later(async()=>{ if(!alive(t))return; addDayChip("10月19日（日）"); await himMsg("…おはよ",1400); if(!alive(t))return; await himMsg("昨日のこと、ごめんな",1100); if(!alive(t))return; await himMsg("線、引いたの俺やのに",1200); if(!alive(t))return; await himMsg("なおは、何も悪くないからな",1100); if(!alive(t))return; const last5=async()=>{ if(!alive(t))return; await himMsg("…また、会ってくれる？",1500); later(()=>chapter(5),2400); }; askChoices("なおの返信を選んで",[
+    {label:"ううん、私も止めなかったもん",fn:async()=>{ if(!alive(t))return; await himMsg("…ありがとう、なお",1000); last5(); }},
+    {label:"なかったことには、できないよ",fn:async()=>{ if(!alive(t))return; await himMsg("…うん。できないな",1200); last5(); }},
   ]); },3800); };
-  const ch4night=async()=>{ if(!alive(t))return; await himMsg("今日は…帰したくないな",900); if(!alive(t))return; await himMsg("傘、一本しかないねん"); if(!alive(t))return; toast("☂️ <b>（濡れて帰すわけにも、いかない。彼の肩は、もう半分濡れていた）</b>"); await himMsg("…なぁ、なお",1300); if(!alive(t))return; await himMsg("雨、やむまで待つ？"); if(!alive(t))return; askChoices("なおの返信を選んで",[
-    {label:"…待つ。雨が、やむまで",fn:async()=>{ if(!alive(t))return; await himMsg("…っ",1700); if(!alive(t))return; await himMsg("なお"); if(!alive(t))return; await himMsg("それ、俺が止められへんやつや"); ch4fade(); }},
-    {label:"帰らなきゃ…いけないのに",fn:async()=>{ if(!alive(t))return; await himMsg("…そやな"); if(!alive(t))return; await himMsg("嘘。やっぱ、帰したくない"); ch4fade(); }},
+  const ch4night=async()=>{ if(!alive(t))return; await himMsg("今日は…帰したくないな",900); if(!alive(t))return; await himMsg("傘、一本しかないねん",1000); if(!alive(t))return; toast("☂️ <b>（濡れて帰すわけにも、いかない。彼の肩は、もう半分濡れていた）</b>"); await himMsg("…なぁ、なお",1300); if(!alive(t))return; await himMsg("雨、やむまで待つ？",1200); if(!alive(t))return; askChoices("なおの返信を選んで",[
+    {label:"…待つ。雨が、やむまで",fn:async()=>{ if(!alive(t))return; await himMsg("…っ",1700); if(!alive(t))return; await himMsg("なお",900); if(!alive(t))return; await himMsg("それ、俺が止められへんやつや",1300); ch4fade(); }},
+    {label:"帰らなきゃ…いけないのに",fn:async()=>{ if(!alive(t))return; await himMsg("…そやな",1100); if(!alive(t))return; await himMsg("嘘。やっぱ、帰したくない",1400); ch4fade(); }},
   ]); };
   if(!alive(t))return; askChoices("なおの返信を選んで",[
-    {label:"マロンに会えるの、楽しみ",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう"); await himMsg("…俺のことも、楽しみにしててな"); ch4night(); }},
-    {label:"私たちって、結局なんなんだろうね",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん"); if(!alive(t))return; await himMsg("名前は、まだつけられへんねん"); if(!alive(t))return; await himMsg("でも、大事なんはほんまやで"); ch4night(); }},
-    {label:"誘ってくれて、嬉しいよ",fn:async()=>{ if(!alive(t))return; await himMsg("…誘うの、だいぶ勇気いったんやで"); if(!alive(t))return; await himMsg("来てくれるだけで、十分や"); ch4night(); }},
+    {label:"マロンに会えるの、楽しみ",fn:async()=>{ if(!alive(t))return; await himMsg("ありがとう",700); await himMsg("…俺のことも、楽しみにしててな",1200); ch4night(); }},
+    {label:"私たちって、結局なんなんだろうね",fn:async()=>{ if(!alive(t))return; await himMsg("…ごめん",1100); if(!alive(t))return; await himMsg("名前は、まだつけられへんねん",1200); if(!alive(t))return; await himMsg("でも、大事なんはほんまやで",1100); ch4night(); }},
+    {label:"誘ってくれて、嬉しいよ",fn:async()=>{ if(!alive(t))return; await himMsg("…誘うの、だいぶ勇気いったんやで",1100); if(!alive(t))return; await himMsg("来てくれるだけで、十分や",1000); ch4night(); }},
   ]); };
   askChoices("なおの返信を選んで",[
-    {label:"開いてないよ、もう",fn:async()=>{ if(!alive(t))return; await himMsg("…そっか。ありがとう"); cont4(); }},
-    {label:"ひろと以外の人と、会う気ないよ",fn:async()=>{ if(!alive(t))return; await himMsg("…その言い方、ずるいな"); cont4(); }},
+    {label:"開いてないよ、もう",fn:async()=>{ if(!alive(t))return; await himMsg("…そっか。ありがとう",900); cont4(); }},
+    {label:"ひろと以外の人と、会う気ないよ",fn:async()=>{ if(!alive(t))return; await himMsg("…その言い方、ずるいな",1200); cont4(); }},
   ]); }
 async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5話『少し空いた距離』","会えない日が、少し増えた。"); chapterCard("第5話","少し空いた距離","「後悔はしてへん」——その一言だけが、近くにあった。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェ —— LINEを開いてね</span>");
-  await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("…久しぶりやな"); if(!alive(t))return; await himMsg("仕事が、立て込んでてん"); if(!alive(t))return; await himMsg("連絡、空けてごめんな");
-  if(!alive(t))return; const cont5b=async()=>{ if(!alive(t))return; await himMsg("あの夜のこと…"); if(!alive(t))return; await himMsg("考えなかった日、ないねん");
-  if(!alive(t))return; const cont5c=async()=>{ if(!alive(t))return; await himMsg("俺、最低やな"); if(!alive(t))return; await himMsg("…でも、後悔はしてへんねん"); if(!alive(t))return; await himMsg("会えない間、なおの好きな曲ばっか聴いてた"); if(!alive(t))return; await himMsg("次に会えたら言おうって、決めててん"); if(!alive(t))return; await himMsg("今日のプリン、なおの嬉しそうな顔が見れてよかったわ"); if(!alive(t))return; await himMsg("…今日も帽子深めで、ごめん"); if(!alive(t))return; await himMsg("今日は、あんまり見られたくない日やってん"); if(!alive(t))return; await himMsg("帰りは遠回りしよ。人混み、避けて歩きたい"); if(!alive(t))return; await himMsg("なおと、ただ普通に歩きたいだけやねんけどな");
-  later(()=>{ addPhoto("assets/night.jpg","夜の散歩"); },5000);
-  later(()=>toast("📷 ひろとが投稿したよ「このまま時間が止まればいいのに🙃」（彼の垢）"),4000);
+  later(()=>toast("🌙 <b>（2週間ぶり。彼の名前の通知は、ずっと止まったままだった）</b>"),1300);
+  await himVoice("assets/vm-morning.mp3","0:02"); if(!alive(t))return; await himMsg("…久しぶりやな",1200); if(!alive(t))return; await himMsg("仕事が、立て込んでてん",900); if(!alive(t))return; await himMsg("連絡、空けてごめんな",1400);
+  if(!alive(t))return; const cont5b=async()=>{ if(!alive(t))return; await himMsg("あの夜のこと…",1500); if(!alive(t))return; await himMsg("考えなかった日、ないねん",1400);
+  if(!alive(t))return; const cont5c=async()=>{ if(!alive(t))return; await himMsg("俺、最低やな",1100); if(!alive(t))return; await himMsg("…でも、後悔はしてへんねん",1600); if(!alive(t))return; await himMsg("会えない間、なおの好きな曲ばっか聴いてた",1000); if(!alive(t))return; await himMsg("次に会えたら言おうって、決めててん",1100); if(!alive(t))return; await himMsg("今日のプリン、なおの嬉しそうな顔が見れてよかったわ",1000); if(!alive(t))return; await himMsg("…今日も帽子深めで、ごめん",1200); if(!alive(t))return; await himMsg("今日は、あんまり見られたくない日やってん",1100); if(!alive(t))return; await himMsg("帰りは遠回りしよ。人混み、避けて歩きたい",1000); if(!alive(t))return; await himMsg("なおと、ただ普通に歩きたいだけやねんけどな",1400);
+  later(()=>{ addPhoto("assets/night.jpg","夜の散歩"); },9000);
+  later(()=>toast("📷 ひろとが投稿したよ「このまま時間が止まればいいのに🙃」（彼の垢）"),6000);
   if(!alive(t))return; askChoices("なおの返信を選んで",[
     {label:"今日会えて、本当によかった",fn:async()=>{ if(!alive(t))return; ch5end(t); }},
-    {label:"また、すぐ会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も"); if(!alive(t))return; await himMsg("約束はできへんけど、また誘う"); ch5end(t); }},
-    {label:"いつか、帽子なしで歩こう",fn:async()=>{ if(!alive(t))return; await himMsg("うん…"); if(!alive(t))return; await himMsg("ごめんな、窮屈な思いさせてばっかりで"); ch5end(t); }},
+    {label:"また、すぐ会いたいな",fn:async()=>{ if(!alive(t))return; await himMsg("俺も",900); if(!alive(t))return; await himMsg("約束はできへんけど、また誘う",1300); ch5end(t); }},
+    {label:"いつか、帽子なしで歩こう",fn:async()=>{ if(!alive(t))return; await himMsg("うん…",1000); if(!alive(t))return; await himMsg("ごめんな、窮屈な思いさせてばっかりで",1300); ch5end(t); }},
   ]); };
   askChoices("なおの返信を選んで",[
-    {label:"私も、考えなかった日はないよ",fn:async()=>{ if(!alive(t))return; await himMsg("そっか…"); cont5c(); }},
-    {label:"忘れたいって、思ったこともある",fn:async()=>{ if(!alive(t))return; await himMsg("…それでも、ええねん"); cont5c(); }},
+    {label:"私も、考えなかった日はないよ",fn:async()=>{ if(!alive(t))return; await himMsg("そっか…",1200); cont5c(); }},
+    {label:"忘れたいって、思ったこともある",fn:async()=>{ if(!alive(t))return; await himMsg("…それでも、ええねん",1300); cont5c(); }},
   ]); };
   askChoices("なおの返信を選んで",[
-    {label:"元気そうで、安心した",fn:async()=>{ if(!alive(t))return; await himMsg("…心配かけて、ごめん"); cont5b(); }},
-    {label:"…心配したんだよ",fn:async()=>{ if(!alive(t))return; await himMsg("うん…ごめんな"); cont5b(); }},
+    {label:"元気そうで、安心した",fn:async()=>{ if(!alive(t))return; await himMsg("…心配かけて、ごめん",1100); cont5b(); }},
+    {label:"…心配したんだよ",fn:async()=>{ if(!alive(t))return; await himMsg("うん…ごめんな",1100); cont5b(); }},
   ]); }
-async function ch5end(t){ if(!alive(t))return; await himMsg("今日は、ありがとうな😎"); if(!alive(t))return; await himMsg("今日のプリン、また一緒に食べに行こな"); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04");
+async function ch5end(t){ if(!alive(t))return; await himMsg("今日は、ありがとうな😎",900); if(!alive(t))return; await himMsg("今日のプリン、また一緒に食べに行こな",1200); if(!alive(t))return; await himVoice("assets/voice-msg-daily.mp3","0:04");
   later(()=>{ if(!alive(t))return; toast("📸 <b>…シャッター音？</b>　気のせい…だよね"); },2500);
-  later(async()=>{ if(!alive(t))return; await himMsg("…なぁ、今、光らんかった？"); if(!alive(t))return; await himMsg("気のせいか"); later(()=>{ if(alive(t)) toScandal(); },2600); },4200); }
+  later(async()=>{ if(!alive(t))return; await himMsg("…なぁ、今、光らんかった？",1300); if(!alive(t))return; await himMsg("気のせいか",1500); later(()=>{ if(alive(t)) toScandal(); },3200); },4200); }
 /* ============ story start ============ */
 function scheduleFirstPush(){ if(state._pushScheduled) return; state._pushScheduled=true;
   later(()=>{ if(state.started) return;
@@ -1043,12 +1044,12 @@ floodComments(); floodMentions(); floodDms(); every(genContent,15000); every(gen
 later(()=>push("X","#000","𝕏","トレンド1位 #大翔Tinder","「アイドルがアプリはやばい」「交際はしてないらしい」賛否が真っ二つ",()=>show("x")),6000);
 later(()=>push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","フォロワーが+10,000人突破","コメントとDMリクエストが殺到している",()=>show("ig")),12000);
 later(()=>{lineSequence1()},16000);
-later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「交際の事実はございません」","芸能デスク ・ たった今",()=>openStatement()); setHeat(62); push("ニュース速報","#e60012","N","事務所コメント発表","「交際の事実はございません」——アプリ利用は確認中",()=>show("news"));},34000);
-later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿に「誰と？」の声　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},52000);
-later(()=>{addNewsRow("assets/tinder-hiroto-1.jpg","出会いはマッチングアプリか　彼のものとされる“私服プロフ写真”が拡散","週刊デジタル ・ たった今",()=>openTinderArticle()); setHeat(86); push("ニュース速報","#e60012","N","続報：出会いの経緯が判明？","「マッチングアプリで、Super Likeから」——タップで記事へ",()=>show("news"));},70000);
-later(()=>{addNewsRow("assets/glasses.jpg","お相手「最初はアイドルだと知らなかった」証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},92000);
-later(()=>{addNewsRow("assets/crown.jpg","『アプリを使う自由』か『ファンへの配慮』か　現役アイドルの私生活、議論は続く","芸能デスク ・ たった今",null); setHeat(94);},112000);
-later(()=>{addNewsRow("assets/stage.jpg","事務所『アプリの退会を確認』　今後の活動は予定どおりと発表","芸能デスク ・ たった今",null); setHeat(88);},128000);
+later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「交際の事実はございません」","芸能デスク ・ たった今",()=>openStatement()); setHeat(62); push("ニュース速報","#e60012","N","事務所コメント発表","「交際の事実はございません」——アプリ利用は確認中",()=>show("news"));},32000);
+later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿に「誰と？」の声　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},47000);
+later(()=>{addNewsRow("assets/tinder-hiroto-1.jpg","出会いはマッチングアプリか　彼のものとされる“私服プロフ写真”が拡散","週刊デジタル ・ たった今",()=>openTinderArticle()); setHeat(86); push("ニュース速報","#e60012","N","続報：出会いの経緯が判明？","「マッチングアプリで、Super Likeから」——タップで記事へ",()=>show("news"));},62000);
+later(()=>{addNewsRow("assets/glasses.jpg","お相手「最初はアイドルだと知らなかった」証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},80000);
+later(()=>{addNewsRow("assets/crown.jpg","『アプリを使う自由』か『ファンへの配慮』か　現役アイドルの私生活、議論は続く","芸能デスク ・ たった今",null); setHeat(94);},96000);
+later(()=>{addNewsRow("assets/stage.jpg","事務所『アプリの退会を確認』　今後の活動は予定どおりと発表","芸能デスク ・ たった今",null); setHeat(88);},110000);
 }
 /* ============ NEWS ============ */
 function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔にアプリ利用報道 —— 一般女性との休日写真も</h3><p>都内のカフェで一般女性と会う姿が報じられた。交際を示す写真はないものの、本人のものとされるアプリのプロフィールが拡散し、騒動が一気に広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
@@ -1141,16 +1142,16 @@ function meMsg(text){ pop();const d=document.createElement("div");d.className="m
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){
 push("LINE","#06c755","💬","ひろと","「なお」——タップでトークを開く",()=>{show("line");openChat()});
-await himMsg("なお"); await himMsg("ニュース、見た？"); await himMsg("ごめん…俺のせいで"); await himMsg("俺は平気やから"); await himMsg("なおだけが心配やねん"); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
+await himMsg("なお",700); await himMsg("ニュース、見た？",1200); await himMsg("ごめん…俺のせいで",1400); await himMsg("俺は平気やから",1000); await himMsg("なおだけが心配やねん",1500); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
 askChoices("なおの返信を選んで",[
-{label:"私も大丈夫だよ",fn:async()=>{state.choice1="strong";await himMsg("ほんま？");await himMsg("無理してへん？");await himMsg("…なお、強いな");lineSequence2();}},
-{label:"ちょっと怖い…",fn:async()=>{state.choice1="scared";await himMsg("ごめんな");await himMsg("そんな思いさせたくなかった");await himMsg("絶対、守るから");lineSequence2();}},
-{label:"声、聞きたい",fn:async()=>{state.choice1="call";await himMsg("俺も");await himMsg("今かける");later(showIncomingCall,1200);}},
+{label:"私も大丈夫だよ",fn:async()=>{state.choice1="strong";await himMsg("ほんま？",1000);await himMsg("無理してへん？",1200);await himMsg("…なお、強いな",1400);lineSequence2();}},
+{label:"ちょっと怖い…",fn:async()=>{state.choice1="scared";await himMsg("ごめんな",1100);await himMsg("そんな思いさせたくなかった",1300);await himMsg("絶対、守るから",1500);lineSequence2();}},
+{label:"声、聞きたい",fn:async()=>{state.choice1="call";await himMsg("俺も",900);await himMsg("今かける",1000);later(showIncomingCall,1200);}},
 ]);
 }
 async function lineSequence2(){ if(!state.started||state._seq2) return; state._seq2=true;
-  await himPhoto("assets/ig-meal.jpg"); await himMsg("これ、なおだけ"); await himStamp("🥺");
-await himMsg("マネージャーと今話した"); await himMsg("事務所、コメント出すって"); await himMsg("「交際の事実はない」ってやつ"); await himMsg("事実やから、そのまま出すって"); await himMsg("あの夜のことも、全部、俺の責任やから"); await himMsg("でも…ごめんな、巻き込んで"); await himVoice("assets/vm-t-bye.mp3","0:03");
+  await himPhoto("assets/ig-meal.jpg"); await himMsg("これ、なおだけ",1100); await himStamp("🥺");
+await himMsg("マネージャーと今話した",1200); await himMsg("事務所、コメント出すって",1000); await himMsg("「交際の事実はない」ってやつ",1400); await himMsg("事実やから、そのまま出すって",1100); await himMsg("あの夜のことも、全部、俺の責任やから",1600); await himMsg("でも…ごめんな、巻き込んで",1500); await himVoice("assets/vm-t-bye.mp3","0:03");
 askChoices("これから、どうする？",[
 {label:"事実を、そのまま言おう",fn:()=>ending("open")},
 {label:"今は、静かに待とう",fn:()=>ending("wait")},
@@ -9260,5 +9261,6 @@ setInterval(upd,900); upd();
 <!-- ===== Tinder ver v226: lightweight pass 3 (after the v225 IG pass) - assets only, no code behaviour changed. Same keep-smaller + PSNR >= 43dB rule as v224: insta-post.jpg (185,114 -> 177,152, PSNR 54.8), nao-tinder-3.jpg (151,264 -> 146,076, PSNR 74.4), nao-tinder-4.jpg (154,592 -> 149,022, PSNR 74.2), stage.jpg and stage-may.jpg (195,496 -> 188,141 each, PSNR 67.8; both kept, same bytes, different album dates per v220). Assets total 24,571,533 -> 24,538,103 bytes (-33,430, -0.14%). Deliberately NOT done: nao-hl-03.jpg's q82 candidate saved 2.8% but at PSNR 33.1dB (visible-loss risk, same rejection as v224); nao-tinder-1.jpg and selfie.jpg saved ~0% at q80; the other >=150KB JPGs grew at q82/q80. Videos and audio untouched. Filenames and references unchanged. Playwright-verified: all 5 replaced images serve 200 and decode, IG grids intact, 0 page errors. ===== -->
 <!-- ===== Tinder ver v227: Instagram precision pass 7 - his two static feed posts (insta-post / ig-food) still used Twitter's 🔁 in the IG action row, unlike her post and every dynamic his-post (mk template) which use the ✈️ plane. The v222 share handler only fires on ✈, so tapping 🔁 was a dead tap as well as the wrong app's metaphor; the "50" share count on the first post also has no real-IG counterpart (IG shows no share count). Fix replaces both 🔁 spans with ✈️ in place, so the existing v222 share sheet (copy link / cancel, backdrop closes) now opens from both posts. No story text, choices, voices, gates, counts or save format changed. Playwright-verified below. ===== -->
 <!-- ===== Tinder ver v228: density pass, theme 1 (1/4) - chapter 3 'line-drawing' pacing. Ch3 was the thinnest-polished chapter: one opening toast and nearly every message on the default 400ms beat, where ch2 stages four toasts 2.2s apart and varies its delays. Fix is staging only: two more inner-note scene toasts join the opening (1400/3700/6000, the ch2 cadence), the first message waits 1500ms so the scene lands, and the hesitation beats get real pauses - the hard topic at 1700, 'if we keep meeting, I really will...' at 1500, the retracted line at 1300, the work line at 1100, the drawn line itself at 1400, the hand toast retimed to 1500; answer branches breathe too (800-1500) and the POV/interlude transition waits 2600 instead of 2200. No story text, choices, branches, gauges, voices or save format changed; the vt-line2 subtitle still matches its file. Playwright-verified: parse 60/60 blocks OK, version label v228, ch3 driven in-page - all three opening toasts in order, climax lines in order through the 0:08 voice bubble, 0 page errors. ===== -->
+<!-- ===== Tinder ver v229: density pass, theme 1 completed in ONE pass per nao's 2026-11-06 instruction (the split-run v228 covered ch3; the previous auto-run's uncommitted ch4 draft was reviewed, kept as-is, and is shipped here). (a) Ch4 'ambiguous distance': an opening inner-note toast joins at 1300ms, every himMsg beat is re-timed 700-1400 (the app question lands at 1300, '...ore mo' at 1400, the night lines and the fade branches breathe 900-1700), the story-update toast retimed 3500->4200 and the Maron/umbrella memory toast 5200->8000 so neither lands on top of a message, the morning-after lines and the move-to-ch5 transition (2000->2400) slowed. (b) Ch5 'a little distance': one opening inner-note toast (the two-week silence, 1300ms), the reunion lines, the 'that night' confession run ('no regrets' at 1600) and the walk-home lines all re-timed 900-1600, the IG-post toast 4000->6000 and the night-walk photo 5000->9000 so they arrive between beats instead of on them, ch5end's shutter dread stretched (his two lines at 1300/1500, the toScandal hand-off 2600->3200). (c) Scandal arc: lineSequence1's panic run and both answer branches re-timed 700-1500 (was flat 400ms), lineSequence2's statement run re-timed 1000-1600 (the 'that night was all my responsibility' line at 1600), and the startScandal news cascade compressed 34/52/70/92/112/128s -> 32/47/62/80/96/110s so the long tail no longer drags between beats. No story text (one scene-setting inner-note toast per chapter opening aside, same form as v228's ch3 toasts), no choices, branches, gauges, voice lines or save format changed. ===== -->
 </body>
 </html>
