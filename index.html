@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v265</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v266</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11313,6 +11313,62 @@ function swap(){
 swap(); setTimeout(swap,800); setTimeout(swap,2000);
 var vt=document.querySelector("#v-tiktok");
 if(vt && window.MutationObserver){ var n=0; new MutationObserver(function(){ if(++n<40) swap(); }).observe(vt,{childList:true,subtree:true,attributes:true,attributeFilter:["src"]}); }
+})();
+</script>
+<style id="v266-css">
+/* v266: the dock leaves the scroll flow for good - fixed to the frame's bottom edge,
+   above the home bar; only the content above it scrolls. Top padding is locked so the
+   date/weather strip can never slide under the status bar again. */
+#phone #v-home .dock{position:absolute;left:14px;right:14px;bottom:16px;margin:0;z-index:60}
+#phone #v-home .home-inner{padding-top:64px!important;padding-bottom:20px}
+#phone #v-home>.home-inner{height:calc(100% - 94px)}
+</style>
+<script>
+(function(){
+if(window.__v266) return; window.__v266=true;
+var home=document.querySelector("#v-home");
+var dock=home? home.querySelector(".dock"): null;
+if(home && dock && dock.parentNode!==home) home.appendChild(dock);
+/* the v260 fit steps may no longer squash the top padding or re-anchor the dock */
+var phone=document.querySelector("#phone");
+if(phone && window.MutationObserver){ new MutationObserver(function(){
+  if(phone.dataset.hpad) delete phone.dataset.hpad;
+  if(phone.dataset.dockabs) delete phone.dataset.dockabs;
+ }).observe(phone,{attributes:true,attributeFilter:["data-hpad","data-dockabs"]}); }
+/* --- music dock button: make sure the playlist panel always opens --- */
+if(dock){ var musBtn=[].slice.call(dock.querySelectorAll(".appicon")).filter(function(b){ return !b.hasAttribute("data-open") && !b.querySelector(".ic-safari"); })[0];
+ if(musBtn) musBtn.addEventListener("click",function(e){ e.stopPropagation(); var p=document.querySelector("#mus-panel"); if(p) p.classList.add("on"); },true); }
+/* --- Safari mini browser (restored from the original design) --- */
+var btn=document.querySelector(".ic-safari")? document.querySelector(".ic-safari").closest("button"): null;
+if(home && btn && !document.querySelector("#safari-app")){
+ var app=document.createElement("div"); app.id="safari-app";
+ app.style.cssText="position:absolute;inset:0;z-index:75;background:#fff;display:none;flex-direction:column;color:#111";
+ app.innerHTML='<div style="padding:54px 14px 8px;border-bottom:1px solid #eee"><div style="display:flex;gap:8px;align-items:center"><span style="font-size:17px">🧭</span><input id="sf-q" placeholder="検索またはWebサイト名を入力" style="flex:1;background:#f1f1f4;border:none;border-radius:999px;padding:9px 14px;font-size:13.5px;outline:none;min-width:0"><button id="sf-x" style="border:none;background:none;font-size:18px;cursor:pointer">✕</button></div></div>'
+  +'<div id="sf-body" style="flex:1;overflow-y:auto;padding:13px 16px"></div>';
+ home.appendChild(app);
+ var body=app.querySelector("#sf-body");
+ var HOME_HTML='<div style="font-weight:800;font-size:14.5px;margin-bottom:8px">よく見るサイト</div>'
+  +[["📸","彼のInstagram","hisig"],["♪","彼のTikTok","tiktok"],["🗞","ニュース","news"],["💬","LINE","line"]].map(function(s){return '<div class="sf-short" data-go="'+s[2]+'" style="display:flex;gap:11px;align-items:center;padding:10px 2px;border-bottom:1px solid #f4f4f6;cursor:pointer"><span style="font-size:19px">'+s[0]+'</span><span style="font-size:14px">'+s[1]+'</span><span style="margin-left:auto;color:#bbb">›</span></div>'}).join("")
+  +'<div style="font-weight:800;font-size:14.5px;margin:16px 0 6px">検索履歴</div>'
+  +["井汲大翔","井汲大翔 TikTok","cafe murmur 大阪","井汲大翔 身長","井汲大翔 彼女"].map(function(h){return '<div class="sf-hist" style="padding:8px 2px;border-bottom:1px solid #f4f4f6;font-size:13.5px;cursor:pointer">🕐 '+h+'</div>'}).join("")
+  +'<div style="font-size:11.5px;color:#aaa;margin-top:12px">※ 履歴は最近「井汲大翔」が増殖中…</div>';
+ var esc=function(s){return s.replace(/</g,"&lt;")};
+ var results=function(q){ body.innerHTML='<div style="font-size:12.5px;color:#888;margin-bottom:9px">「'+esc(q)+'」の検索結果 約 128,000 件</div>'
+   +[[q+" - Wikipedia","ja.wikipedia.org","井汲大翔（いくみ ひろと）は、日本の歌手、ダンサー。…"],
+     ["【速報】"+q+"まとめ - 芸能ニュース","news.example.jp","関係者の話では…本人コメントが待たれる。"],
+     [q+" | X の話題","x.com","最新のポストが次々と流れている。"]]
+   .map(function(r,i){return '<div class="sf-res" data-i="'+i+'" style="padding:11px 2px;border-bottom:1px solid #f4f4f6;cursor:pointer"><div style="color:#1a0dab;font-size:15px">'+esc(r[0])+'</div><div style="color:#006621;font-size:11.5px">'+r[1]+'</div><div style="font-size:12.5px;color:#545454;line-height:1.55;margin-top:2px">'+r[2]+'</div></div>'}).join("")
+   +'<button id="sf-back" style="margin-top:14px;background:#f2f2f7;border:none;border-radius:999px;padding:9px 16px;cursor:pointer;font-family:inherit">← 戻る</button>';
+   body.querySelector("#sf-back").addEventListener("click",home2);
+   body.querySelectorAll(".sf-res").forEach(function(r){ r.addEventListener("click",function(){ if(typeof toast==="function") toast("このページはゲーム内ブラウザでは開けません"); }); }); };
+ var home2=function(){ body.innerHTML=HOME_HTML;
+   body.querySelectorAll(".sf-short").forEach(function(s){ s.addEventListener("click",function(){ app.style.display="none"; show(s.dataset.go); }); });
+   body.querySelectorAll(".sf-hist").forEach(function(h){ h.addEventListener("click",function(){ results(h.textContent.replace("🕐 ","")); }); }); };
+ btn.addEventListener("click",function(e){ e.stopPropagation(); e.stopImmediatePropagation(); e.preventDefault();
+   app.style.display="flex"; home2(); },true);
+ app.querySelector("#sf-x").addEventListener("click",function(){ app.style.display="none"; });
+ app.querySelector("#sf-q").addEventListener("keydown",function(e){ if(e.key==="Enter"){ var q=e.target.value.trim(); if(q) results(q); } });
+}
 })();
 </script>
 </body>
