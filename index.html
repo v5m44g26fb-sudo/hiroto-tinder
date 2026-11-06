@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v231</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v232</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9431,6 +9431,37 @@ setInterval(upd,900); upd();
   var bell=head.querySelector("#ig-bell-btn");
   if(bell){ bell.style.marginLeft="0"; head.insertBefore(b,bell); } else head.appendChild(b);
  });
+})();
+</script>
+<script>
+/* ===== Tinder ver v232: two fixes from nao's 2026-11-06 report. (1) His LINE existed before the exchange: the talk-list row was static HTML and his entry also sat in the LINE friend-tab panel, so both were visible and tappable from the start. Now, until state._tinderDone (set by finishTinder at the exchange), his row carries a gated class that no inline style can override, his friend-panel entry is stripped with the friend count corrected, and a capture-phase click guard refuses to open his talk. After the exchange everything returns by itself. (2) His talk kept a pinned static date chip (9/27) as the first child of the chat, so it stacked against the real separator chips the chapters add and never went away. The real flow never adds a 9/27 chip to his talk (the first LINE day is the 10/1 interlude chip), so any such chip is removed on sight, which also cleans saves restored from older versions. No story text, choices, voices or save format changed. ===== */
+(function(){
+ if(window.__v232) return; window.__v232=true;
+ var css=document.createElement("style"); css.textContent="#talk-hiroto.gated{display:none!important}";
+ document.head.appendChild(css);
+ var row=document.querySelector("#talk-hiroto");
+ var gated=function(){ try{ return !(typeof state!=="undefined" && state._tinderDone); }catch(e){ return true; } };
+ function apply(){
+  if(row) row.classList.toggle("gated", gated());
+  var chat=document.querySelector("#chat");
+  if(chat) chat.querySelectorAll(".daychip").forEach(function(c){ if(c.textContent.trim()==="9月27日（土）") c.remove(); });
+ }
+ apply();
+ var panel=document.querySelector("#line-tab-panel");
+ if(panel && window.MutationObserver){ new MutationObserver(function(){
+   if(!gated()) return;
+   var removed=false;
+   panel.querySelectorAll('[data-row="#talk-hiroto"]').forEach(function(r){ r.remove(); removed=true; });
+   if(removed){ var n=panel.querySelectorAll("[data-row]").length;
+    panel.querySelectorAll("div").forEach(function(d){ if(d.children.length===0){ var m=d.textContent.trim().match(/^友だち (\d+)$/); if(m && +m[1]!==n) d.textContent="友だち "+n; } }); }
+ }).observe(panel,{childList:true,subtree:true}); }
+ document.addEventListener("click",function(e){
+  if(!gated()) return;
+  var t=e.target;
+  if(t && t.closest && t.closest("#talk-hiroto")){ e.stopImmediatePropagation(); e.preventDefault();
+   toast("🔒 <b>まだLINEを交換していない</b><br>Tinderで交換したら、ここに表示される"); }
+ },true);
+ setInterval(apply,800);
 })();
 </script>
 </body>
