@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v243</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v244</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9879,6 +9879,42 @@ setInterval(upd,900); upd();
   const badge=bell.querySelector(".badge");
   bell.innerHTML='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18.1 15.6c-.7-.9-1.1-1.7-1.1-3.6a5 5 0 1 0-10 0c0 1.9-.4 2.7-1.1 3.6-.25.32.02.8.46.8h11.3c.44 0 .71-.48.45-.8Z"/><path d="M10.2 19.2a2 2 0 0 0 3.6 0"/></svg>';
   if(badge) bell.appendChild(badge); }
+})();
+</script>
+<script>
+/* ===== Tinder ver v244: urgent visual fix (nao's screenshot, 2026-11-06) - the merged IG's header buttons were still big colour emoji. In both accounts' headers the search (v231), bell and DM plane (v258) buttons now wear the real app's monochrome stroke SVGs (magnifier / bell / paper plane), and her profile tabs trade the block glyph and bookmark emoji for grid and bookmark SVGs. Every handler is untouched: search still opens the v231 panel, the bell still opens her activity, the plane still opens DM. A slow re-sweep keeps the glyphs on any button a later pass re-creates. ===== */
+(function(){
+ if(window.__v244) return; window.__v244=true;
+ const css=document.createElement("style");
+ css.textContent=".ig-head button svg{display:block}"
+ +".ig-tabs button svg{display:inline-block;vertical-align:-2.5px;margin-right:5px}";
+ document.head.appendChild(css);
+ const S=(inner,s)=>'<svg width="'+(s||21)+'" height="'+(s||21)+'" viewBox="0 0 24 24" fill="none" stroke="#262626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+inner+'</svg>';
+ const MAG=S('<circle cx="11" cy="11" r="6.6"/><path d="M15.8 15.8 20.6 20.6"/>');
+ const BELL=S('<path d="M18.1 15.6c-.7-.9-1.1-1.7-1.1-3.6a5 5 0 1 0-10 0c0 1.9-.4 2.7-1.1 3.6-.25.32.02.8.46.8h11.3c.44 0 .71-.48.45-.8Z"/><path d="M10.2 19.2a2 2 0 0 0 3.6 0"/>');
+ const PLANE=S('<path d="M21 3.5 10.2 14.3"/><path d="M21 3.5 14.5 21l-4.3-6.7L3.5 10Z"/>');
+ const GRID=S('<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',15);
+ const BM=S('<path d="M6.5 4h11v16L12 16.2 6.5 20Z"/>',15);
+ const set=(btn,svg)=>{ if(!btn||btn.dataset.v244) return; btn.dataset.v244="1";
+  const keep=[...btn.querySelectorAll("span[id]")];
+  btn.innerHTML=svg; keep.forEach(k=>btn.appendChild(k)); };
+ const sweep=()=>{
+  ["#v-ig","#v-hisig"].forEach(sel=>{ const v=document.querySelector(sel); if(!v) return;
+   const head=v.querySelector(".ig-head");
+   if(head){ head.querySelectorAll("button").forEach(b=>{
+     const t=(b.textContent||"").trim();
+     if(b.classList.contains("ig-search-btn")||t==="🔍") set(b,MAG);
+     else if(b.id==="ig-bell-btn"||t.startsWith("🔔")) set(b,BELL);
+     else if(b.id==="v258-plane"||t.includes("✈")) set(b,PLANE);
+   }); }
+   v.querySelectorAll(".ig-tabs button").forEach(b=>{
+     if(b.dataset.v244) return;
+     if(b.dataset.t==="posts"){ b.dataset.v244="1"; b.innerHTML=GRID+"投稿"; }
+     if(b.dataset.t==="saved"){ b.dataset.v244="1"; b.innerHTML=BM+"保存済み"; }
+   });
+  });
+ };
+ sweep(); setInterval(sweep,1500);
 })();
 </script>
 </body>
