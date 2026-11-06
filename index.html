@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v267</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v268</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11397,6 +11397,117 @@ if(!view.querySelector(".tk-frhead")){
  view.appendChild(h);
  h.querySelector(".tk-frs").addEventListener("click",function(){ if(window.__ttxSetTab) window.__ttxSetTab("disc"); });
 }
+})();
+</script>
+<style id="v268-css">
+#v-tinder .tinder-head #tdisc-open,#v-tinder .tinder-head #tbell{background:none!important;font-size:19px}
+#v-tinder .tinder-head #tgold-open{height:30px;padding:0 10px;font-size:11.5px}
+#v-tinder .super-banner{margin:8px 12px 0;padding:9px 13px;border-radius:14px;font-size:13.5px;line-height:1.45}
+#v-tinder .super-banner span{font-size:11px}
+#v-tinder .swipe-card{border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+#v-tinder .swipe-card .grad{background:linear-gradient(180deg,rgba(0,0,0,.14) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 46%,rgba(0,0,0,.52) 72%,rgba(0,0,0,.85) 100%)}
+#v-tinder .swipe-card .info{padding:12px 14px 13px}
+#v-tinder .swipe-card .nm{font-size:30px;font-weight:800;letter-spacing:.01em}
+#v-tinder .swipe-card .meta{font-size:13px;margin-top:1px}
+#v-tinder .swipe-card .bio{font-size:13.5px;line-height:1.5;margin-top:5px}
+#v-tinder .swipe-card .tags{margin-top:8px;gap:6px}
+#v-tinder .swipe-card .tags span{font-size:11.5px;padding:4px 9px}
+#v-tinder .swipe-card .prompt{background:rgba(20,20,28,.42);border-radius:12px;padding:8px 11px;font-size:12.5px;line-height:1.5;margin-top:8px}
+#v-tinder .swipe-card .prompt b{font-size:11px;opacity:.82}
+#v-tinder .super-badge{font-size:12px;padding:6px 11px;border-radius:999px;box-shadow:0 4px 14px rgba(31,155,236,.45)}
+#v-tinder .stamp{font-size:30px;top:24px;border-width:4px}
+#v-tinder .stamp.like{transform:rotate(-18deg)}
+#v-tinder .stamp.nope{transform:rotate(18deg)}
+#v-tinder .swipe-actions{align-items:center;gap:16px;padding:10px 0 12px}
+#v-tinder .swipe-actions button{width:56px;height:56px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 16px rgba(0,0,0,.18)}
+#v-tinder .swipe-actions button svg{display:block}
+#v-tinder #btn-rewind,#v-tinder #btn-super,#v-tinder #btn-boost{width:44px;height:44px;margin-top:0}
+#v-tinder #match-overlay h2{font-size:36px;font-weight:900;font-style:italic;letter-spacing:.01em;text-shadow:0 3px 14px rgba(0,0,0,.25)}
+#v-tinder #match-overlay .avatars{gap:0;margin:20px 0 6px}
+#v-tinder #match-overlay .avatars img{width:112px;height:112px;border-radius:50%;border:4px solid #fff;box-shadow:0 8px 22px rgba(0,0,0,.3);object-fit:cover}
+#v-tinder #match-overlay .avatars img:first-child{transform:rotate(-6deg);margin-right:-16px}
+#v-tinder #match-overlay .avatars img:last-child{transform:rotate(6deg)}
+</style>
+<script>
+(function(){
+ if(window.__v268) return; window.__v268=true;
+ var view=document.querySelector("#v-tinder"); if(!view) return;
+ var G={
+  rewind:'<svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5V1.8L6.6 5 12 8.2V5.4c3.3 0 6 2.7 6 6 0 .5-.07 1-.2 1.5l1.9.6c.2-.7.3-1.4.3-2.1 0-4.4-3.6-8-8-8zm-6.2 4.6C5.6 10.3 5.5 11 5.5 11.7c0 4.4 3.6 8 8 8 .9 0 1.8-.15 2.6-.4l-.7-1.9c-.6.2-1.2.3-1.9.3-3.3 0-6-2.7-6-6 0-.5.07-1 .2-1.5l-1.9-.6z" transform="scale(-1,1) translate(-24,0)"/></svg>',
+  nope:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+  super:'<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.3l-6 3.3 1.3-6.7-5-4.7 6.8-.8z"/></svg>',
+  like:'<svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.7C6.4 17 3.4 13.6 3.4 9.9 3.4 7.2 5.4 5.2 7.9 5.2c1.7 0 3.2.9 4.1 2.3.9-1.4 2.4-2.3 4.1-2.3 2.5 0 4.5 2 4.5 4.7 0 3.7-3 7.1-8.6 10.8z"/></svg>',
+  boost:'<svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9.8 22 19 10h-6.5z"/></svg>',
+  flame:'<svg width="25" height="25" viewBox="0 0 24 24"><defs><linearGradient id="tgfl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd267d"/><stop offset="1" stop-color="#ff7854"/></linearGradient></defs><path fill="url(#tgfl)" d="M13.7 1.6s.6 2.6-.9 5.1c-.9 1.5-2.3 2.6-3.4 4C8.2 12.2 7.5 13.6 7.5 15.2c0 2.6 2 4.7 4.5 4.7s4.5-2.1 4.5-4.7c0-1-.3-1.9-.8-2.7-.4.5-.9.9-1.5 1.1.3-1.7-.3-3.7-1.4-5.2.9.3 2.9-1.4 3.4-3.5.2-1 .1-2.2-.2-3.3 1.9 1.3 4.5 4.3 4.5 8 0 4.5-3.8 8.4-8.5 8.4S3.5 17.1 3.5 12.6c0-2.5 1.2-4.4 2.6-6.2C7.7 4.4 9.6 2.8 10.4.9c1.2 1 2.7 2.2 3.3.7z" transform="scale(.92) translate(1,1)"/></svg>'};
+ var set=function(id,svg,color){ var b=document.getElementById(id); if(!b) return; b.innerHTML=svg; if(color) b.style.color=color; };
+ set("btn-rewind",G.rewind,"#ffb302");
+ set("btn-nope",G.nope,"#fd267d");
+ set("btn-super",G.super,"#2fb9ec");
+ set("btn-like",G.like,"#2ee59d");
+ set("btn-boost",G.boost,"#7b2ff7");
+ var logo=view.querySelector(".tinder-logo");
+ if(logo){ logo.innerHTML=G.flame+'<span style="font-weight:800;font-size:23px;color:#fd267d;letter-spacing:-.02em;margin-left:1px">tinder</span>'; logo.style.display="flex"; logo.style.alignItems="center"; }
+})();
+</script>
+<style id="v268b-css">
+/* v268 detail/chat/messages: Atlas-shaped detail furniture and a real input bar */
+#tdetail-sheet .box{border-radius:22px 22px 0 0;position:relative}
+#tdetail-box h3{font-size:23px;padding-right:52px}
+#tdetail-box #td-close{position:absolute;top:12px;right:12px;width:37px;height:37px;border-radius:50%;background:#161823;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;padding:0}
+#tdetail-box .td-dots{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;background:rgba(22,24,35,.55);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;padding:0}
+#td-actions{position:absolute;inset:0;z-index:420;background:rgba(10,10,16,.5);display:none;flex-direction:column;justify-content:flex-end;padding:0 10px 12px;box-sizing:border-box}
+#td-actions.on{display:flex}
+#td-actions .td-card{background:#fff;border-radius:14px;overflow:hidden}
+#td-actions .td-card button{display:block;width:100%;background:#fff;border:none;border-bottom:1px solid #eee;padding:15px;font-size:16.5px;font-weight:700;cursor:pointer;font-family:inherit;color:#161823}
+#td-actions .td-card button:last-child{border-bottom:none}
+#td-actions .td-card button.rep{color:#fe2c55}
+#td-actions .td-cancel{margin-top:9px;background:#fff;border:none;border-radius:14px;padding:15px;font-size:16.5px;font-weight:700;cursor:pointer;font-family:inherit;color:#161823;width:100%}
+#tm-search{background:#f2f2f7!important;border:none!important}
+#tinder-chat-wrap .t-inputbar{display:flex;align-items:center;gap:8px;padding:9px 12px 20px;border-top:1px solid #eee;background:#fff}
+#tinder-chat-wrap .t-inputbar .tib{width:37px;height:37px;border-radius:50%;background:#f2f2f7;border:none;font-size:12px;font-weight:900;color:#161823;cursor:pointer;flex:none;display:flex;align-items:center;justify-content:center;font-family:inherit}
+#tinder-chat-wrap .t-inputbar .tib-field{flex:1;background:#f2f2f7;border-radius:999px;padding:10px 15px;color:#8e8e93;font-size:13.5px}
+</style>
+<script>
+(function(){
+ if(window.__v268b) return; window.__v268b=true;
+ var view=document.querySelector("#v-tinder"); if(!view) return;
+ /* --- chat input bar: real shape, same choice-driven replies underneath --- */
+ var cw=view.querySelector("#tinder-chat-wrap");
+ if(cw){ var fake=[].slice.call(cw.querySelectorAll("div")).filter(function(d){ return d.textContent.indexOf("メッセージを入力")===0 && !d.className; })[0];
+  if(fake){ fake.className="t-inputbar";
+   fake.innerHTML='<button class="tib" type="button">GIF</button><span class="tib-field">メッセージを入力…</span><button class="tib" type="button" style="font-size:16px">☺</button><button class="tib" type="button" style="font-size:17px">＋</button>';
+   fake.querySelectorAll(".tib").forEach(function(b){ b.addEventListener("click",function(){ if(typeof toast==="function") toast("返信は下の選択肢から選んでね"); }); });
+  } }
+ /* --- detail sheet: black down-arrow close + overflow action sheet (Atlas) --- */
+ var sheet=view.querySelector("#tdetail-sheet"), box=view.querySelector("#tdetail-box");
+ var act=document.createElement("div"); act.id="td-actions";
+ act.innerHTML='<div class="td-card"><button type="button" data-a="share">共有する</button><button type="button" data-a="block">ブロックする</button><button type="button" class="rep" data-a="report">報告する</button></div><button type="button" class="td-cancel">キャンセル</button>';
+ view.appendChild(act);
+ var closeAct=function(){ act.classList.remove("on"); };
+ act.addEventListener("click",function(e){ if(e.target===act) closeAct(); });
+ act.querySelector(".td-cancel").addEventListener("click",closeAct);
+ act.querySelectorAll("[data-a]").forEach(function(b){ b.addEventListener("click",function(){
+   closeAct(); if(typeof toast!=="function") return;
+   var a=b.dataset.a;
+   toast(a==="share" ? "共有リンクをコピーしました" : a==="block" ? "今はブロックできない（物語の都合）" : "報告フォームはこの世界にはありません");
+ }); });
+ var CHEV='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l8 8 8-8"/></svg>';
+ var DOTS='<svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><circle cx="5" cy="12" r="2.1"/><circle cx="12" cy="12" r="2.1"/><circle cx="19" cy="12" r="2.1"/></svg>';
+ var dress=function(){
+   if(!box) return;
+   var cl=box.querySelector("#td-close");
+   if(cl && !cl.dataset.v268){ cl.dataset.v268="1"; cl.innerHTML=CHEV; cl.setAttribute("aria-label","閉じる"); }
+   var imgs=box.querySelectorAll("img");
+   if(imgs.length && !box.querySelector(".td-dots")){
+     var strip=imgs[0].closest("div");
+     if(strip){ strip.style.position="relative";
+       var d=document.createElement("button"); d.type="button"; d.className="td-dots"; d.innerHTML=DOTS; d.setAttribute("aria-label","その他");
+       d.addEventListener("click",function(e){ e.stopPropagation(); act.classList.add("on"); });
+       strip.appendChild(d); }
+   }
+ };
+ if(box && window.MutationObserver) new MutationObserver(dress).observe(box,{childList:true});
+ dress();
 })();
 </script>
 </body>
