@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v279</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v280</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11631,7 +11631,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v279"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v280"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12035,5 +12035,29 @@ dock.addEventListener("click",function(e){
 })();
 </script>
 <!-- ===== Tinder ver v279 (nao's report, 2026-11-07): on the profile tab, his entire card (photo, 9月27日にマッチ / マッチ中 chips, Super Like reason, unmatch row) now stays hidden until the match is real, with the "まだマッチしていません" note standing at wrap level where the card will appear - the v254 gate had only caught the button row. And a 118px spacer under her card lets the profile editor scroll fully clear of the floating pill nav (flex scrollers drop their bottom padding on iOS). ===== -->
+
+<script>
+/* v280: search fields no longer summon the real keyboard */
+(function(){
+  if(window.__v280) return; window.__v280=true;
+  var PLAN=[
+    {sel:"#x-q", act:function(el){ /* the bar lives in the search pane; its chips are already below it */ }},
+    {sel:"#ig-search-input", act:function(){ toast("おすすめから選んでね"); }},
+    {sel:"#ttx-q", act:function(){ toast("動画はタップで開けるよ"); }},
+    {sel:"#sf-q", act:function(){ toast("よく見るサイトや履歴から選んでね"); }}
+  ];
+  function stamp(){
+    PLAN.forEach(function(p){
+      document.querySelectorAll(p.sel).forEach(function(el){
+        if(el.dataset.v280) return; el.dataset.v280="1";
+        el.readOnly=true; el.setAttribute("inputmode","none");
+        el.addEventListener("click",function(){ try{ p.act(el); }catch(e){} });
+      });
+    });
+  }
+  stamp(); setInterval(stamp,1200);
+})();
+</script>
+<!-- ===== Tinder ver v280 (nao's screenshot, 2026-11-07): tapping a search field no longer bursts in with the real iOS keyboard and Safari's form bar. The X keyword bar, IG search, TikTok discover search and the in-game Safari bar are read-only pickers now - every one of them already had a complete tap path (X suggestion chips and trend rows set the query and run doSearch; IG suggestions open accounts; TikTok cells open on tap; Safari history rows run the search). The X bar additionally flips to the search tab so its chips are on screen. Message inputs and the profile editor still take real typing. ===== -->
 </body>
 </html>
