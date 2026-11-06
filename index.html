@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v244</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v245</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9915,6 +9915,87 @@ setInterval(upd,900); upd();
   });
  };
  sweep(); setInterval(sweep,1500);
+})();
+</script>
+<script>
+/* ===== Tinder ver v245: the dating route, part 1 - design (ROUTE.md in the repo) + groundwork + branch + confession + dating chapter 4. The branch intercepts the first chapter(4) call and plays the night of the drawn line (10/12, late): his resolve wavers, and if her accumulated closeness is real (took his call in ch1, or free-talked twice, or he remembers two topics) and she accepts his confession, state._route becomes "dating" and the story skips the interlude and the original ch4 for a dating-only chapter 4 (10/18, a careful date and the first jealousy). Any other outcome calls the original chapter(4) untouched, so the no-dating route and all four endings keep their exact reachability. The confession reuses the original's vm-confess voice with its exact original lines in the exact original position; everything else is text. New save fields only: _route, _routeQ. ===== */
+(function(){
+ if(window.__v245) return; window.__v245=true;
+ if(typeof chapter!=="function") return;
+ const _ch=chapter;
+ const canDate=()=>{ try{ return state._tinderCall===true || (state._ftN||0)>=2 || ((state._mem||[]).length>=2); }catch(e){ return false; } };
+ const friendsGo=()=>{ setTimeout(()=>{ try{ _ch(4); }catch(e){} },1300); };
+ async function branchScene(){
+  const t=state._token;
+  show("line"); openChat();
+  addDayChip("10月12日（日）深夜");
+  await himMsg("…まだ起きてる？",1000); if(!alive(t))return;
+  await himMsg("さっきの話、帰ってからもずっと考えててん",1400); if(!alive(t))return;
+  await himMsg("線、引いたの俺やのに",1100); if(!alive(t))return;
+  await himMsg("引いたそばから、自分で消したくなってる",1500); if(!alive(t))return;
+  const confess=async()=>{ if(!alive(t))return;
+   if(!canDate()){ await himMsg("…ごめん",1200); if(!alive(t))return;
+    await himMsg("今のは、忘れて",1000); if(!alive(t))return;
+    await himMsg("疲れてるだけや、俺",1100); friendsGo(); return; }
+   await himMsg("俺、なおのことが好きやねん",1500); if(!alive(t))return;
+   await himMsg("俺と、付き合ってくれへん？",1600); if(!alive(t))return;
+   await himVoice("assets/vm-confess.mp3","0:03"); if(!alive(t))return;
+   askChoices("なおの答えは——",[
+    {label:"うん、付き合おう",fn:async()=>{ if(!alive(t))return;
+      state._route="dating";
+      await himMsg("…ほんまに？",900); if(!alive(t))return;
+      await himMsg("ありがとう、なお",1100); if(!alive(t))return;
+      await himMsg("内緒やで。…俺と、なおだけの",1300);
+      toast("💑 <b>付き合うことになった</b>（二人だけの秘密）");
+      setTimeout(()=>{ try{ chapter(4); }catch(e){} },1700); }},
+    {label:"ごめん、今は無理",fn:async()=>{ if(!alive(t))return;
+      await himMsg("うん、そうやな",1000); if(!alive(t))return;
+      await himMsg("…今のは、忘れてな",1100); friendsGo(); }}
+   ]); };
+  const refuse=async()=>{ if(!alive(t))return;
+   await himMsg("うん、そうやな",1000); if(!alive(t))return;
+   await himMsg("…今のは、忘れてな",1100); friendsGo(); };
+  askChoices("なおの返信を選んで",[
+   {label:"…消して、いいの？",fn:confess},
+   {label:"私も、同じ気持ちだよ",fn:confess},
+   {label:"やっぱり、無理だよ",fn:refuse}
+  ]);
+ }
+ async function datingCh4(){
+  const t=state._token;
+  state.chapter=4;
+  const ld=document.querySelector("#lock-date"); if(ld) ld.textContent="10月18日 土曜日";
+  const nd=document.querySelector("#news-note"); if(nd) nd.textContent="10月18日（土）夜";
+  setChapterWidget("第4話『ふたりの内緒』","付き合って、初めての休日。");
+  chapterCard("第4話","ふたりの内緒","内緒の関係は、思ったよりずっと近くて、ずっと危うい。<br><span class=\"cc-when\">10月18日（土） ・ 人目を避けたデート —— LINEを開いてね</span>");
+  addDayChip("10月18日（土）");
+  show("line"); openChat();
+  await himMsg("今日、空いてる？",900); if(!alive(t))return;
+  await himMsg("個室のカフェ、取れたねん",1100); if(!alive(t))return;
+  await himMsg("人目、気にせんでええとこ",1000); if(!alive(t))return;
+  later(()=>toast("☕ <b>（個室のカフェ。向かいに座る距離が、もう『友達』の距離じゃなかった）</b>"),2600);
+  later(()=>toast("💭 <b>（マロンの写真を見せたら、嬉しそうに笑った。…この顔、独り占めしたい）</b>"),5200);
+  await himMsg("…なあ、なお",2600); if(!alive(t))return;
+  await himMsg("今度の飲み会、男も来るん？",1200); if(!alive(t))return;
+  await himMsg("あ、…ごめん",800); if(!alive(t))return;
+  await himMsg("彼氏面、してしもた",1000); if(!alive(t))return;
+  askChoices("なおの返信を選んで",[
+   {label:"彼氏だもん、いいよ",fn:async()=>{ if(!alive(t))return; await himMsg("…ずるいわ、その言い方",1100); if(!alive(t))return; await himMsg("心配、させんでな",1000); fin4(); }},
+   {label:"心配しすぎだって笑",fn:async()=>{ if(!alive(t))return; await himMsg("笑うなって",900); if(!alive(t))return; await himMsg("…心配なんは、ほんまやねん",1100); fin4(); }}
+  ]);
+  async function fin4(){ if(!alive(t))return;
+   later(()=>toast("🌆 <b>（夕方。駅までの道、少しだけ手を繋いだ。人の目が気になって、すぐ離した）</b>"),600);
+   await himMsg("今日は、ここまで",1500); if(!alive(t))return;
+   await himMsg("名残惜しいけど、な",1100); if(!alive(t))return;
+   await himMsg("帰ったら、連絡して",1000);
+   later(()=>chapter(5),2600); }
+ }
+ chapter=function(n){
+  if(n===4 && typeof state!=="undefined" && state.phase==="prologue" && !state._routeQ){
+   state._routeQ=true; branchScene(); return; }
+  if(n===4 && typeof state!=="undefined" && state._route==="dating"){ datingCh4(); return; }
+  _ch(n);
+ };
 })();
 </script>
 </body>
