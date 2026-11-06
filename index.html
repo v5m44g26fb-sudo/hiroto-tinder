@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v272</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v273</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2167,7 +2167,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     if(idx!==lastCardIdx){ sceneIdx=0; lastCardIdx=idx; }
     if(c.hiroto){
       if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","ひろと があなたに Super Like しました！","あなたを Super Like した人がいます —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} }
-      w.innerHTML=`<div class="super-banner">⭐ ひろと があなたに Super Like しました！<br><span>通常のLikeじゃなく、Super Like で来てくれた人だよ</span></div><div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><div class="prompt"><b>${c.prompt2Q}</b>${c.prompt2A}</div><div style="font-size:11px;opacity:.85;margin-top:8px">写真はタップで切り替え ・ マロン🐶と暮らしてます</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ あなたを Super Like しました</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
       const img=document.getElementById("hiroto-photo");
       img.addEventListener("click",()=>{ photoIdx=(photoIdx+1)%photos.length; render(); });
       const _tzl=document.getElementById("tz-l"), _tzr=document.getElementById("tz-r");
@@ -2179,7 +2179,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       if(_card) _card.addEventListener("click",e=>{ if(e.target.closest(".info")) return; if(e.target.id==="hiroto-photo") return; photoIdx=(photoIdx+1)%photos.length; render(); });
     } else {
       const sc=c.scenes[sceneIdx%c.scenes.length];
-      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" src="${c.photos?c.photos[sceneIdx%c.photos.length]:''}" alt="${c.name}"><div class="scene-cap" style="position:absolute;top:26px;left:12px;z-index:3">${sc.cap}</div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta">📍 ${c.dist} ・ ${c.work}</div><div class="bio">${c.bio}</div><div class="tags">${c.tags.map(t=>`<span>${t}</span>`).join("")}</div><div class="prompt"><b>${c.promptQ}</b>${c.promptA}</div><button class="tdetail" id="tdetail-btn">ⓘ プロフィール詳細</button></div></div>`;
+      w.innerHTML=`<div class="swipe-card" id="swipe-card"><div class="photo-dots">${c.scenes.map((_,i)=>`<i class="${i===sceneIdx%c.scenes.length?'act':''}"></i>`).join("")}</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" src="${c.photos?c.photos[sceneIdx%c.photos.length]:''}" alt="${c.name}"><div class="scene-cap" style="position:absolute;top:26px;left:12px;z-index:3">${sc.cap}</div><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><div class="nm">${c.name} <span style="font-size:20px">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>${c.dist}</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
       const _zl=document.getElementById("tz-l"), _zr=document.getElementById("tz-r");
       if(_zl) _zl.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+c.scenes.length-1)%c.scenes.length; render(); });
       if(_zr) _zr.addEventListener("click",e=>{ e.stopPropagation(); sceneIdx=(sceneIdx+1)%c.scenes.length; render(); });
@@ -11586,7 +11586,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v272"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v273"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -11626,5 +11626,53 @@ dock.addEventListener("click",function(e){
 })();
 </script>
 <!-- ===== Tinder ver v272 (nao's instruction, 2026-11-07): dialogue brush-up of the Tinder thread only. Wording and small content touches across the whole match-to-LINE-exchange arc (Super Like opening, morning/lazy branches, the night-strong job talk, 9/28 food terror, Maron and the 'my songs' slip, the 9/29 bath-night voice ask, the 9/30 'recording' peak, the 10/1 search-and-compare morning, the meeting bet and the LINE exchange) plus the free-chat reply pool. His lines lean shorter and more Kansai; her cola / cafe au lait habits are woven in. Beats, choices, branches, gates, suspicion markers, all voice files and subtitles, the night call and the LINE exchange endpoint are unchanged. ===== -->
+
+<style id="v273-css">
+/* v273: the deck goes real (nao's own Tinder screenshot as the reference) - black chrome,
+   a clean card face, dark action circles on a black track */
+#v-tinder .tinder-logo span{background:linear-gradient(92deg,#fd267d,#ff7854);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#v-tinder .tinder-head #tgold-open{width:36px!important;height:36px!important;min-width:36px;border-radius:50%;background:#26262e!important;border:none;padding:0!important;display:inline-flex;align-items:center;justify-content:center;color:#b26bff!important}
+#v-tinder .swipe-card .topen{position:absolute;right:13px;bottom:15px;z-index:6;width:43px;height:43px;border-radius:50%;background:rgba(35,35,42,.94);border:1.6px solid rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;padding:0;margin:0;box-shadow:0 4px 14px rgba(0,0,0,.35);cursor:pointer;font-family:inherit}
+#v-tinder.tdeck-dark{background:#000}
+#v-tinder.tdeck-dark .tinder-head{background:#000;border-bottom:1px solid #000;backdrop-filter:none;-webkit-backdrop-filter:none}
+#v-tinder.tdeck-dark .tinder-head .back{color:#fff}
+#v-tinder.tdeck-dark .tinder-tabs{background:#000;border-bottom:1px solid #000}
+#v-tinder.tdeck-dark .tinder-tabs button{color:#8b8b93}
+#v-tinder.tdeck-dark .tinder-tabs button.act{color:#fff;box-shadow:inset 0 -3px 0 #fff}
+#v-tinder.tdeck-dark #tdisc-open svg path,#v-tinder.tdeck-dark #tdisc-open svg circle{stroke:#ececf1}
+#v-tinder.tdeck-dark #tdisc-open svg circle{fill:#26262e}
+#v-tinder.tdeck-dark #tbell svg{stroke:#ececf1}
+#v-tinder.tdeck-dark .swipe-wrap{background:#000;padding:5px 7px 3px}
+#v-tinder.tdeck-dark .swipe-card{border-radius:10px}
+#v-tinder.tdeck-dark .swipe-actions{background:#000;position:relative;padding:12px 0 18px;gap:15px}
+#v-tinder.tdeck-dark .swipe-actions::before{content:"";position:absolute;left:3%;right:3%;top:50%;transform:translateY(-58%);height:58px;background:#131318;border-radius:999px}
+#v-tinder.tdeck-dark .swipe-actions button{background:#26262e;box-shadow:none;position:relative;z-index:1}
+#v-tinder.tdeck-dark #btn-nope,#v-tinder.tdeck-dark #btn-like{width:63px;height:63px}
+#v-tinder.tdeck-dark #btn-rewind,#v-tinder.tdeck-dark #btn-super,#v-tinder.tdeck-dark #btn-boost{width:47px;height:47px}
+#v-tinder.tdeck-dark #t-statusbar{background:#000!important;color:#a7a7b3}
+#v-tinder.tdeck-dark #ts-left{color:#fff!important}
+#v-tinder.tdeck-dark #ts-hist-btn{background:#26262e!important;border-color:#3a3a42!important;color:#f0c75e!important}
+#v-tinder.tdeck-dark #ts-hist{background:#17171c!important;border-color:#2c2c34!important;color:#d8d8de!important}
+</style>
+<script>
+(function(){
+ if(window.__v273) return; window.__v273=true;
+ var view=document.querySelector("#v-tinder"); if(!view) return;
+ /* while the deck is on screen the whole Tinder chrome goes black, like the real app;
+    chat / matches / profile keep the light chrome */
+ var deck=document.getElementById("tinder-deck-wrap");
+ var sync=function(){ if(deck) view.classList.toggle("tdeck-dark", deck.style.display!=="none"); };
+ sync();
+ if(deck && window.MutationObserver) new MutationObserver(sync).observe(deck,{attributes:true,attributeFilter:["style"]});
+ /* header boost: the Gold pill becomes the real dark circle with a violet bolt (same sheet opens) */
+ var gold=document.getElementById("tgold-open");
+ if(gold){ gold.innerHTML='<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4.5 13.5H11L9.8 22 19 10h-6.5z"/></svg>'; gold.setAttribute("aria-label","ブースト"); }
+ /* the fifth action wears the real app's blue send plane; rewind goes quiet grey */
+ var boost=document.getElementById("btn-boost");
+ if(boost){ boost.innerHTML='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg>'; boost.style.color="#2fb9ec"; }
+ var rw=document.getElementById("btn-rewind"); if(rw) rw.style.color="#9e9ea7";
+})();
+</script>
+<!-- ===== Tinder ver v273 (nao's instruction, 2026-11-07): the deck is rebuilt against nao's own real-Tinder screenshot. Card face is now the real shape - full-bleed photo, segment bars, name + age and a pin + distance line over the bottom gradient, and nothing else; the interest chips, bio and both prompt boxes left the face and live only in the profile detail sheet, which now opens from the real round up-arrow button at the card's bottom right (same #tdetail-btn wiring, drag guard untouched). The Super Like banner above the card is gone (the push, the blue frame and the badge already announce it; his 6 photos, the no-badge general-person framing and every gate are unchanged). While the deck is on screen the chrome goes black like the real app: header with the gradient wordmark, sliders and bell restroked light, the Gold pill becomes the dark boost circle with a violet bolt, tabs go quiet, and the five actions sit as dark circles on a black track (rewind grey, nope pink, super blue, like green, send blue plane - same handlers underneath). Chat / matches / profile keep the light chrome. ===== -->
 </body>
 </html>
