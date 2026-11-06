@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v262</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v263</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11079,6 +11079,181 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>70)clearInterval(iv)},1
   var mo=new MutationObserver(function(){ setTimeout(sync,60); });
   mo.observe(view,{attributes:true,attributeFilter:["class","style"]});
  }
+})();
+</script>
+<!-- v263: TikTok to the current app frame + caption/rail no longer sink behind the tab bar -->
+<style id="v263-css">
+#v-tiktok.tt-fm .tt-cap{bottom:70px}
+#v-tiktok.tt-fm .tt-rail{bottom:70px}
+#v-tiktok.tt-fm .appbar{display:none}
+.tk-toprow{position:absolute;top:50px;left:0;right:0;z-index:26;display:none;align-items:center;justify-content:center;gap:20px;padding:6px 14px;color:#fff}
+#v-tiktok.tt-fm .tk-toprow{display:flex}
+.tk-toprow .tk-live{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;padding:2px}
+.tk-toprow .tk-ftab{background:none;border:none;color:rgba(255,255,255,.75);font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;padding:4px 2px;position:relative;text-shadow:0 1px 4px rgba(0,0,0,.45)}
+.tk-toprow .tk-ftab.on{color:#fff}
+.tk-toprow .tk-ftab.on::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-3px;width:26px;height:3.5px;border-radius:2px;background:#fff}
+.tk-toprow .tk-search{position:absolute;right:12px;background:none;border:none;color:#fff;cursor:pointer;display:flex;padding:2px}
+.tk-toprow .tk-fr{display:none;align-items:center;gap:10px;width:100%}
+#v-tiktok.tk-friends .tk-toprow .tk-fy{display:none}
+#v-tiktok.tk-friends .tk-toprow .tk-fr{display:flex}
+.tk-toprow .tk-fr img{width:29px;height:29px;border-radius:50%;object-fit:cover}
+.tk-toprow .tk-fr .tk-ftitle{flex:1;text-align:center;font-size:16.5px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.45)}
+#ttx-tabs .mk .tk-plus{position:relative;width:44px;height:31px;display:block;flex:none}
+#ttx-tabs .mk .tk-plus::before{content:"";position:absolute;top:0;left:-7px;width:44px;height:31px;border-radius:9px;background:#25f4ee}
+#ttx-tabs .mk .tk-plus::after{content:"";position:absolute;top:0;right:-7px;width:44px;height:31px;border-radius:9px;background:#fe2c55}
+#ttx-tabs .mk .tk-plus i{position:absolute;inset:0;background:#161823;border-radius:9px;color:#fff;font-style:normal;font-weight:400;font-size:21px;line-height:30px;text-align:center;z-index:1}
+#ttx-tabs button.tk-sel{color:#fff}
+#v-tiktok.tk-friends #ttx-tabs [data-t="home"]{opacity:.55}
+.tt-rail .rb-disc{width:47px;height:47px;border-radius:50%;border:2px solid rgba(255,255,255,.85);object-fit:cover;animation:tkspin 5.5s linear infinite;margin-top:2px}
+@keyframes tkspin{to{transform:rotate(360deg)}}
+.tk-msg-head{display:flex;align-items:center;padding:58px 14px 8px}
+.tk-msg-head button{background:none;border:none;color:#fff;cursor:pointer;display:flex;padding:2px}
+.tk-msg-head .tk-mt{flex:1;text-align:center;font-size:16.5px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px}
+.tk-msg-head .tk-mt i{width:8px;height:8px;border-radius:50%;background:#25d366;display:block}
+.tk-rings{display:flex;gap:15px;padding:8px 14px 12px;overflow-x:auto;scrollbar-width:none}
+.tk-rings::-webkit-scrollbar{display:none}
+.tk-ring{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none;background:none;border:none;cursor:pointer;font-family:inherit}
+.tk-ring .tk-rw{width:58px;height:58px;border-radius:50%;padding:2.5px;background:conic-gradient(from 210deg,#f9ce34,#ee2a7b,#6228d7,#f9ce34)}
+.tk-ring .tk-rw img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:2px solid #000}
+.tk-ring span{font-size:11px;color:#e8e8ec;max-width:62px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tk-ring.mk2 .tk-rw{background:#2e2e33;position:relative}
+.tk-ring .tk-plusb{position:absolute;right:-1px;bottom:-1px;width:19px;height:19px;border-radius:50%;background:#20d5ec;color:#000;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;border:2px solid #000}
+.tk-urow{display:flex;align-items:center;gap:11px;padding:10px 14px;cursor:pointer}
+.tk-urow .tk-ui{width:42px;height:42px;border-radius:50%;background:#2e2e33;display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+.tk-urow .tk-ut{flex:1;color:#fff;font-size:14px}
+.tk-urow .tk-ut small{display:block;color:#9a9aa2;font-size:11.5px;margin-top:1px}
+.tk-ptabs{display:flex;border-top:1px solid rgba(128,128,140,.25);border-bottom:1px solid rgba(128,128,140,.25);margin-top:4px}
+.tk-ptabs span{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 0;color:#8a8a93}
+.tk-ptabs span.on{color:#e8e8ec;box-shadow:inset 0 -2px 0 #e8e8ec}
+.tk-note{position:absolute;left:50%;transform:translateX(-50%);background:#fff;color:#161823;border-radius:11px;box-shadow:0 3px 10px rgba(0,0,0,.22);padding:4px 8px;font-size:10.5px;z-index:3;white-space:nowrap}
+.tk-note::after{content:"";position:absolute;left:50%;margin-left:-4px;bottom:-4px;width:8px;height:8px;background:#fff;transform:rotate(45deg)}
+</style>
+<script>
+(function(){
+ if(window.__v263) return; window.__v263=true;
+ var view=document.querySelector("#v-tiktok"); if(!view) return;
+ var $=function(s,r){ return (r||view).querySelector(s); };
+ var $$=function(s,r){ return Array.prototype.slice.call((r||view).querySelectorAll(s)); };
+ var toast=function(m){ if(window.toast) window.toast(m); };
+ var PEOPLE='<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.4"/><path d="M3.2 19.4c.7-3 2.9-4.6 5.8-4.6s5.1 1.6 5.8 4.6"/><path d="M15.5 5.4a3.4 3.4 0 0 1 0 6.2M17.8 15.3c1.7.7 2.7 2 3.1 4.1"/></svg>';
+ var MSGB='<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><circle cx="8.2" cy="11.5" r="1.05" fill="currentColor" stroke="none"/><circle cx="12" cy="11.5" r="1.05" fill="currentColor" stroke="none"/><circle cx="15.8" cy="11.5" r="1.05" fill="currentColor" stroke="none"/></svg>';
+ var SEARCH='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>';
+ var LIVE='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.6" y="6" width="13" height="12" rx="3"/><path d="M15.6 10.8l5.8-3.3v9l-5.8-3.3"/></svg>';
+ var ADDF='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="10" cy="8" r="3.6"/><path d="M4 20c.8-3.4 3.1-5.1 6-5.1 1.2 0 2.3.3 3.2.9M18.5 8v6M15.5 11h6"/></svg>';
+ /* ---- bottom nav: friends / messages labels + real + button ---- */
+ var bar=$("#ttx-tabs");
+ var discB=bar?bar.querySelector('[data-t="disc"]'):null;
+ var inboxB=bar?bar.querySelector('[data-t="inbox"]'):null;
+ function reicon(btn,svg,label){ if(!btn) return; var ic=btn.querySelector("svg"); if(ic) ic.outerHTML=svg;
+  var lb=Array.prototype.slice.call(btn.querySelectorAll("span")).filter(function(s){ return s.textContent.trim(); })[0];
+  if(lb) lb.textContent=label; btn.setAttribute("aria-label",label); }
+ reicon(discB,PEOPLE,"友達");
+ reicon(inboxB,MSGB,"メッセージ");
+ var mk=bar?bar.querySelector(".mk"):null;
+ if(mk){ var s1=mk.querySelector("span"); if(s1){ s1.className="tk-plus"; s1.innerHTML="<i>+</i>"; }
+  var s2=mk.querySelectorAll("span")[1]; if(s2) s2.style.display="none"; }
+ /* friends tab: feed in friends dress, discover stays behind the feed search icon */
+ document.addEventListener("click",function(e){
+  var t=e.target.closest?e.target.closest('#ttx-tabs [data-t="disc"]'):null;
+  if(t){ e.preventDefault(); e.stopPropagation();
+   if(window.__ttxSetTab) window.__ttxSetTab("home");
+   view.classList.add("tk-friends");
+   $$("#ttx-tabs button").forEach(function(b){ b.classList.toggle("tk-sel",b===t); });
+   setTimeout(function(){ window.dispatchEvent(new Event("resize")); },80);
+   return;
+  }
+  var h=e.target.closest?e.target.closest('#ttx-tabs [data-t="home"]'):null;
+  if(h){ view.classList.remove("tk-friends"); $$("#ttx-tabs button").forEach(function(b){ b.classList.remove("tk-sel"); }); }
+ },true);
+ /* ---- feed top row: LIVE / following / for-you + search (friends variant) ---- */
+ var row=document.createElement("div"); row.className="tk-toprow";
+ row.innerHTML='<span class="tk-fy" style="display:flex;align-items:center;gap:20px">'
+  +'<button class="tk-live" aria-label="LIVE">'+LIVE+'</button>'
+  +'<button class="tk-ftab" data-f="fol">フォロー中</button>'
+  +'<button class="tk-ftab on" data-f="fy">おすすめ</button></span>'
+  +'<span class="tk-fr"><img src="assets/nao-avatar4.jpg" alt=""><span class="tk-ftitle">友達</span></span>'
+  +'<button class="tk-search" aria-label="検索">'+SEARCH+'</button>';
+ view.appendChild(row);
+ row.querySelector(".tk-live").addEventListener("click",function(){ toast("📺 LIVEはこの物語では表示だけだよ"); });
+ row.querySelectorAll(".tk-ftab").forEach(function(b){ b.addEventListener("click",function(){
+  row.querySelectorAll(".tk-ftab").forEach(function(x){ x.classList.toggle("on",x===b); });
+ }); });
+ row.querySelector(".tk-search").addEventListener("click",function(){
+  view.classList.remove("tk-friends");
+  if(window.__ttxSetTab) window.__ttxSetTab("disc");
+ });
+ /* ---- right rail: bookmark + share counts and the spinning disc ---- */
+ function fmt(n){ return n>=1000? (Math.round(n/100)/10).toString().replace(/\.0$/,"")+"K" : String(Math.round(n)); }
+ function parseN(t){ var m=String(t||"").replace(/,/g,"").match(/([\d.]+)\s*(K|万)?/); if(!m) return 0; var n=parseFloat(m[1]); if(m[2]==="K") n*=1000; if(m[2]==="万") n*=10000; return n; }
+ $$(".tt-card").forEach(function(card){
+  var rail=card.querySelector(".tt-rail"); if(!rail||rail.dataset.v263) return; rail.dataset.v263="1";
+  var like=rail.querySelector('[data-a="like"] span');
+  var base=parseN(like?like.textContent:"");
+  var cmt=rail.querySelector('[data-a="cmt"]');
+  var hasShare=!!rail.querySelector('[data-a="share"]');
+  var bm=document.createElement("button"); bm.className="rb"; bm.dataset.a="bmk";
+  bm.innerHTML='<svg width="29" height="29" viewBox="0 0 24 24" fill="#fff"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg><span>'+fmt(base*0.09)+'</span>';
+  bm.addEventListener("click",function(){ var on=bm.dataset.on==="1"; bm.dataset.on=on?"":"1";
+   bm.querySelector("svg").setAttribute("fill",on?"#fff":"#f9ce34"); toast(on?"ブックマークを取り消しました":"🔖 ブックマークに追加しました"); });
+  if(cmt&&cmt.nextSibling) rail.insertBefore(bm,cmt.nextSibling); else rail.appendChild(bm);
+  if(!hasShare){ var sh=document.createElement("button"); sh.className="rb"; sh.dataset.a="share";
+   sh.innerHTML='<svg width="29" height="29" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 5.2V3l8 7-8 7v-2.3c-5 0-8.2 1.6-10.3 4.8.6-5.4 2.6-9.9 10.3-11.3z" transform="translate(-1.5 1)"/></svg><span>'+fmt(base*0.05)+'</span>';
+   sh.addEventListener("click",function(){ toast("🔗 リンクをコピーしました"); });
+   rail.appendChild(sh); }
+  var disc=document.createElement("img"); disc.className="rb-disc"; disc.src="assets/ig-avatar.jpg"; disc.alt="";
+  rail.appendChild(disc);
+ });
+ /* ---- messages surface: header, story rings, utility rows over the activity list ---- */
+ var inbox=$("#ttx-inbox");
+ if(inbox&&!inbox.dataset.v263){
+  inbox.dataset.v263="1";
+  var seen={}, rings=[];
+  $$(".ttx-inrow",inbox).forEach(function(rw){
+   var img=rw.querySelector("img"), b=rw.querySelector(".tx b");
+   if(img&&b&&!seen[b.textContent]){ seen[b.textContent]=1; rings.push({src:img.getAttribute("src"),name:b.textContent}); }
+  });
+  var box=document.createElement("div");
+  var ringsHTML=rings.slice(0,4).map(function(r){ return '<button class="tk-ring"><span class="tk-rw"><img src="'+r.src+'" alt=""></span><span>'+r.name+'</span></button>'; }).join("");
+  box.innerHTML='<div class="tk-msg-head"><button aria-label="友達追加">'+ADDF+'</button><span class="tk-mt">メッセージ<i></i></span><button aria-label="検索">'+SEARCH+'</button></div>'
+   +'<div class="tk-rings"><button class="tk-ring mk2"><span class="tk-rw"><img src="assets/nao-avatar4.jpg" alt=""><span class="tk-plusb">+</span></span><span>作成</span></button>'+ringsHTML+'</div>'
+   +'<div class="tk-urow" data-u="act"><span class="tk-ui">🔔</span><span class="tk-ut">アクティビティ・新規フォロワー<small>いいね・コメント・新しいフォロワー</small></span><span style="color:#9a9aa2">›</span></div>'
+   +'<div class="tk-urow" data-u="sys"><span class="tk-ui">⚙️</span><span class="tk-ut">システム通知<small>TikTokからのお知らせ</small></span><span style="color:#9a9aa2">›</span></div>';
+  inbox.insertBefore(box,inbox.firstChild);
+  box.querySelectorAll(".tk-ring").forEach(function(r){ r.addEventListener("click",function(){ toast("📷 ストーリーはこの物語では表示だけだよ"); }); });
+  box.querySelectorAll(".tk-msg-head button").forEach(function(b){ b.addEventListener("click",function(){ toast("この物語では表示だけだよ"); }); });
+  box.querySelectorAll(".tk-urow").forEach(function(u){ u.addEventListener("click",function(){
+   var list=inbox.querySelector(".ttx-inrow"); if(list) list.scrollIntoView({block:"start",behavior:"smooth"});
+  }); });
+ }
+ /* ---- his profile: note bubble + icon tab row over the video grid ---- */
+ var scroll=view.querySelector(".scroll");
+ if(scroll&&!scroll.dataset.v263){
+  scroll.dataset.v263="1";
+  var head=scroll.children[0];
+  if(head){ head.style.position="relative";
+   var av=head.querySelector("img.avatar");
+   if(av){ var nb=document.createElement("span"); nb.className="tk-note"; nb.textContent="ホールツアー中";
+    nb.style.top="-14px"; head.insertBefore(nb,head.firstChild);
+    head.style.marginTop="16px"; }
+  }
+  var firstCard=scroll.querySelector(".tt-card");
+  if(firstCard){
+   var pt=document.createElement("div"); pt.className="tk-ptabs";
+   var IC='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">%s</svg>';
+   var cells=[
+    IC.replace("%s",'<rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/><path d="M8.5 20.5 12 23l3.5-2.5" stroke-linecap="round"/>'),
+    IC.replace("%s",'<rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>'),
+    IC.replace("%s",'<path d="M17 1.8 21 5.8l-4 4"/><path d="M3 12.8V11a3 3 0 0 1 3-3h15"/><path d="m7 22.2-4-4 4-4"/><path d="M21 11.8V13a3 3 0 0 1-3 3H3"/>'),
+    IC.replace("%s",'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>'),
+    IC.replace("%s",'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>')];
+   pt.innerHTML=cells.map(function(c,i){ return '<span class="'+(i===0?"on":"")+'">'+c+'</span>'; }).join("");
+   firstCard.parentElement.insertBefore(pt,firstCard);
+   pt.querySelectorAll("span").forEach(function(s,i){ if(i>0) s.addEventListener("click",function(){ toast("この物語では「動画」タブだけだよ"); }); });
+  }
+ }
+ /* keep card sizing fresh when feed mode flips */
+ if(window.MutationObserver){ var mo=new MutationObserver(function(){ setTimeout(function(){ window.dispatchEvent(new Event("resize")); },70); });
+  mo.observe(view,{attributes:true,attributeFilter:["class"]}); }
 })();
 </script>
 </body>
