@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v248</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v249</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -10037,6 +10037,70 @@ setInterval(upd,900); upd();
  const scanBanners=()=>{ const pi=document.querySelector("#push-ic"); if(pi&&pi.dataset.v247!==(pi.textContent||"").trim()){ pi.dataset.v247=""; sweepIc2(pi); }
   document.querySelectorAll(".lock-notif .p-ic").forEach(sweepIc2); };
  scanBanners(); setInterval(scanBanners,1200);
+})();
+</script>
+<script>
+/* ===== Tinder ver v249: the dating route, part 2 - dating chapter 5 (11/1, a misunderstanding) and the scandal re-read. On the dating route chapter(5) plays its own chapter: his streaming-show recording runs long, the date falls through, a small fight over read receipts, and a make-up that hands off to the same scandal machinery. In the scandal, the dating route reads double - a romance AND the app - so while phase=scandal the news/widget surfaces swap their exact headline phrases for the dating versions (the widget line is overwritten once; headline text nodes are swapped by an observer, exact phrases only). The scandal's flow, heat, office call and voices are the original's. ===== */
+(function(){
+ if(window.__v249) return; window.__v249=true;
+ if(typeof chapter!=="function") return;
+ const _ch=chapter;
+ async function datingCh5(){
+  const t=state._token;
+  state.chapter=5;
+  const ld=document.querySelector("#lock-date"); if(ld) ld.textContent="11月1日 土曜日";
+  const nd=document.querySelector("#news-note"); if(nd) nd.textContent="11月1日（土）夜";
+  setChapterWidget("第5話『すれ違い』","会えない日が、少し増えた。");
+  chapterCard("第5話","すれ違い","楽しみにしていた日が、仕事で流れた。小さな喧嘩と、仲直りの電話。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェの約束 —— LINEを開いてね</span>");
+  addDayChip("11月1日（土）");
+  show("line"); openChat();
+  await himMsg("ごめん、今日の収録、押してて",1100); if(!alive(t))return;
+  await himMsg("終わるの、夜になりそう",1100); if(!alive(t))return;
+  await himMsg("カフェ、また今度でもええ？",1200); if(!alive(t))return;
+  const fight=async()=>{ if(!alive(t))return;
+   await himMsg("俺かて、会いたいねん",1200); if(!alive(t))return;
+   await himMsg("…言い方、きつかったらごめん",1300); if(!alive(t))return;
+   later(()=>toast("💭 <b>（既読のまま、しばらく止まった。…言いすぎたかも）</b>"),1800);
+   await himMsg("…ごめん、なお",3400); if(!alive(t))return;
+   await himMsg("仕事、理由にしたらあかんかった",1300); if(!alive(t))return;
+   await himMsg("明日、終わったら電話する",1200); if(!alive(t))return;
+   await himMsg("声、聞かせて",1100); if(!alive(t))return;
+   askChoices("なおの返信を選んで",[
+    {label:"うん、待ってる",fn:async()=>{ if(!alive(t))return; await himMsg("おやすみ",900); if(!alive(t))return; await himMsg("…好きやで",1200); later(()=>toScandal(),2600); }},
+    {label:"私も、ごめん",fn:async()=>{ if(!alive(t))return; await himMsg("なおは悪くない",1000); if(!alive(t))return; await himMsg("おやすみ。…好きやで",1300); later(()=>toScandal(),2600); }}
+   ]); };
+  askChoices("なおの返信を選んで",[
+   {label:"仕事なら、仕方ないよ",fn:async()=>{ if(!alive(t))return; await himMsg("…ほんまに？",1300); if(!alive(t))return; await himMsg("無理、してへん？",1200); fight(); }},
+   {label:"楽しみにしてたのに…",fn:fight}
+  ]);
+ }
+ chapter=function(n){
+  if(n===5 && typeof state!=="undefined" && state.phase==="prologue" && state._route==="dating"){ datingCh5(); return; }
+  _ch(n);
+ };
+ /* --- scandal re-read on the dating route --- */
+ if(typeof toScandal==="function"){ const _ts=toScandal;
+  toScandal=function(){ _ts();
+   try{ if(state._route!=="dating") return;
+    setTimeout(()=>{ const wm=document.querySelector("#w-main");
+     if(wm) wm.textContent="「現役アイドルがTinder」＋熱愛——マッチした“なお”は交際相手として特定され始めてる"; },400);
+   }catch(e){}
+  }; }
+ const SWAP=[["人気アイドル、マッチングアプリ利用か","人気アイドルに熱愛報道　マッチングアプリ利用も発覚"],["マッチングアプリ利用か","熱愛＋マッチングアプリ利用か"]];
+ const swapText=root=>{
+  if(!root||root.nodeType!==1) return;
+  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[]; let nd; while((nd=tw.nextNode())) nodes.push(nd);
+  nodes.forEach(node=>{ let v=node.nodeValue; if(!v) return; let hit=false;
+   SWAP.forEach(([a,b])=>{ if(v.includes(a)){ v=v.split(a).join(b); hit=true; } });
+   if(hit) node.nodeValue=v; });
+ };
+ if(window.MutationObserver){ const obs=new MutationObserver(ms=>{
+   try{ if(state._route!=="dating"||state.phase!=="scandal") return; }catch(e){ return; }
+   ms.forEach(m=>m.addedNodes.forEach(n=>swapText(n)));
+  });
+  ["#v-news","#v-x"].forEach(sel=>{ const v=document.querySelector(sel); if(v) obs.observe(v,{childList:true,subtree:true}); });
+ }
 })();
 </script>
 </body>
