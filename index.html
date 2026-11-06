@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v238</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v239</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9694,6 +9694,120 @@ setInterval(upd,900); upd();
   new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(nd=>{ if(nd.nodeType!==1) return;
    if(nd.classList&&nd.classList.contains("ig-post")) addLine(nd);
    if(nd.querySelectorAll) nd.querySelectorAll(".ig-post").forEach(addLine); }))).observe(v,{childList:true,subtree:true}); }); }
+})();
+</script>
+<script>
+/* ===== Tinder ver v239: TikTok raised to the sakuya version's level (nao, 2026-11-06). The feed keeps this version's own layout and its v118 comment data and v236 SVG like line; what it gains is the reference's furniture: (1) a right rail riding on each video (his avatar, heart that drives the existing like toggle, comment, share - all SVG, white with shadow), (2) a real comment SHEET with the reference's row composition (avatar / name / text, a meta line of time, likes and reply, a heart with its own count on the right) rendered from the card's existing comments - posting from the sheet writes through the card's own input and send button, so the data stays in one place and the count in the sheet header is the true total, (3) a share sheet in the real app's manner: send-to circles for her people (tap = sent toast) and action rows (copy link etc.). Videos, counts and the scandal hooks are untouched. ===== */
+(function(){
+ if(window.__v239) return; window.__v239=true;
+ const css=document.createElement("style");
+ css.textContent=".tt-vwrap{position:relative}"
+ +".tt-rail{position:absolute;right:8px;bottom:14px;display:flex;flex-direction:column;gap:15px;align-items:center;z-index:4}"
+ +".tt-rail .rb{display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:none;cursor:pointer;color:#fff;font-size:10.5px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.65);padding:0}"
+ +".tt-rail .rb svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}"
+ +".tt-rail .tav{width:44px;height:44px;border-radius:50%;border:2px solid #fff;object-fit:cover}"
+ +".tt-rail .plus{width:18px;height:18px;border-radius:50%;background:#fe2c55;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:-10px;font-weight:800}"
+ +"#tt-sheet{position:absolute;inset:0;z-index:330;display:none}"
+ +"#tt-sheet.on{display:block}"
+ +"#tt-sheet .bd{position:absolute;inset:0;background:rgba(0,0,0,.45)}"
+ +"#tt-sheet .card{position:absolute;left:0;right:0;bottom:0;top:22%;background:#fff;border-radius:16px 16px 0 0;display:flex;flex-direction:column;color:#111;animation:igup .22s ease}"
+ +"#tt-sheet .hd{text-align:center;font-weight:800;font-size:13.5px;padding:12px 0 9px;border-bottom:1px solid #efefef}"
+ +"#tt-sheet .list{overflow-y:auto;padding:6px 14px;flex:1}"
+ +"#tt-sheet .row{display:flex;gap:10px;padding:9px 0}"
+ +"#tt-sheet .row img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none}"
+ +"#tt-sheet .meta{display:flex;gap:13px;color:#8e8e93;font-size:11.5px;margin-top:3px}"
+ +"#tt-sheet .meta button{background:none;border:none;color:#8e8e93;font-size:11.5px;cursor:pointer;padding:0;font-family:inherit}"
+ +"#tt-sheet .hrt{margin-left:auto;text-align:center;color:#8e8e93;font-size:11px;background:none;border:none;cursor:pointer;flex:none}"
+ +"#tt-sheet .hrt.on{color:#fe2c55}"
+ +"#tt-sheet .inrow{display:flex;gap:8px;padding:9px 12px 20px;border-top:1px solid #efefef;align-items:center}"
+ +"#tt-sheet .inrow input{flex:1;border:1px solid #dbdbdb;border-radius:999px;padding:8px 13px;font-size:13.5px;font-family:inherit;min-width:0}"
+ +"#tt-sh{position:absolute;inset:0;z-index:331;display:none}"
+ +"#tt-sh.on{display:block}"
+ +"#tt-sh .bd{position:absolute;inset:0;background:rgba(0,0,0,.45)}"
+ +"#tt-sh .card{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:16px 16px 0 0;padding:14px 0 24px;color:#111;animation:igup .22s ease}"
+ +"#tt-sh .tos{display:flex;gap:16px;padding:2px 18px 12px;border-bottom:1px solid #f2f2f4;overflow-x:auto}"
+ +"#tt-sh .to{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:11px;color:#333}"
+ +"#tt-sh .to img{width:48px;height:48px;border-radius:50%;object-fit:cover}"
+ +"#tt-sh .act{display:block;width:100%;text-align:left;background:none;border:none;padding:13px 18px;font-size:14px;cursor:pointer;font-family:inherit}";
+ document.head.appendChild(css);
+ const IC={
+  heart:'<svg width="31" height="31" viewBox="0 0 24 24" fill="#fff"><path d="M12 20.7C6.4 17 3.4 13.6 3.4 9.9 3.4 7.2 5.4 5.2 7.9 5.2c1.7 0 3.2.9 4.1 2.3.9-1.4 2.4-2.3 4.1-2.3 2.5 0 4.5 2 4.5 4.7 0 3.7-3 7.1-8.6 10.8Z"/></svg>',
+  cmt:'<svg width="29" height="29" viewBox="0 0 24 24" fill="#fff"><path d="M12 3.6c-4.9 0-8.8 3.4-8.8 7.6 0 4.2 3.9 7.6 8.8 7.6.5 0 1-.05 1.5-.14L18 20.6c.25.17.6.02.6-.3l-.02-3.2c1.3-1.34 2.1-3.1 2.1-5.1 0-4.2-3.9-7.6-8.8-7.6Z" transform="scale(-1,1) translate(-24,0)"/></svg>',
+  share:'<svg width="29" height="29" viewBox="0 0 24 24" fill="#fff"><path d="M13.2 3.6c-.3-.4-.9-.2-.9.3v3.9c-4.9.4-8.1 3.4-8.9 8.7-.05.45.5.7.8.35 2-2.2 4.3-3.4 8.1-3.6v3.9c0 .5.6.7.9.3l7-8.1c.25-.3.25-.7 0-1l-7-7.8Z"/></svg>'};
+ const TIMES=["1時間前","2時間前","3時間前","5時間前","8時間前","12時間前","1日前"];
+ const vt=document.querySelector("#v-tiktok"); if(!vt) return;
+ const phone=document.querySelector("#phone")||document.body;
+ /* --- comment sheet --- */
+ const sheet=document.createElement("div"); sheet.id="tt-sheet";
+ sheet.innerHTML='<div class="bd"></div><div class="card"><div class="hd" id="tts-hd">コメント</div><div class="list" id="tts-list"></div>'
+  +'<div class="inrow"><img src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><input id="tts-in" placeholder="コメントを追加…" maxlength="80" autocomplete="off"><button id="tts-send" style="background:none;border:none;color:#0095f6;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit">投稿</button></div></div>';
+ phone.appendChild(sheet);
+ let curCard=null;
+ const rowsOf=card=>{ const box=card.querySelector(".tt-cmts"); if(!box) return [];
+  return [...box.children].filter(el=>el.querySelector&&el.querySelector("b")).map(el=>{
+   const b=el.querySelector("b"); const sp=el.querySelector("div span");
+   const img=el.querySelector("img");
+   return {n:b?b.textContent:"", t:sp?sp.textContent:"", av:img?img.getAttribute("src"):"assets/default-avatar.svg"}; }); };
+ const renderSheet=()=>{ if(!curCard) return;
+  const rows=rowsOf(curCard);
+  sheet.querySelector("#tts-hd").textContent="コメント "+rows.length+"件";
+  sheet.querySelector("#tts-list").innerHTML=rows.map((r,i)=>{
+   const lk=(r.n.length*37+i*13)%160;
+   return '<div class="row"><img src="'+r.av+'" alt=""><div style="min-width:0"><div style="font-size:13px;line-height:1.5"><b>'+r.n.replace(/</g,"&lt;")+'</b> <span>'+r.t.replace(/</g,"&lt;")+'</span></div>'
+    +'<div class="meta"><span>'+TIMES[i%TIMES.length]+'</span><span>いいね！'+lk+'件</span><button class="rp" data-n="'+r.n.replace(/"/g,"")+'">返信する</button></div></div>'
+    +'<button class="hrt" data-lk="'+lk+'">♡<br><span>'+lk+'</span></button></div>'; }).join("");
+  sheet.querySelectorAll(".hrt").forEach(h=>h.addEventListener("click",()=>{
+   const on=h.classList.toggle("on"); const base=+h.dataset.lk;
+   h.innerHTML=(on?"♥":"♡")+"<br><span>"+(base+(on?1:0))+"</span>"; }));
+  sheet.querySelectorAll(".rp").forEach(b=>b.addEventListener("click",()=>{
+   const inp=sheet.querySelector("#tts-in"); inp.value="@"+b.dataset.n+" "; inp.focus(); }));
+ };
+ const openSheet=card=>{ curCard=card; renderSheet(); sheet.classList.add("on"); };
+ sheet.querySelector(".bd").addEventListener("click",()=>sheet.classList.remove("on"));
+ sheet.querySelector("#tts-send").addEventListener("click",()=>{
+  const v=sheet.querySelector("#tts-in").value.trim(); if(!v||!curCard) return;
+  sheet.querySelector("#tts-in").value="";
+  const rin=curCard.querySelector(".tt-in"), rsend=curCard.querySelector(".tt-send");
+  if(rin&&rsend){ rin.value=v; rsend.click(); setTimeout(renderSheet,60); }
+ });
+ /* --- share sheet --- */
+ const sh=document.createElement("div"); sh.id="tt-sh";
+ sh.innerHTML='<div class="bd"></div><div class="card"><div style="text-align:center;font-weight:800;font-size:13.5px;padding-bottom:10px">共有</div>'
+  +'<div class="tos">'
+  +[["assets/fr-yui.jpg","ゆい"],["assets/fr-misaki.jpg","みさき"],["assets/fr-rina.jpg","りな"],["assets/grp-itsumen.jpg","いつメン"]].map(t=>'<button class="to" data-n="'+t[1]+'"><img src="'+t[0]+'" alt="">'+t[1]+'</button>').join("")
+  +'</div>'
+  +'<button class="act" data-a="copy">🔗 リンクをコピー</button>'
+  +'<button class="act" data-a="line">💬 LINEで送る</button>'
+  +'<button class="act" data-a="no" style="color:#d92b2b">🚫 この動画に興味なし</button></div>';
+ phone.appendChild(sh);
+ sh.querySelector(".bd").addEventListener("click",()=>sh.classList.remove("on"));
+ sh.querySelectorAll(".to").forEach(b=>b.addEventListener("click",()=>{ sh.classList.remove("on"); toast("↗ <b>"+b.dataset.n+"</b> に送信しました"); }));
+ sh.querySelectorAll(".act").forEach(b=>b.addEventListener("click",()=>{ sh.classList.remove("on");
+  if(b.dataset.a==="copy") toast("🔗 <b>リンクをコピーしました</b>");
+  if(b.dataset.a==="line"){ show("line"); }
+  if(b.dataset.a==="no") toast("🚫 <b>フィードバックしました</b>（気分だけ）"); }));
+ /* --- rails on each video --- */
+ const railFor=card=>{
+  if(card.dataset.v239) return; card.dataset.v239="1";
+  const vid=card.querySelector("video"); if(!vid) return;
+  const wrap=document.createElement("div"); wrap.className="tt-vwrap";
+  vid.parentNode.insertBefore(wrap,vid); wrap.appendChild(vid);
+  const likes=card.querySelector(".tt-likes");
+  const cnt=(likes?likes.textContent.match(/[\d.]+K|[\d,]+/):null);
+  const rail=document.createElement("div"); rail.className="tt-rail";
+  rail.innerHTML='<span style="display:flex;flex-direction:column;align-items:center"><img class="tav" src="assets/ig-avatar.jpg" alt=""><span class="plus">＋</span></span>'
+   +'<button class="rb" data-a="like">'+IC.heart+'<span>'+(cnt?cnt[0]:"")+'</span></button>'
+   +'<button class="rb" data-a="cmt">'+IC.cmt+'<span>コメント</span></button>'
+   +'<button class="rb" data-a="share">'+IC.share+'<span>共有</span></button>';
+  wrap.appendChild(rail);
+  rail.querySelector('[data-a="like"]').addEventListener("click",()=>{ if(likes) likes.click();
+   const c2=likes?likes.textContent.match(/[\d.]+K|[\d,]+/):null;
+   const s=rail.querySelector('[data-a="like"] span'); if(s&&c2) s.textContent=c2[0]; });
+  rail.querySelector('[data-a="cmt"]').addEventListener("click",()=>openSheet(card));
+  rail.querySelector('[data-a="share"]').addEventListener("click",()=>sh.classList.add("on"));
+ };
+ document.querySelectorAll(".tt-card").forEach(railFor);
+ if(window.MutationObserver) new MutationObserver(()=>document.querySelectorAll(".tt-card").forEach(railFor)).observe(vt,{childList:true,subtree:true});
 })();
 </script>
 </body>
