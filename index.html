@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v261</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v262</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11016,6 +11016,68 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>70)clearInterval(iv)},1
     card.appendChild(row);
    }
   }
+ }
+})();
+</script>
+<!-- v262: X fixes - logo aligned to the avatar row, no back chevron or search box on home, notifications behave as a normal tab page -->
+<style id="v262-css">
+#x-notif{z-index:6!important}
+#x-compose-btn{z-index:9}
+</style>
+<script>
+(function(){
+ if(window.__v262) return; window.__v262=true;
+ var view=document.querySelector("#v-x"); if(!view) return;
+ var $=function(s,r){ return (r||view).querySelector(s); };
+ /* 1) search box belongs to the search tab only: move bar + history into the search pane */
+ var bar=view.querySelector(".x-searchbar"), pane=$("#x-pane-search");
+ if(bar&&pane&&bar.parentElement!==pane){
+  pane.insertBefore(bar,pane.firstChild);
+  var hist=document.querySelector("#x-history");
+  if(hist) pane.insertBefore(hist,bar.nextSibling);
+ }
+ /* 2) notifications as a normal tab page: drop the old overlay header (duplicate title + close x),
+       give the v258 header real top clearance, close the page when another tab is chosen */
+ var notif=document.querySelector("#x-notif");
+ if(notif&&!notif.dataset.v262){
+  notif.dataset.v262="1";
+  var x=document.querySelector("#x-notif-x");
+  if(x&&x.parentElement) x.parentElement.style.display="none";
+  var hd=notif.firstElementChild;
+  if(hd&&hd.querySelector("#xn-all")) hd.style.padding="58px 14px 2px";
+  var nav=$("#x-nav");
+  if(nav){
+   nav.querySelectorAll("button[data-xn]").forEach(function(b){
+    if(b.dataset.xn==="bell") return;
+    b.addEventListener("click",function(){ notif.style.display="none"; });
+   });
+  }
+  var hb=document.querySelector("#homebar");
+  if(hb) hb.addEventListener("click",function(){ notif.style.display="none"; });
+ }
+ /* 3) header: centre the logo on the avatar row; hide the back chevron on the home timeline */
+ var appbar=view.querySelector(".appbar"), logo=document.querySelector("#x-logo-c"), av=appbar?appbar.querySelector(".avatar"):null, back=appbar?appbar.querySelector(".back"):null;
+ function fixLogo(){
+  if(!appbar||!logo||!av) return;
+  var br=appbar.getBoundingClientRect(), ar=av.getBoundingClientRect();
+  if(!br.height||!ar.height) return;
+  logo.style.top=(ar.top-br.top+ar.height/2)+"px";
+ }
+ function syncBack(){
+  if(!back) return;
+  var tl=$("#x-pane-tl"), fol=$("#x-pane-fol"), th=$("#x-thread");
+  var homeOn=((tl&&getComputedStyle(tl).display!=="none")||(fol&&getComputedStyle(fol).display!=="none"))&&!(th&&getComputedStyle(th).display!=="none");
+  back.style.display=homeOn?"none":"";
+ }
+ function sync(){ fixLogo(); syncBack(); }
+ setTimeout(sync,300); setTimeout(sync,1500);
+ window.addEventListener("resize",function(){ setTimeout(sync,60); });
+ document.addEventListener("click",function(e){
+  if(e.target.closest&&e.target.closest("#v-x, [data-open='x']")) setTimeout(sync,60);
+ },true);
+ if(window.MutationObserver){
+  var mo=new MutationObserver(function(){ setTimeout(sync,60); });
+  mo.observe(view,{attributes:true,attributeFilter:["class","style"]});
  }
 })();
 </script>
