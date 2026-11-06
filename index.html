@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v251</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v252</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -10140,6 +10140,76 @@ var M={"line":"s15-line","tinder":"s15-tinder","ig":"s15-ig","tiktok":"s15-tt","
 function sw(){document.querySelectorAll(".ic").forEach(function(ic){if(ic.dataset.s15)return;var a=ic.closest("[data-open]");if(!a)return;var id=M[a.dataset.open];if(!id)return;var badges=[].slice.call(ic.querySelectorAll(".bdg"));ic.innerHTML='<svg viewBox="0 0 60 60" style="display:block;width:100%;height:100%"><use href="#'+id+'"/></svg>';badges.forEach(function(b){ic.appendChild(b)});ic.style.background="transparent";ic.dataset.s15="1";});
 document.querySelectorAll(".p-ic,.lk-ic").forEach(function(ic){if(ic.dataset.s15)return;var a=ic.closest("[data-open]");if(!a)return;var id=M[a.dataset.open];if(!id)return;ic.innerHTML='<svg viewBox="0 0 60 60" style="display:block;width:100%;height:100%"><use href="#'+id+'"/></svg>';ic.style.background="transparent";ic.dataset.s15="1";});}
 sw();let n=0;const iv=setInterval(function(){sw();if(++n>40)clearInterval(iv)},1500);
+})();
+</script>
+
+<!-- v252: TikTok depth (tab bar, discover, inbox) -->
+<style>
+#v-tiktok .scroll{padding-bottom:64px}
+#ttx-tabs{position:absolute;left:0;right:0;bottom:0;height:56px;background:#000;border-top:1px solid #26262b;display:flex;z-index:30}
+#ttx-tabs button{flex:1;background:none;border:none;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10px;cursor:pointer;opacity:.92}
+#ttx-tabs button.on{opacity:1;font-weight:800}
+#ttx-tabs .mk span{display:flex;align-items:center;justify-content:center;width:44px;height:30px;border-radius:9px;background:linear-gradient(90deg,#25f4ee 0 18%,#fe2c55 82% 100%);position:relative}
+#ttx-tabs .mk span::after{content:"+";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;color:#000;font-size:19px;font-weight:700;border-radius:7px;margin:0 7px}
+.ttx-page{position:absolute;left:0;right:0;top:53px;bottom:56px;background:#000;color:#fff;overflow-y:auto;z-index:25;display:none;padding:12px 12px 20px}
+.ttx-page.on{display:block}
+.ttx-search{display:flex;align-items:center;gap:8px;background:#1f1f23;border-radius:10px;padding:9px 12px;margin-bottom:12px}
+.ttx-search input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:14px}
+.ttx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ttx-cell{position:relative;border:none;padding:0;background:#111;aspect-ratio:3/4;overflow:hidden;cursor:pointer}
+.ttx-cell video{width:100%;height:100%;object-fit:cover;display:block}
+.ttx-cell .pv{position:absolute;left:5px;bottom:4px;color:#fff;font-size:11px;font-weight:700;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.ttx-inrow{display:flex;gap:11px;padding:11px 2px;border-bottom:1px solid #1b1b1f;align-items:flex-start}
+.ttx-inrow img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none}
+.ttx-inrow .tx{font-size:13px;line-height:1.55}
+.ttx-inrow .tm{color:#8a8a93;font-size:11.5px}
+.tt-plays{color:#a8a8b3;font-size:12px;padding:0 12px 10px;margin-top:-6px}
+</style>
+<script>
+/* v252: TikTok depth — bottom tabs (home/discover/create/inbox/profile), a discover
+   page (search + grid over the existing five videos, view counts derived from the
+   like counts), and an activity inbox built from the same five posts. */
+(function(){
+ if(window.__v252) return; window.__v252=true;
+ const view=document.querySelector("#v-tiktok"); if(!view) return;
+ const scroll=view.querySelector(".scroll");
+ const cards=[...view.querySelectorAll(".tt-card")];
+ const fmtPlays=lk=>{const m=String(lk).match(/([\d.]+)\s*K/i);const base=m?parseFloat(m[1])*1000:0;const v=Math.round(base*7);return v>=10000?((v/10000).toFixed(1).replace(/\.0$/,"")+"万回"):v.toLocaleString()+"回";};
+ cards.forEach(c=>{const lk=c.querySelector(".tt-likes");if(!lk||c.querySelector(".tt-plays"))return;const d=document.createElement("div");d.className="tt-plays";d.textContent="▶ "+fmtPlays(lk.textContent);c.appendChild(d);});
+ /* pages */
+ const disc=document.createElement("div");disc.className="ttx-page";disc.id="ttx-disc";
+ disc.innerHTML='<div class="ttx-search"><span>🔍</span><input id="ttx-q" placeholder="検索" autocomplete="off"></div><div class="ttx-grid"></div>';
+ const grid=disc.querySelector(".ttx-grid");
+ cards.forEach((c,i)=>{const v=c.querySelector("video");const cell=document.createElement("button");cell.className="ttx-cell";cell.dataset.cap=(c.querySelector(".tt-cap")||{}).textContent||"";
+  cell.innerHTML='<video src="'+v.getAttribute("src")+'" muted playsinline preload="metadata"></video><span class="pv">▶ '+fmtPlays((c.querySelector(".tt-likes")||{}).textContent||"")+'</span>';
+  cell.addEventListener("click",()=>{setTab("prof");c.scrollIntoView({block:"center"});const vv=c.querySelector("video");if(vv)vv.play().catch(()=>{});});
+  grid.appendChild(cell);});
+ disc.querySelector("#ttx-q").addEventListener("input",e=>{const q=e.target.value.trim();grid.querySelectorAll(".ttx-cell").forEach(cell=>{cell.style.display=(!q||cell.dataset.cap.includes(q))?"":"none";});});
+ view.appendChild(disc);
+ const inbox=document.createElement("div");inbox.className="ttx-page";inbox.id="ttx-inbox";
+ const rows=cards.map((c,i)=>{const cap=((c.querySelector(".tt-cap")||{}).textContent||"").replace("@193hiroto","").trim().slice(0,34);return '<div class="ttx-inrow"><img src="assets/ig-avatar.jpg" alt=""><div class="tx"><b>193hiroto</b> が動画を投稿しました<br><span style="color:#c9c9cf">'+cap+'</span><div class="tm">投稿 '+(i+1)+'</div></div></div>';}).join("");
+ inbox.innerHTML='<div style="font-weight:800;font-size:15px;padding:2px 2px 8px">アクティビティ</div>'+rows+'<div class="ttx-inrow"><div class="tx"><b>TikTok</b> からのお知らせ<br><span style="color:#c9c9cf">コミュニティガイドラインが更新されました</span><div class="tm">システム</div></div></div>';
+ view.appendChild(inbox);
+ /* tab bar */
+ const bar=document.createElement("div");bar.id="ttx-tabs";
+ const IC={home:'<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9v11h13V9"/></svg>',
+  disc:'<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z" fill="currentColor" stroke="none"/></svg>',
+  inbox:'<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M21 12h-6l-1.6 2.4a2 2 0 0 1-2.8 0L9 12H3"/><path d="M4.5 5h15L21 12v6a1.8 1.8 0 0 1-1.8 1.8H4.8A1.8 1.8 0 0 1 3 18v-6z"/></svg>',
+  user:'<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c1.2-3.2 3.8-4.8 7-4.8s5.8 1.6 7 4.8"/></svg>'};
+ bar.innerHTML='<button data-t="home" class="on">'+IC.home+'<span>ホーム</span></button><button data-t="disc">'+IC.disc+'<span>見つける</span></button><button data-t="mk" class="mk"><span></span><span style="margin-top:1px">投稿</span></button><button data-t="inbox">'+IC.inbox+'<span>受信箱</span></button><button data-t="prof">'+IC.user+'<span>プロフィール</span></button>';
+ view.appendChild(bar);
+ const headBlock=scroll.querySelector(":scope > div");
+ function setTab(t){
+  bar.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.t===t||(t==="prof"&&b.dataset.t==="prof")));
+  disc.classList.toggle("on",t==="disc"); inbox.classList.toggle("on",t==="inbox");
+  if(headBlock) headBlock.style.display=(t==="home")?"none":"";
+  if(t==="home"&&cards[0]) cards[0].scrollIntoView({block:"start"});
+  if(t==="prof"&&scroll) scroll.scrollTop=0;
+ }
+ bar.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const t=b.dataset.t;
+  if(t==="mk"){ if(window.toast) toast("📹 投稿は本人の端末からのみ（これは閲覧用の画面）"); return; }
+  setTab(t);});
+ window.__ttxSetTab=setTab;
 })();
 </script>
 </body>
