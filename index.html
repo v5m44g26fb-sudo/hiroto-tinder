@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v299</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v300</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2689,7 +2689,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  document.querySelector("#v-settings").appendChild(panel);
  const MEMS=[
   ["🔥","マッチした日","9月27日 ・ TinderでSuper Like",()=>state.chapter>=1,null],
-  ["⭐","井汲かも？","9月30日 ・ 『収録』の一言",()=>state.chapter>=2,null],
+  ["⭐","井汲かも？","9月30日 ・ 『本番』の一言",()=>state.chapter>=2,null],
   ["☕","本物バレ","10月4日 ・ 初デート",()=>state.chapter>=2,"assets/vt-greet.mp3"],
   ["🌙","線引き","10月12日 ・ 並木道",()=>state.chapter>=3,"assets/vt-line2.mp3"],
   ["🍁","近づく休日","10月13日〜17日 ・ 線のこちら側",()=>!!state._ch3bDone||state.chapter>=4,null],
@@ -3856,7 +3856,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  (function(){ const list=$("#line-list"); if(!list||$("#my-prof")) return;
   const row=document.createElement("div"); row.id="my-prof";
   row.style.cssText="display:flex;align-items:center;gap:11px;padding:10px 16px 12px;border-bottom:8px solid #f2f2f7;cursor:pointer";
-  row.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:44px;height:44px;border-radius:50%" alt=""><span><b style="font-size:15px">なお</b><br><span id="my-status" style="color:#8e8e93;font-size:12.5px">☕ カフェオレとサウナが好き</span></span>';
+  row.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:44px;height:44px;border-radius:50%" alt=""><span><b style="font-size:15px">なお</b><br><span id="my-status" style="color:#8e8e93;font-size:12.5px">♨️ サウナとエビとコーラ</span></span>';
   row.addEventListener("click",()=>toast("👤 <b>なお</b>のプロフィール（物語の中だけ）"));
   list.insertBefore(row,list.firstChild);
   const head=$("#line-head-list");
@@ -4447,7 +4447,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    panel.querySelectorAll("[data-row]").forEach(r=>r.addEventListener("click",()=>{ panel.style.display="none";
     const t=$(r.dataset.row); if(t) t.click(); }));
    const pc=panel.querySelector("#pts-card"); if(pc) pc.addEventListener("click",()=>open("🎁 LINEポイント",ptsHtml())); };
-  const homeHtml=()=>'<div style="display:flex;align-items:center;gap:12px;background:#f7f7fa;border-radius:14px;padding:14px"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:56px;height:56px;border-radius:50%" alt=""><div><div style="font-weight:800;font-size:16.5px">なお</div><div style="font-size:12.5px;color:#666;margin-top:2px">'+((($("#my-status")||{}).textContent)||"☕ カフェオレとサウナが好き")+'</div></div><span style="margin-left:auto;font-size:19px">🎵</span></div>'+
+  const homeHtml=()=>'<div style="display:flex;align-items:center;gap:12px;background:#f7f7fa;border-radius:14px;padding:14px"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:56px;height:56px;border-radius:50%" alt=""><div><div style="font-weight:800;font-size:16.5px">なお</div><div style="font-size:12.5px;color:#666;margin-top:2px">'+((($("#my-status")||{}).textContent)||"♨️ サウナとエビとコーラ")+'</div></div><span style="margin-left:auto;font-size:19px">🎵</span></div>'+
    '<div id="pts-card" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:14px;padding:13px 14px;margin-top:12px;cursor:pointer"><span style="font-size:19px">🎁</span><div><div style="font-size:11.5px;opacity:.9">LINEポイント残高</div><div style="font-weight:800;font-size:17px">1,240 pt</div></div><span style="margin-left:auto">›</span></div>'+
    '<div style="font-weight:800;font-size:14px;margin:18px 0 6px">友だち '+FRIENDS.length+'</div>'+
    FRIENDS.map(f=>'<div data-row="'+f[3]+'" style="display:flex;align-items:center;gap:11px;padding:9px 2px;cursor:pointer"><img loading="lazy" decoding="async" src="'+f[1]+'" style="width:44px;height:44px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:14.5px">'+f[0]+'</div><div style="font-size:12px;color:#8e8e93;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+f[2]+'</div></div></div>').join("");
@@ -10118,7 +10118,7 @@ setInterval(upd,900); upd();
     {label:"私も、言いすぎた。ごめん",fn:async()=>{ if(!alive(t))return; await himMsg("なおは悪くない",1000); if(!alive(t))return; await himMsg("おやすみ。…好きやで",1300); later(()=>toScandal(),2600); }}
    ]); };
   askChoices("なおの返信を選んで",[
-   {label:"仕事なら、しゃあないよ",fn:async()=>{ if(!alive(t))return; await himMsg("…ほんまに？",1300); if(!alive(t))return; await himMsg("無理、してへん？",1200); fight(); }},
+   {label:"仕事なら、しゃあない。…けど寂しい",fn:async()=>{ if(!alive(t))return; await himMsg("…ほんまに？",1300); if(!alive(t))return; await himMsg("無理、してへん？",1200); fight(); }},
    {label:"楽しみにしてたんやけど…",fn:fight}
   ]);
  }
@@ -11634,7 +11634,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v299"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v300"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
