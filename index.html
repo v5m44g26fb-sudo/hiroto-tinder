@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v355</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v356</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2883,7 +2883,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const openPanel=(title,html)=>{ panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">'+title+'</b></div>'+html;
   panel.style.display="flex";
   panel.querySelector(".hp-close").addEventListener("click",()=>{ panel.style.display="none"; if(clockIv){ clearInterval(clockIv); clockIv=null; } }); };
- const CAL=[["9/27","🔥 マッチした日",()=>state.chapter>=1],["10/4","🍻 名前の話",()=>state.chapter>=2],["10/12","🌙 線引き",()=>state.chapter>=3],["10/18","🌃 あの夜",()=>state.chapter>=5],["11/1","🍜 久しぶりのカフェ",()=>state.chapter>=5],["11/2","🔥 バレた日",()=>state.chapter>=6||state.phase==="scandal"],["11/3","🌅 翌朝",()=>!!state.act2]];
+ const CAL=[["9/27","🔥 マッチした日",()=>state.chapter>=1],["10/4","🍻 名前の話",()=>state.chapter>=2],["10/12","🌙 線引き",()=>state.chapter>=3],["10/18","🌃 あの夜",()=>state.chapter>=4],["11/1","🍜 久しぶりのカフェ",()=>state.chapter>=5],["11/2","🔥 バレた日",()=>state.chapter>=6||state.phase==="scandal"],["11/3","🌅 翌朝",()=>!!state.act2]];
  const MEMO=[["Super Like、押しちゃったな",()=>state.chapter>=1],["カフェオレ、覚えた",()=>state.chapter>=2],["言わなあかんこと、言えた",()=>state.chapter>=3],["…ごめん、しか言えん",()=>state.chapter>=5],["なおだけは、守る",()=>state.phase==="scandal"],["歌で返す。それしかできん",()=>!!state.act2]];
  p2.querySelectorAll("[data-hp]").forEach(b=>b.addEventListener("click",()=>{ const k=b.dataset.hp;
   if(k==="cal") openPanel("📅 カレンダー", CAL.map(c=>{ const un=c[2](); return '<div class="cal-row'+(un?"":" lock")+'"><span class="cd">'+c[0]+'</span><span>'+(un?c[1]:"？？？")+'</span></div>'; }).join(""));
@@ -11956,7 +11956,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v355"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v356"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12969,6 +12969,26 @@ dock.addEventListener("click",function(e){
   }
   return _ch349.apply(this,arguments);
  };
+})();
+</script>
+
+<script>
+/* ===== v356: X trends turn into the scandal during the scandal phase ===== */
+(function(){
+ if(window.__v356) return; window.__v356=true;
+ var SC=[["日本のトレンド","井汲大翔","182,408 件のポスト"],["エンターテイメント ・ トレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","事務所コメント","54,209 件のポスト"],["エンターテイメント ・ トレンド","交際否定","41,877 件のポスト"],["日本のトレンド","日プ","18,204 件のポスト"]];
+ setInterval(function(){
+  try{
+   if(typeof state==="undefined") return;
+   if(!(state.phase==="scandal"||state.act2)) return;
+   var w=document.querySelector("#x-pane-trend"); if(!w||w.dataset.scandal) return;
+   w.dataset.scandal="1"; w.innerHTML="";
+   SC.forEach(function(t,i){ var d=document.createElement("div"); d.className="trend"; d.style.cursor="pointer"; d.title="タップで検索";
+    d.addEventListener("click",function(){ var q=document.querySelector("#x-q"); if(q) q.value=t[1]; if(typeof doSearch==="function") doSearch(t[1]); });
+    d.innerHTML='<div class="cat">'+(i+1)+' ・ '+t[0]+'</div><div class="kw">'+t[1]+'</div><div class="cnt">'+t[2]+'</div>';
+    w.appendChild(d); });
+  }catch(e){}
+ },1500);
 })();
 </script>
 </body>
