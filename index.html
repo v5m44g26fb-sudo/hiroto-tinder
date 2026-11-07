@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v312</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v313</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11678,7 +11678,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v312"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v313"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12428,6 +12428,59 @@ dock.addEventListener("click",function(e){
   });
  };
  new MutationObserver(addXfer).observe(panel,{childList:true,subtree:true,attributes:true,attributeFilter:["style"]});
+})();
+</script>
+
+<script>
+/* ===== Tinder ver v313: NEW FEATURE - search inside his LINE talk. The talk list had a
+   search box, but the conversation itself did not. A magnifier in the chat header opens
+   a search bar: non-matching bubbles hide, matches get a gold ring, and a hit count
+   shows. Closing the bar (or leaving the chat) restores everything. Presentation only;
+   no story state is touched. ===== */
+(function(){
+ if(window.__v313) return; window.__v313=true;
+ var room=document.getElementById("line-chat");
+ var chat=document.getElementById("chat");
+ var callBtn=document.getElementById("line-call-btn");
+ if(!room||!chat||!callBtn) return;
+ var css=document.createElement("style");
+ css.textContent=".srch-hit .bub{box-shadow:0 0 0 2.5px #ffd76a!important}";
+ document.head.appendChild(css);
+ var btn=document.createElement("button");
+ btn.id="line-search-btn"; btn.textContent="🔍"; btn.title="トーク内を検索";
+ btn.style.cssText="margin-left:auto;font-size:16px;background:none;border:none;cursor:pointer";
+ callBtn.parentNode.insertBefore(btn, callBtn);
+ callBtn.style.marginLeft="6px";
+ var bar=document.createElement("div");
+ bar.id="line-search-bar";
+ bar.style.cssText="display:none;gap:7px;align-items:center;padding:7px 12px;background:#fff;border-bottom:1px solid #eee";
+ bar.innerHTML='<input id="ls-q" placeholder="メッセージを検索" autocomplete="off" style="flex:1;border:none;background:#f2f2f7;border-radius:999px;padding:8px 13px;font-size:13.5px;font-family:inherit;outline:none"><span id="ls-n" style="font-size:12px;color:#8e8e93;min-width:34px;text-align:right"></span><button id="ls-x" style="background:none;border:none;font-size:15px;cursor:pointer">✕</button>';
+ room.insertBefore(bar, chat);
+ var q=bar.querySelector("#ls-q"), n=bar.querySelector("#ls-n");
+ function reset(){
+  [...chat.children].forEach(function(el){ el.style.display=""; el.classList.remove("srch-hit"); });
+  n.textContent="";
+ }
+ function apply(){
+  var v=q.value.trim().toLowerCase(); reset();
+  if(!v) return;
+  var hits=0;
+  [...chat.children].forEach(function(el){
+   var t=(el.textContent||"").toLowerCase();
+   if(t.indexOf(v)>=0){ hits++; el.classList.add("srch-hit"); }
+   else el.style.display="none";
+  });
+  n.textContent=hits+"件";
+ }
+ q.addEventListener("input", apply);
+ function close(){ bar.style.display="none"; q.value=""; reset(); }
+ bar.querySelector("#ls-x").addEventListener("click", close);
+ btn.addEventListener("click", function(){
+  if(bar.style.display==="none"){ bar.style.display="flex"; q.focus(); }
+  else close();
+ });
+ var back=document.getElementById("line-back");
+ if(back) back.addEventListener("click", close);
 })();
 </script>
 </body>
