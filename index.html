@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v314</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v315</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5247,9 +5247,21 @@ app.style.display="flex";},true);
    ["him","（明日、来るんやな……部屋、片付けな）"],
    ["n","マロンの毛だらけのクッションを、彼は無言で叩いて、整えた。"],
    ["him","（マロン、明日は頼むで。……靴下、噛んだらあかんで）"],
-   ["n","二人とも、明日の準備をしていた。内緒のまま、同じ方向を向いて。"]]}];
+   ["n","二人とも、明日の準備をしていた。内緒のまま、同じ方向を向いて。"]]},
+  {t:"幕間 ― 届かない既読", sub:"10月26日 ・ 通常ルート", un:()=>state._route!=="dating"&&(state.chapter||0)>=5, lines:[
+   ["n","10月26日、日曜日。あの夜から、一週間が過ぎていた。"],
+   ["n","― なお側 ―"],
+   ["n","LINEを開く。彼のトークを開く。……閉じる。"],
+   ["me","（『元気？』って、送る資格あるんかな、私に）"],
+   ["n","打った文字は、送信されずに消えた。既読は、つきようがなかった。"],
+   ["n","― ひろと側 ―"],
+   ["n","レッスンの帰り道。スマホの画面に、彼女の名前があった。"],
+   ["him","（……開いたら、負けな気がすんねん）"],
+   ["n","彼は画面を伏せて、歩いた。マロンの散歩袋が、ポケットで小さく揺れた。"],
+   ["him","（元気で、おれよ）"],
+   ["n","二人のあいだに、既読のつかない一週間があった。"]]}];
  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
- row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">7本</b>';
+ row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">8本</b>';
  sc.appendChild(row);
  const panel=document.createElement("div"); panel.id="ep-panel";
  panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
@@ -11690,7 +11702,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v314"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v315"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
