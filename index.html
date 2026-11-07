@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v363</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v364</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1060,7 +1060,7 @@ later(()=>{lineSequence1()},16000);
 later(()=>{addNewsRow("assets/crown-full.jpg","事務所がコメント発表「交際の事実はございません」","芸能デスク ・ たった今",()=>openStatement()); setHeat(62); push("ニュース速報","#e60012","N","事務所コメント発表","「交際の事実はございません」——アプリ利用は確認中",()=>show("news"));},32000);
 later(()=>{addNewsRow("assets/insta-post.jpg","「時間が止まればいいのに」投稿に「誰と？」の声　過去投稿の掘り起こし相次ぐ","週刊デジタル ・ たった今",null); setHeat(78);},47000);
 later(()=>{addNewsRow("assets/tinder-hiroto-1.jpg","出会いはマッチングアプリか　彼のものとされる“私服プロフ写真”が拡散","週刊デジタル ・ たった今",()=>openTinderArticle()); setHeat(86); push("ニュース速報","#e60012","N","続報：出会いの経緯が判明？","「マッチングアプリで、Super Likeから」——タップで記事へ",()=>show("news"));},62000);
-later(()=>{addNewsRow("assets/glasses.jpg","お相手「最初はアイドルだと知らなかった」証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},80000);
+later(()=>{addNewsRow("assets/glasses.jpg","お相手は「マッチした瞬間、気づいた」？　証言が拡散　賛否真っ二つ","芸能デスク ・ たった今",()=>openTinderArticle()); setHeat(91);},80000);
 later(()=>{addNewsRow("assets/crown.jpg","『アプリを使う自由』か『ファンへの配慮』か　現役アイドルの私生活、議論は続く","芸能デスク ・ たった今",null); setHeat(94);},96000);
 later(()=>{addNewsRow("assets/stage.jpg","事務所『アプリの退会を確認』　今後の活動は予定どおりと発表","芸能デスク ・ たった今",null); setHeat(88);},110000);
 }
@@ -1074,7 +1074,7 @@ function openStatement(){ $("#news-list").style.display="none"; const a=$("#news
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">r</span> rot***さん</div><div class="yt">複雑だけど、交際してないなら相手の子を叩くのは違うと思う</div><div class="yb"><span class="like-btn">👍 そう思う 3,914</span><span>返信 208件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミの『彼女いない』は嘘じゃなかったんやね。それは信じる。アプリの方だけ、説明がほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">s</span> sak***さん</div><div class="yt">24歳の大人、アプリ使うくらい自由やと思うけどな。叩きすぎは違う</div><div class="yb"><span class="like-btn">👍 そう思う 5,102</span><span>返信 156件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
-function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「最初、アイドルだと知らなかった」</h2><div class="m">週刊デジタル ・ たった今</div><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた井汲大翔（24）について、出会いの経緯に新たな情報が出てきた。関係者によれば、きっかけはアプリ内の「Super Like」。送ったのは、彼の側だったという。なお、事務所は二人の交際を否定している。</p><p>拡散されているプロフィール写真は、ステージ衣装ではなく私服の自撮りで、本人のInstagramには載っていないものだった。お相手の女性は元々彼のファンだったとされる一方、連絡を取り合う間は「本人だとは気づかなかった」と周囲に話していたという証言もある。</p><div class="box">知人とされる人物「会った瞬間に本物だと気づいて、頭が真っ白になったそうです。連絡の間は、ただの“感じのいい人”だと思っていたみたいで」</div><p>ネットでは「ファンなのに気づかないのはおかしい」「私服の自撮りなら分からないかも」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づかなかった側も叩かれるのは気の毒。知らないまま好きになったなら、むしろ素直な話では</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
+function openTinderArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>出会いはマッチングアプリか　お相手は「マッチした瞬間、気づいた」？</h2><div class="m">週刊デジタル ・ たった今</div><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリ利用が報じられた井汲大翔（24）について、出会いの経緯に新たな情報が出てきた。関係者によれば、きっかけはアプリ内の「Super Like」。送ったのは、彼の側だったという。なお、事務所は二人の交際を否定している。</p><p>拡散されているプロフィール写真は、ステージ衣装ではなく私服の自撮りで、本人のInstagramには載っていないものだった。お相手の女性は元々彼のファンで、名前と顔写真が一致していたため、マッチした時点で本人ではないかと気づいていたという。残る疑問は「本物か、写真を使った別人か」だけだったとされる。</p><div class="box">知人とされる人物「会った瞬間に本物だと確信したそうです。『写真の人とステージの人が、目の前にいた』って、頭が真っ白になったみたいで」</div><p>ネットでは「ファンなら気づくやろ、当然」「気づいたうえで会いに行ったのか」「現役アイドルが一般の人と同じようにアプリを使う時代か」と賛否が分かれている。所属事務所はアプリの利用について「確認中」としている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">19,204件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tat***さん</div><div class="yt">気づいてたなら、なおさら運命やん。ファンが推しとマッチするなんて、叩く話じゃないと思う</div><div class="yb"><span class="like-btn">👍 そう思う 6,311</span><span>返信 402件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">f</span> fan***さん</div><div class="yt">アプリで一般の人みたいに振る舞ってたなら、ファンへの説明はほしい。でも幸せなら…複雑</div><div class="yb"><span class="like-btn">👍 そう思う 3,872</span><span>返信 517件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
 function addNewsRow(img,h,m,cb){const d=document.createElement("div");d.className="newsrow";d.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><span><span class="h">${h}</span><br><span class="m">${m}</span></span>`; if(cb){d.style.cursor="pointer";d.addEventListener("click",cb)} $("#news-list").prepend(d); bump("news")}
 /* ============ X ============ */
 const X_POSTS=[
@@ -1087,7 +1087,7 @@ const X_POSTS=[
 {n:"さくらの推し活",h:"@sakura_act",t:"24歳、大人、一般の人とコーヒー飲んだだけ。犯罪でもなんでもない。あとマロンは関係ない。マロンだけは守って",m:["💬 432","🔁 3,987","❤️ 22,150"]},
 {n:"まとめ速報",h:"@matome_soku",t:"事務所が第1報コメント『交際の事実はございません』。アプリ利用は『確認中』のまま #大翔Tinder",m:["💬 3,020","🔁 18,442","❤️ 7,650"]},
 {n:"特定班",h:"@tokutei_work",t:"出会いの経緯、アプリ説が濃厚に。しかも彼の側から Super Like が先らしい。それが一番ざわついてるポイント",m:["💬 6,940","🔁 24,880","❤️ 11,203"]},
-{n:"まとめ速報",h:"@matome_soku",t:"『お相手は、会うまでアイドルだと気づかなかった』という証言が拡散。ファンだったのに、という声と、会えば分かるやろという声で真っ二つ #大翔Tinder",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
+{n:"まとめ速報",h:"@matome_soku",t:"『お相手は、マッチした瞬間に気づいていた』という証言が拡散。ファンなら当然分かる、という声と、気づいたうえで会ったのかという声で真っ二つ #大翔Tinder",m:["💬 4,512","🔁 19,730","❤️ 9,441"]},
 {n:"ロットダン💙",h:"@rottdan_love",t:"彼のほうから行ってた、のね…。でも交際じゃないなら、それは“出会い方”の話でしかないのかも。自分の中で整理がつかん",m:["💬 1,180","🔁 5,204","❤️ 21,870"]},
 {n:"布教垢",h:"@fukyou_hiro",t:"荒れてるタイムラインに布教置いとくね。彼のダンス、まずこれ見てから判断してほしい。ステージの上の人と、記事の中の人が同じ人に見えないなら、それが答えだと思う",m:["💬 640","🔁 8,910","❤️ 19,270"]},
 {n:"芸能ウォッチャー",h:"@geino_watch",t:"続報はまだなし。週末のファンミ、やるのか中止なのかもまだ出てない。事務所の『確認中』が長引くほど憶測が増えるタイプの炎上",m:["💬 861","🔁 5,430","❤️ 8,214"]},
@@ -1125,7 +1125,7 @@ const MENTIONS=[
 ["ロットダン💙@rottdan_love","@nao_0324 大翔は嘘ついてへんかったって、信じたい"],
 ["アンチ予備軍@anti_yobi","@nao_0324 匂わせだけは許せない。昨日の投稿なに？　偶然で済む話？"],
 ["なおの友達@yui_s","@nao_0324 えっっっ、なお！？　LINE見て！？"],
-["特定班@tokutei_work","@nao_0324 マッチングアプリで出会ったって本当？ 最初は身分を知らなかったって話も出てるけど…"],
+["特定班@tokutei_work","@nao_0324 マッチングアプリで出会ったって本当？ 最初から気づいてたって話も出てるけど…"],
 ["通りすがり@pass_by2","@nao_0324 拡散されてる私服自撮り、あれ彼のTinderのプロフ写真なの？"],
 ["まとめ垢@matome_jp","@nao_0324 コメント欄が地獄と天国の半々になってる"],
 ];
@@ -1134,10 +1134,10 @@ function floodMentions(){const list=$("#x-men-list"); MENTIONS.forEach((m,i)=>la
 const IG_CMTS=[
 ["yun_o0","あんたなの？　大翔とマッチした相手って"],["rottdan_a","複雑だけど…交際してないのは信じるよ"],["tokutei_jp","このカフェ、昨日の彼の投稿と同じ店だよね"],["m_support","炎上してるけど応援してます！"],["pass_fan","フォロワー3万超えおめでとう（違う）"],["hiro_wife（自称）","付き合ってないなら、安心していいの…？　マロンの投稿だけは今まで通り見たい"],["yui_s","なお！？　これなおのアカウントだよね！？"],["geino_otaku","匂わせじゃなくて偶然だと思いたい"],["sakura_act","コメント欄荒れてるけど、あなたの日常はあなたのものだよ"],["anti_01","説明がほしい。ファンは泣いてるよ"],["canvas_mama","娘がファンで…交際否定は信じたい"],["neutral_jp","騒ぎすぎ。そっとしておこうよ"],["hiro_gachi","ステージの大翔が本物なら、それでいいと思う"],["watcher_x","通知が止まらないアカウント、初めて見た"],
 ["tokutei2","Tinderのプロフ写真って言われてる私服自撮り、本人のっぽい…IGに載せてない写真だよね"],
-["fan_omo","ファンだったのに気づかなかった、って本当なら逆に運命すぎる。ドラマやん"],
+["fan_omo","ファンで、マッチした瞬間に気づいたって本当なら運命すぎる。ドラマやん"],
 ["dou_tan","同担として、なおさんのこと悪く言いたくない。…でも気持ちの整理はついてない。日プから見てる同担、みんな同じ顔してる"],
 ["sagasu_fan","推しの名前で検索したらここに辿り着いた…荒らす気はないよ、ごめんね"],
-["m_check","最初知らなかったなら、叩かれ方はちょっと同情する。マッチした側にも事情はある"]
+["m_check","最初から気づいてたなら、覚悟のうえってことか。マッチした側にも事情はある"]
 ];
 function floodComments(){IG_CMTS.forEach((c,i)=>later(()=>{const d=document.createElement("div");d.className="cmt";d.innerHTML=`<b>${c[0]}</b>${c[1]}<span class="tm">今</span>`;$("#ig-cmts").appendChild(d);state.igCmt++;$("#ig-cmt-n").textContent=state.igCmt;$("#ig-bell").textContent="•";bump("ig");const h=document.createElement("div");h.className="cmt";if(i%3===0){h.innerHTML=`<b>${c[0]}</b>例の投稿、掘り返されてるよ…`;$("#his-cmts").appendChild(h)}},4000+i*6500))}
 const DMS=[
@@ -2468,7 +2468,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     var w=$("#match-list"); if(!w) return;
     var m = window.__tinder && window.__tinder.matched;
     if(!m){ w.innerHTML='<div style="background:#f8f8fa;border-radius:14px;padding:16px;font-size:13.5px;color:#8e8e93;line-height:1.7">まだマッチはありません。<br>「発見」で ひろと を Like すると、ここに表示されます。</div>'; return; }
-    w.innerHTML='<div style="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" width="52" height="52" style="border-radius:50%;object-fit:cover" alt=""><span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">ひろと ⭐</span><span style="font-size:12px;color:#8e8e93">'+(typeof state!=="undefined"&&state._tinderDone?"LINE交換済み ・ 次は10/4":"マッチしました ・ メッセージしてみよう")+'</span></span><button id="ml-chat" style="margin-left:auto;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button></div>';
+    w.innerHTML='<div style="display:flex;gap:11px;align-items:center;background:#fff;border:1px solid #f0f0f0;border-radius:14px;padding:11px"><img loading="lazy" decoding="async" src="assets/tinder-hiroto-1.jpg" width="52" height="52" style="border-radius:50%;object-fit:cover" alt=""><span style="min-width:0"><span style="font-weight:900;font-size:15px;display:block">ひろと ⭐</span><span style="font-size:12px;color:#8e8e93">'+(typeof state!=="undefined"&&state._tinderDone?(state.chapter>=3?"LINEで話してる":"LINE交換済み ・ 次は10/4"):"マッチしました ・ メッセージしてみよう")+'</span></span><button id="ml-chat" style="margin-left:auto;background:linear-gradient(135deg,#fd267d,#ff7854);color:#fff;border:none;border-radius:999px;padding:9px 14px;font-weight:800;cursor:pointer;font-family:inherit;flex:none">チャット</button></div>';
     var b=$("#ml-chat"); if(b) b.addEventListener("click",function(){ panes("chat"); });
   }
   document.getElementById("ttab-match").addEventListener("click",function(){ setTimeout(function(){ renderMatchList(); panes("match"); },30); });
@@ -11961,7 +11961,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v363"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v364"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
