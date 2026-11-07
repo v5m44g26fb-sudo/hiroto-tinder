@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v359</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v360</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11960,7 +11960,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v359"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v360"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12991,6 +12991,23 @@ dock.addEventListener("click",function(e){
     d.addEventListener("click",function(){ var q=document.querySelector("#x-q"); if(q) q.value=t[1]; if(typeof doSearch==="function") doSearch(t[1]); });
     d.innerHTML='<div class="cat">'+(i+1)+' ・ '+t[0]+'</div><div class="kw">'+t[1]+'</div><div class="cnt">'+t[2]+'</div>';
     w.appendChild(d); });
+  }catch(e){}
+ },1500);
+})();
+</script>
+
+<script>
+/* ===== v360: her follower counts jump once she is identified in the scandal ===== */
+(function(){
+ if(window.__v360) return; window.__v360=true;
+ setInterval(function(){
+  try{
+   if(typeof state==="undefined") return;
+   if(!(state.phase==="scandal"||state.act2)) return;
+   if(document.body.dataset.fol) return; document.body.dataset.fol="1";
+   [["#x-fol-n","3,214"],["#w-x","3,214"],["#set-x","3,214"],["#ig-fol-n","1,208"],["#w-ig","1,208"],["#set-ig","1,208"]].forEach(function(pair){
+    var el=document.querySelector(pair[0]); if(el) el.textContent=pair[1];
+   });
   }catch(e){}
  },1500);
 })();
