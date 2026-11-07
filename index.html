@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v325</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v326</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -943,21 +943,34 @@ async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2�
     {label:"怒ってないよ。…目、笑ってるし",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("大きな声、出さんでくれて助かったわ"); if(!alive(t))return; await himMsg("今日は、ただのデートで頼むな"); ch2main(t); }},
     {label:"…私、ファンなんですけど！",fn:async()=>{ if(!alive(t))return; await himMsg("プロフ見た時から、薄々は気づいてた笑"); if(!alive(t))return; await himMsg("でも今日くらいは、ファンとアイドルなしで"); if(!alive(t))return; await himMsg("ただの、デートでお願いします"); ch2main(t); }},
   ]); }
-async function ch2main(t){ if(!alive(t))return; await himMsg("バイバイした瞬間から、もうLINE開いてる俺",700); if(!alive(t))return; await himMsg("今日さ、カフェ入る前、俺めっちゃ緊張しててん"); if(!alive(t))return; await himMsg("なおは、どうやった？");
-  if(!alive(t))return; const cont2=async()=>{ if(!alive(t))return; await himMsg("駅でバイバイする時さ"); if(!alive(t))return; await himMsg("あと5分、引き止めたかったんは内緒やで"); if(!alive(t))return; await himMsg("…人混みで袖掴んだやろ",1500); if(!alive(t))return; await himMsg("あれ、離れたくなかっただけやねん");
-  later(()=>{ addPhoto("assets/ig-drink.jpg","初デート☕️"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },6500);
-  later(async()=>{ if(!alive(t))return; await himMsg("帰ってから、マロンに報告してた"); if(!alive(t))return; await himMsg("「今日、女の子とカフェ行ってきた」って"); if(!alive(t))return; await himMsg("マロン、嫉妬してたわ。たぶん"); if(!alive(t))return; await himMsg("…俺だけ、浮かれてた？"); if(!alive(t))return; await himVoice("assets/vm-date.mp3","0:03");
-    if(!alive(t))return; askChoices("なおの返信を選んで",[
-      {label:"浮かれてた。隠せてなかったと思う",fn:async()=>{ if(!alive(t))return; await himMsg("…ほんま？"); await himMsg("よかった、おそろいや"); later(()=>povGate(1,3),2000); }},
-      {label:"次は時間、もっと長くしよ",fn:async()=>{ if(!alive(t))return; await himMsg("俺もやで"); await himMsg("考えとく。期待しててええで"); later(()=>povGate(1,3),2000); }},
-      {label:"袖じゃなくて、手でもよかったのに",fn:async()=>{ if(!alive(t))return; await himMsg("…っ、それは",1700); if(!alive(t))return; await himMsg("…次は、そうする"); later(()=>povGate(1,3),2000); }},
-    ]); },8000); };
+async function ch2main(t){ if(!alive(t))return;
+  later(()=>toast("☕ <b>（カフェ。画面の中の人より、少しだけ声が低かった）</b>"),600);
+  later(()=>toast("💓 <b>（緊張してるのは、向かい側も同じみたいだった）</b>"),3200);
+  await himMsg("…ほんまに、来たな",900); if(!alive(t))return; await himMsg("俺も、ほんまに来てもうたけど");
+  if(!alive(t))return; const cont2=async()=>{ if(!alive(t))return;
+  later(()=>{ addPhoto("assets/ig-drink.jpg","初デート☕️"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },2500);
+  await himMsg("なおさ、カフェ入る前な",1200); if(!alive(t))return; await himMsg("俺、めっちゃ緊張しててん"); if(!alive(t))return; await himMsg("…人混みで、袖掴んだやろ"); if(!alive(t))return; await himMsg("あれ、離れたくなかっただけやねん");
+  later(()=>toast("🌆 <b>（夕方。店を出ても、二人とも帰る素振りを見せなかった）</b>"),2600);
+  if(!alive(t))return; await himMsg("このあと、時間ある？",1600); if(!alive(t))return; await himMsg("…もう一軒、行かん？"); if(!alive(t))return; await himMsg("飲むほうの",900);
+  if(!alive(t))return; const drinks=async()=>{ if(!alive(t))return;
+  later(()=>toast("🍻 <b>（個室の居酒屋。帽子を取った彼は、さっきより近くに座った）</b>"),1200);
+  await himMsg("なおってさ",1400); if(!alive(t))return; await himMsg("マッチした時から、思ってたより、ずっと",1200); if(!alive(t))return; await himMsg("…顔が、タイプやねん",1500);
+  later(()=>toast("💭 <b>（やっぱり顔か。……でも、酒の勢いでしか言えない本音って、ある）</b>"),1500);
+  if(!alive(t))return; await himMsg("終電、もうないで",1700); if(!alive(t))return; await himMsg("…帰す、つもりやったんやけどな",1400);
+  later(()=>toast("🌙 <b>——画面は、ここで静かに暗くなる</b>"),1600);
+  later(()=>toast("🌅 <b>（気づいたら、朝だった。何が変わったのか、まだ二人とも言葉にできなかった）</b>"),3400);
+  later(()=>povGate(1,3),5200); };
+  askChoices("なおの返信を選んで",[
+    {label:"行く。今日は帰りたくない気分",fn:async()=>{ if(!alive(t))return; await himMsg("…っ、ほんまに？"); drinks(); }},
+    {label:"一軒だけ、ね",fn:async()=>{ if(!alive(t))return; await himMsg("一軒で、済むかな"); drinks(); }},
+    {label:"…バレへん店、知ってる？",fn:async()=>{ if(!alive(t))return; await himMsg("任しとき"); await himMsg("人目、ないとこ知ってる"); drinks(); }},
+  ]); };
   askChoices("なおの返信を選んで",[
     {label:"緊張、バレバレやったよ笑",fn:async()=>{ if(!alive(t))return; await himMsg("出てた？　…終わったわ"); cont2(); }},
     {label:"私も。手、震えてたし",fn:async()=>{ if(!alive(t))return; await himMsg("おそろいやったんやな"); cont2(); }},
   ]); }
-async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","抑えられなくなる前に、引く一線。"); chapterCard("第3話","線引き","好きになる前にブレーキを踏んだのは、彼の方だった。<br><span class=\"cc-when\">10月12日（日）夕方 ・ 帰り道 —— LINEを開いてね</span>"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400); later(()=>toast("🍂 <b>（日が落ちてきた。駅までの道が、いつもより短く感じる）</b>"),3700); later(()=>toast("🚶 <b>（……急に、静かになった。何か言おうとしてる顔だった）</b>"),6000);
-  await himMsg("なお",1500); if(!alive(t))return; await himMsg("さっきの犬、見た？　マロンに似てた",900); if(!alive(t))return; await himMsg("マロンにも、いつか会わせたいけど…",900); if(!alive(t))return; await himMsg("言わなあかんことが、あってん",1700);
+async function ch3(t){ addDayChip("10月12日（日）"); setChapterWidget("第3話『線引き』","一度は越えた。だから、引く一線。"); chapterCard("第3話","線引き","初日に越えてしまったからこそ、彼はブレーキを踏んだ。<br><span class=\"cc-when\">10月12日（日）夕方 ・ 帰り道 —— LINEを開いてね</span>"); later(()=>toast("🌙 <b>（並木道。歩幅を合わせてくれてて、ずっと肩が触れそうな距離だった）</b>"),1400); later(()=>toast("🍂 <b>（日が落ちてきた。駅までの道が、いつもより短く感じる）</b>"),3700); later(()=>toast("🚶 <b>（……急に、静かになった。何か言おうとしてる顔だった）</b>"),6000);
+  await himMsg("なお",1500); if(!alive(t))return; await himMsg("さっきの犬、見た？　マロンに似てた",900); if(!alive(t))return; await himMsg("マロンにも、いつか会わせたいけど…",900); if(!alive(t))return; await himMsg("言わなあかんことが、あってん",1700); if(!alive(t))return; await himMsg("初日のこと、俺は後悔してへん",1300); if(!alive(t))return; await himMsg("でも、あのまま続けるんは、違うと思ってん",1200);
   if(!alive(t))return; const cont3=async()=>{ if(!alive(t))return; await himMsg("このまま駅まで送るのが、正解なんやろな",1300); if(!alive(t))return; await himMsg("これ以上会ったら、俺ほんまに…",1500); if(!alive(t))return; await himMsg("…ごめん、今のは忘れて",1300); later(()=>toast("✋ <b>（伸びかけた手が、途中で止まって、落ちた）</b>"),1500); if(!alive(t))return; await himMsg("俺の仕事、知ってるやろ",1100); if(!alive(t))return; await himMsg("付き合うとかは、できへんねん",1400); if(!alive(t))return; await himVoice("assets/vt-line2.mp3","0:08"); if(!alive(t))return; await himMsg("会うなって、言いたいわけちゃうねん",1100); if(!alive(t))return; await himMsg("…言い訳に聞こえるよな",1000);
   if(!alive(t))return; const fin=async()=>{ later(async()=>{ if(!alive(t))return; await showPOV(2); if(!alive(t))return; startInterlude(t); },2600); };
   askChoices("なおの答えは——",[
@@ -3498,8 +3511,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const SYN=[
   {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。何人かスワイプした先で、ひとりの男の子から Super Like が届いていた。アイドルみたいな顔立ち。でも、私服の自撮りはどこか印象が違って——「本人なわけない」と、なおは打ち消す。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
   {no:"幕間",tt:"井汲かも？",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してから、初デートまでの3日間。彼の仕事の日が、推しの音楽番組の収録日と重なって——既読だけがつく昼、夜の失言、スクショして見比べる公式スケジュール。送られてきた\"間違い写真\"は、ステージの袖だった。偶然が重なりすぎて、もう「気のせい」では片づかない。それでも、確証はまだない。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
-  {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",sy:"数日のやり取りの末、LINEを交換して初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。元々ファンだった なお は、会った瞬間に気づいてしまう。彼は最初、アイドルだということを隠していた。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
-  {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"会うたびに距離は縮まるのに、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——抑えられなくなる前にと、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
+  {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",sy:"数日のやり取りの末、初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。カフェのあと、もう一軒。終電を過ぎて、二人は線を越えた——その先は、二人だけの秘密。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
+  {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"初日に一線を越えてしまった二人。それでも、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——越えたからこそ、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
   {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
   {no:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",sy:"友達未満、でも他人じゃない。名前のない関係のまま、嫉妬と独占欲と「我慢」が積み重なっていく。そしてその夜、引いたはずの線を、ふたりは越えてしまう——その先は、二人だけの秘密。",un:()=>state.chapter>=4||past(),go:()=>jumpLine("10月18日（土）")},
   {no:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",sy:"あの夜のあと、連絡は少しずつ間遠になった。「後悔はしてへんねん」——久しぶりに会えたカフェで交わす、ぎこちない優しさ。何もなかったことにはできないまま、時間だけが進んでいく。",un:()=>state.chapter>=5||past(),go:()=>jumpLine("11月1日（土）")},
@@ -3578,17 +3591,17 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const anchor=$("#chapter-card"); if(anchor&&anchor.parentElement) anchor.parentElement.appendChild(ov);
 
  const POVS={
-  1:{sub:"彼のスマホ —— 10月4日（土）夜",steps:[
-   {k:"note",t:"10月4日（土）23:12"},
-   {k:"mono",t:"（帰り道。別れたばっかりやのに、もうスマホ見てる）"},
-   {k:"mgr",t:"明日の入り、9時やからな。寝坊すんなよ"},
-   {k:"him",t:"分かってる。もう帰ってる"},
-   {k:"mgr",t:"今日は機嫌ええな"},
-   {k:"him",t:"…そう見える？"},
-   {k:"mono",t:"（見えるんやろな。隠すの下手やねん、俺）"},
-   {k:"draft",t:"今日のカフェ、また行きたい"},
-   {k:"draft",t:"プリンのやつ、目輝いてたな"},
-   {k:"mono",t:"（送ったのは『おつかれ、また明日な』だけ。……ずるいな、俺）"}
+  1:{sub:"彼のスマホ —— 10月5日（日）昼",steps:[
+   {k:"note",t:"10月5日（日）11:26"},
+   {k:"mono",t:"（起きたら、昼やった。昨日のことが、頭から離れへん）"},
+   {k:"mgr",t:"今日はオフやけど、明日の入り早いで"},
+   {k:"him",t:"はい、分かってます"},
+   {k:"mono",t:"（後悔は、してへん。それだけは、ほんまやねんけど）"},
+   {k:"draft",t:"昨日は、ありがとう"},
+   {k:"mono",t:"（薄い。これじゃ、なかったみたいやん）"},
+   {k:"draft",t:"また、会いたい"},
+   {k:"mono",t:"（それは、もっと送られへんかった）"},
+   {k:"note",t:"送信されたのは『おはよ。昨日、楽しかったな』だけだった"}
   ]},
   2:{sub:"彼のスマホ —— 10月12日（日）夜",steps:[
    {k:"note",t:"10月12日（日）21:48"},
@@ -3773,7 +3786,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    const list=$("#syn-list"); if(!list||list.querySelector(".pov-card")) return;
    const seen=state._povSeen||{}; const pastSc=state.phase==="scandal"||!!state.act2;
    const defs=[
-     {n:1,tt:"彼の画面 ― 初デートのあと",dt:"10月4日（土）夜 ・ 電車の中",un:seen[1]||state.chapter>=3||pastSc},
+     {n:1,tt:"彼の画面 ― 初デートのあと",dt:"10月5日（日）昼 ・ 送れなかった言葉",un:seen[1]||state.chapter>=3||pastSc},
      {n:2,tt:"彼の画面 ― 線引きの夜",dt:"10月12日（日）夜 ・ 帰り道",un:seen[2]||state.chapter>=4||pastSc},
      {n:3,tt:"彼の画面 ― 炎上の夜",dt:"11月2日（日）深夜 ・ 声明の前",un:seen[3]||!!state.ended||!!state.act2},
      {n:4,tt:"彼の画面 ― 線引きの翌朝",dt:"10月13日（月）朝 ・ 出勤の電車",un:seen[4]||!!state._ch3bDone||state.chapter>=4||pastSc},
@@ -11757,7 +11770,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v325"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v326"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12258,7 +12271,7 @@ dock.addEventListener("click",function(e){
  if(window.__v288) return; window.__v288=true;
  if(typeof window.chapter!=="function"||typeof himMsg!=="function"||typeof askChoices!=="function") return;
  async function ch2b(t){
-  setChapterWidget("特別編『まだ名前のない日々』","付き合う、の手前がいちばん甘い一週間。");
+  setChapterWidget("特別編『まだ名前のない日々』","越えた翌日から、線引きの前日まで。");
   chapterCard("特別編","まだ名前のない日々","デートの翌日から、線引きの前日まで。<br><span class=\"cc-when\">10月5日（日）〜11日（土） ・ 初デートのあとの一週間 —— LINEを開いてね</span>");
   addDayChip("10月5日（日）");
   await himMsg("おはよ。昨日、楽しかったな",1200); if(!alive(t))return;
@@ -12268,7 +12281,7 @@ dock.addEventListener("click",function(e){
    {label:"マロンに会える日、楽しみにしてる",fn:async()=>{ await himMsg("…そのうちな"); await himMsg("マロンは人見知りやけど"); res(); }},
    {label:"私も楽しかった",fn:async()=>{ await himMsg("俺もやで"); await himMsg("…何回も思い出してる"); res(); }}
   ]); }); if(!alive(t))return;
-  await himMsg("今日は一日、練習やねん",900); if(!alive(t))return;
+  await himMsg("昨日の夜のこと、俺は後悔してへん",1300); if(!alive(t))return; await himMsg("…言っといたかった"); if(!alive(t))return; await himMsg("今日は一日、練習やねん",900); if(!alive(t))return;
   await himMsg("行ってくるわ",700); if(!alive(t))return;
   addDayChip("10月7日（火）");
   await himMsg("カフェのプリン、思い出してた",1500); if(!alive(t))return;
