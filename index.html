@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v348</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v349</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2738,6 +2738,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   ["🔥","マッチした日","9月27日 ・ TinderでSuper Like",()=>state.chapter>=1,null],
   ["⭐","会ったあとの3日間","10月1日〜3日 ・ LINE",()=>state.chapter>=2,null],
   ["☕","名乗り","10月4日 ・ 名前の話",()=>state.chapter>=2,"assets/vt-greet.mp3"],
+  ["🌂","会わない二週間","10月19日〜31日 ・ LINE",()=>state.chapter>=5&&state._route!=="dating",null],
   ["🌙","線引き","10月12日 ・ 並木道",()=>state.chapter>=3,"assets/vt-line2.mp3"],
   ["🍁","近づく休日","10月13日〜17日 ・ 線のこちら側",()=>!!state._ch3bDone||state.chapter>=4,null],
   ["🌃","あの夜","10月18日 ・ 二人だけの秘密",()=>state.chapter>=5,null],
@@ -3539,6 +3540,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"初日に一線を越えてしまった二人。それでも、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——越えたからこそ、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
   {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
   {no:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",sy:"友達未満、でも他人じゃない。名前のない関係のまま、嫉妬と独占欲と「我慢」が積み重なっていく。そしてその夜、引いたはずの線を、ふたりは越えてしまう——その先は、二人だけの秘密。",un:()=>state.chapter>=4||past(),go:()=>jumpLine("10月18日（土）")},
+  {no:"幕間",tt:"会わない二週間",dt:"10月19日（日）〜10月31日（金） ・ LINE",sy:"線を引いたあとの、会わない二週間。傘の一往復、ラジオから聞こえる彼の声、会わない週末。それでも最後の日、彼から「明日、会わへん？」が届く。（通常ルート）",un:()=>(state.chapter>=5&&state._route!=="dating")||past(),go:()=>jumpLine("10月19日（日）")},
   {no:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",sy:"あの夜のあと、連絡は少しずつ間遠になった。「後悔はしてへんねん」——久しぶりに会えたカフェで交わす、ぎこちない優しさ。何もなかったことにはできないまま、時間だけが進んでいく。",un:()=>state.chapter>=5||past(),go:()=>jumpLine("11月1日（土）")},
   {no:"第6話",tt:"バレた日",dt:"11月2日（日） ・ 夜",sy:"カフェでの目撃写真と、拡散されていくTinderのプロフィール。「現役アイドル、マッチングアプリ利用か」——騒ぎの矛先は、交際ではなく“アプリを使っていたこと”そのものへ。なおのSNSにも、波が押し寄せる。",un:()=>past(),go:()=>jumpLine("11月2日（日）")},
   {no:"炎上編",tt:"コメントと声明",dt:"11月2日（日） ・ 深夜",sy:"事務所は「交際の事実はございません」と否定し、彼はアプリの利用を認めて謝罪する。マネージャーからの電話——「今後は彼との連絡も控えてください」。その一言が、ふたりの終わりを決めていく。",un:()=>!!state.started||!!state.act2,go:()=>show("news")},
@@ -8085,6 +8087,7 @@ app.style.display="flex";},true);
   ch0:{ph:"プロローグ",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/tinder-hiroto-1.jpg",btn:"物語をはじめる ▶",go:"tinder",n:0},
   ch1:{ph:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/tinder-hiroto-1.jpg",btn:"つづきを読む ▶",go:"tinder",n:1},
   sus:{ph:"幕間『会ったあとの3日間』",tt:"一度会ったあとの、名前のない3日間",dt:"10月1日（水）〜10月3日（金） ・ LINE",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:1},
+  normlx:{ph:"幕間『会わない二週間』",tt:"線の内側で、会わない日々",dt:"10月19日（日）〜10月31日（金） ・ LINE",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:1},
   ch2:{ph:"第2話",tt:"名前の話",dt:"10月4日（土） ・ 夜",img:"assets/cafe.jpg",btn:"つづきを読む ▶",go:"line",n:2},
   ch3:{ph:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",img:"assets/ig-sunset.jpg",btn:"つづきを読む ▶",go:"line",n:3},
   ch4:{ph:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:4},
@@ -11913,7 +11916,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v348"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v349"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12522,9 +12525,9 @@ dock.addEventListener("click",function(e){
  function snap(){
   try{
    if(state.act2) return {at:"act2", ending:state.ending||"wait", route:state._route||""};
-   if(state.phase==="scandal") return {at:"scandal", route:state._route||"", routeQ:!!state._routeQ, interlude:!!state._interludeDone, mem:state._mem||[]};
+   if(state.phase==="scandal") return {at:"scandal", route:state._route||"", routeQ:!!state._routeQ, interlude:!!state._interludeDone, normlx:!!state._normInterludeDone, mem:state._mem||[]};
    var n=state.chapter||0;
-   if(n>=2) return {at:"chapter", n:n, route:state._route||"", routeQ:!!state._routeQ, interlude:!!state._interludeDone, mem:state._mem||[], ftN:state._ftN||0, tinderCall:!!state._tinderCall};
+   if(n>=2) return {at:"chapter", n:n, route:state._route||"", routeQ:!!state._routeQ, interlude:!!state._interludeDone, normlx:!!state._normInterludeDone, mem:state._mem||[], ftN:state._ftN||0, tinderCall:!!state._tinderCall};
    return null;
   }catch(e){ return null; }
  }
@@ -12544,6 +12547,7 @@ dock.addEventListener("click",function(e){
    if(data.ftN) state._ftN=data.ftN;
    if(data.tinderCall) state._tinderCall=true;
    if(data.interlude) state._interludeDone=true;
+   if(data.normlx) state._normInterludeDone=true;
    if(data.route) state._route=data.route;
    if(data.routeQ) state._routeQ=true;
   }catch(e){}
@@ -12880,6 +12884,51 @@ dock.addEventListener("click",function(e){
   if(bar.style.display==="none"){ bar.style.display="flex"; q.focus(); }
   else close();
  });
+})();
+</script>
+
+<script>
+/* ===== v349: normal-route interlude 'two weeks apart' (10/19-31) before ch5 ===== */
+(function(){
+ if(window.__v349) return; window.__v349=true;
+ async function normInterlude(t){
+  setChapterWidget("幕間『会わない二週間』","線の内側で、会わない日々。");
+  chapterCard("幕間","会わない二週間","線を引いたあとの、会わない二週間。<br><span class=\"cc-when\">10月19日（日）〜10月31日（金） ・ LINE —— LINEを開いてね</span>");
+  show("line"); openChat();
+  addDayChip("10月19日（日）");
+  later(()=>toast("💭 <b>（線の内側の、最初の一日）</b>"),400);
+  await himMsg("傘、乾いた？",900); if(!alive(t))return;
+  await new Promise(res=>{ askChoices("なおの返信を選んで",[
+   {label:"乾いた。今度、返すね",fn:async()=>{ await himMsg("いつでもええで",800); res(); }},
+   {label:"まだ玄関にある",fn:async()=>{ await himMsg("…置いといてくれて、ええよ",800); res(); }}
+  ]); }); if(!alive(t))return;
+  addDayChip("10月22日（水）");
+  later(()=>toast("🎧 <b>（彼が出たラジオの配信日。帰り道、イヤホンで聞いた。声だけの彼に、笑うところで私も笑ってた）</b>"),400);
+  await himMsg("今日、ラジオやった",1200); if(!alive(t))return;
+  await himMsg("聞かんでええで。…恥ずかしいし",900); if(!alive(t))return;
+  addDayChip("10月26日（日）");
+  later(()=>toast("💭 <b>（会わない週末。サウナで整えて、買い物して、普通の日曜日）</b>"),400);
+  await himMsg("マロン、ずっと寝てる",1200); if(!alive(t))return;
+  await himMsg("平和な日曜日や",800); if(!alive(t))return;
+  addDayChip("10月31日（金）");
+  await himMsg("明日、暇？",1400); if(!alive(t))return;
+  await himMsg("久しぶりに、会わへん？",1100); if(!alive(t))return;
+  later(()=>toast("💭 <b>（返事は、すぐ打った）</b>"),500);
+  await new Promise(r=>setTimeout(r,2200)); if(!alive(t))return;
+  state._normInterludeDone=true;
+  const t2=state._token;
+  chapter(5);
+ }
+ var _ch349=window.chapter;
+ window.chapter=function(n){
+  if(n===5 && state._route!=="dating" && !state._normInterludeDone && state.phase==="prologue"){
+   state._normInterludeDone="run";
+   const t=state._token;
+   normInterlude(t);
+   return;
+  }
+  return _ch349.apply(this,arguments);
+ };
 })();
 </script>
 </body>
