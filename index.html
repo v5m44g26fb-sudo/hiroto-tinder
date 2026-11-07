@@ -2292,15 +2292,17 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChip("9月28日（日）");
     await tThem("おはよ");
     await tPhoto("assets/ig-food.jpg","昨日の差し入れ。豪華やった");
-    await tThem("差し入れの唐揚げ、うまかったわ");
     await tThem("昨日、仕事が夜までやってん");
     tNote("（差し入れ、って響き。芸能の現場みたいな言い方…考えすぎ？）");
-    await tThem("…なぁ、なおは夜、飲み行くほう？");
-    await tThem("俺、誘うん下手やけど");
+    await tThem("…なぁ、なお");
+    await tThem("今日の夜、暇？");
+    tNote("（2日目で、今日の夜の空き確認。…早い、よね？）");
+    await tThem("あ、いや");
+    await tThem("会う話、焦りすぎやな。忘れて");
     tChoices("なおの返信を選んで",[
-      {label:"からあげある店なら行く笑", fn:async()=>{ await tThem("気が合うな笑"); await tThem("唐揚げ仲間や"); stepMaron(); }},
-      {label:"夜の誘い、早ない？笑", fn:async()=>{ await tThem("…早かったか。ごめん"); await tThem("昼のカフェからで、ええねん"); stepMaron(); }},
-      {label:"差し入れもらえる仕事、ええな", fn:async()=>{ await tThem("…たまに、な"); await tThem("毎日やないで"); stepMaron(); }}
+      {label:"暇やけど、今日はまだ早い笑", fn:async()=>{ await tThem("…せやな。焦ったわ"); await tThem("ほな、昼のカフェからで、ええねん"); stepMaron(); }},
+      {label:"なんで？ 会いたいん？", fn:async()=>{ await tTyping(1700); await tThem("…会いたい、かも"); tNote("（「かも」の言い方、ずるい。逃げ道残して踏み込むタイプ…）"); stepMaron(); }},
+      {label:"夜の誘い、早ない？笑", fn:async()=>{ await tThem("…早かったか。ごめん"); await tThem("昼のカフェからで、ええねん"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
