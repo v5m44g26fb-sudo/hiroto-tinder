@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v356</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v357</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9212,16 +9212,16 @@ setInterval(upd,900); upd();
   await himMsg("こっちでも、よろしくな😎",1400); if(!alive(t))return;
   await himMsg("LINEやと、声も写真も送りやすいしな"); if(!alive(t))return;
   await himMsg("あ、明日なんやけど"); if(!alive(t))return;
-  await himMsg("朝から晩まで、仕事が詰まってるねん"); if(!alive(t))return;
+  await himMsg("朝から晩まで、収録が詰まってるねん"); if(!alive(t))return;
   await himMsg("返信、だいぶ遅なると思う。先に謝っとくわ"); if(!alive(t))return;
-  toast("💭 <b>（明日、朝から晩まで…。収録の日やな、とは口に出さない。会った夜も、その話はしなかったから）</b>");
+  toast("💭 <b>（「収録」って、あっさり言う。…会った夜は避けてた話を、もう隠さない）</b>");
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"忙しい人は、応援したくなる",fn:async()=>{ await himMsg("ありがとう"); await himMsg("終わったら、真っ先に連絡する"); res(); }},
-   {label:"明日って、どんな仕事なん？",fn:async()=>{ await himMsg("内緒のやつ笑"); await himMsg("ヒントは…声と体力、両方使う仕事"); toast("💭 <b>（声と体力、両方使う仕事。…知ってるくせに知らないふりをする私も、相当たち悪い）</b>"); res(); }}
+   {label:"明日って、どんな仕事なん？",fn:async()=>{ await himMsg("歌の仕事"); await himMsg("朝から収録やねん、晩まで"); toast("💭 <b>（あっさり言う。…隠す気、ほんまにないんやな、この人）</b>"); res(); }}
   ]); }); if(!alive(t))return;
   await himMsg("ほな、今日は寝るわ"); if(!alive(t))return;
   await himMsg("おやすみ、なお"); if(!alive(t))return;
-  toast("💭 <b>（寝る前に、公式のスケジュールを開いた。明日の欄——「音楽番組 収録」。分かってたことの裏取りをしてる、私がいる）</b>");
+  toast("💭 <b>（寝る前に、公式のスケジュールを開いた。明日の欄——「音楽番組 収録」。彼の言葉と、ぴったり重なった）</b>");
   await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
   /* --- 10/2: read nothing all day, then he lets it slip --- */
   addDayChip("10月2日（木）");
@@ -9233,14 +9233,14 @@ setInterval(upd,900); upd();
   await himMsg("…やっと終わった",2400); if(!alive(t))return;
   await himMsg("今日は一日、歌って踊ってた"); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"…歌って踊ってた？",fn:async()=>{ await himMsg("あ、ちゃうちゃう",1500); await himMsg("近所のカラオケ大会やで"); await himMsg("朝から晩まで、ガチのやつ"); toast("💭 <b>（「カラオケ大会」ということに、しておく。…二人で、そういうことにしてる時間が増えていく）</b>"); res(); }},
+   {label:"…歌って踊ってた？",fn:async()=>{ await himMsg("うん、収録",1500); await himMsg("放送は、来週やで"); toast("💭 <b>（あっさり認める。疑う余地も、ないくらい）</b>"); res(); }},
    {label:"おつかれさま。今日はもう寝な",fn:async()=>{ await himMsg("ありがとう"); await himMsg("…明日は、もうちょい話せる日やから"); res(); }}
   ]); }); if(!alive(t))return;
-  toast("💭 <b>（「カラオケ大会 平日 朝から」で検索——出てこなかった。当たり前やのに、笑ってしまった）</b>");
+  toast("💭 <b>（寝る前に、今日の収録の放送日を調べた。来週の金曜——カレンダーに、入れてしまった）</b>");
   await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
-  toast("💭 <b>（今日の公式スケジュールも「音楽番組 収録」。彼の「歌って踊ってた」と、ぴったり重なる。…知ってる。もう、知ってるのに）</b>");
+  toast("💭 <b>（今日の公式スケジュールも「音楽番組 収録」。彼の「歌って踊ってた」と、ぴったり重なる。隠さない人の言葉は、全部ほんまやった）</b>");
   await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
-  toast("💭 <b>（検索履歴、また消した。消すのは、あの夜のことを思い出すから、かもしれん）</b>");
+  toast("💭 <b>（検索履歴は、推しの名前ばっかり。…前からやけど、今は意味が違う）</b>");
   /* --- 10/3: the photo he sent by mistake, and the eve of the date --- */
   addDayChip("10月3日（金）");
   await himMsg("おはよ。昨日は変な言い方して、ごめんな",1500); if(!alive(t))return;
@@ -9249,14 +9249,14 @@ setInterval(upd,900); upd();
   await himPhoto("assets/stage.jpg"); if(!alive(t))return;
   await himMsg("あ、ごめん"); if(!alive(t))return;
   await himMsg("送る写真、間違えた"); if(!alive(t))return;
-  await himMsg("これは前に、仕事の手伝い行ったとこの写真やで"); if(!alive(t))return;
+  await himMsg("昨日の収録の、袖の写真やで"); if(!alive(t))return;
   toast("💭 <b>（ステージの袖、照明の機材、積まれたスピーカー。——彼の「職場」の写真や、これ）</b>");
   await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💭 <b>（拡大して見た。壁の紙は曲順みたいな並びで、端には関係者パスみたいなのも写ってた。…ほんまに、隠す気ないな、この人）</b>");
   await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💭 <b>（スピーカーの上に、黒いキャップ。あの夜、私の目の前にいた人のやつと、同じ）</b>");
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"これ、ステージの写真やんな？",fn:async()=>{ await himMsg("…バレた？",1900); await himMsg("規模は、だいぶ大きめやけど"); toast("💭 <b>（目を逸らすどころか。…二人とも、名前だけは言わない約束みたいになってる）</b>"); res(); }},
+   {label:"これ、ステージの写真やんな？",fn:async()=>{ await himMsg("うん、ステージの袖",1900); await himMsg("まだ放送前やから、ここだけの話でな"); toast("💭 <b>（ここだけの話、が増えていく。残ってる秘密は、名前の話だけ）</b>"); res(); }},
    {label:"送り間違え、ドジやな笑",fn:async()=>{ await himMsg("ほんまやで笑"); await himMsg("内緒の写真ばっかり、増えていくな"); res(); }}
   ]); }); if(!alive(t))return;
   toast("💭 <b>（送られてすぐ、保存してた。証拠、じゃない。…思い出、のほうに近い）</b>");
@@ -11956,7 +11956,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v356"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v357"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
