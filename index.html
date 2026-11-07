@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v295</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v296</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3487,7 +3487,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const past=()=> state.phase==="scandal"||!!state.act2;
  const SYN=[
   {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。何人かスワイプした先で、ひとりの男の子から Super Like が届いていた。アイドルみたいな顔立ち。でも、私服の自撮りはどこか印象が違って——「本人なわけない」と、なおは打ち消す。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
-  {no:"幕間",tt:"井汲かも？",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してから、初デートまでの3日間。彼の仕事の日が、推しのグループの収録日と重なって——既読だけがつく昼、夜の失言、スクショして見比べる公式スケジュール。送られてきた\"間違い写真\"は、ステージの袖だった。偶然が重なりすぎて、もう「気のせい」では片づかない。それでも、確証はまだない。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
+  {no:"幕間",tt:"井汲かも？",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してから、初デートまでの3日間。彼の仕事の日が、推しの音楽番組の収録日と重なって——既読だけがつく昼、夜の失言、スクショして見比べる公式スケジュール。送られてきた\"間違い写真\"は、ステージの袖だった。偶然が重なりすぎて、もう「気のせい」では片づかない。それでも、確証はまだない。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
   {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",sy:"数日のやり取りの末、LINEを交換して初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。元々ファンだった なお は、会った瞬間に気づいてしまう。彼は最初、アイドルだということを隠していた。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
   {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"会うたびに距離は縮まるのに、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——抑えられなくなる前にと、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
   {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
@@ -8895,14 +8895,14 @@ setInterval(upd,900); upd();
   await himMsg("あ、明日なんやけど"); if(!alive(t))return;
   await himMsg("朝から晩まで、仕事が詰まってるねん"); if(!alive(t))return;
   await himMsg("返信、だいぶ遅なると思う。先に謝っとくわ"); if(!alive(t))return;
-  toast("💭 <b>（明日、朝から晩まで…。そういえば明日って、推しのグループの音楽番組、収録日じゃなかったっけ）</b>");
+  toast("💭 <b>（明日、朝から晩まで…。そういえば明日って、推しが出る音楽番組の収録日じゃなかったっけ）</b>");
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"忙しいんやね、がんばって",fn:async()=>{ await himMsg("ありがとう"); await himMsg("終わったら、真っ先に連絡する"); res(); }},
    {label:"明日って、どんな仕事なん？",fn:async()=>{ await himMsg("内緒のやつ笑"); await himMsg("ヒントは…声と体力、両方使う仕事"); toast("💭 <b>（声と体力、両方使う仕事——歌って、踊る人…？）</b>"); res(); }}
   ]); }); if(!alive(t))return;
   await himMsg("ほな、今日は寝るわ"); if(!alive(t))return;
   await himMsg("おやすみ、なお"); if(!alive(t))return;
-  toast("💭 <b>（寝る前に、グループの公式サイトのスケジュールを開いた。明日の欄——「音楽番組 収録」。スクショ、撮ってしまった）</b>");
+  toast("💭 <b>（寝る前に、推しの公式サイトのスケジュールを開いた。明日の欄——「音楽番組 収録」。スクショ、撮ってしまった）</b>");
   await new Promise(r=>setTimeout(r,2100)); if(!alive(t))return;
   /* --- 10/2: read nothing all day, then he lets it slip --- */
   addDayChip("10月2日（木）");
@@ -11634,7 +11634,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v295"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v296"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
