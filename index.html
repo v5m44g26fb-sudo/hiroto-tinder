@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v334</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v335</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -938,7 +938,7 @@ function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal";
 function chapter(n){ if(state.phase!=="prologue") return; state.chapter=n; const LD={1:"9月27日 土曜日",2:"10月4日 土曜日",3:"10月12日 日曜日",4:"10月18日 土曜日",5:"11月1日 土曜日"}; if(LD[n]) $("#lock-date").textContent=LD[n]; const ND={1:"9月27日（土）夜",2:"10月4日（土）夜",3:"10月12日（日）夜",4:"10月18日（土）夜",5:"11月1日（土）夜"}; if(ND[n]) $("#news-note").textContent=ND[n]; const t=state._token; if(n===1) ch1(t); else if(n===2) ch2(t); else if(n===3) ch3(t); else if(n===4) ch4(t); else if(n===5) ch5(t); }
 async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","「本人なわけない」——そう打ち消した出会いほど、忘れられない。<br><span class=\"cc-when\">9月27日（土） ・ Tinderで出会った日 —— ホームの Tinder を開いてね</span>"); state._tinderWaiting=true; toast("🔥 <b>Tinder</b>を開いて、スワイプしてみて"); }
 async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『初デート』","待ち合わせに現れたのは、本物だった。"); chapterCard("第2話","初デート","帽子とマスクの下から、見覚えのある目元が笑った。<br><span class=\"cc-when\">10月4日（土） ・ 待ち合わせ場所 —— LINEを開いてね</span>"); later(()=>toast("📍 <b>待ち合わせ</b>：帽子にマスクの人が、柱の陰からこっちを見てる"),500); later(()=>toast("💭 <b>（…歩き方も背格好も、知ってる。声を聞いたら、もう確信だった）</b>"),2400); later(()=>toast("💓 <b>（近づいてきた影に、心臓がうるさい。あと少しで、肩が触れそうだった）</b>"),4700); later(()=>toast("🚶 <b>（人混み。流されそうになったら、袖を掴まれた。…近い）</b>"),6900);
-  await himMsg("…なお？",700); if(!alive(t))return; await himMsg("来てくれて、ありがとう"); if(!alive(t))return; await himMsg("隠してたこと、まず謝らせて"); if(!alive(t))return; await himMsg("ひろとです。…本物のほうの"); if(!alive(t))return; await himMsg("怒ってる？"); if(!alive(t))return; await himVoice("assets/vt-greet.mp3","0:05");
+  await himMsg("…なお？",700); if(!alive(t))return; await himMsg("来てくれて、ありがとう"); if(!alive(t))return; await himMsg("名前、言ってなかったな。まず、それを言わせて"); if(!alive(t))return; await himMsg("ひろとです。…本物のほうの"); if(!alive(t))return; await himMsg("怒ってる？"); if(!alive(t))return; await himVoice("assets/vt-greet.mp3","0:05");
   if(!alive(t))return; askChoices("なおの反応は——",[
     {label:"怒ってないよ。…目、笑ってるし",fn:async()=>{ if(!alive(t))return; await himMsg("…うん、本物やで笑"); if(!alive(t))return; await himMsg("大きな声、出さんでくれて助かったわ"); if(!alive(t))return; await himMsg("今日は、ただのデートで頼むな"); ch2main(t); }},
     {label:"…私、ファンなんですけど！",fn:async()=>{ if(!alive(t))return; await himMsg("プロフ見た時から、薄々は気づいてた笑"); if(!alive(t))return; await himMsg("でも今日くらいは、ファンとアイドルなしで"); if(!alive(t))return; await himMsg("ただの、デートでお願いします"); ch2main(t); }},
@@ -2279,11 +2279,11 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   }
   async function stepWork(){
     await tThem("一個、言うとくな");
-    await tThem("俺、平日はレッスン…あ、仕事が詰まっててん");
-    tNote("（レッスン、って。ダンス？　歌？　…考えたら負けな気がする）");
+    await tThem("俺、平日はレッスンが詰まっててん");
+    tNote("（レッスン、ってあっさり言うやん。隠す気、ないタイプ？）");
     await tThem("返信、遅なる日あると思う");
     tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"レッスンって、何の？笑", fn:async()=>{ await tTyping(1900); await tThem("…習い事のほうやで"); await tThem("教える側ちゃう、通う側"); tNote("（習い事に通う大人の男…ダンス、とか？）"); stepFood(); }},
+      {label:"レッスンって、何の？笑", fn:async()=>{ await tTyping(1900); await tThem("歌と、ダンス"); await tThem("…なんでかは、まだ内緒で"); tNote("（歌とダンスのレッスン。…それ、もう答えみたいなもんやん）"); stepFood(); }},
       {label:"忙しい人は、嫌いじゃないよ", fn:async()=>{ await tThem("ありがとう"); await tThem("終わった日は、ちゃんと返すわ"); stepFood(); }},
       {label:"詮索しない。…今はね", fn:async()=>{ await tThem("ありがとう"); await tThem("助かる"); stepFood(); }}
     ]);
@@ -2369,7 +2369,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tNote("（スクショ、撮った。並べた。耳のほくろまで同じに見えて、スマホを伏せた）");
     tNote("（2枚目の写真の後ろの棚。見覚えのあるタオルのロゴ。文字は、読めなかった）");
     tNote("（検索履歴は、消した。ゆいに言ったら、絶対止められるやつ）");
-    tNote("（ヤリモクか、本人か。どっちに転んでも、普通の相手やないのは確かで）");
+    tNote("（隠しもしない。本人やから堂々としてるのか、偽物やから大胆なのか。…どっちにしても、普通の相手やない）");
     await tThem("おはよ。昨日は変な空気にしてごめんな",900);
     await tThem("寝不足やない？");
     tChoices("なおの返信を選んで",[
@@ -5377,9 +5377,17 @@ app.style.display="flex";},true);
    ["me","昨日の店、締めのプリン美味しかったね"],
    ["him","…そこ？笑"],
    ["him","また、行こな"],
-   ["n","「また」が、約束みたいに聞こえた。"]]}];
+   ["n","「また」が、約束みたいに聞こえた。"]]},
+  {t:"幕間 ― 検索の夜", sub:"10月1日 ・ 疑いと、認めたくない気持ち", un:()=>state.chapter>=2, lines:[
+   ["n","10月1日（水）深夜。ベッドの中で、彼女はまた検索していた。"],
+   ["me","（井汲大翔、って打つ指が、もう迷ってない）"],
+   ["n","画像タブ。ステージの上の彼と、画面の中の彼が、重なる。"],
+   ["me","（別人、ってことにしとく。…土曜までは）"],
+   ["n","友達への相談文は、今夜も打って、消した。"],
+   ["me","（会えば分かる。会って、分かりたくない気もする）"],
+   ["n","彼女が寝たのは、2時を過ぎていた。"]]}];
  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
- row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">11本</b>';
+ row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">12本</b>';
  sc.appendChild(row);
  const panel=document.createElement("div"); panel.id="ep-panel";
  panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
@@ -11820,7 +11828,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v334"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v335"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
