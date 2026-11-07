@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v298</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v299</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1145,7 +1145,7 @@ push("LINE","#06c755","💬","ひろと","「なお」——タップでトー�
 await himMsg("なお",700); await himMsg("記事、出たわ",1200); await himMsg("俺の名前、出てるやつ",1200); await himMsg("発端は、アプリ使ってたことやねん",1400); await himMsg("俺は、大丈夫やから",1000); await himMsg("心配なんは、なおだけや",1500); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
 askChoices("なおの返信を選んで",[
 {label:"私も、大丈夫",fn:async()=>{state.choice1="strong";await himMsg("ほんま？",1000);await himMsg("無理してへん？",1200);await himMsg("…強いな、なおは",1400);lineSequence2();}},
-{label:"正直、怖さはある",fn:async()=>{state.choice1="scared";await himMsg("ごめんな",1100);await himMsg("そんな思いさせたくなかった",1300);await himMsg("守るから、絶対",1500);lineSequence2();}},
+{label:"怖くないって言ったら、嘘になる",fn:async()=>{state.choice1="scared";await himMsg("ごめんな",1100);await himMsg("そんな思いさせたくなかった",1300);await himMsg("守るから、絶対",1500);lineSequence2();}},
 {label:"今、声聞きたい",fn:async()=>{state.choice1="call";await himMsg("俺も",900);await himMsg("今かける",1000);later(showIncomingCall,1200);}},
 ]);
 }
@@ -1153,10 +1153,10 @@ async function lineSequence2(){ if(!state.started||state._seq2) return; state._s
   await himPhoto("assets/ig-meal.jpg"); await himMsg("これ、なおだけ",1100); await himStamp("🥺");
 await himMsg("マネージャーと今話した",1200); await himMsg("事務所、コメント出すって",1000); await himMsg("「交際の事実はない」ってやつ",1400); await himMsg("アプリのことは、俺が全部背負う",1200); await himMsg("なおのことは、一言も出さへん約束や",1400); await himMsg("…ごめんな、巻き込んで",1500); await himVoice("assets/vm-t-bye.mp3","0:03");
 askChoices("これから、どうする？",[
-{label:"事実を、そのまま言おう",fn:()=>ending("open")},
+{label:"嘘はつかない。それでいこう",fn:()=>ending("open")},
 {label:"今は、静かに待とう",fn:()=>ending("wait")},
 {label:"少しだけ、距離を置こう",fn:()=>ending("away")},
-{label:"遠くから、見守る",fn:()=>ending("half")},
+{label:"遠くからでも、見てる",fn:()=>ending("half")},
 ]);
 }
 function startCall(customLines){ show("call"); state.callSec=0; $("#call-time").textContent="00:00";
@@ -1574,9 +1574,9 @@ async function startAct2(kind){ if(state._act2) return; state._act2=true; state.
   later(async()=>{ if(kind==="away"){ state._act2MorningDone=true; toast("💬 ひろとからの新しいメッセージは、なかった"); return; } show("line"); openChat(); await himMsg("おはよ",600); await himMsg(kind==="open"?"投稿、出したで":"投稿、見た？"); await himMsg("コメント欄、怖くて一人で開けれへんかった");
    const done191=()=>{ state._act2MorningDone=true; toast("💬 ここからはLINEで<b>自由に送れる</b>よ。下の入力欄からどうぞ"); };
    askChoices("なおの返信を選んで",[
-    {label:"コメント、一緒に読もか",fn:async()=>{ await himMsg("……うん。なおと一緒なら、読める気がする"); await himMsg("応援してくれてる人、思ったより多かった"); await himVoice("assets/vt-morning.mp3","0:07"); await himMsg("読んでくれてありがとう。……今日は、もう大丈夫"); done191(); }},
+    {label:"コメント、一緒に読も。怖くない",fn:async()=>{ await himMsg("……うん。なおと一緒なら、読める気がする"); await himMsg("応援してくれてる人、思ったより多かった"); await himVoice("assets/vt-morning.mp3","0:07"); await himMsg("読んでくれてありがとう。……今日は、もう大丈夫"); done191(); }},
     {label:"電話しよ",fn:async()=>{ await himVoice("assets/vt-morning2.mp3","0:04"); await himMsg("短くていい。聞けたから、もう大丈夫"); done191(); }},
-    {label:"普通の朝の話、しよ",fn:async()=>{ await himMsg("……ええな、それ"); await himMsg("今日の昼、なに食べる？　みたいな話がしたい"); await himVoice("assets/vt-morning.mp3","0:07"); await himMsg("普通の話ができる朝、悪くないな"); done191(); }}]); },5000);
+    {label:"普通の朝の話がしたい。昼なに食べる、とか",fn:async()=>{ await himMsg("……ええな、それ"); await himMsg("今日の昼、なに食べる？　みたいな話がしたい"); await himVoice("assets/vt-morning.mp3","0:07"); await himMsg("普通の話ができる朝、悪くないな"); done191(); }}]); },5000);
  /* v20: the morning after breathes — fan voices on X slowly calm down */
   const CALM_X=[
    [15000,"ロットダン💙","@rottdan_love","一夜明けて、彼の言葉を読み直した。……やっぱり、ステージの大翔が好きだ。それは変わらんかった"],
@@ -2231,7 +2231,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("俺は銭湯派やけど");
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"サウナ派。整うまで出ないタイプ笑", fn:async()=>{ await tThem("根性あるな笑"); await tThem("俺は、あったまったらすぐ出る派"); step2(); }},
-      {label:"マッチングアプリ、慣れてる？", fn:async()=>{ await tThem("…初めて入れた。使い方、手探りやで"); await tThem("なおが一人目"); step2(); }},
+      {label:"モテそうやのに、何でアプリなん？", fn:async()=>{ await tThem("…初めて入れた。使い方、手探りやで"); await tThem("なおが一人目"); step2(); }},
       {label:"なんで私やったん？", fn:async()=>{ await tThem("…雰囲気、かな"); await tThem("写真の笑い方"); step2(); }},
       {label:"暇つぶし同士、気楽にいこ", fn:async()=>{ await tThem("おう。気楽にいこ"); step2(); }}
     ]);
@@ -2242,7 +2242,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tNote("（書いたやつ、ちゃんと読んでくれてるタイプかも）");
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"エビは吸う派。カンジャンセウ、優勝", fn:async()=>{ stepMorning(); }},
-      {label:"内緒。会ったらわかるかも", fn:async()=>{ await tThem("内緒か笑"); stepLazy(); }}
+      {label:"内緒。会えたら、ね", fn:async()=>{ await tThem("内緒か笑"); stepLazy(); }}
     ]);
   }
   async function stepMorning(){
@@ -2268,7 +2268,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChoices("なおの返信を選んで（気楽に様子見）",[
       {label:"レッスンって、何の？笑", fn:async()=>{ await tTyping(1900); await tThem("…習い事のほうやで"); await tThem("教える側ちゃう、通う側"); tNote("（習い事に通う大人の男…ダンス、とか？）"); stepFood(); }},
       {label:"忙しい人は、嫌いじゃないよ", fn:async()=>{ await tThem("ありがとう"); await tThem("終わった日は、ちゃんと返すわ"); stepFood(); }},
-      {label:"わかった、詮索しない", fn:async()=>{ await tThem("ありがとう"); await tThem("助かる"); stepFood(); }}
+      {label:"詮索しない。…今はね", fn:async()=>{ await tThem("ありがとう"); await tThem("助かる"); stepFood(); }}
     ]);
   }
   async function stepFood(){
@@ -2291,7 +2291,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("スマホ、咥えて逃げよった");
     await tThem("構ってほしいんやろな");
     tChoices("なおの返信を選んで",[
-      {label:"マロンに嫉妬された笑", fn:async()=>{ await tThem("マロンには、内緒にしといてな"); stepNight(); }},
+      {label:"マロンにバレたら終わりやね笑", fn:async()=>{ await tThem("マロンには、内緒にしといてな"); stepNight(); }},
       {label:"マロン、スマホ咥えるのほんまなんや", fn:async()=>{ await tTyping(1600); await tThem("…なんで知ってるん？"); await tThem("あ、俺が前にも言うてたっけ"); tNote("（やばい。投稿で見ただけやのに。知らんふり、知らんふり）"); stepNight(); }},
       {label:"確保の仕方が優しい笑", fn:async()=>{ await tTyping(1600); await tThem("…宝物やからな"); stepNight(); }}
     ]);
@@ -2302,7 +2302,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("眠られへん夜って、どうしてる？");
     tChoices("なおの返信を選んで",[
       {label:"気づいたら朝、よくある", fn:async()=>{ await tThem("俺は、明日の準備してたら余計に目覚めるタイプ"); stepNight2(); }},
-      {label:"無理に寝ようとしない", fn:async()=>{ await tThem("それが一番なんやろな"); stepNight2(); }}
+      {label:"寝ようとしない。起きてたい夜もある", fn:async()=>{ await tThem("それが一番なんやろな"); stepNight2(); }}
     ]);
   }
   async function stepNight2(){
@@ -2316,7 +2316,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tNote("（入力中の表示が、出ては消えた。…あの一文、打つのに時間かかってたみたい）");
     tChoices("なおの返信を選んで",[
       {label:"声、聞かせてくれるの？笑", fn:async()=>{ await tTyping(1800); await tThem("…歌声は、無理やで"); await tThem("普通に話すほうな"); await tThem("…今日は、ここまでやな。おやすみ"); stepSuspect(); }},
-      {label:"ドキドキさせないでよ", fn:async()=>{ await tTyping(1800); await tThem("ドキドキ、してる？"); await tThem("…寝よか。おやすみ。また明日な"); stepSuspect(); }},
+      {label:"…ドキドキしてる、かも", fn:async()=>{ await tTyping(1800); await tThem("ドキドキ、してる？"); await tThem("…寝よか。おやすみ。また明日な"); stepSuspect(); }},
       {label:"夜に声聞きたいとか、ずるいな…", fn:async()=>{ await tThem("ずるい自覚はあるねん"); await tThem("…ごめん、寝よ。おやすみ"); stepSuspect(); }},
       {label:"段取り、全部決まった？笑", fn:async()=>{ await tTyping(1700); await tThem("決まった。…たぶん"); await tThem("上手くいくかは、明日の俺次第やけどな"); tNote("（「段取り」って、やっぱり舞台の言葉に聞こえる…）"); stepSuspect(); }},
       {label:"電話、しよっか", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ちょっと待って、静かなとこ行く"); setTimeout(()=>{ try{ state._tinderCall=true; state.caller="hiroto"; state._answered=true; state._callWho="ひろと"; show("call"); document.getElementById("call-incoming").style.display="none"; document.getElementById("call-active").style.display="flex"; document.getElementById("call-act-name").textContent="ひろと"; document.getElementById("call-act-img").src="assets/ig-avatar.jpg"; startCall(null); }catch(e){ stepSuspect(); } },900); }}
@@ -2340,7 +2340,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tNote("（設営バイトの人が「本番」って言う？　…私の耳、完全にそっち向きやん）");
     tChoices("なおの返信を選んで",[
       {label:"声が、覚えのある声すぎて", fn:async()=>{ await tThem("覚えのある声って、どんなん笑"); tNote("（…言い訳が、とっさに浮かばなかった）"); stepSearch(); }},
-      {label:"なんとなく、雰囲気が芸能人っぽくて", fn:async()=>{ await tThem("雰囲気だけは、一人前なんよな笑"); tNote("（…今の間、なんやったんやろ）"); stepSearch(); }},
+      {label:"雰囲気、芸能人なんよ", fn:async()=>{ await tThem("雰囲気だけは、一人前なんよな笑"); tNote("（…今の間、なんやったんやろ）"); stepSearch(); }},
       {label:"……井汲大翔に、似すぎじゃない？", fn:async()=>{ await tTyping(2400); await tThem("おるわけないやん笑"); await tThem("会ったこともないけど、似てる言われたら、そら嬉しいわ"); tNote("（うん、そうだよね。本人なわけ、ない）"); stepSearch(); }}
     ]);
   }
@@ -2357,7 +2357,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChoices("なおの返信を選んで",[
       {label:"調べた。…別人、ってことにしとく笑", fn:async()=>{ await tThem("やろ？ ただのひろとです笑"); tNote("（……嘘。まだ、心のどこかで引っかかってる）"); stepMeet(); }},
       {label:"正直、まだ半分は疑ってる", fn:async()=>{ await tTyping(2000); await tThem("…半分か"); await tThem("ほな、会って確かめたらええやん"); await tThem("土曜、その目で見てな"); tNote("（「確かめる」って、言った。逃げも隠れもしない言い方だった）"); stepMeet(); }},
-      {label:"もう忘れた。気のせいやった", fn:async()=>{ await tThem("おっけー、忘れよ笑"); stepMeet(); }}
+      {label:"忘れた、ことにする", fn:async()=>{ await tThem("おっけー、忘れよ笑"); stepMeet(); }}
     ]);
   }
   async function stepMeet(){
@@ -2367,9 +2367,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("目印は黒キャップ。それだけやと、見つけにくいか");
     await tThem("…あ、俺、笑うと目がなくなるタイプやから。それも目印で");
     tChoices("なおの返信を選んで",[
-      {label:"目印が『目』って笑", fn:async()=>{ await tThem("分かりやすいやろ"); step3(); }},
+      {label:"目印が目って、斬新やな笑", fn:async()=>{ await tThem("分かりやすいやろ"); step3(); }},
       {label:"先に見つける自信しかない", fn:async()=>{ await tThem("ほな勝負な。先に見つけたほうが、声かける"); await tThem("負けたほう、コーラ奢りで"); step3(); }},
-      {label:"連絡って、電話番号まだ知らないよ？", fn:async()=>{ await tThem("…あ、そやった"); await tThem("ほな、なおさらやな"); step3(); }}
+      {label:"ねえ、電話番号も知らないのに会うの？笑", fn:async()=>{ await tThem("…あ、そやった"); await tThem("ほな、なおさらやな"); step3(); }}
     ]);
   }
   async function step3(){
@@ -5684,7 +5684,7 @@ app.style.display="flex";},true);
    await himMsg("昨日、帰り道のこと考えてた"); if(!alive(t))return;
    await himMsg("…重い話して、ごめんな"); if(!alive(t))return;
    await new Promise(res=>{ askChoices("なおの返信を選んで",[
-    {label:"気にせんで。大丈夫",fn:async()=>{ await himMsg("…ありがとう"); await himMsg("なお、優しいな"); res(); }},
+    {label:"気にしない。私、そういうの平気",fn:async()=>{ await himMsg("…ありがとう"); await himMsg("なお、優しいな"); res(); }},
     {label:"私も昨日、ありがとう",fn:async()=>{ await himMsg("…そっか"); await himMsg("俺も、楽しかったで"); res(); }}
    ]); }); if(!alive(t))return;
    await himMsg("仕事、行ってくるわ"); if(!alive(t))return;
@@ -8897,7 +8897,7 @@ setInterval(upd,900); upd();
   await himMsg("返信、だいぶ遅なると思う。先に謝っとくわ"); if(!alive(t))return;
   toast("💭 <b>（明日、朝から晩まで…。そういえば明日って、推しが出る音楽番組の収録日じゃなかったっけ）</b>");
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"忙しいんやね、がんばって",fn:async()=>{ await himMsg("ありがとう"); await himMsg("終わったら、真っ先に連絡する"); res(); }},
+   {label:"忙しい人は、応援したくなる",fn:async()=>{ await himMsg("ありがとう"); await himMsg("終わったら、真っ先に連絡する"); res(); }},
    {label:"明日って、どんな仕事なん？",fn:async()=>{ await himMsg("内緒のやつ笑"); await himMsg("ヒントは…声と体力、両方使う仕事"); toast("💭 <b>（声と体力、両方使う仕事——歌って、踊る人…？）</b>"); res(); }}
   ]); }); if(!alive(t))return;
   await himMsg("ほな、今日は寝るわ"); if(!alive(t))return;
@@ -8948,7 +8948,7 @@ setInterval(upd,900); upd();
   await himMsg("目印の黒キャップ、忘れんといてや"); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"楽しみ。明日、全部わかると思う",fn:async()=>{ await himMsg("…全部、な",1900); await himMsg("明日、ちゃんと話すわ"); res(); }},
-   {label:"私が先に見つけるで",fn:async()=>{ await himMsg("約束、覚えてるで"); await himMsg("負けたほう、カフェオレ奢りな"); res(); }}
+   {label:"私が先に見つけるで",fn:async()=>{ await himMsg("約束、覚えてるで"); await himMsg("負けたほう、コーラ奢りな"); res(); }}
   ]); }); if(!alive(t))return;
   toast("💭 <b>（結局、2時過ぎまで起きてた。もう検索はしなかった。……したくて、うずうずはしたけど。明日、会えば分かる。帽子の奥の目元が『あの人』かどうか——分かって、どうするつもりなんやろ、私）</b>");
  }
@@ -10029,7 +10029,7 @@ setInterval(upd,900); upd();
   await himMsg("あ、…ごめん",800); if(!alive(t))return;
   await himMsg("彼氏面、してしもた",1000); if(!alive(t))return;
   askChoices("なおの返信を選んで",[
-   {label:"彼氏なんやから、ええよ",fn:async()=>{ if(!alive(t))return; await himMsg("…ずるいわ、その言い方",1100); if(!alive(t))return; await himMsg("心配、させんでな",1000); fin4(); }},
+   {label:"彼氏なんやから、気にしていいよ",fn:async()=>{ if(!alive(t))return; await himMsg("…ずるいわ、その言い方",1100); if(!alive(t))return; await himMsg("心配、させんでな",1000); fin4(); }},
    {label:"心配しすぎやって笑",fn:async()=>{ if(!alive(t))return; await himMsg("笑うなって",900); if(!alive(t))return; await himMsg("…心配なんは、ほんまやねん",1100); fin4(); }}
   ]);
   async function fin4(){ if(!alive(t))return;
@@ -11634,7 +11634,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v298"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v299"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12142,7 +12142,7 @@ dock.addEventListener("click",function(e){
   await himPhoto("assets/ig-dog.jpg"); if(!alive(t))return;
   await himMsg("マロン、なおの匂い探してた",1000); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"マロンにも会いたいな",fn:async()=>{ await himMsg("…そのうちな"); await himMsg("マロンは人見知りやけど"); res(); }},
+   {label:"マロンに会える日、楽しみにしてる",fn:async()=>{ await himMsg("…そのうちな"); await himMsg("マロンは人見知りやけど"); res(); }},
    {label:"私も楽しかった",fn:async()=>{ await himMsg("俺もやで"); await himMsg("…何回も思い出してる"); res(); }}
   ]); }); if(!alive(t))return;
   await himMsg("今日は一日、練習やねん",900); if(!alive(t))return;
@@ -12158,7 +12158,7 @@ dock.addEventListener("click",function(e){
   await himMsg("やっと終わった",1600); if(!alive(t))return;
   await himMsg("声、また枯れてるわ",900); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"風呂で歌いすぎ？笑",fn:async()=>{ await himMsg("ちゃうちゃう笑"); await himMsg("…バレてる？"); res(); }},
+   {label:"レッスン、がんばりすぎ？",fn:async()=>{ await himMsg("ちゃうちゃう笑"); await himMsg("…バレてる？"); res(); }},
    {label:"おつかれさま",fn:async()=>{ await himMsg("ありがとう"); await himMsg("なおの声聞いたら、ちょっと回復した"); res(); }}
   ]); }); if(!alive(t))return;
   addDayChip("10月11日（土）");
@@ -12203,7 +12203,7 @@ dock.addEventListener("click",function(e){
   await himMsg("今日の配信、見た？",1500); if(!alive(t))return;
   await himMsg("コメント欄、探したけど分からんかったわ",1000); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"ちゃんと見てたよ",fn:async()=>{ await himMsg("…ほんまに？"); await himMsg("次は、見つけるわ"); res(); }},
+   {label:"見てたよ。ファンやから",fn:async()=>{ await himMsg("…ほんまに？"); await himMsg("次は、見つけるわ"); res(); }},
    {label:"ファンとして、ね笑",fn:async()=>{ await himMsg("ファン、か"); await himMsg("…複雑やな、それ"); res(); }}
   ]); }); if(!alive(t))return;
   addDayChip("10月28日（火）");
