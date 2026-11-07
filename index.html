@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v320</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v321</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5291,9 +5291,20 @@ app.style.display="flex";},true);
    ["n","帰り道、コンビニでコーラを買った。レジの店員は、何も言わなかった。"],
    ["him","（……ちょっとだけ、元に戻ってきた気がする）"],
    ["n","スマホの通知は、まだ静かだった。それでも、彼は歩いていた。"],
-   ["n","マロンの足音だけが、隣にあった。"]]}];
+   ["n","マロンの足音だけが、隣にあった。"]]},
+  {t:"その後 ― 内緒のクリスマス計画", sub:"11月16日 ・ 付き合うルートの後日談", un:()=>{ if(state._route==="dating"&&(state.ended||state.act2)) return true; try{ return (JSON.parse(localStorage.getItem("r4-record-v1")||"{}").endings||[]).includes("together"); }catch(e){ return false; } }, lines:[
+   ["n","11月16日、日曜日。付き合って、内緒の1か月が過ぎようとしていた。"],
+   ["n","― なお側 ―"],
+   ["me","（クリスマス、どうするんやろ。……シフト、まだ出てへんのにな）"],
+   ["n","彼女はカレンダーアプリで、24日と25日に小さな星をつけた。"],
+   ["n","― ひろと側 ―"],
+   ["n","レッスンの合間。彼はスマホで、個室のある店を調べていた。"],
+   ["him","（バレたら終わりや。でも、ちゃんと祝いたいねん）"],
+   ["n","予約ページの手前で、彼は一度だけ深呼吸をした。"],
+   ["him","（……マロンには、サンタの服、着せるか）"],
+   ["n","内緒の計画は、静かに進んでいた。"]]}];
  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
- row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">9本</b>';
+ row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">10本</b>';
  sc.appendChild(row);
  const panel=document.createElement("div"); panel.id="ep-panel";
  panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
@@ -11734,7 +11745,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v320"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v321"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
