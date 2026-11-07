@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v326</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v328</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -944,16 +944,16 @@ async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2�
     {label:"…私、ファンなんですけど！",fn:async()=>{ if(!alive(t))return; await himMsg("プロフ見た時から、薄々は気づいてた笑"); if(!alive(t))return; await himMsg("でも今日くらいは、ファンとアイドルなしで"); if(!alive(t))return; await himMsg("ただの、デートでお願いします"); ch2main(t); }},
   ]); }
 async function ch2main(t){ if(!alive(t))return;
-  later(()=>toast("☕ <b>（カフェ。画面の中の人より、少しだけ声が低かった）</b>"),600);
-  later(()=>toast("💓 <b>（緊張してるのは、向かい側も同じみたいだった）</b>"),3200);
+  later(()=>toast("🍽 <b>（「普通にごはん」のつもりで入った店は、普通に飲み屋だった）</b>"),600);
+  later(()=>toast("💓 <b>（画面の中の人より、少しだけ声が低かった）</b>"),3200);
   await himMsg("…ほんまに、来たな",900); if(!alive(t))return; await himMsg("俺も、ほんまに来てもうたけど");
   if(!alive(t))return; const cont2=async()=>{ if(!alive(t))return;
-  later(()=>{ addPhoto("assets/ig-drink.jpg","初デート☕️"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },2500);
-  await himMsg("なおさ、カフェ入る前な",1200); if(!alive(t))return; await himMsg("俺、めっちゃ緊張しててん"); if(!alive(t))return; await himMsg("…人混みで、袖掴んだやろ"); if(!alive(t))return; await himMsg("あれ、離れたくなかっただけやねん");
-  later(()=>toast("🌆 <b>（夕方。店を出ても、二人とも帰る素振りを見せなかった）</b>"),2600);
-  if(!alive(t))return; await himMsg("このあと、時間ある？",1600); if(!alive(t))return; await himMsg("…もう一軒、行かん？"); if(!alive(t))return; await himMsg("飲むほうの",900);
+  later(()=>{ addPhoto("assets/ig-drink.jpg","初デート🍻"); push("写真","#8e8e93","🌼","思い出が追加されました","初デートの写真 —— タップで写真へ",()=>show("photos")); },2500);
+  await himMsg("なおさ、店入る前な",1200); if(!alive(t))return; await himMsg("俺、めっちゃ緊張しててん"); if(!alive(t))return; await himMsg("…人混みで、袖掴んだやろ"); if(!alive(t))return; await himMsg("あれ、離れたくなかっただけやねん");
+  later(()=>toast("🍻 <b>（一軒目を出る頃には、もう「普通にごはん」ではなくなってた）</b>"),2600);
+  if(!alive(t))return; await himMsg("このあと、時間ある？",1600); if(!alive(t))return; await himMsg("…もう一軒、行かん？"); if(!alive(t))return; await himMsg("まだ、帰したくないねん",900);
   if(!alive(t))return; const drinks=async()=>{ if(!alive(t))return;
-  later(()=>toast("🍻 <b>（個室の居酒屋。帽子を取った彼は、さっきより近くに座った）</b>"),1200);
+  later(()=>toast("🍻 <b>（二軒目。個室の隅で、彼はさっきより近くに座った）</b>"),1200);
   await himMsg("なおってさ",1400); if(!alive(t))return; await himMsg("マッチした時から、思ってたより、ずっと",1200); if(!alive(t))return; await himMsg("…顔が、タイプやねん",1500);
   later(()=>toast("💭 <b>（やっぱり顔か。……でも、酒の勢いでしか言えない本音って、ある）</b>"),1500);
   if(!alive(t))return; await himMsg("終電、もうないで",1700); if(!alive(t))return; await himMsg("…帰す、つもりやったんやけどな",1400);
@@ -2300,9 +2300,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("あ、いや");
     await tThem("会う話、焦りすぎやな。忘れて");
     tChoices("なおの返信を選んで",[
-      {label:"暇やけど、今日はまだ早い笑", fn:async()=>{ await tThem("…せやな。焦ったわ"); await tThem("ほな、昼のカフェからで、ええねん"); stepMaron(); }},
+      {label:"暇やけど、今日はまだ早い笑", fn:async()=>{ await tThem("…せやな。焦ったわ"); await tThem("ほな、会うんは普通のごはんからで、ええねん"); stepMaron(); }},
       {label:"なんで？ 会いたいん？", fn:async()=>{ await tTyping(1700); await tThem("…会いたい、かも"); tNote("（「かも」の言い方、ずるい。逃げ道残して踏み込むタイプ…）"); stepMaron(); }},
-      {label:"夜の誘い、早ない？笑", fn:async()=>{ await tThem("…早かったか。ごめん"); await tThem("昼のカフェからで、ええねん"); stepMaron(); }}
+      {label:"夜の誘い、早ない？笑", fn:async()=>{ await tThem("…早かったか。ごめん"); await tThem("会うんは普通のごはんからで、ええねん"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
@@ -2385,9 +2385,9 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function stepMeet(){
     await tThem("なぁ、なお");
     await tThem("土曜の話、ほんまに決めていい？");
-    await tThem("昼な。駅のカフェ");
-    await tThem("初回は、明るいとこがええやろ");
-    tNote("（夜に誘ってた人と、同じ人？　…ちょっとだけ拍子抜けした。ちょっとだけ、安心もした）");
+    await tThem("夕方な。駅前");
+    await tThem("…最初は、普通にごはんのつもりやで");
+    tNote("（「つもり」の言い方。…しかも店、飲み屋の並ぶ通りなんよな、これ）");
     await tThem("待ち合わせ、駅の柱のとこな");
     await tThem("目印は黒キャップ。それだけやと、見つけにくいか");
     await tThem("…あ、俺、笑うと目がなくなるタイプやから。それも目印で");
@@ -2860,7 +2860,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const openPanel=(title,html)=>{ panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">'+title+'</b></div>'+html;
   panel.style.display="flex";
   panel.querySelector(".hp-close").addEventListener("click",()=>{ panel.style.display="none"; if(clockIv){ clearInterval(clockIv); clockIv=null; } }); };
- const CAL=[["9/27","🔥 マッチした日",()=>state.chapter>=1],["10/4","☕ 初デート",()=>state.chapter>=2],["10/12","🌙 線引き",()=>state.chapter>=3],["10/18","🌃 あの夜",()=>state.chapter>=5],["11/1","🍜 久しぶりのカフェ",()=>state.chapter>=5],["11/2","🔥 バレた日",()=>state.chapter>=6||state.phase==="scandal"],["11/3","🌅 翌朝",()=>!!state.act2]];
+ const CAL=[["9/27","🔥 マッチした日",()=>state.chapter>=1],["10/4","🍻 初デート",()=>state.chapter>=2],["10/12","🌙 線引き",()=>state.chapter>=3],["10/18","🌃 あの夜",()=>state.chapter>=5],["11/1","🍜 久しぶりのカフェ",()=>state.chapter>=5],["11/2","🔥 バレた日",()=>state.chapter>=6||state.phase==="scandal"],["11/3","🌅 翌朝",()=>!!state.act2]];
  const MEMO=[["Super Like、押しちゃったな",()=>state.chapter>=1],["カフェオレ、覚えた",()=>state.chapter>=2],["言わなあかんこと、言えた",()=>state.chapter>=3],["…ごめん、しか言えん",()=>state.chapter>=5],["なおだけは、守る",()=>state.phase==="scandal"],["歌で返す。それしかできん",()=>!!state.act2]];
  p2.querySelectorAll("[data-hp]").forEach(b=>b.addEventListener("click",()=>{ const k=b.dataset.hp;
   if(k==="cal") openPanel("📅 カレンダー", CAL.map(c=>{ const un=c[2](); return '<div class="cal-row'+(un?"":" lock")+'"><span class="cd">'+c[0]+'</span><span>'+(un?c[1]:"？？？")+'</span></div>'; }).join(""));
@@ -3513,7 +3513,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const SYN=[
   {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。何人かスワイプした先で、ひとりの男の子から Super Like が届いていた。アイドルみたいな顔立ち。でも、私服の自撮りはどこか印象が違って——「本人なわけない」と、なおは打ち消す。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
   {no:"幕間",tt:"井汲かも？",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してから、初デートまでの3日間。彼の仕事の日が、推しの音楽番組の収録日と重なって——既読だけがつく昼、夜の失言、スクショして見比べる公式スケジュール。送られてきた\"間違い写真\"は、ステージの袖だった。偶然が重なりすぎて、もう「気のせい」では片づかない。それでも、確証はまだない。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
-  {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ カフェ",sy:"数日のやり取りの末、初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。カフェのあと、もう一軒。終電を過ぎて、二人は線を越えた——その先は、二人だけの秘密。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
+  {no:"第2話",tt:"初デート",dt:"10月4日（土） ・ 夜",sy:"数日のやり取りの末、初めてのデート。待ち合わせに現れたのは、帽子とマスクの下の“本物”だった。「普通にごはん」のつもりが、気づいたら二軒目。終電を過ぎて、二人は線を越えた——その先は、二人だけの秘密。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
   {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"初日に一線を越えてしまった二人。それでも、彼の仕事がその先を阻む。「これ以上会ったら、俺ほんまに…」「付き合うとかは、できへんねん」——越えたからこそ、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
   {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
   {no:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",sy:"友達未満、でも他人じゃない。名前のない関係のまま、嫉妬と独占欲と「我慢」が積み重なっていく。そしてその夜、引いたはずの線を、ふたりは越えてしまう——その先は、二人だけの秘密。",un:()=>state.chapter>=4||past(),go:()=>jumpLine("10月18日（土）")},
@@ -11772,7 +11772,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v326"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v328"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12286,8 +12286,8 @@ dock.addEventListener("click",function(e){
   await himMsg("昨日の夜のこと、俺は後悔してへん",1300); if(!alive(t))return; await himMsg("…言っといたかった"); if(!alive(t))return; await himMsg("今日は一日、練習やねん",900); if(!alive(t))return;
   await himMsg("行ってくるわ",700); if(!alive(t))return;
   addDayChip("10月7日（火）");
-  await himMsg("カフェのプリン、思い出してた",1500); if(!alive(t))return;
-  await himMsg("あれ、期間限定らしいで",1000); if(!alive(t))return;
+  await himMsg("二軒目のプリン、思い出してた",1500); if(!alive(t))return;
+  await himMsg("あの店、締めでしか出えへんねんて",1000); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"じゃあ、また行かなきゃ",fn:async()=>{ await himMsg("…行く？ 二人で"); await himMsg("俺は、そのつもりやで"); res(); }},
    {label:"よく覚えてるね",fn:async()=>{ await himMsg("目輝いてたからな"); await himMsg("忘れられへんわ"); res(); }}
@@ -12649,6 +12649,29 @@ dock.addEventListener("click",function(e){
   paint(); };
  const mo=new MutationObserver(build); mo.observe(document.body,{childList:true,subtree:true});
  setTimeout(build, 2500);
+})();
+</script>
+
+<script>
+/* v329: font size preference (small/medium/large) - settings row next to the volume row, class on <html> scales chat text */
+(function(){
+ if(window.__v329) return; window.__v329=true;
+ var style=document.createElement("style");
+ style.textContent="html.r5fs-s .bub,html.r5fs-s .t-bub{font-size:.88em}html.r5fs-l .bub,html.r5fs-l .t-bub{font-size:1.14em}";
+ document.head.appendChild(style);
+ var get=function(){ return localStorage.getItem("r5-fs")||"m"; };
+ var apply=function(){ var v=get(); document.documentElement.classList.remove("r5fs-s","r5fs-l"); if(v==="s") document.documentElement.classList.add("r5fs-s"); if(v==="l") document.documentElement.classList.add("r5fs-l"); };
+ var paint=function(){ var row=document.querySelector("#r5-fs-row"); if(!row) return; var v=get(); row.querySelectorAll("button").forEach(function(b){ b.style.background=(b.dataset.v===v)?"#ffd60a":""; b.style.fontWeight=(b.dataset.v===v)?"700":""; }); };
+ var build=function(){ var sc=document.querySelector("#v-settings .scroll"); if(!sc||document.querySelector("#r5-fs-row")) return;
+  var row=document.createElement("div"); row.className="setrow"; row.id="r5-fs-row";
+  row.innerHTML='<span>🔤 文字サイズ</span><span><button data-v="s" style="border:1px solid #c7c7cc;border-radius:8px;padding:4px 10px;margin-left:6px;background:#fff">小</button><button data-v="m" style="border:1px solid #c7c7cc;border-radius:8px;padding:4px 10px;margin-left:6px;background:#fff">中</button><button data-v="l" style="border:1px solid #c7c7cc;border-radius:8px;padding:4px 10px;margin-left:6px;background:#fff">大</button></span>';
+  var vol=document.querySelector("#r5-vol-row");
+  if(vol&&vol.parentNode===sc) sc.insertBefore(row, vol.nextSibling); else sc.appendChild(row);
+  row.querySelectorAll("button").forEach(function(b){ b.addEventListener("click",function(){ localStorage.setItem("r5-fs", b.dataset.v); apply(); paint(); if(typeof toast==="function") toast("🔤 文字サイズを「"+b.textContent+"」にしたよ"); }); });
+  paint();
+ };
+ apply();
+ setInterval(function(){ build(); },1500);
 })();
 </script>
 </body>
