@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v450</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v451</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v450"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v451"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -15399,6 +15399,25 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    pill. They get their own row just below it. */
 #ph-view #pv-wall,#ph-view #pv-play,#ph-view #pv-dl{top:100px!important}
 </style>
+
+<script>
+/* ===== v451: the last emoji buttons - the lock screen's flashlight and
+   camera, and the control center's airplane glyph - become line icons
+   like everything else. ===== */
+(function(){
+ if(window.__v451) return; window.__v451=true;
+ function S(inner){ return '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">'+inner+'</svg>'; }
+ var fl=document.querySelector("#v441-flash");
+ if(fl) fl.innerHTML=S('<path d="M9.5 7 10.4 3.8h3.2L14.5 7"/><rect x="9" y="7" width="6" height="13" rx="2"/><path d="M12 11v3.2"/>');
+ var cam=document.querySelector("#v441-cam");
+ if(cam) cam.innerHTML=S('<rect x="3" y="7.5" width="18" height="12" rx="2.5"/><circle cx="12" cy="13.5" r="3.4"/><path d="M9 7.5 10.2 5h3.6L15 7.5"/>');
+ var PLANE='<svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>';
+ function paintPlane(){ var p=document.querySelector("#v442-plane"); if(p && !p.querySelector("svg")) p.innerHTML=PLANE; }
+ var sb=document.querySelector(".statusbar");
+ if(sb) new MutationObserver(paintPlane).observe(sb,{childList:true,subtree:true,characterData:true});
+ paintPlane(); setInterval(paintPlane,3000);
+})();
+</script>
 </body>
 
 </html>
