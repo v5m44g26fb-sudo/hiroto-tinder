@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v380</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v381</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -4549,7 +4549,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    '<div style="position:relative;display:flex;gap:8px;padding:10px 12px 20px"><input id="live-in" placeholder="コメントを送信…" maxlength="60" style="flex:1;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 14px;color:#fff;font-size:13.5px;outline:none"><button id="live-heart" style="background:none;border:none;font-size:25px;cursor:pointer">❤️</button></div>'+
    '<div id="live-hearts" style="position:absolute;right:14px;bottom:90px;width:50px;height:220px;pointer-events:none;overflow:visible"></div>';
   v.appendChild(live);
-  const POOL=[["wish_0271","大翔くーん！"],["sakura_act","かっこいい…"],["dance_mania","生ダンス最高"],["ouen_dan","応援してます"],["maron_fan","今日も尊い"],["wish_88","目が離せない"],["k_hiroto","新曲たのしみ"]];
+  const POOL=[["wish_0271","大翔くーん！"],["sakura_act","かっこいい…"],["dance_mania","生ダンス最高"],["ouen_dan","応援してます"],["maron_fan","今日も尊い"],["wish_88","目が離せない"],["k_hiroto","新曲たのしみ"],["hiro_suki","ダンスのキレやばい"],["wish_mama","ごはん食べた？"],["osaka_fan","大阪から見てるよー"],["piro_piro","新曲の振り好き"],["wish_315","今日もがんばって"],["maron_mama","マロン元気？"],["dance_ko","足さばき神"],["hikari_88","照明きれい"],["wish_twin","友達と一緒に見てる"],["sora_309","声も好き"],["hiro_boshi","帽子似合う"],["neko_55","かわいいかっこいい"],["wish_774","ずっと見てたい"]];
   let iv=null, viv=null, viewers=12483;
   const addCmt=(n,t,mine)=>{ const box=live.querySelector("#live-cmts"); if(!box) return;
    const d=document.createElement("div");
@@ -4557,9 +4557,19 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    d.innerHTML='<b>'+n+'</b> <span></span>'; d.querySelector("span").textContent=t;
    if(mine) d.style.background="rgba(230,0,18,.55)";
    box.appendChild(d); while(box.children.length>6) box.firstChild.remove(); };
+  const JOINS=["yume_11","kaito_02","wish_660","hana_7","reo_45","mimi_223","saku_39","wish_bn"];
+  const addJoin=(n)=>{ const box=live.querySelector("#live-cmts"); if(!box) return;
+   const d=document.createElement("div");
+   d.style.cssText="color:rgba(255,255,255,.75);font-size:11.5px;padding:2px 4px;text-shadow:0 1px 4px rgba(0,0,0,.7)";
+   d.textContent=n+"さんが参加しました";
+   box.appendChild(d); while(box.children.length>6) box.firstChild.remove(); };
   const open=()=>{ live.style.display="flex"; const vid=live.querySelector("#live-vid"); try{ vid.play(); }catch(e){}
-   addCmt("wish_0271","はじまった！"); let i=1;
-   iv=setInterval(()=>{ const c=POOL[i%POOL.length]; addCmt(c[0],c[1]); i++; },2600);
+   addCmt("wish_0271","はじまった！");
+   let order=POOL.map((_,i)=>i).sort(()=>Math.random()-.5), oi=0, tick=0;
+   iv=setInterval(()=>{ tick++;
+    if(tick%6===3){ addJoin(JOINS[Math.floor(Math.random()*JOINS.length)]); return; }
+    if(oi>=order.length){ order=POOL.map((_,i)=>i).sort(()=>Math.random()-.5); oi=0; }
+    const c=POOL[order[oi++]]; addCmt(c[0],c[1]); },2600);
    viv=setInterval(()=>{ viewers+=Math.floor(Math.random()*240-70); const el=live.querySelector("#live-view"); if(el) el.textContent="👁 "+viewers.toLocaleString("ja-JP"); },3000); };
   const close=()=>{ live.style.display="none"; const vid=live.querySelector("#live-vid"); try{ vid.pause(); }catch(e){}
    clearInterval(iv); clearInterval(viv); };
@@ -11985,7 +11995,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v380"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v381"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
