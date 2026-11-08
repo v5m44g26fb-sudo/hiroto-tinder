@@ -853,7 +853,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v397</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v398</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12005,7 +12005,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v397"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v398"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13571,6 +13571,75 @@ dock.addEventListener("click",function(e){
  setInterval(scan,1500);
  new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
  scan();
+})();
+</script>
+
+<script>
+/* ===== v398: X repost opens a bottom sheet - repost / quote / undo, and quoting embeds the post ===== */
+(function(){
+ if(window.__v398) return; window.__v398=true;
+ var xv=document.querySelector("#v-x"); if(!xv) return;
+ var sheet=document.createElement("div"); sheet.id="rp-sheet";
+ sheet.style.cssText="position:absolute;left:0;right:0;bottom:0;z-index:260;background:rgba(10,10,14,.45);display:none;align-items:flex-end;height:100%";
+ sheet.innerHTML='<div style="background:#fff;width:100%;border-radius:18px 18px 0 0;padding:10px 14px 26px;display:flex;flex-direction:column;gap:4px">'
+  +'<button id="rp-do" style="background:none;border:none;text-align:left;font-size:15.5px;font-weight:700;padding:13px 8px;cursor:pointer;font-family:inherit">🔁 リポストする</button>'
+  +'<button id="rp-qt" style="background:none;border:none;text-align:left;font-size:15.5px;font-weight:700;padding:13px 8px;cursor:pointer;font-family:inherit">✒️ 引用する</button>'
+  +'<button id="rp-ng" style="background:#f0f0f3;border:none;border-radius:999px;font-size:14.5px;font-weight:700;padding:12px;cursor:pointer;font-family:inherit;margin-top:6px">キャンセル</button></div>';
+ xv.appendChild(sheet);
+ var curBtn=null, bypass=false;
+ function close(){ sheet.style.display="none"; curBtn=null; }
+ sheet.addEventListener("click",function(e){ if(e.target===sheet) close(); });
+ sheet.querySelector("#rp-ng").addEventListener("click",close);
+ sheet.querySelector("#rp-do").addEventListener("click",function(){
+   if(!curBtn) return close();
+   bypass=true; curBtn.click(); bypass=false; close();
+ });
+ sheet.querySelector("#rp-qt").addEventListener("click",function(){
+   if(!curBtn) return close();
+   var post=curBtn.closest(".post");
+   if(post){
+     var nm=post.querySelector(".nm"), hd=post.querySelector(".hd"), tx=post.querySelector(".tx");
+     var hdt=hd?hd.textContent.trim():""; var parts=hdt.split("・");
+     window.__quotePost={ n:nm?nm.textContent.trim():"", h:(parts[0]||"").trim(), tm:(parts[1]||"今").trim(), t:tx?tx.textContent.trim():"" };
+     window.__quoteLeft=2;
+   }
+   close();
+   var cb=document.querySelector("#x-compose-btn"); if(cb) cb.click();
+ });
+ document.addEventListener("click",function(e){
+   if(bypass) return;
+   var b=e.target.closest?e.target.closest("#v-x .rp-btn"):null;
+   if(!b) return;
+   e.stopPropagation(); e.preventDefault();
+   curBtn=b;
+   sheet.querySelector("#rp-do").textContent=b.dataset.on==="1"?"🔁 リポストを取り消す":"🔁 リポストする";
+   sheet.style.display="flex";
+ },true);
+ function attachQuote(post){
+   var q=window.__quotePost; if(!q) return;
+   var tx=post.querySelector(".tx"); if(!tx||post.dataset.qDone) return;
+   post.dataset.qDone="1";
+   var card=document.createElement("div");
+   card.style.cssText="border:1px solid rgba(128,128,128,.45);border-radius:12px;padding:9px 11px;margin-top:8px";
+   var h1=document.createElement("div"); h1.style.fontSize="12.5px";
+   var bb=document.createElement("b"); bb.textContent=q.n;
+   var ss=document.createElement("span"); ss.style.color="#71767b"; ss.textContent=" "+q.h+" ・ "+q.tm;
+   h1.appendChild(bb); h1.appendChild(ss);
+   var tt=document.createElement("div"); tt.style.cssText="font-size:13.5px;margin-top:2px"; tt.textContent=q.t;
+   card.appendChild(h1); card.appendChild(tt);
+   tx.after(card);
+   window.__quoteLeft=(window.__quoteLeft||1)-1;
+   if(window.__quoteLeft<=0) window.__quotePost=null;
+ }
+ ["#x-pane-tl","#x-me-posts"].forEach(function(sel){
+   var box=document.querySelector(sel); if(!box) return;
+   new MutationObserver(function(muts){
+     if(!window.__quotePost) return;
+     muts.forEach(function(m){ m.addedNodes.forEach(function(n){
+       if(n.nodeType===1&&n.classList&&n.classList.contains("post")) attachQuote(n);
+     }); });
+   }).observe(box,{childList:true});
+ });
 })();
 </script>
 </body>
