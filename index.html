@@ -853,7 +853,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v411</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v412</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12005,7 +12005,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v411"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v412"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13933,6 +13933,64 @@ dock.addEventListener("click",function(e){
    function paint(){ row.querySelectorAll("button").forEach(function(b){ b.classList.toggle("on",(b.dataset.bgm==="1")===bgmOn()); }); }
    row.querySelectorAll("button").forEach(function(b){ b.addEventListener("click",function(){ localStorage.setItem("r5-bgm",b.dataset.bgm); paint(); if(b.dataset.bgm==="1") start(); else stop(); if(typeof toast==="function") toast("\U0001f3b5 BGM\u3092"+(b.dataset.bgm==="1"?"ON":"OFF")+"\u306b\u3057\u305f\u3088"); }); });
    paint();
+ }
+ setInterval(buildRow,1500); buildRow();
+})();
+</script>
+
+<script>
+/* ===== v412: chapter select (replay any reached chapter) ===== */
+(function(){
+ if(window.__v412) return; window.__v412=true;
+ /* track furthest progress */
+ setInterval(function(){
+   try{
+     if(typeof state==="undefined") return;
+     var r=0;
+     if(state.act2) r=7; else if(state.phase==="scandal") r=6; else r=state.chapter||0;
+     var cur=parseInt(localStorage.getItem("r5-maxrank")||"0",10)||0;
+     if(r>cur){ localStorage.setItem("r5-maxrank",String(r)); }
+     if(r>=4){ if(state._route) localStorage.setItem("r5-maxroute",state._route); if(state.ending) localStorage.setItem("r5-maxending",state.ending); }
+   }catch(e){}
+ },2000);
+ function maxrank(){ return parseInt(localStorage.getItem("r5-maxrank")||"0",10)||0; }
+ function enterChapter(n){
+   state._proStarted=true;
+   var skb=document.querySelector("#skip-btn"); if(skb) skb.style.display="inline-block";
+   state._mem=[]; state._ftN=2; state._tinderCall=true;
+   if(n>=4){ state._interludeDone=true; state._normInterludeDone=true; state._routeQ=true; state._route=localStorage.getItem("r5-maxroute")||""; }
+   try{ unlock(); }catch(e){}
+   setTimeout(function(){
+     try{
+       if(n===6){ toScandal(); show("line"); openChat(); }
+       else if(n===7){ var k=localStorage.getItem("r5-maxending")||"wait"; state.phase="scandal"; state.ended=true; state.ending=k; startAct2(k); }
+       else { chapter(n); setTimeout(function(){ try{ show("line"); openChat(); }catch(e){} },1400); }
+     }catch(e){}
+   },650);
+ }
+ var LIST=[[2,"\u7b2c2\u8a71\u300e\u3061\u3083\u3093\u3068\u3057\u305f\u30c7\u30fc\u30c8\u300f"],[3,"\u7b2c3\u8a71\u300e\u7dda\u5f15\u304d\u300f"],[4,"\u7b2c4\u8a71"],[5,"\u7b2c5\u8a71"],[6,"\u7b2c6\u8a71\u300e\u30d0\u30ec\u305f\u65e5\u300f\uff08\u708e\u4e0a\u7de8\uff09"],[7,"\u7fcc\u671d\u7de8"]];
+ function openSel(){
+   var old=document.querySelector("#chap-ov"); if(old) old.remove();
+   var ov=document.createElement("div"); ov.id="chap-ov";
+   ov.style.cssText="position:absolute;inset:0;z-index:350;background:rgba(10,10,14,.92);display:flex;flex-direction:column;padding:64px 22px 22px;color:#fff";
+   var mr=maxrank();
+   var html='<div style="font-weight:900;font-size:17px;margin-bottom:6px">\u25b6 \u7ae0\u3092\u9078\u3093\u3067\u518d\u751f</div><div style="font-size:12px;opacity:.75;margin-bottom:14px">\u5230\u9054\u6e08\u307f\u306e\u7ae0\u3060\u3051\u9078\u3079\u308b\u3088\u3002\u9032\u884c\u4e2d\u306e\u7ae0\u306e\u9014\u4e2d\u304b\u3089\u306f\u59cb\u307e\u3089\u306a\u3044\u3088</div>';
+   LIST.forEach(function(it){
+     var ok=mr>=it[0];
+     html+='<button data-ch="'+it[0]+'" '+(ok?'':'disabled')+' style="text-align:left;margin:5px 0;padding:13px 15px;border-radius:13px;border:1px solid rgba(255,255,255,.35);background:'+(ok?'rgba(255,255,255,.13)':'rgba(255,255,255,.05)')+';color:'+(ok?'#fff':'rgba(255,255,255,.4)')+';font-size:14.5px;font-weight:700;font-family:inherit;cursor:'+(ok?'pointer':'default')+'">'+(ok?'\u25b6 ':'\U0001f512 ')+it[1]+'</button>';
+   });
+   html+='<button id="chap-x" style="margin-top:14px;padding:11px;border-radius:999px;border:1px solid rgba(255,255,255,.4);background:none;color:#fff;font-weight:800;font-family:inherit;cursor:pointer">\u9589\u3058\u308b</button>';
+   ov.innerHTML=html;
+   var phone=document.querySelector("#phone")||document.body; phone.appendChild(ov);
+   ov.querySelector("#chap-x").addEventListener("click",function(){ ov.remove(); });
+   ov.querySelectorAll("button[data-ch]").forEach(function(b){ b.addEventListener("click",function(){ var n=parseInt(b.dataset.ch,10); ov.remove(); enterChapter(n); }); });
+ }
+ function buildRow(){
+   var sc=document.querySelector("#v-settings .scroll"); if(!sc||document.querySelector("#r5-chap-row")) return;
+   var row=document.createElement("div"); row.className="setrow"; row.id="r5-chap-row";
+   row.innerHTML='<span>\u25b6 \u7ae0\u3092\u9078\u3093\u3067\u518d\u751f</span><button id="r5-chap-open" style="background:#111;color:#fff;border:none;border-radius:999px;padding:7px 14px;font-weight:800;font-family:inherit;cursor:pointer">\u958b\u304f</button>';
+   sc.appendChild(row);
+   row.querySelector("#r5-chap-open").addEventListener("click",openSel);
  }
  setInterval(buildRow,1500); buildRow();
 })();
