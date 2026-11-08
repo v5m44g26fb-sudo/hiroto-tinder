@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v437</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v438</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v437"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v438"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14592,6 +14592,101 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  new MutationObserver(function(){
    if(panel.style.display==="none") return;
    if(panel.querySelector(".memo-row")&&!panel.querySelector("#v437-notes")) build();
+ }).observe(panel,{childList:true,subtree:true});
+})();
+</script>
+
+<style>
+#v438-cal{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;padding:0 0 16px;color:#111;z-index:94}
+.v438-dow{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;font-size:11px;font-weight:700;color:#8e8e93;padding:4px 10px}
+.v438-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:2px 10px}
+.v438-day{aspect-ratio:.92;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:50%;font-size:15px;cursor:pointer;position:relative}
+.v438-day .dot{width:5px;height:5px;border-radius:50%;background:#d62976;margin-top:2px}
+.v438-day.sel{background:#111;color:#fff}
+.v438-day.sel .dot{background:#fff}
+.v438-day.today{font-weight:800;color:#d62976}
+.v438-day.today.sel{color:#fff}
+.v438-day.dim{color:#c7c7cc;cursor:default}
+</style>
+<script>
+/* ===== v438: the calendar becomes a calendar. The old panel (a list of
+   story dates) is replaced on open by a real month grid for the story's
+   months (Sep-Nov 2025): weekday header, event dots, the story's "today"
+   in red, and the selected day's events listed underneath. Locked events
+   stay hidden, as before. ===== */
+(function(){
+ if(window.__v438) return; window.__v438=true;
+ var panel=document.querySelector("#hp-panel"); if(!panel) return;
+ var evCache=null;
+ function storyToday(){
+   try{
+     if(state.act2) return "11/3";
+     if(state.phase==="scandal") return "11/2";
+     var c=state.chapter||1;
+     return {1:"9/27",2:"10/4",3:"10/12",4:"10/18",5:"11/1"}[c]||"9/27";
+   }catch(e){ return "9/27"; }
+ }
+ function build(){
+   var rows=panel.querySelectorAll(".cal-row");
+   var evs=rows.length?[]:evCache;
+   if(rows.length){ evs=[];
+     rows.forEach(function(r){
+       var lock=r.classList.contains("lock");
+       var cd=r.querySelector(".cd"); var md=cd?cd.textContent.trim():"";
+       var title=r.textContent.replace(md,"").trim();
+       evs.push({md:md, t:lock?"？？？":title, lock:lock});
+     });
+     if(evs.length) evCache=evs;
+   }
+   if(!evs||!evs.length) return;
+   var byDay={}; evs.forEach(function(e){ byDay[e.md]=e; });
+   var todayMd=storyToday();
+   var tm=todayMd.split("/"); var cur={y:2025, m:+tm[0]};
+   var sel=todayMd;
+   panel.innerHTML=""
+   +'<div id="v438-cal">'
+   +' <div class="hp-head" style="padding:52px 14px 0"><button class="hp-close" id="v438-x">‹</button><b style="font-size:17px">カレンダー</b></div>'
+   +' <div style="display:flex;align-items:center;padding:4px 16px 6px"><b id="v438-title" style="font-size:21px"></b>'
+   +'  <span style="margin-left:auto;display:flex;gap:8px"><button type="button" id="v438-prev" style="border:none;background:#f2f2f7;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">‹</button><button type="button" id="v438-next" style="border:none;background:#f2f2f7;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">›</button></span></div>'
+   +' <div class="v438-dow"><span style="color:#d70015">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span style="color:#0a6cff">土</span></div>'
+   +' <div class="v438-grid" id="v438-grid"></div>'
+   +' <div style="padding:12px 16px 4px;font-size:12px;font-weight:800;color:#8e8e93" id="v438-evtitle"></div>'
+   +' <div id="v438-ev" style="padding:0 14px;overflow-y:auto"></div>'
+   +'</div>';
+   var grid=panel.querySelector("#v438-grid");
+   function evHTML(){
+     var e=byDay[sel];
+     panel.querySelector("#v438-evtitle").textContent=sel.replace("/", "月")+"日の予定";
+     panel.querySelector("#v438-ev").innerHTML= e
+       ? '<div style="background:#f7f7fa;border-radius:12px;padding:12px 14px;font-size:14.5px"><span style="color:#d62976;font-weight:800;margin-right:8px">●</span>'+(e.lock?"🔒 "+e.t:e.t)+'</div>'
+       : '<div style="color:#8e8e93;font-size:13.5px;padding:4px 2px">予定なし</div>';
+   }
+   function draw(){
+     panel.querySelector("#v438-title").textContent=cur.y+"年"+cur.m+"月";
+     var first=new Date(cur.y,cur.m-1,1).getDay();
+     var days=new Date(cur.y,cur.m,0).getDate();
+     var h="";
+     for(var i=0;i<first;i++) h+='<div class="v438-day dim"></div>';
+     for(var d=1;d<=days;d++){
+       var md=cur.m+"/"+d; var e=byDay[md];
+       var cls="v438-day"+(md===sel?" sel":"")+(md===todayMd?" today":"");
+       var dow=(first+d-1)%7;
+       var col=dow===0?' style="color:#d70015"':dow===6?' style="color:#0a6cff"':"";
+       if(md===sel) col="";
+       h+='<div class="'+cls+'" data-md="'+md+'"'+col+'>'+d+(e?'<span class="dot"></span>':"")+'</div>';
+     }
+     grid.innerHTML=h;
+     grid.querySelectorAll(".v438-day[data-md]").forEach(function(c){ c.addEventListener("click",function(){ sel=c.dataset.md; draw(); }); });
+     evHTML();
+   }
+   panel.querySelector("#v438-x").addEventListener("click",function(){ panel.style.display="none"; });
+   panel.querySelector("#v438-prev").addEventListener("click",function(){ if(cur.m>9){ cur.m--; sel=(todayMd.split("/")[0]==String(cur.m))?todayMd:(cur.m+"/1"); draw(); } });
+   panel.querySelector("#v438-next").addEventListener("click",function(){ if(cur.m<11){ cur.m++; sel=(todayMd.split("/")[0]==String(cur.m))?todayMd:(cur.m+"/1"); draw(); } });
+   draw();
+ }
+ new MutationObserver(function(){
+   if(panel.style.display==="none") return;
+   if(panel.querySelector(".cal-row")&&!panel.querySelector("#v438-cal")) build();
  }).observe(panel,{childList:true,subtree:true});
 })();
 </script>
