@@ -853,7 +853,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v387</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v388</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2169,13 +2169,14 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     {hiroto:true,name:"ひろと",age:24,distKm:1,dist:"1 km ・ 大阪",bio:"大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き",tags:["お酒","コーラ","ごはん","犬","サウナ"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。誘われたら、だいたい行くで",prompt2Q:"仕事は…",prompt2A:"歌とダンスの仕事。不定期なやつ"}
   ];
   let idx=0, matched=false, chatStarted=false;
+  function storyMatched(){ return matched || (typeof state!=="undefined" && (state.chapter>=2 || state.phase!=="prologue")); }
   let sceneIdx=0, lastCardIdx=-1, lastSwipe=null;
   let swipeHistory=[]; let superLeft=3;
   window.__tstats={swipe:0,like:0,nope:0,super:0};
   function passFilter(c){ const s=window.__tdisc; if(!s) return true; const d=c.distKm||parseInt(c.dist)||99; return d<=s.maxDist && c.age>=s.ageMin && c.age<=s.ageMax; }
   function render(){
     const w=document.getElementById("swipe-wrap"); if(!w) return;
-    if(idx>=deck.length || (matched && deck[idx] && deck[idx].hiroto)){ w.innerHTML='<div style="text-align:center;padding:60px 20px;color:#8e8e93;font-size:14px;line-height:1.8">近くに表示できる人がいません<br><span style="font-size:12px">ひろととのマッチは「マッチ」タブから見返せるよ</span></div>'; return; }
+    if(idx>=deck.length || (storyMatched() && deck[idx] && deck[idx].hiroto)){ var gone=(typeof state!=="undefined" && state.phase!=="prologue"); w.innerHTML='<div style="text-align:center;padding:60px 20px;color:#8e8e93;font-size:14px;line-height:1.8">近くに表示できる人がいません<br><span style="font-size:12px">'+(gone?'ひろとのアカウントは削除されました':'ひろととのマッチは「マッチ」タブから見返せるよ')+'</span></div>'; return; }
     while(idx<deck.length && !deck[idx].hiroto && !passFilter(deck[idx])) idx++;
     if(idx>=deck.length){ w.innerHTML='<div style="text-align:center;padding:60px 20px;color:#8e8e93;font-size:14px;line-height:1.8">この条件では近くに表示できる人がいません<br><span style="font-size:12px">発見設定（🎛️）で距離や年齢を広げてみてね</span></div>'; return; }
     const c=deck[idx];
@@ -11996,7 +11997,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v387"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v388"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13364,6 +13365,16 @@ dock.addEventListener("click",function(e){
   return true;
  }
  if(!watch()){ var iv=setInterval(function(){ if(watch()) clearInterval(iv); },1500); }
+})();
+</script>
+
+<script>
+/* ===== v388: short-viewport card fit - the info block must never slide under the action row ===== */
+(function(){
+ if(window.__v388) return; window.__v388=true;
+ var css=document.createElement("style");
+ css.textContent=".swipe-card{min-height:0 !important}@media (max-height:730px){ .swipe-card .bio{display:none} .swipe-card .nm{font-size:24px} .swipe-card .info{padding-bottom:10px} }";
+ document.head.appendChild(css);
 })();
 </script>
 </body>
