@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v435</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v436</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v435"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v436"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14403,6 +14403,104 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    });
    sheet.classList.add("on");
  });
+})();
+</script>
+
+<style>
+#v436-cam{position:absolute;inset:0;background:#000;color:#fff;display:flex;flex-direction:column;z-index:95;font-family:inherit}
+#v436-vf{position:relative;flex:1;overflow:hidden;background:#111}
+#v436-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+#v436-grid{position:absolute;inset:0;pointer-events:none;background:
+ linear-gradient(90deg,transparent calc(33.3% - .5px),rgba(255,255,255,.35) 33.3%,transparent calc(33.3% + .5px)),
+ linear-gradient(90deg,transparent calc(66.6% - .5px),rgba(255,255,255,.35) 66.6%,transparent calc(66.6% + .5px)),
+ linear-gradient(0deg,transparent calc(33.3% - .5px),rgba(255,255,255,.35) 33.3%,transparent calc(33.3% + .5px)),
+ linear-gradient(0deg,transparent calc(66.6% - .5px),rgba(255,255,255,.35) 66.6%,transparent calc(66.6% + .5px))}
+#v436-focus{position:absolute;width:74px;height:74px;border:1.5px solid #ffd60a;display:none;pointer-events:none;transform:translate(-50%,-50%)}
+#v436-flashfx{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;transition:opacity .18s}
+.v436-topbtn{background:rgba(0,0,0,.42);border:none;color:#fff;border-radius:50%;width:38px;height:38px;font-size:16px;cursor:pointer}
+.v436-zoom{background:rgba(0,0,0,.5);color:#fff;border:none;border-radius:999px;min-width:34px;height:34px;padding:0 8px;font-size:12.5px;font-weight:700;cursor:pointer}
+.v436-zoom.act{background:#fff;color:#111}
+.v436-mode{background:none;border:none;color:rgba(255,255,255,.75);font-size:13px;font-weight:700;cursor:pointer;padding:4px 2px;white-space:nowrap;font-family:inherit}
+.v436-mode.act{color:#ffd60a}
+#v436-shutter{width:70px;height:70px;border-radius:50%;border:5px solid #fff;background:transparent;cursor:pointer;position:relative;flex:none}
+#v436-shutter::after{content:"";position:absolute;inset:4px;border-radius:50%;background:#fff}
+#v436-filts{display:none;gap:8px;justify-content:center;padding:8px 10px 2px}
+#v436-filts.on{display:flex}
+.v436-flt{border:2px solid transparent;background:#222;color:#fff;border-radius:10px;padding:6px 10px;font-size:12px;cursor:pointer;font-family:inherit}
+.v436-flt.act{border-color:#ffd60a}
+</style>
+<script>
+/* ===== v436: the camera becomes a camera. The old panel (a photo, pill
+   buttons for "scenes" and "filters", an emoji shutter) is replaced on open
+   by a full viewfinder: swipe to change what you are looking at, tap to
+   focus, zoom pills, mode row, filters, a real shutter ring, and the last
+   shot thumbnail that jumps to Photos. Shots still land in her album. ===== */
+(function(){
+ if(window.__v436) return; window.__v436=true;
+ var panel=document.querySelector("#hp-panel"); if(!panel) return;
+ var SCENES=[["カフェのなお","assets/nao-tinder-1.jpg",1],["ひろとの自撮り","assets/selfie.jpg",0],["仕事終わり","assets/studio.jpg",0],["夜景","assets/night.jpg",0],["花束","assets/roses.jpg",0]];
+ var FILTS=[["そのまま",""],["夕日","sepia(.55) saturate(1.3)"],["フィルム","contrast(1.1) saturate(.75)"],["クール","hue-rotate(18deg) saturate(1.15)"]];
+ var MODES=["タイムラプス","ビデオ","写真","ポートレート","パノラマ"];
+ var sc=1, fl=0, zoom=1, front=false, flashMode=0, gridOn=true, mode=2;
+ function build(){
+   panel.dataset.v436="1";
+   var lastFig=document.querySelector("#ph-grid figure img");
+   var lastSrc=lastFig?lastFig.getAttribute("src"):SCENES[0][1];
+   panel.innerHTML=""
+   +'<div id="v436-cam">'
+   +' <div style="display:flex;align-items:center;padding:70px 14px 10px;gap:10px;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent)">'
+   +'  <button type="button" class="v436-topbtn" id="v436-flash">⚡</button><span id="v436-flash-lab" style="font-size:11px;color:#ffd60a">オート</span>'
+   +'  <span id="v436-scene" style="margin:0 auto;font-size:12.5px;color:rgba(255,255,255,.85)"></span>'
+   +'  <button type="button" class="v436-topbtn" id="v436-gridbtn">▦</button>'
+   +'  <button type="button" class="v436-topbtn" id="v436-x">✕</button></div>'
+   +' <div id="v436-vf"><img id="v436-img" alt=""><div id="v436-grid"></div><div id="v436-focus"></div><div id="v436-flashfx"></div>'
+   +'  <div style="position:absolute;left:0;right:0;bottom:12px;display:flex;gap:8px;justify-content:center">'
+   +'   <button type="button" class="v436-zoom" data-z="1">.5</button><button type="button" class="v436-zoom act" data-z="1.6">1×</button><button type="button" class="v436-zoom" data-z="2.4">2</button></div></div>'
+   +' <div id="v436-filts">'+FILTS.map(function(f,i){ return '<button type="button" class="v436-flt'+(i===0?" act":"")+'" data-i="'+i+'">'+f[0]+'</button>'; }).join("")+'</div>'
+   +' <div style="display:flex;gap:15px;justify-content:center;padding:10px 6px 2px;overflow:hidden">'+MODES.map(function(m,i){ return '<button type="button" class="v436-mode'+(i===2?" act":"")+'" data-i="'+i+'">'+m+'</button>'; }).join("")+'</div>'
+   +' <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 30px 30px">'
+   +'  <img id="v436-thumb" src="'+lastSrc+'" alt="" style="width:46px;height:46px;border-radius:9px;object-fit:cover;border:2px solid rgba(255,255,255,.65);cursor:pointer">'
+   +'  <button type="button" id="v436-shutter" aria-label="シャッター"></button>'
+   +'  <button type="button" class="v436-topbtn" id="v436-flip" style="width:46px;height:46px;font-size:19px">⇄</button></div>'
+   +'</div>';
+   var img=panel.querySelector("#v436-img"), sceneLab=panel.querySelector("#v436-scene");
+   function draw(){
+     var s2=SCENES[sc];
+     img.src=s2[1]; img.style.filter=FILTS[fl][1]; img.style.transform="scale("+zoom+")";
+     sceneLab.textContent=(front?"インカメラ ・ ":"")+"被写体："+s2[0];
+     panel.querySelectorAll(".v436-zoom").forEach(function(b){ b.classList.toggle("act", +b.dataset.z===zoom); });
+     panel.querySelectorAll(".v436-flt").forEach(function(b){ b.classList.toggle("act", +b.dataset.i===fl); });
+     panel.querySelector("#v436-grid").style.display=gridOn?"block":"none";
+   }
+   draw();
+   panel.querySelector("#v436-x").addEventListener("click",function(){ panel.style.display="none"; });
+   panel.querySelector("#v436-flash").addEventListener("click",function(){ flashMode=(flashMode+1)%3; panel.querySelector("#v436-flash-lab").textContent=["オート","オン","オフ"][flashMode]; });
+   panel.querySelector("#v436-gridbtn").addEventListener("click",function(){ gridOn=!gridOn; draw(); });
+   panel.querySelectorAll(".v436-zoom").forEach(function(b){ b.addEventListener("click",function(){ zoom=+b.dataset.z; draw(); }); });
+   panel.querySelectorAll(".v436-flt").forEach(function(b){ b.addEventListener("click",function(){ fl=+b.dataset.i; draw(); }); });
+   panel.querySelectorAll(".v436-mode").forEach(function(b){ b.addEventListener("click",function(){ mode=+b.dataset.i; panel.querySelectorAll(".v436-mode").forEach(function(x){ x.classList.toggle("act", +x.dataset.i===mode); }); if(mode===2) panel.querySelector("#v436-filts").classList.toggle("on"); }); });
+   var vf=panel.querySelector("#v436-vf"), sx=null;
+   vf.addEventListener("touchstart",function(e){ sx=e.changedTouches[0].clientX; },{passive:true});
+   vf.addEventListener("touchend",function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null; if(Math.abs(dx)<42) return; sc=(sc+(dx<0?1:SCENES.length-1))%SCENES.length; draw(); },{passive:true});
+   vf.addEventListener("click",function(e){ if(e.target.closest("button")) return; var r=vf.getBoundingClientRect(); var f=panel.querySelector("#v436-focus"); f.style.left=(e.clientX-r.left)+"px"; f.style.top=(e.clientY-r.top)+"px"; f.style.display="block"; setTimeout(function(){ f.style.display="none"; },950); });
+   panel.querySelector("#v436-flip").addEventListener("click",function(){ front=!front; if(front){ sc=0; } else if(sc===0){ sc=1; } draw(); });
+   panel.querySelector("#v436-thumb").addEventListener("click",function(){ panel.style.display="none"; show("photos"); });
+   panel.querySelector("#v436-shutter").addEventListener("click",function(){
+     if(mode!==2){ toast("📷 <b>写真モードで撮ってね</b>"); return; }
+     var fx=panel.querySelector("#v436-flashfx"); fx.style.opacity=(flashMode===2)?"0":".92"; setTimeout(function(){ fx.style.opacity="0"; },130);
+     var gridEl=document.querySelector("#ph-grid"); if(!gridEl) return;
+     var fig=document.createElement("figure");
+     fig.innerHTML='<img loading="lazy" decoding="async" src="'+SCENES[sc][1]+'" alt=""><figcaption>'+SCENES[sc][0]+' 📷</figcaption>';
+     if(FILTS[fl][1]) fig.querySelector("img").style.filter=FILTS[fl][1];
+     gridEl.prepend(fig);
+     panel.querySelector("#v436-thumb").src=SCENES[sc][1];
+     toast("📸 <b>アルバムに保存したよ</b>");
+   });
+ }
+ new MutationObserver(function(){
+   if(panel.style.display==="none") return;
+   if(panel.querySelector("#cam-img")&&!panel.querySelector("#v436-cam")) build();
+ }).observe(panel,{childList:true,subtree:true});
 })();
 </script>
 </body>
