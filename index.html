@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v449</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v450</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v449"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v450"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -15208,7 +15208,10 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    return '<div class="m-trow" data-play="'+i+'"><img src="'+tr.img+'" alt=""><div style="flex:1;min-width:0"><div class="tt">'+tr.t+'</div><div class="aa">'+tr.a+'</div></div>'+(withHeart?'<button type="button" class="m-fav" data-fav="'+i+'" style="background:none;border:none;color:#c7c7cc;padding:6px">'+(favs[i]?I.heartF:I.heart)+'</button>':'')+'<span style="color:#b0b0b6;font-size:13px">'+fmt(tr.dur)+'</span></div>';
  }
  function allRows(withHeart){ return TRACKS.map(function(_,i){ return trackRow(i,withHeart); }).join(""); }
- function sqCards(){ return TRACKS.map(function(tr,i){ return '<div class="m-sqcard" data-open-songs="1"><img src="'+tr.img+'" alt=""><div style="font-size:14px;font-weight:600;margin-top:6px">'+tr.t+'</div><div style="font-size:12.5px;color:#8a8a8e">プレイリスト</div></div>'; }).join(""); }
+ var HOME_RECENT=[{t:"二軒目のあと",img:"assets/ig-drink.jpg"},{t:"読書の時間",img:"assets/glasses.jpg"},{t:"夜更かし",img:"assets/hoodie.jpg"},{t:"大阪の日",img:"assets/ig-osaka.jpg"}];
+ var NEW_BEST=[{t:"5月のプレイリスト",img:"assets/ig-may25.jpg"},{t:"誕生日の週",img:"assets/ig-bday.jpg"},{t:"夏の始まり",img:"assets/ig-jul2023.jpg"},{t:"ごはんの時間",img:"assets/ig-meal.jpg"}];
+ var LIB_RECENT=[{t:"マロンの日",a:"マロンと一緒",img:"assets/ig-dog.jpg"},{t:"中国時代",a:"2021年の記録",img:"assets/china2021.jpg"},{t:"ボイプラ時代",a:"挑戦の記録",img:"assets/bp-profile.jpg"},{t:"桜とマロン",a:"春の散歩",img:"assets/maron-sakura.jpg"}];
+ function sqCards(list){ return list.map(function(tr){ return '<div class="m-sqcard" data-open-songs="1"><img src="'+tr.img+'" alt=""><div style="font-size:14px;font-weight:600;margin-top:6px">'+tr.t+'</div><div style="font-size:12.5px;color:#8a8a8e">プレイリスト</div></div>'; }).join(""); }
  var ov=document.createElement("div"); ov.id="v447-music";
  ov.innerHTML=
  '<button type="button" id="v447-x" style="position:absolute;top:52px;right:14px;z-index:25;width:30px;height:30px;border-radius:50%;border:none;background:rgba(0,0,0,.06);color:#555;display:flex;align-items:center;justify-content:center;cursor:pointer">'+I.x+'</button>'
@@ -15217,18 +15220,18 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  + '<div class="m-head"><div class="m-title">ホーム</div><div class="m-ava">な</div></div>'
  + '<div class="m-sec" style="margin-top:2px">あなたへのピックアップ</div>'
  + '<div class="m-scrollx">'
- +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/stage.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">ステージの余韻</div><div style="font-size:13px;opacity:.85">ライブのあと、耳に残る音。</div></div></div>'
- +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/night.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">夜のドライブ</div><div style="font-size:13px;opacity:.85">帰り道の信号待ちで。</div></div></div>'
+ +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/fanmeet-1.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">ファンミの余韻</div><div style="font-size:13px;opacity:.85">アンコールのあとに。</div></div></div>'
+ +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/ig-busan.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">釜山の夜</div><div style="font-size:13px;opacity:.85">旅行のあとで聞く曲。</div></div></div>'
  + '</div>'
  + '<div class="m-sec">最近の再生 <span style="color:#c7c7cc;font-size:16px">›</span></div>'
- + '<div class="m-scrollx">'+sqCards()+'</div>'
+ + '<div class="m-scrollx">'+sqCards(HOME_RECENT)+'</div>'
  +'</div>'
  +'<div class="m-page" data-page="new">'
  + '<div class="m-head"><div class="m-title">新着おすすめ</div><div class="m-ava">な</div></div>'
  + '<div style="font-size:13px;color:#8a8a8e">新着プレイリスト</div><div style="font-size:21px;font-weight:800">2025年ベストソング</div><div style="font-size:15px;color:#8a8a8e;margin-bottom:8px">なおセレクト</div>'
- + '<div class="m-wide" data-open-songs="1"><img src="assets/roses.jpg" alt=""><div class="ovl" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.5))"></div><div style="position:absolute;left:14px;bottom:12px;color:#fff;font-size:14px">この秋を象徴する4曲を、ピックアップ。</div></div>'
+ + '<div class="m-wide" data-open-songs="1"><img src="assets/fanmeet-3.jpg" alt=""><div class="ovl" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.5))"></div><div style="position:absolute;left:14px;bottom:12px;color:#fff;font-size:14px">この秋を象徴する4曲を、ピックアップ。</div></div>'
  + '<div class="m-sec">2025年のベスト <span style="color:#c7c7cc;font-size:16px">›</span></div>'
- + '<div class="m-scrollx">'+sqCards()+'</div>'
+ + '<div class="m-scrollx">'+sqCards(NEW_BEST)+'</div>'
  +'</div>'
  +'<div class="m-page" data-page="radio">'
  + '<div class="m-head"><div class="m-title">ラジオ</div><div class="m-ava">な</div></div>'
@@ -15252,7 +15255,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  + '<div class="m-menurow" data-open-songs="1"><span style="color:'+RED+'">'+I.mNote+'</span>曲<span class="chev">›</span></div>'
  + '<div class="m-menurow" data-soon="1"><span style="color:'+RED+'">'+I.mDl+'</span>ダウンロード済み<span class="chev">›</span></div>'
  + '<div class="m-sec">最近追加した項目</div>'
- + '<div class="m-grid2">'+TRACKS.map(function(tr,i){ return '<div class="cell" data-open-songs="1"><img src="'+tr.img+'" alt=""><div style="font-size:14.5px;font-weight:600;margin-top:6px">'+tr.t+'</div><div style="font-size:12.5px;color:#8a8a8e">'+tr.a+'</div></div>'; }).join("")+'</div>'
+ + '<div class="m-grid2">'+LIB_RECENT.map(function(tr){ return '<div class="cell" data-open-songs="1"><img src="'+tr.img+'" alt=""><div style="font-size:14.5px;font-weight:600;margin-top:6px">'+tr.t+'</div><div style="font-size:12.5px;color:#8a8a8e">'+tr.a+'</div></div>'; }).join("")+'</div>'
  +'</div>'
  +'<div class="m-page" data-page="search">'
  + '<div class="m-head"><div class="m-title">検索</div><div class="m-ava">な</div></div>'
@@ -15389,6 +15392,12 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    stretched the page to almost three screens tall - sliding the page
    showed three stacked screens. Clip the frame: exactly one screen. */
 #phone{overflow:hidden!important}
+</style>
+
+<style>
+/* v450: the viewer's right-hand buttons were hidden behind the date
+   pill. They get their own row just below it. */
+#ph-view #pv-wall,#ph-view #pv-play,#ph-view #pv-dl{top:100px!important}
 </style>
 </body>
 
