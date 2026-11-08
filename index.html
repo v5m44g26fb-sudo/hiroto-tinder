@@ -853,7 +853,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v392</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v393</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1290,6 +1290,10 @@ const X_PRO_POSTS=[
  {n:"ファンミレポ垢",h:"@repi_repi",tm:"3時間",t:"神戸ファンミ、王子様衣装の大翔が近すぎて無事に召された…👑 あの距離で目が合うのはずるい",m:["💬 96","🔁 1,204","❤️ 8,932"]},
  {n:"ライブ行きたい",h:"@live_ikitai",tm:"5時間",t:"ライブツアー、大阪のホール公演当たりますように🙏 抽選ドキドキ",m:["💬 41","🔁 302","❤️ 2,148"]},
  {n:"大翔くん布教bot",h:"@hiroto_fukyo",tm:"2時間",t:"今日も大翔くんのダンス動画を布教します。キレッキレなのに笑顔が優しいのが沼。鯖番好きは絶対刺さる",m:["💬 58","🔁 764","❤️ 5,377"]}];
+const X_EVERY_POSTS=[
+ {n:"サウナ日記",h:"@sauna_nikki",tm:"2時間",t:"今日も整った〜。水風呂16度、完璧なセッティングやった",m:["💬 12","🔁 48","❤️ 390"]},
+ {n:"大阪グルメメモ",h:"@osaka_memo",tm:"4時間",t:"西成のホルモン、安くてうますぎる。並ぶ価値しかない",m:["💬 31","🔁 210","❤️ 1,540"]},
+ {n:"カフェ巡り",h:"@cafe_meguri",tm:"6時間",t:"中崎町のカフェ、カフェオレが反則級にうまい。また行く",m:["💬 8","🔁 36","❤️ 512"]}];
 const X_NECK_PRO={n:"ファッション好き",h:"@fash_suki",tm:"4時間",t:"大翔が最近つけてるネックレス、シンプルでかわいい。どこのブランドだろ？",m:["💬 23","🔁 118","❤️ 964"]};
 function doSearch(q){ q=(q||"").trim()||"大翔"; ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).style.display="none"); $("#x-thread").style.display="none"; const pane=$("#x-pane-search"); pane.style.display="block";
   const sug=$("#x-sug"); sug.innerHTML=""; (state.phase==="prologue"?X_SUGS_PRO:X_SUGS).forEach(w=>{ const b=document.createElement("button"); b.textContent="🔍 "+w; b.addEventListener("click",()=>{ $("#x-q").value=w; doSearch(w); }); sug.appendChild(b); });
@@ -1297,10 +1301,12 @@ function doSearch(q){ q=(q||"").trim()||"大翔"; ["tl","trend","mention","me"].
   if(state.phase==="prologue"){
     if(/熱愛|彼女|匂わせ|なお|事務所コメント|熱愛バレた件|Tinderやってた件/.test(q)){ const e=document.createElement("div"); e.style.cssText="padding:22px 16px;color:#536471;font-size:13.5px;line-height:1.8"; e.textContent="「"+q+"」に一致するポストは見つかりませんでした。（…今のところは）"; res.appendChild(e); }
     else if(q.includes("ネックレス")) res.appendChild(postEl(X_NECK_PRO,false));
-    else X_PRO_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
+    else if(/大翔|ひろと|井汲|ファンミ|セトリ|王子|神戸|チムジルバン|日プ|ボイプラ|鯖番|ライブ|ツアー|グッズ|追加公演|Tinder|マッチングアプリ|Super Like/.test(q)) X_PRO_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
+    else X_EVERY_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
   } else {
     if(q.includes("ネックレス")) res.appendChild(postEl({n:"特定班",h:"@tokutei_jp",tm:"26分",t:"【検証】拡散中のプロフ写真、過去の私服投稿と耳の形・ほくろが一致。本人のもので確定っぽい",m:["💬 2,314","🔁 18,540","❤️ 9,208"]},false));
-    X_SEARCH_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
+    if(/大翔|ひろと|井汲|Tinder|アプリ|熱愛|事務所|相手|女性|なお|匂わせ|週刊|交際|否定/.test(q)) X_SEARCH_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
+    else X_EVERY_POSTS.forEach(pst=>res.appendChild(postEl(pst,false)));
   }
   $("#x-scroll").scrollTop=0; }
 $("#x-search-btn").addEventListener("click",()=>doSearch($("#x-q").value));
@@ -11998,7 +12004,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v392"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v393"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
