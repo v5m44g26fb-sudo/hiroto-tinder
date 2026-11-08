@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v382</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v383</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11995,7 +11995,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v382"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v383"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13230,6 +13230,85 @@ dock.addEventListener("click",function(e){
   wasOpen=open;
   if(origBg!==null) av.style.background = seen ? "#c7c7cc" : origBg;
  },600);
+})();
+</script>
+
+<script>
+/* ===== v383: during the scandal she can post the two-of-them photo - X, trends, news, the heat and he all answer ===== */
+(function(){
+ if(window.__v383) return; window.__v383=true;
+ function eligible(){ return typeof state!=="undefined" && state.phase==="scandal" && !state.act2 && !state.ended && !state._seq2 && !state._postedProof; }
+ function busy(){ var inc=document.querySelector("#call-incoming"); return !!state._answered || (inc && inc.style.display==="flex"); }
+ function openProofArticle(){
+  var list=document.querySelector("#news-list"); if(list) list.style.display="none";
+  var a=document.querySelector("#news-article"); if(!a) return; a.style.display="block";
+  a.innerHTML='<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>騒動の最中、お相手女性が"匂わせ"投稿か　「ふたりの夜」の写真にネット騒然</h2><div class="m">週刊デジタル ・ たった今</div><img loading="lazy" decoding="async" src="assets/ig-drink.jpg" style="width:100%;border-radius:12px;margin:6px 0 12px" alt=""><p>マッチングアプリ利用が報じられている井汲大翔（24）のお相手とされる女性が、騒動の最中にSNSを更新。グラスが並ぶ夜の写真を投稿し、ファンの間で「ふたりで撮った写真では」と憶測が広がっている。</p><p>事務所は「交際の事実はない」とのコメントを出したばかり。タイミングの悪さに、ネットでは「火に油」「これは擁護できない」と批判が殺到する一方、「大人の自由だ」と擁護する声も根強い。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">24,860件</span></h3><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">h</span> hir***さん</div><div class="yt">否定した直後にこれは、さすがに事務所がかわいそう</div><div class="yb"><span class="like-btn">👍 そう思う 7,204</span><span>返信 388件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">m</span> mam***さん</div><div class="yt">写真自体はただの夜景とグラス。ここまで叩く話か？</div><div class="yb"><span class="like-btn">👍 そう思う 5,933</span><span>返信 264件</span></div></div><div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">t</span> tok***さん</div><div class="yt">腕時計が本人の私物と一致した時点で、もう言い逃れは無理やろ</div><div class="yb"><span class="like-btn">👍 そう思う 4,517</span><span>返信 431件</span></div></div></div>';
+  var sc=document.querySelector("#news-scroll"); if(sc) sc.scrollTop=0;
+ }
+ function fireProofStorm(){
+  try{ setHeat(Math.min(100,(state.heat||0)+22)); }catch(e){}
+  try{ push("X","#000","𝕏","メンションが急増しています","あなたの投稿が拡散されています",function(){ show("x"); }); }catch(e){}
+  var TL=[
+   {n:"特定班",h:"@tokutei_jp",tm:"今",t:"例の相手の女、IG更新したぞ。グラス2つ、夜景、端に男物の腕時計。これ完全に、ふたりの夜の写真やん",m:["💬 3,102","🔁 21,408","❤️ 12,940"]},
+   {n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【悲報】相手の女性、事務所が交際否定した直後に匂わせ投稿 → トレンド1位が「匂わせ投稿」に",m:["💬 1,940","🔁 15,226","❤️ 8,317"]},
+   {n:"さくらの推し活",h:"@sakura_act",tm:"今",t:"お願いだから今は静かにしてて…って思うけど、写真自体はただの夜景とグラスなんだよな。叩きすぎも違うと思う",m:["💬 864","🔁 5,109","❤️ 19,204"]},
+   {n:"現場レポ",h:"@genba_repo",tm:"今",t:"否定コメント出したばっかりのタイミングでこれは、事務所も頭抱えてるやろ",m:["💬 402","🔁 2,870","❤️ 6,455"]},
+   {n:"ただのファン",h:"@tada_fan",tm:"今",t:"大翔のファンやけど、相手の子を特定して叩く流れは普通に見ててしんどい",m:["💬 689","🔁 9,314","❤️ 31,208"]}];
+  TL.forEach(function(p,i){ later(function(){ var tl=document.querySelector("#x-pane-tl"); if(tl) tl.prepend(postEl(p,false)); try{ bump("x"); }catch(e){} }, 6000+i*7000); });
+  var MEN=[["wish_0271","ねえ、さっきの投稿の写真、どういうつもりなん…"],["sakura_act","叩かれてるけど、写真は消さないのね。強い"],["tokutei_jp","腕時計の型番まで特定されてるよ。投稿、消した方がいい"]];
+  MEN.forEach(function(m,i){ later(function(){ try{ mentionV7(m[0],m[1]); }catch(e){} }, 13000+i*9000); });
+  later(function(){
+   var w=document.querySelector("#x-pane-trend"); if(!w||w.dataset.proof) return; w.dataset.proof="1";
+   var SC2=[["日本のトレンド","匂わせ投稿","248,913 件のポスト"],["日本のトレンド","相手の女","176,204 件のポスト"],["エンターテイメント ・ トレンド","井汲大翔","158,772 件のポスト"],["日本のトレンド","事務所コメント","54,209 件のポスト"],["エンターテイメント ・ トレンド","マッチングアプリ","49,318 件のポスト"]];
+   w.innerHTML="";
+   SC2.forEach(function(t,i){ var d=document.createElement("div"); d.className="trend"; d.style.cursor="pointer"; d.title="タップで検索";
+    d.addEventListener("click",function(){ var q=document.querySelector("#x-q"); if(q) q.value=t[1]; if(typeof doSearch==="function") doSearch(t[1]); });
+    d.innerHTML='<div class="cat">'+(i+1)+' ・ '+t[0]+'</div><div class="kw">'+t[1]+'</div><div class="cnt">'+t[2]+'</div>';
+    w.appendChild(d); });
+  },16000);
+  later(function(){ try{ addNewsRow("assets/ig-drink.jpg","騒動の最中、お相手女性が\"匂わせ\"投稿か　ネット騒然","芸能ニュース ・ たった今", function(){ openProofArticle(); }); bump("news"); }catch(e){} },26000);
+  var tries=0;
+  var react=function(){ tries++;
+   if(state.ended||state._seq2) return;
+   if(busy()){ if(tries<=2) later(react,20000); return; }
+   (async function(){ try{ await himMsg("…なお、投稿、見た"); await himMsg("あれは、今はまずいって"); }catch(e){} })();
+  };
+  later(react,32000);
+ }
+ setInterval(function(){
+  try{
+   var cp=document.querySelector("#nao-composer"); if(!cp) return;
+   var sec=cp.querySelector("#proof-sec");
+   if(!eligible()){ if(sec) sec.remove(); return; }
+   if(sec) return;
+   var grid=cp.querySelector("#nc-grid"); if(!grid||!grid.parentNode) return;
+   sec=document.createElement("div"); sec.id="proof-sec";
+   sec.style.cssText="border:2px solid #e0245e;border-radius:14px;padding:12px;margin-bottom:14px;background:#fff5f7";
+   sec.innerHTML='<div style="font-weight:800;font-size:14px;color:#c81e4e">🔥 危険な写真が1枚ある</div>'+
+    '<div style="font-size:12.5px;color:#666;line-height:1.6;margin:7px 0 10px">2回目の夜、ふたりで撮った写真。今これを投稿したら、騒ぎは一気に大きくなる。キャプションは下の欄の文章が使われるよ。</div>'+
+    '<img loading="lazy" decoding="async" src="assets/ig-drink.jpg" style="width:100%;border-radius:10px;display:block" alt="">'+
+    '<button id="proof-post" type="button" style="width:100%;background:#e0245e;color:#fff;border:none;border-radius:999px;padding:11px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:10px">この写真を投稿する</button>';
+   grid.parentNode.insertBefore(sec, grid);
+   sec.querySelector("#proof-post").addEventListener("click",function(){
+    if(!eligible()){ toast("今はそれどころじゃない"); return; }
+    if(busy()){ toast("今は電話中…終わってからにして"); return; }
+    state._postedProof=true;
+    var capEl=cp.querySelector("#nc-cap"); var cap=(capEl&&capEl.value.trim())||"🍻";
+    var vig=document.querySelector("#v-ig"); var first=vig?vig.querySelector(".ig-post"):null;
+    if(first){ var d=document.createElement("div"); d.className="ig-post";
+     d.innerHTML='<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324<span style="margin-left:auto;color:#8e8e93">…</span></div>'+
+      '<img loading="lazy" decoding="async" class="pimg" src="assets/ig-drink.jpg" alt="">'+
+      '<div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div>'+
+      '<div class="cap"><b>nao_0324</b> <span class="pc-cap"></span> <span style="color:#8e8e93">いいね！0件</span></div><div class="nc-cmts"></div>';
+     d.querySelector(".pc-cap").textContent=cap;
+     first.parentElement.insertBefore(d, first); }
+    cp.style.display="none"; if(capEl) capEl.value="";
+    show("ig");
+    toast("投稿した…🔥");
+    fireProofStorm();
+   });
+  }catch(e){}
+ },1200);
 })();
 </script>
 </body>
