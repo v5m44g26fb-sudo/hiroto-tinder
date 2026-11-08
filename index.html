@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v446</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v447</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v446"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v447"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14988,6 +14988,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  },1000);
  draw();
  window.addEventListener("click",function(e){
+   if(window.__musicV2) return;
    var t=e.target; if(!t||!t.closest) return;
    var b=t.closest("#v-home .dock .appicon");
    if(b&&b.querySelector(".ic-photo")){ draw(); ov.classList.add("on"); }
@@ -15088,5 +15089,299 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  setInterval(paint, 2500);
 })();
 </script>
+
+<style>
+#v443-music{display:none!important}
+#v447-music{position:absolute;inset:0;z-index:960;background:#fff;color:#111;transform:translateY(103%);transition:transform .42s cubic-bezier(.32,.72,.3,1);font-family:-apple-system,"Hiragino Sans",sans-serif}
+#v447-music.on{transform:translateY(0)}
+#v447-pages{position:absolute;inset:0;overflow-y:auto;padding:60px 18px 176px;box-sizing:border-box}
+.m-page{display:none}
+.m-page.on{display:block}
+.m-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:14px;padding-right:42px}
+.m-title{font-size:31px;font-weight:800;letter-spacing:-.5px}
+.m-ava{width:35px;height:35px;border-radius:50%;background:linear-gradient(135deg,#7d9bdb,#b48ad6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:none}
+.m-sec{font-size:20px;font-weight:800;margin:20px 0 10px}
+.m-scrollx{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.m-scrollx::-webkit-scrollbar{display:none}
+.m-bigcard{position:relative;width:238px;height:288px;border-radius:18px;overflow:hidden;flex:none;cursor:pointer}
+.m-bigcard img{width:100%;height:100%;object-fit:cover}
+.m-bigcard .ovl{position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(0,0,0,.62))}
+.m-bigcard .tx{position:absolute;left:14px;right:14px;bottom:12px;color:#fff}
+.m-sqcard{width:148px;flex:none;cursor:pointer}
+.m-sqcard img{width:148px;height:148px;border-radius:14px;object-fit:cover}
+.m-wide{position:relative;width:100%;height:290px;border-radius:18px;overflow:hidden;cursor:pointer}
+.m-wide img{width:100%;height:100%;object-fit:cover}
+.m-menurow{display:flex;align-items:center;gap:13px;padding:13px 2px;border-bottom:1px solid #ececf0;cursor:pointer;font-size:16.5px}
+.m-menurow .chev{margin-left:auto;color:#c7c7cc;font-size:19px}
+.m-grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}
+.m-grid2 .cell{cursor:pointer}
+.m-grid2 img{width:100%;aspect-ratio:1;border-radius:14px;object-fit:cover}
+.m-search{display:flex;align-items:center;gap:8px;background:#eeeff1;border-radius:12px;padding:0 12px;height:39px}
+.m-search input{border:none;background:none;outline:none;flex:1;font-size:15px;color:#111}
+.m-tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.m-tile{height:92px;border-radius:14px;position:relative;cursor:pointer;overflow:hidden}
+.m-tile span{position:absolute;left:12px;bottom:9px;color:#fff;font-weight:800;font-size:16.5px}
+.m-rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.m-rtile{aspect-ratio:1;border-radius:14px;background:#f2f2f4;position:relative;overflow:hidden;cursor:pointer}
+.m-trow{display:flex;align-items:center;gap:11px;padding:8px 0;border-bottom:1px solid #f1f1f4;cursor:pointer}
+.m-trow img{width:46px;height:46px;border-radius:8px;object-fit:cover}
+.m-trow .tt{font-size:15.5px;font-weight:600}
+.m-trow .aa{font-size:13px;color:#8a8a8e}
+.m-trow.playing .tt{color:#fa2d48}
+#v447-mini{position:absolute;left:10px;right:10px;bottom:88px;height:58px;background:rgba(247,247,250,.94);backdrop-filter:blur(14px);border-radius:16px;box-shadow:0 8px 26px rgba(0,0,0,.18);display:flex;align-items:center;gap:10px;padding:0 12px;cursor:pointer;z-index:20}
+#v447-mini img{width:40px;height:40px;border-radius:8px;object-fit:cover}
+#v447-tabs{position:absolute;left:10px;right:10px;bottom:12px;height:64px;background:rgba(247,247,250,.94);backdrop-filter:blur(14px);border-radius:22px;box-shadow:0 8px 26px rgba(0,0,0,.14);display:flex;z-index:20}
+.m-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#8a8a8e;font-size:10px;cursor:pointer;background:none;border:none}
+.m-tab.on{color:#007aff}
+.m-pillbtn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:#f2f2f4;color:#fa2d48;border:none;border-radius:999px;padding:11px 0;font-size:15.5px;font-weight:700;cursor:pointer}
+#v447-np{position:absolute;inset:0;z-index:40;transform:translateY(103%);transition:transform .42s cubic-bezier(.32,.72,.3,1);overflow:hidden;color:#fff}
+#v447-np.on{transform:translateY(0)}
+#v447-npbg{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(46px) brightness(.62);transform:scale(1.25)}
+#v447-np .inner{position:relative;padding:52px 27px 26px;display:flex;flex-direction:column;height:100%;box-sizing:border-box}
+#v447-npart{width:292px;height:292px;border-radius:14px;object-fit:cover;margin:16px auto 6px;box-shadow:0 22px 48px rgba(0,0,0,.45);transition:transform .35s}
+#v447-np.playing #v447-npart{transform:scale(1)}
+#v447-np:not(.playing) #v447-npart{transform:scale(.9)}
+#v447-scrub{height:5px;background:rgba(255,255,255,.28);border-radius:99px;overflow:hidden;cursor:pointer}
+#v447-scrubfill{height:100%;background:#fff;width:0%}
+.m-npbtn{background:none;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#v447-queue{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(28,28,34,.94);backdrop-filter:blur(16px);border-radius:18px;padding:14px 16px;z-index:50;display:none}
+#v447-queue.on{display:block}
+.v447-qrow{display:flex;align-items:center;gap:10px;padding:7px 0;cursor:pointer}
+.v447-qrow img{width:38px;height:38px;border-radius:7px;object-fit:cover}
+</style>
+<script>
+/* ===== v447: the Music app, rebuilt as the real Apple Music from her
+   screenshots - light theme, five tabs (Home / New / Radio / Library /
+   Search), a floating mini player above a frosted tab bar, and a Now
+   Playing screen with blurred artwork. No emoji icons anywhere: every
+   glyph is an inline SVG. Playback still drives the game's real BGM
+   switch, exactly like Settings and Control Center. v443 retires. ===== */
+(function(){
+ if(window.__v447) return; window.__v447=true; window.__musicV2=true;
+ var phone=document.querySelector("#phone")||document.body;
+ var TRACKS=[
+  {t:"朝のプレイリスト",a:"カフェオレと一緒に",img:"assets/cafe3.jpg",dur:204},
+  {t:"夜のドライブ",a:"帰り道の信号待ちで",img:"assets/night.jpg",dur:187},
+  {t:"雨の日のプレイリスト",a:"傘、一本の日に",img:"assets/roses.jpg",dur:226},
+  {t:"ステージの余韻",a:"ライブのあと、耳に残る音",img:"assets/stage.jpg",dur:243}
+ ];
+ var RED="#fa2d48";
+ function svg(p,sz,fill,stroke){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="'+(fill||"none")+'" stroke="'+(stroke||"currentColor")+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'; }
+ var I={
+  home:svg('<path d="M4 11.2 12 4l8 7.2"/><path d="M6.2 9.6V20h11.6V9.6"/>',23),
+  new:svg('<rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/>',23),
+  radio:svg('<circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><path d="M8.8 15.2a4.6 4.6 0 0 1 0-6.4M15.2 8.8a4.6 4.6 0 0 1 0 6.4M6.2 17.8a9 9 0 0 1 0-11.6M17.8 6.2a9 9 0 0 1 0 11.6"/>',23),
+  lib:svg('<path d="M9 18.4V6.2L20 4v12.2"/><circle cx="6.6" cy="18.4" r="2.5"/><circle cx="17.6" cy="16.3" r="2.5"/>',23),
+  search:svg('<circle cx="11" cy="11" r="6.4"/><path d="M15.8 15.8 20.5 20.5"/>',23),
+  play:svg('<path d="M8.2 5.4 18.6 12 8.2 18.6Z"/>',26,"currentColor","none"),
+  pause:svg('<rect x="6.8" y="5" width="3.4" height="14" rx="1.2"/><rect x="13.8" y="5" width="3.4" height="14" rx="1.2"/>',26,"currentColor","none"),
+  next:svg('<path d="M5.5 5.8 14.8 12l-9.3 6.2Z"/><path d="M17.6 5.6v12.8"/>',24,"currentColor"),
+  prev:svg('<path d="M18.5 5.8 9.2 12l9.3 6.2Z"/><path d="M6.4 5.6v12.8"/>',24,"currentColor"),
+  nextS:svg('<path d="M5.5 5.8 14.8 12l-9.3 6.2Z"/><path d="M17.6 5.6v12.8"/>',30,"currentColor"),
+  prevS:svg('<path d="M18.5 5.8 9.2 12l9.3 6.2Z"/><path d="M6.4 5.6v12.8"/>',34,"currentColor"),
+  playS:svg('<path d="M8.2 5.4 18.6 12 8.2 18.6Z"/>',62,"currentColor","none"),
+  pauseS:svg('<rect x="6.8" y="5" width="3.4" height="14" rx="1.2"/><rect x="13.8" y="5" width="3.4" height="14" rx="1.2"/>',62,"currentColor","none"),
+  heart:svg('<path d="M12 20.3C7.2 16.6 3.8 13.4 3.8 9.8 3.8 7.1 5.8 5.2 8.1 5.2c1.6 0 3.1.8 3.9 2.1.8-1.3 2.3-2.1 3.9-2.1 2.3 0 4.3 1.9 4.3 4.6 0 3.6-3.4 6.8-8.2 10.5Z"/>',19),
+  heartF:'<svg width="19" height="19" viewBox="0 0 24 24" fill="'+RED+'"><path d="M12 20.3C7.2 16.6 3.8 13.4 3.8 9.8 3.8 7.1 5.8 5.2 8.1 5.2c1.6 0 3.1.8 3.9 2.1.8-1.3 2.3-2.1 3.9-2.1 2.3 0 4.3 1.9 4.3 4.6 0 3.6-3.4 6.8-8.2 10.5Z"/></svg>',
+  dots:svg('<circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.5" fill="currentColor" stroke="none"/>',20),
+  lyrics:svg('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v7a2.5 2.5 0 0 1-2.5 2.5H12l-4.6 4v-4H6.5A2.5 2.5 0 0 1 4 12.5Z"/><path d="M8 8h8M8 11.4h5.5"/>',22),
+  air:svg('<circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M9.4 14.6a3.7 3.7 0 0 1 0-5.2M14.6 9.4a3.7 3.7 0 0 1 0 5.2M7.2 16.8a7.4 7.4 0 0 1 0-9.6M16.8 7.2a7.4 7.4 0 0 1 0 9.6"/><path d="M8.6 20.4 12 16.8l3.4 3.6Z" fill="currentColor" stroke="none"/>',22),
+  queue:svg('<path d="M4 6.5h13M4 11h13M4 15.5h7"/><path d="M18.5 14.2v5.1M15.9 17.4l2.6 2.4 2.6-2.4"/>',22),
+  volLo:svg('<path d="M4 9.5v5h3.4L12 18.6V5.4L7.4 9.5Z"/>',18),
+  volHi:svg('<path d="M4 9.5v5h3.4L12 18.6V5.4L7.4 9.5Z"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6M18 6.8a7.4 7.4 0 0 1 0 10.4"/>',18),
+  x:svg('<path d="M6 6l12 12M18 6L6 18"/>',15),
+  back:svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>',20),
+  mList:svg('<path d="M9.5 6.5H20M9.5 12H20M9.5 17.5H20"/><circle cx="5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><path d="M4.2 15.4v4.4M2.9 17.9l1.3-1 1.3 1" stroke-width="1.5"/>',22),
+  mMic:svg('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/>',22),
+  mDisc:svg('<circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="2.6"/>',22),
+  mStar:svg('<path d="M12 4.2l2.3 4.9 5.3.7-3.9 3.7 1 5.3-4.7-2.6-4.7 2.6 1-5.3L4.4 9.8l5.3-.7Z"/>',22),
+  mNote:svg('<path d="M9.5 18.2V6.4L19.5 4.4v11.8"/><circle cx="7" cy="18.2" r="2.6"/><circle cx="17" cy="16.2" r="2.6"/>',22),
+  mDl:svg('<circle cx="12" cy="12" r="8.6"/><path d="M12 8v7M8.8 12.4 12 15.6l3.2-3.2"/>',22),
+  mSearch:svg('<circle cx="11" cy="11" r="6.4"/><path d="M15.8 15.8 20.5 20.5"/>',17)
+ };
+ function fmt(sec){ sec=Math.max(0,Math.floor(sec)); return Math.floor(sec/60)+":"+("0"+(sec%60)).slice(-2); }
+ function bgmOn(){ try{ return localStorage.getItem("r5-bgm")==="1"; }catch(e){ return false; } }
+ function setBgm(on){ var btn=document.querySelector('#r5-bgm-row button[data-bgm="'+(on?"1":"0")+'"]'); if(btn) btn.click(); else { try{ localStorage.setItem("r5-bgm", on?"1":"0"); }catch(e){} } }
+ var cur=0, pos=0, shuffle=false, favs={};
+ function trackRow(i,withHeart){
+   var tr=TRACKS[i];
+   return '<div class="m-trow" data-play="'+i+'"><img src="'+tr.img+'" alt=""><div style="flex:1;min-width:0"><div class="tt">'+tr.t+'</div><div class="aa">'+tr.a+'</div></div>'+(withHeart?'<button type="button" class="m-fav" data-fav="'+i+'" style="background:none;border:none;color:#c7c7cc;padding:6px">'+(favs[i]?I.heartF:I.heart)+'</button>':'')+'<span style="color:#b0b0b6;font-size:13px">'+fmt(tr.dur)+'</span></div>';
+ }
+ function allRows(withHeart){ return TRACKS.map(function(_,i){ return trackRow(i,withHeart); }).join(""); }
+ function sqCards(){ return TRACKS.map(function(tr,i){ return '<div class="m-sqcard" data-open-songs="1"><img src="'+tr.img+'" alt=""><div style="font-size:14px;font-weight:600;margin-top:6px">'+tr.t+'</div><div style="font-size:12.5px;color:#8a8a8e">プレイリスト</div></div>'; }).join(""); }
+ var ov=document.createElement("div"); ov.id="v447-music";
+ ov.innerHTML=
+ '<button type="button" id="v447-x" style="position:absolute;top:52px;right:14px;z-index:25;width:30px;height:30px;border-radius:50%;border:none;background:rgba(0,0,0,.06);color:#555;display:flex;align-items:center;justify-content:center;cursor:pointer">'+I.x+'</button>'
+ +'<div id="v447-pages">'
+ +'<div class="m-page" data-page="home">'
+ + '<div class="m-head"><div class="m-title">ホーム</div><div class="m-ava">な</div></div>'
+ + '<div class="m-sec" style="margin-top:2px">あなたへのピックアップ</div>'
+ + '<div class="m-scrollx">'
+ +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/stage.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">ステージの余韻</div><div style="font-size:13px;opacity:.85">ライブのあと、耳に残る音。</div></div></div>'
+ +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/night.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">夜のドライブ</div><div style="font-size:13px;opacity:.85">帰り道の信号待ちで。</div></div></div>'
+ + '</div>'
+ + '<div class="m-sec">最近の再生 <span style="color:#c7c7cc;font-size:16px">›</span></div>'
+ + '<div class="m-scrollx">'+sqCards()+'</div>'
+ +'</div>'
+ +'<div class="m-page" data-page="new">'
+ + '<div class="m-head"><div class="m-title">新着おすすめ</div><div class="m-ava">な</div></div>'
+ + '<div style="font-size:13px;color:#8a8a8e">新着プレイリスト</div><div style="font-size:21px;font-weight:800">2025年ベストソング</div><div style="font-size:15px;color:#8a8a8e;margin-bottom:8px">なおセレクト</div>'
+ + '<div class="m-wide" data-open-songs="1"><img src="assets/roses.jpg" alt=""><div class="ovl" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.5))"></div><div style="position:absolute;left:14px;bottom:12px;color:#fff;font-size:14px">この秋を象徴する4曲を、ピックアップ。</div></div>'
+ + '<div class="m-sec">2025年のベスト <span style="color:#c7c7cc;font-size:16px">›</span></div>'
+ + '<div class="m-scrollx">'+sqCards()+'</div>'
+ +'</div>'
+ +'<div class="m-page" data-page="radio">'
+ + '<div class="m-head"><div class="m-title">ラジオ</div><div class="m-ava">な</div></div>'
+ + '<div class="m-rgrid">'
+ +  '<div class="m-rtile" data-radio="1"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:900;color:#fa2d48">1</div><div style="position:absolute;left:9px;bottom:7px;font-size:10px;font-weight:700">nao radio</div></div>'
+ +  '<div class="m-rtile" data-radio="1" style="background:linear-gradient(135deg,#57b6ff,#2f7fe0)"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:900;font-style:italic;color:#fff">HITS</div><div style="position:absolute;left:9px;bottom:7px;font-size:10px;font-weight:700;color:#fff">nao radio</div></div>'
+ +  '<div class="m-rtile" data-radio="1"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:900;color:#2f7fe0">Chill</div><div style="position:absolute;left:9px;bottom:7px;font-size:10px;font-weight:700">nao radio</div></div>'
+ +  '<div class="m-rtile" data-radio="1"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:27px;font-weight:900;letter-spacing:-1px">club</div><div style="position:absolute;left:9px;bottom:7px;font-size:10px;font-weight:700">nao radio</div></div>'
+ +  '<div class="m-rtile" data-radio="1" style="background:linear-gradient(135deg,#ff7eb0,#f0567a)"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:900;color:#fff">J-POP</div><div style="position:absolute;left:9px;bottom:7px;font-size:10px;font-weight:700;color:#fff">nao radio</div></div>'
+ +  '<div class="m-rtile" data-radio="1"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:900;color:#f5a623">K-POP</div><div style="position:absolute;left:9px;bottom:7px;font-size:10px;font-weight:700">nao radio</div></div>'
+ + '</div>'
+ + '<div class="m-sec">ライブラジオ</div><div style="color:#8a8a8e;font-size:14px;margin:-6px 0 10px">ステーションをタップして、音楽などをノンストップで聴こう</div>'
+ + '<div class="m-wide" data-radio="1" style="height:190px"><img src="assets/night.jpg" alt=""></div>'
+ +'</div>'
+ +'<div class="m-page" data-page="library">'
+ + '<div class="m-head"><div class="m-title">ライブラリ</div><div class="m-ava">な</div></div>'
+ + '<div class="m-menurow" data-open-songs="1"><span style="color:'+RED+'">'+I.mList+'</span>プレイリスト<span class="chev">›</span></div>'
+ + '<div class="m-menurow" data-open-songs="1"><span style="color:'+RED+'">'+I.mMic+'</span>アーティスト<span class="chev">›</span></div>'
+ + '<div class="m-menurow" data-open-songs="1"><span style="color:'+RED+'">'+I.mDisc+'</span>アルバム<span class="chev">›</span></div>'
+ + '<div class="m-menurow" data-soon="1"><span style="color:'+RED+'">'+I.mStar+'</span>あなたにおすすめ<span class="chev">›</span></div>'
+ + '<div class="m-menurow" data-open-songs="1"><span style="color:'+RED+'">'+I.mNote+'</span>曲<span class="chev">›</span></div>'
+ + '<div class="m-menurow" data-soon="1"><span style="color:'+RED+'">'+I.mDl+'</span>ダウンロード済み<span class="chev">›</span></div>'
+ + '<div class="m-sec">最近追加した項目</div>'
+ + '<div class="m-grid2">'+TRACKS.map(function(tr,i){ return '<div class="cell" data-open-songs="1"><img src="'+tr.img+'" alt=""><div style="font-size:14.5px;font-weight:600;margin-top:6px">'+tr.t+'</div><div style="font-size:12.5px;color:#8a8a8e">'+tr.a+'</div></div>'; }).join("")+'</div>'
+ +'</div>'
+ +'<div class="m-page" data-page="search">'
+ + '<div class="m-head"><div class="m-title">検索</div><div class="m-ava">な</div></div>'
+ + '<div class="m-search"><span style="color:#8a8a8e">'+I.mSearch+'</span><input id="v447-q" type="text" placeholder="アーティスト、曲、歌詞、その他"></div>'
+ + '<div class="m-sec">カテゴリを検索</div>'
+ + '<div class="m-tiles">'
+ +  '<div class="m-tile" data-soon="1" style="background:linear-gradient(135deg,#f7c948,#e8a90c)"><span>ヒッツ</span></div>'
+ +  '<div class="m-tile" data-soon="1" style="background:linear-gradient(135deg,#ff7eb0,#f0567a)"><span>K-Pop</span></div>'
+ +  '<div class="m-tile" data-soon="1" style="background:linear-gradient(135deg,#ff8a7a,#f0563a)"><span>J-Pop</span></div>'
+ +  '<div class="m-tile" data-soon="1" style="background:linear-gradient(135deg,#b18cff,#8a5fe0)"><span>アニメ</span></div>'
+ +  '<div class="m-tile" data-soon="1" style="background:linear-gradient(135deg,#ff9a5a,#f2762e)"><span>J-ロック</span></div>'
+ +  '<div class="m-tile" data-soon="1" style="background:linear-gradient(135deg,#7ab8ff,#4a90d9)"><span>チル</span></div>'
+ + '</div>'
+ + '<div class="m-sec">曲</div><div id="v447-results">'+allRows(false)+'</div>'
+ +'</div>'
+ +'<div class="m-page" data-page="songs">'
+ + '<button type="button" id="v447-back" style="background:rgba(0,0,0,.05);border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;cursor:pointer">'+I.back+'</button>'
+ + '<img src="assets/cafe3.jpg" alt="" style="width:196px;height:196px;border-radius:16px;object-fit:cover;display:block;margin:14px auto 10px;box-shadow:0 14px 34px rgba(0,0,0,.22)">'
+ + '<div style="text-align:center;font-size:21px;font-weight:800">なおのプレイリスト</div>'
+ + '<div style="text-align:center;color:#8a8a8e;font-size:13px;margin:3px 0 14px">なお ・ 2025年</div>'
+ + '<div style="display:flex;gap:10px;margin-bottom:8px"><button type="button" class="m-pillbtn" id="v447-playall">'+I.play+' 再生</button><button type="button" class="m-pillbtn" id="v447-shuffle">シャッフル</button></div>'
+ + '<div id="v447-songs">'+allRows(true)+'</div>'
+ +'</div>'
+ +'</div>'
+ +'<div id="v447-mini"><img id="v447-mini-img" src="assets/cafe3.jpg" alt=""><div style="flex:1;min-width:0"><div id="v447-mini-t" style="font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div><div id="v447-mini-a" style="font-size:12.5px;color:#8a8a8e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div></div><button type="button" class="m-npbtn" id="v447-mini-play" style="color:#111">'+I.play+'</button><button type="button" class="m-npbtn" id="v447-mini-next" style="color:#111">'+I.next+'</button></div>'
+ +'<div id="v447-tabs">'
+ + '<button type="button" class="m-tab on" data-tab="home">'+I.home+'ホーム</button>'
+ + '<button type="button" class="m-tab" data-tab="new">'+I.new+'新着</button>'
+ + '<button type="button" class="m-tab" data-tab="radio">'+I.radio+'ラジオ</button>'
+ + '<button type="button" class="m-tab" data-tab="library">'+I.lib+'ライブラリ</button>'
+ + '<button type="button" class="m-tab" data-tab="search">'+I.search+'検索</button>'
+ +'</div>'
+ +'<div id="v447-np"><div id="v447-npbg"></div><div class="inner">'
+ + '<div id="v447-grab" style="width:38px;height:5px;border-radius:99px;background:rgba(255,255,255,.4);margin:0 auto;cursor:pointer"></div>'
+ + '<img id="v447-npart" src="assets/cafe3.jpg" alt="">'
+ + '<div style="display:flex;align-items:center;gap:10px;margin-top:14px"><div style="flex:1;min-width:0"><div id="v447-npt" style="font-size:20px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div><div id="v447-npa" style="font-size:17px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div></div><button type="button" class="m-npbtn" id="v447-np-dots" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.18)">'+I.dots+'</button></div>'
+ + '<div id="v447-scrub" style="margin-top:16px"><div id="v447-scrubfill"></div></div>'
+ + '<div style="display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.6);margin-top:5px"><span id="v447-npcur">0:00</span><span id="v447-nprem">-0:00</span></div>'
+ + '<div style="display:flex;justify-content:center;align-items:center;gap:34px;margin-top:12px"><button type="button" class="m-npbtn" id="v447-np-prev">'+I.prevS+'</button><button type="button" class="m-npbtn" id="v447-np-play">'+I.playS+'</button><button type="button" class="m-npbtn" id="v447-np-next">'+I.nextS+'</button></div>'
+ + '<div style="display:flex;align-items:center;gap:10px;margin-top:14px;color:rgba(255,255,255,.65)"><span>'+I.volLo+'</span><input type="range" id="v447-vol" min="0" max="100" step="1" style="flex:1;accent-color:#fff"><span>'+I.volHi+'</span></div>'
+ + '<div style="display:flex;justify-content:space-around;margin-top:auto;padding-top:16px;color:rgba(255,255,255,.75)"><button type="button" class="m-npbtn" id="v447-np-lyr">'+I.lyrics+'</button><button type="button" class="m-npbtn" id="v447-np-air">'+I.air+'</button><button type="button" class="m-npbtn" id="v447-np-q">'+I.queue+'</button></div>'
+ +'</div>'
+ +'<div id="v447-queue"><div style="font-weight:800;font-size:15px;margin-bottom:6px">次に再生</div><div id="v447-qlist"></div></div>'
+ +'</div>';
+ phone.appendChild(ov);
+ var pages=ov.querySelector("#v447-pages");
+ function showPage(name){
+   ov.querySelectorAll(".m-page").forEach(function(p){ p.classList.toggle("on", p.dataset.page===name); });
+   ov.querySelectorAll(".m-tab").forEach(function(t){ t.classList.toggle("on", t.dataset.tab===name); });
+   pages.scrollTop=0;
+ }
+ ov.querySelectorAll(".m-tab").forEach(function(t){ t.addEventListener("click",function(){ showPage(t.dataset.tab); }); });
+ ov.querySelector("#v447-x").addEventListener("click",function(){ ov.classList.remove("on"); });
+ ov.addEventListener("click",function(e){
+   var os=e.target.closest("[data-open-songs]"); if(os){ showPage("songs"); return; }
+   if(e.target.closest("[data-soon]")){ toast("その棚は、まだ準備中"); return; }
+   if(e.target.closest("[data-radio]")){ toast("ラジオはお休み中"); return; }
+   var fv=e.target.closest("[data-fav]"); if(fv){ var i=+fv.dataset.fav; favs[i]=!favs[i]; fv.innerHTML=favs[i]?I.heartF:I.heart; return; }
+   var pl=e.target.closest("[data-play]"); if(pl){ play(+pl.dataset.play, true); }
+ });
+ function play(i,openNp){
+   cur=i; pos=0; if(!bgmOn()) setBgm(true);
+   draw(); if(openNp) np.classList.add("on");
+ }
+ var np=ov.querySelector("#v447-np");
+ function draw(){
+   var tr=TRACKS[cur], on=bgmOn();
+   ov.querySelector("#v447-mini-img").src=tr.img;
+   ov.querySelector("#v447-mini-t").textContent=tr.t;
+   ov.querySelector("#v447-mini-a").textContent=tr.a;
+   ov.querySelector("#v447-mini-play").innerHTML=on?I.pause:I.play;
+   np.querySelector("#v447-npart").src=tr.img;
+   np.querySelector("#v447-npbg").style.backgroundImage="url("+tr.img+")";
+   np.querySelector("#v447-npt").textContent=tr.t;
+   np.querySelector("#v447-npa").textContent=tr.a;
+   np.querySelector("#v447-np-play").innerHTML=on?I.pauseS:I.playS;
+   np.classList.toggle("playing", on);
+   ov.querySelectorAll("[data-play]").forEach(function(r){ r.classList.toggle("playing", +r.dataset.play===cur); });
+   var q=ov.querySelector("#v447-qlist");
+   q.innerHTML=TRACKS.map(function(t2,i){ return i===cur?"":'<div class="v447-qrow" data-q="'+i+'"><img src="'+t2.img+'" alt=""><div><div style="font-size:14px;font-weight:700">'+t2.t+'</div><div style="font-size:12px;color:rgba(255,255,255,.55)">'+t2.a+'</div></div></div>'; }).join("");
+ }
+ ov.querySelector("#v447-mini").addEventListener("click",function(e){ if(e.target.closest("button")) return; draw(); np.classList.add("on"); });
+ ov.querySelector("#v447-mini-play").addEventListener("click",function(){ setBgm(!bgmOn()); setTimeout(draw,60); });
+ ov.querySelector("#v447-mini-next").addEventListener("click",function(){ step(1); });
+ ov.querySelector("#v447-back").addEventListener("click",function(){ showPage("library"); });
+ ov.querySelector("#v447-playall").addEventListener("click",function(){ play(0,true); });
+ ov.querySelector("#v447-shuffle").addEventListener("click",function(){ shuffle=!shuffle; toast(shuffle?"シャッフル：オン":"シャッフル：オフ"); if(shuffle) play(Math.floor(Math.random()*TRACKS.length), true); });
+ np.querySelector("#v447-grab").addEventListener("click",function(){ np.classList.remove("on"); });
+ np.querySelector("#v447-np-play").addEventListener("click",function(){ setBgm(!bgmOn()); setTimeout(draw,60); });
+ np.querySelector("#v447-np-next").addEventListener("click",function(){ step(1); });
+ np.querySelector("#v447-np-prev").addEventListener("click",function(){ step(-1); });
+ np.querySelector("#v447-np-dots").addEventListener("click",function(){ toast("なおのプレイリスト"); });
+ np.querySelector("#v447-np-lyr").addEventListener("click",function(){ toast("歌詞はまだ届いてない"); });
+ np.querySelector("#v447-np-air").addEventListener("click",function(){ toast("AirPlay：この端末"); });
+ np.querySelector("#v447-np-q").addEventListener("click",function(){ draw(); np.querySelector("#v447-queue").classList.toggle("on"); });
+ np.querySelector("#v447-queue").addEventListener("click",function(e){ var r=e.target.closest("[data-q]"); if(r){ play(+r.dataset.q,false); np.querySelector("#v447-queue").classList.remove("on"); } });
+ np.querySelector("#v447-scrub").addEventListener("click",function(e){ var r=e.currentTarget.getBoundingClientRect(); pos=Math.floor(TRACKS[cur].dur*Math.min(1,Math.max(0,(e.clientX-r.left)/r.width))); tick(); });
+ function step(d){
+   if(shuffle && d>0){ var n=cur; while(n===cur) n=Math.floor(Math.random()*TRACKS.length); cur=n; }
+   else cur=(cur+d+TRACKS.length)%TRACKS.length;
+   pos=0; if(!bgmOn()) setBgm(true); draw();
+ }
+ var vv=np.querySelector("#v447-vol");
+ try{ vv.value=Math.round(parseFloat(localStorage.getItem("r5-vol")||"1")*100); }catch(e){ vv.value=100; }
+ vv.addEventListener("input",function(){ try{ localStorage.setItem("r5-vol", String(+vv.value/100)); }catch(e){} });
+ var q=ov.querySelector("#v447-q");
+ q.addEventListener("input",function(){
+   var v=q.value.trim();
+   ov.querySelector("#v447-results").innerHTML=TRACKS.map(function(tr,i){ return (!v||tr.t.indexOf(v)>=0||tr.a.indexOf(v)>=0)?trackRow(i,false):""; }).join("")||'<div style="color:#8a8a8e;font-size:14px;padding:8px 0">見つからなかった</div>';
+   draw();
+ });
+ function tick(){
+   var tr=TRACKS[cur];
+   np.querySelector("#v447-npcur").textContent=fmt(pos);
+   np.querySelector("#v447-nprem").textContent="-"+fmt(tr.dur-pos);
+   np.querySelector("#v447-scrubfill").style.width=(pos/tr.dur*100)+"%";
+ }
+ setInterval(function(){
+   if(bgmOn()){ pos+=1; if(pos>=TRACKS[cur].dur){ step(1); } }
+   if(ov.classList.contains("on")){ tick(); var on=bgmOn(); np.querySelector("#v447-np-play").innerHTML=on?I.pauseS:I.playS; ov.querySelector("#v447-mini-play").innerHTML=on?I.pause:I.play; np.classList.toggle("playing", on); }
+ },1000);
+ window.addEventListener("click",function(e){
+   var t=e.target; if(!t||!t.closest) return;
+   var b=t.closest("#v-home .dock .appicon");
+   if(b&&b.querySelector(".ic-photo")){ showPage("home"); draw(); ov.classList.add("on"); }
+ }, true);
+ showPage("home"); draw(); tick();
+})();
+</script>
 </body>
+
 </html>
