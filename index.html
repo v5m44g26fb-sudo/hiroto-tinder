@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v442</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v443</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v442"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v443"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14914,6 +14914,83 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  cc.addEventListener("click",function(e){ if(e.target===cc) cc.classList.remove("on"); });
  if(sicons){ sicons.style.cursor="pointer"; sicons.addEventListener("click",function(e){ e.stopPropagation(); paint(); cc.classList.toggle("on"); }); }
  paint();
+})();
+</script>
+
+<style>
+#v443-music{position:absolute;inset:0;z-index:950;background:linear-gradient(180deg,#2c2c34,#131316);color:#fff;padding:60px 22px 30px;box-sizing:border-box;transform:translateY(103%);transition:transform .4s cubic-bezier(.32,.72,.35,1);display:flex;flex-direction:column}
+#v443-music.on{transform:translateY(0)}
+#v443-art{width:250px;height:250px;border-radius:16px;object-fit:cover;margin:16px auto 8px;box-shadow:0 18px 44px rgba(0,0,0,.5)}
+.v443-track{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:12px;cursor:pointer}
+.v443-track.act{background:rgba(255,255,255,.1)}
+.v443-track img{width:44px;height:44px;border-radius:8px;object-fit:cover}
+.v443-ctl{background:none;border:none;color:#fff;font-size:30px;cursor:pointer;padding:4px 10px}
+#v443-bar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden}
+#v443-fill{height:100%;width:0%;background:#fff;border-radius:99px}
+</style>
+<script>
+/* ===== v443: the dock's music icon finally does something. It opens her
+   music player: four of her playlists as tracks, a Now Playing screen
+   with real artwork, and a play button wired to the game's actual BGM
+   (the same switch as Settings / Control Center), plus its volume. ===== */
+(function(){
+ if(window.__v443) return; window.__v443=true;
+ var phone=document.querySelector("#phone")||document.body;
+ var TRACKS=[
+  {t:"朝のプレイリスト",a:"カフェオレと一緒に",img:"assets/cafe3.jpg",dur:204},
+  {t:"夜のドライブ",a:"帰り道の信号待ちで",img:"assets/night.jpg",dur:187},
+  {t:"雨の日のプレイリスト",a:"傘、一本の日に",img:"assets/roses.jpg",dur:226},
+  {t:"ステージの余韻",a:"ライブのあと、耳に残る音",img:"assets/stage.jpg",dur:243}
+ ];
+ var cur=0, pos=0;
+ var ov=document.createElement("div"); ov.id="v443-music";
+ ov.innerHTML=""
+ +'<div style="display:flex;align-items:center"><button type="button" id="v443-x" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:2px 6px">⌄</button><b style="margin:0 auto;font-size:15px;transform:translateX(-14px)">ミュージック</b></div>'
+ +'<img id="v443-art" alt="">'
+ +'<div style="text-align:center;margin-top:10px"><div id="v443-title" style="font-size:19px;font-weight:800"></div><div id="v443-artist" style="color:rgba(255,255,255,.6);font-size:13.5px;margin-top:2px"></div></div>'
+ +'<div id="v443-bar" style="margin-top:18px"><div id="v443-fill"></div></div>'
+ +'<div style="display:flex;justify-content:space-between;color:rgba(255,255,255,.55);font-size:11px;margin-top:5px"><span id="v443-cur">0:00</span><span id="v443-dur">0:00</span></div>'
+ +'<div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-top:8px"><button type="button" class="v443-ctl" id="v443-prev">⏮</button><button type="button" class="v443-ctl" id="v443-play" style="font-size:44px">▶️</button><button type="button" class="v443-ctl" id="v443-next">⏭</button></div>'
+ +'<div style="display:flex;align-items:center;gap:10px;margin-top:2px"><span style="font-size:13px">🔈</span><input type="range" id="v443-vol" min="0" max="100" step="1" style="flex:1;accent-color:#fff"><span style="font-size:13px">🔊</span></div>'
+ +'<div id="v443-list" style="margin-top:14px;overflow-y:auto"></div>';
+ phone.appendChild(ov);
+ function fmt(sec){ sec=Math.max(0,Math.floor(sec)); return Math.floor(sec/60)+":"+("0"+(sec%60)).slice(-2); }
+ function bgmOn(){ try{ return localStorage.getItem("r5-bgm")==="1"; }catch(e){ return false; } }
+ function setBgm(on){
+   var btn=document.querySelector('#r5-bgm-row button[data-bgm="'+(on?"1":"0")+'"]');
+   if(btn) btn.click(); else { try{ localStorage.setItem("r5-bgm", on?"1":"0"); }catch(e){} }
+ }
+ function draw(){
+   var tr=TRACKS[cur];
+   ov.querySelector("#v443-art").src=tr.img;
+   ov.querySelector("#v443-title").textContent=tr.t;
+   ov.querySelector("#v443-artist").textContent=tr.a;
+   ov.querySelector("#v443-dur").textContent=fmt(tr.dur);
+   ov.querySelector("#v443-play").textContent=bgmOn()?"⏸":"▶️";
+   ov.querySelectorAll(".v443-track").forEach(function(r,i){ r.classList.toggle("act", i===cur); });
+ }
+ var list=ov.querySelector("#v443-list");
+ list.innerHTML=TRACKS.map(function(tr,i){ return '<div class="v443-track" data-i="'+i+'"><img src="'+tr.img+'" alt=""><div><div style="font-weight:700;font-size:14.5px">'+tr.t+'</div><div style="color:rgba(255,255,255,.55);font-size:12px">'+tr.a+'</div></div><span style="margin-left:auto;color:rgba(255,255,255,.5);font-size:12px">'+fmt(tr.dur)+'</span></div>'; }).join("");
+ list.querySelectorAll(".v443-track").forEach(function(r){ r.addEventListener("click",function(){ cur=+r.dataset.i; pos=0; if(!bgmOn()) setBgm(true); draw(); }); });
+ ov.querySelector("#v443-play").addEventListener("click",function(){ setBgm(!bgmOn()); setTimeout(draw,60); });
+ ov.querySelector("#v443-next").addEventListener("click",function(){ cur=(cur+1)%TRACKS.length; pos=0; draw(); });
+ ov.querySelector("#v443-prev").addEventListener("click",function(){ cur=(cur+TRACKS.length-1)%TRACKS.length; pos=0; draw(); });
+ ov.querySelector("#v443-x").addEventListener("click",function(){ ov.classList.remove("on"); });
+ var vv=ov.querySelector("#v443-vol");
+ try{ vv.value=Math.round(parseFloat(localStorage.getItem("r5-vol")||"1")*100); }catch(e){ vv.value=100; }
+ vv.addEventListener("input",function(){ try{ localStorage.setItem("r5-vol", String(+vv.value/100)); }catch(e){} });
+ setInterval(function(){
+   if(!ov.classList.contains("on")) return;
+   if(bgmOn()){ pos+=1; if(pos>=TRACKS[cur].dur){ cur=(cur+1)%TRACKS.length; pos=0; } }
+   ov.querySelector("#v443-cur").textContent=fmt(pos);
+   ov.querySelector("#v443-fill").style.width=(pos/TRACKS[cur].dur*100)+"%";
+   ov.querySelector("#v443-play").textContent=bgmOn()?"⏸":"▶️";
+ },1000);
+ draw();
+ document.addEventListener("click",function(e){
+   var b=e.target.closest?e.target.closest("#v-home .dock .appicon"):null;
+   if(b&&b.querySelector(".ic-photo")){ draw(); ov.classList.add("on"); }
+ });
 })();
 </script>
 </body>
