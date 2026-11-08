@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v436</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v437</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v436"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v437"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14500,6 +14500,98 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  new MutationObserver(function(){
    if(panel.style.display==="none") return;
    if(panel.querySelector("#cam-img")&&!panel.querySelector("#v436-cam")) build();
+ }).observe(panel,{childList:true,subtree:true});
+})();
+</script>
+
+<style>
+#v437-notes{position:absolute;inset:0;background:#f7f7fa;display:flex;flex-direction:column;padding:0 0 14px;color:#111;z-index:94}
+.nt-row{background:#fff;border-radius:12px;padding:11px 14px;margin:0 14px 8px;cursor:pointer}
+.nt-row .nt-t{font-weight:800;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt-row .nt-p{color:#8e8e93;font-size:12px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nt-row.lock{opacity:.55;cursor:default}
+#v437-body{flex:1;width:100%;border:none;background:#fff;font-family:inherit;font-size:15px;line-height:1.8;padding:16px;box-sizing:border-box;outline:none;resize:none}
+</style>
+<script>
+/* ===== v437: Notes becomes Notes. The old memo panel (locked/unlocked
+   one-liners in white rows, plus a one-line input box) is replaced on open
+   by a real notes app: a searchable list with dates and previews, a page
+   per note, and her own notes that persist on the device. His story memos
+   keep their unlock gates; the hidden draft card (v152) still lands in
+   the panel after an ending. ===== */
+(function(){
+ if(window.__v437) return; window.__v437=true;
+ var panel=document.querySelector("#hp-panel"); if(!panel) return;
+ var DATES={"Super Like":"9月27日","カフェオレ":"10月4日","言わなあかん":"10月12日","ごめん":"11月1日","なおだけは":"11月2日","歌で返す":"11月3日"};
+ function hisDate(t){ for(var k in DATES){ if(t.indexOf(k)===0) return DATES[k]; } return ""; }
+ function loadMine(){ try{ return JSON.parse(localStorage.getItem("r5-mynotes")||"[]"); }catch(e){ return []; } }
+ function saveMine(a){ try{ localStorage.setItem("r5-mynotes",JSON.stringify(a)); }catch(e){} }
+ function today(){ var d=new Date(); return (d.getMonth()+1)+"/"+d.getDate(); }
+ var hisCache=null;
+ function build(){
+   var rows=panel.querySelectorAll(".memo-row");
+   var his=rows.length?[]:hisCache;
+   if(rows.length){ his=[];
+     rows.forEach(function(r){
+       var lock=r.classList.contains("lock");
+       var t=r.textContent.replace("✏️","").replace("🔒","").trim();
+       his.push({t:lock?"まだ書かれていない":t, lock:lock, d:lock?"":hisDate(t)});
+     });
+     if(his.length) hisCache=his;
+   }
+   if(!his||!his.length) return;
+   var mine=loadMine();
+   panel.innerHTML=""
+   +'<div id="v437-notes">'
+   +' <div class="hp-head" style="padding:52px 14px 0"><button class="hp-close" id="v437-x">‹</button><b style="font-size:17px">メモ</b></div>'
+   +' <div style="padding:2px 18px 8px;font-size:30px;font-weight:800">メモ</div>'
+   +' <div style="padding:0 14px 10px"><input id="v437-q" placeholder="🔍 検索" autocomplete="off" style="width:100%;box-sizing:border-box;border:none;background:#e9e9ee;border-radius:10px;padding:9px 12px;font-size:14px;font-family:inherit;outline:none"></div>'
+   +' <div id="v437-list" style="overflow-y:auto;flex:1"></div>'
+   +' <div style="display:flex;align-items:center;padding:8px 18px 2px"><span id="v437-count" style="margin:0 auto;font-size:12px;color:#8e8e93"></span><button type="button" id="v437-new" style="background:none;border:none;font-size:21px;cursor:pointer" title="新しいメモ">✎</button></div>'
+   +'</div>';
+   var list=panel.querySelector("#v437-list");
+   function rowHTML(){
+     var q=(panel.querySelector("#v437-q").value||"").trim();
+     var h='<div style="padding:4px 18px 6px;font-size:12px;font-weight:800;color:#8e8e93">ひろと</div>';
+     his.forEach(function(n,i){ if(q&&n.t.indexOf(q)<0) return;
+       h+='<div class="nt-row'+(n.lock?" lock":"")+'" data-his="'+i+'"><div class="nt-t">'+(n.lock?"🔒 ":"")+n.t.replace(/</g,"&lt;")+'</div><div class="nt-p">'+(n.d?n.d+"　":"")+(n.lock?"物語が進むと書かれる":"タップで開く")+'</div></div>'; });
+     h+='<div style="padding:10px 18px 6px;font-size:12px;font-weight:800;color:#8e8e93">わたし</div>';
+     if(!mine.length) h+='<div style="padding:2px 18px 8px;color:#8e8e93;font-size:13px">まだない。右下の✎から書ける</div>';
+     mine.forEach(function(n,i){ if(q&&n.x.indexOf(q)<0) return;
+       var lines=n.x.split("\n"); var t=lines[0]||"新しいメモ"; var p=lines.slice(1).join(" ")||"追加のテキストなし";
+       h+='<div class="nt-row" data-mine="'+i+'"><div class="nt-t">'+t.replace(/</g,"&lt;")+'</div><div class="nt-p">'+n.t+"　"+p.replace(/</g,"&lt;")+'</div></div>'; });
+     list.innerHTML=h;
+     panel.querySelector("#v437-count").textContent=(his.filter(function(n){return !n.lock;}).length+mine.length)+"件のメモ";
+     list.querySelectorAll("[data-his]").forEach(function(r){ r.addEventListener("click",function(){ var n=his[+r.dataset.his]; if(n.lock) return; openPage({title:n.t,date:n.d,body:n.t,ro:true}); }); });
+     list.querySelectorAll("[data-mine]").forEach(function(r){ r.addEventListener("click",function(){ var i=+r.dataset.mine; openPage({mine:i}); }); });
+   }
+   function openPage(o){
+     var isMine=("mine" in o);
+     var n=isMine?mine[o.mine]:null;
+     var wrap=panel.querySelector("#v437-notes");
+     wrap.innerHTML=""
+     +' <div class="hp-head" style="padding:52px 14px 0"><button class="hp-close" id="v437-back">‹</button><b style="font-size:16px">メモ</b>'
+     +(isMine?'<button type="button" id="v437-del" style="margin-left:auto;background:none;border:none;color:#d70015;font-size:13.5px;font-weight:700;cursor:pointer">削除</button>':"")
+     +'</div>'
+     +' <div style="text-align:center;color:#8e8e93;font-size:12px;padding:2px 0 8px">'+(isMine?n.t:(o.date||""))+'</div>'
+     +(isMine?'<textarea id="v437-body" placeholder="メモを入力">'+n.x.replace(/</g,"&lt;")+'</textarea>'
+             :'<div style="background:#fff;flex:1;padding:18px 16px;font-size:15.5px;line-height:1.9">'+o.body.replace(/</g,"&lt;")+'</div>');
+     wrap.querySelector("#v437-back").addEventListener("click",function(){ build(); });
+     if(isMine){
+       var ta=wrap.querySelector("#v437-body");
+       ta.addEventListener("input",function(){ mine[o.mine].x=ta.value; saveMine(mine); });
+       wrap.querySelector("#v437-del").addEventListener("click",function(){ mine.splice(o.mine,1); saveMine(mine); build(); toast("メモを削除したよ"); });
+       ta.focus();
+     }
+   }
+   panel.querySelector("#v437-x").addEventListener("click",function(){ panel.style.display="none"; });
+   panel.querySelector("#v437-q").addEventListener("input",rowHTML);
+   panel.querySelector("#v437-new").addEventListener("click",function(){ mine.unshift({x:"",t:today()}); saveMine(mine); openPage({mine:0}); });
+   rowHTML();
+ }
+ new MutationObserver(function(){
+   if(panel.style.display==="none") return;
+   if(panel.querySelector(".memo-row")&&!panel.querySelector("#v437-notes")) build();
  }).observe(panel,{childList:true,subtree:true});
 })();
 </script>
