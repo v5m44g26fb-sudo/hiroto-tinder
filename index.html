@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v416</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v417</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12011,7 +12011,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v416"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v417"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14045,6 +14045,69 @@ dock.addEventListener("click",function(e){
    l.textContent="❤️ "+(on?n-1:n+1);
    l.style.color=on?"":"#f91880"; l.style.fontWeight=on?"":"700";
  },true);
+})();
+</script>
+
+<style>
+#nc-ov{position:fixed;inset:0;z-index:330;background:rgba(10,12,16,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;flex-direction:column;padding:64px 14px 20px}
+#nc-ov.on{display:flex}
+#nc-ov h3{color:#fff;font-size:19px;margin:0 4px 12px}
+.nc-item{display:flex;gap:10px;background:rgba(255,255,255,.92);border-radius:16px;padding:11px 12px;margin-bottom:9px;cursor:pointer;align-items:flex-start}
+.nc-ic{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none;color:#fff}
+.nc-item .a{font-size:11px;color:#666}
+.nc-item .t{font-weight:700;font-size:13.5px}
+.nc-item .b{font-size:12.5px;color:#333;line-height:1.45}
+.nc-item .tm{margin-left:auto;font-size:11px;color:#888;flex:none}
+#nc-close{margin-top:6px;background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:999px;padding:12px;font-size:14px;font-weight:700;cursor:pointer}
+</style>
+<script>
+/* ===== v417: notification center (push history) ===== */
+(function(){
+ if(window.__v417) return; window.__v417=true;
+ window.__notiHist=[];
+ var ov=document.createElement("div"); ov.id="nc-ov";
+ ov.innerHTML='<h3>通知センター</h3><div id="nc-list" style="overflow-y:auto"></div><button id="nc-close">閉じる</button>';
+ document.body.appendChild(ov);
+ function nowT(){ var d=new Date(); return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); }
+ function render(){
+   var L=ov.querySelector("#nc-list");
+   if(!window.__notiHist.length){ L.innerHTML='<div style="color:#dfe3e8;font-size:13.5px;padding:8px 4px">通知はまだ届いてない</div>'; return; }
+   L.innerHTML="";
+   window.__notiHist.forEach(function(n){
+     var d=document.createElement("div"); d.className="nc-item";
+     d.innerHTML='<span class="nc-ic" style="background:'+n.color+'">'+n.icon+'</span><span style="min-width:0"><span class="a">'+n.app+'</span><div class="t"></div><div class="b"></div></span><span class="tm">'+n.tm+'</span>';
+     d.querySelector(".t").textContent=n.title; d.querySelector(".b").textContent=n.body;
+     d.addEventListener("click",function(){ ov.classList.remove("on"); if(n.cb){ try{n.cb();}catch(e){} } });
+     L.appendChild(d);
+   });
+ }
+ ov.querySelector("#nc-close").addEventListener("click",function(){ ov.classList.remove("on"); });
+ ov.addEventListener("click",function(e){ if(e.target===ov) ov.classList.remove("on"); });
+ /* wrap the central push() so every notification is recorded */
+ if(typeof push==="function"&&!push.__v417){
+   var orig=push;
+   var wrapped=function(app,color,icon,title,body,cb){
+     window.__notiHist.unshift({app:app,color:color,icon:icon,title:title,body:body,cb:cb||null,tm:nowT()});
+     if(window.__notiHist.length>30) window.__notiHist.length=30;
+     return orig(app,color,icon,title,body,cb);
+   };
+   wrapped.__v417=true;
+   push=wrapped;
+ }
+ /* open from the status-bar clock, like pulling the shade down */
+ document.addEventListener("click",function(e){
+   if(e.target&&e.target.id==="clock"){ render(); ov.classList.add("on"); }
+ },true);
+ /* discoverability: a row in settings, under the chapter select */
+ var iv=setInterval(function(){
+   var anchor=document.querySelector("#r5-chap-row");
+   if(anchor&&!document.querySelector("#v417-nc-row")){
+     var row=document.createElement("div"); row.className="setrow"; row.id="v417-nc-row";
+     row.innerHTML='<span>\U0001f514 通知センター</span><button class="set-tgl" type="button">ひらく</button>';
+     anchor.parentNode.insertBefore(row, anchor.nextSibling);
+     row.querySelector("button").addEventListener("click",function(){ render(); ov.classList.add("on"); });
+   }
+ },1500);
 })();
 </script>
 </body>
