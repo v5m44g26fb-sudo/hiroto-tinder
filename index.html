@@ -853,7 +853,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v394</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v395</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12004,7 +12004,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v394"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v395"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13255,7 +13255,7 @@ dock.addEventListener("click",function(e){
   var sc=document.querySelector("#news-scroll"); if(sc) sc.scrollTop=0;
  }
  function fireProofStorm(){
-  try{ setHeat(Math.min(100,(state.heat||0)+22)); }catch(e){}
+  try{ setHeat(Math.min(100,(state.heat||0)+22)); state._scar=(state._scar||0)+22; }catch(e){}
   try{ push("X","#000","𝕏","メンションが急増しています","あなたの投稿が拡散されています",function(){ show("x"); }); }catch(e){}
   var herCap=(function(){ var c=document.querySelector("#v-ig .ig-post .pc-cap"); return c&&c.textContent?c.textContent:"🍻"; })();
   var TL=[
@@ -13334,7 +13334,7 @@ dock.addEventListener("click",function(e){
   var sc=document.querySelector("#news-scroll"); if(sc) sc.scrollTop=0;
  }
  function fireXStorm(herText){
-  try{ setHeat(Math.min(100,(state.heat||0)+12)); }catch(e){}
+  try{ setHeat(Math.min(100,(state.heat||0)+12)); state._scar=(state._scar||0)+12; }catch(e){}
   try{ push("X","#000","𝕏","引用ポストが急増しています","あなたのポストが引用されています",function(){ show("x"); }); }catch(e){}
   var quoted=herText.length>42?herText.slice(0,42)+"…":herText;
   var TL=[
@@ -13461,7 +13461,7 @@ dock.addEventListener("click",function(e){
  function busy(){ var inc=document.querySelector("#call-incoming"); return !!state._answered || (inc && inc.style.display==="flex"); }
  function eligible(){ return typeof state!=="undefined" && state.phase==="scandal" && !state.act2 && !state.ended && !state._seq2 && !state._commentedHisPost; }
  function fireCommentStorm(herText){
-  try{ setHeat(Math.min(100,(state.heat||0)+10)); }catch(e){}
+  try{ setHeat(Math.min(100,(state.heat||0)+10)); state._scar=(state._scar||0)+10; }catch(e){}
   try{ push("X","#000","𝕏","あなたのコメントが拡散されています","スクリーンショットが出回っています",function(){ show("x"); }); }catch(e){}
   var quoted=herText.length>42?herText.slice(0,42)+"…":herText;
   var TL=[
@@ -13491,6 +13491,56 @@ dock.addEventListener("click",function(e){
      }
    }
  }).observe(hv,{childList:true,subtree:true});
+})();
+</script>
+
+<script>
+/* ===== v395: fanning the flames has a cost - the scar tally bends the ending's aftermath ===== */
+(function(){
+ if(window.__v395) return; window.__v395=true;
+ var BEATS=[
+  "—— その夜、寝る前に、もう一報が入った。",
+  "📰 ニュース速報\n井汲大翔、週末のファンミーティング延期を発表",
+  "事務所は「本人の体調と、諸般の事情を総合的に判断した」と説明。チケットの払い戻しも併せて発表された。",
+  "𝕏 の声 ——「延期だって…」「体調って言ってるけど、絶対あの件でしょ」「大翔がいちばんしんどいはずなのに」",
+  "💬 ひろと\n「…ごめん」\n「ファンミ、延期になった」\n「なおのせいちゃうからな。ほんまに」",
+  "（……私が、静かにしてたら。違ったん、かな）"];
+ function scene(done){
+  var phone=document.querySelector("#phone"); if(!phone){ done(); return; }
+  var ov=document.createElement("div"); ov.id="aft-ov";
+  ov.style.cssText="position:absolute;inset:0;z-index:380;background:rgba(8,8,14,.97);display:flex;flex-direction:column;justify-content:center;padding:34px 30px;cursor:pointer";
+  var tx=document.createElement("div");
+  tx.style.cssText="color:#f2f2f5;font-size:16.5px;line-height:2.05;white-space:pre-line;font-weight:600";
+  var hint=document.createElement("div");
+  hint.style.cssText="color:#8e8e99;font-size:12px;margin-top:26px;text-align:center";
+  hint.textContent="タップで進む";
+  ov.appendChild(tx); ov.appendChild(hint); phone.appendChild(ov);
+  var i=0; tx.textContent=BEATS[0];
+  ov.addEventListener("click",function(){
+   i++;
+   if(i<BEATS.length){ tx.textContent=BEATS[i]; if(i===BEATS.length-1) hint.textContent="タップで翌朝へ"; }
+   else { ov.remove(); done(); }
+  });
+ }
+ function light(){
+  try{ addNewsRow("assets/crown-full.jpg","週刊誌が続報「お相手女性、騒動後もSNSを更新か」　真偽不明のまま拡散","週刊デジタル ・ たった今",null); }catch(e){}
+  try{ push("ニュース速報","#e60012","N","週刊誌が続報を掲載","お相手女性めぐる真偽不明の情報が拡散中",function(){ show("news"); }); }catch(e){}
+ }
+ if(typeof startAct2==="function"){
+  var prev=startAct2;
+  startAct2=function(kind){
+   var scar=(typeof state!=="undefined"&&state._scar)||0;
+   if(typeof state!=="undefined"&&!state._act2&&!state._aftermathDone&&scar>=10){
+    state._aftermathDone=true;
+    if(scar>=20){
+     try{ addNewsRow("assets/crown-full.jpg","井汲大翔、週末のファンミーティング延期を発表　事務所「体調と諸般の事情」","芸能デスク ・ たった今",null); }catch(e){}
+     return new Promise(function(res){ scene(function(){ res(prev(kind)); }); });
+    }
+    light();
+   }
+   return prev(kind);
+  };
+ }
 })();
 </script>
 </body>
