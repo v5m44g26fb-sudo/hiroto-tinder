@@ -852,7 +852,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v381</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v382</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2181,7 +2181,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     if(idx!==lastCardIdx){ sceneIdx=0; lastCardIdx=idx; }
     if(c.hiroto){
       if(!state._superNotified){ state._superNotified=true; try{ push("Tinder","linear-gradient(135deg,#1299c3,#33c6dd)","⭐","Super Like が届いています","ひろと から —— タップでカードへ",()=>{ show("tinder"); }); }catch(e){} }
-      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ Super Like</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><span class="area-chip">近隣のエリア</span><div class="nm">${c.name} <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km</div><div class="bio">${c.bio}</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
+      w.innerHTML=`<div class="swipe-card superlike" id="swipe-card"><div class="photo-dots">${photos.map((_,i)=>`<i class="${i===photoIdx?'act':''}"></i>`).join("")}</div><div class="super-badge">⭐ Super Like</div><div class="stamp like" id="stamp-like">LIKE</div><div class="stamp nope" id="stamp-nope">NOPE</div><img loading="lazy" decoding="async" class="mainphoto" id="hiroto-photo" src="${photos[photoIdx]}" alt="ひろと"><button class="tapzone l" id="tz-l" aria-label="前の写真"></button><button class="tapzone r" id="tz-r" aria-label="次の写真"></button><div class="grad"></div><div class="info"><span class="area-chip">近隣のエリア</span><div class="nm">${c.name}<svg width="21" height="21" viewBox="0 0 24 24" style="vertical-align:-4px;margin-left:2px"><circle cx="12" cy="12" r="10" fill="#1299c3"/><path d="M8 12.5l2.6 2.6L16 9.5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span style="font-size:21px;font-weight:600">${c.age}</span></div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" style="vertical-align:-1px;margin-right:3px"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>距離 ${c.distKm}km ・ <span style="color:#51e07a;font-size:11px">●</span> 最近アクティブ</div><div class="bio">${c.bio}</div></div><button class="tdetail topen" id="tdetail-btn" aria-label="プロフィール詳細"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>`;
       const img=document.getElementById("hiroto-photo");
       img.addEventListener("click",()=>{ photoIdx=(photoIdx+1)%photos.length; render(); });
       const _tzl=document.getElementById("tz-l"), _tzr=document.getElementById("tz-r");
@@ -3220,7 +3220,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     };
     var rows = '<div class="td-row">'+IC.pin+'<span>'+(c.distKm? c.distKm+" km 先" : (c.dist||""))+'</span></div>'
       + (c.hiroto ? '<div class="td-row">'+IC.ruler+'<span>175 cm</span></div>' : (c.work ? '<div class="td-row">'+IC.brief+'<span>'+c.work+'</span></div>' : ""));
-    dbox.innerHTML = "<h3>"+c.name+" <span style='font-weight:600;font-size:19px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:3px'>⭐ Super Like済み</span>":"")+"</h3>"
+    dbox.innerHTML = "<h3>"+c.name+(c.hiroto?" <svg width='21' height='21' viewBox='0 0 24 24' style='vertical-align:-4px;margin-left:2px'><circle cx='12' cy='12' r='10' fill='#1299c3'/><path d='M8 12.5l2.6 2.6L16 9.5' stroke='#fff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>":"")+" <span style='font-weight:600;font-size:19px'>"+c.age+"</span>"+(c.hiroto?" <span style='background:#1299c3;color:#fff;font-size:11px;border-radius:999px;padding:3px 8px;vertical-align:3px'>⭐ Super Like済み</span>":"")+"</h3>"
       + '<button class="sheet-close" id="td-close">閉じる</button>'
       + '<div class="td-photo"><div class="td-bars" id="td-bars"></div><button type="button" class="td-dots" aria-label="その他">'+IC.dots+'</button>'
       + stripHtml + "</div>"
@@ -11995,7 +11995,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v381"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v382"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13209,6 +13209,27 @@ dock.addEventListener("click",function(e){
     if(cap.textContent.indexOf(line)!==0) cap.innerHTML=line+"<br>\u203b \u30d7\u30ed\u30d5\u30a3\u30fc\u30eb\u306f\u672c\u4eba\u3060\u3051\u304c\u898b\u308c\u308b\u8a2d\u5b9a\u2026\u306e\u306f\u305a"; }
   }catch(e){}
  },1500);
+})();
+</script>
+
+<script>
+/* ---- v382: his story ring grays out once the current set is watched to the end; a new set (new chapter) restores the gradient ---- */
+(function(){ if(window.__v382) return; window.__v382=true;
+ var sig="", seen=false, wasOpen=false, sawLast=false, origBg=null;
+ function curSig(){ try{ return buildSegs().map(function(s){ return (s.img||"")+"|"+(s.txt||""); }).join("~"); }catch(e){ return ""; } }
+ setInterval(function(){
+  var av=document.querySelector("#v-hisig .ig-prof .avatar"); if(!av) return;
+  if(origBg===null){ var bg=av.style.background||""; if(bg.indexOf("gradient")>=0) origBg=bg; }
+  var s=curSig();
+  if(s && s!==sig){ sig=s; seen=false; sawLast=false; }
+  var v=document.querySelector("#story-view");
+  var open=!!(v && v.classList.contains("on"));
+  if(open){ var bars=document.querySelectorAll("#story-bars i");
+   if(bars.length && bars[bars.length-1].classList.contains("act")) sawLast=true; }
+  if(wasOpen && !open && sawLast) seen=true;
+  wasOpen=open;
+  if(origBg!==null) av.style.background = seen ? "#c7c7cc" : origBg;
+ },600);
 })();
 </script>
 </body>
