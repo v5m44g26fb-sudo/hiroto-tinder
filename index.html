@@ -528,7 +528,7 @@ input,textarea{font-size:16px!important}
         <div class="lock-time" id="lock-time">20:49</div>
         <div class="lock-notifs">
         </div>
-        <div class="lock-hint">👆 タップしてロック解除</div>
+        <div class="lock-hint">👆 タップしてパスコード入力</div>
       </div>
     </section>
 
@@ -853,7 +853,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v390</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v391</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -906,7 +906,7 @@ window.scrollTo({top:0});
 }
 $$("[data-open]").forEach(b=>b.addEventListener("click",()=>{show(b.dataset.open); toastOpen(b.dataset.open)}));
 $$("[data-home]").forEach(b=>b.addEventListener("click",()=>show("home")));
-$("#homebar").addEventListener("click",()=>{ if($("#v-lock").classList.contains("on")){unlock();return} if($("#v-line").classList.contains("on") && $("#line-chat").style.display!=="none"){closeChat();} else show("home");});
+$("#homebar").addEventListener("click",()=>{ if($("#v-lock").classList.contains("on")){ if(window.__padGate) window.__padGate(); else unlock(); return; } if($("#v-line").classList.contains("on") && $("#line-chat").style.display!=="none"){closeChat();} else show("home");});
 $$("[data-toast]").forEach(b=>b.addEventListener("click",()=>toast(b.dataset.toast)));
 function toastOpen(app){ if(!state.started) return;
 if(app==="x") toast("𝕏 メンションが<b>止まらない</b>…");
@@ -1035,7 +1035,7 @@ function scheduleFirstPush(){ if(state._pushScheduled) return; state._pushSchedu
   },2600);
 }
 function unlock(){ if(!$("#v-lock").classList.contains("on")) return; show("home"); schedulePrologue(); }
-$("#v-lock").addEventListener("click",unlock);
+$("#v-lock").addEventListener("click",()=>{ if(window.__padGate) window.__padGate(); else unlock(); });
 (function(){const d=new Date();const w=["日","月","火","水","木","金","土"][d.getDay()];$("#lock-date").textContent="9月27日 土曜日";$("#lock-time").textContent=String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}());
 function fmt(n){return n.toLocaleString("ja-JP")}
 function animateCount(el,from,to,dur,format){const t0=performance.now();function step(t){const p=Math.min(1,(t-t0)/dur);const e=1-Math.pow(1-p,3);const v=Math.round(from+(to-from)*e);el.textContent=format?format(v):fmt(v);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
@@ -1650,7 +1650,7 @@ document.addEventListener("click",e=>{ const mt=e.target.closest?e.target.closes
 $$(".acts").forEach(a=>{ if(a.querySelector(".save-btn")) return; const s=document.createElement("span"); s.className="save-btn"; s.textContent="🔖"; s.title="保存する"; a.appendChild(s); });
 document.addEventListener("click",e=>{ const s=e.target.closest?e.target.closest(".save-btn"):null; if(!s) return; const on=s.classList.toggle("save-on"); s.textContent=on?"📌":"🔖"; toast(on?"🔖 <b>保存しました</b>":"保存を取り消しました"); });
 /* lock screen notifications open their app */
-$$(".lock-notif").forEach((n,i)=>{ n.addEventListener("click",ev=>{ ev.stopPropagation(); unlock(); setTimeout(()=>{ if(i===0){ show("line"); openGroup(); } else { show("hisig"); } },380); }); });
+$$(".lock-notif").forEach((n,i)=>{ n.addEventListener("click",ev=>{ ev.stopPropagation(); const goN=()=>{ unlock(); setTimeout(()=>{ if(i===0){ show("line"); openGroup(); } else { show("hisig"); } },380); }; if(window.__padGate) window.__padGate(goN); else goN(); }); });
 /* photo share */
 /* call mute / speaker */
 (function(){ const mb=$("#call-mute"), sb=$("#call-spk");
@@ -2146,7 +2146,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   const hint=document.querySelector(".lock-hint"); if(hint) hint.textContent="タップして開く";
   const fl=document.createElement("div"); fl.id="lock-flash"; lock.appendChild(fl);
   const mk=(right,inner,label)=>{ const b=document.createElement("button"); b.className="lock-tool"; b.style[right?"right":"left"]="42px"; b.innerHTML=inner; b.setAttribute("aria-label",label);
-   b.addEventListener("click",e=>{ e.stopPropagation(); if(label==="flashlight"){ fl.style.opacity="0.92"; setTimeout(()=>fl.style.opacity="0",130); pop(); } else { unlock(); setTimeout(()=>show("photos"),350); } });
+   b.addEventListener("click",e=>{ e.stopPropagation(); if(label==="flashlight"){ fl.style.opacity="0.92"; setTimeout(()=>fl.style.opacity="0",130); pop(); } else { const goC=()=>{ unlock(); setTimeout(()=>show("photos"),350); }; if(window.__padGate) window.__padGate(goC); else goC(); } });
    lock.appendChild(b); return b; };
   mk(false,'<svg width="21" height="21" viewBox="0 0 24 24"><path fill="#fff" d="M9 2h6v3H9zM10 5h4l-.6 4.2A3.5 3.5 0 1 1 10.6 9z"/></svg>',"flashlight");
   mk(true,'<svg width="22" height="22" viewBox="0 0 24 24"><path fill="#fff" d="M4 7h3l2-2.5h6L17 7h3a1.5 1.5 0 0 1 1.5 1.5V18A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V8.5A1.5 1.5 0 0 1 4 7zm8 3.2A3.6 3.6 0 1 0 12 17.4a3.6 3.6 0 0 0 0-7.2z"/></svg>',"camera");
@@ -11998,7 +11998,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v390"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v391"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13404,6 +13404,47 @@ dock.addEventListener("click",function(e){
  var css=document.createElement("style");
  css.textContent="#match-overlay{overflow-y:auto}#fm-box{animation:v390fm .55s .35s ease both;margin-top:10px}@keyframes v390fm{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}#match-overlay .ov-heart{position:absolute !important}#match-overlay .avatars{margin:10px 0 4px}#match-overlay h2{font-size:33px}@media (max-height:720px){ #match-overlay{justify-content:flex-start} }";
  document.head.appendChild(css);
+})();
+</script>
+
+<script>
+/* ===== v391: passcode lock, stolen from link-hub - her code is 0324 ===== */
+(function(){
+ if(window.__v391) return; window.__v391=true;
+ var CODE="0324", passed=false, pending=null, buf="";
+ var css=document.createElement("style");
+ css.textContent="#tinder-match-wrap,#tinder-prof-wrap{padding-bottom:118px !important}#pad-ov{position:absolute;inset:0;z-index:400;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(10,10,18,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff}#pad-ov.on{display:flex}#pad-cap{font-size:16px;font-weight:600;margin-bottom:18px;min-height:22px}#pad-dots{display:flex;gap:16px;margin-bottom:34px}#pad-dots i{width:13px;height:13px;border-radius:50%;border:1.6px solid #fff;display:block}#pad-dots i.f{background:#fff}#pad-dots.shake{animation:padShake .4s ease}@keyframes padShake{0%,100%{transform:none}20%{transform:translateX(-11px)}40%{transform:translateX(10px)}60%{transform:translateX(-7px)}80%{transform:translateX(5px)}}.pad-grid{display:grid;grid-template-columns:repeat(3,74px);gap:13px 18px}.pad-key{width:74px;height:74px;border-radius:50%;border:none;background:rgba(255,255,255,.13);color:#fff;font-size:29px;font-weight:500;cursor:pointer;font-family:inherit}.pad-key:active{background:rgba(255,255,255,.32)}.pad-key.sm{font-size:13.5px;background:none;font-weight:600}";
+ document.head.appendChild(css);
+ var phone=document.querySelector("#phone"); if(!phone) return;
+ var ov=document.createElement("div"); ov.id="pad-ov";
+ var keys=["1","2","3","4","5","6","7","8","9","C","0","D"];
+ ov.innerHTML='<div id="pad-cap">パスコードを入力</div><div id="pad-dots"><i></i><i></i><i></i><i></i></div><div class="pad-grid">'+keys.map(function(k){ return '<button type="button" class="pad-key'+(k==="C"||k==="D"?" sm":"")+'" data-k="'+k+'">'+(k==="C"?"キャンセル":k==="D"?"⌫":k)+'</button>'; }).join("")+'</div>';
+ phone.appendChild(ov);
+ var cap=ov.querySelector("#pad-cap"), dots=ov.querySelector("#pad-dots");
+ function paint(){ [...dots.children].forEach(function(d,i){ d.className=i<buf.length?"f":""; }); }
+ function close(){ ov.classList.remove("on"); buf=""; paint(); cap.textContent="パスコードを入力"; }
+ function open(){ buf=""; paint(); cap.textContent="パスコードを入力"; ov.classList.add("on"); }
+ window.__padGate=function(after){
+   if(passed){ if(after) after(); else unlock(); return; }
+   pending=after||null; open();
+ };
+ ov.addEventListener("click",function(e){
+   var b=e.target.closest(".pad-key"); if(!b) return;
+   var k=b.dataset.k;
+   if(k==="C"){ pending=null; close(); return; }
+   if(k==="D"){ buf=buf.slice(0,-1); paint(); return; }
+   if(buf.length>=4) return;
+   buf+=k; paint();
+   if(buf.length===4){
+     if(buf===CODE){ passed=true; setTimeout(function(){ close(); var f=pending; pending=null; if(f) f(); else unlock(); },190); }
+     else{ try{ navigator.vibrate&&navigator.vibrate(70); }catch(_){ }
+       cap.textContent="パスコードが違います";
+       dots.classList.remove("shake"); void dots.offsetWidth; dots.classList.add("shake");
+       setTimeout(function(){ buf=""; paint(); },380);
+       setTimeout(function(){ cap.textContent="パスコードを入力"; },1500);
+     }
+   }
+ });
 })();
 </script>
 </body>
