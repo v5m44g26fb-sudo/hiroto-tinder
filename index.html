@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v459</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v460</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v459"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v460"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -15849,6 +15849,102 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    the anchor. ===== */
 .syn-card{position:relative}
 </style>
+
+<style>
+.con-row{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid #f0f0f3;cursor:pointer}
+.con-ini{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;flex:none}
+#v460-sug{display:flex;flex-direction:column;gap:6px;margin:2px auto 10px;max-width:300px}
+.v460-sugrow{display:flex;align-items:center;gap:10px;background:#f2f2f7;border-radius:12px;padding:8px 12px;cursor:pointer;text-align:left}
+</style>
+<script>
+/* ===== v460: the phone app gains a Contacts tab and keypad
+   suggestions. Contacts are the people of her life (him first);
+   typing on the keypad matches by number substring or by the
+   kana-row (T9) code of a name - 6-9-4 finds ひろと. Tapping
+   him routes to his LINE talk, like the recents rows do. ===== */
+(function(){
+ if(window.__v460) return; window.__v460=true;
+ function svg(p,sz){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'; }
+ var PERSON=svg('<circle cx="12" cy="8" r="3.6"/><path d="M5 19.5c1.2-3.2 3.9-4.6 7-4.6s5.8 1.4 7 4.6"/>',24);
+ var CONTACTS=[
+  {n:"ひろと", num:"080-1937-4615", t9:"694", img:"assets/ig-avatar.jpg", act:"hiroto"},
+  {n:"ゆい", num:"090-2211-8842", t9:"81", ini:"ゆ", col:"#f59e0b", act:"friend"},
+  {n:"みさき", num:"090-3302-7719", t9:"732", ini:"み", col:"#8b5cf6", act:"friend"},
+  {n:"りな", num:"090-7719-2055", t9:"95", ini:"り", col:"#ec4899", act:"friend"},
+  {n:"母", num:"090-5510-3366", t9:"", ini:"母", col:"#64748b", act:"mom"},
+  {n:"井汲大翔（マネージャー）", num:"03-6455-0130", t9:"75", ini:"事", col:"#475569", act:"mgr"},
+  {n:"かかりつけ歯科（矯正）", num:"06-6641-5588", t9:"", ini:"歯", col:"#0ea5e9", act:"dent"}
+ ];
+ function digitsOf(x){ return x.replace(/[^0-9]/g,""); }
+ function ava(c,sz){ return c.img? '<img src="'+c.img+'" alt="" style="width:'+sz+'px;height:'+sz+'px;border-radius:50%;object-fit:cover;flex:none">'
+   : '<div class="con-ini" style="width:'+sz+'px;height:'+sz+'px;background:'+c.col+';font-size:'+Math.round(sz*0.38)+'px">'+c.ini+'</div>'; }
+ function contactsHTML(){
+   return '<div style="font-size:23px;font-weight:800;margin-bottom:4px">連絡先</div>'
+   + CONTACTS.map(function(c,i){
+      return '<div class="con-row" data-con="'+i+'">'+ava(c,42)
+       +'<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:15.5px">'+c.n+'</div><div style="font-size:12.5px;color:#8a8a8e">'+c.num+'</div></div></div>';
+    }).join("");
+ }
+ function toHisLine(){
+   var ov=document.querySelector("#v453-tel"); if(ov) ov.classList.remove("on");
+   show("line");
+   setTimeout(function(){
+     var r=[...document.querySelectorAll("#v-line .talkrow")].find(function(x){ return x.textContent.includes("ひろと"); });
+     if(r) r.click();
+   },450);
+ }
+ function actContact(c){
+   if(c.act==="hiroto"){ toHisLine(); return; }
+   if(c.act==="friend"){ var ov=document.querySelector("#v453-tel"); if(ov) ov.classList.remove("on"); show("line"); toast(c.n+"とのトークはLINEで"); return; }
+   if(c.act==="mgr"){ toast("事務所には、かけ直せない"); return; }
+   if(c.act==="dent"){ toast("次の調整まで、あと少し"); return; }
+   if(c.act==="mom"){ toast("母にはLINEで十分"); return; }
+ }
+ function mountTab(){
+   var tabs=document.querySelector("#v453-tabs");
+   if(!tabs) return false;
+   if(tabs.querySelector('[data-ttab="con"]')) return true;
+   var b=document.createElement("button"); b.type="button"; b.className="tel-tab"; b.dataset.ttab="con";
+   b.innerHTML=PERSON+"連絡先";
+   tabs.appendChild(b);
+   return true;
+ }
+ if(!mountTab()){ var iv=setInterval(function(){ if(mountTab()) clearInterval(iv); },1200); }
+ var conActive=false;
+ document.addEventListener("click",function(e){
+   var tb=e.target&&e.target.closest? e.target.closest("[data-ttab]") : null;
+   if(tb){ conActive = tb.dataset.ttab==="con";
+     if(conActive){ setTimeout(function(){ var m=document.querySelector("#v453-main"); if(m&&conActive) m.innerHTML=contactsHTML(); },40); }
+     return; }
+   var cr=e.target&&e.target.closest? e.target.closest("[data-con]") : null;
+   if(cr){ actContact(CONTACTS[+cr.dataset.con]); return; }
+   var sg=e.target&&e.target.closest? e.target.closest("[data-sug]") : null;
+   if(sg){ actContact(CONTACTS[+sg.dataset.sug]); return; }
+ }, false);
+ /* keypad suggestions */
+ function sug(){
+   var main=document.querySelector("#v453-main"); if(!main) return;
+   var disp=main.querySelector("#v453-disp"); if(!disp) return;
+   var typed=(disp.textContent||"").trim(); if(!typed) return;
+   if(main.querySelector("#v460-sug")) return;
+   var hits=CONTACTS.map(function(c,i){ return {c:c,i:i}; }).filter(function(h){
+     return (h.c.t9&&h.c.t9.indexOf(typed)===0)||digitsOf(h.c.num).indexOf(typed)>=0;
+   }).slice(0,2);
+   if(!hits.length) return;
+   var box=document.createElement("div"); box.id="v460-sug";
+   box.innerHTML=hits.map(function(h){
+     return '<div class="v460-sugrow" data-sug="'+h.i+'">'+ava(h.c,30)
+      +'<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px">'+h.c.n+'</div><div style="font-size:11.5px;color:#8a8a8e">'+h.c.num+'</div></div>'
+      +'<div style="font-size:11px;color:#007aff">候補</div></div>';
+   }).join("");
+   var grid=main.querySelector(".pad-grid");
+   if(grid) grid.parentNode.insertBefore(box, grid);
+ }
+ var mo=new MutationObserver(function(){ sug(); });
+ function armObs(){ var m=document.querySelector("#v453-main"); if(m){ mo.observe(m,{childList:true}); return true; } return false; }
+ if(!armObs()){ var iv2=setInterval(function(){ if(armObs()) clearInterval(iv2); },1200); }
+})();
+</script>
 </body>
 
 
