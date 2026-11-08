@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v440</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v441</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v440"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v441"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14772,6 +14772,48 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    +'<div style="display:flex;align-items:center;gap:8px;margin-top:2px"><span style="font-size:27px">'+wx.i+'</span><span style="font-size:31px;font-weight:800">'+Math.round((wx.hi+wx.lo)/2)+'°</span></div>'
    +'<div style="font-size:12px">'+wx.c+'　最高'+wx.hi+'° 最低'+wx.lo+'°</div>'
    +hours(wx);
+ },1500);
+})();
+</script>
+
+<style>
+.lock-tool{display:none!important}
+#v441-lockrow{position:absolute;left:0;right:0;bottom:64px;display:flex;justify-content:space-between;padding:0 36px;z-index:30}
+.v441-lbtn{width:50px;height:50px;border-radius:50%;border:none;background:rgba(28,28,32,.55);backdrop-filter:blur(8px);font-size:21px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s, box-shadow .2s}
+.v441-lbtn.on{background:#fff;box-shadow:0 0 34px 12px rgba(255,255,220,.55)}
+#v441-glow{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(ellipse at 50% 108%,rgba(255,255,224,.55),rgba(255,255,224,.18) 55%,transparent 78%);z-index:20}
+</style>
+<script>
+/* ===== v441: the lock screen gets its two round buttons, like a real
+   phone. The flashlight lights the lock screen itself (tap again to turn
+   it off); the camera asks for the passcode first, then opens straight
+   into the camera - the way hers would. ===== */
+(function(){
+ if(window.__v441) return; window.__v441=true;
+ var lock=document.querySelector("#v-lock"); if(!lock) return;
+ if(getComputedStyle(lock).position==="static") lock.style.position="relative";
+ var glow=document.createElement("div"); glow.id="v441-glow"; lock.appendChild(glow);
+ var row=document.createElement("div"); row.id="v441-lockrow";
+ row.innerHTML='<button type="button" class="v441-lbtn" id="v441-flash" aria-label="懐中電灯">🔦</button>'
+              +'<button type="button" class="v441-lbtn" id="v441-cam" aria-label="カメラ">📷</button>';
+ lock.appendChild(row);
+ var flash=row.querySelector("#v441-flash");
+ flash.addEventListener("click",function(ev){
+   ev.stopPropagation();
+   var on=flash.classList.toggle("on");
+   glow.style.opacity=on?"1":"0";
+ });
+ row.querySelector("#v441-cam").addEventListener("click",function(ev){
+   ev.stopPropagation();
+   var openCam=function(){ setTimeout(function(){
+     if(!document.querySelector("#v-home").classList.contains("on")) show("home");
+     var b=document.querySelector('[data-hp="cam"]'); if(b) b.click();
+   },420); };
+   if(window.__padGate) window.__padGate(openCam);
+   else { unlock(); openCam(); }
+ });
+ setInterval(function(){
+   if(!lock.classList.contains("on")&&flash.classList.contains("on")){ flash.classList.remove("on"); glow.style.opacity="0"; }
  },1500);
 })();
 </script>
