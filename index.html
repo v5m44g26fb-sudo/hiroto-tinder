@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v463</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v464</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v463"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v464"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16195,6 +16195,96 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  }
  if(!mount()){ var iv=setInterval(function(){ if(mount()) clearInterval(iv); },1200); }
  setInterval(sync,1000);
+})();
+</script>
+
+<style>
+#v464-tabs-ov{position:absolute;inset:0;z-index:40;background:#f2f2f7;display:none;flex-direction:column;padding:104px 16px 96px;color:#111;font-family:-apple-system,"Hiragino Sans",sans-serif}
+#v464-tabs-ov.on{display:flex}
+#v464-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;overflow-y:auto}
+.tab-card{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.10);cursor:pointer;border:2.5px solid transparent;position:relative;text-align:left;padding:0;font-family:inherit}
+.tab-card.act{border-color:#007aff}
+.tab-card img{width:100%;height:104px;object-fit:cover;display:block}
+.tab-card .tc-t{padding:8px 10px;font-size:12.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab-card .tc-u{padding:0 10px 9px;font-size:11px;color:#8a8a8e;margin-top:-6px}
+.tab-x{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;border:none;background:rgba(0,0,0,.45);color:#fff;font-size:12px;cursor:pointer;line-height:1;z-index:2}
+</style>
+<script>
+/* ===== v464: Safari's tabs button stops claiming there is only
+   one tab. It opens a tab overview now: cards for the open tabs,
+   tap to switch (driven through Safari's own back/favourite
+   controls so its history stays honest), x to close, + for a
+   new tab. In-tab navigation is followed by watching which
+   page is showing. ===== */
+(function(){
+ if(window.__v464) return; window.__v464=true;
+ var META={ start:{t:"お気に入り", u:"スタートページ", img:"assets/cafe3.jpg"},
+            official:{t:"井汲大翔 公式サイト", u:"hiroto-ikumi.official", img:"assets/stage.jpg"},
+            news:{t:"エンタメニュース", u:"entame-news.jp", img:"assets/ig-memories.jpg"} };
+ var tabs=[{page:"start"}], active=0;
+ function curPage(){ var p=document.querySelector("#v452-safari .sf-page.on"); return p? p.dataset.sf : null; }
+ setInterval(function(){ var cp=curPage(); if(cp&&tabs[active]&&tabs[active].page!==cp) tabs[active].page=cp; },800);
+ function gotoStart(cb){
+   var n=0;
+   (function step(){
+     if(curPage()==="start"||n>4){ if(cb) cb(); return; }
+     var b=document.querySelector("#v452-back"); if(b) b.click();
+     n++; setTimeout(step,140);
+   })();
+ }
+ function switchTo(i){
+   active=i;
+   var target=tabs[i].page;
+   ov.classList.remove("on");
+   if(curPage()===target) return;
+   gotoStart(function(){
+     if(target==="official"){ var f=document.querySelector('#v452-safari [data-fav="0"]'); if(f) f.click(); }
+     else if(target==="news"){ var g=document.querySelector('#v452-safari [data-goto="news"]'); if(g) g.click(); }
+   });
+ }
+ var ov=document.createElement("div"); ov.id="v464-tabs-ov";
+ function draw(){
+   ov.innerHTML='<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px"><div style="font-size:21px;font-weight:800">タブ</div><div style="color:#8a8a8e;font-size:12.5px">'+tabs.length+'個のタブ</div></div>'
+   +'<div id="v464-grid">'
+   + tabs.map(function(tb,i){ var m=META[tb.page]||META.start;
+      return '<button type="button" class="tab-card'+(i===active?" act":"")+'" data-tab="'+i+'"><span class="tab-x" data-tabx="'+i+'">×</span><img src="'+m.img+'" alt=""><div class="tc-t">'+m.t+'</div><div class="tc-u">'+m.u+'</div></button>';
+    }).join("")
+   +'</div>'
+   +'<div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px"><button type="button" id="v464-new" style="background:none;border:none;color:#007aff;font-size:15.5px;cursor:pointer;font-family:inherit">＋ 新規タブ</button><button type="button" id="v464-done" style="background:none;border:none;color:#007aff;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit">完了</button></div>';
+   ov.querySelector("#v464-done").addEventListener("click",function(){ ov.classList.remove("on"); });
+   ov.querySelector("#v464-new").addEventListener("click",function(){
+     tabs.push({page:"start"}); switchTo(tabs.length-1);
+   });
+   ov.querySelectorAll("[data-tab]").forEach(function(c){
+     c.addEventListener("click",function(e){
+       if(e.target.closest("[data-tabx]")) return;
+       switchTo(+c.dataset.tab);
+     });
+   });
+   ov.querySelectorAll("[data-tabx]").forEach(function(x){
+     x.addEventListener("click",function(e){
+       e.stopPropagation();
+       var i=+x.dataset.tabx;
+       tabs.splice(i,1);
+       if(!tabs.length) tabs=[{page:"start"}];
+       if(active>=tabs.length) active=tabs.length-1;
+       if(i===active||true){ var keep=active; draw(); if(tabs[keep]) switchTo(keep); }
+     });
+   });
+ }
+ function mount(){
+   var sf=document.querySelector("#v452-safari"); if(!sf) return false;
+   if(sf.querySelector("#v464-tabs-ov")) return true;
+   sf.appendChild(ov);
+   return true;
+ }
+ if(!mount()){ var iv=setInterval(function(){ if(mount()) clearInterval(iv); },1200); }
+ document.addEventListener("click",function(e){
+   var b=e.target&&e.target.closest? e.target.closest("#v452-tabs") : null;
+   if(!b) return;
+   e.stopPropagation(); e.preventDefault();
+   draw(); ov.classList.add("on");
+ }, true);
 })();
 </script>
 </body>
