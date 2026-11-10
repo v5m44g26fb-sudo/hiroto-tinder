@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v470</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v471</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v470"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v471"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16572,6 +16572,170 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    lead("#cc-moon",MOON); lead("#cc-note",NOTE); lead("#cc-bright",SUN); lead("#cc-vol",VOL); lead("#v442-camrow",CAM);
  }
  run(); var iv=setInterval(run,1500); setTimeout(function(){clearInterval(iv)},30000);
+})();
+</script>
+
+
+<script>
+/* ===== v471a: the Control Center glyph swap, aimed at the real
+   DOM this time: toggles are button.v442-tg carrying a glyph
+   text node plus a <small> label; sliders carry the glyph in a
+   span; the camera row is #v442-cam. (v470 aimed at ids that do
+   not exist and changed nothing.) ===== */
+(function(){
+ if(window.__v471a) return; window.__v471a=true;
+ function F(p,sz){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="currentColor" style="display:block;margin:0 auto">'+p+'</svg>'; }
+ function S(p,sz){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto">'+p+'</svg>'; }
+ var BYLABEL={
+  "機内":F('<path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/>',21),
+  "モバイル":F('<rect x="3" y="14" width="3.4" height="6" rx="1"/><rect x="8.2" y="11" width="3.4" height="9" rx="1"/><rect x="13.4" y="8" width="3.4" height="12" rx="1"/><rect x="18.6" y="5" width="3.4" height="15" rx="1" opacity=".35"/>',21),
+  "Wi-Fi":S('<path d="M2.8 10.2a15 15 0 0 1 18.4 0"/><path d="M5.8 13.8a10 10 0 0 1 12.4 0"/><path d="M8.8 17.2a5 5 0 0 1 6.4 0"/><circle cx="12" cy="19.8" r="1.1" fill="currentColor" stroke="none"/>',21),
+  "Bluetooth":S('<path d="M7 8.2 16.8 15 12.4 18.6V5.4L16.8 9 7 15.8"/>',19),
+  "集中":F('<path d="M20 13.6A8.4 8.4 0 1 1 10.4 4 6.7 6.7 0 0 0 20 13.6Z"/>',19),
+  "BGM":F('<path d="M9.5 18.2V6.4L19.5 4.4v11.8"/><circle cx="7" cy="18.2" r="2.6"/><circle cx="17" cy="16.2" r="2.6"/>',19)
+ };
+ var SUN=S('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/>',17);
+ var VOL=F('<path d="M4 9.5v5h3.4L12 18.7V5.3L7.4 9.5H4Z"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6M18.2 6.8a7.4 7.4 0 0 1 0 10.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',17);
+ var CAM=S('<rect x="2.8" y="7" width="18.4" height="13" rx="2.6"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8.5 7 10 4.5h4L15.5 7"/>',17);
+ function run(){
+   document.querySelectorAll("#v442-cc .v442-tg").forEach(function(b){
+     if(b.querySelector("svg")) return;
+     var sm=b.querySelector("small"); var lab=sm? sm.textContent.trim() : "";
+     var svg=BYLABEL[lab]; if(!svg) return;
+     [...b.childNodes].forEach(function(n){ if(n.nodeType===3) n.remove(); });
+     b.insertAdjacentHTML("afterbegin", svg);
+   });
+   document.querySelectorAll("#v442-cc .v442-slider>span").forEach(function(sp){
+     if(sp.querySelector("svg")) return;
+     var t=sp.textContent.trim();
+     if(t==="🔆") sp.innerHTML=SUN; else if(t==="🔊") sp.innerHTML=VOL;
+   });
+   var cam=document.querySelector("#v442-cam");
+   if(cam&&!cam.querySelector("svg")){
+     [...cam.childNodes].forEach(function(n){ if(n.nodeType===3) n.textContent=n.textContent.replace("📷",""); });
+     var w=document.createElement("span");
+     w.style.cssText="display:inline-flex;vertical-align:-3px;margin-right:6px"; w.innerHTML=CAM;
+     cam.insertBefore(w, cam.firstChild);
+   }
+ }
+ run(); var iv=setInterval(run,1200); setTimeout(function(){clearInterval(iv)},40000);
+})();
+</script>
+
+<style>
+.v471-ic{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6.5px;background:#e9e9ee;color:#3a3a3f;margin-right:9px;vertical-align:-6px;flex:none}
+</style>
+<script>
+/* ===== v471: the emoji sweep reaches Settings, the push banner
+   and the notification center. Leading emoji on Settings rows
+   become line icons in iOS-style grey chips (chosen by the row's
+   label); the push banner's app glyph and the NC rows' icons
+   swap through the same symbol map. Text and handlers stay. ===== */
+(function(){
+ if(window.__v471) return; window.__v471=true;
+ function S(p,sz){ return '<svg width="'+(sz||15)+'" height="'+(sz||15)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'; }
+ function F(p,sz){ return '<svg width="'+(sz||15)+'" height="'+(sz||15)+'" viewBox="0 0 24 24" fill="currentColor">'+p+'</svg>'; }
+ var P={
+  speaker:S('<path d="M4 9.5v5h3.4L12 18.7V5.3L7.4 9.5H4Z" fill="currentColor" stroke="none"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6"/>'),
+  vib:S('<rect x="7" y="2.8" width="10" height="18.4" rx="2.4"/><path d="M2.8 9.5v5M21.2 9.5v5"/>'),
+  text:'<span style="font-size:12.5px;font-weight:700;font-family:Georgia,serif">Aa</span>',
+  image:S('<rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M4 18.5 10 13l3.5 3 2.5-2.3 4 3.8"/>'),
+  book:S('<path d="M5 3.8h12.5A1.5 1.5 0 0 1 19 5.3v13.9H6.5A1.5 1.5 0 0 0 5 20.7Z"/><path d="M5 17.2A2.7 2.7 0 0 1 7.7 14.5H19"/>'),
+  bubble:S('<path d="M12 4.5c4.7 0 8.3 2.9 8.3 6.4 0 3.6-3.6 6.4-8.3 6.4-.9 0-1.8-.1-2.6-.3L4 19.2l.8-2.9C3.6 15 3.7 13 3.7 10.9c0-3.5 3.6-6.4 8.3-6.4Z"/><circle cx="8.6" cy="10.9" r=".4" fill="currentColor"/><circle cx="12" cy="10.9" r=".4" fill="currentColor"/><circle cx="15.4" cy="10.9" r=".4" fill="currentColor"/>'),
+  camera:S('<rect x="2.8" y="7" width="18.4" height="13" rx="2.6"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8.5 7 10 4.5h4L15.5 7"/>'),
+  xlogo:F('<path d="M17.8 3h3l-6.7 7.7L22 21h-6.2l-4.8-6.3L5.4 21h-3l7.1-8.2L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.1h1.7L7.6 4.8H5.8l10.9 14.3Z"/>'),
+  flame:F('<path d="M12.7 2.6c.4 3.2 1.9 4.9 3.2 6.4 1.2 1.4 2.3 2.7 2.3 4.9A6.2 6.2 0 0 1 12 19.7a6.2 6.2 0 0 1-6.2-6.7c0-1.9 1-3.4 2-4.9.5 1 1.2 1.8 2.2 2.3-.3-2.9.6-5.9 2.7-7.8Z"/>'),
+  phone:S('<path d="M5 4h4l1.5 4.5L8 10.5a12 12 0 0 0 5.5 5.5l2-2.5L20 15v4a1.8 1.8 0 0 1-2 1.8C10.5 20 4 13.5 3.2 6A1.8 1.8 0 0 1 5 4Z"/>'),
+  swipe:S('<path d="M8.5 12h11M16 6.5l5 5.5-5 5.5M4 5.5v13"/>'),
+  heart:F('<path d="M12 20.7C6.4 16.9 3 13.6 3 9.9 3 7.2 5 5 7.7 5c1.7 0 3.3.9 4.3 2.4C13 5.9 14.6 5 16.3 5 19 5 21 7.2 21 9.9c0 3.7-3.4 7-9 10.8Z"/>'),
+  star:F('<path d="m12 3.4 2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.7l-5.2 2.7 1-5.8L3.6 9.5l5.8-.8L12 3.4Z"/>'),
+  paw:F('<circle cx="6.2" cy="9.5" r="1.9"/><circle cx="10" cy="6.2" r="2"/><circle cx="14.2" cy="6.2" r="2"/><circle cx="18" cy="9.5" r="1.9"/><path d="M12 11.5c2.9 0 5.4 2.3 5.4 4.9 0 1.8-1.3 3-3 3-1 0-1.6-.4-2.4-.4s-1.4.4-2.4.4c-1.7 0-3-1.2-3-3 0-2.6 2.5-4.9 5.4-4.9Z"/>'),
+  wifi:S('<path d="M2.8 10.2a15 15 0 0 1 18.4 0"/><path d="M5.8 13.8a10 10 0 0 1 12.4 0"/><path d="M8.8 17.2a5 5 0 0 1 6.4 0"/><circle cx="12" cy="19.8" r="1.1" fill="currentColor" stroke="none"/>'),
+  batt:S('<rect x="2.5" y="8" width="16.5" height="8.5" rx="2.2"/><rect x="4.4" y="10" width="9" height="4.5" rx="1" fill="currentColor" stroke="none"/><path d="M21 11v2.5"/>'),
+  tray:S('<path d="M3.5 13.5 5.6 5.8A2 2 0 0 1 7.5 4.5h9a2 2 0 0 1 1.9 1.3l2.1 7.7v4.3a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2Z"/><path d="M3.5 13.5H9a3 3 0 0 0 6 0h5.5"/>'),
+  bell:S('<path d="M6 16.5v-5.3a6 6 0 0 1 12 0v5.3l1.2 2.7H4.8L6 16.5Z"/><path d="M10 21a2.2 2.2 0 0 0 4 0"/>'),
+  flag:S('<path d="M5 21.5v-17"/><path d="M5 5c3.5-2 6 1.5 11 0v7c-5 1.5-7.5-2-11 0"/>'),
+  grid:S('<rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/>'),
+  info:S('<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".5" fill="currentColor"/>'),
+  note:F('<path d="M9.5 18.2V6.4L19.5 4.4v11.8"/><circle cx="7" cy="18.2" r="2.6"/><circle cx="17" cy="16.2" r="2.6"/>',17),
+  chat:S('<path d="M4 5.5h16v10.5H9.5L4 20.5Z"/>'),
+  news:S('<rect x="3" y="4.5" width="15" height="15" rx="2"/><path d="M6.5 8.5h8M6.5 12h8M6.5 15.5h5"/><path d="M18 9.5h1.5a1.5 1.5 0 0 1 1.5 1.5v6.5a2 2 0 0 1-2 2h-1"/>'),
+  mail:S('<rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="m4 7.5 8 6 8-6"/>')
+ };
+ function pick(label){
+   if(/Wi-Fi|ワイファイ/.test(label)) return P.wifi;
+   if(/バッテリ|電池/.test(label)) return P.batt;
+   if(/ストレージ|セーブ|引き継ぎ|データ/.test(label)) return P.tray;
+   if(/通知/.test(label)) return P.bell;
+   if(/サウンド|効果音|着信音/.test(label)) return P.speaker;
+   if(/バイブ/.test(label)) return P.vib;
+   if(/文字/.test(label)) return P.text;
+   if(/壁紙|ホーム画面/.test(label)) return P.image;
+   if(/あらすじ|チャプター|物語|章/.test(label)) return P.book;
+   if(/思い出/.test(label)) return P.bubble;
+   if(/Instagram/.test(label)) return P.camera;
+   if(/フォロワー/.test(label)) return P.xlogo;
+   if(/炎上|マッチ/.test(label)) return P.flame;
+   if(/通話/.test(label)) return P.phone;
+   if(/スワイプ/.test(label)) return P.swipe;
+   if(/Like/.test(label)) return P.heart;
+   if(/Super Like/.test(label)) return P.star;
+   if(/愛犬|マロン/.test(label)) return P.paw;
+   if(/BGM|音楽/.test(label)) return P.note;
+   if(/編集/.test(label)) return P.grid;
+   return P.info;
+ }
+ var LEAD=/^[\u{1F000}-\u{1FAFF}\u{2000}-\u{2BFF}\u{FE0F}\u{1F1E6}-\u{1F1FF}𝕏❤️⭐️]+[\s　]*/u;
+ function sweepSettings(){
+   document.querySelectorAll("#v-settings .setrow").forEach(function(row){
+     var sp=row.querySelector("span"); if(!sp||sp.dataset.v471) return;
+     var t=sp.textContent;
+     if(!LEAD.test(t)) { if(!/^\s/.test(t)) sp.dataset.v471="x"; return; }
+     var label=t.replace(LEAD,"");
+     sp.dataset.v471="1";
+     [...sp.childNodes].forEach(function(n){ if(n.nodeType===3) n.remove(); });
+     var chip=document.createElement("span"); chip.className="v471-ic"; chip.innerHTML=pick(label);
+     sp.insertBefore(chip, sp.firstChild);
+     sp.insertAdjacentHTML("afterbegin","");
+     if(label) sp.insertBefore(document.createTextNode(label), chip.nextSibling);
+   });
+ }
+ var PMAP={"💬":P.chat,"📷":P.camera,"🔥":P.flame,"𝕏":P.xlogo,"📞":P.phone,"🎵":P.note,"⭐":P.star,"❤️":P.heart,"📰":P.news,"🔔":P.bell,"✉️":P.mail,"✉":P.mail};
+ function swapIconEl(el){
+   if(!el||el.querySelector("svg")) return;
+   var t=el.textContent.trim();
+   if(PMAP[t]){ el.innerHTML=PMAP[t]; el.style.color="#fff"; }
+ }
+ function watchPush(){
+   var ic=document.querySelector("#push-ic"); if(!ic) return false;
+   swapIconEl(ic);
+   new MutationObserver(function(){ swapIconEl(ic); }).observe(ic,{childList:true,characterData:true,subtree:true});
+   return true;
+ }
+ function sweepNC(){
+   document.querySelectorAll("#nc-ov .nc-ic").forEach(swapIconEl);
+ }
+ function fixNCRow(){
+   var row=document.querySelector("#v417-nc-row"); if(!row) return;
+   var sp=row.querySelector("span"); if(!sp) return;
+   if(sp.querySelector(".v471-ic")) return;
+   var t=sp.textContent; if(!LEAD.test(t)) return;
+   var label=t.replace(LEAD,"");
+   [...sp.childNodes].forEach(function(n){ if(n.nodeType===3) n.remove(); });
+   var chip=document.createElement("span"); chip.className="v471-ic"; chip.innerHTML=P.bell;
+   sp.insertBefore(chip, sp.firstChild);
+   sp.insertBefore(document.createTextNode(label), chip.nextSibling);
+ }
+ var ncObs=setInterval(function(){
+   fixNCRow();
+   var sp=document.querySelector("#v417-nc-row span");
+   if(sp&&!sp.dataset.v471obs){ sp.dataset.v471obs="1";
+     new MutationObserver(function(){ setTimeout(fixNCRow,30); }).observe(sp,{childList:true,characterData:true,subtree:true}); }
+ },1500);
+ setTimeout(function(){ clearInterval(ncObs); },60000);
+ sweepSettings(); watchPush(); sweepNC();
+ var iv=setInterval(function(){ sweepSettings(); sweepNC(); if(!document.querySelector("#push-ic")) watchPush(); },1800);
+ setTimeout(function(){ clearInterval(iv); },45000);
 })();
 </script>
 
