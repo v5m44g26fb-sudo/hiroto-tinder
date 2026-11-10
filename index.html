@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v517</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v518</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2145,7 +2145,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  /* page dots + search pill above the dock */
  const dock=document.querySelector("#v-home .dock");
  if(dock&&!document.querySelector(".home-pages")){ const p=document.createElement("div"); p.className="home-pages";
-  p.innerHTML='<i class="on"></i><i></i><span class="hp-search">🔍 検索</span>'; dock.parentNode.insertBefore(p,dock); }
+  p.innerHTML='<i class="on"></i><i></i><span class="hp-search">検索</span>'; dock.parentNode.insertBefore(p,dock); }
 
  /* lock screen: padlock, real app icons in notifications, flashlight + camera */
  const lock=document.querySelector("#v-lock"), ldate=document.querySelector("#lock-date");
@@ -2888,7 +2888,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  p2.innerHTML='<div class="grid">'
   +'<button class="appicon" data-hp="cal"><span class="ic" style="background:linear-gradient(180deg,#ffffff,#e8e8ee);color:#d92b2b;font-size:24px">📅</span><span class="lb">カレンダー</span></button>'
   +'<button class="appicon" data-hp="memo"><span class="ic" style="background:linear-gradient(180deg,#ffd94d,#f5b81d);font-size:24px">📝</span><span class="lb">メモ</span></button>'
-  +'</div><div class="home-pages" style="margin-top:auto"><i></i><i class="on"></i><span class="hp-search">🔍 検索</span></div>';
+  +'</div><div class="home-pages" style="margin-top:auto"><i></i><i class="on"></i><span class="hp-search">検索</span></div>';
  home.appendChild(p2);
  const inner=home.querySelector(".home-inner");
  const setPage=n=>{ const two=n===2; p2.style.display=two?"flex":"none"; if(inner) inner.style.visibility=two?"hidden":"visible"; };
@@ -8109,7 +8109,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
 </script>
 
 <script>
-/* ===== Tinder ver v163: CONTENT REFRESH ROUND 2, 2/5 - the home screen becomes a story dashboard. Until now home was an app launcher with a small text widget: to continue the story you had to remember which app the next beat lived in. A story card now leads the home screen: a cover photo that changes with the story phase (his Tinder photo at the match, the cafe on the first date, the sunset at the line-drawing, the night street in ch4, the scandal-day crown shot, the stage after the ending, her bridge photo on the morning after), the current chapter and date set over it, an 8-node progress rail (ch1-5 / scandal / ending / next morning), and one big "▶ つづきを読む" button that takes you straight to the app the story is waiting in (Tinder in ch1, his LINE chat from ch2 on, News at the ending). The old widget keeps its records (followers, heat meter, scandal skip) but its guidance lines are retired - the dashboard says it once, in one place. DELETED as decoration that never did anything: the fake "🔍 検索" pill sitting in the home page dots on both home pages (nothing ever responded to it; the page dots themselves stay - they really switch pages). Presentation/navigation only: no story text, gates, voices or flow changed. ===== */
+/* ===== Tinder ver v163: CONTENT REFRESH ROUND 2, 2/5 - the home screen becomes a story dashboard. Until now home was an app launcher with a small text widget: to continue the story you had to remember which app the next beat lived in. A story card now leads the home screen: a cover photo that changes with the story phase (his Tinder photo at the match, the cafe on the first date, the sunset at the line-drawing, the night street in ch4, the scandal-day crown shot, the stage after the ending, her bridge photo on the morning after), the current chapter and date set over it, an 8-node progress rail (ch1-5 / scandal / ending / next morning), and one big "▶ つづきを読む" button that takes you straight to the app the story is waiting in (Tinder in ch1, his LINE chat from ch2 on, News at the ending). The old widget keeps its records (followers, heat meter, scandal skip) but its guidance lines are retired - the dashboard says it once, in one place. DELETED as decoration that never did anything: the fake "検索" pill sitting in the home page dots on both home pages (nothing ever responded to it; the page dots themselves stay - they really switch pages). Presentation/navigation only: no story text, gates, voices or flow changed. ===== */
 (function(){
  const inner=document.querySelector("#v-home .home-inner"); if(!inner) return;
  const css=document.createElement("style"); css.textContent=
@@ -11948,7 +11948,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v517"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v518"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14485,7 +14485,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    +'<div id="v437-notes">'
    +' <div class="hp-head" style="padding:52px 14px 0"><button class="hp-close" id="v437-x">‹</button><b style="font-size:17px">メモ</b></div>'
    +' <div style="padding:2px 18px 8px;font-size:30px;font-weight:800">メモ</div>'
-   +' <div style="padding:0 14px 10px"><input id="v437-q" placeholder="🔍 検索" autocomplete="off" style="width:100%;box-sizing:border-box;border:none;background:#e9e9ee;border-radius:10px;padding:9px 12px;font-size:14px;font-family:inherit;outline:none"></div>'
+   +' <div style="padding:0 14px 10px"><input id="v437-q" placeholder="検索" autocomplete="off" style="width:100%;box-sizing:border-box;border:none;background:#e9e9ee;border-radius:10px;padding:9px 12px;font-size:14px;font-family:inherit;outline:none"></div>'
    +' <div id="v437-list" style="overflow-y:auto;flex:1"></div>'
    +' <div style="display:flex;align-items:center;padding:8px 18px 2px"><span id="v437-count" style="margin:0 auto;font-size:12px;color:#8e8e93"></span><button type="button" id="v437-new" style="background:none;border:none;font-size:21px;cursor:pointer" title="新しいメモ">✎</button></div>'
    +'</div>';
@@ -18999,7 +18999,57 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  all(); setInterval(all, 1200);
 })();
 </script>
+<style>
+/* v518: LINE talk previews end with an ellipsis instead of a hard
+   clip; the memo list gets bottom clearance from its footer. */
+.talkrow .pv{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#v437-list{padding-bottom:16px}
+</style>
+<script>
+/* ===== v518: detail-sheet overlap, his-room stamp picker, memo search icon.
+   - the deck action row used to float over the profile detail sheet;
+     it now hides while the sheet is open
+   - his LINE room never got the stamp button the friend rooms have
+     (v103 built it only for friends/groups); added the same picker,
+     sending appends the stamp and nothing else (his replies stay
+     story-driven, the free-talk pool is untouched)
+   - memo search gets the same line magnifier as the other apps ===== */
+(function(){
+ if(window.__v518) return; window.__v518=true;
+ var SMILE='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><path d="M8.6 14.2c.9 1.2 2 1.8 3.4 1.8s2.5-.6 3.4-1.8"/><circle cx="9" cy="9.6" r="1.05" fill="#8e8e93" stroke="none"/><circle cx="15" cy="9.6" r="1.05" fill="#8e8e93" stroke="none"/></svg>';
+ var MAG='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2.4" stroke-linecap="round"><circle cx="10.8" cy="10.8" r="6.3"/><path d="M15.5 15.5 20.5 20.5"/></svg>';
+ function detailFix(){
+   var sheet=document.querySelector("#tdetail-sheet");
+   var nope=document.querySelector("#v-tinder button.nope");
+   if(!nope) return;
+   var row=nope.parentElement; if(!row) return;
+   var open=!!sheet && (sheet.classList.contains("on") || sheet.getBoundingClientRect().height>10);
+   row.style.display=open? "none":"";
+ }
+ function stampFix(){
+   var inp=document.querySelector("#line-text"); if(!inp) return;
+   var row=inp.closest(".line-input")||inp.parentElement; if(!row) return;
+   var sp=row.querySelector("span"); if(!sp||sp.dataset.v518) return;
+   sp.dataset.v518="1";
+   sp.innerHTML=SMILE;
+   sp.style.cssText="cursor:pointer;display:flex;align-items:center;padding:0 2px";
+ }
+ function memoFix(){
+   var q=document.querySelector("#v437-q"); if(!q||q.dataset.v518) return;
+   var wrap=q.parentElement; if(!wrap) return;
+   q.dataset.v518="1";
+   wrap.style.position="relative";
+   var s=document.createElement("span"); s.innerHTML=MAG;
+   s.style.cssText="position:absolute;left:12px;top:50%;transform:translateY(-50%);display:flex;pointer-events:none";
+   wrap.appendChild(s);
+   q.style.paddingLeft="32px";
+ }
+ function all(){ detailFix(); stampFix(); memoFix(); }
+ all(); setInterval(all, 1200);
+})();
+</script>
 </body>
+
 
 
 
