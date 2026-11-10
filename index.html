@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v466</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v467</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v466"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v467"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16362,6 +16362,111 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  }
  sweep();
  var sv=setInterval(sweep,1500); setTimeout(function(){clearInterval(sv)},30000);
+})();
+</script>
+
+<style>
+/* ===== v467 camera chrome: modelled on her real iPhone ===== */
+#v436-cam .v436-topbtn{background:transparent!important;width:34px;height:34px}
+.v436-zoom{background:transparent!important;color:#fff!important;text-shadow:0 1px 6px rgba(0,0,0,.65);border-radius:50%!important;min-width:36px;height:36px}
+.v436-zoom.act{background:rgba(24,24,27,.82)!important;color:#ffd60a!important;text-shadow:none}
+#v436-shutter{border-width:4px!important}
+#v436-shutter::after{inset:3px!important}
+#v467-ev{display:flex;flex-direction:column;align-items:center;line-height:1.05;color:#fff;margin-left:2px}
+#v467-ev b{font-size:14.5px;font-weight:600}
+#v467-ev span{font-size:9.5px;letter-spacing:.08em;opacity:.85}
+.v467-sidebtn{width:46px;height:46px;border-radius:50%;border:none;background:rgba(32,32,36,.92);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+</style>
+<script>
+/* ===== v467: the camera app gets her iPhone's exact chrome
+   (photo reference she sent): quiet top icons - flash bolt that
+   slashes when off, styles dial, 0.0 EV - text zoom levels with
+   the active one in a dark circle in yellow, an f button that
+   opens the filters, a dots button for the grid, and the mode
+   capsule sitting between the round thumbnail and the flip
+   button. Plus the Camera / Notes / Calendar home icons are
+   redrawn as the real things; the calendar follows the story
+   date. All capture logic stays v436's. ===== */
+(function(){
+ if(window.__v467) return; window.__v467=true;
+ function bolt(slashed,yellow){
+   return '<svg width="21" height="21" viewBox="0 0 24 24" fill="'+(yellow?'#ffd60a':'#fff')+'"><path d="M13.2 2 4.6 13.4h5L8.4 22l8.8-11.6h-5.2L13.2 2Z"/>'+(slashed?'<path d="M4 4.5 20 19.5" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/>':'')+'</svg>';
+ }
+ var DIAL='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7"><circle cx="12" cy="12" r="6.4" stroke-dasharray="2.6 2.9"/><circle cx="12" cy="12" r="2.2" fill="#fff" stroke="none"/><path d="M5.5 18.5 18.5 5.5" stroke-linecap="round"/></svg>';
+ var GRID9='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17"/></svg>';
+ var XC='<svg width="17" height="17" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>';
+ var FLIP='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1"/><path d="M18.6 2.8v4h-4"/></svg>';
+ var DOTS='<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><circle cx="7" cy="7" r="1.9"/><circle cx="12" cy="7" r="1.9"/><circle cx="17" cy="7" r="1.9"/><circle cx="7" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="17" cy="12" r="1.9"/><circle cx="7" cy="17" r="1.9"/><circle cx="12" cy="17" r="1.9"/><circle cx="17" cy="17" r="1.9"/></svg>';
+ var FST='<span style="font-family:Georgia,serif;font-style:italic;font-size:21px;line-height:1">ƒ</span>';
+ function paintFlash(){
+   var b=document.querySelector("#v436-flash"), lab=document.querySelector("#v436-flash-lab");
+   if(!b||!lab) return;
+   var t=lab.textContent.trim();
+   b.innerHTML=bolt(t==="オフ", t==="オン");
+ }
+ function build(){
+   var cam=document.querySelector("#v436-cam"); if(!cam) return false;
+   var topbar=cam.children[0];
+   var flash=cam.querySelector("#v436-flash"), gb=cam.querySelector("#v436-gridbtn"), x=cam.querySelector("#v436-x"), flip=cam.querySelector("#v436-flip");
+   if(flash&&!flash.dataset.v467){ flash.dataset.v467="1"; paintFlash();
+     new MutationObserver(paintFlash).observe(document.querySelector("#v436-flash-lab"),{childList:true,characterData:true,subtree:true}); }
+   if(gb&&!gb.dataset.v467){ gb.dataset.v467="1"; gb.innerHTML=DIAL; }
+   if(x&&!x.dataset.v467){ x.dataset.v467="1"; x.innerHTML=XC; }
+   if(topbar&&!cam.querySelector("#v467-ev")){
+     var ev=document.createElement("span"); ev.id="v467-ev"; ev.innerHTML="<b>0.0</b><span>EV</span>";
+     topbar.insertBefore(ev, gb);
+   }
+   var modes=cam.querySelectorAll(".v436-mode");
+   if(modes.length&&!cam.dataset.v467rows){
+     cam.dataset.v467rows="1";
+     var modesRow=modes[0].parentElement;
+     var rows=[...cam.children]; var bottomRow=rows[rows.length-1];
+     var thumb=cam.querySelector("#v436-thumb");
+     var capsule=document.createElement("div");
+     capsule.style.cssText="display:inline-flex;align-items:center;gap:5px;background:rgba(26,26,30,.88);border-radius:999px;padding:6px 9px;min-width:0";
+     modes.forEach(function(m){ capsule.appendChild(m); m.style.padding="3px 5px"; m.style.borderRadius="999px"; m.style.fontSize="11.5px"; });
+     modesRow.style.cssText="display:flex;align-items:center;justify-content:space-between;padding:10px 12px 26px;gap:6px";
+     if(thumb){ thumb.style.width="34px"; thumb.style.height="34px"; thumb.style.borderRadius="50%"; modesRow.insertBefore(thumb, modesRow.firstChild); }
+     modesRow.appendChild(capsule);
+     if(flip){ flip.className="v467-sidebtn"; flip.innerHTML=FLIP; flip.style.width="38px"; flip.style.height="38px"; modesRow.appendChild(flip); }
+     var fb=document.createElement("button"); fb.type="button"; fb.className="v467-sidebtn"; fb.innerHTML=FST;
+     fb.addEventListener("click",function(){ var f=cam.querySelector("#v436-filts"); if(f) f.classList.toggle("on"); });
+     var db=document.createElement("button"); db.type="button"; db.className="v467-sidebtn"; db.innerHTML=DOTS;
+     db.addEventListener("click",function(){ if(gb) gb.click(); });
+     bottomRow.insertBefore(fb, bottomRow.firstChild);
+     bottomRow.appendChild(db);
+     bottomRow.style.padding="12px 34px 8px"; cam.insertBefore(bottomRow, modesRow);
+     var mo=new MutationObserver(function(){ modes.forEach(function(m){ m.style.background=m.classList.contains("act")?"rgba(255,255,255,.16)":"transparent"; }); });
+     modes.forEach(function(m){ mo.observe(m,{attributes:true,attributeFilter:["class"]}); });
+     modes.forEach(function(m){ m.style.background=m.classList.contains("act")?"rgba(255,255,255,.16)":"transparent"; });
+   }
+   return true;
+ }
+ /* ---- the three home icons, redrawn as the real apps ---- */
+ var CAMICON='<svg viewBox="0 0 60 60" width="100%" height="100%" style="display:block"><defs><linearGradient id="v467cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f4f6"/><stop offset="1" stop-color="#c6c6cd"/></linearGradient></defs><rect width="60" height="60" fill="url(#v467cg)"/><rect x="7" y="20" width="46" height="29" rx="6.5" fill="#3a3a3f"/><rect x="22" y="14.5" width="16" height="8" rx="3" fill="#3a3a3f"/><circle cx="30" cy="34.5" r="9.6" fill="#19191d"/><circle cx="30" cy="34.5" r="9.6" fill="none" stroke="#5c5c63" stroke-width="2.4"/><circle cx="30" cy="34.5" r="4.6" fill="#26262b"/><circle cx="33.2" cy="31" r="1.7" fill="#8e8e99"/><circle cx="47.5" cy="26" r="1.7" fill="#ffd60a"/></svg>';
+ var NOTEICON='<svg viewBox="0 0 60 60" width="100%" height="100%" style="display:block"><defs><linearGradient id="v467ng" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd60a"/><stop offset="1" stop-color="#f5b90d"/></linearGradient></defs><rect width="60" height="60" fill="#fff"/><rect width="60" height="19" fill="url(#v467ng)"/><rect x="9" y="29" width="42" height="2.6" rx="1.3" fill="#d9d9de"/><rect x="9" y="37.5" width="42" height="2.6" rx="1.3" fill="#d9d9de"/><rect x="9" y="46" width="29" height="2.6" rx="1.3" fill="#d9d9de"/></svg>';
+ function calIcon(){
+   var wd="土", day="27";
+   var d=document.querySelector("#v428-date");
+   if(d){ var m=d.textContent.match(/(\d+)月(\d+)日/); var w=d.textContent.match(/（(.)）/);
+     if(m) day=m[2]; if(w) wd=w[1]; }
+   return '<svg viewBox="0 0 60 60" width="100%" height="100%" style="display:block"><rect width="60" height="60" fill="#fff"/><text x="30" y="19" text-anchor="middle" font-size="10.5" font-weight="600" fill="#ff3b30" font-family="-apple-system,\'Hiragino Sans\',sans-serif">'+wd+'曜日</text><text x="30" y="51" text-anchor="middle" font-size="33" font-weight="300" fill="#1c1c1e" font-family="-apple-system,\'Hiragino Sans\',sans-serif">'+day+'</text></svg>';
+ }
+ function tileByLabel(name){ return [...document.querySelectorAll(".appicon")].find(function(b){ var l=b.querySelector(".lb"); return l&&l.textContent.trim()===name; }); }
+ function setIcon(tile,svg){
+   if(!tile) return; var ic=tile.querySelector(".ic"); if(!ic) return;
+   var keep=[...ic.querySelectorAll("span.badge,span.tl-lock")];
+   ic.innerHTML=svg; ic.style.background="transparent"; ic.style.overflow="hidden"; ic.style.padding="0";
+   keep.forEach(function(k){ ic.appendChild(k); });
+ }
+ function icons(){
+   setIcon(tileByLabel("カメラ"), CAMICON);
+   setIcon(tileByLabel("メモ"), NOTEICON);
+   setIcon(tileByLabel("カレンダー"), calIcon());
+ }
+ icons(); setInterval(icons,4000);
+ var iv=setInterval(function(){ if(build()) clearInterval(iv); },900);
+ build();
 })();
 </script>
 </body>
