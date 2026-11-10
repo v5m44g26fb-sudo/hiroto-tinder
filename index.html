@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v476</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v477</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v476"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v477"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -17041,6 +17041,82 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    }
  }
  var iv=setInterval(run,1200); setTimeout(function(){clearInterval(iv)},45000);
+})();
+</script>
+
+
+<style>
+#ph-view{background:#f6f6f4!important}
+#ph-view #pv-img{object-fit:contain!important;background:transparent!important}
+#ph-view .pv-nav{display:none!important}
+#ph-view #pv-close,#ph-view #pv-fav,#ph-view #pv-wall,#ph-view #pv-play,#ph-view #pv-dl,
+#ph-view #v445-share,#ph-view #v445-info,#ph-view #v445-trash{
+  background:rgba(255,255,255,.85)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 2px 10px rgba(0,0,0,.13)!important;border:none!important}
+#ph-view #pv-close svg,#ph-view #pv-wall svg,#ph-view #pv-play svg,#ph-view #pv-dl svg,
+#ph-view #v445-share svg,#ph-view #v445-info svg,#ph-view #v445-trash svg{filter:brightness(0)!important}
+#ph-view .pv-meta{background:rgba(255,255,255,.85)!important;backdrop-filter:blur(14px);color:#111!important;box-shadow:0 2px 10px rgba(0,0,0,.12)!important;border:none!important}
+#ph-view .pv-meta *{color:#111!important}
+#ph-view #pv-date{color:#555!important;text-shadow:none!important}
+#ph-view #pv-cap{color:#111!important;text-shadow:none!important}
+#ph-view #pv-strip{background:transparent!important}
+#ph-view #pv-strip img{border-radius:4px}
+#ph-view #pv-strip img.cur{box-shadow:0 0 0 2px #f6f6f4,0 0 0 4px #222!important;outline:none!important}
+#v477-dots{position:absolute;top:52px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border:none;box-shadow:0 2px 10px rgba(0,0,0,.13);z-index:6;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#v477-menu{position:absolute;top:98px;right:16px;z-index:7;background:rgba(255,255,255,.96);border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.22);padding:6px;display:none;min-width:186px}
+#v477-menu.on{display:block}
+#v477-menu button,#v477-menu a{position:static!important;display:flex!important;align-items:center;gap:10px;width:100%!important;height:auto!important;padding:10px 12px!important;border-radius:9px!important;background:transparent!important;box-shadow:none!important;color:#111!important;font-size:13.5px!important;text-decoration:none;cursor:pointer}
+#v477-menu button:hover,#v477-menu a:hover{background:#f0f0ee!important}
+#v477-menu svg{filter:brightness(0)!important;width:19px!important;height:19px!important;flex:none}
+#v477-cpill{position:absolute;left:50%;transform:translateX(-50%);bottom:16px;z-index:6;display:flex;gap:4px;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-radius:999px;box-shadow:0 2px 12px rgba(0,0,0,.13);padding:4px}
+#v477-cpill button{position:static!important;width:52px!important;height:40px!important;border-radius:999px!important;background:transparent!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center}
+#v477-cpill #pv-fav svg{filter:brightness(0)}
+#v477-cpill #pv-fav.on svg,#v477-cpill #pv-fav.faved svg{filter:none}
+#ph-view #v445-share{left:16px!important;right:auto!important;bottom:16px!important}
+#ph-view #v445-trash{right:16px!important;left:auto!important;bottom:16px!important}
+</style>
+<script>
+(function(){
+ if(window.__v477) return; window.__v477=true;
+ var CHEV='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>';
+ var DOTS='<svg width="20" height="20" viewBox="0 0 24 24" fill="#111"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>';
+ function lab(el,txt){ if(el&&!el.querySelector(".v477-lab")){ var s=document.createElement("span"); s.className="v477-lab"; s.textContent=txt; el.appendChild(s); } }
+ function run(){
+   var v=document.querySelector("#ph-view"); if(!v) return;
+   var close=document.querySelector("#pv-close");
+   if(close&&!close.dataset.v477){ close.dataset.v477="1"; close.innerHTML=CHEV; }
+   if(!document.querySelector("#v477-dots")){
+     var wall=document.querySelector("#pv-wall"), play=document.querySelector("#pv-play"), dl=document.querySelector("#pv-dl");
+     if(wall&&play&&dl){
+       var menu=document.createElement("div"); menu.id="v477-menu";
+       lab(wall,"壁紙にする"); lab(play,"スライドショー"); lab(dl,"ダウンロード");
+       menu.appendChild(wall); menu.appendChild(play); menu.appendChild(dl);
+       v.appendChild(menu);
+       var dots=document.createElement("button"); dots.id="v477-dots"; dots.type="button"; dots.innerHTML=DOTS;
+       dots.addEventListener("click",function(e){ e.stopPropagation(); menu.classList.toggle("on"); });
+       menu.addEventListener("click",function(){ menu.classList.remove("on"); });
+       document.addEventListener("click",function(e){ if(!menu.contains(e.target)) menu.classList.remove("on"); });
+       v.appendChild(dots);
+     }
+   }
+   if(!document.querySelector("#v477-cpill")){
+     var fav=document.querySelector("#pv-fav"), info=document.querySelector("#v445-info");
+     if(fav&&info){
+       var pill=document.createElement("div"); pill.id="v477-cpill";
+       pill.appendChild(fav); pill.appendChild(info);
+       v.appendChild(pill);
+     }
+   }
+ }
+ /* the collage feature is retired at her word */
+ function killCollage(){
+   [...document.querySelectorAll("#v-photos button, #v-photos div")].forEach(function(e){
+     if(e.textContent.indexOf("コラージュ")>=0&&e.querySelectorAll("button").length===0){ var b=e.closest("button")||e; b.remove(); }
+   });
+ }
+ var iv=setInterval(function(){ run(); killCollage(); },1000);
+ setTimeout(function(){ clearInterval(iv); },60000);
+ run(); killCollage();
 })();
 </script>
 
