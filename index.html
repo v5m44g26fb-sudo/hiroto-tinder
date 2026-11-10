@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v511</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v512</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v511"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v512"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -18628,6 +18628,160 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
     });
   }
   paint(); setInterval(paint, 900);
+})();
+</script>
+
+<style>
+#v-sms{background:#fff}
+.sms-sil{width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#c3cbd8,#8e99ae);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;flex:none}
+.sms-sil svg{width:40px;height:40px;fill:#fff;transform:translateY(4px)}
+.sms-sil.sm{width:46px;height:46px}.sms-sil.sm svg{width:34px;height:34px}
+.sms-row{display:flex;gap:12px;width:100%;padding:10px 4px 10px 16px;background:none;border:none;border-bottom:1px solid #eee;cursor:pointer;text-align:left;align-items:flex-start}
+.sms-bub{background:#e9e9eb;color:#111;border-radius:18px;padding:9px 13px;font-size:14.5px;line-height:1.55;max-width:76%;border-bottom-left-radius:4px}
+.sms-bub.me{background:#2f7cf6;color:#fff;border-bottom-left-radius:18px;border-bottom-right-radius:4px}
+.sms-chip{background:#fff;border:1px solid #d7dce1;border-radius:999px;padding:7px 14px;font-size:13.5px;color:#007aff;cursor:pointer}
+</style>
+<script>
+/* ===== v512: the dock's green balloon is the iOS Messages
+   icon, but it opened LINE (nao's report). A real SMS app now
+   lives behind it, modelled on her own phone's Messages:
+   list -> thread, service senders + family, search that
+   filters, compose to contacts. LINE stays on its grid tile. ===== */
+(function(){ if(window.__v512) return; window.__v512=true;
+  const SIL='<svg viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="4.1"/><path d="M12 13.4c-4.4 0-7.4 2.3-7.4 5.1 0 .9.3 1.5.8 1.5h13.2c.5 0 .8-.6.8-1.5 0-2.8-3-5.1-7.4-5.1z"/></svg>';
+  const MAG='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#8a8a8e" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3L21 21"/></svg>';
+  const THREADS=[
+    {id:"mom", name:"母", kind:"person", time:"日曜日",
+     msgs:[["f","日曜日、電話ちょーだい","11月2日（日） 20:14"],["f","この前の写真、歯のやつ順調そうやね",""]],
+     replies:["順調でよかった","無理せんのよ","また何か送るわ"]},
+    {id:"dental", name:"かかりつけ歯科", kind:"svc", time:"10/30",
+     msgs:[["f","【ご予約の確認】三浦様、次回の調整は11月6日（木）15:00です。ご都合が悪い場合はお電話でご連絡ください。","10月30日（木） 10:00"]]},
+    {id:"shein", name:"SHEIN", kind:"svc", time:"10/21",
+     msgs:[["f","【SHEIN】ご注文の商品を発送しました。到着まで2〜4日ほどお待ちください。","10月21日（火） 22:31"]]},
+    {id:"yamato", name:"ヤマト運輸", kind:"svc", time:"10/3",
+     msgs:[["f","【お知らせ】お荷物のお届け予定は本日中です。","10月3日（金） 9:12"],["f","お荷物の配達が完了しました。ご利用ありがとうございました。","10月3日（金） 13:05"]]},
+    {id:"tinder", name:"Tinder", kind:"svc", time:"9/27",
+     msgs:[["f","Tinder認証コードは 621408 です。このコードは誰にも共有しないでください。","9月27日（土） 18:42"]]}
+  ];
+  const PEOPLE=[
+    {id:"yui", name:"ゆい", img:"assets/fr-yui.jpg", replies:["まじで助かる","席は端っこの静かな方にしといたで","決まったらすぐ言うな"]},
+    {id:"misaki", name:"みさき", img:"assets/fr-misaki.jpg", replies:["ありがと〜","あの写真、盛れてたよね","今度は動画も撮ろ"]},
+    {id:"rina", name:"りな", img:"assets/fr-rina.jpg", replies:["でしょでしょ","今度一緒に行こ","水風呂の温度ちょうどよかった"]}
+  ];
+  const ridx={}; let cur=null; let svcNoted={};
+  function $(s,r){ return (r||document).querySelector(s); }
+  function build(){
+    const phone=$("#phone"); if(!phone || $("#v-sms")) return;
+    const sec=document.createElement("section"); sec.className="view"; sec.id="v-sms";
+    sec.innerHTML=
+    '<div id="sms-list" style="display:flex;flex-direction:column;height:100%">'+
+      '<div style="display:flex;align-items:center;padding:52px 14px 4px;gap:8px">'+
+        '<button id="sms-home" style="background:none;border:none;color:#007aff;font-size:24px;cursor:pointer;padding:2px 4px">‹</button>'+
+        '<span style="background:#f2f2f7;border-radius:999px;padding:7px 18px;font-size:15px">編集</span>'+
+        '<span style="flex:1"></span>'+
+        '<span style="width:38px;height:38px;border-radius:50%;background:#f2f2f7;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="19" height="19" stroke="#111" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>'+
+      '</div>'+
+      '<div style="font-size:32px;font-weight:800;padding:8px 20px 6px">メッセージ</div>'+
+      '<div id="sms-rows" style="flex:1;overflow-y:auto;padding-bottom:86px"></div>'+
+      '<div style="position:absolute;left:12px;right:76px;bottom:16px;background:rgba(246,246,248,.92);backdrop-filter:blur(8px);border:1px solid #e3e3e8;border-radius:999px;display:flex;align-items:center;gap:8px;padding:11px 16px">'+
+        MAG+'<input id="sms-q" placeholder="検索" style="border:none;background:none;outline:none;font-size:16px;flex:1;color:#111">'+
+        '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#8a8a8e" stroke-width="1.9" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>'+
+      '</div>'+
+      '<button id="sms-new" style="position:absolute;right:14px;bottom:14px;width:52px;height:52px;border-radius:50%;border:1px solid #e3e3e8;background:rgba(246,246,248,.92);cursor:pointer;display:flex;align-items:center;justify-content:center">'+
+        '<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>'+
+    '</div>'+
+    '<div id="sms-thread" style="display:none;flex-direction:column;height:100%"></div>'+
+    '<div id="sms-pick" style="display:none;flex-direction:column;height:100%"></div>';
+    phone.appendChild(sec);
+    renderRows("");
+    $("#sms-home").addEventListener("click", ()=>{ if(window.show) show("home"); });
+    $("#sms-q").addEventListener("input", e=>renderRows(e.target.value.trim()));
+    $("#sms-new").addEventListener("click", openPick);
+  }
+  function preview(t){ const last=t.msgs[t.msgs.length-1]; return last? last[1] : ""; }
+  function renderRows(q){
+    const box=$("#sms-rows"); if(!box) return; box.innerHTML="";
+    THREADS.filter(t=>!q || t.name.includes(q) || preview(t).includes(q)).forEach(t=>{
+      const b=document.createElement("button"); b.className="sms-row";
+      b.innerHTML='<span class="sms-sil">'+SIL+'</span>'+
+        '<span style="flex:1;min-width:0"><span style="display:flex;align-items:baseline"><b style="font-size:16px;flex:1">'+t.name+'</b>'+
+        '<span style="color:#8a8a8e;font-size:13px">'+t.time+'</span><span style="color:#c7c7cc;font-size:15px;margin-left:3px">›</span></span>'+
+        '<span style="display:block;color:#8a8a8e;font-size:14px;line-height:1.45;margin-top:1px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">'+preview(t)+'</span></span>';
+      b.addEventListener("click", ()=>openThread(t));
+      box.appendChild(b);
+    });
+  }
+  function bub(side, text){
+    if(side==="f") return '<div style="display:flex;margin:4px 0"><span class="sms-bub">'+text+'</span></div>';
+    return '<div style="display:flex;justify-content:flex-end;margin:4px 0"><span class="sms-bub me">'+text+'</span></div>';
+  }
+  function openThread(t){
+    cur=t;
+    const list=$("#sms-list"), th=$("#sms-thread"), pk=$("#sms-pick");
+    list.style.display="none"; pk.style.display="none"; th.style.display="flex";
+    const chips = t.kind==="person" ? ["うん、電話する","順調やで","ありがとう"] : [];
+    th.innerHTML=
+      '<div style="display:flex;align-items:center;gap:6px;padding:52px 10px 8px;border-bottom:1px solid #eee">'+
+        '<button id="sms-back" style="background:none;border:none;color:#007aff;font-size:26px;cursor:pointer;padding:0 4px">‹</button>'+
+        '<span class="sms-sil sm">'+SIL+'</span>'+
+        '<span style="font-size:15px;font-weight:600">'+t.name+' <span style="color:#c7c7cc">›</span></span></div>'+
+      '<div id="sms-msgs" style="flex:1;overflow-y:auto;padding:12px 14px 8px">'+
+        '<div style="text-align:center;color:#8a8a8e;font-size:12px;line-height:1.7;margin-bottom:8px">テキストメッセージ・SMS<br>'+(t.msgs[0]? t.msgs[0][2] : "")+'</div>'+
+        t.msgs.map(m=>bub(m[0],m[1])).join("")+
+      '</div>'+
+      (chips.length? '<div style="display:flex;gap:8px;padding:6px 12px;flex-wrap:wrap">'+chips.map(c=>'<button class="sms-chip">'+c+'</button>').join("")+'</div>' : "")+
+      '<div style="display:flex;align-items:center;gap:9px;padding:8px 12px 26px">'+
+        '<span style="width:38px;height:38px;border-radius:50%;background:#f2f2f7;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" width="20" height="20" stroke="#555" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>'+
+        '<span style="flex:1;display:flex;align-items:center;background:#fff;border:1px solid #d9d9de;border-radius:999px;padding:0 8px 0 15px">'+
+        '<input id="sms-in" placeholder="テキストメッセージ・SMS" style="flex:1;border:none;outline:none;font-size:15.5px;padding:10px 0;background:none;color:#111">'+
+        '<button id="sms-send" style="width:32px;height:32px;border-radius:50%;border:none;background:#2f7cf6;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></span>'+
+      '</div>';
+    $("#sms-back").addEventListener("click", ()=>{ th.style.display="none"; $("#sms-list").style.display="flex"; renderRows($("#sms-q")? $("#sms-q").value.trim() : ""); });
+    const send=(text)=>{
+      const box=$("#sms-msgs"); if(!box || !text) return;
+      box.insertAdjacentHTML("beforeend", bub("m", text)); box.scrollTop=box.scrollHeight;
+      if(t.kind==="person"){
+        const pool=t.replies||[]; const i=ridx[t.id]||0; ridx[t.id]=i+1;
+        if(pool.length) setTimeout(()=>{ box.insertAdjacentHTML("beforeend", bub("f", pool[i%pool.length])); box.scrollTop=box.scrollHeight; }, 1000);
+      } else if(!svcNoted[t.id]){
+        svcNoted[t.id]=1;
+        setTimeout(()=>{ box.insertAdjacentHTML("beforeend", '<div style="text-align:center;color:#8a8a8e;font-size:11.5px;margin:8px 0">この送信者は送信専用です</div>'); box.scrollTop=box.scrollHeight; }, 700);
+      }
+    };
+    th.querySelectorAll(".sms-chip").forEach(c=>c.addEventListener("click", ()=>send(c.textContent)));
+    $("#sms-send").addEventListener("click", ()=>{ const inp=$("#sms-in"); if(inp && inp.value.trim()){ send(inp.value.trim()); inp.value=""; } });
+  }
+  function openPick(){
+    const list=$("#sms-list"), th=$("#sms-thread"), pk=$("#sms-pick");
+    list.style.display="none"; th.style.display="none"; pk.style.display="flex";
+    const rows=[{id:"mom2", name:"母", sub:"個人", t:THREADS[0]}].concat(PEOPLE.map(p=>({id:p.id, name:p.name, sub:"", p})));
+    pk.innerHTML='<div style="display:flex;align-items:center;padding:52px 14px 6px;gap:8px">'+
+      '<button id="sms-pick-back" style="background:none;border:none;color:#007aff;font-size:24px;cursor:pointer;padding:2px 4px">‹</button>'+
+      '<b style="font-size:19px">新規メッセージ</b></div>'+
+      '<div style="padding:8px 20px;color:#8a8a8e;font-size:13px">宛先</div>'+
+      rows.map((r,i)=>'<button class="sms-row" data-pick="'+i+'" style="align-items:center"><span class="sms-sil sm">'+SIL+'</span><b style="font-size:15.5px">'+r.name+'</b></button>').join("");
+    $("#sms-pick-back").addEventListener("click", ()=>{ pk.style.display="none"; list.style.display="flex"; });
+    pk.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click", ()=>{
+      const r=rows[+b.dataset.pick];
+      if(r.t){ openThread(r.t); return; }
+      openThread({id:r.p.id, name:r.p.name, kind:"person", time:"", msgs:[], replies:r.p.replies});
+    }));
+  }
+  function openSMS(){
+    build();
+    document.querySelectorAll(".view.on").forEach(v=>{ if(v.id!=="v-sms") v.classList.remove("on"); });
+    const sec=$("#v-sms"); if(sec) sec.classList.add("on");
+    const list=$("#sms-list"), th=$("#sms-thread"), pk=$("#sms-pick");
+    if(list) list.style.display="flex"; if(th) th.style.display="none"; if(pk) pk.style.display="none";
+  }
+  document.addEventListener("click", e=>{
+    const tile=e.target.closest && e.target.closest('.appicon[data-open="line"]');
+    if(!tile) return;
+    if(tile.querySelector(".ic-msg")){
+      e.preventDefault(); e.stopPropagation(); openSMS();
+    }
+  }, true);
+  build(); setInterval(build, 2500);
 })();
 </script>
 
