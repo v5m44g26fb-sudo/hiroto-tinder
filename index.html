@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v469</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v470</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v469"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v470"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16537,6 +16537,41 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    var si=document.querySelector(".statusbar .sicons");
    if(si) si.click();
  });
+})();
+</script>
+
+
+<script>
+/* ===== v470: the Control Center's toggles stop being emoji.
+   Plane / cellular / Wi-Fi / Bluetooth / moon / music / sun /
+   speaker / camera all become line SVG, like real iOS. Only the
+   glyphs are swapped; every id, class and handler stays. ===== */
+(function(){
+ if(window.__v470) return; window.__v470=true;
+ function F(p,sz){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="currentColor" style="display:block">'+p+'</svg>'; }
+ function S(p,sz){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block">'+p+'</svg>'; }
+ var PLANE=F('<path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/>',22);
+ var CELL=F('<rect x="3" y="14" width="3.4" height="6" rx="1"/><rect x="8.2" y="11" width="3.4" height="9" rx="1"/><rect x="13.4" y="8" width="3.4" height="12" rx="1"/><rect x="18.6" y="5" width="3.4" height="15" rx="1" opacity=".35"/>',22);
+ var WIFI=S('<path d="M2.8 10.2a15 15 0 0 1 18.4 0"/><path d="M5.8 13.8a10 10 0 0 1 12.4 0"/><path d="M8.8 17.2a5 5 0 0 1 6.4 0"/><circle cx="12" cy="19.8" r="1.1" fill="currentColor" stroke="none"/>',22);
+ var BT=S('<path d="M7 8.2 16.8 15 12.4 18.6V5.4L16.8 9 7 15.8"/>',20);
+ var MOON=F('<path d="M20 13.6A8.4 8.4 0 1 1 10.4 4 6.7 6.7 0 0 0 20 13.6Z"/>',19);
+ var NOTE=F('<path d="M9.5 18.2V6.4L19.5 4.4v11.8"/><circle cx="7" cy="18.2" r="2.6"/><circle cx="17" cy="16.2" r="2.6"/>',19);
+ var SUN=S('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/>',18);
+ var VOL=F('<path d="M4 9.5v5h3.4L12 18.7V5.3L7.4 9.5H4Z"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6M18.2 6.8a7.4 7.4 0 0 1 0 10.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',18);
+ var CAM=S('<rect x="2.8" y="7" width="18.4" height="13" rx="2.6"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8.5 7 10 4.5h4L15.5 7"/>',18);
+ function whole(id,svg){ var b=document.querySelector(id); if(b&&!b.querySelector("svg")) b.innerHTML=svg; }
+ function lead(id,svg){
+   var b=document.querySelector(id); if(!b||b.querySelector("svg")) return;
+   [...b.childNodes].forEach(function(n){ if(n.nodeType===3) n.remove(); });
+   var sp=document.createElement("span");
+   sp.style.cssText="display:inline-flex;align-items:center;margin-right:7px;vertical-align:-3px";
+   sp.innerHTML=svg; b.insertBefore(sp, b.firstChild);
+ }
+ function run(){
+   whole("#cc-plane",PLANE); whole("#cc-cell",CELL); whole("#cc-wifi",WIFI); whole("#cc-bt",BT);
+   lead("#cc-moon",MOON); lead("#cc-note",NOTE); lead("#cc-bright",SUN); lead("#cc-vol",VOL); lead("#v442-camrow",CAM);
+ }
+ run(); var iv=setInterval(run,1500); setTimeout(function(){clearInterval(iv)},30000);
 })();
 </script>
 
