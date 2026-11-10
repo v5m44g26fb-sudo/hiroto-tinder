@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v509</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v510</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v509"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v510"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -18481,6 +18481,135 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
     } }
   }
   paint(); setInterval(paint, 1600);
+})();
+</script>
+
+
+<script>
+/* ===== v510 (nao's reports, 2026-11-10 night):
+   1) X's message (balloon) tab had NO pane behind it - tapping
+      it just re-showed the timeline. A real DM pane now exists:
+      list + per-friend threads with reply chips, like LINE's.
+   2) The profile sheet's collapse chevron sat on the photo's
+      top seam, covering a segment bar: it now rides the
+      photo's bottom-right corner, like the real app. ===== */
+(function(){ if(window.__v510) return; window.__v510=true;
+  /* ---------- DM pane ---------- */
+  const FRIENDS=[
+    {id:"yui", name:"ゆい", handle:"@yui_s2", img:"assets/fr-yui.jpg", time:"21:12", unread:true,
+     preview:"チケットの件、まかせて！",
+     thread:[["f","ねえ、釜山の航空券セール始まったって！"],["f","チケットの件、まかせて！"]],
+     replies:["まじで助かる","席は端っこの静かな方にしといたで","決まったらすぐ言うな"]},
+    {id:"misaki", name:"みさき", handle:"@misaki_pon", img:"assets/fr-misaki.jpg", time:"昨日", unread:false,
+     preview:"昨日の写真送って〜",
+     thread:[["f","昨日の写真送って〜"],["m","あとで送る！"]],
+     replies:["ありがと〜","あの写真、盛れてたよね","今度は動画も撮ろ"]},
+    {id:"rina", name:"りな", handle:"@rina_tan", img:"assets/fr-rina.jpg", time:"月曜日", unread:false,
+     preview:"サウナのやつ見た？",
+     thread:[["f","サウナのやつ見た？"],["m","見た見た、よかった"]],
+     replies:["でしょでしょ","今度一緒に行こ","水風呂の温度ちょうどよかった"]}
+  ];
+  const state510={open:false, view:"list", cur:null, ridx:{}};
+  function el(html){ const d=document.createElement("div"); d.innerHTML=html; return d.firstElementChild; }
+  function buildPane(){
+    const tl=document.querySelector("#x-pane-tl"); if(!tl || document.querySelector("#x-pane-msg")) return;
+    const pane=document.createElement("div");
+    pane.id="x-pane-msg"; pane.style.cssText="display:none;height:100%;overflow-y:auto;background:#fff";
+    pane.innerHTML=
+      '<div style="padding:14px 16px 8px;font-size:19px;font-weight:800">メッセージ</div>'+
+      '<div style="margin:2px 16px 10px;background:#eff1f3;border-radius:999px;padding:8px 14px;color:#8a8a8e;font-size:13.5px;display:flex;align-items:center;gap:7px">'+
+      '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#8a8a8e" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3L21 21"/></svg>検索</div>'+
+      '<div id="xdm-list"></div><div id="xdm-thread" style="display:none"></div>';
+    tl.parentNode.insertBefore(pane, tl.nextSibling);
+    const list=pane.querySelector("#xdm-list");
+    FRIENDS.forEach(fr=>{
+      const row=el('<button style="display:flex;gap:11px;align-items:center;width:100%;padding:11px 16px;background:none;border:none;border-bottom:1px solid #f0f0f2;cursor:pointer;text-align:left">'+
+        '<img src="'+fr.img+'" style="width:46px;height:46px;border-radius:50%;object-fit:cover">'+
+        '<span style="flex:1;min-width:0"><span style="display:flex;gap:6px;align-items:baseline"><b style="font-size:14.5px">'+fr.name+'</b><span style="color:#8a8a8e;font-size:12.5px">'+fr.handle+'</span></span>'+
+        '<span style="display:block;color:#555;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">'+fr.preview+'</span></span>'+
+        '<span style="color:#8a8a8e;font-size:12px;white-space:nowrap">'+fr.time+'</span>'+
+        (fr.unread?'<span class="xdm-dot" style="width:9px;height:9px;border-radius:50%;background:#1d9bf0;flex:none"></span>':'')+
+        '</button>');
+      row.addEventListener("click", ()=>openThread(fr, pane));
+      list.appendChild(row);
+    });
+  }
+  function bubble(side, text){
+    if(side==="f") return '<div style="display:flex;margin:5px 0"><span style="background:#eff1f3;color:#111;border-radius:17px;padding:8px 13px;font-size:14px;line-height:1.5;max-width:75%">'+text+'</span></div>';
+    return '<div style="display:flex;justify-content:flex-end;margin:5px 0"><span style="background:#1d9bf0;color:#fff;border-radius:17px;padding:8px 13px;font-size:14px;line-height:1.5;max-width:75%">'+text+'</span></div>';
+  }
+  function openThread(fr, pane){
+    state510.view="thread"; state510.cur=fr;
+    const list=pane.querySelector("#xdm-list"); const th=pane.querySelector("#xdm-thread");
+    list.style.display="none"; th.style.display="";
+    const chips=["ありがとう！","まかせて","また誘って"];
+    th.innerHTML='<div style="display:flex;align-items:center;gap:9px;padding:4px 8px 10px">'+
+      '<button id="xdm-back" style="background:none;border:none;font-size:22px;color:#1d9bf0;cursor:pointer;padding:2px 6px">‹</button>'+
+      '<img src="'+fr.img+'" style="width:34px;height:34px;border-radius:50%;object-fit:cover"><b style="font-size:15.5px">'+fr.name+'</b>'+
+      '<span style="color:#8a8a8e;font-size:12.5px">'+fr.handle+'</span></div>'+
+      '<div id="xdm-msgs" style="padding:2px 16px 8px">'+ fr.thread.map(m=>bubble(m[0],m[1])).join("") +'</div>'+
+      '<div style="display:flex;gap:8px;padding:8px 12px 16px;flex-wrap:wrap">'+
+      chips.map(c=>'<button class="xdm-chip" style="background:#fff;border:1px solid #d7dce1;border-radius:999px;padding:7px 14px;font-size:13.5px;color:#1d9bf0;cursor:pointer">'+c+'</button>').join("") +'</div>';
+    th.querySelector("#xdm-back").addEventListener("click", ()=>{
+      state510.view="list"; th.style.display="none"; list.style.display="";
+    });
+    th.querySelectorAll(".xdm-chip").forEach(ch=>ch.addEventListener("click", ()=>{
+      const box=th.querySelector("#xdm-msgs"); if(!box) return;
+      box.insertAdjacentHTML("beforeend", bubble("m", ch.textContent));
+      const i=(state510.ridx[fr.id]||0); state510.ridx[fr.id]=i+1;
+      setTimeout(()=>{ box.insertAdjacentHTML("beforeend", bubble("f", fr.replies[i%fr.replies.length])); }, 900);
+    }));
+  }
+  function showDM(){
+    state510.open=true; buildPane();
+    const pane=document.querySelector("#x-pane-msg"); if(!pane) return;
+    document.querySelectorAll('[id^="x-pane-"]').forEach(p=>{ p.style.display = (p===pane)? "block":"none"; });
+    const dot=document.querySelector('#x-nav [data-xn="msg"] .dot, #x-nav [data-xn="msg"] [class*="dot"]');
+    document.querySelectorAll('#x-nav [data-xn="msg"] *').forEach(n=>{ if(n.style && n.style.background && n.style.borderRadius==="50%") n.style.display="none"; });
+    const list=pane.querySelector("#xdm-list"); if(list && state510.view==="list") list.style.display="";
+  }
+  document.addEventListener("click", e=>{
+    const b=e.target.closest && e.target.closest('#x-nav button'); if(!b) return;
+    if(b.dataset.xn==="msg"){ setTimeout(showDM, 30); }
+    else if(state510.open){ state510.open=false;
+      const pane=document.querySelector("#x-pane-msg"); if(pane) pane.style.display="none"; }
+  }, true);
+  setInterval(()=>{ if(state510.open){ const pane=document.querySelector("#x-pane-msg");
+    if(pane && pane.style.display==="none"){ showDM(); } } }, 1400);
+  /* ---------- profile chevron ---------- */
+  setInterval(()=>{
+    const close=document.querySelector("#td-close"); const box=document.querySelector("#tdetail-box");
+    const photo=document.querySelector(".td-photo"); const sheet=document.querySelector("#tdetail-sheet");
+    if(!close || !box || !photo || !sheet) return;
+    if(sheet.getBoundingClientRect().height===0) return;
+    const bt=box.getBoundingClientRect(); const pt=photo.getBoundingClientRect();
+    if(pt.height===0) return;
+    const top=Math.round(pt.bottom - bt.top - 48 + (box.scrollTop||0));
+    if(Math.abs((parseInt(close.style.top)||0) - top) > 2) close.style.top=top+"px";
+  }, 1200);
+})();
+</script>
+<script>
+/* ===== v510b: the Settings iOS pages (v457 Wi-Fi/Battery,
+   v468 Storage) hide by sliding off-canvas only - and iOS
+   sometimes leaks a sliver of them over other apps (nao's
+   photo-viewer screenshot). Closed now also means invisible,
+   with the slide-out animation given its 420ms first. ===== */
+(function(){ if(window.__v510b) return; window.__v510b=true;
+  const timers={};
+  function guard(){
+    ["v457-ios","v468-ios"].forEach(id=>{
+      const ov=document.getElementById(id); if(!ov) return;
+      if(ov.classList.contains("on")){
+        if(timers[id]){ clearTimeout(timers[id]); timers[id]=null; }
+        ov.style.visibility="visible";
+      } else if(ov.style.visibility!=="hidden" && !timers[id]){
+        timers[id]=setTimeout(()=>{ timers[id]=null;
+          if(!ov.classList.contains("on")) ov.style.visibility="hidden"; }, 430);
+      }
+    });
+  }
+  guard(); setInterval(guard, 700);
 })();
 </script>
 
