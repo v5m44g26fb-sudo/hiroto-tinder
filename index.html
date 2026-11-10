@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v488</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v489</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v488"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v489"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -17677,6 +17677,62 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  }
  paint();
  var iv=setInterval(paint,1500); setTimeout(function(){clearInterval(iv)},1000*60*20);
+})();
+</script>
+
+
+<style>
+.v489-ic{display:inline-flex;vertical-align:-3px;margin-right:5px;flex:none}
+.v489-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e60012;margin-right:5px;vertical-align:1px;flex:none}
+</style>
+<script>
+/* ===== v489: last chrome emoji in the X panes and the news
+   app - the DM envelope button, the trend header, the
+   followers button, bookmark and quote labels, and the news
+   app's red-circle "live/breaking" markers (now real dots). ===== */
+(function(){
+ if(window.__v489) return; window.__v489=true;
+ function S(p, size, color, fill){
+   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="'+(fill?color:"none")+'" stroke="'+(fill?"none":color)+'" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+ }
+ var MAP={
+  "✉":S('<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/>',19,"#0f1419"),
+  "📈":S('<path d="M4 4v15.5h16M7 15.5 10.5 11l3 2.5L18 8.5M15.5 8.5H18V11"/>',16,"#536471"),
+  "👥":S('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.6-3 2.8-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16 5.6a3.2 3.2 0 0 1 0 5.9M17.8 15.3c1.6.6 2.5 1.9 2.8 4.2"/>',16,"#0f1419"),
+  "🔖":S('<path d="M7 4.5h10V20l-5-3.8L7 20Z"/>',15,"#0f1419"),
+  "✒":S('<path d="m14.5 4.5 5 5L9 20H4v-5Z"/><path d="m12.5 6.5 5 5"/>',15,"#0f1419")
+ };
+ var KEYS=Object.keys(MAP);
+ function swapIn(root){
+   if(!root) return;
+   var w=document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+   var nodes=[];
+   while(w.nextNode()){ var n=w.currentNode; if(n.parentElement&&!n.parentElement.closest(".v489-ic,.v489-dot")) nodes.push(n); }
+   nodes.forEach(function(n){
+     var t=n.nodeValue; if(!t) return;
+     var par=n.parentNode; if(!par) return;
+     if(t.indexOf("🔴")>=0&&t.indexOf("🔴")<=2&&!par.closest(".tx")){
+       var d=document.createElement("span"); d.className="v489-dot";
+       par.insertBefore(document.createTextNode(t.slice(0,t.indexOf("🔴"))),n);
+       par.insertBefore(d,n);
+       par.insertBefore(document.createTextNode(t.slice(t.indexOf("🔴")+2).replace(/^\s+/,"")),n);
+       par.removeChild(n); return;
+     }
+     for(var i=0;i<KEYS.length;i++){
+       var e=KEYS[i], idx=t.indexOf(e);
+       if(idx>=0&&idx<=2){
+         var span=document.createElement("span"); span.className="v489-ic"; span.innerHTML=MAP[e];
+         par.insertBefore(document.createTextNode(t.slice(0,idx)),n);
+         par.insertBefore(span,n);
+         par.insertBefore(document.createTextNode(t.slice(idx+e.length).replace(/^️/,"").replace(/^\s+/,"")),n);
+         par.removeChild(n); return;
+       }
+     }
+   });
+ }
+ function all(){ swapIn(document.querySelector("#v-x")); swapIn(document.querySelector("#v-news")); }
+ all();
+ var iv=setInterval(all,1700); setTimeout(function(){clearInterval(iv)},1000*60*20);
 })();
 </script>
 
