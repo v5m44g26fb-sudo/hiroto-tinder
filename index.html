@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v503</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v504</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v503"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v504"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -18342,6 +18342,22 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
     });
   }
   paint(); setInterval(paint, 1600);
+})();
+</script>
+
+
+<script>
+/* ===== v504: the lock screen's VISIBLE flashlight is
+   #v441-flash (v503 redrew the retired .lock-tool pair,
+   which is display:none). Give the live one the proper
+   filled torch glyph too. ===== */
+(function(){ if(window.__v504) return; window.__v504=true;
+  const TORCH='<svg width="22" height="22" viewBox="0 0 24 24"><path fill="#fff" d="M9.3 2h5.4c.6 0 1 .4 1 1v1.6H8.3V3c0-.6.4-1 1-1zM8.6 5.6h6.8l-.9 15.2c0 .7-.5 1.2-1.2 1.2H10.7c-.7 0-1.2-.5-1.2-1.2L8.6 5.6zm2.1 3.2a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6z"/></svg>';
+  function paint(){
+    const f=document.querySelector("#v441-flash");
+    if(f && !f.dataset.v504){ f.innerHTML=TORCH; f.dataset.v504="1"; }
+  }
+  paint(); setInterval(paint, 2000);
 })();
 </script>
 
