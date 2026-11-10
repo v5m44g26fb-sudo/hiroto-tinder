@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v492</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v493</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v492"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v493"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -17948,6 +17948,60 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    panel.querySelector(".bd").addEventListener("click",function(){ panel.classList.remove("on"); });
    panel.querySelector("#v492-nx").addEventListener("click",function(){ panel.classList.remove("on"); });
  }
+})();
+</script>
+
+
+<style>
+.v493-ic{display:inline-flex;vertical-align:-2px;margin-right:4px;flex:none}
+.super-badge .v493-ic{margin-right:1px;vertical-align:-1px}
+#ts-hist-btn .v493-ic{margin-right:3px;vertical-align:-2px}
+</style>
+<script>
+/* ===== v493: the Super Like chrome still carried emoji -
+   the badge on his card, the rewind-history button, the
+   match-list info box heading, and the two settings /
+   discovery rows. All become the same star / arrow marks. ===== */
+(function(){
+ if(window.__v493) return; window.__v493=true;
+ function S(p, size, color, fill){
+   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="'+(fill?color:"none")+'" stroke="'+(fill?"none":color)+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+ }
+ var STAR_W=S('<path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9Z"/>',13,"#fff",true);
+ var STAR_B=S('<path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9Z"/>',13,"#1299c3",true);
+ var REW=S('<path d="M8.5 5.5 4.8 9.2l3.7 3.7M4.8 9.2H15a5 5 0 0 1 0 10h-3"/>',13,"#8a6100");
+ function wrap(html){ return '<span class="v493-ic">'+html+'</span>'; }
+ function leadStar(el, svg){
+   if(!el || el.querySelector("svg")) return;
+   var t=el.textContent;
+   var i=t.indexOf("⭐"); if(i<0||i>1) return;
+   var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
+   while(n=walker.nextNode()){
+     var idx=n.nodeValue.indexOf("⭐");
+     if(idx>=0){
+       var par=n.parentNode;
+       var span=document.createElement("span"); span.className="v493-ic"; span.innerHTML=svg;
+       par.insertBefore(document.createTextNode(n.nodeValue.slice(0,idx)), n);
+       par.insertBefore(span, n);
+       par.insertBefore(document.createTextNode(n.nodeValue.slice(idx+1).replace(/^\s+/,"")), n);
+       par.removeChild(n); return;
+     }
+   }
+ }
+ function paint(){
+   document.querySelectorAll(".super-badge").forEach(function(el){ leadStar(el, STAR_W); });
+   var hb=document.querySelector("#ts-hist-btn");
+   if(hb && !hb.querySelector("svg") && hb.textContent.indexOf("↩")>=0){
+     hb.innerHTML=wrap(REW)+"巻き戻し履歴";
+   }
+   document.querySelectorAll("#tinder-match-wrap b").forEach(function(el){ leadStar(el, STAR_W); });
+   var ds=document.querySelector("#tdisc-super");
+   if(ds) leadStar(ds.closest(".t-setrow")? ds.closest(".t-setrow").querySelector("span") : null, STAR_B);
+   var st=document.querySelector("#set-t-super");
+   if(st) leadStar(st.parentElement? st.parentElement.querySelector("span") : null, STAR_B);
+ }
+ paint();
+ var iv=setInterval(paint,1500); setTimeout(function(){clearInterval(iv)},1000*60*15);
 })();
 </script>
 
