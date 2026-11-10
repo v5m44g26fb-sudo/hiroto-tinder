@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v518</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v519</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1637,7 +1637,7 @@ $("#pv-fav").addEventListener("click",()=>{ const list=pvList(); const f=list[pv
   const plus=row.querySelector("span"); plus.style.cursor="pointer"; plus.title="スタンプ"; plus.addEventListener("click",()=>{ panel.style.display=panel.style.display==="none"?"flex":"none"; });
 })();
 /* LINE talk search */
-(function(){ const list=$("#line-list"); if(!list) return; const wrap=document.createElement("div"); wrap.style.cssText="padding:8px 12px 6px;background:#fff"; wrap.id="line-search-wrap"; const inp=document.createElement("input"); inp.id="line-search"; inp.placeholder="🔍 トークを検索"; inp.autocomplete="off"; wrap.appendChild(inp); list.parentElement.insertBefore(wrap,list);
+(function(){ const list=$("#line-list"); if(!list) return; const wrap=document.createElement("div"); wrap.style.cssText="padding:8px 12px 6px;background:#fff"; wrap.id="line-search-wrap"; const inp=document.createElement("input"); inp.id="line-search"; inp.placeholder="トークを検索"; inp.autocomplete="off"; wrap.appendChild(inp); list.parentElement.insertBefore(wrap,list);
   inp.addEventListener("input",()=>{ const q=inp.value.trim(); $$("#line-list .talkrow").forEach(r=>{ r.style.display=(!q||r.textContent.includes(q))?"":"none"; }); });
 })();
 /* X thread reply */
@@ -11948,7 +11948,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v518"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v519"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14043,16 +14043,7 @@ dock.addEventListener("click",function(e){
  document.addEventListener("click",function(e){
    if(e.target&&e.target.id==="clock"){ render(); ov.classList.add("on"); }
  },true);
- /* discoverability: a row in settings, under the chapter select */
- var iv=setInterval(function(){
-   var anchor=document.querySelector("#r5-chap-row");
-   if(anchor&&!document.querySelector("#v417-nc-row")){
-     var row=document.createElement("div"); row.className="setrow"; row.id="v417-nc-row";
-     row.innerHTML='<span>🔔 通知センター</span><button class="set-tgl" type="button">ひらく</button>';
-     anchor.parentNode.insertBefore(row, anchor.nextSibling);
-     row.querySelector("button").addEventListener("click",function(){ render(); ov.classList.add("on"); });
-   }
- },1500);
+ /* settings row removed 2026-11-10 at her request; the clock still opens it */
 })();
 </script>
 
