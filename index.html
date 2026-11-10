@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v467</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v468</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v467"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v468"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16467,6 +16467,57 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  icons(); setInterval(icons,4000);
  var iv=setInterval(function(){ if(build()) clearInterval(iv); },900);
  build();
+})();
+</script>
+
+<style>
+#v468-ios{position:absolute;inset:0;z-index:954;background:#f2f2f7;color:#111;transform:translateX(100%);transition:transform .38s cubic-bezier(.32,.72,.3,1);display:flex;flex-direction:column;font-family:-apple-system,"Hiragino Sans",sans-serif}
+#v468-ios.on{transform:translateX(0)}
+.stor-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #eee;font-size:14.5px}
+.stor-row:last-child{border-bottom:none}
+</style>
+<script>
+/* ===== v468: Settings gains an iPhone Storage page, next to
+   the Wi-Fi and Battery pages from v457: a segmented capacity
+   bar and per-app usage. The photo library really is the big
+   one on this phone. ===== */
+(function(){
+ if(window.__v468) return; window.__v468=true;
+ var phone=document.querySelector("#phone")||document.body;
+ function svg(p,sz){ return '<svg width="'+sz+'" height="'+sz+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'; }
+ var BACK=svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>',20);
+ var ov=document.createElement("div"); ov.id="v468-ios";
+ ov.innerHTML='<button type="button" id="v468-back" style="position:absolute;top:50px;left:10px;z-index:5;background:none;border:none;color:#007aff;display:flex;align-items:center;cursor:pointer;padding:6px">'+BACK+'<span style="font-size:16px">設定</span></button>'
+  +'<div style="flex:1;overflow-y:auto;padding:96px 16px 30px">'
+  +'<div style="font-size:27px;font-weight:800;margin-bottom:14px">iPhoneストレージ</div>'
+  +'<div style="background:#fff;border-radius:12px;padding:16px 14px;margin-bottom:18px">'
+  +'<div style="display:flex;justify-content:space-between;font-size:13px;color:#8a8a8e;margin-bottom:8px"><span>iPhone</span><span>128GB中 96.2GBを使用</span></div>'
+  +'<div style="display:flex;height:14px;border-radius:5px;overflow:hidden;background:#e9e9ee">'
+  +'<span style="width:38%;background:#ff9f0a"></span><span style="width:17%;background:#34c759"></span><span style="width:11%;background:#007aff"></span><span style="width:6%;background:#af52de"></span><span style="width:4%;background:#8e8e93"></span>'
+  +'</div>'
+  +'<div style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:11.5px;color:#555">'
+  +'<span>● <span style="color:#ff9f0a">写真 48.6GB</span></span><span>● <span style="color:#34c759">アプリ 21.8GB</span></span><span>● <span style="color:#007aff">メディア 14.1GB</span></span><span>● <span style="color:#af52de">メッセージ 7.3GB</span></span><span>● <span style="color:#8e8e93">その他 4.4GB</span></span>'
+  +'</div></div>'
+  +'<div style="background:#fff;border-radius:12px;padding:2px 14px">'
+  +[['写真','48.6 GB','#ff9f0a'],['LINE','9.8 GB','#34c759'],['Instagram','6.2 GB','#c13584'],['TikTok','5.4 GB','#111111'],['ミュージック','4.9 GB','#fa2d48'],['X','3.1 GB','#111111'],['Safari','812 MB','#007aff']].map(function(r){
+     return '<div class="stor-row"><span style="width:10px;height:10px;border-radius:3px;background:'+r[2]+';flex:none"></span><span style="flex:1">'+r[0]+'</span><span style="color:#8a8a8e">'+r[1]+'</span></div>';
+   }).join("")
+  +'</div>'
+  +'<div style="color:#8a8a8e;font-size:12.5px;padding:12px 14px 0;line-height:1.7">写真の内訳のほとんどは彼の写真と動画。<br>消せないので、ストレージは増える一方。</div>'
+  +'</div>';
+ phone.appendChild(ov);
+ ov.querySelector("#v468-back").addEventListener("click",function(){ ov.classList.remove("on"); });
+ function mount(){
+   var anchor=document.querySelector("#v457-batt-row");
+   if(!anchor) return false;
+   if(document.querySelector("#v468-stor-row")) return true;
+   var d=document.createElement("div"); d.className="setrow"; d.id="v468-stor-row"; d.style.cursor="pointer";
+   d.innerHTML='<span>💾 iPhoneストレージ</span><span style="color:#8a8a8e">96.2GB ›</span>';
+   anchor.parentNode.insertBefore(d, anchor.nextSibling);
+   d.addEventListener("click",function(){ ov.classList.add("on"); });
+   return true;
+ }
+ if(!mount()){ var iv=setInterval(function(){ if(mount()) clearInterval(iv); },1200); }
 })();
 </script>
 </body>
