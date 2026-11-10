@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v472</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v473</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12008,7 +12008,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v472"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v473"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16779,7 +16779,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
        var parent=n.parentElement; if(!parent) return;
        var inBtn=parent.closest&&parent.closest("button");
        var okNum=/^[\s\d,\.Kk万]*$/.test(rest);
-       var okBtn=inBtn&&v.trim().length<=9;
+       var okBtn=inBtn&&v.trim().length<=14;
        if(!okNum&&!okBtn) return;
        var sp=document.createElement("span"); sp.className="v472-ic"; sp.innerHTML=MAP[k];
        parent.insertBefore(sp,n);
@@ -16806,7 +16806,12 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    var sr=[...document.querySelectorAll("button")].find(function(b){ return b.textContent.includes("スタッフロール"); });
    if(sr) sweep(sr);
    var h1=document.querySelector("h1");
-   if(h1) sweep(h1);
+   if(h1&&!h1.querySelector(".v472-ic")){
+     var tw=document.createTreeWalker(h1, NodeFilter.SHOW_TEXT); var hn;
+     while(hn=tw.nextNode()){ var i=hn.nodeValue.indexOf("🔥");
+       if(i>=0){ var fsp=document.createElement("span"); fsp.className="v472-ic"; fsp.innerHTML=MAP["🔥"];
+         hn.parentElement.insertBefore(fsp, hn); hn.nodeValue=hn.nodeValue.replace("🔥",""); break; } }
+   }
  }
  all();
  ["#v-x","#v-ig"].forEach(function(sel){
@@ -16815,6 +16820,66 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    new MutationObserver(function(){ clearTimeout(t); t=setTimeout(function(){ sweep(el); },350); }).observe(el,{childList:true,subtree:true});
  });
  var iv=setInterval(all,2500); setTimeout(function(){clearInterval(iv)},60000);
+})();
+</script>
+
+
+<style>
+@keyframes v473jig{0%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}100%{transform:rotate(-1.6deg)}}
+#v-home.v473-edit .appicon{animation:v473jig .24s ease-in-out infinite}
+#v-home.v473-edit .appicon:nth-child(odd){animation-delay:.12s}
+.v473-x{position:absolute;top:-6px;left:-6px;width:21px;height:21px;border-radius:50%;background:rgba(242,242,247,.95);color:#333;font-size:13px;line-height:1;border:none;box-shadow:0 1px 5px rgba(0,0,0,.3);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:5;padding:0}
+#v-home.v473-edit .v473-x{display:flex}
+#v473-done{position:absolute;top:60px;right:16px;z-index:60;background:rgba(30,30,34,.85);color:#fff;border:none;border-radius:999px;padding:7px 16px;font-size:13.5px;font-weight:700;cursor:pointer;display:none;font-family:inherit}
+#v-home.v473-edit #v473-done{display:block}
+</style>
+<script>
+/* ===== v473: long-press the home screen and it goes into edit
+   mode, like the real thing - every icon jiggles, little x
+   badges appear, and a Done pill shows top-right. The apps are
+   part of the story, so the x only explains that; Done (or a
+   second long-press) settles everything back down. ===== */
+(function(){
+ if(window.__v473) return; window.__v473=true;
+ var home=document.querySelector("#v-home"); if(!home) return;
+ var done=document.createElement("button"); done.type="button"; done.id="v473-done"; done.textContent="完了";
+ home.appendChild(done);
+ var suppressUntil=0;
+ function tiles(){ return [...home.querySelectorAll(".grid .appicon, .dock .appicon")]; }
+ function addBadges(){
+   tiles().forEach(function(t){
+     if(t.querySelector(".v473-x")) return;
+     t.style.position=t.style.position||"relative";
+     var x=document.createElement("button"); x.type="button"; x.className="v473-x"; x.textContent="×";
+     x.setAttribute("aria-label","削除");
+     x.addEventListener("click",function(e){
+       e.stopPropagation(); e.preventDefault();
+       if(window.toast) toast("この物語に必要なアプリだから、消せない");
+     });
+     t.appendChild(x);
+   });
+ }
+ function setEdit(on){
+   home.classList.toggle("v473-edit", on);
+   if(on) addBadges();
+ }
+ done.addEventListener("click",function(e){ e.stopPropagation(); setEdit(false); });
+ var timer=null;
+ home.addEventListener("pointerdown",function(e){
+   var t=e.target&&e.target.closest? e.target.closest(".appicon") : null;
+   if(!t) return;
+   timer=setTimeout(function(){
+     suppressUntil=Date.now()+450;
+     setEdit(!home.classList.contains("v473-edit"));
+     if(navigator.vibrate) try{navigator.vibrate(8)}catch(_){}
+   },480);
+ }, true);
+ ["pointerup","pointercancel","pointermove"].forEach(function(ev){
+   home.addEventListener(ev,function(){ if(timer){ clearTimeout(timer); timer=null; } }, true);
+ });
+ home.addEventListener("click",function(e){
+   if(Date.now()<suppressUntil){ e.stopPropagation(); e.preventDefault(); }
+ }, true);
 })();
 </script>
 
