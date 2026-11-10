@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v514</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v515</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -10022,29 +10022,7 @@ setInterval(upd,900); upd();
    const m=strip.querySelector("#wx-main"); if(m) m.textContent="📅 "+d[0]+" ・ "+d[1]+" "+d[2]+" ・ 大阪";
    const c=strip.querySelector("#wx-clock"); if(c){ const n=new Date(); c.textContent=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0"); } };
   upd(); setInterval(upd,5000); }
- /* --- music mini panel --- */
- const phone=document.querySelector("#phone")||document.body;
- const panel=document.createElement("div"); panel.id="mus-panel";
- panel.innerHTML='<div style="display:flex;align-items:center"><b style="font-size:16.5px">🎵 再生中</b><button id="mus-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:19px;cursor:pointer">✕</button></div>'
-  +'<div style="font-size:12px;color:#b8bcc4;margin-top:4px">ひろとのプロフィールBGM ・ サウナ帰りのプレイリスト</div>'
-  +'<div style="margin-top:14px">'
-  +[["サウナ帰りのプレイリスト","ととのった後にちょうどいいやつ"],["夜ドライブ用","海沿いを走る時の"],["寝る前のバラード","声が落ち着くやつ"],["テンション上げたい時","ライブ前に聞くやつ"]].map((r,i)=>'<button class="mp-row" data-i="'+i+'"><span style="font-size:19px">🎧</span><span><b style="font-size:14.5px;display:block">'+r[0]+'</b><span style="font-size:11.5px;color:#9a9ea8">'+r[1]+'</span></span><span class="mp-eq"><i></i><i></i><i></i></span></button>').join("")
-  +'</div><div class="mp-prog"><i id="mus-bar"></i></div><div id="mus-now" style="font-size:12px;color:#9a9ea8;margin-top:9px">リストを選んでね</div>';
- phone.appendChild(panel);
- panel.querySelector("#mus-x").addEventListener("click",()=>panel.classList.remove("on"));
- let prog=null;
- panel.querySelectorAll(".mp-row").forEach(r=>r.addEventListener("click",()=>{
-  panel.querySelectorAll(".mp-row").forEach(x=>x.classList.remove("playing"));
-  r.classList.add("playing");
-  const nm=r.querySelector("b").textContent;
-  panel.querySelector("#mus-now").textContent="▶ "+nm;
-  const bar=panel.querySelector("#mus-bar"); let p=0; bar.style.width="0%";
-  if(prog) clearInterval(prog);
-  prog=setInterval(()=>{ p=Math.min(100,p+1.4); bar.style.width=p+"%"; if(p>=100) clearInterval(prog); },300);
- }));
- const dock=document.querySelector("#v-home .dock");
- if(dock){ const btns=dock.querySelectorAll(".appicon"); const mb=btns[2];
-  if(mb && !mb.hasAttribute("data-open")) mb.addEventListener("click",()=>panel.classList.add("on")); }
+ /* --- music mini panel: removed in v515 (nao: the now-playing sheet that appeared after closing Music was unwanted; the v447 Music app is the only music UI) --- */
 })();
 </script>
 <script>
@@ -11970,7 +11948,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v514"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v515"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -18947,7 +18925,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
     const sc=document.querySelector("#v-settings .scroll"); if(!sc) return;
     [...sc.querySelectorAll(":scope > .setrow")].forEach(r=>{
       const tx=r.textContent.trim();
-      if(tx.startsWith("ホーム画面を編集") || tx.startsWith("「ひろとの垢」アイコン")) r.remove();
+      if(tx.startsWith("ホーム画面を編集") || tx.startsWith("「ひろとの垢」アイコン") || tx.startsWith("通知センター")) r.remove();
     });
   }
   function all(){ chatFix2(); synFix2(); quizFix2(); settingsCut2(); }
