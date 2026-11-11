@@ -870,7 +870,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v574</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v575</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11947,7 +11947,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v574"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v575"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19495,6 +19495,63 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    var e1=ensure(document.querySelector('#title-ov'),'v574-trail-t'); if(e1) e1.textContent=t;
    var e2=ensure(document.querySelector('#v-lock'),'v574-trail-l'); if(e2) e2.textContent=t;
  },900);
+})();
+</script>
+
+<script>
+/* ===== v575: his IG opens light - the grid (130 imgs) and the feed (122 posts) are
+   windowed: only the first chunk renders, the rest stays parked in hidden holders
+   with image srcs stripped (no fetch, no decode) and streams in as she scrolls.
+   In the morning-after every post is date-unlocked, so the full view decoded at
+   once and iOS killed the page ~1s after it painted. ===== */
+(function(){
+ if(window.__v575) return; window.__v575=true;
+ function strip(im){ if(im.getAttribute('src')){ im.dataset.v575src=im.getAttribute('src'); im.removeAttribute('src'); } }
+ function unstrip(im){ if(im.dataset.v575src){ im.setAttribute('src', im.dataset.v575src); delete im.dataset.v575src; } }
+ function boot(){
+   if(document.querySelector('#v575-park')) return;
+   var sc=document.querySelector('#v-hisig .scroll'); if(!sc) return;
+   var posts=[...sc.querySelectorAll(':scope > .ig-post')];
+   var grid=sc.querySelector(':scope > .ig-grid');
+   if(posts.length<20) return;
+   if(window.__crumb) window.__crumb('hisig:windowed');
+   var park=document.createElement('div'); park.id='v575-park'; park.style.display='none';
+   var more=document.createElement('div'); more.id='v575-more'; more.style.cssText='height:2px';
+   var keep=posts.slice(0,8), rest=posts.slice(8);
+   keep[keep.length-1].after(more); more.after(park);
+   rest.forEach(function(p){ p.querySelectorAll('img').forEach(strip); park.appendChild(p); });
+   function loadMore(){ var n=0; while(park.firstChild && n<10){ var p=park.firstChild; p.querySelectorAll('img').forEach(unstrip); more.before(p); n++; } }
+   function flushPosts(){ while(park.firstChild){ var p=park.firstChild; p.querySelectorAll('img').forEach(unstrip); more.before(p); } }
+   window.__v575flush=flushPosts;
+   var gpark=null, gmore=null;
+   if(grid){
+     var gimgs=[...grid.querySelectorAll(':scope > img')];
+     if(gimgs.length>24){
+       gpark=document.createElement('span'); gpark.id='v575-gpark'; gpark.style.display='none';
+       grid.appendChild(gpark);
+       gimgs.slice(24).forEach(function(im){ strip(im); gpark.appendChild(im); });
+       gmore=document.createElement('div'); gmore.id='v575-gmore'; gmore.style.cssText='height:2px';
+       grid.after(gmore);
+     }
+   }
+   function loadGrid(){ if(!gpark) return; var n=0; while(gpark.firstChild && n<24){ var im=gpark.firstChild; unstrip(im); gpark.before(im); n++; } }
+   if('IntersectionObserver' in window){
+     var cb=function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
+       if(e.target===more) loadMore(); if(gmore && e.target===gmore) loadGrid(); }); };
+     var io=new IntersectionObserver(cb,{root:sc, rootMargin:'900px 0px'});
+     io.observe(more); if(gmore) io.observe(gmore);
+     var io2=new IntersectionObserver(cb,{root:null, rootMargin:'900px 0px'});
+     io2.observe(more); if(gmore) io2.observe(gmore);
+   }
+   var onMove=function(){ loadMore(); loadGrid(); };
+   sc.addEventListener('scroll',onMove,{passive:true});
+   sc.addEventListener('touchmove',onMove,{passive:true});
+   sc.addEventListener('wheel',onMove,{passive:true});
+   sc.addEventListener('click',function(e){ if(e.target.closest && (e.target.closest('.ig-grid')||e.target.closest('#v261-tabs'))) flushPosts(); },true);
+ }
+ boot();
+ document.addEventListener('DOMContentLoaded',function(){ setTimeout(boot,350); });
+ window.addEventListener('load',function(){ setTimeout(boot,900); });
 })();
 </script>
 </body>
