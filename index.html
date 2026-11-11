@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v540</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v541</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1112,7 +1112,7 @@ const X_POSTS=[
 ];
 function avaTxt(name){let h=0;for(const c of name)h=(h*31+c.charCodeAt(0))%360;return `<span class="ava-txt" style="background:hsl(${h},55%,55%)">${name.trim()[0]||"？"}</span>`}
 function postEl(p,hot){const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(p.n)}<span style="min-width:0"><span class="nm">${p.n}</span> <span class="hd">${p.h} ・ ${p.tm||"今"}</span><div class="tx">${p.t}</div>${p.q?`<div style="border:1px solid rgba(128,128,128,.45);border-radius:12px;padding:9px 11px;margin-top:8px"><div style="font-size:12.5px"><b>${p.q.n}</b> <span style="color:#71767b">${p.q.h} ・ ${p.q.tm||"今"}</span></div><div style="font-size:13.5px;margin-top:2px">${p.q.t}</div>${p.q.img?`<img loading="lazy" decoding="async" src="${p.q.img}" style="width:100%;border-radius:9px;margin-top:7px;display:block" alt="">`:""}</div>`:""}<div class="mt"><span class="${hot?'hot':''}">${p.m[0]}</span><span class="rp-btn">${p.m[1]}</span><span class="like-btn">${p.m[2]}</span>${p.imp?`<span>👁 <span id="imp-n">${p.imp}万</span></span>`:""}</div></span>`;
- const tog=(sel,emo,col)=>{ const el=d.querySelector(sel); if(!el) return; el.style.cursor="pointer"; el.addEventListener("click",e=>{ e.stopPropagation(); const on=el.dataset.on==="1"; const num=parseInt((el.textContent||"").replace(/[^0-9]/g,""))||0; const nx=on?Math.max(0,num-1):num+1; el.textContent=emo+" "+nx.toLocaleString("ja-JP"); el.dataset.on=on?"":"1"; el.style.color=on?"":col; el.style.fontWeight=on?"":"700"; }); };
+ const tog=(sel,emo,col)=>{ const el=d.querySelector(sel); if(!el) return; el.style.cursor="pointer"; el.addEventListener("click",e=>{ e.stopPropagation(); const on=el.dataset.on==="1"; const num=parseInt((el.textContent||"").replace(/[^0-9]/g,""))||0; const nx=on?Math.max(0,num-1):num+1; var bEl=el.querySelector("b"); if(el.querySelector("svg")){ if(bEl) bEl.textContent=nx.toLocaleString("ja-JP"); else el.insertAdjacentHTML("beforeend"," <b>"+nx.toLocaleString("ja-JP")+"</b>"); var svgEl=el.querySelector("svg"); if(svgEl&&el.classList.contains("like-btn")){ if(!on){ svgEl.setAttribute("fill","#f91880"); svgEl.removeAttribute("stroke"); } else { svgEl.setAttribute("fill","none"); svgEl.setAttribute("stroke","currentColor"); } } } else el.textContent=emo+" "+nx.toLocaleString("ja-JP"); if(el.classList.contains("like-btn")) el.classList.toggle("liked",!on); el.dataset.on=on?"":"1"; el.style.color=on?"":col; el.style.fontWeight=on?"":"700"; }); };
  tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); return d}
 function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
 const mine=document.createElement("div"); $("#x-me-posts").appendChild(postEl({n:"なお",h:"@nao_0324",t:"（このアカウント、今めちゃくちゃ見られてる…）",m:["💬 0","🔁 0","❤️ 0"]},false));}
@@ -10899,6 +10899,8 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>70)clearInterval(iv)},1
   });
  }
  sweepMt(); setInterval(sweepMt,1600);
+ var vxEl=document.querySelector("#v-x");
+ if(vxEl&&window.MutationObserver){ var swT=null; new MutationObserver(function(){ if(swT) return; swT=setTimeout(function(){ swT=null; sweepMt(); },40); }).observe(vxEl,{childList:true,subtree:true}); }
  /* save toggle: capture-phase takeover so the icon state stays in sync */
  view.addEventListener("click",e=>{
   const sv=e.target.closest&&e.target.closest(".sv"); if(!sv) return;
@@ -11901,7 +11903,7 @@ function addDaily(){
    el.addEventListener("click",function(e){ e.stopPropagation();
     var on=el.dataset.on==="1"; var num=parseInt((el.textContent||"").replace(/[^0-9]/g,""))||0;
     var nx=on?Math.max(0,num-1):num+1;
-    el.textContent=emo+" "+nx.toLocaleString("ja-JP"); el.dataset.on=on?"":"1";
+    var bEl=el.querySelector("b"); if(el.querySelector("svg")){ if(bEl) bEl.textContent=nx.toLocaleString("ja-JP"); else el.insertAdjacentHTML("beforeend"," <b>"+nx.toLocaleString("ja-JP")+"</b>"); var svgEl=el.querySelector("svg"); if(svgEl&&el.classList.contains("like-btn")){ if(!on){ svgEl.setAttribute("fill","#f91880"); svgEl.removeAttribute("stroke"); } else { svgEl.setAttribute("fill","none"); svgEl.setAttribute("stroke","currentColor"); } } } else el.textContent=emo+" "+nx.toLocaleString("ja-JP"); if(el.classList.contains("like-btn")) el.classList.toggle("liked",!on); el.dataset.on=on?"":"1";
     el.style.color=on?"":col; el.style.fontWeight=on?"":"700"; }); };
   tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c");
   fol.appendChild(d); });
@@ -11931,7 +11933,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v540"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v541"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -17094,7 +17096,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
      else if(t.indexOf("⭐")>=0){ el.textContent=""; el.appendChild(sp(STAR)); el.appendChild(document.createTextNode(t.replace("⭐",""))); } }); }
  }
  run();
- var iv=setInterval(run,1500); setTimeout(function(){clearInterval(iv)},90000);
+ setInterval(run,1500);
 })();
 </script>
 
@@ -17186,7 +17188,8 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  barFix();
  var tsEl=document.querySelector("#t-statusbar");
  if(tsEl) new MutationObserver(barFix).observe(tsEl,{childList:true,subtree:true,characterData:true});
- var iv=setInterval(run,1500); setTimeout(function(){clearInterval(iv)},120000);
+ setInterval(run,1500);
+ var v481T=null; new MutationObserver(function(){ if(v481T) return; v481T=setTimeout(function(){ v481T=null; run(); },150); }).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
@@ -17213,7 +17216,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    if(nb&&!nb.dataset.v482&&nb.textContent.indexOf("✎")>=0){ nb.dataset.v482="1"; nb.textContent=""; nb.appendChild(sp(COMPOSE)); }
  }
  run();
- var iv=setInterval(run,1500); setTimeout(function(){clearInterval(iv)},90000);
+ setInterval(run,1500);
 })();
 </script>
 
