@@ -870,7 +870,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v573</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v574</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11947,7 +11947,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v573"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v574"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19453,6 +19453,50 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
 })();
 </script>
 <style>#v-hisig .ig-post,#v-ig .ig-post{content-visibility:auto;contain-intrinsic-size:auto 620px}</style>
+
+<script>
+/* ===== v574: crash breadcrumbs - the last steps before a web-process death survive
+   in localStorage and are shown tiny on the title and lock screens ===== */
+(function(){
+ if(window.__v574) return; window.__v574=true;
+ var KEY='r5-crumbs';
+ function read(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+ function crumb(s){ try{ var a=read(); a.push(new Date().toTimeString().slice(0,8)+' '+s); if(a.length>14) a=a.slice(-14); localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
+ window.__crumb=crumb;
+ crumb('boot');
+ document.addEventListener('visibilitychange',function(){ if(document.hidden) crumb('hidden'); });
+ window.addEventListener('pagehide',function(){ crumb('pagehide'); });
+ document.addEventListener('click',function(e){ var t=e.target; if(!t||!t.closest) return;
+   if(t.closest('#push')) crumb('push-tap');
+   var op=t.closest('[data-open]'); if(op) crumb('tile:'+op.getAttribute('data-open'));
+ },true);
+ var tries=0;
+ var iv=setInterval(function(){ tries++;
+   if(typeof window.show==='function' && !window.show.__v574w){ var o=window.show;
+     window.show=function(id){ crumb('show:'+id); var r=o.apply(this,arguments);
+       if(id==='hisig'){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ crumb('hisig:painted'); }); });
+         setTimeout(function(){ crumb('hisig:alive3s'); },3000); }
+       return r; };
+     window.show.__v574w=true; }
+   if(typeof window.unlock==='function' && !window.unlock.__v574w){ var u=window.unlock;
+     window.unlock=function(){ crumb('unlock'); return u.apply(this,arguments); };
+     window.unlock.__v574w=true; }
+   if(typeof window.startAct2==='function' && !window.startAct2.__v574w){ var s2=window.startAct2;
+     window.startAct2=function(){ crumb('act2'); return s2.apply(this,arguments); };
+     window.startAct2.__v574w=true; }
+   if((window.show&&window.show.__v574w)||tries>40) clearInterval(iv);
+ },250);
+ function ensure(host, id){ if(!host) return null; var el=host.querySelector('#'+id);
+   if(!el){ el=document.createElement('div'); el.id=id;
+     el.style.cssText='position:absolute;left:8px;right:8px;bottom:6px;font-size:8.5px;line-height:1.5;color:rgba(128,128,140,.85);text-align:center;pointer-events:none;z-index:5;word-break:break-all';
+     host.appendChild(el); }
+   return el; }
+ setInterval(function(){ var a=read(); if(!a.length) return; var t=a.slice(-9).join(' > ');
+   var e1=ensure(document.querySelector('#title-ov'),'v574-trail-t'); if(e1) e1.textContent=t;
+   var e2=ensure(document.querySelector('#v-lock'),'v574-trail-l'); if(e2) e2.textContent=t;
+ },900);
+})();
+</script>
 </body>
 
 
