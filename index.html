@@ -881,7 +881,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v562</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v563</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11962,7 +11962,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v562"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v563"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13652,25 +13652,69 @@ dock.addEventListener("click",function(e){
    var handle=(parts[0]||"").trim(), tm=(parts[1]||"今").trim();
    var likeEl=post.querySelector(".like-btn"); var likes=likeEl?parseInt((likeEl.textContent||"").replace(/[^0-9]/g,""),10)||0:0;
    var vtxt=null; var _mq=post.querySelector(".mt"); if(_mq){ var _sv=[..._mq.children].filter(function(s,k){ return s.tagName==="SPAN" && !s.className && k>0; }).map(function(s){ return (s.textContent||"").trim(); }).find(function(t){ return /^[0-9][0-9,.]*\u4e07?$/.test(t); }); if(_sv) vtxt=_sv; } if(!vtxt){ var views=Math.max(87,likes*43); vtxt=views>=10000?(Math.round(views/100)/10).toLocaleString("ja-JP")+"\u4e07":views.toLocaleString("ja-JP"); }
+   var fmtN=function(n){ n=Math.round(n); return n>=10000?((Math.round(n/1000)/10).toLocaleString("ja-JP")+"\u4e07"):n.toLocaleString("ja-JP"); };
    var ch=(typeof state!=="undefined"&&state.chapter)||1;
-   var date=(typeof state!=="undefined"&&(state.phase==="scandal"||state.act2||state.ended))?"2026年11月2日":(ch>=5?"2026年11月1日":ch>=4?"2026年10月18日":ch>=3?"2026年10月12日":"2026年9月28日");
+   var date=(typeof state!=="undefined"&&(state.phase==="scandal"||state.act2||state.ended))?"2026/11/02":(ch>=5?"2026/11/01":ch>=4?"2026/10/18":ch>=3?"2026/10/12":"2026/09/28");
+   var _dm=/([0-9]+)\u6708([0-9]+)\u65e5/.exec(tm); if(_dm) date="2026/"+("0"+_dm[1]).slice(-2)+"/"+("0"+_dm[2]).slice(-2);
+   var _seed=0; var _txs=tx.textContent||""; for(var _ci=0;_ci<_txs.length;_ci++) _seed=(_seed*31+_txs.charCodeAt(_ci))>>>0;
+   var hhmm=("0"+(7+_seed%15)).slice(-2)+":"+("0"+((_seed>>3)%60)).slice(-2);
+   var _vn=parseFloat(String(vtxt).replace(/,/g,"")); if(String(vtxt).indexOf("\u4e07")>=0) _vn=_vn*10000; if(!_vn||isNaN(_vn)) _vn=Math.max(87,likes*43);
+   var vdisp=fmtN(_vn);
    var q=post.querySelector(".tx + div");
    var body=document.querySelector("#xd-body");
    body.innerHTML='<div style="display:flex;gap:10px;align-items:center"><span style="width:42px;height:42px;border-radius:50%;background:#1d9bf0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px">'+esc(nm.textContent.trim().slice(0,1))+'</span><span><div style="font-weight:800;font-size:15.5px">'+esc(nm.textContent.trim())+'</div><div style="color:#536471;font-size:13.5px">'+esc(handle)+'</div></span></div>'
      +'<div style="font-size:17px;line-height:1.55;margin-top:12px">'+esc(tx.textContent.trim())+'</div><div id="xd-q"></div>'
-     +'<div style="color:#536471;font-size:13.5px;margin-top:12px;padding-bottom:11px;border-bottom:1px solid #eff3f4">'+esc(tm)+' · '+date+' · <b style="color:#0f1419">'+vtxt+'</b> 件の表示</div>'
-     +'<div id="xd-mt" style="display:flex;gap:26px;padding:11px 2px;border-bottom:1px solid #eff3f4;font-size:14.5px"></div>';
+     +'<div style="color:#536471;font-size:13.5px;margin-top:12px;padding-bottom:11px;border-bottom:1px solid #eff3f4">'+hhmm+' · '+date+' · <b style="color:#0f1419">'+vdisp+'</b> 回表示</div>'
+     +'<div id="xd-mt" style="display:flex;gap:26px;padding:11px 2px;border-bottom:1px solid #eff3f4;font-size:14.5px"></div>'
+     +'<div id="xd-tools" style="display:flex;justify-content:space-between;align-items:center;padding:10px 2px;border-bottom:1px solid #eff3f4;font-size:13.5px"><button id="xd-sort" style="background:none;border:none;font:inherit;font-weight:700;cursor:pointer;color:#0f1419;padding:2px 0">関連性 ∨</button><button id="xd-quotes-btn" style="background:none;border:none;font:inherit;cursor:pointer;color:#536471;padding:2px 0">引用を表示 ›</button></div>'
+     +'<div id="xd-quotes" style="display:none"></div>';
    if(q&&q.style&&q.style.border){ var holder=body.querySelector("#xd-q"); var cl=q.cloneNode(true); cl.style.marginTop="9px"; holder.appendChild(cl); }
    curPost=post;
    var mt=body.querySelector("#xd-mt");
    var src=post.querySelector(".mt");
-   if(src&&mt){ [...src.querySelectorAll("span")].forEach(function(sp){ if(!(sp.textContent||"").trim()) return; var b=document.createElement("span"); b.style.cssText="cursor:pointer;display:inline-flex;align-items:center;gap:4px"; b.innerHTML=sp.innerHTML; b.addEventListener("click",function(){ sp.click(); setTimeout(function(){ b.innerHTML=sp.innerHTML; b.style.color=sp.style.color; b.style.fontWeight=sp.style.fontWeight; },80); }); mt.appendChild(b); }); }
+   var BMK='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>', BMKF='<svg width="16" height="16" viewBox="0 0 24 24" fill="#1d9bf0"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>', SHR='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3.5"/><path d="m6.5 8.5 5.5-5.5 5.5 5.5"/><path d="M5 13.5V20a1.6 1.6 0 0 0 1.6 1.6h10.8A1.6 1.6 0 0 0 19 20v-6.5"/></svg>';
+   if(src&&mt){
+     var kids=[...src.children].filter(function(s){ return s.tagName==="SPAN"&&(s.textContent||"").trim(); });
+     kids.forEach(function(sp,ki){
+       var cls=sp.className||"";
+       if(cls.indexOf("bm-btn")>=0||cls.indexOf("x-share")>=0) return;
+       var pd=""; var pth=sp.querySelector("svg path"); if(pth) pd=pth.getAttribute("d")||"";
+       var isRp=cls.indexOf("rp-btn")>=0||pd.indexOf("M17 1.5")===0||pd.indexOf("M4 8.5")===0;
+       var isLike=cls.indexOf("like-btn")>=0||pd.indexOf("M20.84")===0||pd.indexOf("M12 20.7")===0;
+       var isReply=!isRp&&!isLike&&(pd.indexOf("M21 11.5")===0||pd.indexOf("M12 4.5")===0);
+       if(!isReply&&!isRp&&!isLike) return;
+       var b=document.createElement("span"); b.style.cssText="cursor:pointer;display:inline-flex;align-items:center;gap:4px"; b.innerHTML=sp.innerHTML;
+       if(isReply){ b.addEventListener("click",function(){ var inp=document.querySelector("#xd-in"); if(inp) inp.focus(); }); }
+       else { b.addEventListener("click",function(){ sp.click(); setTimeout(function(){ b.innerHTML=sp.innerHTML; b.style.color=sp.style.color; b.style.fontWeight=sp.style.fontWeight; },80); }); }
+       mt.appendChild(b);
+     });
+     var bmkSrc=src.querySelector(".bm-btn");
+     var bmkN=Math.max(1,Math.round(likes*0.18)+(_seed%37));
+     var bmkOn=bmkSrc?((bmkSrc.style.color||"").indexOf("29, 155, 240")>=0||(bmkSrc.style.color||"")==="#1d9bf0"):false;
+     var bmk=document.createElement("span"); bmk.className="xd-bmk-main"; bmk.style.cssText="cursor:pointer;display:inline-flex;align-items:center;gap:4px";
+     var drawBmk=function(){ bmk.innerHTML=(bmkOn?BMKF:BMK)+' <b>'+fmtN(bmkN)+'</b>'; bmk.style.color=bmkOn?"#1d9bf0":""; };
+     drawBmk();
+     bmk.addEventListener("click",function(){ if(bmkSrc) bmkSrc.click(); bmkOn=!bmkOn; bmkN=Math.max(0,bmkN+(bmkOn?1:-1)); drawBmk(); });
+     mt.appendChild(bmk);
+     var shr=document.createElement("span"); shr.className="xd-share-main"; shr.innerHTML=SHR; shr.style.cssText="cursor:pointer;display:inline-flex;align-items:center";
+     shr.addEventListener("click",function(){ var xs=src.querySelector(".x-share"); if(xs) xs.click(); else if(window.toast) toast("\uD83D\uDD17 リンクをコピーしました"); });
+     mt.appendChild(shr);
+   }
+   var sortModes=[["関連性","ord"],["新着順","new"],["いいね順","like"]]; var sortIdx=0;
+   var sortBtn=body.querySelector("#xd-sort");
+   function applySort(){ var rl2=document.querySelector("#xd-replies"); if(!rl2) return; var rows=[...rl2.querySelectorAll(".xd-reply")]; var mode=sortModes[sortIdx][1]; rows.sort(function(a,b){ if(mode==="new") return (parseFloat(a.dataset.hours)||0)-(parseFloat(b.dataset.hours)||0); if(mode==="like") return (parseInt(b.dataset.likes,10)||0)-(parseInt(a.dataset.likes,10)||0); return (parseInt(a.dataset.ord,10)||0)-(parseInt(b.dataset.ord,10)||0); }); rows.forEach(function(r){ rl2.appendChild(r); }); if(sortBtn) sortBtn.textContent=sortModes[sortIdx][0]+" ∨"; }
+   if(sortBtn) sortBtn.addEventListener("click",function(){ sortIdx=(sortIdx+1)%sortModes.length; applySort(); });
+   var qBtn=body.querySelector("#xd-quotes-btn"), qBox=body.querySelector("#xd-quotes");
+   if(qBtn&&qBox){ qBtn.addEventListener("click",function(){ var open=qBox.style.display!=="none"; if(open){ qBox.style.display="none"; qBtn.textContent="引用を表示 ›"; return; } qBox.style.display="block"; qBtn.textContent="引用を閉じる ›"; }); }
    var isMe=nm.textContent.trim()==="なお";
    var pool=(typeof state!=="undefined"&&state.phase==="scandal")?(isMe?REPL_ME_SC:REPL_SC):(isMe?REPL_ME_PRO:REPL_PRO);
    var seed=(tx.textContent||"").length%2;
    var rl=document.querySelector("#xd-replies");
    rl.innerHTML=pool.map(function(r,i){ var rr=pool[(i+seed)%pool.length];
-     return '<div style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6"><span style="width:32px;height:32px;border-radius:50%;background:#8899a6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">'+esc(rr[0].slice(0,1))+'</span><span style="font-size:13.5px;line-height:1.5"><b>'+esc(rr[0])+'</b> <span style="color:#536471">'+esc(rr[1])+' · '+(2+i*3)+'時間</span><div>'+esc(rr[2])+'</div><div style="color:#71767b;font-size:12.5px;margin-top:4px;display:flex;gap:16px;align-items:center"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> <b>'+(2+i)+'</b></span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg> <b>'+(5+i*3)+'</b></span><span class="xd-like" style="cursor:pointer;display:inline-flex;gap:4px;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <b>'+(24+i*17)+'</b></span></div></span></div>'; }).join("");
+     return '<div class="xd-reply" data-likes="'+(24+i*17)+'" data-hours="'+(2+i*3)+'" data-ord="'+i+'" style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6"><span style="width:32px;height:32px;border-radius:50%;background:#8899a6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">'+esc(rr[0].slice(0,1))+'</span><span style="font-size:13.5px;line-height:1.5"><b>'+esc(rr[0])+'</b> <span style="color:#536471">'+esc(rr[1])+' · '+(2+i*3)+'時間</span><div>'+esc(rr[2])+'</div><div style="color:#71767b;font-size:12.5px;margin-top:4px;display:flex;gap:16px;align-items:center"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> <b>'+(2+i)+'</b></span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg> <b>'+(5+i*3)+'</b></span><span class="xd-like" style="cursor:pointer;display:inline-flex;gap:4px;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <b>'+(24+i*17)+'</b></span><span style="display:inline-flex;gap:4px;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="11" width="3.4" height="9" rx="1"/><rect x="10.3" y="4" width="3.4" height="16" rx="1"/><rect x="17.1" y="8" width="3.4" height="12" rx="1"/></svg> <b>'+fmtN((24+i*17)*13+120+i*97)+'</b></span><span class="xd-bmk" style="cursor:pointer;display:inline-flex;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span><span class="xd-share" style="cursor:pointer;display:inline-flex;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M12 15V3.5"/><path d="m6.5 8.5 5.5-5.5 5.5 5.5"/><path d="M5 13.5V20a1.6 1.6 0 0 0 1.6 1.6h10.8A1.6 1.6 0 0 0 19 20v-6.5"/></svg></span></div></span></div>'; }).join("");
+   rl.querySelectorAll(".xd-bmk").forEach(function(b){ b.addEventListener("click",function(){ var on=b.dataset.on==="1"; b.dataset.on=on?"":"1"; b.style.color=on?"":"#1d9bf0"; var pth=b.querySelector("svg path"); if(pth) pth.setAttribute("fill",on?"none":"#1d9bf0"); }); });
+   rl.querySelectorAll(".xd-share").forEach(function(b){ b.addEventListener("click",function(){ if(window.toast) toast("\uD83D\uDD17 \u30ea\u30f3\u30af\u3092\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f"); }); });
+   if(qBox){ var excerpt=(tx.textContent||"").trim().slice(0,60); qBox.innerHTML=[["\u5f15\u7528\u30a6\u30a9\u30c3\u30c1\u30e3\u30fc","@quote_watch","\u3053\u308c\u3001\u5f15\u7528\u3067\u56de\u3063\u3066\u304d\u3066\u521d\u3081\u3066\u77e5\u3063\u305f\u3002\u5143\u306e\u30dd\u30b9\u30c8\u7f6e\u3044\u3068\u304f"],["\u307e\u3068\u3081\u8aad\u307f\u5c02","@matome_yomi","\u5143\u30dd\u30b9\u30c8\u306f\u3053\u308c\u3002\u61b6\u6e2c\u3058\u3083\u306a\u304f\u539f\u6587\u3067\u8aad\u3093\u3060\u65b9\u304c\u3044\u3044"]].map(function(qz){ return '<div style="padding:11px 0;border-bottom:1px solid #f3f5f6;font-size:13.5px;line-height:1.5"><b>'+esc(qz[0])+'</b> <span style="color:#536471">'+esc(qz[1])+'</span><div>'+esc(qz[2])+'</div><div style="border:1px solid #cfd9de;border-radius:12px;padding:9px 11px;margin-top:7px"><div style="font-size:12.5px"><b>'+esc(nm.textContent.trim())+'</b> <span style="color:#536471">'+esc(handle)+'</span></div><div style="font-size:13px;margin-top:2px">'+esc(excerpt)+'\u2026</div></div></div>'; }).join(""); }
    prevPane=null;
    paneIds.forEach(function(k){ var p=document.querySelector("#x-pane-"+k); if(p&&p.style.display!=="none") prevPane=k; p&&(p.style.display="none"); });
    var th=document.querySelector("#x-thread"); if(th) th.style.display="none";
@@ -13692,7 +13736,7 @@ dock.addEventListener("click",function(e){
  det.querySelector("#xd-back").addEventListener("click",closeDetail);
  det.querySelector("#xd-send").addEventListener("click",function(){
    var inp=det.querySelector("#xd-in"); var v=inp.value.trim(); if(!v) return; inp.value="";
-   var d=document.createElement("div");
+   var d=document.createElement("div"); d.className="xd-reply"; d.dataset.likes="0"; d.dataset.hours="0"; d.dataset.ord="-1";
    d.style.cssText="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6";
    d.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><span style="font-size:13.5px;line-height:1.5"><b>なお</b> <span style="color:#536471">@nao_0324 · 今</span><div></div></span>';
    d.querySelector("div").textContent=v;
