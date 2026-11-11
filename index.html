@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v538</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v539</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1302,7 +1302,7 @@ const X_EVERY_POSTS=[
  {n:"カフェ巡り",h:"@cafe_meguri",tm:"6時間",t:"中崎町のカフェ、カフェオレが反則級にうまい。また行く",m:["💬 8","🔁 36","❤️ 512"]}];
 const X_NECK_PRO={n:"ファッション好き",h:"@fash_suki",tm:"4時間",t:"大翔が最近つけてるネックレス、シンプルでかわいい。どこのブランドだろ？",m:["💬 23","🔁 118","❤️ 964"]};
 function doSearch(q){ q=(q||"").trim()||"大翔"; ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).style.display="none"); $("#x-thread").style.display="none"; const pane=$("#x-pane-search"); pane.style.display="block";
-  const sug=$("#x-sug"); sug.innerHTML=""; (state.phase==="prologue"?X_SUGS_PRO:X_SUGS).forEach(w=>{ const b=document.createElement("button"); b.textContent="🔍 "+w; b.addEventListener("click",()=>{ $("#x-q").value=w; doSearch(w); }); sug.appendChild(b); });
+  const sug=$("#x-sug"); sug.innerHTML=""; (state.phase==="prologue"?X_SUGS_PRO:X_SUGS).forEach(w=>{ const b=document.createElement("button"); b.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#536471" stroke-width="2.4" stroke-linecap="round" style="vertical-align:-2px;margin-right:5px"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>'+w; b.addEventListener("click",()=>{ $("#x-q").value=w; doSearch(w); }); sug.appendChild(b); });
   const res=$("#x-search-results"); res.innerHTML=""; const h=document.createElement("div"); h.style.cssText="padding:4px 14px 8px;font-weight:800;font-size:14.5px"; h.textContent="「"+q+"」の検索結果"; res.appendChild(h);
   if(state.phase==="prologue"){
     if(/熱愛|彼女|匂わせ|なお|事務所コメント|熱愛バレた件|Tinderやってた件/.test(q)){ const e=document.createElement("div"); e.style.cssText="padding:22px 16px;color:#536471;font-size:13.5px;line-height:1.8"; e.textContent="「"+q+"」に一致するポストは見つかりませんでした。（…今のところは）"; res.appendChild(e); }
@@ -11905,6 +11905,8 @@ function addDaily(){
     el.style.color=on?"":col; el.style.fontWeight=on?"":"700"; }); };
   tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c");
   fol.appendChild(d); });
+ var em=[...fol.children].find(function(c){ return !c.classList.contains("post") && (c.textContent||"").indexOf("フォロー中のアカウントのポストはまだ")>=0; });
+ if(em) em.remove();
 }
 addDaily(); setTimeout(addDaily,1500);
 var folEl=document.querySelector("#x-pane-fol");
@@ -11929,7 +11931,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v538"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v539"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19063,7 +19065,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  nav.addEventListener("click",function(){ setTimeout(function(){
    var sug=document.querySelector("#x-sug"); if(!sug||sug.children.length) return;
    var words=(typeof state!=="undefined"&&state.phase==="prologue")?X_SUGS_PRO:X_SUGS;
-   words.forEach(function(w){ var b=document.createElement("button"); b.textContent="\uD83D\uDD0D "+w;
+   words.forEach(function(w){ var b=document.createElement("button"); b.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#536471" stroke-width="2.4" stroke-linecap="round" style="vertical-align:-2px;margin-right:5px"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>'+w;
      b.addEventListener("click",function(){ var q=document.querySelector("#x-q"); if(q) q.value=w; doSearch(w); });
      sug.appendChild(b); });
  },80); });
