@@ -870,7 +870,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v575</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v576</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11947,7 +11947,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v575"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v576"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19514,6 +19514,13 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    var posts=[...sc.querySelectorAll(':scope > .ig-post')];
    var grid=sc.querySelector(':scope > .ig-grid');
    if(posts.length<20) return;
+   /* v576: trim - video posters (no playable video anyway) and broken pulls
+      (head-only crops, shots with nobody in them, one duplicate) leave the feed */
+   var CUT={"ig-real-Delp_V3TxxL.jpg":1,"ig-real-DeOuWKUTKwE.jpg":1,"ig-real-Dd8iEtkzFHH.jpg":1,"ig-real-DdqiDrRzyW4.jpg":1,"ig-real-Dc8RBgukwYi.jpg":1,"ig-real-DcLOmGxThE4.jpg":1,"ig-real-DcBCgJBzEOj.jpg":1,"ig-real-Dbh7GZ9Td3r.jpg":1,"ig-real-DbVPmjAzgsa.jpg":1,"ig-real-DauYgbkE1kS.jpg":1,"ig-real-DaU5NUCTyBA.jpg":1,"ig-real-DZ9jOwfzeUr.jpg":1,"ig-real-DZzLSEqEw4F.jpg":1,"ig-real-DY_yCTkz8rm.jpg":1,"ig-real-DYbzWvbE6sY.jpg":1,"ig-real-DYZRLbKzBWO.jpg":1,"ig-child.jpg":1,"ig-real-DXgqxhJk7ZX.jpg":1,"ig-real-DXWP2J2k9Iy.jpg":1,"ig-real-DXJXbz0Ez2g.jpg":1,"ig-real-DVYHuD0E4Yb.jpg":1,"ig-real-DVQftaOE2Wa.jpg":1,"ig-real-DT4wkIEky3h.jpg":1,"ig-real-DTxRn_bEym6.jpg":1,"ig-real-DTcfln5E3Qb.jpg":1,"ig-real-DS9qb1LE4Wc.jpg":1,"ig-real-DSrltOxkwYN.jpg":1,"ig-real-DSW4FajE1gS.jpg":1,"ig-real-DSKdyz9E383.jpg":1,"ig-real-DSCbc-tExcQ.jpg":1,"ig-real-DRouyYRkyTA.jpg":1,"ig-real-DRWwAUEkzR6.jpg":1,"ig-real-DNs2IWX5iEb.jpg":1,"ig-real-DNaiOmvTlE9.jpg":1,"ig-real-DM4_tyqz1om.jpg":1,"ig-real-DMm-TBTTt2g.jpg":1,"ig-real-DMcpE8sTvEy.jpg":1,"ig-real-DMSf60ETQP-.jpg":1,"ig-real-DLuaA4MTTNY.jpg":1,"ig-real-DLhaCZcz48g.jpg":1,"ig-real-DK2HoFAzGBq.jpg":1,"ig-real-DJ_cLajTIzV.jpg":1,"ig-real-DJ6zf7pzgeK.jpg":1,"ig-real-DJ3x9UUzeXe.jpg":1,"ig-real-DJwSzRgTn5f.jpg":1,"ig-real-DJYwzkZT86R.jpg":1,"ig-real-DJTr9wyTmBl.jpg":1,"ig-real-DJJlJTuTimS.jpg":1,"ig-real-DI_Pb6nzBgj.jpg":1,"ig-real-DI82VdDzSTz.jpg":1,"ig-real-DI6VJmZzdb3.jpg":1,"ig-real-DI36Ty0zmek.jpg":1,"ig-real-DItM34UT0OW.jpg":1,"ig-real-C_Ae_2JTPmM.jpg":1,"ig-real-C9kAVfbzzM6.jpg":1,"ig-real-C9cZG46SVWw.jpg":1,"ig-real-C8hRUUMyxy6.jpg":1,"ig-real-C7ECOpuRTWB.jpg":1,"ig-real-C68oZ1zR6SH.jpg":1,"ig-real-C5n-w6eripp.jpg":1,"ig-real-C42lzFcRUM1.jpg":1,"ig-real-C3Pp0vBxwS8.jpg":1,"ig-real-C2w2NLyxsGv.jpg":1,"ig-real-C2cICBnxOuY.jpg":1,"ig-real-C2E9CtvRLLr.jpg":1,"ig-real-C1CNu91xlHV.jpg":1,"ig-real-CwcQrgfOjZm.jpg":1};
+   posts.forEach(function(p){ var im=p.querySelector('img.pimg'); var s=im?(im.getAttribute('src')||'').split('/').pop():''; if(CUT[s]) p.remove(); });
+   if(grid){ [...grid.querySelectorAll('img')].forEach(function(im){ var s=(im.getAttribute('src')||'').split('/').pop(); if(CUT[s]) im.remove(); }); }
+   posts=[...sc.querySelectorAll(':scope > .ig-post')];
+   if(window.__crumb) window.__crumb('hisig:trimmed');
    if(window.__crumb) window.__crumb('hisig:windowed');
    var park=document.createElement('div'); park.id='v575-park'; park.style.display='none';
    var more=document.createElement('div'); more.id='v575-more'; more.style.cssText='height:2px';
