@@ -870,7 +870,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v582</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v583</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2293,195 +2293,197 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function startChat(){
     if(chatStarted) return; chatStarted=true;
     tChip("9月27日（土）夜 —— マッチした日");
-    tNote("（名前も顔も、一致しすぎてる。…本物か、写真を使った偽物か。分かるのは、そこだけ）");
+    tNote("（プロフの顔、どこかで見た顔すぎる。……確かめたい。理由は、それだけのはず）");
     await tThem("…マッチ、ありがとう",600);
-    await tThem("ひろとやで");
-    await tThem("プロフの写真、全部見たわ");
-    await tThem("笑った顔が、ドンピシャやねん");
-    tNote("（…早い。マッチ直後に写真の話ばっかりする男は、大抵アレ、って相場が決まってるのに）");
-    tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"写真で決めるの、早ない？笑", fn:async()=>{ await tThem("…ごめん、正直すぎたか"); await tThem("でも、本音やで"); step2(); }},
-      {label:"モテそうやのに、何でアプリなん？", fn:async()=>{ await tThem("…初めて入れた。使い方、手探りやで"); await tThem("なおが一人目"); step2(); }},
-      {label:"ドンピシャ…って、初対面で言う？笑", fn:async()=>{ await tThem("…ほんまのこと、言うただけやけど"); await tThem("引いた？笑"); step2(); }}
+    await tThem("ひろと、って言います");
+    await tThem("なおの写真、3回見直した");
+    await tThem("特に、笑ってるやつ");
+    tNote("（マッチして数分でこれ。軽い男の常套句のはずやのに、通知の文字がやけに残る）");
+    tChoices("なおの返信を選んで（まずは様子見）",[
+      {label:"3回も？ ストーカー予備軍やん笑", fn:async()=>{ await tThem("…否定は、せえへん"); await tThem("バレたか笑"); step2(); }},
+      {label:"見直させるほどの顔してた？笑", fn:async()=>{ await tThem("してた"); await tThem("…自分でも、びっくりしてる"); step2(); }},
+      {label:"笑ってるやつ、どれのこと？", fn:async()=>{ await tThem("カフェのやつ"); await tThem("あれ見て、押した"); step2(); }}
     ]);
   }
   async function step2(){
-    await tThem("聞いていい？ なおって、会うまで早いほう？");
-    await tThem("俺、文字だけ長々やるん、苦手で");
-    tNote("（きた。会うまでが早い男＝大抵ヤリモク、って相場のやつ…）");
-    tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"早いほうやと思う。人によるけど", fn:async()=>{ stepMorning(); }},
-      {label:"内緒。会えたら、ね", fn:async()=>{ await tThem("内緒か笑"); stepLazy(); }}
+    await tThem("聞いてもいい？");
+    await tThem("なおは、会うまでどのくらいかかる派？");
+    await tThem("文字のやり取り、延々は苦手で");
+    tNote("（出た、会う前提の質問。早い男の見分け方は心得てるつもりやけど）");
+    tChoices("なおの返信を選んで（様子見は続く）",[
+      {label:"話が合えば、早いかも", fn:async()=>{ stepMorning(); }},
+      {label:"秘密。…会えた人だけ知ってる", fn:async()=>{ await tThem("秘密、多いな笑"); stepLazy(); }}
     ]);
   }
   async function stepMorning(){
-    await tThem("ほんま？ ほな今週、顔だけでも見よ");
-    await tThem("夜、空いてる日ある？");
-    tNote("（初回から夜。建前なしで来るタイプ…やっぱり早いな）");
+    await tThem("ほんまに？");
+    await tThem("ほな今週、一回顔見せて");
+    await tThem("夜、都合つく日ある？");
+    tNote("（初日から夜指定。言い切り方が、妙に真っ直ぐやねん）");
     tChoices("なおの返信を選んで",[
-      {label:"夜でもええよ。…飲みでも", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ほな、決まりやな"); stepWork(); }},
-      {label:"いきなり夜は、早ない？笑", fn:async()=>{ await tThem("早い自覚は、あるねん"); await tThem("無理には、誘わんから"); stepWork(); }}
+      {label:"夜からでいいよ。飲む感じで", fn:async()=>{ await tThem("…いいの？"); await tThem("ほな、決まり"); stepWork(); }},
+      {label:"夜はまだ早い。…多分ね", fn:async()=>{ await tThem("焦らんよ"); await tThem("なおのペースで"); stepWork(); }}
     ]);
   }
   async function stepLazy(){
-    tNote("（会う前提で話すの、やっぱり早いなぁ…）");
-    await tThem("ほな、俺も一個内緒にしとくわ");
+    tNote("（秘密の交換とか言い出すの、ずるい。気になるに決まってる）");
+    await tThem("ほな俺も、一個だけ黙っとく");
     tChoices("なおの返信を選んで",[
-      {label:"え、気になる", fn:async()=>{ await tTyping(1700); await tThem("…内緒は内緒や"); await tThem("会えたら、交換な"); stepWork(); }},
-      {label:"じゃあ、おあいこだね", fn:async()=>{ await tThem("おあいこやな"); stepWork(); }}
+      {label:"一個だけ？ 気になるやん", fn:async()=>{ await tTyping(1700); await tThem("…会えたら、教える"); await tThem("交換、な"); stepWork(); }},
+      {label:"フェアでいこ。秘密は秘密のまま", fn:async()=>{ await tThem("フェア、大事やな"); stepWork(); }}
     ]);
   }
   async function stepWork(){
-    await tThem("一個、言うとくな");
-    await tThem("俺、平日はレッスンが詰まっててん");
-    tNote("（レッスン、ってあっさり言うやん。隠す気、ないタイプ？）");
-    await tThem("返信、遅なる日あると思う");
-    tChoices("なおの返信を選んで（気楽に様子見）",[
-      {label:"レッスンって、何の？笑", fn:async()=>{ await tTyping(1900); await tThem("歌と、ダンス"); await tThem("…なんでかは、まだ内緒で"); tNote("（歌とダンスのレッスン。…それ、もう答えみたいなもんやん）"); stepFood(); }},
-      {label:"忙しい人は、嫌いじゃないよ", fn:async()=>{ await tThem("ありがとう"); await tThem("終わった日は、ちゃんと返すわ"); stepFood(); }},
-      {label:"詮索しない。…今はね", fn:async()=>{ await tThem("ありがとう"); await tThem("助かる"); stepFood(); }}
+    await tThem("先に言っとく");
+    await tThem("平日、レッスンで埋まってる日が多くて");
+    tNote("（レッスン、って。隠す素振りもなく言うあたり、逆に怪しい）");
+    await tThem("返事、間が空く日あると思う");
+    tChoices("なおの返信を選んで",[
+      {label:"レッスンって、何のやつ？", fn:async()=>{ await tTyping(1900); await tThem("歌とダンス"); await tThem("理由は、会えたら話す"); tNote("（歌とダンス。それ、推しの日常そのままやん。偶然で片付けるには、材料が揃いすぎ）"); stepFood(); }},
+      {label:"忙しい人の間、嫌いじゃない", fn:async()=>{ await tThem("ありがとう"); await tThem("空いた時間は、なおに使うわ"); stepFood(); }},
+      {label:"詮索はしない。今は、ね", fn:async()=>{ await tThem("今は、か笑"); await tThem("助かる"); stepFood(); }}
     ]);
   }
   async function stepFood(){
     tChip("9月28日（日）");
     await tThem("おはよ");
-    await tThem("…なぁ、なお");
-    await tThem("今日の夜、暇？");
-    tNote("（2日目で、今日の夜。早い。…でも、確かめるには会うしかない）");
-    await tThem("…冗談、ちゃうで");
+    await tThem("…なぁ");
+    await tThem("今夜、空いてない？");
+    tNote("（2日目で今夜。早い、早すぎる。……のに、予定を確認してる私がいる）");
+    await tThem("冗談ちゃうよ");
     tChoices("なおの返信を選んで",[
-      {label:"…今日？ ほんまに今日？", fn:async()=>{ await tThem("ほんま"); await tThem("…あかん？"); stepMaron(); }},
-      {label:"なんで？ 会いたいん？", fn:async()=>{ await tTyping(1700); await tThem("会いたい"); await tThem("…それ以外、ある？"); stepMaron(); }},
-      {label:"夜の誘い、早ない？笑", fn:async()=>{ await tThem("早いのは、自覚ある"); await tThem("でも、今日がええねん"); stepMaron(); }}
+      {label:"今夜って、今日の夜のこと？", fn:async()=>{ await tThem("今日の夜"); await tThem("…あかん？"); stepMaron(); }},
+      {label:"会いたい、ってこと？", fn:async()=>{ await tTyping(1700); await tThem("うん"); await tThem("それ以外、ない"); stepMaron(); }},
+      {label:"誘い方、直球すぎん？笑", fn:async()=>{ await tThem("自覚はある"); await tThem("でも今日がいいねん"); stepMaron(); }}
     ]);
   }
   async function stepMaron(){
-    await tThem("ちょっと待って、マロンが");
-    await tPhoto("assets/maron-close.jpg","スマホ咥えて逃げる犬。確保した");
-    tNote("（知ってる、この子。マロンやん。推しの投稿で、毎回いいねしてた子…）");
-    await tThem("構ってほしいんやろな");
+    await tThem("ちょい待ち、マロンが暴れてる");
+    await tPhoto("assets/maron-close.jpg","確保。スマホ咥えて逃げた犯人");
+    tNote("（この毛並み、この首輪。マロンや。推しの投稿で何回も見た子が、他人のふりした画面の中にいる）");
+    await tThem("俺のスマホ、好きみたいで");
     tChoices("なおの返信を選んで",[
-      {label:"マロンにバレたら終わりやね笑", fn:async()=>{ await tThem("マロンには、内緒にしといてな"); stepNight(); }},
-      {label:"マロン、スマホ咥えるのほんまなんや", fn:async()=>{ await tTyping(1600); await tThem("…なんで知ってるん？"); await tThem("あ、俺が前にも言うてたっけ"); tNote("（やばい。投稿で見ただけやのに。知らんふり、知らんふり）"); stepNight(); }},
-      {label:"確保の仕方が優しい笑", fn:async()=>{ await tTyping(1600); await tThem("…宝物やからな"); stepNight(); }}
+      {label:"マロンには秘密にしとく笑", fn:async()=>{ await tThem("頼む。あいつ、すぐ顔に出る"); stepNight(); }},
+      {label:"マロンって、スマホ咥える癖あるんや", fn:async()=>{ await tTyping(1600); await tThem("…なんで知ってるん？"); await tThem("あ、前に言うたか"); tNote("（しまった。投稿で見た癖やのに。知らないはずのことを、知ってた）"); stepNight(); }},
+      {label:"犬にまで好かれてるんや", fn:async()=>{ await tTyping(1600); await tThem("…マロンは特別やねん"); stepNight(); }}
     ]);
   }
   async function stepNight(){
     tChip("9月28日（日）夜");
-    await tThem("なぁ、なお");
-    await tThem("眠られへん夜って、どうしてる？");
-    tNote("（この人、夜の話ばっかり振ってくる。…分かっててやってる？）");
+    await tThem("なぁ");
+    await tThem("夜、眠れへんときって何してる？");
+    tNote("（夜の話題に寄せてくる。分かっててやってるなら、相当な手練れやけど）");
     tChoices("なおの返信を選んで",[
-      {label:"気づいたら朝、よくある", fn:async()=>{ stepNight2(); }},
-      {label:"寝ようとしない。起きてたい夜もある", fn:async()=>{ await tThem("それが一番なんやろな"); stepNight2(); }}
+      {label:"気づいたら朝パターン", fn:async()=>{ stepNight2(); }},
+      {label:"寝ない選択肢もある。夜は長いし", fn:async()=>{ await tThem("夜を楽しむタイプか"); stepNight2(); }}
     ]);
   }
   async function stepNight2(){
-    await tThem("俺、風呂上がりが一番、頭回るねん");
-    await tThem("明日の段取り、風呂で全部決めるタイプ");
-    tNote("（段取り、って言い方が、なんか舞台っぽいのは気のせい？）");
-    await tThem("…なぁ");
-    await tThem("文字やと、伝わらん気がしてきた");
-    await tThem("声で話したい夜って、ない？");
-    await tThem("…俺は今、それ");
-    tNote("（入力中の表示が、出ては消えた。…あの一文、打つのに時間かかってたみたい）");
-    tNote("（夜に電話したがる男は警戒案件のはずやのに。声、聞きたいのは私も同じ、で）");
+    await tThem("俺は風呂入ったあとが一番、冴えるねん");
+    await tThem("明日のこと、湯船で全部決める");
+    tNote("（湯船で決める明日のこと。その言い回し、どこか板についてる）");
+    await tThem("…なぁ、なお");
+    await tThem("文字やと、なんか足りひん");
+    await tThem("声、聞きたい夜ってない？");
+    await tThem("俺は今、それやねん");
+    tNote("（入力中が点いて、消えて、また点いた。短い文に、だいぶ迷ったみたい）");
+    tNote("（夜に声を聞きたがる男は警戒リスト入りのはず。……なのに、聞きたいのは私も同じで）");
     tChoices("なおの返信を選んで",[
-      {label:"夜にそれ言われたら、弱いんやけど笑", fn:async()=>{ await tTyping(1800); await tThem("…弱いとこ、狙ったわけちゃうねん"); stepFirstNight(); }},
-      {label:"私も、文字やと足りん気がしてた", fn:async()=>{ await tTyping(1800); await tThem("…ほんまに？"); await tThem("ほな、声の次は、直接会いたい"); stepFirstNight(); }},
-      {label:"じゃ、かけて。待ってる", fn:async()=>{ await tThem("…ほんまに？"); await tThem("ちょっと待って、静かなとこ行く"); setTimeout(()=>{ try{ state._tinderCall=true; state.caller="hiroto"; state._answered=true; state._callWho="ひろと"; show("call"); document.getElementById("call-incoming").style.display="none"; document.getElementById("call-active").style.display="flex"; document.getElementById("call-act-name").textContent="ひろと"; document.getElementById("call-act-img").src="assets/ig-avatar.jpg"; startCall(null); }catch(e){ stepFirstNight(); } },900); }}
+      {label:"夜にそれは、反則じゃない？", fn:async()=>{ await tTyping(1800); await tThem("…狙ったわけちゃう"); await tThem("ほんまのことが、出ただけ"); stepFirstNight(); }},
+      {label:"足りないのは、私も同じかも", fn:async()=>{ await tTyping(1800); await tThem("…ほんま？"); await tThem("声で足りたら、次は会いたくなるやろな"); stepFirstNight(); }},
+      {label:"じゃあ、かけてみて", fn:async()=>{ await tThem("…いいの？"); await tThem("ちょっと待って。静かな部屋、移る"); setTimeout(()=>{ try{ state._tinderCall=true; state.caller="hiroto"; state._answered=true; state._callWho="ひろと"; show("call"); document.getElementById("call-incoming").style.display="none"; document.getElementById("call-active").style.display="flex"; document.getElementById("call-act-name").textContent="ひろと"; document.getElementById("call-act-img").src="assets/ig-avatar.jpg"; startCall(null); }catch(e){ stepFirstNight(); } },900); }}
     ]);
   }
   async function stepFirstNight(){
     await tThem("なあ、なお");
-    await tThem("…今から、会える？");
-    tNote("（来た。…行くって決めるのは、私）");
-    tNote("駅の柱のそば。黒キャップの男が、こっちを見て笑った。笑うと、目がなくなるタイプ");
+    await tThem("…今からでも、会える？");
+    tNote("（来てしまった。行くかどうかは、私が決める）");
+    tNote("駅の柱の陰。黒キャップを深く被った男が、こちらに気づいて小さく手を上げた");
     await new Promise(r=>setTimeout(r,2100));
-    tNote("（あ、って声が出た。本物や。写真の人も、ステージの上の人も、この人や）");
+    tNote("（笑った瞬間、目が細くなって消えた。写真でも、ステージでも見た、あの笑い方）");
     await new Promise(r=>setTimeout(r,2100));
-    tNote("彼も言った。「…やっぱり、気づいてた？」頷いたら、ほっとしたみたいに笑った");
+    tNote("彼が先に口を開いた。「…気づいてたやろ」否定できなくて、笑って誤魔化した");
     await new Promise(r=>setTimeout(r,2100));
-    tNote("名乗りは、あっさりだった。「井汲大翔です」——知ってた名前を、声で聞いた");
+    tNote("名乗りは短かった。「井汲大翔です」——何百回も打った名前を、本人の声で聞いた");
     await new Promise(r=>setTimeout(r,2100));
-    tNote("飲んで、笑って、近い距離で。気づいたら、二軒目の話になってた");
+    tNote("一軒目では近くの席で、二軒目ではもっと近くで。時間の感覚だけ、どこかに置いてきた");
     await new Promise(r=>setTimeout(r,2100));
-    tNote("二軒目を出たとき、終電はもうなかった");
+    tNote("二軒目を出た頃には、終電の案内はもう終わってた");
     await new Promise(r=>setTimeout(r,1900));
-    tNote("（気づいたら、朝だった……）");
+    tNote("（……気づいたら、朝だった）");
     await new Promise(r=>setTimeout(r,1700));
     tChip("9月29日（月）");
     stepAfter();
   }
   async function stepAfter(){
     await tThem("おはよ");
-    await tThem("昨日、楽しかったな");
-    await tThem("…また会いたいねん");
-    tNote("（昨日の今日で、それ言うんや。……私も、同じやけど）");
+    await tThem("昨日のこと、思い出してた");
+    await tThem("…また会いたい");
+    tNote("（昨日の今日で、それを言う。……私も、同じこと考えてたけど）");
     step3();
   }
   async function stepSuspect(){
     tChip("9月30日（火）");
-    await tThem("やっと終わった…今日は本番、長かったわ");
-    await tThem("あ、…仕事の話な");
-    tChoices("なおの返信を選んで（冗談で振ってみる）",[
-      {label:"本番って、言い方…笑", fn:async()=>{ suspectGo(); }},
-      {label:"おつかれさま。本番って何の？", fn:async()=>{ suspectGo(); }}
+    await tThem("やっと解放された…本番、長引いて");
+    await tThem("あ、仕事の話");
+    tChoices("なおの返信を選んで（軽く探りを）",[
+      {label:"本番、って言葉が気になる笑", fn:async()=>{ suspectGo(); }},
+      {label:"おつかれさま。本番って、何の本番？", fn:async()=>{ suspectGo(); }}
     ]);
   }
   async function suspectGo(){
     await tTyping(2600);
-    await tThem("ちゃうちゃう笑");
-    await tThem("イベントの設営バイトやで");
-    await tThem("本番って、そのイベント当日のこと");
-    await tThem("…なんか、疑ってる？");
-    tNote("（設営バイトの人が「本番」って言う？　…私の耳、完全にそっち向きやん）");
+    await tThem("ちゃうねん笑");
+    await tThem("近所の店の手伝いやで");
+    await tThem("本番は、その店のイベント当日のこと");
+    await tThem("…疑ってる顔、してるやろ");
+    tNote("（店の手伝いの人が、本番なんて言葉使う？　…私の頭、完全にファンの頭やん）");
     tChoices("なおの返信を選んで",[
-      {label:"声が、覚えのある声すぎて", fn:async()=>{ await tThem("覚えのある声って、どんなん笑"); tNote("（…言い訳が、とっさに浮かばなかった）"); stepSearch(); }},
-      {label:"雰囲気、芸能人なんよ", fn:async()=>{ await tThem("雰囲気だけは、一人前なんよな笑"); tNote("（…今の間、なんやったんやろ）"); stepSearch(); }},
-      {label:"……井汲大翔に、似すぎじゃない？", fn:async()=>{ await tTyping(2400); await tThem("…似てる？"); await tThem("言われたこと、あるわ"); tNote("（否定、せえへんやん、この人。…むしろ、嬉しそう？）"); stepSearch(); }}
+      {label:"声に、聞き覚えがありすぎて", fn:async()=>{ await tThem("聞き覚えって、誰の笑"); tNote("（誰の、と聞かれて。名前が喉まで来て、止まった）"); stepSearch(); }},
+      {label:"立ち姿が、芸能人なんよ", fn:async()=>{ await tThem("姿だけは、褒められ慣れてる笑"); tNote("（今の間は、何やったんやろ。否定じゃなかった）"); stepSearch(); }},
+      {label:"……井汲大翔って人、知ってる？", fn:async()=>{ await tTyping(2400); await tThem("…知ってる？"); await tThem("似てるって、言われるほうやな"); tNote("（否定しない。逃げもしない。……むしろ、試されてるみたい）"); stepSearch(); }}
     ]);
   }
   async function stepSearch(){
     tChip("10月1日（水）");
-    tNote("（寝る前に、検索窓に名前を打ってた。井汲大翔、って）");
-    tNote("（出てくる写真の目元が、笑ったときに少し垂れるところまで、ひろとと重なる）");
-    tNote("（デビュー前の動画まで見てしまった。「レッスン」「本番」——彼の言葉が、全部そっちに繋がって聞こえる）");
-    tNote("（スクショ、撮った。並べた。耳のほくろまで同じに見えて、スマホを伏せた）");
-    tNote("（2枚目の写真の後ろの棚。見覚えのあるタオルのロゴ。文字は、読めなかった）");
-    tNote("（検索履歴は、消した。ゆいに言ったら、絶対止められるやつ）");
-    tNote("（隠しもしない。本人やから堂々としてるのか、偽物やから大胆なのか。…どっちにしても、普通の相手やない）");
-    await tThem("おはよ。昨日は変な空気にしてごめんな",900);
-    await tThem("寝不足やない？");
+    tNote("（寝る前、気づいたら検索窓に名前を打ってた。井汲大翔、って）");
+    tNote("（出てきた写真と、彼の写真を並べた。笑うと細くなる目元まで、同じ角度で重なる）");
+    tNote("（デビュー前の動画まで遡ってしまった。「レッスン」「本番」——彼の言葉の全部が、そっちへ繋がる）");
+    tNote("（スクショを撮って、拡大した。耳のほくろの位置まで同じで、慌てて伏せた）");
+    tNote("（2枚目の写真、背景の棚に見覚えのあるロゴのタオル。文字だけが、どうしても読めない）");
+    tNote("（検索履歴は消した。ゆいに話したら、笑われるか止められるか、どっちかやから）");
+    tNote("（隠さないのは、本人やから堂々としてるのか、偽物やから大胆なのか。どっちでも、普通の相手じゃない）");
+    await tThem("おはよ。昨日の空気、引きずってたらごめんな",900);
+    await tThem("寝不足の顔、想像つくわ");
     tChoices("なおの返信を選んで",[
-      {label:"調べた。…別人、ってことにしとく笑", fn:async()=>{ await tThem("やろ？ ただのひろとです笑"); tNote("（……嘘。まだ、心のどこかで引っかかってる）"); stepMeet(); }},
-      {label:"正直、まだ半分は疑ってる", fn:async()=>{ await tTyping(2000); await tThem("…半分か"); await tThem("ほな、会って確かめたらええやん"); await tThem("土曜、その目で見てな"); tNote("（「確かめる」って、言った。逃げも隠れもしない言い方だった）"); stepMeet(); }},
-      {label:"忘れた、ことにする", fn:async()=>{ await tThem("おっけー、忘れよ笑"); stepMeet(); }}
+      {label:"別人だった。たぶんね笑", fn:async()=>{ await tThem("たぶん、でいいよ笑"); tNote("（……嘘。引っかかったままなのは、自分が一番分かってる）"); stepMeet(); }},
+      {label:"正直、まだ半信半疑", fn:async()=>{ await tTyping(2000); await tThem("…半分か"); await tThem("ほな土曜、自分の目で確かめて"); await tThem("逃げへんから"); tNote("（「確かめて」と言い切った。隠れる気のない人の言い方だった）"); stepMeet(); }},
+      {label:"忘れたことにした。努力はした", fn:async()=>{ await tThem("努力、ありがとな笑"); stepMeet(); }}
     ]);
   }
   async function stepMeet(){
     await tThem("なぁ、なお");
-    await tThem("…今日の夜は、ほんまにあかんの？");
-    tNote("（また聞くやん、この人。9/28から、ずっとこの調子）");
-    await tThem("…分かった。ほな、土曜の話、ほんまに決めていい？");
-    await tThem("夜な。駅前で");
-    await tThem("…飲みに行かん？");
-    tNote("（最初から飲み。隠す気、ないんやな、この人。…嫌いじゃないけど）");
-    await tThem("待ち合わせ、駅の柱のとこな");
-    await tThem("目印は黒キャップ。それだけやと、見つけにくいか");
-    await tThem("…あ、俺、笑うと目がなくなるタイプやから。それも目印で");
+    await tThem("今夜は、ほんまに無理なん？");
+    tNote("（また聞く。9/28からずっと、この調子で距離を詰めてくる）");
+    await tThem("…分かった。ほな土曜、正式に決めよ");
+    await tThem("夜、駅前で待ち合わせな");
+    await tThem("飲みに行こ");
+    tNote("（最初から飲みの約束。隠す気がないのは、嫌いじゃない。……むしろ）");
+    await tThem("待ち合わせは、駅の柱のとこ");
+    await tThem("目印は黒キャップ。地味やから、見落とすかもな");
+    await tThem("…笑うと目がなくなるほうも、目印に入れといて");
     tChoices("なおの返信を選んで",[
-      {label:"目印が目って、斬新やな笑", fn:async()=>{ await tThem("分かりやすいやろ"); step3(); }},
-      {label:"先に見つける自信しかない", fn:async()=>{ await tThem("ほな勝負な。先に見つけたほうが、声かける"); await tThem("負けたほう、コーラ奢りで"); step3(); }},
-      {label:"ねえ、電話番号も知らないのに会うの？笑", fn:async()=>{ await tThem("…あ、そやった"); await tThem("ほな、なおさらやな"); step3(); }}
+      {label:"目印が目って、新しいな笑", fn:async()=>{ await tThem("分かりやすいやろ"); step3(); }},
+      {label:"先に見つけたほうが勝ち、でいい？", fn:async()=>{ await tThem("勝負な。声かけたほうが勝ち"); await tThem("負けたほうは、コーラ奢り"); step3(); }},
+      {label:"電話番号も知らんのに、会う約束するんや笑", fn:async()=>{ await tThem("…確かに"); await tThem("ほな、なおさら交換しよ"); step3(); }}
     ]);
   }
   async function step3(){
-    await tThem("…LINE、交換せえへん？");
-    await tThem("…アプリ越しやなくて、ちゃんと連絡取りたいねん");
-    tChoices("LINEを交換する？（様子見でOK）",[
-      {label:"うん、いいよ", fn:async()=>{ await tThem("ありがとう、追加したで"); finishTinder(); }},
-      {label:"うん、ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("すぐ追加する"); finishTinder(); }}
+    await tThem("…LINE、交換しよ");
+    await tThem("アプリ越しより、直接つながりたいねん");
+    tChoices("LINEを交換する？",[
+      {label:"いいよ、交換しよ", fn:async()=>{ await tThem("ありがとう。もう追加した"); finishTinder(); }},
+      {label:"ID送るね", fn:async()=>{ await tThem("おっけー"); await tThem("今、追加するわ"); finishTinder(); }}
     ]);
   }
   window.__tinderAfterCall=()=>{ setTimeout(()=>{ try{ stepFirstNight(); }catch(e){} },700); };
@@ -11945,7 +11947,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v582"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v583"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
