@@ -847,7 +847,7 @@ input,textarea{font-size:16px!important}
 <div class="scroll" style="padding:14px">
 <div class="setrow"><span>🔔 サウンド（効果音・着信音）</span><button class="set-tgl" id="set-sound">ON</button></div>
 <div class="setrow"><span>📳 バイブレーション</span><button class="set-tgl" id="set-vib">ON</button></div><div class="setrow"><span>🔤 文字の大きさ</span><button class="set-tgl" id="set-font">標準</button></div><div class="setrow"><span>🖼 ホーム画面の壁紙</span><button class="set-tgl" id="set-wall">デフォルト</button></div>
-<div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div><div class="setrow"><span>📚 あらすじ・チャプター</span><button class="set-tgl" id="set-chapters">ひらく</button></div><div class="setrow"><span>💭 思い出</span><button class="set-tgl" id="set-memories">ひらく</button></div><div class="setrow"><span>💭 解放した思い出</span><span style="color:#8e8e93;font-size:12.5px" id="set-memcount">0 / 13</span></div>
+<div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div><div class="setrow"><span>📚 あらすじ・チャプター</span><button class="set-tgl" id="set-chapters">ひらく</button></div><div class="setrow"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e5487c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4L18 12H5" fill="#e5487c" stroke="none"/></svg> エンディング図鑑</span><button class="set-tgl" id="v543-ends-btn">ひらく</button></div><div class="setrow"><span>💭 思い出</span><button class="set-tgl" id="set-memories">ひらく</button></div><div class="setrow"><span>💭 解放した思い出</span><span style="color:#8e8e93;font-size:12.5px" id="set-memcount">0 / 13</span></div>
 <div class="setrow"><span>📷 Instagram フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-ig">342</span></div>
 <div class="setrow"><span>𝕏 フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-x">189</span></div>
 <div class="setrow"><span>🔥 炎上度のピーク</span><span style="color:#8e8e93;font-size:12.5px" id="set-heat">0%</span></div>
@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v542</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v543</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11935,7 +11935,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v542"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v543"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19096,6 +19096,58 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
 .pov-head .sb{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 #pov-skip{ white-space:nowrap; flex:none; }
 </style>
+
+<script>
+/* ===== v543: ending collection (図鑑). Read-only view over the device
+   record (r4-record-v1.endings) + the current run's ending. Reached
+   endings show their title; unreached stay silhouetted with a hint.
+   Entry: the settings row, and tapping the home dashboard ending chip. ===== */
+(function(){
+ if(window.__v543) return; window.__v543=true;
+ var ENDS=[
+  {k:"open", t:"事実を、まっすぐに", s:"自分の言葉で、伝えた", hint:"炎上編の最後、4つの選択から"},
+  {k:"wait", t:"静かに待つ", s:"静かに、待った", hint:"炎上編の最後、4つの選択から"},
+  {k:"away", t:"連絡を絶つ", s:"少し、距離を置いた", hint:"炎上編の最後、4つの選択から"},
+  {k:"half", t:"半年後、遠くのステージ", s:"遠くから、見守った", hint:"炎上編の最後、4つの選択から"},
+  {k:"together", t:"ふたりで、決めた", s:"名前のついた関係", hint:"第3話の夜、彼との距離を縮める選択を重ねると…"}
+ ];
+ var css=document.createElement("style");
+ css.textContent="#v543-ends{position:fixed;inset:0;z-index:460;background:rgba(10,10,16,.55);display:none;align-items:flex-end;justify-content:center}"
+ +"#v543-ends.on{display:flex}"
+ +"#v543-box{background:#fff;color:#111;width:100%;max-width:430px;max-height:82%;overflow-y:auto;border-radius:22px 22px 0 0;padding:20px 18px 26px;font-family:inherit}"
+ +"#v543-box h3{margin:0 0 2px;font-size:17px}"
+ +"#v543-box .cnt{color:#8e8e93;font-size:12.5px;margin-bottom:12px}"
+ +".v543-card{border:1.5px solid #f0f0f3;border-radius:14px;padding:12px 14px;margin-bottom:9px}"
+ +".v543-card.got{border-color:#ffd7e6;background:linear-gradient(135deg,#fff5f9,#fff)}"
+ +".v543-card .tt{font-weight:800;font-size:14.5px}"
+ +".v543-card .ss{color:#555;font-size:12.5px;margin-top:2px}"
+ +".v543-card .hint{color:#a5a5ab;font-size:12px;margin-top:3px}"
+ +".v543-card .done{color:#e5487c;font-size:11.5px;font-weight:800;margin-top:4px}"
+ +"#v543-x{float:right;border:none;background:#f2f2f5;width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer}";
+ document.head.appendChild(css);
+ var ov=document.createElement("div"); ov.id="v543-ends";
+ ov.innerHTML='<div id="v543-box"><button id="v543-x">✕</button><h3>エンディング図鑑</h3><div class="cnt"></div><div id="v543-list"></div></div>';
+ document.body.appendChild(ov);
+ function reached(){ var es=[]; try{ es=(JSON.parse(localStorage.getItem("r4-record-v1")||"{}").endings||[]).slice(); }catch(e){}
+   try{ if(typeof state!=="undefined"&&(state.ended||state.act2)&&state.ending&&es.indexOf(state.ending)<0) es.push(state.ending); }catch(e){}
+   return es; }
+ function open(){ var es=reached();
+   ov.querySelector(".cnt").textContent="到達 "+es.length+" / "+ENDS.length+" 種";
+   ov.querySelector("#v543-list").innerHTML=ENDS.map(function(e){ var got=es.indexOf(e.k)>=0;
+     return got? '<div class="v543-card got"><div class="tt">'+e.t+'</div><div class="ss">'+e.s+'</div><div class="done">到達済み</div></div>'
+                : '<div class="v543-card"><div class="tt" style="color:#b9b9bf">？？？</div><div class="hint">'+e.hint+'</div></div>'; }).join("");
+   ov.classList.add("on"); }
+ window.__v543open=open;
+ ov.addEventListener("click",function(e){ if(e.target===ov) ov.classList.remove("on"); });
+ ov.querySelector("#v543-x").addEventListener("click",function(){ ov.classList.remove("on"); });
+ document.addEventListener("click",function(e){
+   if(e.target&&e.target.id==="v543-ends-btn"){ open(); return; }
+   var el=e.target&&e.target.closest?e.target.closest("div,button"):null;
+   if(el&&el.closest&&el.closest("#v-home")){ var t=(el.textContent||"").trim();
+     if(t.length<22&&t.indexOf("エンディング")>=0&&/\d\s*\/\s*\d/.test(t)) open(); }
+ },true);
+})();
+</script>
 </body>
 
 
