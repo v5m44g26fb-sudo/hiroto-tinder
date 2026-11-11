@@ -886,7 +886,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v603</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v605</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3625,7 +3625,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   {no:"幕間",tt:"会わない二週間",dt:"10月19日（日）〜10月31日（金） ・ LINE",sy:"会わないと決めたあとの、二週間。傘の一往復、ラジオから聞こえる彼の声、会わない週末。それでも最後の日、彼から「明日、会わへん？」が届く。（通常ルート）",un:()=>(state.chapter>=5||past())&&state._route!=="dating",go:()=>jumpLine("10月19日（日）")},
   {no:"幕間",tt:"内緒の二週間",dt:"10月19日（日）〜10月31日（金） ・ LINE",sy:"付き合い始めてからの、内緒の二週間。繋いだ手、配信のコメント欄に紛れる彼女、ハロウィンの約束。誰にも言えない日々は、少しずつ「ふたりの日常」になっていく。（付き合うルート）",un:()=>(state.chapter>=5||past())&&state._route==="dating",go:()=>jumpLine("10月19日（日）")},
   {no:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",sy:"あの夜のあと、連絡は少しずつ間遠になった。「後悔はしてへんねん」——久しぶりに会えたカフェで交わす、ぎこちない優しさ。何もなかったことにはできないまま、時間だけが進んでいく。",un:()=>(state.chapter>=5||past())&&state._route!=="dating",go:()=>jumpLine("11月1日（土）")},
-  {no:"第5話",tt:"すれ違い",dt:"11月1日（土） ・ 会えなかった日",sy:"約束していたカフェは、彼の収録で流れてしまった。小さなすれ違いと、言いそびれた言葉。夜の電話で交わした「明日、声を聞かせて」の約束だけを残して、嵐の前日が終わる。",un:()=>(state.chapter>=5||past())&&state._route==="dating",go:()=>jumpLine("11月1日（土）")},
+  {no:"第5話",tt:"すれ違い",dt:"11月1日（土） ・ 会えなかった日",sy:"約束していたカフェは、彼の収録で流れてしまった。小さなすれ違いと、言いそびれた言葉。夜の電話で交わした「明日、終わり次第かけるわ」の約束だけを残して、嵐の前日が終わる。",un:()=>(state.chapter>=5||past())&&state._route==="dating",go:()=>jumpLine("11月1日（土）")},
   {no:"第6話",tt:"バレた日",dt:"11月2日（日） ・ 夜",sy:"カフェでの目撃写真と、拡散されていくTinderのプロフィール。「現役アイドル、マッチングアプリ利用か」——騒ぎの矛先は、交際ではなく“アプリを使っていたこと”そのものへ。なおのSNSにも、波が押し寄せる。",un:()=>past(),go:()=>jumpLine("11月2日（日）")},
   {no:"炎上編",tt:"コメントと声明",dt:"11月2日（日） ・ 深夜",sy:"事務所は「交際の事実はございません」と否定し、彼はアプリの利用を認めて謝罪する。マネージャーからの電話——「今後は彼との連絡も控えてください」。その一言が、ふたりの明日を試していく。",un:()=>!!state.started||!!state.act2,go:()=>show("news")},
   {no:"エンディング",tt:"付き合わなかった、という結末",dt:"11月2日（日） ・ 夜の終わり",sy:"彼は声明を出し、アプリを退会した。付き合うことは、最初からなかった。それでも、Super Like から始まった数日間は本物だった——結末は、なおの選んだ言葉で変わる。",un:()=>(!!state.ended||!!state.act2)&&state._route!=="dating",go:jumpNewsEnd},
@@ -10300,36 +10300,36 @@ setInterval(upd,900); upd();
   const t=state._token;
   show("line"); openChat();
   addDayChip("10月12日（日）深夜");
-  await himMsg("…まだ起きてる？",1000); if(!alive(t))return;
-  await himMsg("帰ってからも、ずっと考えててん",1400); if(!alive(t))return;
-  await himMsg("線、引いたの俺やのに",1100); if(!alive(t))return;
-  await himMsg("引いたそばから、自分で消したくなってる",1500); if(!alive(t))return;
+  await himMsg("…寝てへん、よな",1000); if(!alive(t))return;
+  await himMsg("帰りの電車で、ずっと同じとこ考えててん",1400); if(!alive(t))return;
+  await himMsg("線は、俺が勝手に引いたやつや",1100); if(!alive(t))return;
+  await himMsg("引いた本人が、一番踏み越えたがってる",1500); if(!alive(t))return;
   const confess=async()=>{ if(!alive(t))return;
-   if(!canDate()){ await himMsg("…ごめん",1200); if(!alive(t))return;
-    await himMsg("今のは、忘れて",1000); if(!alive(t))return;
-    await himMsg("疲れてるだけや、俺",1100); friendsGo(); return; }
+   if(!canDate()){ await himMsg("…ごめんな",1200); if(!alive(t))return;
+    await himMsg("今の、なしで",1000); if(!alive(t))return;
+    await himMsg("疲れが、口に出ただけや",1100); friendsGo(); return; }
    await himMsg("俺、なおのことが好きやねん",1500); if(!alive(t))return;
    await himMsg("俺と、付き合ってくれへん？",1600); if(!alive(t))return;
    await himVoice("assets/vm-confess.mp3","0:03"); if(!alive(t))return;
    askChoices("なおの答えは——",[
-    {label:"うん。付き合おう",fn:async()=>{ if(!alive(t))return;
+    {label:"うん、付き合いたい",fn:async()=>{ if(!alive(t))return;
       state._route="dating";
-      await himMsg("…ほんまに？",900); if(!alive(t))return;
-      await himMsg("ありがとう、なお",1100); if(!alive(t))return;
-      await himMsg("誰にも言わんでな。…二人だけの秘密や",1300);
+      await himMsg("…え、ほんまに言うてる？",900); if(!alive(t))return;
+      await himMsg("ありがとう。…声、震えてるわ、俺",1100); if(!alive(t))return;
+      await himMsg("誰にも、言わんとこな。…ふたりだけの、内緒や",1300);
       toast("💑 <b>付き合うことになった</b>（二人だけの秘密）");
       setTimeout(()=>{ try{ chapter(4); }catch(e){} },1700); }},
-    {label:"ごめん、今はまだ無理",fn:async()=>{ if(!alive(t))return;
-      await himMsg("うん、そうやな",1000); if(!alive(t))return;
-      await himMsg("…今のは、忘れてな",1100); friendsGo(); }}
+    {label:"ごめん、今の私じゃ無理",fn:async()=>{ if(!alive(t))return;
+      await himMsg("…そか。分かってた",1000); if(!alive(t))return;
+      await himMsg("今のは、夢やと思って",1100); friendsGo(); }}
    ]); };
   const refuse=async()=>{ if(!alive(t))return;
-   await himMsg("うん、そうやな",1000); if(!alive(t))return;
-   await himMsg("…今のは、忘れてな",1100); friendsGo(); };
+   await himMsg("…そか。分かってた",1000); if(!alive(t))return;
+   await himMsg("今のは、夢やと思って",1100); friendsGo(); };
   askChoices("なおの返信を選んで",[
-   {label:"消して、ええの？",fn:confess},
-   {label:"私も、同じ気持ち",fn:confess},
-   {label:"やっぱり、私は無理",fn:refuse}
+   {label:"踏み越えても、ええの？",fn:confess},
+   {label:"私も、消したいほう",fn:confess},
+   {label:"ごめん、私は越えられへん",fn:refuse}
   ]);
  }
  async function datingCh4(){
@@ -10337,28 +10337,28 @@ setInterval(upd,900); upd();
   state.chapter=4;
   const ld=document.querySelector("#lock-date"); if(ld) ld.textContent="10月18日 土曜日";
   const nd=document.querySelector("#news-note"); if(nd) nd.textContent="10月18日（土）夜";
-  setChapterWidget("第4話『ふたりの内緒』","付き合って、初めての休日。");
-  chapterCard("第4話","ふたりの内緒","内緒の関係は、思ったよりずっと近くて、ずっと危うい。<br><span class=\"cc-when\">10月18日（土） ・ 人目を避けたデート —— LINEを開いてね</span>");
+  setChapterWidget("第4話『ふたりの内緒』","恋人になって、最初の休日。");
+  chapterCard("第4話","ふたりの内緒","隠れて会う一日は、近づくほど、隠しきれなくなる。<br><span class=\"cc-when\">10月18日（土） ・ 人目を避けたデート —— LINEを開いてね</span>");
   addDayChip("10月18日（土）");
   show("line"); openChat();
-  await himMsg("今日、空いてる？",900); if(!alive(t))return;
-  await himMsg("カフェ、個室のとこ取れたで",1100); if(!alive(t))return;
-  await himMsg("人目、気にせんでええやつ",1000); if(!alive(t))return;
-  later(()=>toast("☕ <b>（個室のカフェ。向かいに座る距離が、もう『友達』の距離じゃなかった）</b>"),2600);
-  later(()=>toast("💭 <b>（マロンの写真を見せたら、嬉しそうに笑った。…この顔、独り占めしたい）</b>"),5200);
-  await himMsg("…なあ、なお",2600); if(!alive(t))return;
-  await himMsg("今度の飲み会、男も来るん？",1200); if(!alive(t))return;
-  await himMsg("あ、…ごめん",800); if(!alive(t))return;
-  await himMsg("彼氏面、してしもた",1000); if(!alive(t))return;
+  await himMsg("今日、時間ある？",900); if(!alive(t))return;
+  await himMsg("個室のカフェ、予約できた",1100); if(!alive(t))return;
+  await himMsg("誰にも見られへん、はずのとこ",1000); if(!alive(t))return;
+  later(()=>toast("☕ <b>（個室のカフェ。膝が触れそうな距離で、向かいの彼は、もう友達の顔をしてなかった）</b>"),2600);
+  later(()=>toast("💭 <b>（マロンの写真で笑う横顔。…この笑い方、私しか知らんやつにしたい）</b>"),5200);
+  await himMsg("…なあ",2600); if(!alive(t))return;
+  await himMsg("その飲み会、男もおるんか",1200); if(!alive(t))return;
+  await himMsg("…あかん、今のなし",800); if(!alive(t))return;
+  await himMsg("口が勝手に、彼氏なってた",1000); if(!alive(t))return;
   askChoices("なおの返信を選んで",[
-   {label:"彼氏なんやから、気にしていいよ",fn:async()=>{ if(!alive(t))return; await himMsg("…ずるいわ、その言い方",1100); if(!alive(t))return; await himMsg("心配、させんでな",1000); fin4(); }},
-   {label:"心配しすぎやって笑",fn:async()=>{ if(!alive(t))return; await himMsg("笑うなって",900); if(!alive(t))return; await himMsg("…心配なんは、ほんまやねん",1100); fin4(); }}
+   {label:"彼氏やもん、焼いていいよ",fn:async()=>{ if(!alive(t))return; await himMsg("その言い方、反則や",1100); if(!alive(t))return; await himMsg("…帰り、連絡してな",1000); fin4(); }},
+   {label:"焼きすぎ笑",fn:async()=>{ if(!alive(t))return; await himMsg("笑わんで",900); if(!alive(t))return; await himMsg("…嘘ちゃうねん、心配なんは",1100); fin4(); }}
   ]);
   async function fin4(){ if(!alive(t))return;
-   later(()=>toast("🌆 <b>（夕方。駅までの道、少しだけ手を繋いだ。人の目が気になって、すぐ離した）</b>"),600);
-   await himMsg("今日は、ここまで",1500); if(!alive(t))return;
-   await himMsg("名残惜しいけど、な",1100); if(!alive(t))return;
-   await himMsg("帰ったら、連絡して",1000);
+   later(()=>toast("🌆 <b>（夕方の駅前。人混みに紛れて、指だけ絡めた。改札の前で、名残惜しく離した）</b>"),600);
+   await himMsg("今日は、ここで解散な",1500); if(!alive(t))return;
+   await himMsg("…離れがたいけど",1100); if(!alive(t))return;
+   await himMsg("着いたら、一言だけくれ",1000);
    later(()=>chapter(5),2600); }
  }
  chapter=function(n){
@@ -10420,28 +10420,28 @@ setInterval(upd,900); upd();
   state.chapter=5;
   const ld=document.querySelector("#lock-date"); if(ld) ld.textContent="11月1日 土曜日";
   const nd=document.querySelector("#news-note"); if(nd) nd.textContent="11月1日（土）夜";
-  setChapterWidget("第5話『すれ違い』","会えない日が、少し増えた。");
-  chapterCard("第5話","すれ違い","楽しみにしていた日が、仕事で流れた。小さな喧嘩と、仲直りの電話。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェの約束 —— LINEを開いてね</span>");
+  setChapterWidget("第5話『すれ違い』","会えない日が、続いていた。");
+  chapterCard("第5話","すれ違い","約束の日は、仕事に流れた。小さな言い合いと、夜更けの仲直り。<br><span class=\"cc-when\">11月1日（土） ・ 久しぶりのカフェの約束 —— LINEを開いてね</span>");
   addDayChip("11月1日（土）");
   show("line"); openChat();
-  await himMsg("ごめん、今日の収録、終わらん",1100); if(!alive(t))return;
-  await himMsg("終わるの、夜になりそう",1100); if(!alive(t))return;
-  await himMsg("カフェ、また今度でもええ？",1200); if(!alive(t))return;
+  await himMsg("ごめん。収録、まだ終わらへん",1100); if(!alive(t))return;
+  await himMsg("抜けられるの、夜やと思う",1100); if(!alive(t))return;
+  await himMsg("今日のカフェ、ずらしてもええか",1200); if(!alive(t))return;
   const fight=async()=>{ if(!alive(t))return;
-   await himMsg("俺かて、会いたいねん",1200); if(!alive(t))return;
-   await himMsg("…言い方、きつかったらごめん",1300); if(!alive(t))return;
-   later(()=>toast("💭 <b>（既読のまま、しばらく止まった。…言いすぎたかも）</b>"),1800);
-   await himMsg("…ごめん、なお",3400); if(!alive(t))return;
-   await himMsg("仕事、理由にしたらあかんかった",1300); if(!alive(t))return;
-   await himMsg("明日、終わったら電話する",1200); if(!alive(t))return;
-   await himMsg("声、聞かせて",1100); if(!alive(t))return;
+   await himMsg("俺も、会いたかったんや",1200); if(!alive(t))return;
+   await himMsg("…今の言い方、きつかったら謝る",1300); if(!alive(t))return;
+   later(()=>toast("💭 <b>（既読のまま、画面が静かになった。…私も、言いすぎた）</b>"),1800);
+   await himMsg("…ごめん、ほんまに",3400); if(!alive(t))return;
+   await himMsg("仕事のせいにしたら、あかんかったな",1300); if(!alive(t))return;
+   await himMsg("明日、終わり次第かけるわ",1200); if(!alive(t))return;
+   await himMsg("声だけでも、聞かせてな",1100); if(!alive(t))return;
    askChoices("なおの返信を選んで",[
-    {label:"うん、待ってるよ",fn:async()=>{ if(!alive(t))return; await himMsg("おやすみ",900); if(!alive(t))return; await himMsg("…好きやで",1200); later(()=>toScandal(),2600); }},
-    {label:"私も、言いすぎた。ごめん",fn:async()=>{ if(!alive(t))return; await himMsg("なおは悪くない",1000); if(!alive(t))return; await himMsg("おやすみ。…好きやで",1300); later(()=>toScandal(),2600); }}
+    {label:"うん、待ってる",fn:async()=>{ if(!alive(t))return; await himMsg("おやすみ、なお",900); if(!alive(t))return; await himMsg("…大好きやで",1200); later(()=>toScandal(),2600); }},
+    {label:"私こそ、ごめんね",fn:async()=>{ if(!alive(t))return; await himMsg("謝るのは、俺のほうや",1000); if(!alive(t))return; await himMsg("おやすみ。…離したないな",1300); later(()=>toScandal(),2600); }}
    ]); };
   askChoices("なおの返信を選んで",[
-   {label:"仕事なら、しゃあない。…けど寂しい",fn:async()=>{ if(!alive(t))return; await himMsg("…ほんまに？",1300); if(!alive(t))return; await himMsg("無理、してへん？",1200); fight(); }},
-   {label:"楽しみにしてたんやけど…",fn:fight}
+   {label:"仕事なら仕方ない。…寂しいけど",fn:async()=>{ if(!alive(t))return; await himMsg("笑って、言うてる？",1300); if(!alive(t))return; await himMsg("…無理、すんなよ",1200); fight(); }},
+   {label:"ずっと楽しみにしてたのに…",fn:fight}
   ]);
  }
  chapter=function(n){
@@ -10481,13 +10481,13 @@ setInterval(upd,900); upd();
  const _e=ending;
  async function endingTogether(){
   if(state.ended) return; state.ended=true; state.ending="together";
-  await himMsg("…事務所には、言える範囲でほんまのこと言うわ");
-  await himMsg("付き合ってることは言えへん。でも、嘘の上塗りもしたくないねん");
-  await himMsg("なおは、俺が守る。それでええ");
-  await himMsg("……ほんまに、ありがとうな");
+  await himMsg("事務所には、言える範囲だけ、ほんまのこと言う");
+  await himMsg("付き合うとる、とは言えへん。でも、ない、とは二度と言わへん");
+  await himMsg("なおだけは、俺が守り切る");
+  await himMsg("……そばにいてくれて、ありがとう");
   await showPOV(3);
   setHeat(72);
-  const box={h:"エンディング：内緒のふたり",t:"炎上は、少しずつ日常に変わっていった。事務所のコメントは「プライベートは本人に任せています」の一行だけ。熱愛の決定的な証拠は、最後まで出なかった。——ふたりの内緒は、ふたりのまま。来週の約束は、また個室のカフェで。",news:"熱愛疑惑は沈静化へ　事務所は「プライベートは本人に任せています」"};
+  const box={h:"エンディング：内緒のふたり",t:"炎上は、少しずつ日常に変わっていった。事務所のコメントは「プライベートは本人に任せています」の一行だけ。でも、ふたりは逃げるのをやめた——共同アカウント「futari_0927」は、ふたりで決めて鍵を外した。熱愛の決定的な証拠は、最後まで出なかった。——ふたりの関係は、ふたりで決めた。来週の約束は、また個室のカフェで。",news:"熱愛疑惑は沈静化へ　事務所は「プライベートは本人に任せています」"};
   addNewsRow("assets/stage.jpg",box.news,"続報 ・ たった今",null);
   push("ニュース速報","#e60012","N",box.news,"タップで結末を確認",()=>{ show("home"); showEnding(box); });
   later(()=>showEnding(box),6000);
@@ -11964,7 +11964,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v603"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v605"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12531,30 +12531,30 @@ dock.addEventListener("click",function(e){
   setChapterWidget("特別編『内緒の二週間』","誰にも言えない、ふたりだけの日々。");
   chapterCard("特別編","内緒の二週間","付き合ってから、すれ違うまで。<br><span class=\"cc-when\">10月19日（日）〜31日（金） ・ 内緒の関係の二週間 —— LINEを開いてね</span>");
   addDayChip("10月19日（日）");
-  await himMsg("昨日はありがとう",1200); if(!alive(t))return;
-  await himMsg("手、繋いだの思い出してた",1000); if(!alive(t))return;
-  await himMsg("…すぐ離してもうたけど",900); if(!alive(t))return;
+  await himMsg("昨日、楽しかった",1200); if(!alive(t))return;
+  await himMsg("指、絡めた感触が残ってて",1000); if(!alive(t))return;
+  await himMsg("…改札で離してもうたけどな",900); if(!alive(t))return;
   addDayChip("10月22日（水）");
-  await himMsg("マロン、なおの写真見せたら尻尾振ってた",1500); if(!alive(t))return;
+  await himMsg("マロンに、なおの写真見せた",1500); if(!alive(t))return;
   await himPhoto("assets/maron-close.jpg"); if(!alive(t))return;
-  await himMsg("マロンには、もうバレてるな",900); if(!alive(t))return;
+  await himMsg("尻尾、ずっと振ってたで",400); if(!alive(t))return; await himMsg("あいつには、隠し事できひんわ",900); if(!alive(t))return;
   addDayChip("10月25日（土）");
-  await himMsg("今日の配信、見た？",1500); if(!alive(t))return;
-  await himMsg("コメント欄、探したけど分からんかったわ",1000); if(!alive(t))return;
+  await himMsg("配信、ちらっとでも見た？",1500); if(!alive(t))return;
+  await himMsg("コメント、全部追ったけど見つけられへんかった",1000); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"見てたよ。ファンやから",fn:async()=>{ await himMsg("…ほんまに？"); await himMsg("次は、見つけるわ"); res(); }},
-   {label:"ファンとして、ね笑",fn:async()=>{ await himMsg("ファン、か"); await himMsg("…複雑やな、それ"); res(); }}
+   {label:"見てた。ファンやもん",fn:async()=>{ await himMsg("…おったんか"); await himMsg("次は、絶対見つける"); res(); }},
+   {label:"一ファンとして、ね笑",fn:async()=>{ await himMsg("一ファン、か"); await himMsg("…その距離、ちょっと悔しいな"); res(); }}
   ]); }); if(!alive(t))return;
   addDayChip("10月28日（火）");
-  await himMsg("ハロウィン、なんかする？",1400); if(!alive(t))return;
+  await himMsg("ハロウィン、予定ある？",1400); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"家で映画とか？",fn:async()=>{ await himMsg("…それ、ええな"); await himMsg("マロンも一緒に、な"); res(); }},
-   {label:"仕事やろ？笑",fn:async()=>{ await himMsg("夜は空けてる"); await himMsg("…なおのためなら"); res(); }}
+   {label:"家で映画、とかは？",fn:async()=>{ await himMsg("それが、ええ"); await himMsg("マロンも、入れよな"); res(); }},
+   {label:"お仕事ちゃうん？笑",fn:async()=>{ await himMsg("夜だけ、空けてある"); await himMsg("…なお用に、な"); res(); }}
   ]); }); if(!alive(t))return;
   addDayChip("10月31日（金）");
-  await himMsg("明日、カフェな",1400); if(!alive(t))return;
-  await himMsg("楽しみにしてる。…ほんまにやで",1100); if(!alive(t))return;
-  toast("🎃 <b>（内緒の二週間は、穏やかに過ぎていった）</b>");
+  await himMsg("明日、約束のカフェやな",1400); if(!alive(t))return;
+  await himMsg("待ち遠しい。…顔に出てる？",1100); if(!alive(t))return;
+  toast("🎃 <b>（誰にも言えない二週間は、思ったより穏やかで、思ったより近かった）</b>");
  }
  var _chDm=window.chapter;
  window.chapter=async function(n){
@@ -19656,6 +19656,40 @@ if(typeof toast==="function") toast("🔥 <b>第二波</b>：二人の共同ア�
 };
 if(typeof startScandal==="function"){ var _ss597=startScandal; startScandal=function(){ _ss597(); try{ later(function(){ if(typeof state!=="undefined"&&state._route!=="dating") window.__subLeak597();},70000);}catch(e){}};}
 setInterval(function(){ try{ if(typeof state!=="undefined"&&state._subLeaked) applySubPublic();}catch(e){}},2500);
+})();
+</script>
+<script>
+/* ===== Tinder ver v605: queue 7T(2) - on the dating route, right before the 'together' ending, he deliberately opens the joint account 'futari_0927' himself as the couple's own statement, against the agency's denial comment: state._subOpened / state._subPublic="dating" are set, the sub-account view follows (private chip removed, followers 2 -> 31,209, a warm 'opened by the two of them' note), and a news row + a warm fan X post + a push carry the moment. A 2.5s watcher re-applies the display while the flag stands. The leaked variant (v597) is untouched and never fires on this route. ===== */
+(function(){
+if(window.__v605) return; window.__v605=true;
+function applySubOpen(){
+var v=document.querySelector("#v-subig"); if(!v) return;
+var chip=v.querySelector(".v587-priv"); if(chip) chip.style.display="none";
+var ns=v.querySelectorAll(".ig-stats .n"); if(ns&&ns[1]) ns[1].textContent="31,209";
+if(!v.querySelector(".v605-note")){ var n=document.createElement("div"); n.className="v605-note"; n.style.cssText="margin:0 16px 10px;padding:9px 12px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;font-size:12.5px;color:#065f46;font-weight:700"; n.textContent="公開中 —— ふたりで決めて、鍵を外したアカウントです"; var bio=v.querySelector(".v587-bio"); if(bio&&bio.parentNode) bio.parentNode.insertBefore(n,bio.nextSibling);}
+}
+window.__applySubOpen605=applySubOpen;
+setInterval(function(){ try{ if(typeof state!=="undefined"&&state._subPublic==="dating") applySubOpen();}catch(e){}},2500);
+async function openTogether(){
+await himMsg("なお、ひとつ決めたことがある");
+await himMsg("例の垢、開けるわ。…ふたりの、やつ");
+await himMsg("事務所は「ない」って言うた。でも、なかったことにはしたくない");
+await himMsg("鍵、外すのは俺がやる。…ええか？");
+await new Promise(function(res){ askChoices("なおの答えは——",[
+{label:"うん、ふたりで開けよ",fn:function(){ res(); }},
+{label:"…ひろとが決めたなら",fn:function(){ res();}}
+]);});
+state._subOpened=true; state._subPublic="dating";
+applySubOpen();
+if(typeof addNewsRow==="function") addNewsRow("assets/couple-9.jpg","【速報】共同アカウント「futari_0927」、本人が自ら公開——事務所の交際否定コメントの直後、二人の意思表示と話題に","週刊デジタル ・ たった今",null);
+var tl=document.querySelector("#x-pane-tl");
+if(tl&&typeof postEl==="function"){ var pel=postEl({n:"大翔ファン",h:"@wish_hiroto",t:"共同垢、ふたりで開けたんやって…否定のあとにこれをするのは、覚悟を決めた人のやることやと思う。応援するしかない #futari_0927",m:["💬 2,318","🔁 9,874","❤️ 21,406"]},true); tl.prepend(pel);}
+if(typeof push==="function") push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","futari_0927 が公開になりました","ふたりで決めて、鍵を外しました——タップでアカウントへ",function(){ show("subig");});
+if(typeof toast==="function") toast("💑 <b>ふたりで、決めた</b>：共同アカウントの鍵を、外した");
+await himMsg("…開けたで");
+await himMsg("もう、隠れてばっかりはやめよな");
+}
+if(typeof ending==="function"){ var _e605=ending; ending=async function(kind){ if(typeof state!=="undefined"&&state._route==="dating"&&!state._subOpened&&!state.ended){ try{ await openTogether();}catch(e){}} return _e605(kind);};}
 })();
 </script>
 </body>
