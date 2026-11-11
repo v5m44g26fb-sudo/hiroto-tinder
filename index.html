@@ -886,7 +886,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v592</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v593</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -3614,7 +3614,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const past=()=> state.phase==="scandal"||!!state.act2;
  const SYN=[
   {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。開いてまもなく、ひとりの男の子から Super Like が届いていた。名前も顔も、推しに一致しすぎている——本物か、写真を使った偽物か。確かめずにはいられなかった。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
-  {no:"幕間",tt:"会ったあとの3日間",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してからの3日間。一度会ってしまった二人は、関係の名前だけないまま近づいていく。彼の仕事の日は推しの収録日と重なり、送られてきた\"間違い写真\"はステージの袖だった。明日、2回目に会う。こんどは最初から、デートとして。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
+  {no:"幕間",tt:"会ったあとの3日間",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してからの3日間。一度会ってしまった二人は、関係の名前だけないまま近づいていく。彼の仕事の日は推しの収録日と重なり、送られてきたマロンの写真に、明日の約束が重なった。明日、2回目に会う。こんどは最初から、デートとして。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
   {no:"第2話",tt:"ちゃんとしたデート",dt:"10月4日（土） ・ 夜",sy:"2回目に会う日。彼は言い切った——「今日は、最初からデートやで」。待ち合わせから、まっすぐ飲みに。気づいたら二軒目。終電を過ぎて、二人はまた線を越えた——その先は、二人だけの秘密。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
   {no:"第3話",tt:"線引き",dt:"10月12日（日） ・ 並木道",sy:"初日に一線を越えてしまった二人。それでも、彼の仕事がその先を阻む。「これ以上、なおと会ったら、俺…」「付き合う、って形にはできへんねん」——越えたからこそ、彼が自分から引いた一線。それでも、会う楽しさは嘘じゃなかった。",un:()=>state.chapter>=3||past(),go:()=>jumpLine("10月12日（日）")},
   {no:"特別編",tt:"近づく休日",dt:"10月13日（月）〜17日（金） ・ LINE",sy:"線を引かれた翌日からの、ぎこちない数日間。短い「おはよ」と、言いかけては飲み込んだ誘い。週末の予定の話で距離はほんの少しだけ近づいて——それでも、線は引かれたままだった。",un:()=>!!state._ch3bDone||state.chapter>=4||past(),go:()=>jumpLine("10月13日（月）")},
@@ -9271,20 +9271,16 @@ setInterval(upd,900); upd();
   await himMsg("おはよ。昨夜は遅くまで、悪かったな",1500); if(!alive(t))return;
   await himMsg("今日は夕方まで、オフやねん"); if(!alive(t))return;
   await himMsg("マロン、撮れたて送るわ"); if(!alive(t))return;
-  await himPhoto("assets/stage.jpg"); if(!alive(t))return;
-  await himMsg("あ、間違えた"); if(!alive(t))return;
-  await himMsg("それ、マロンちゃうわ"); if(!alive(t))return;
-  await himMsg("昨日の収録の、袖やねん"); if(!alive(t))return;
-  toast("💭 <b>（ステージの袖。照明、機材、積まれたスピーカー。——これ、彼の「職場」の中や）</b>");
-  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
-  toast("💭 <b>（指で広げて、隅まで見た。壁の紙は曲の順番みたいで、端には関係者パスらしきものまで）</b>");
-  await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
-  toast("💭 <b>（スピーカーの上、黒キャップ。……明日、柱のそばにいる人のと、おんなじやつ）</b>");
+  await himPhoto("assets/maron-close.jpg"); if(!alive(t))return;
+  await himMsg("今日な、ずっと玄関におったらしい"); if(!alive(t))return;
+  await himMsg("帰ってくるの、待ってたんやって"); if(!alive(t))return;
+  toast("💭 <b>（グレーの服のまま、カメラ目線。……この子にも、そのうち会えるんかな）</b>");
+  await new Promise(r=>setTimeout(r,2600)); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
-   {label:"これ、モロにステージやん",fn:async()=>{ await himMsg("うん、袖のほう",1900); await himMsg("放送前やから、ここだけの話な"); toast("💭 <b>（「ここだけ」が、また増えた。秘密は世間にだけで、私にはじゃないみたいな言い方）</b>"); res(); }},
-   {label:"送り間違い、素すぎる笑",fn:async()=>{ await himMsg("…ほんまにな笑"); await himMsg("内緒の写真、増える一方や"); res(); }}
+   {label:"マロン、もう懐いてる顔してる",fn:async()=>{ await himMsg("…写真だけでも、伝わるんやな"); await himMsg("会ったら、もっとやで"); res(); }},
+   {label:"飼い主に似て、素直な目してる",fn:async()=>{ await himMsg("…それ、褒めてる？"); await himMsg("まあ、悪くないわ"); res(); }}
   ]); }); if(!alive(t))return;
-  toast("💭 <b>（届いた瞬間、もう保存してた。証拠って言うより——手放したくない、のほう）</b>");
+  toast("💭 <b>（届いた写真、すぐ保存した。証拠とかじゃなく、ただ手放したくなかっただけ）</b>");
   await new Promise(r=>setTimeout(r,3100)); if(!alive(t))return;
   toast("💬 <b>（ゆいに「相談」とだけ打って、消した。口にしたら、本当になってまいそうで）</b>");
   await himMsg("明日のこと、決めとくな",1800); if(!alive(t))return;
@@ -11964,7 +11960,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v592"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v593"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
