@@ -38,6 +38,8 @@ justify-content:space-between;padding:0 30px 4px;font-size:14.5px;font-weight:60
 text-shadow:0 1px 4px rgba(0,0,0,.35);mix-blend-mode:difference;
 }
 .statusbar .sicons{display:flex;gap:6px;align-items:center;font-size:12px}
+#clock{pointer-events:auto;cursor:pointer}
+.statusbar .sicons{pointer-events:auto}
 .batt{display:inline-flex;align-items:center;gap:3px}
 .batt .box{width:24px;height:12px;border:1.5px solid rgba(255,255,255,.7);border-radius:4px;padding:1.5px;display:inline-block}
 .batt .fill{display:block;height:100%;width:43%;background:#fff;border-radius:2px}
@@ -866,7 +868,7 @@ input,textarea{font-size:16px!important}
 <div class="appbar"><button class="back" data-home>‹</button><span class="t">設定</span></div>
 <div class="scroll" style="padding:14px">
 <div class="setrow"><span>🔔 サウンド（効果音・着信音）</span><button class="set-tgl" id="set-sound">ON</button></div>
-<div class="setrow"><span>📳 バイブレーション</span><button class="set-tgl" id="set-vib">ON</button></div><div class="setrow"><span>🔤 文字の大きさ</span><button class="set-tgl" id="set-font">標準</button></div><div class="setrow"><span>🖼 ホーム画面の壁紙</span><button class="set-tgl" id="set-wall">デフォルト</button></div>
+<div class="setrow"><span>📳 バイブレーション</span><button class="set-tgl" id="set-vib">ON</button></div><div class="setrow"><span>🖼 ホーム画面の壁紙</span><button class="set-tgl" id="set-wall">デフォルト</button></div>
 <div class="setrow"><span>📖 物語の進み具合</span><span style="color:#8e8e93;font-size:12.5px" id="set-progress">第1話</span></div><div class="setrow"><span>📚 あらすじ・チャプター</span><button class="set-tgl" id="set-chapters">ひらく</button></div><div class="setrow"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e5487c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:2px"><path d="M5 21V4"/><path d="M5 4h13l-2.5 4L18 12H5" fill="#e5487c" stroke="none"/></svg> エンディング図鑑</span><button class="set-tgl" id="v543-ends-btn">ひらく</button></div><div class="setrow"><span>💭 思い出</span><button class="set-tgl" id="set-memories">ひらく</button></div><div class="setrow"><span>💭 解放した思い出</span><span style="color:#8e8e93;font-size:12.5px" id="set-memcount">0 / 13</span></div>
 <div class="setrow"><span>📷 Instagram フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-ig">342</span></div>
 <div class="setrow"><span>𝕏 フォロワー</span><span style="color:#8e8e93;font-size:12.5px" id="set-x">189</span></div>
@@ -879,7 +881,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v559</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v560</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1428,7 +1430,7 @@ $$("#album-tabs button").forEach(b=>b.addEventListener("click",()=>{ $$("#album-
   b2.addEventListener("click",()=>toast("💬 彼へのDMは、物語の中ではLINEでね"));
   row.appendChild(b1); row.appendChild(b2); prof.after(row); })();
 /* weather chip on home widget */
-(function(){ const w=document.querySelector(".widget"); if(!w) return; const d=document.createElement("div"); d.style.cssText="margin-top:8px;font-size:11.5px;color:#dfe5f2;white-space:nowrap"; d.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" style="vertical-align:-1px"><path fill="#ffb3c2" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> 大阪市 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffd60a" stroke-width="2.4" style="vertical-align:-2px"><circle cx="12" cy="12" r="4.2" fill="#ffd60a" stroke="none"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg> 18° ・ 夕方は冷えるから上着を'; w.appendChild(d); })();
+(function(){ const w=document.querySelector(".widget"); if(!w) return; const d=document.createElement("div"); d.style.cssText="margin-top:8px;font-size:11.5px;color:#dfe5f2;white-space:nowrap"; d.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" style="vertical-align:-1px"><path fill="#ffb3c2" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> 大阪市 <span id="wx-sub-t"></span>'; w.appendChild(d); })();
 /* ===== v2: likes ===== */
 document.addEventListener("click",e=>{const b=e.target.closest(".like-btn"); if(!b) return; const on=b.classList.toggle("liked"); const svg=b.querySelector("svg");
  if(svg){ if(on){ svg.setAttribute("fill","#ff3040"); svg.removeAttribute("stroke"); } else { svg.setAttribute("fill","none"); svg.setAttribute("stroke","currentColor"); }
@@ -9148,7 +9150,7 @@ setInterval(upd,900); upd();
  const tov=document.querySelector("#title-ov");
  if(tov){ let rec=null; try{ rec=JSON.parse(localStorage.getItem("r4-record-v1")||"null"); }catch(e){}
   if(rec&&rec.stage>0){ const chip=document.createElement("div"); chip.id="title-rec";
-   chip.textContent="💾 この端末の記録： "+(rec.label||"")+(rec.endings&&rec.endings.length?(" ・ エンディング "+rec.endings.length+" / 4"):"");
+   chip.textContent="💾 この端末の記録： "+(rec.label||"")+(rec.endings&&rec.endings.length?(" ・ エンディング "+rec.endings.length+" / 5"):"");
    const chips=tov.querySelector(".t-chips"); if(chips) chips.after(chip); else tov.appendChild(chip);
    const st=document.querySelector("#title-start"); if(st) st.textContent="つづきからはじめる ▶"; } }
  /* home: stats strip under the dashboard */
@@ -9158,7 +9160,7 @@ setInterval(upd,900); upd();
   dash.after(strip);
   const paint=()=>{ const mc=document.querySelector("#set-memcount"); const mb=strip.querySelector("#sd-st-mem b"); if(mb) mb.textContent=mc?mc.textContent:"―";
    let n=0; try{ n=(JSON.parse(localStorage.getItem("r4-record-v1")||"{}").endings||[]).length; }catch(e){}
-   const eb=strip.querySelector("#sd-st-end b"); if(eb) eb.textContent=n+" / 4"; };
+   const eb=strip.querySelector("#sd-st-end b"); if(eb) eb.textContent=n+" / 5"; };
   setInterval(paint,1500); paint();
   strip.querySelector("#sd-st-mem").addEventListener("click",()=>{ show("settings"); setTimeout(()=>{ const b=document.querySelector("#set-memories"); if(b) b.click(); },380); });
   strip.querySelector("#sd-st-end").addEventListener("click",()=>{ show("settings"); setTimeout(()=>{ const r=document.querySelector("#set-endings-t"); if(r){ r.scrollIntoView({block:"center"}); r.style.background="#fff0f5"; setTimeout(()=>r.style.background="",1000); } },380); });
@@ -10034,7 +10036,7 @@ setInterval(upd,900); upd();
  /* --- date / weather strip --- */
  const inner=document.querySelector("#v-home .home-inner");
  if(inner){ const strip=document.createElement("div"); strip.id="wx-strip";
-  strip.innerHTML='<span id="wx-main">📅 --</span><span class="wx-t" id="wx-clock">--:--</span>';
+  strip.innerHTML='<span style="display:inline-flex;vertical-align:-2px;margin-right:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span id="wx-main">--</span><span class="wx-t" id="wx-clock">--:--</span>';
   inner.insertBefore(strip, inner.firstChild);
   const INFO={0:["9月27日（土）","☀️ 晴れ","27°"],1:["9月27日（土）","☀️ 晴れ","27°"],2:["10月4日（土）","🌤️ 晴れ時々くもり","24°"],3:["10月12日（日）","☁️ くもり","21°"],4:["10月18日（土）","🌥️ くもり","19°"],5:["11月1日（土）","🌤️ 晴れ時々くもり","18°"]};
   const upd=()=>{ let d;
@@ -10042,7 +10044,8 @@ setInterval(upd,900); upd();
     else if(state.phase==="scandal") d=["11月2日（日）","🌧️ 雨","15°"];
     else d=INFO[state.chapter||0]||INFO[1];
    }catch(e){ d=INFO[1]; }
-   const m=strip.querySelector("#wx-main"); if(m) m.textContent="📅 "+d[0]+" ・ "+d[1]+" "+d[2]+" ・ 大阪";
+   const m=strip.querySelector("#wx-main"); if(m) m.textContent=d[0]+" ・ "+d[1]+" "+d[2]+" ・ 大阪";
+   const sub=document.querySelector("#wx-sub-t"); if(sub) sub.textContent=d[1]+" "+d[2]+" ・ "+(d[1].indexOf("雨")>=0?"傘を忘れずに":d[1].indexOf("くもり")>=0?"上着があると安心":"夕方は冷えるから上着を");
    const c=strip.querySelector("#wx-clock"); if(c){ const n=new Date(); c.textContent=String(n.getHours()).padStart(2,"0")+":"+String(n.getMinutes()).padStart(2,"0"); } };
   upd(); setInterval(upd,5000); }
  /* --- music mini panel: removed in v515 (nao: the now-playing sheet that appeared after closing Music was unwanted; the v447 Music app is the only music UI) --- */
@@ -11979,7 +11982,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v559"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v560"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14086,7 +14089,7 @@ dock.addEventListener("click",function(e){
  }
  /* open from the status-bar clock, like pulling the shade down */
  document.addEventListener("click",function(e){
-   if(e.target&&e.target.id==="clock"){ render(); ov.classList.add("on"); }
+   if(e.target&&e.target.id==="clock"){ var lk=document.querySelector("#v-lock"); if(lk&&lk.classList.contains("on")) return; render(); ov.classList.add("on"); }
  },true);
  /* settings row removed 2026-11-10 at her request; the clock still opens it */
 })();
@@ -19215,6 +19218,16 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
   window.__showEndOv=function(box){ if(typeof state!=="undefined"&&(state._act2||state.act2)) return; if(!document.querySelector("#endcard")) return; po(box); }; }
  if(typeof showEnding==="function"){ var ps=showEnding;
   showEnding=function(box){ if(typeof state!=="undefined"&&(state._act2||state.act2)) return; return ps(box); }; }
+})();
+</script>
+<script>
+/* ===== v560: home bar closes phone-level sheets ===== */
+(function(){
+ if(window.__v560) return; window.__v560=true;
+ var hb=document.querySelector("#homebar"); if(!hb) return;
+ hb.addEventListener("click",function(){
+   document.querySelectorAll("#v452-safari.on,#v453-tel.on,#v447-music.on,#v443-music.on,#v457-ios.on,#v468-ios.on").forEach(function(el){ el.classList.remove("on"); });
+ },true);
 })();
 </script>
 </body>
