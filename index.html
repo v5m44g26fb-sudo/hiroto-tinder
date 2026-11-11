@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v535</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v536</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -4869,27 +4869,6 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    const tick=()=>box.querySelectorAll(".wc-t").forEach(el=>el.textContent=fmt(el.dataset.tz));
    tick(); clearInterval(iv); iv=setInterval(()=>{ if(panel.style.display==="none"){ clearInterval(iv); iv=null; return; } tick(); },1000);
   }).observe(panel,{childList:true,subtree:true}); })();
-
- /* ---- v128: news read-later shelf ---- */
- (function(){ const art=$("#news-article"); const list=$("#news-list");
-  if(!art||!list||$("#news-shelf")) return;
-  const saved=[];
-  const shelf=document.createElement("div"); shelf.id="news-shelf";
-  shelf.style.cssText="display:none;background:#fff8e6;border:1px solid #f0e2ac;border-radius:12px;padding:10px 13px;margin:10px 12px 0;font-size:13px";
-  list.parentElement.insertBefore(shelf,list);
-  const drawShelf=()=>{ shelf.style.display=saved.length?"block":"none";
-   shelf.innerHTML='<b>🔖 あとで読む（'+saved.length+'）</b>'+saved.map(t=>'<div style="padding:5px 0 0;line-height:1.5">・'+t+'</div>').join(""); };
-  new MutationObserver(()=>{ const inner=art.querySelector(".article"); if(!inner||inner.querySelector("#rl-btn")) return;
-   const h=inner.querySelector("h1,h2,.atitle")||inner;
-   const title=(inner.querySelector("h1,h2")||{}).textContent||"記事";
-   const b=document.createElement("button"); b.id="rl-btn"; b.textContent="🔖 あとで読む";
-   b.style.cssText="margin:10px 0;background:#fff;border:1.5px solid #111;border-radius:999px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer";
-   h.after(b);
-   b.addEventListener("click",()=>{ const t=title.trim().slice(0,60);
-    if(saved.includes(t)){ b.textContent="🔖 あとで読む"; saved.splice(saved.indexOf(t),1); }
-    else { saved.unshift(t); b.textContent="✅ 保存した"; toast("「あとで読む」に保存したよ"); }
-    drawShelf(); });
-  }).observe(art,{childList:true,subtree:true}); })();
 
  /* ---- v129+v130fix: home edit mode (swaps stay on the same page) ---- */
  (function(){ const home=$("#v-home"); const sc=$("#v-settings .scroll");
@@ -11948,7 +11927,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v535"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v536"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
