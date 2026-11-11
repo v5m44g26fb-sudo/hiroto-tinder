@@ -859,7 +859,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v546</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v547</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11947,7 +11947,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v546"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v547"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13648,16 +13648,22 @@ dock.addEventListener("click",function(e){
    var seed=(tx.textContent||"").length%2;
    var rl=document.querySelector("#xd-replies");
    rl.innerHTML=pool.map(function(r,i){ var rr=pool[(i+seed)%pool.length];
-     return '<div style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6"><span style="width:32px;height:32px;border-radius:50%;background:#8899a6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">'+esc(rr[0].slice(0,1))+'</span><span style="font-size:13.5px;line-height:1.5"><b>'+esc(rr[0])+'</b> <span style="color:#536471">'+esc(rr[1])+' · '+(2+i*3)+'時間</span><div>'+esc(rr[2])+'</div><div style="color:#71767b;font-size:12px;margin-top:3px">💬 '+(2+i)+' 🔁 '+(5+i*3)+' <span class="xd-like" style="cursor:pointer">❤️ '+(24+i*17)+'</span></div></span></div>'; }).join("");
+     return '<div style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6"><span style="width:32px;height:32px;border-radius:50%;background:#8899a6;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">'+esc(rr[0].slice(0,1))+'</span><span style="font-size:13.5px;line-height:1.5"><b>'+esc(rr[0])+'</b> <span style="color:#536471">'+esc(rr[1])+' · '+(2+i*3)+'時間</span><div>'+esc(rr[2])+'</div><div style="color:#71767b;font-size:12.5px;margin-top:4px;display:flex;gap:16px;align-items:center"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> <b>'+(2+i)+'</b></span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg> <b>'+(5+i*3)+'</b></span><span class="xd-like" style="cursor:pointer;display:inline-flex;gap:4px;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <b>'+(24+i*17)+'</b></span></div></span></div>'; }).join("");
    prevPane=null;
    paneIds.forEach(function(k){ var p=document.querySelector("#x-pane-"+k); if(p&&p.style.display!=="none") prevPane=k; p&&(p.style.display="none"); });
    var th=document.querySelector("#x-thread"); if(th) th.style.display="none";
    det.style.display="block";
    var cb=document.querySelector("#x-compose-btn"); if(cb) cb.style.display="none";
    if(scroll) scroll.scrollTop=0;
+   requestAnimationFrame(function(){ try{
+     var tabs=document.querySelector("#v-x .xtabs"); var need=tabs?tabs.getBoundingClientRect().bottom:0;
+     var lb=document.querySelector("#v-x .r3-live"); if(lb&&lb.classList.contains("on")) need=Math.max(need,lb.getBoundingClientRect().bottom);
+     var dTop=det.getBoundingClientRect().top;
+     det.style.paddingTop=Math.max(0,Math.round(need-dTop))+"px";
+   }catch(e){} });
  }
  function closeDetail(){
-   det.style.display="none";
+   det.style.display="none"; det.style.paddingTop="";
    var k=prevPane||"tl"; var p=document.querySelector("#x-pane-"+k); if(p) p.style.display="block";
    var cb=document.querySelector("#x-compose-btn"); if(cb) cb.style.display="";
  }
@@ -13984,7 +13990,9 @@ dock.addEventListener("click",function(e){
    var m=/([0-9]+)/.exec(l.textContent); if(!m) return;
    var n=parseInt(m[1],10), on=l.dataset.on==="1";
    l.dataset.on=on?"0":"1";
-   l.textContent="❤️ "+(on?n-1:n+1);
+   var bEl=l.querySelector("b"), nx2=on?n-1:n+1;
+   if(bEl) bEl.textContent=nx2; else l.textContent=nx2;
+   var svgEl=l.querySelector("svg"); if(svgEl){ if(on){ svgEl.setAttribute("fill","none"); svgEl.setAttribute("stroke","currentColor"); } else { svgEl.setAttribute("fill","#f91880"); svgEl.removeAttribute("stroke"); } }
    l.style.color=on?"":"#f91880"; l.style.fontWeight=on?"":"700";
  },true);
 })();
