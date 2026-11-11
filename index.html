@@ -908,7 +908,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v609</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v610</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1339,7 +1339,7 @@ const FRIEND_REPLIES=["ちょ、詳しく聞かせて","それ大丈夫なやつ
 function sendGroup(){ pop(); const inp=$("#g-text"); const v=inp.value.trim(); if(!v) return; inp.value=""; gMe(v); setTimeout(()=>gMsg(pick(Object.keys(FRIENDS)),pick(FRIEND_REPLIES)),1400); }
 $("#g-send").addEventListener("click",sendGroup);
 $("#g-text").addEventListener("keydown",e=>{ if(e.key==="Enter") sendGroup(); });
-async function groupFlood(){ const seq=[["りな","なお！！ 電話出なさい！！"],["ゆい","見出しに名前…これ、なおのことやんな？"],["みさき","待って、相手って…アプリの人？"],["りな","本物やったんかい！！ そりゃ分からんわ！！"],["みさき","ずっと話してたのに、気づかんかったん…？"],["ゆい","記事の最後まで読んだ。「交際はしてない」って書いてある"],["りな","コメント欄は見たらあかん。なおは見ないで"],["みさき","私らは、なおの言うことだけ信じる"],["ゆい","今夜うち来な。ごはん作るし、話はそれから"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
+async function groupFlood(){ const seq=[["りな","なお！！ 電話出なさい！！"],["ゆい","見出しに名前…これ、なおのことやんな？"],["ゆい","記事の最後まで読んだ。「交際はしてない」って書いてある"],["みさき","私らは、なおの言うことだけ信じる"],["ゆい","今夜うち来な。ごはん作るし、話はそれから"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
 /* ===== v5: his IG extra posts ===== */
 (function(){ const hs=$("#v-hisig .scroll"); if(!hs) return;
   const mk=(img,cap,likes,date)=>{ const d=document.createElement("div"); d.className="ig-post"; d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">❤️</span><span>💬</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date}</span></div>`; hs.appendChild(d); };
@@ -4083,8 +4083,8 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   var T=window.__tinder; if(!T) return;
  /* ================= itsumen staged reactions ================= */
   var FLOODS={
-   A:[["りな","なお、顔にやけすぎ！！ 何があった！！"],["ゆい","マッチしたんでしょ！？ しかもSuper Likeの方！？"],["みさき","相手の写真、拡大して見ちゃった…ごめん笑"],["ゆい","で、どんな人なの？ まず年齢と雰囲気"],["りな","タイプど真ん中って、顔に出てるわ"],["みさき","続報は随時、よろしく！！"]],
-   B:[["みさき","なお、帰りの電車で笑ってたって本当？"],["ゆい","感想、まず一言で！！"],["りな","帽子とマスクの人…結局、誰やったん？"],["ゆい","え、それって大丈夫な人…？"],["みさき","でも、なおがあんな顔するの久しぶりに見た"],["りな","次は付いてく！！ うそ、邪魔はせん笑"]]
+   A:[["りな","なお、顔にやけすぎ！！ 何があった！！"],["ゆい","マッチしたんでしょ！？ しかもSuper Likeの方！？"],["みさき","相手の写真、拡大して見ちゃった…ごめん笑"],["りな","タイプど真ん中って、顔に出てるわ"]],
+   B:[["みさき","なお、帰りの電車で笑ってたって本当？"],["ゆい","感想、まず一言で！！"],["りな","帽子とマスクの人…結局、誰やったん？"],["みさき","でも、なおがあんな顔するの久しぶりに見た"]]
   };
   var armed=[], iflags={};
   function gSay(n,t){ if(typeof gMsg==="function") gMsg(n,t); }
@@ -5357,7 +5357,6 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["him","ゆい『調整日おつかれ。今日は大人しくしてなさい』"],
    ["me","痛くて、ごはんも流動食やし…"],
    ["him","りな『週末ひまなん？ それ、アプリ入れ直す合図ちゃう？』"],
-   ["him","ゆい『ほら、りなも言うてる』"],
    ["n","前に一度入れて、すぐ消したアプリ。アイコンをしばらく見つめて――"],
    ["me","……まあ、眺めるだけなら"],
    ["n","再インストール完了。プロフィール作りが始まった。"],
@@ -5377,7 +5376,6 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["him","なあ、マロン。お前はええな、毎日楽しそうで"],
    ["n","なんとなく開いたストアで、見覚えのあるアイコンに指が止まった。"],
    ["him","……入れるだけ、な"],
-   ["him","バレたら終わりやけどな"],
    ["n","マネージャーには、もちろん言っていない。"],
    ["him","写真は、私服のやつだけ。仕事のやつはあかん"],
    ["him","職業は、なしやな。身長も盛らんとく"],
@@ -5388,22 +5386,6 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["him","……誰に Like されたか分かるんか。逆に、バレる前に気づけるなら……安いもんや"],
    ["n","深く考えずに、課金した。バレたくない気持ちが、ほんの少しだけ透けていた。"],
    ["n","同じ夜、同じ街で、二人が同じアプリを開いていた。マッチは、明日の話。"]]},
-  {t:"前日譚 ― Super Likeを押す前", sub:"マッチの前日 ・ 彼の画面", un:()=>state.chapter>=1, lines:[
-   ["n","9月26日、金曜の夜。彼の部屋。"],
-   ["him","…また、この時間や"],
-   ["him","別に、暇つぶしやねんけどな"],
-   ["n","スワイプする指が、一人のプロフィールで止まった。"],
-   ["him","『会って話す派です』……今どき、珍しいな"],
-   ["n","写真は派手じゃなかった。カフェで、カフェオレを前に笑う顔。"],
-   ["him","カフェオレ、好きなんや"],
-   ["him","なんか、この子とは話してみたい"],
-   ["n","星のボタンが、青く光っていた。"],
-   ["him","Super Like、残り1回か"],
-   ["him","……使うんか、俺"],
-   ["n","指先が、少しだけ迷った。"],
-   ["him","……押してもうた"],
-   ["him","まあ、どうせマッチせんやろ"],
-   ["n","彼はスマホを伏せて、マロンの散歩に出た。振りのことより、その顔が頭に残っていた。"]]},
   {t:"幕間 ― 二軒目までの十分", sub:"9月28日 ・ 初めて会った夜", un:()=>state.chapter>=2, lines:[
    ["n","初めて会った夜。一軒目を出て、二軒目までの十分。"],
    ["him","寒ない？ 上着、貸そか"],
@@ -5523,14 +5505,6 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["him","…これ。手、冷たかったやろ"],
    ["n","渡し方はぶっきらぼうだったけど、缶はちゃんと温かかった。"],
    ["n","「また」が、約束みたいに聞こえた。"]]},
-  {t:"幕間 ― 検索の夜", sub:"10月1日 ・ 会ったあとに、推しを検索する夜", un:()=>state.chapter>=2, lines:[
-   ["n","10月1日（水）深夜。ベッドの中で、彼女はまた検索していた。"],
-   ["me","（井汲大翔、って打つ指が、もう迷ってない）"],
-   ["n","画像タブ。ステージの上の彼と、この前隣にいた人が、重なる。"],
-   ["me","（会ってしまった人の名前を、検索する夜が来るとは）"],
-   ["n","友達への相談文は、今夜も打って、消した。"],
-   ["me","（土曜、また会うって。…会ったら、私たちは何になるんやろ）"],
-   ["n","彼女が寝たのは、2時を過ぎていた。"]]},
   {t:"幕間 ― 雨の日の傘", sub:"10月18日 ・ 返せない理由", un:()=>state.chapter>=5, lines:[
    ["n","10月18日（土）。彼の傘は、まだ玄関にある。"],
    ["me","（返さなきゃ、とは思う。思うけど）"],
@@ -5590,29 +5564,9 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["n","来ない、と分かっている画面を、人は何度も開いてしまう。"],
    ["me","（年が明けたら、変わるかな。…変わらんでも、待つけど）"],
    ["n","初詣のおみくじは、待人「来る。遅い」とあった。"],
-   ["n","彼女は笑って、それを財布にしまった。"]]},
-  {t:"幕間 ― 朝のコンビニ", sub:"9月29日（月）朝 ・ 会った翌日の帰り道", un:()=>state.chapter>=2, lines:[
-   ["n","朝の光が、知らない街を照らしてた。"],
-   ["me","（……帰らな。仕事、あるし）"],
-   ["n","コンビニで、コーラとプリンを買った。理由は、自分でも分からない。"],
-   ["me","（昨日の人、ほんまに実在したんやな）"],
-   ["me","（名前も、声も、笑うと目がなくなるのも。ぜんぶ本物やった）"],
-   ["n","スマホは、まだ静かだった。アプリの通知も、ない。"],
-   ["me","（……また会いたい、って。私から言うのは、なんか違う気がして）"],
-   ["n","電車の窓に映る自分の顔は、寝不足で、ちょっとだけ笑ってた。"],
-   ["me","（帰ったら、まず寝よ。……起きたら、何か届いてたらいいな）"]]},
-  {t:"幕間 ― 整うまで", sub:"10月26日（日） ・ 会わない二週間の真ん中", un:()=>state.chapter>=5&&state._route!=="dating", lines:[
-   ["n","10月26日、日曜日。会わない二週間の、ちょうど真ん中。"],
-   ["me","（サウナ、行こ。考えすぎる日は、汗と一緒に流すに限る）"],
-   ["n","整うまで出ない、と決めて、三セット。"],
-   ["me","（……整ったはずやのに、スマホ、見てしまう）"],
-   ["n","通知は、ない。ないのが約束みたいな二週間だった。"],
-   ["me","（元気かな、とか。……送らんけど）"],
-   ["n","帰り道、コンビニでプリンを買った。自分への、ごほうび。"],
-   ["me","（あと五日。会ったら、最初に何て言うんやろ）"],
-   ["n","答えは、出なかった。でも、足取りは軽かった。"]]}];
+   ["n","彼女は笑って、それを財布にしまった。"]]}];
  const row=document.createElement("div"); row.className="setrow"; row.style.cursor="pointer";
- row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">21本</b>';
+ row.innerHTML='<span>📖 ボーナスエピソード</span><b style="color:#8e8e93">17本</b>';
  sc.appendChild(row);
  const panel=document.createElement("div"); panel.id="ep-panel";
  panel.style.cssText="position:absolute;inset:0;z-index:80;background:#f7f7fa;display:none;flex-direction:column;color:#111";
@@ -5665,7 +5619,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
   ["アルバムの写真", document.querySelectorAll("#ph-grid figure").length+"枚"],
   ["お気に入りの写真", favN()+"枚"],
   ["到達したエンディング", endStat()],
-  ["ボーナスエピソード既読", (()=>{ try{ const tot=document.querySelectorAll(".ep-row").length||19; return (window.__epRead?window.__epRead.size:0)+"/"+tot+"本"; }catch(e){ return "―"; } })()]];
+  ["ボーナスエピソード既読", (()=>{ try{ const tot=document.querySelectorAll(".ep-row").length||17; return (window.__epRead?window.__epRead.size:0)+"/"+tot+"本"; }catch(e){ return "―"; } })()]];
  const render=()=>{ panel.innerHTML='<div style="padding:58px 16px 10px;display:flex;align-items:center"><b style="font-size:16.5px">💾 セーブデータ</b><button id="sv-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'+
   '<div style="overflow-y:auto;padding:8px 16px">'+stats().map(s=>'<div style="background:#fff;border-radius:13px;padding:13px 15px;margin-bottom:9px;display:flex;align-items:center"><span style="font-size:13.5px;color:#555">'+s[0]+'</span><b style="margin-left:auto;font-size:14.5px">'+s[1]+'</b></div>').join("")+
   '<button id="sv-copy" style="width:100%;background:#111;color:#fff;border:none;border-radius:999px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;margin-top:4px">📋 記録をコピーする</button>'+
@@ -8256,7 +8210,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    /* the standalone his-screen section header is absorbed into the timeline */
    [...list.children].forEach(ch=>{ if(!ch.classList.contains("syn-card") && !ch.classList.contains("tl-date") && !ch.classList.contains("tl-foot") && (ch.textContent||"").includes("彼の画面")) ch.remove(); });
    if(!list.querySelector(".tl-foot")){ const f=document.createElement("div"); f.className="tl-foot";
-     f.innerHTML="📖 ボーナスエピソードを開く<small>前日談・幕間など、物語の外側の21本</small>";
+     f.innerHTML="📖 ボーナスエピソードを開く<small>前日談・幕間など、物語の外側の17本</small>";
      f.addEventListener("click",()=>{ const p=document.querySelector("#syn-panel"); if(p) p.style.display="none";
        const row=[...document.querySelectorAll("#v-settings .setrow")].find(r=>(r.textContent||"").includes("ボーナスエピソード")); if(row) row.click(); });
      list.appendChild(f); }
@@ -11994,7 +11948,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v609"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v610"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
