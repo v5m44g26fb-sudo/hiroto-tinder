@@ -908,7 +908,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v616</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v617</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1859,12 +1859,12 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 /* ===== v48: nao's own photos become IG posts + album entries ===== */
 (function(){ const scroll=$("#v-ig .scroll"); if(!scroll) return;
   const POSTS=[
-   ["assets/nao-hl-01.jpg","人生で一番美味しい牛タンでした🐮 またすぐ食べたい","62"],
-   ["assets/nao-hl-06.jpg","遠征の思い出💚 ペンラの光、きれいだった","87"],
-   ["assets/nao-hl-08.jpg","釜山の上から🌊 また行けますように","74"]];
+   ["assets/nao-hl-01.jpg","人生で一番美味しい牛タンでした🐮 またすぐ食べたい","62","9月21日"],
+   ["assets/nao-hl-06.jpg","遠征の思い出💚 ペンラの光、きれいだった","87","7月19日"],
+   ["assets/nao-hl-08.jpg","釜山の上から🌊 また行けますように","74","8月28日"]];
   let anchor=scroll.querySelector(".ig-post");
-  POSTS.forEach(([img,cap,likes])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
+  POSTS.forEach(([img,cap,likes,date])=>{ const d=document.createElement("div"); d.className="ig-post";
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span><div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">${date}</div></div>`;
     if(anchor&&anchor.parentNode===scroll){ anchor.after(d); anchor=d; } else scroll.appendChild(d); });
   const grid=$("#ph-grid");
   if(grid){ [["assets/nao-hl-01.jpg","牛タン🐮"],["assets/nao-hl-06.jpg","推し活の遠征💚"],["assets/nao-hl-08.jpg","釜山の景色🌊"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
@@ -1873,13 +1873,13 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 /* ===== v50: more of nao's photos as IG posts + album entries ===== */
 (function(){ const scroll=$("#v-ig .scroll"); if(!scroll) return;
   const POSTS=[
-   ["assets/nao-hl-17.jpg","韓屋の路地、空がきれいだった日☁️","91"],
-   ["assets/nao-hl-20.jpg","韓国の夜はチキン🍗 コンビニ寄るまでがセット","108"],
-   ["assets/nao-hl-03.jpg","木漏れ日の散歩道🌿 こういう時間がいちばん好き","45"],
-   ["assets/nao-hl-09.jpg","もふもふに癒された日🐶 かわいすぎた…","132"]];
+   ["assets/nao-hl-17.jpg","韓屋の路地、空がきれいだった日☁️","91","8月27日"],
+   ["assets/nao-hl-20.jpg","韓国の夜はチキン🍗 コンビニ寄るまでがセット","108","8月27日"],
+   ["assets/nao-hl-03.jpg","木漏れ日の散歩道🌿 こういう時間がいちばん好き","45","9月6日"],
+   ["assets/nao-hl-09.jpg","もふもふに癒された日🐶 かわいすぎた…","132","9月23日"]];
   const v18first=Array.from(scroll.querySelectorAll(".ig-post")).find(p=>p.textContent.includes("釜山きたら"));
-  POSTS.forEach(([img,cap,likes])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
+  POSTS.forEach(([img,cap,likes,date])=>{ const d=document.createElement("div"); d.className="ig-post";
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span><div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">${date}</div></div>`;
     if(v18first) scroll.insertBefore(d,v18first); else scroll.appendChild(d); });
   const grid=$("#ph-grid");
   if(grid){ [["assets/nao-hl-17.jpg","韓屋の路地"],["assets/nao-hl-20.jpg","韓国のチキン🍗"],["assets/nao-hl-03.jpg","散歩道🌿"],["assets/nao-hl-09.jpg","わんこ🐶"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
@@ -1888,13 +1888,13 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 /* ===== v51: nao's cooking & cafe photos complete the highlight set ===== */
 (function(){ const scroll=$("#v-ig .scroll"); if(!scroll) return;
   const POSTS=[
-   ["assets/nao-hl-11.jpg","クリスマスのお菓子、かわいすぎた🎄 トナカイのフィナンシェ","96"],
-   ["assets/nao-hl-12.jpg","ドラマに影響されて作ったやつ🥟 包むの楽しかった","58"],
-   ["assets/nao-hl-14.jpg","毎日蒸籠にしたいなぁ🍠 えのきの肉巻きが正解だった","71"],
-   ["assets/nao-hl-15.jpg","ぐつぐつ🍲 ロールキャベツのポトフ","83"]];
+   ["assets/nao-hl-11.jpg","クリスマスのお菓子、かわいすぎた🎄 トナカイのフィナンシェ","96","12月25日"],
+   ["assets/nao-hl-12.jpg","ドラマに影響されて作ったやつ🥟 包むの楽しかった","58","10月6日"],
+   ["assets/nao-hl-14.jpg","毎日蒸籠にしたいなぁ🍠 えのきの肉巻きが正解だった","71","10月20日"],
+   ["assets/nao-hl-15.jpg","ぐつぐつ🍲 ロールキャベツのポトフ","83","10月26日"]];
   const v18first=Array.from(scroll.querySelectorAll(".ig-post")).find(p=>p.textContent.includes("釜山きたら"));
-  POSTS.forEach(([img,cap,likes])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span></div>`;
+  POSTS.forEach(([img,cap,likes,date])=>{ const d=document.createElement("div"); d.className="ig-post";
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span><div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">${date}</div></div>`;
     if(v18first) scroll.insertBefore(d,v18first); else scroll.appendChild(d); });
   const grid=$("#ph-grid");
   if(grid){ [["assets/nao-hl-11.jpg","クリスマスのお菓子🎄"],["assets/nao-hl-12.jpg","手作りワンタン🥟"],["assets/nao-hl-14.jpg","蒸籠蒸し"],["assets/nao-hl-15.jpg","ポトフ🍲"]].forEach(([img,cap])=>{ const f=document.createElement("figure"); f.dataset.cat="post"; f.innerHTML=`<img loading="lazy" decoding="async" src="${img}" alt=""><figcaption>${cap}</figcaption>`; grid.appendChild(f); }); }
@@ -2159,17 +2159,17 @@ document.addEventListener("click",e=>{ const fb=e.target.closest?e.target.closes
 /* ===== v18: nao's own IG posts (user photos) ===== */
 (function(){ const sc=$("#v-ig .scroll"); if(!sc) return;
   const POSTS=[
-   ["assets/nao-seafood.jpg","釜山きたら絶対これ🦐 カンジャンセウ優勝。ケジャンもアワビも全部うまい…",128,[["yui_s","ずるい！私も行きたかった😭"],["sauna_m","エビの人、幸せそう"]]],
-   ["assets/nao-korean.jpg","カンジャンケジャン定食🦀 ごはん泥棒ってこういうことか",96,[["m2326","この店、私も好き"]]],
-   ["assets/nao-hotpot.jpg","ナッコプセ🐙 エビ・タコ・ホルモン全部入りは反則",87,[["yui_s","辛そう…でも絶対うまいやつ"]]],
-   ["assets/nao-bridge.jpg","青沙浦のガラスの橋🌊 足すくんだけど、海がきれいすぎた",154,[["sauna_m","ここ行ったことある！高いよね"]]],
-   ["assets/nao-fanmeet.jpg","KO1KEYZ 1stファンミーティング🎤 最高だった…余韻",203,[["yui_s","推し活充実してるね〜"]]],
-   ["assets/nao-matcha.jpg","中村藤吉の抹茶パフェ🍵 本店限定のやつ、並んだ甲斐あった",76,[["m2326","抹茶濃そう…！"]]],
-   ["assets/nao-teishoku.jpg","からあげ定食は正義🍗 蒸し野菜もついてて偉い",64,[["sauna_m","からあげの人、今日もからあげ"]]],
-   ["assets/nao-western.jpg","洋食ランチ🍽 チーズとんかつ、とろけた",71,[["yui_s","チェックのテーブルクロスかわいい"]]]
+   ["assets/nao-seafood.jpg","釜山きたら絶対これ🦐 カンジャンセウ優勝。ケジャンもアワビも全部うまい…",128,[["yui_s","ずるい！私も行きたかった😭"],["sauna_m","エビの人、幸せそう"]],"8月28日"],
+   ["assets/nao-korean.jpg","カンジャンケジャン定食🦀 ごはん泥棒ってこういうことか",96,[["m2326","この店、私も好き"]],"8月29日"],
+   ["assets/nao-hotpot.jpg","ナッコプセ🐙 エビ・タコ・ホルモン全部入りは反則",87,[["yui_s","辛そう…でも絶対うまいやつ"]],"8月29日"],
+   ["assets/nao-bridge.jpg","青沙浦のガラスの橋🌊 足すくんだけど、海がきれいすぎた",154,[["sauna_m","ここ行ったことある！高いよね"]],"8月31日"],
+   ["assets/nao-fanmeet.jpg","KO1KEYZ 1stファンミーティング🎤 最高だった…余韻",203,[["yui_s","推し活充実してるね〜"]],"9月13日"],
+   ["assets/nao-matcha.jpg","中村藤吉の抹茶パフェ🍵 本店限定のやつ、並んだ甲斐あった",76,[["m2326","抹茶濃そう…！"]],"9月15日"],
+   ["assets/nao-teishoku.jpg","からあげ定食は正義🍗 蒸し野菜もついてて偉い",64,[["sauna_m","からあげの人、今日もからあげ"]],"10月2日"],
+   ["assets/nao-western.jpg","洋食ランチ🍽 チーズとんかつ、とろけた",71,[["yui_s","チェックのテーブルクロスかわいい"]],"8月17日"]
   ];
-  POSTS.forEach(([img,cap,likes,cmts])=>{ const d=document.createElement("div"); d.className="ig-post";
-    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324<span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">♡ ${likes}</span><span>💬</span><span>✈</span><span class="sv" style="cursor:pointer">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap}</div>`+cmts.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
+  POSTS.forEach(([img,cap,likes,cmts,date])=>{ const d=document.createElement("div"); d.className="ig-post";
+    d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324<span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">♡ ${likes}</span><span>💬</span><span>✈</span><span class="sv" style="cursor:pointer">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap}<div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">${date}</div></div>`+cmts.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
     const sv=d.querySelector(".sv"); sv.addEventListener("click",()=>{ const on=sv.textContent==="🔖"; sv.textContent=on?"📌":"🔖"; toast(on?"📌 <b>保存しました</b>":"保存を取り消しました"); });
     sc.appendChild(d); });
 })();
@@ -11955,7 +11955,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v616"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v617"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
