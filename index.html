@@ -879,7 +879,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v557</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v558</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1430,7 +1430,14 @@ $$("#album-tabs button").forEach(b=>b.addEventListener("click",()=>{ $$("#album-
 /* weather chip on home widget */
 (function(){ const w=document.querySelector(".widget"); if(!w) return; const d=document.createElement("div"); d.style.cssText="margin-top:8px;font-size:11.5px;color:#dfe5f2;white-space:nowrap"; d.innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" style="vertical-align:-1px"><path fill="#ffb3c2" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> 大阪市 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffd60a" stroke-width="2.4" style="vertical-align:-2px"><circle cx="12" cy="12" r="4.2" fill="#ffd60a" stroke="none"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5 5l1.8 1.8M17.2 17.2L19 19M19 5l-1.8 1.8M6.8 17.2L5 19"/></svg> 18° ・ 夕方は冷えるから上着を'; w.appendChild(d); })();
 /* ===== v2: likes ===== */
-document.addEventListener("click",e=>{const b=e.target.closest(".like-btn"); if(!b) return; const on=b.classList.toggle("liked"); const m=b.textContent.match(/([\d,]+)/); if(m){let n=parseInt(m[1].replace(/,/g,"")); n+=on?1:-1; b.textContent=b.textContent.replace(m[1],n.toLocaleString("ja-JP"));}});
+document.addEventListener("click",e=>{const b=e.target.closest(".like-btn"); if(!b) return; const on=b.classList.toggle("liked"); const svg=b.querySelector("svg");
+ if(svg){ if(on){ svg.setAttribute("fill","#ff3040"); svg.removeAttribute("stroke"); } else { svg.setAttribute("fill","none"); svg.setAttribute("stroke","currentColor"); }
+  const bEl=b.querySelector("b");
+  if(bEl){ let n=parseInt(bEl.textContent.replace(/,/g,""))||0; n+=on?1:-1; bEl.textContent=Math.max(0,n).toLocaleString("ja-JP"); }
+  else { const tn=[...b.childNodes].find(n=>n.nodeType===3&&/[\d,]/.test(n.nodeValue)); const m=tn?tn.nodeValue.match(/([\d,]+)/):null;
+   if(tn&&m){ let n=parseInt(m[1].replace(/,/g,"")); n+=on?1:-1; tn.nodeValue=tn.nodeValue.replace(m[1],Math.max(0,n).toLocaleString("ja-JP")); } }
+  return; }
+ const m=b.textContent.match(/([\d,]+)/); if(m){let n=parseInt(m[1].replace(/,/g,"")); n+=on?1:-1; b.textContent=b.textContent.replace(m[1],n.toLocaleString("ja-JP"));}});
 /* ===== v2: infinite generators ===== */
 const GEN_NAMES=["fan_mama","rottdan_2","oshi_katsu_jp","hana_22","mio_p","yume_ko","sora_machi","ebiko_love"];
 const GEN_MEN_HOT=["@nao_0324 まだ信じたくない…","@nao_0324 説明してほしい、ほんとに","@nao_0324 そのカフェ投稿、やっぱ匂わせ？"];
@@ -9551,13 +9558,11 @@ setInterval(upd,900); upd();
   document.addEventListener("click",e=>{
     const b=e.target.closest?e.target.closest("#v-ig .ig-post .like-btn"):null; if(!b) return;
     const post=b.closest(".ig-post"); if(!post) return;
-    if(/\d/.test(b.textContent||"")) return;
     const nowLiked=b.classList.contains("liked")?"1":"0";
     const prev=b.dataset.v221liked;
     if(prev===undefined){ b.dataset.v221liked=nowLiked; return; }
     if(prev===nowLiked) return;
     b.dataset.v221liked=nowLiked;
-    b.textContent=nowLiked==="1"?"♥":"♡";
     const cs=countSpan(post); if(cs) normCount(cs, nowLiked==="1"?1:-1);
   });
 })();
@@ -9574,12 +9579,10 @@ setInterval(upd,900); upd();
   document.addEventListener("click",e=>{
     const b=e.target.closest?e.target.closest("#v-hisig .ig-post .like-btn"):null; if(!b) return;
     const post=b.closest(".ig-post"); if(!post) return;
-    if(/\d/.test(b.textContent||"")) return;
     const nowLiked=b.classList.contains("liked")?"1":"0";
     const prev=b.dataset.v222liked===undefined?"0":b.dataset.v222liked;
     if(prev===nowLiked) return;
     b.dataset.v222liked=nowLiked;
-    b.textContent=nowLiked==="1"?"♥":"♡";
     const cap=post.querySelector(".cap"); if(!cap) return;
     const m=(cap.textContent||"").match(/いいね！：([\d,]+)件/); if(!m) return;
     const n=Math.max(0,parseInt(m[1].replace(/,/g,""))+(nowLiked==="1"?1:-1));
@@ -11972,7 +11975,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v557"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v558"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -17814,7 +17817,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
    document.querySelectorAll("#v-hisig .like-btn").forEach(function(el){
      if(el.querySelector("svg")) return;
      var m=el.textContent.match(/([\d,]+)/);
-     if(el.textContent.indexOf("❤")>=0) el.innerHTML=wrap(HEART_F)+(m?m[1]:"");
+     if(el.textContent.indexOf("❤")>=0) el.innerHTML=wrap(el.classList.contains("liked")?HEART_F:S('<path d="M12 20.7C6.4 17 3.4 13.6 3.4 9.9 3.4 7.2 5.4 5.2 7.9 5.2c1.7 0 3.2.9 4.1 2.3.9-1.4 2.4-2.3 4.1-2.3 2.5 0 4.5 2 4.5 4.7 0 3.7-3 7.1-8.6 10.8Z"/>',21,D))+(m?m[1]:"");
    });
    document.querySelectorAll(".verified").forEach(function(el){
      if(el.querySelector("svg")) return;
