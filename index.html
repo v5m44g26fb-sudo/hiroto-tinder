@@ -886,7 +886,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v601</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v602</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2234,7 +2234,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
 /* ===== Tinder ver v12: heat to the limit without depicting anything — night phone teasing + his self-brake in Tinder chat, crowd proximity on the first date, ch3's line-drawing reframed as restraint ("if we keep meeting, I really will..."), ch4 jealousy/umbrella/drink-sharing building to the night the drawn line breaks: decisive moment fades to black on his short line, morning-after is only time-skip + awkward, kind words (never described, never explained, a secret between the two; no outside text ever mentions it), ch5's distance now carries guilt. ===== */
 /* ===== Tinder ver v1 ===== */
 (function(){
-  const photos=["assets/tinder-bed.jpg","assets/tinder-adidas.jpg","assets/tinder-cap.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
+  const photos=["assets/tinder-bed.jpg","assets/tinder-adidas.jpg","assets/tinder-cap.jpg","assets/hoodie.jpg","assets/tinder-night.jpg","assets/ig-dog.jpg"];
   let photoIdx=0;
   const deck=[
     {hiroto:true,name:"ひろと",age:24,distKm:1,dist:"1 km ・ 大阪",bio:"大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き",tags:["お酒","コーラ","ごはん","犬","サウナ"],promptQ:"休みの日は…",promptA:"マロン（犬）と散歩か、家でごろごろ。誘われたら、だいたい行くで",prompt2Q:"仕事は…",prompt2A:"歌とダンスの仕事。不定期なやつ"}
@@ -3280,7 +3280,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   var dsheet=$("#tdetail-sheet"), dbox=$("#tdetail-box");
   window.openTDetail=function(c){
     if(!c||!dbox) return;
-    var PH6=["assets/tinder-bed.jpg","assets/tinder-adidas.jpg","assets/tinder-cap.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
+    var PH6=["assets/tinder-bed.jpg","assets/tinder-adidas.jpg","assets/tinder-cap.jpg","assets/hoodie.jpg","assets/tinder-night.jpg","assets/ig-dog.jpg"];
     var list = c.hiroto ? PH6 : (c.photos||[]);
     var stripHtml = '<div class="td-strip" id="td-strip" style="display:flex;overflow-x:auto">'
       + list.map(function(src){ return '<img loading="lazy" decoding="async" src="'+src+'" alt="">'; }).join("") + "</div>";
@@ -3717,15 +3717,15 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   ]},
   2:{sub:"彼のスマホ —— 10月12日（日）夜",steps:[
    {k:"note",t:"10月12日（日）21:48"},
-   {k:"mono",t:"（レッスン室。帰るって言ったのに、まだ残ってる）"},
-   {k:"draft",t:"さっきの言葉、取り消させて"},
-   {k:"draft",t:"線の内側って、なんやねん"},
-   {k:"mgr",t:"振り、もう一回だけ確認しよか"},
+   {k:"mono",t:"（スタジオに戻った。やのに頭は、並木道に置いてきたままや）"},
+   {k:"draft",t:"ほんまは、駅まで送りたくなかった"},
+   {k:"draft",t:"送ったら、今日が終わる気がして"},
+   {k:"mgr",t:"おい、さっきの続き、もう一回だけ合わせよか"},
    {k:"him",t:"…お願いします"},
-   {k:"mgr",t:"今日のお前、なんか精彩ないぞ"},
-   {k:"him",t:"気のせいです"},
-   {k:"mono",t:"（線は引いた。引いたのは、俺や。やのに）"},
-   {k:"mono",t:"（駅までの道、短すぎた）"}
+   {k:"mgr",t:"今日のお前、足、止まってたぞ"},
+   {k:"him",t:"…すみません"},
+   {k:"mono",t:"（言いかけて、飲み込んだ言葉がある。言えば楽やったんは、俺のほうや）"},
+   {k:"mono",t:"（ブレーキ踏んだ言い方したけど、踏めてへんのは、こっちや）"}
   ]},
   3:{sub:"彼のスマホ —— 11月2日（日）深夜",steps:[
    {k:"note",t:"11月2日（日）23:31"},
@@ -5705,7 +5705,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
     if(histOpen) renderHist();
   }
  /* ---------- 5. his profile evolution (shared phase logic) ---------- */
-  var PH=["assets/tinder-bed.jpg","assets/tinder-adidas.jpg","assets/tinder-cap.jpg","assets/hoodie.jpg","assets/ig-busan.jpg","assets/ig-dog.jpg"];
+  var PH=["assets/tinder-bed.jpg","assets/tinder-adidas.jpg","assets/tinder-cap.jpg","assets/hoodie.jpg","assets/tinder-night.jpg","assets/ig-dog.jpg"];
   var BIO_BASE="大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き";
   function profPhase(){
     var st=S();
@@ -8726,7 +8726,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
  const mkStrip=()=>{ if(!hisCard||document.querySelector("#r4-strip")) return;
   strip=document.createElement("div"); strip.id="r4-strip";
   strip.innerHTML='<div><b id="r4-d-n">1日目</b><span>出会ってから</span></div><div><b id="r4-d-c">第1話</b><span>物語の現在地</span></div><div><b>大阪</b><span>ひろとの街</span></div>';
-  const inner=hisCard.querySelector("div[style]"); if(inner) inner.appendChild(strip); };
+  hisCard.appendChild(strip); };
  mkStrip();
  /* (2) his LINE profile walk */
  const prof=document.querySelector("#hiroto-prof"), st=document.querySelector("#hp-status");
@@ -11964,7 +11964,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v601"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v602"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
