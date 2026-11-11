@@ -886,7 +886,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v596</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v597</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1209,16 +1209,16 @@ function meMsg(text){ pop();const d=document.createElement("div");d.className="m
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){ if(state.act2||state.ended||state._seq1) return; state._seq1=true;
 push("LINE","#06c755","💬","ひろと","「なお」——タップでトークを開く",()=>{show("line");openChat()});
-await himMsg("なお",700); await himMsg("記事、出たわ",1200); await himMsg("俺の名前、出てるやつ",1200); await himMsg("発端は、アプリ使ってたことやねん",1400); await himMsg("俺は、大丈夫やから",1000); await himMsg("心配なんは、なおだけや",1500); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
+await himMsg("なお、見た？",700); await himMsg("出てしもた。俺の名前、全開のやつ",1200); await himMsg("発端は、アプリ入れてたことやねん",1300); await himMsg("俺は平気や。ほんまに",1000); await himMsg("心配なんは、なおの画面のほうや",1500); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
 askChoices("なおの返信を選んで",[
-{label:"私も、大丈夫",fn:async()=>{state.choice1="strong";await himMsg("ほんま？",1000);await himMsg("無理してへん？",1200);await himMsg("…強いな、なおは",1400);lineSequence2();}},
-{label:"怖くないって言ったら、嘘になる",fn:async()=>{state.choice1="scared";await himMsg("ごめんな",1100);await himMsg("そんな思いさせたくなかった",1300);await himMsg("守るから、絶対",1500);lineSequence2();}},
-{label:"今、声聞きたい",fn:async()=>{state.choice1="call";await himMsg("俺も",900);await himMsg("今かける",1000);later(showIncomingCall,1200);}},
+{label:"うん、私は平気",fn:async()=>{state.choice1="strong";await himMsg("ほんまか？",1000);await himMsg("顔、見てへんから分からん",1200);await himMsg("…無理だけは、すんなよ",1400);lineSequence2();}},
+{label:"平気なわけ、ないやん",fn:async()=>{state.choice1="scared";await himMsg("ごめん",1100);await himMsg("そばにおれんのが、一番あかん",1300);await himMsg("俺が、全部止めるから",1500);lineSequence2();}},
+{label:"声、聞かせて",fn:async()=>{state.choice1="call";await himMsg("俺もや",900);await himMsg("今、かけるわ",1000);later(showIncomingCall,1200);}},
 ]);
 }
 async function lineSequence2(){ if(!state.started||state._seq2) return; state._seq2=true;
   
-await himMsg("マネージャーと今話した",1200); await himMsg("事務所、コメント出すって",1000); await himMsg("「交際の事実はない」ってやつ",1400); await himMsg("アプリのことは、俺が全部背負う",1200); await himMsg("なおのことは、一言も出さへん約束や",1400); await himMsg("…ごめんな、巻き込んで",1500); await himVoice("assets/vm-t-bye.mp3","0:03");
+await himMsg("マネージャーと、話した",1200); await himMsg("事務所、コメント出すって決めたらしい",1100); await himMsg("中身は「交際の事実はない」や",1400); await himMsg("アプリのほうは、俺ひとりで被る",1200); await himMsg("なおの名前は、出さへん。そこは約束させた",1400); await himMsg("…巻き込んだな。ごめん",1500); await himVoice("assets/vm-t-bye.mp3","0:03");
 askChoices("これから、どうする？",[
 {label:"嘘はつかない。それでいこう",fn:()=>ending("open")},
 {label:"今は、静かに待とう",fn:()=>ending("wait")},
@@ -1237,14 +1237,14 @@ if(customLines){ const playN=n=>{ if(state.caller!=="manager") return; if(!state
  timers.push(setTimeout(step,Math.max(4200,Math.round(MGR_DUR[0]*1000)+350))); }
 else { startCallVoice(); }
 }
-$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state._tinderCall){ state._tinderCall=false; state.caller="hiroto"; show("tinder"); if(window.__tinderAfterCall) __tinderAfterCall(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、電話あった？"); await himMsg("…連絡、控えてって言われた？");
+$("#call-end").addEventListener("click",async()=>{ if(state._answered){ logCall("📞 "+(state._callWho||"ひろと")+" ・ 通話 "+Math.floor(state.callSec/60)+":"+String(state.callSec%60).padStart(2,"0")+" ・ "+nowTime()); state._answered=false; } clearInterval(state.callTimer); stopCallVoice(); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeAfter) interludeAfter(); return; } if(state._tinderCall){ state._tinderCall=false; state.caller="hiroto"; show("tinder"); if(window.__tinderAfterCall) __tinderAfterCall(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所、電話した？"); await himMsg("「連絡は控えて」って、言われたんか");
    const w198=$("#choices");
    if(w198&&!w198.classList.contains("on")&&!state.ended&&!state.act2){ askChoices("なおの返信を選んで",[
-    {label:"そっちは大丈夫なん？",fn:async()=>{ await himMsg("大丈夫や。怒られはしたけどな"); await himMsg("それより、なおが心配やった"); }},
-    {label:"ごめん、私のせいで",fn:async()=>{ await himMsg("ちゃう。なおのせいちゃう"); await himMsg("アプリ使ったのは俺や。そこは、俺が謝ることやねん"); }},
-    {label:"連絡、控えなあかんの？",fn:async()=>{ await himMsg("……事務所には、そう言われた"); await himMsg("でも、決めるのは俺にもやらせて"); }}]); }
-   else { await himMsg("ごめんな"); await himMsg("俺は大丈夫やから"); }
-   return; } show("line"); openChat(); if(state.ended||state.act2){ await himMsg("…電話、ありがとう"); await himMsg("元気でな"); return; } await himMsg("電話、ありがとう"); await himMsg("声聞けて、ちょっと落ち着いた"); lineSequence2();});
+    {label:"ひろとは、怒られたん？",fn:async()=>{ await himMsg("怒られは、した"); await himMsg("でも俺より、なおがどうしてるかやった"); }},
+    {label:"謝るのは、私のほうやん",fn:async()=>{ await himMsg("ちゃう。それは違う"); await himMsg("アプリ開いたのは俺や。謝るのも、俺だけや"); }},
+    {label:"もう連絡したら、あかんの？",fn:async()=>{ await himMsg("……事務所は、そう言いたいらしい"); await himMsg("けど、最後に決めるのは俺や"); }}]); }
+   else { await himMsg("ごめん"); await himMsg("俺は、平気やから"); }
+   return; } show("line"); openChat(); if(state.ended||state.act2){ await himMsg("…電話、ありがとう"); await himMsg("元気でな"); return; } await himMsg("…出てくれて、ありがとう"); await himMsg("声聞いたら、少し落ち着いた"); lineSequence2();});
 async function ending(kind){ if(state.ended) return; state.ended=true;
 const box={open:{h:"エンディング：事実を、まっすぐに",t:"翌日、ひろとは事務所の文面を、そのままは読まなかった。短いけど、自分の言葉のコメントを出した。「アプリを使っていたのは事実です。お相手とは、交際していません」——炎上は続いた。それでも、嘘のない言葉は、届く人のところへ少しずつ届いていった。",news:"本人がコメント　「交際の事実はありません」"},
 wait:{h:"エンディング：静かに待つ",t:"二人は表向き、静かに過ごすことにした。連絡はしない。約束はそれだけのはずだった。——ひと月後、彼の投稿にマロンの写真が載った。「元気でおる」の合図。意味を知っているのは、二人だけだった。",news:"アプリ利用疑惑は沈静化へ　事務所は静観の構え"},
@@ -1634,12 +1634,12 @@ const MGR_LINES=["「…もしもし、なおさんですか。私、井汲の�
 $("#call-answer").addEventListener("click",()=>{ ringStop(); $("#call-incoming").style.display="none"; $("#call-active").style.display="flex"; const mgr=state.caller==="manager";
   $("#call-act-name").textContent=mgr?"マネージャー（事務所）":"ひろと"; $("#call-act-img").src=mgr?"assets/default-avatar.svg":"assets/ig-avatar.jpg";
   startCall(mgr?MGR_LINES:null); state._answered=true; state._callWho=mgr?"マネージャー（事務所）":"ひろと"; });
-$("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.caller==="manager"?"マネージャー（事務所）":"ひろと")+" ・ 不在着信（拒否） ・ "+nowTime()); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeDeclined) interludeDeclined(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("マネージャーから電話いった？",300); await himMsg("出んでも大丈夫やで");
+$("#call-decline").addEventListener("click",async()=>{ logCall("📵 "+(state.caller==="manager"?"マネージャー（事務所）":"ひろと")+" ・ 不在着信（拒否） ・ "+nowTime()); ringStop(); if(state._interludeCall){ state._interludeCall=false; state.caller="hiroto"; show("line"); openChat(); if(window.interludeDeclined) interludeDeclined(); return; } if(state.caller==="manager"){ state.caller="hiroto"; show("line"); openChat(); await himMsg("事務所から、着信あったやろ",300); await himMsg("出んで、正解やで");
    const w198=$("#choices");
    if(w198&&!w198.classList.contains("on")&&!state.ended&&!state.act2){ askChoices("なおの返信を選んで",[
-    {label:"何て言われたん？",fn:async()=>{ await himMsg("俺から言うわ。事実確認と、コメント出すって話"); await himMsg("あと、連絡は控えてって。それだけや"); }},
-    {label:"ごめん、出られへんかった",fn:async()=>{ await himMsg("謝らんでええ。知らん番号、怖いよな"); await himMsg("大事な話は、俺から直接言うから"); }}]); }
-   else { await himMsg("内容は俺から聞いて"); }
+    {label:"なんて言いたかったんやろ",fn:async()=>{ await himMsg("中身は俺が聞いた。事実確認と、例のコメントの話"); await himMsg("「連絡は控えて」も。それだけ"); }},
+    {label:"怖くて、出れんかった",fn:async()=>{ await himMsg("ええんや。知らん番号は、誰でも怖い"); await himMsg("大事なことは、俺の口から言うから"); }}]); }
+   else { await himMsg("中身は、俺から言うわ"); }
    return; } show("line"); openChat(); await himMsg("出れんかった？",300); await himMsg("大丈夫、気にせんといて"); await himMsg("文字でも、なおと話せたらいい"); lineSequence2(); });
 /* ===== v2: act2 next morning ===== */
 async function startAct2(kind){ if(state._act2) return; state._act2=true; state.act2=true; state.started=true; state._mgrDone=true; $("#lock-date").textContent="11月3日 月曜日";
@@ -11960,7 +11960,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v596"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v597"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19625,6 +19625,33 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
   var svg=b.querySelector("svg"); if(!svg) return; var on=b.dataset.on==="1"; b.dataset.on=on?"0":"1";
   svg.setAttribute("fill",on?"none":"#ed4956"); svg.setAttribute("stroke",on?"#262626":"#ed4956");
  }); });
+})();
+</script>
+<script>
+/* ===== Tinder ver v597: queue 7T(1) - mid-scandal, the couple's joint account 'futari_0927' is accidentally switched public and becomes the second wave (original route only; the dating route's deliberate opening is 7T(2), shipped with 7R(i)). Fires once, 70s into startScandal's cascade: state._subLeaked / state._subPublic="leaked" are set, heat spikes to 97, a news row + an X post + a push carry the second wave, and the sub-account's own view follows (private chip removed, followers 2 -> 18,432, a 'public now' note above the bio). A 2.5s watcher re-applies the account display while the flag stands, so a resumed snapshot keeps the leaked state. MGR_LINES and every factual news/X line are untouched. ===== */
+(function(){
+if(window.__v597) return; window.__v597=true;
+function applySubPublic(){
+var v=document.querySelector("#v-subig"); if(!v) return;
+var chip=v.querySelector(".v587-priv"); if(chip) chip.style.display="none";
+var ns=v.querySelectorAll(".ig-stats .n"); if(ns&&ns[1]) ns[1].textContent="18,432";
+if(!v.querySelector(".v597-note")){ var n=document.createElement("div"); n.className="v597-note"; n.style.cssText="margin:0 16px 10px;padding:9px 12px;background:#fff1f2;border:1px solid #fecdd3;border-radius:10px;font-size:12.5px;color:#9f1239;font-weight:700"; n.textContent="公開中 —— このアカウントは今、誰でも見られる状態です"; var bio=v.querySelector(".v587-bio"); if(bio&&bio.parentNode) bio.parentNode.insertBefore(n,bio.nextSibling);}
+}
+window.__subLeak597=function(){
+try{
+if(typeof state==="undefined"||state._subLeaked||state.ended||state.act2) return;
+state._subLeaked=true; state._subPublic="leaked";
+applySubPublic();
+if(typeof setHeat==="function") setHeat(97);
+if(typeof addNewsRow==="function") addNewsRow("assets/couple-8.jpg","【第二波】鍵垢のはずが公開に——二人の共同アカウント「futari_0927」拡散、カップル写真19件が流出","週刊デジタル ・ たった今",null);
+var tl=document.querySelector("#x-pane-tl");
+if(tl&&typeof postEl==="function"){ var pel=postEl({n:"まとめ速報",h:"@matome_soku",t:"【拡散中】二人の共同アカウントとされる「futari_0927」が公開状態に。鍵垢のはずが、カップル写真19件が一斉に回り始めてる #大翔Tinder #futari_0927",m:["💬 7,204","🔁 28,930","❤️ 13,540"]},true); tl.prepend(pel);}
+if(typeof push==="function") push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","futari_0927 が公開になりました","鍵が外れ、フォロワーが急増している——タップでアカウントへ",function(){ show("subig");});
+if(typeof toast==="function") toast("🔥 <b>第二波</b>：二人の共同アカウントが、公開になってしまった");
+}catch(e){}
+};
+if(typeof startScandal==="function"){ var _ss597=startScandal; startScandal=function(){ _ss597(); try{ later(function(){ if(typeof state!=="undefined"&&state._route!=="dating") window.__subLeak597();},70000);}catch(e){}};}
+setInterval(function(){ try{ if(typeof state!=="undefined"&&state._subLeaked) applySubPublic();}catch(e){}},2500);
 })();
 </script>
 </body>
