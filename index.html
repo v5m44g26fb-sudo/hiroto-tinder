@@ -881,7 +881,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v565</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v566</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11962,7 +11962,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v565"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v566"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19394,6 +19394,73 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
   /* leaving LINE by its list-head back button also puts the panel away */
   if(p && t.closest("#line-head-list .back")) p.style.display="none";
  },true);
+})();
+</script>
+
+<script>
+/* ===== v566: IG comments answer the post too - both comment sheets are seeded
+   with fan (his) and friend (hers) comments matched to each caption ===== */
+(function(){
+ if(window.__v566) return; window.__v566=true;
+ function hashS(s){ var x=0; for(var i=0;i<s.length;i++) x=(x*31+s.charCodeAt(i))>>>0; return x; }
+ var HIS=[
+  {re:/撮って欲しい|リクエスト|何が見たい/, c:[["hiro_pyon","次はダンス動画お願い！"],["fan_mama","笑顔の自撮り待ってます"],["rottdan_a","マロンとの写真も見たい"]]},
+  {re:/ネックレス|おばあちゃん/, c:[["fan_mama","おばあちゃんのネックレス大事にしてて素敵"],["ikumi_ouen","ネックレス似合ってる！"],["hrt_dayo","そういうところが好き"]]},
+  {re:/ダンス|踊|振り付け/, c:[["dance_hiro","ダンスのキレが増してる"],["sg_hrt","Your dance is amazing!"],["hiro_pyon","何回も見返した"]]},
+  {re:/ライブ|ファンミ|神戸|ツアー|公演/, c:[["hrt_dayo","お疲れさま！最高だった"],["fan_mama","王子様衣装が忘れられない"],["ikumi_ouen","次のライブも絶対行く"]]},
+  {re:/釜山|韓国|旅行|海/, c:[["weibo_fan","釜山楽しそう！"],["hrt_dayo","旅行の写真もっと見たい"],["sg_hrt","Looks fun in Busan!"]]},
+  {re:/マロン|犬/, c:[["fan_mama","マロンくんかわいすぎる"],["rottdan_a","犬と一緒の写真がいちばん好き"],["hiro_pyon","マロンに癒された"]]},
+  {re:/ごはん|カフェ|コーラ|食べ|飲ん/, c:[["ikumi_ouen","美味しいもの食べてて安心する"],["fan_mama","たくさん食べてね"],["hrt_dayo","そのお店気になる"]]},
+  {re:/寒|冬|雪|コート|ニット/, c:[["hiro_pyon","寒くなってきたね、風邪ひかないで"],["fan_mama","冬の大翔も好き"],["m_support","温かくしてね"]]},
+  {re:/バラ|花|\U0001f339/, c:[["rottdan_a","バラ似合いすぎる"],["fan_mama","この写真、雰囲気がすてき"],["ikumi_ouen","花と大翔は最強"]]},
+  {re:/歌|曲|レコーディング|スタジオ/, c:[["sing_hiroto","歌声が頭から離れない"],["ikumi_ouen","新曲楽しみにしてる"],["weibo_fan","応援してます！大好き"]]},
+  {re:/誕生日|おめでとう/, c:[["fan_mama","お誕生日おめでとう！"],["ikumi_ouen","生まれてきてくれてありがとう"],["hrt_dayo","おめでとうございます！"]]},
+  {re:/発表|お騒がせ|謝罪|申し訳/, c:[["m_support","本人の言葉を待ってます"],["ikumi_ouen","正直しんどいけど、応援はやめない"],["hrt_dayo","まずは落ち着いて。味方だよ"]]},
+  {re:/時間|変わらない|止まれば|思い出/, c:[["fan_mama","ずっとこの笑顔見てたい"],["m_support","無理せず頑張ってね"],["rottdan_a","この写真すき！"]]}
+ ];
+ var HIS_GEN=[["rottdan_a","この笑顔ほんとすき"],["hiro_pyon","かっこよすぎる…"],["ikumi_ouen","いつも元気もらってます"],["m_support","無理せず頑張ってね"]];
+ var HIS_WORRY=[["m_support","今は大変な時期だと思うけど、応援してる"],["fan_mama","無理だけはしないでね"],["ikumi_ouen","ずっと味方だよ"]];
+ var HER=[
+  {re:/牛タン|食べ|丼|ごはん/, c:[["yui_s","それやばい…私も食べたい"],["rina_s","人生で一番って相当だね"],["misaki_s2","今度連れてって"]]},
+  {re:/遠征|ペンラ|推し/, c:[["misaki_s2","遠征おつかれさま！ペンラの光きれい"],["yui_s","推し活してるなおがいちばん楽しそう"],["rina_s","いいな〜その熱量"]]},
+  {re:/釜山|海|景色/, c:[["rina_s","釜山の景色最高だね"],["misaki_s2","また行けますように、だね"],["yui_s","この写真すき"]]},
+  {re:/カフェ|カフェオレ|ラテ|コーヒー/, c:[["yui_s","そのカフェ今度連れてって"],["sauna_m","カフェオレ美味しいお店は正義"],["misaki_s2","ほっとするカフェ、いいよね"]]},
+  {re:/たこ焼き/, c:[["yui_s","たこ焼き〜！ここどこ"],["m2326","熱々がいちばん"],["rina_s","屋台のたこ焼きは優勝"]]},
+  {re:/サウナ|整/, c:[["sauna_m","整った日のなおは強い"],["yui_s","今度サウナも行こ"],["misaki_s2","サウナ→カフェオレの流れだね"]]}
+ ];
+ var HER_GEN=[["yui_s","かわいい〜！"],["misaki_s2","センス良き"],["rina_s","それな！"]];
+ var HER_TM=["2時間前","1時間前","32分前","3時間前"];
+ function capOf(post){ var bd=post.querySelector(".cap-body"); if(bd) return bd.textContent||""; var cap=post.querySelector(".cap"); return cap?cap.textContent||"":""; }
+ function pickFor(bank, gen, cap, seed){ for(var i=0;i<bank.length;i++) if(bank[i].re.test(cap)) { var c=bank[i].c; var out=[]; for(var k=0;k<c.length;k++) out.push(c[(seed+k)%c.length]); return out; }
+  var out=[]; for(var k2=0;k2<gen.length;k2++) out.push(gen[(seed+k2)%gen.length]); return out; }
+ function topUp(post, hisSide){
+  if(post.dataset.v566) return;
+  var cap=capOf(post); if(!cap) return;
+  var seed=hashS(cap.trim())%5;
+  var have={}; post.querySelectorAll(".cmt").forEach(function(c){ var b=c.querySelector("b"); if(b) have[b.textContent.trim()]=1; });
+  var target=hisSide?4:3, n=post.querySelectorAll(".cmt").length;
+  if(n>=target){ post.dataset.v566="1"; return; }
+  var list=pickFor(hisSide?HIS:HER, hisSide?HIS_GEN:HER_GEN, cap, seed);
+  if(hisSide && typeof state!=="undefined" && state.phase==="scandal") list=list.slice(0,3).concat([HIS_WORRY[seed%HIS_WORRY.length]]);
+  var added=0;
+  for(var i=0;i<list.length && n<target;i++){ var it=list[i]; if(have[it[0]]) continue;
+   var d=document.createElement("div"); d.className="cmt";
+   var bEl=document.createElement("b"); bEl.textContent=it[0]; d.appendChild(bEl);
+   d.appendChild(document.createTextNode(it[1]));
+   if(!hisSide){ var tm=document.createElement("span"); tm.className="tm"; tm.textContent=HER_TM[(seed+added)%HER_TM.length]; d.appendChild(tm); }
+   post.appendChild(d); have[it[0]]=1; n++; added++; }
+  if(n>=target||added===0) post.dataset.v566="1";
+ }
+ function scan(){ if(document.hidden) return;
+  document.querySelectorAll("#v-hisig .ig-post").forEach(function(p){ try{ topUp(p,true); }catch(e){} });
+  document.querySelectorAll("#v-ig .ig-post").forEach(function(p){ try{ topUp(p,false); }catch(e){} });
+ }
+ var pending=false;
+ var mo=new MutationObserver(function(ms){ if(pending) return; var rel=false;
+   for(var i=0;i<ms.length;i++){ var t=ms[i].target; if(t&&t.closest&&t.closest("#v-ig,#v-hisig")){ rel=true; break; } }
+   if(!rel) return; pending=true; setTimeout(function(){ pending=false; scan(); },400); });
+ var ph=document.querySelector("#phone"); if(ph) mo.observe(ph,{childList:true,subtree:true});
+ setInterval(scan,4000); scan();
 })();
 </script>
 </body>
