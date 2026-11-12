@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v727</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v728</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v727"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v728"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21331,6 +21331,13 @@ try{
   if(pub && curTab==="posts"){
    var box=$("#v725-posts");
    if(box && typeof postEl==="function"){
+    var pinWrap=document.createElement("div"); pinWrap.id="v728-pin";
+    var pinLab=document.createElement("div");
+    pinLab.style.cssText="display:flex;align-items:center;gap:6px;padding:10px 14px 0 44px;color:#536471;font-size:12.5px;font-weight:700";
+    pinLab.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="#536471"><path d="M16 3a1 1 0 0 1 1 1v5.2l2.3 3.4a1 1 0 0 1-.83 1.55H13v6.35l-2 2-2-2v-6.35H5.53A1 1 0 0 1 4.7 12.6L7 9.2V4a1 1 0 0 1 1-1h8z"/></svg>固定されたポスト';
+    pinWrap.appendChild(pinLab);
+    pinWrap.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:"5時間前", t:"覗きに来た人へ。鍵垢のまま文句言うのはナシね。見たなら見た、保存したならしたって、表で言えば？ ここは逃げも隠れもしないから", m:["4,102","15,330","52,418"], imp:"386"}, true));
+    box.appendChild(pinWrap);
     TAUNTS.forEach(function(T){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:T.tm, t:T.t, m:T.m, imp:T.imp}, true)); });
     LEAKS.forEach(function(L){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:L.tm, t:L.t, m:L.m, imp:L.imp, q:{n:"サブ垢", h:"@nao_ura ・ Instagram", t:"本垢に載せない写真の置き場", img:L.img}}, true)); });
    }
