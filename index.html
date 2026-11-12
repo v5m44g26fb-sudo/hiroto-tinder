@@ -929,7 +929,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v634</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v635</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11977,7 +11977,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v634"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v635"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20070,6 +20070,45 @@ if(typeof ending==="function"){ var _e605=ending; ending=async function(kind){ i
 })();
 </script>
 
+
+<script>
+/* ===== v635: sub-account highlights (stories) for futari_0927 ===== */
+(function(){ if(window.__v635subhl) return; window.__v635subhl=true;
+ var v=document.querySelector("#v-subig"); if(!v) return;
+ var HLS=[
+  ["🚶 おでかけ","assets/couple-11.jpg",[["assets/couple-11.jpg","釜山、海雲台"],["assets/couple-6.jpg","雨上がりの帰り道"],["assets/couple-2.jpg","買い物帰り"]]],
+  ["🍽 ごはん","assets/couple-22.jpg",[["assets/couple-22.jpg","焼肉の日"],["assets/couple-10.jpg","たこ焼き"],["assets/couple-3.jpg","最初の夜、居酒屋"]]],
+  ["🐶 マロン","assets/couple-12.jpg",[["assets/couple-12.jpg","散歩"],["assets/couple-19.jpg","デレデレ"]]],
+  ["🧣 ふたり","assets/couple-9.jpg",[["assets/couple-9.jpg","マフラー半分こ"],["assets/couple-20.jpg","電車の居眠り"],["assets/couple-21.jpg","傘"]]]];
+ var row=document.createElement("div");
+ row.style.cssText="display:flex;gap:14px;padding:10px 14px 4px;overflow-x:auto";
+ var player=document.createElement("div");
+ player.style.cssText="position:absolute;inset:0;z-index:95;background:#000;display:none;flex-direction:column";
+ player.innerHTML='<div id="subhl-bars" style="display:flex;gap:4px;padding:52px 10px 8px"></div>'+
+  '<div style="display:flex;align-items:center;padding:2px 12px;color:#fff;font-size:13.5px"><img loading="lazy" decoding="async" src="assets/cafe-latte.jpg" style="width:30px;height:30px;border-radius:50%;margin-right:8px" alt=""><b>futari_0927</b><span id="subhl-title" style="color:#bbb;margin-left:8px"></span><button id="subhl-x" style="margin-left:auto;background:none;border:none;color:#fff;font-size:19px;cursor:pointer">✕</button></div>'+
+  '<div style="flex:1;position:relative"><img loading="lazy" decoding="async" id="subhl-img" style="width:100%;height:100%;object-fit:contain" alt=""><div id="subhl-cap" style="position:absolute;left:0;right:0;bottom:26px;text-align:center;color:#fff;font-size:15px;text-shadow:0 1px 6px rgba(0,0,0,.7)"></div>'+
+  '<div id="subhl-prev" style="position:absolute;left:0;top:0;bottom:0;width:35%"></div><div id="subhl-next" style="position:absolute;right:0;top:0;bottom:0;width:65%"></div></div>';
+ v.appendChild(player);
+ var segs=[], idx=0, timer=null;
+ function draw(){ var sg=segs[idx];
+  player.querySelector("#subhl-img").src=sg[0];
+  player.querySelector("#subhl-cap").textContent=sg[1];
+  player.querySelector("#subhl-bars").innerHTML=segs.map(function(_,i){ return '<span style="flex:1;height:3px;border-radius:2px;background:'+(i<=idx?"#fff":"rgba(255,255,255,.35)")+'"></span>'; }).join("");
+  clearTimeout(timer); timer=setTimeout(function(){ step(1); },3500); }
+ function step(d){ idx+=d; if(idx<0) idx=0; if(idx>=segs.length){ close(); return; } draw(); }
+ function close(){ player.style.display="none"; clearTimeout(timer); }
+ player.querySelector("#subhl-x").addEventListener("click",close);
+ player.querySelector("#subhl-next").addEventListener("click",function(){ step(1); });
+ player.querySelector("#subhl-prev").addEventListener("click",function(){ step(-1); });
+ HLS.forEach(function(h){ var b=document.createElement("button");
+  b.style.cssText="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#262626;flex:0 0 auto;padding:0";
+  b.innerHTML='<span style="display:block;width:58px;height:58px;border-radius:50%;padding:2.5px;border:1.5px solid #c7c7cc;box-sizing:border-box"><img loading="lazy" decoding="async" src="'+h[1]+'" style="width:100%;height:100%;border-radius:50%;object-fit:cover" alt=""></span>'+h[0];
+  b.addEventListener("click",function(){ segs=h[2]; idx=0; player.querySelector("#subhl-title").textContent=h[0]; player.style.display="flex"; draw(); });
+  row.appendChild(b); });
+ var grid=v.querySelector(".v587-grid");
+ if(grid) grid.parentElement.insertBefore(row, grid); else v.querySelector(".scroll").appendChild(row);
+})();
+</script>
 </body>
 
 
