@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v729</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v730</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v729"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v730"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21503,6 +21503,62 @@ try{
   }, true);
   setInterval(wire, 1000);
  }catch(e){}
+})();
+</script>
+
+
+<script>
+/* ===== v730: nao_ura X profile - media tab opens real-X style photo viewer ===== */
+(function(){
+ if(window.__v730) return; window.__v730 = true;
+ var $=function(s){return document.querySelector(s);};
+ var POSTS={
+  "scar-sofa.jpg":{t:"『本垢に載せない』って書いたのに、結局みんな見に来るじゃん。…で、保存した？ 笑", tm:"3時間前", m:["842","12,408","48,203"], imp:"312"},
+  "scar-kiss2.jpg":{t:"キス寸前で止まると思った？ この先は渡さないよ。ふたりだけのやつだから。悔しい？", tm:"3時間前", m:["1,204","18,930","61,447"], imp:"428"},
+  "scar-car.jpg":{t:"車で迎えに来る関係を『ただのファン』って言い張るの、そろそろ無理ない？", tm:"2時間前", m:["693","9,812","35,209"], imp:"256"},
+  "scar-nose.jpg":{t:"鼻にキスしただけでこの騒ぎ？ 本題の写真は、まだ出してないのにね", tm:"2時間前", m:["587","8,415","31,860"], imp:"214"},
+  "scar-first.jpg":{t:"出会った日の夜からこれだもん。隠しててもバレるに決まってるわ", tm:"1時間前", m:["512","7,340","28,955"], imp:"198"},
+  "scar-bed.jpg":{t:"これ、サブ垢に載せなかったやつだよ。流出させたの、どっちの側だっけ？", tm:"1時間前", m:["1,068","16,772","55,301"], imp:"372"}
+ };
+ var vx=$("#v-x"); if(!vx) return;
+ var ov=document.createElement("div"); ov.id="v730-xphoto";
+ ov.style.cssText="position:absolute;inset:0;background:#000;z-index:240;display:none;flex-direction:column";
+ ov.innerHTML='<div style="display:flex;align-items:center;padding:10px 12px">'
+  +'<button id="v730-close" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer">✕</button>'
+  +'<span style="margin-left:12px;color:#fff;font-weight:800;font-size:14.5px">写真</span></div>'
+  +'<div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0"><img id="v730-img" alt="" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>'
+  +'<div style="padding:12px 16px 20px;color:#fff"><div style="display:flex;align-items:center;gap:8px"><img src="assets/cafe-latte.jpg" width="34" height="34" alt="" style="border-radius:50%;object-fit:cover"><span><b style="font-size:14px">nao_ura</b><span id="v730-meta" style="display:block;color:#71767b;font-size:12px"></span></span></div>'
+  +'<div id="v730-cap" style="font-size:14.5px;line-height:1.65;margin-top:9px"></div>'
+  +'<div id="v730-metrics" style="display:flex;gap:26px;color:#71767b;font-size:12.5px;margin-top:11px"></div></div>';
+ vx.appendChild(ov);
+ function ic(p){ return '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-3px;margin-right:4px"><path d="'+p+'"/></svg>'; }
+ function openPhoto(fn){
+  var P=POSTS[fn]; if(!P) return;
+  $("#v730-img").src="assets/"+fn;
+  $("#v730-meta").textContent="@nao_ura ・ "+P.tm;
+  $("#v730-cap").textContent=P.t;
+  $("#v730-metrics").innerHTML='<span>'+ic("M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z")+"<b>"+P.m[0]+"</b></span>"
+   +'<span>'+ic("M17 1.5 21 5.5l-4 4M3 12.5V11a3 3 0 0 1 3-3h15M7 22.5l-4-4 4-4M21 11.5V13a3 3 0 0 1-3 3H3")+"<b>"+P.m[1]+"</b></span>"
+   +'<span>'+ic("M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z")+"<b>"+P.m[2]+"</b></span>"
+   +'<span><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px;margin-right:4px"><rect x="3.5" y="11" width="3.4" height="9" rx="1"/><rect x="10.3" y="4" width="3.4" height="16" rx="1"/><rect x="17.1" y="8" width="3.4" height="12" rx="1"/></svg><b>'+P.imp+'万</b></span>';
+  ov.style.display="flex";
+ }
+ function closePhoto(){ ov.style.display="none"; }
+ $("#v730-close").addEventListener("click", closePhoto);
+ ov.addEventListener("click", function(e){ if(e.target===ov) closePhoto(); });
+ var prof=$("#x-pane-subprof");
+ if(prof) prof.addEventListener("click", function(e){
+  var im=e.target && e.target.closest ? e.target.closest("[data-v725med]") : null;
+  if(!im) return;
+  e.stopPropagation(); e.preventDefault();
+  var fn=(im.getAttribute("src")||"").split("/").pop();
+  openPhoto(fn);
+ }, true);
+ document.addEventListener("click", function(e){
+  var b=e.target && e.target.closest ? e.target.closest("[data-xtab]") : null;
+  if(b) closePhoto();
+ }, true);
+ window.__v730openPhoto=openPhoto;
 })();
 </script>
 
