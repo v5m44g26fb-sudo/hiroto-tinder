@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v656</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v657</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1248,7 +1248,7 @@ const IG_CMTS=[
 ["sagasu_fan","推しの名前で検索したらここに辿り着いた…荒らす気はないよ、ごめんね"],
 ["m_check","最初から気づいてたなら、覚悟のうえってことか。マッチした側にも事情はある"]
 ];
-function floodComments(){IG_CMTS.forEach((c,i)=>later(()=>{const d=document.createElement("div");d.className="cmt";d.innerHTML=`<b>${c[0]}</b>${c[1]}<span class="tm">今</span>`;const _cb=$("#ig-cmts"); if(_cb) _cb.appendChild(d); state.igCmt++;$("#ig-cmt-n").textContent=state.igCmt;$("#ig-bell").textContent="•";bump("ig");const h=document.createElement("div");h.className="cmt";if(i%3===0){h.innerHTML=`<b>${c[0]}</b>例の投稿、掘り返されてるよ…`;$("#his-cmts").appendChild(h)}},4000+i*6500))}
+function floodComments(){IG_CMTS.forEach((c,i)=>later(()=>{const d=document.createElement("div");d.className="cmt";d.innerHTML=`<b>${c[0]}</b>${c[1]}<span class="tm">今</span>`;const _cb=$("#ig-cmts"); if(_cb) _cb.appendChild(d); state.igCmt++;$("#ig-cmt-n").textContent=state.igCmt;$("#ig-bell").textContent="•";bump("ig");const h=document.createElement("div");h.className="cmt";if(i%3===0){var HISF=["例の投稿、掘り返されてるよ…","大翔、無理しないで","コメント欄、荒らさないであげて","本人の言葉、待とう","事務所のコメント見た？","心配で見に来ちゃった","今はそっとしておいてほしい","応援してる人、ここにもいるよ"];h.innerHTML=`<b>${c[0]}</b>${HISF[((i/3)|0)%HISF.length]}`;$("#his-cmts").appendChild(h)}},4000+i*6500))}
 const DMS=[
 ["yun_o0","話聞かせて？　本当なの？"],["geino_scoop","週刊デジタルです。コメントいただけませんか"],["m_support","味方もいるからね"],["tokutei_jp","プロフ写真の出どころ教えて"],["yui_s","なお電話出て！！"],["hiro_fan_88","大翔の好きなところ教えてください"],["maron_love","マロンにだけは、何もないですよね…？　犬は悪くない"],["geino_scoop2","週刊デジタルです。写真の買い取りの件で一度だけ、お話を聞かせてください"]
 ];
@@ -4822,7 +4822,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    [/仕事|練習|レッスン|収録|ダンス練/,["今日はレッスンやった","今、休憩中","終わったらLINEする"]],
    [/ごはん|食べ|麺|ラーメン|カフェ|コーヒー|オレ/,["その店、気になる","カフェオレは甘め派やろ、なお","今度連れてって"]],
    [/ライブ|ステージ|歌|ダンス/,["次のライブ、来てくれる？","今日のダンス、見てほしかった","歌、練習してる"]],
-   [/犬|マロン|わんこ/,["マロン元気やで","実家帰りたいわ","マロンにも会わせたい"]],
+   [/犬|マロン|わんこ/,["マロン元気やで","家、帰りたいわ","マロンにも会わせたい"]],
    [/おはよう|おはよ/,["おはよ","もう起きたん？","今日も一日、がんばろ"]],
    [/おやすみ|寝る|眠い|ねむ/,["おやすみ","ゆっくり寝えや","明日も話そな"]]];
   const SLOW=["（既読がつかない…）","…ごめん、今バタバタしてる","あとでLINEするな"];
@@ -6398,7 +6398,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
   [/日プ|オーディション|練習生/,"日プの時は16歳で、ダンス未経験やった。……よく残った方やと思う"],
   [/創造営|中国/,"中国の番組、中国語ゼロから行った。ほんま必死やったわ"],
   [/ボイプラ|韓国/,"韓国も行ったな。最後の最後まで、悔しかった"],
-  [/マロン|犬|わんこ/,"マロン？ 実家の犬。……会いたいな、今"],
+  [/マロン|犬|わんこ/,"マロン？ うちの犬。……会いたいな、今"],
   [/誕生日|8月23/,"俺？ 8月23日。……覚えてくれる？"],
   [/ロック|キャッチフレーズ/,"『皆さんの心をロックします』……昔のキャッチフレーズ。今聞くと恥ずかしい"],
   [/Tasty|ソロ|デビュー曲/,"ソロで出した曲、聴いてくれた？ 『Tasty』って言うねん"]];
@@ -6928,7 +6928,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
     if(/紅葉|もみじ|秋の|秋晴れ|肌寒|寒くな/.test(s2)&&Math.random()<0.65)
      fire("autumn",["紅葉の季節やな。……なおは見に行く人？","秋の夜って、なんか話したなるねん。……なんでやろな","寒なってきたな。風邪ひくなよ"]);
     else if(/家族|実家|お母さん|お父さん|きょうだい|兄弟|姉妹/.test(s2)&&Math.random()<0.65)
-     fire("family",["実家から、みかん届いてん。……田舎あるあるやな","なおは家族と仲ええほう？　……なんか、そんな感じする","うちの親、俺よりマロンの写真ばっか欲しがるねん"]);
+     fire("family",["親戚から、みかん届いてん。……田舎あるあるやな","なおは家族と仲ええほう？　……なんか、そんな感じする","うちの親、マロンの写真ばっか撮るねん"]);
    } }catch(e){}
   return r; };
 })();
@@ -11974,7 +11974,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v656"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v657"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
