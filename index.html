@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v654</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v655</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1264,7 +1264,7 @@ function meMsg(text){ pop();const d=document.createElement("div");d.className="m
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){ if(state.act2||state.ended||state._seq1) return; state._seq1=true;
 push("LINE","#06c755","💬","ひろと","「なお」——タップでトークを開く",()=>{show("line");openChat()});
-await himMsg("なお、見た？",700); await himMsg("出てしもた。俺の名前、全開のやつ",1200); await himMsg("発端は、アプリ入れてたことやねん",1300); await himMsg("俺は平気や。ほんまに",1000); await himMsg("心配なんは、なおの画面のほうや",1500); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himVoice("assets/vm-scandal2.mp3","0:04");
+await himMsg("なお、見た？",700); await himMsg("出てしもた。俺の名前、全開のやつ",1200); await himMsg("発端は、アプリ入れてたことやねん",1300); await himMsg("俺は平気や。ほんまに",1000); await himMsg("心配なんは、なおの画面のほうや",1500); await himVoice("assets/vm-t-sorry.mp3","0:04"); await himMsg("…声でしか、言えんくて",1000); await himVoice("assets/voice-msg-scandal.mp3","0:06"); await himMsg("…ひとりで抱え込むなよ",1300);
 askChoices("なおの返信を選んで",[
 {label:"うん、私は平気",fn:async()=>{state.choice1="strong";await himMsg("ほんまか？",1000);await himMsg("顔、見てへんから分からん",1200);await himMsg("…無理だけは、すんなよ",1400);lineSequence2();}},
 {label:"平気なわけ、ないやん",fn:async()=>{state.choice1="scared";await himMsg("ごめん",1100);await himMsg("そばにおれんのが、一番あかん",1300);await himMsg("俺が、全部止めるから",1500);lineSequence2();}},
@@ -11974,7 +11974,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v654"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v655"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20413,6 +20413,49 @@ try{
 </script>
 <style>/* v654: LINE stamp vs Tinder stamp class collision */
 .msg .bub.stamp{opacity:1;position:static}</style>
+
+<script>
+/* ===== v655: trim his feed to 25 and guarantee fan comments on every post ===== */
+(function(){
+ if(window.__v655) return; window.__v655=true;
+ var CUT={"ig-real-DdQ6U3XE1tu.jpg":1,"ig-real-DSenp0hkw5K.jpg":1,"ig-real-DRt5J2Dk_-3.jpg":1,"ig-memories.jpg":1,"ig-may25.jpg":1,"ig-real-DWlm95Bkx-e.jpg":1,"ig-real-DUNaRlBkzpT.jpg":1,"ig-singapore.jpg":1};
+ var GEN=[["rottdan_a","この笑顔ほんとすき"],["hiro_pyon","かっこよすぎる…"],["ikumi_ouen","いつも元気もらってます"],["m_support","無理せず頑張ってね"],["fan_mama","見てるだけで元気出る"],["hrt_dayo","今日もお疲れさま！"],["hiro_pyon","何回も見返した"],["ikumi_ouen","投稿ありがとう！"]];
+ var BYRE=[[/マロン|犬/, [["fan_mama","マロンくんかわいすぎる"],["rottdan_a","犬と一緒の写真がいちばん好き"],["hiro_pyon","マロンに癒された"]]],
+ [/ライブ|ステージ|リハ|公演|ファンミ/, [["hrt_dayo","お疲れさま！最高だった"],["ikumi_ouen","次のライブも絶対行く"],["fan_mama","ステージの大翔がいちばん好き"]]],
+ [/ごはん|食べ|カフェ|コーラ|飲/, [["ikumi_ouen","美味しいもの食べてて安心する"],["fan_mama","たくさん食べてね"],["hrt_dayo","そのお店気になる"]]],
+ [/歌|スタジオ|レコーディング|曲/, [["sing_hiroto","歌声が頭から離れない"],["ikumi_ouen","新曲楽しみにしてる"],["weibo_fan","応援してます！大好き"]]]];
+ function hashS(s){ var x=0; for(var i=0;i<s.length;i++) x=(x*31+s.charCodeAt(i))>>>0; return x; }
+ function fname(p){ var im=p.querySelector("img.pimg"); if(!im) return ""; return ((im.getAttribute("src")||im.dataset.v575src||"").split("/").pop()); }
+ function trim(){
+   var sc=document.querySelector("#v-hisig .scroll"); if(!sc) return false;
+   var posts=[...sc.querySelectorAll(".ig-post")]; var cut=0;
+   posts.forEach(function(p){ if(CUT[fname(p)]){ p.remove(); cut++; } });
+   var grid=sc.querySelector(".ig-grid");
+   if(grid){ [...grid.querySelectorAll("img")].forEach(function(im){ var s=((im.getAttribute("src")||im.dataset.v575src||"").split("/").pop()); if(CUT[s]) im.remove(); }); }
+   return document.querySelectorAll("#v-hisig .ig-post").length<=25;
+ }
+ function topUp(){
+   document.querySelectorAll("#v-hisig .ig-post").forEach(function(p){
+     var n=p.querySelectorAll(".cmt").length; if(n>=4) return;
+     var cap=""; var bd=p.querySelector(".cap-body")||p.querySelector(".cap"); if(bd) cap=bd.textContent||"";
+     var have={}; p.querySelectorAll(".cmt b").forEach(function(b){ have[b.textContent.trim()]=1; });
+     var list=GEN; for(var i=0;i<BYRE.length;i++){ if(BYRE[i][0].test(cap)){ list=BYRE[i][1].concat(GEN); break; } }
+     var seed=hashS(fname(p)||cap)%list.length;
+     for(var k=0;k<list.length && n<4;k++){ var it=list[(seed+k)%list.length]; if(have[it[0]]) continue;
+       var d=document.createElement("div"); d.className="cmt";
+       var b=document.createElement("b"); b.textContent=it[0]; d.appendChild(b);
+       d.appendChild(document.createTextNode(it[1])); p.appendChild(d); have[it[0]]=1; n++; }
+   });
+ }
+ var done=false, tries=0;
+ var iv=setInterval(function(){
+   var v=document.querySelector("#v-hisig"); if(!v) return;
+   if(!done){ done=trim(); }
+   topUp();
+   if(done && ++tries>40) clearInterval(iv);
+ },900);
+})();
+</script>
 </body>
 
 
