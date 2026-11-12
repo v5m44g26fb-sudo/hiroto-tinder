@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v683</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v684</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v683"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v684"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20933,6 +20933,55 @@ try{
      if(!leaked) return;
      fired=true;
      later(function(){ tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【流出】Tinderで送ったとされる写真まで出回る　『本人しか持ってないはずのやつ』と騒然",q:{n:"なお",h:"@nao_0324",tm:"9月28日",t:"Tinderで送ったとされる写真",img:"assets/nao-send.jpg"},m:["💬 4,260","🔁 31,480","❤️ 14,920"]}); },170000);
+   }catch(e){}
+ },1000);
+})();
+</script>
+<script>
+/* ===== v684: the worst photo yet (12/18 sub post + spread wave 6) ===== */
+(function(){
+ if(window.__v684) return; window.__v684=true;
+ function subPost(){
+  var posts=document.querySelectorAll("#v-subig .v587-post");
+  var tpl=null, anchor=null;
+  posts.forEach(function(p){ var im=p.querySelector(".v587-img");
+    if(im&&im.getAttribute("src")==="assets/scar-nose.jpg") tpl=p;
+    if(im&&im.getAttribute("src")==="assets/scar-pov.jpg") anchor=p; });
+  if(!tpl||!anchor||!tpl.parentNode) return;
+  if(document.querySelector('#v-subig .v587-img[src="assets/scar-bed.jpg"]')) return;
+  var np=tpl.cloneNode(true);
+  np.querySelector(".v587-img").src="assets/scar-bed.jpg";
+  var cap=np.querySelector(".v587-cap"); if(cap) cap.innerHTML="<b>nao_ura</b> 内緒、だったはず";
+  var dt=np.querySelector(".v587-date"); if(dt) dt.textContent="12月18日";
+  var cm=np.querySelectorAll(".v587-cmt"); cm.forEach(function(c){ c.remove(); });
+  var c1=document.createElement("div"); c1.className="v587-cmt"; c1.innerHTML="<b>193.hiroto_jixiang</b> …これは、消せへんやつ";
+  (np.querySelector(".v587-date")||np).before(c1);
+  anchor.parentNode.insertBefore(np, anchor);
+  var tiles=document.querySelectorAll("#v-subig .v587-tile");
+  var tt=null, ta=null;
+  tiles.forEach(function(t){ var im=t.querySelector("img");
+    if(im&&im.getAttribute("src")==="assets/scar-nose.jpg") tt=t;
+    if(im&&im.getAttribute("src")==="assets/scar-pov.jpg") ta=t; });
+  if(tt&&ta&&ta.parentNode){ var nt=tt.cloneNode(true); nt.querySelector("img").src="assets/scar-bed.jpg"; ta.parentNode.insertBefore(nt, ta); }
+  document.querySelectorAll("#v-subig .v587-tile").forEach(function(t,ix){ t.setAttribute("data-i", String(ix)); });
+  var st=document.querySelector("#v-subig .ig-stats .n");
+  if(st) st.textContent=String(document.querySelectorAll("#v-subig .v587-post").length);
+ }
+ var siv=setInterval(function(){ try{ subPost(); }catch(e){} },1200);
+ setTimeout(function(){ clearInterval(siv); },20000);
+ function tlPrepend(p){ var tl=document.querySelector("#x-pane-tl"); if(tl) tl.prepend(postEl(p,false)); try{ bump("x"); }catch(e){} }
+ var t0=0, fired=false;
+ setInterval(function(){
+   try{
+     if(typeof state==="undefined") return;
+     if(state.phase==="scandal" && !t0) t0=Date.now();
+     if(fired || state.phase!=="scandal" || state.act2) return;
+     var leaked = state._route!=="dating" ? (!!state._subLeaked || !!state._subPublic || (t0 && Date.now()-t0>110000)) : !!state._subOpened;
+     if(!leaked) return;
+     fired=true;
+     later(function(){ tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【続報】決定的な一枚まで出回ってる。ベッドの上、ワインの瓶…これは言い逃れ、無理でしょ",q:{n:"サブ垢",h:"@nao_ura",tm:"12月18日",t:"内緒、だったはず",img:"assets/scar-bed.jpg"},m:["\U0001F4AC 4,208","\U0001F501 31,204","\u2764\uFE0F 9,412"]}); },195000);
+     later(function(){ tlPrepend({n:"元同担",h:"@moto_dotan",tm:"今",t:"相手の女、こんな写真まで残してたの。確信犯すぎて引く",m:["\U0001F4AC 512","\U0001F501 3,208","\u2764\uFE0F 2,140"]}); },213000);
+     later(function(){ tlPrepend({n:"担降り表明",h:"@orimasu_jp",tm:"今",t:"大翔、これは擁護できない。今日で担降りする。6年間ありがとう",m:["\U0001F4AC 894","\U0001F501 1,530","\u2764\uFE0F 4,208"]}); },231000);
    }catch(e){}
  },1000);
 })();
