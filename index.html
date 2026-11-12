@@ -20103,7 +20103,7 @@ if(typeof ending==="function"){ var _e605=ending; ending=async function(kind){ i
   ["🍽 ごはん","assets/couple-22.jpg",[["assets/couple-22.jpg","焼肉の日"],["assets/couple-10.jpg","たこ焼き"],["assets/couple-3.jpg","最初の夜、居酒屋"]]],
   ["🐶 マロン","assets/couple-12.jpg",[["assets/couple-12.jpg","散歩"],["assets/couple-19.jpg","デレデレ"],["assets/couple-24.jpg","腕の中で寝た"]]],
   ["🧣 ふたり","assets/couple-9.jpg",[["assets/couple-9.jpg","マフラー半分こ"],["assets/couple-20.jpg","電車の居眠り"],["assets/couple-21.jpg","傘"],["assets/couple-25.jpg","助手席"],["assets/couple-26.jpg","ほっぺ"]]],
-  ["🌙 よる","assets/scar-kiss2.jpg",[["assets/scar-kiss2.jpg","近すぎ、って言われるやつ"],["assets/scar-sofa2.jpg","映画、最後まで見たことない"],["assets/scar-car.jpg","後部座席は、近い"],["assets/scar-nose.jpg","近づきすぎ、って分かってる"],["assets/scar-sofa3.jpg","この体勢、ずるい"],["assets/scar-street.jpg","路上で、キス寸前"],["assets/scar-pov.jpg","脱がせかけた"]]]];
+  ["🌙 よる","assets/scar-kiss2.jpg",[["assets/scar-kiss2.jpg","近すぎ、って言われるやつ"],["assets/scar-sofa2.jpg","映画、最後まで見たことない"],["assets/scar-car.jpg","後部座席は、近い"],["assets/scar-nose.jpg","近づきすぎ、って分かってる"],["assets/scar-sofa3.jpg","この体勢、ずるい"],["assets/scar-street.jpg","路上で、キス寸前"]]]];
  var row=document.createElement("div");
  row.style.cssText="display:flex;gap:14px;padding:10px 14px 4px;overflow-x:auto";
  var player=document.createElement("div");
@@ -20913,8 +20913,7 @@ try{
   var st=document.querySelectorAll("#v-subig .ig-stats b");
   if(st.length>=1) st[0].textContent=String(document.querySelectorAll("#v-subig .v587-post").length);
  }
- if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", go); else go();
- setTimeout(go, 1500);
+ /* v687: sub-account insertion disabled - scar-pov is leak-only now */
 })();
 </script>
 
@@ -20980,6 +20979,7 @@ try{
      if(!leaked) return;
      fired=true;
      later(function(){ tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【続報】決定的な一枚まで出回ってる。どこにも投稿されてない写真らしい。ベッドの上、ワインの瓶…これは言い逃れ、無理でしょ",q:{n:"流出画像",h:"@ryushutsu_img",tm:"さっき",t:"井汲大翔と女性の未投稿写真",img:"assets/scar-bed.jpg"},m:["\U0001F4AC 4,208","\U0001F501 31,204","\u2764\uFE0F 9,412"]}); },195000);
+     later(function(){ tlPrepend({n:"特定班",h:"@tokutei_jp",tm:"今",t:"こっちも出回ってる。彼女目線で撮ったやつ。…この距離で撮れる関係ってこと",q:{n:"流出画像",h:"@ryushutsu_img",tm:"さっき",t:"井汲大翔と女性の未投稿写真（彼女目線）",img:"assets/scar-pov.jpg"},m:["\U0001F4AC 2,208","\U0001F501 18,340","\u2764\uFE0F 5,104"]}); },246000);
      later(function(){ tlPrepend({n:"元同担",h:"@moto_dotan",tm:"今",t:"相手の女、こんな写真まで残してたの。確信犯すぎて引く",m:["\U0001F4AC 512","\U0001F501 3,208","\u2764\uFE0F 2,140"]}); },213000);
      later(function(){ tlPrepend({n:"担降り表明",h:"@orimasu_jp",tm:"今",t:"大翔、これは擁護できない。今日で担降りする。6年間ありがとう",m:["\U0001F4AC 894","\U0001F501 1,530","\u2764\uFE0F 4,208"]}); },231000);
    }catch(e){}
