@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v643</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v644</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1448,10 +1448,10 @@ function findLikeBtn(img){ let el=img; for(let k=0;k<4;k++){ el=el.nextElementSi
   const wrap=img.parentElement; if(wrap&&!wrap.classList.contains("scroll")){ const lb2=wrap.querySelector(".like-btn"); if(lb2) return lb2; } return null; }
 /* segmented stories */
 function buildSegs(){ if(state.started) return [{img:"assets/ig-food.jpg",txt:"食べまくってる🍚"},{img:null,txt:"驚かせてしまって、ごめんね。\nいつも本当にありがとう。"}];
-  if(state.phase==="prologue"&&state.chapter>=5) return [{img:"assets/cafe3.jpg",txt:"今日のカフェ"},{img:"assets/night.jpg",txt:"帰り道"}];
+  if(state.phase==="prologue"&&state.chapter>=5) return [{img:"assets/cafe3.jpg",txt:"今日のカフェ"},{img:"assets/night.jpg",txt:"帰り道"},{img:"assets/hiroto-disney.jpg",txt:"ツリー、点いた🎄"}];
   if(state.phase==="prologue"&&state.chapter>=4) return [{img:"assets/ig-meal.jpg",txt:"内緒やけど、\n楽しいねん"},{img:"assets/ig-food2.jpg",txt:"新作プリン、完成"}];
   if(state.phase==="prologue"&&state.chapter>=3) return [{img:"assets/ig-selfie2.jpg",txt:"レッスン終わり"},{img:"assets/ig-studio2025.jpg",txt:"スタジオ籠り"}];
-  if(state.phase==="prologue"&&state.chapter>=2) return [{img:"assets/ig-drink.jpg",txt:"今日もありがとう😎"},{img:"assets/ig-sushi.jpg",txt:"🍣 また行こ"}];
+  if(state.phase==="prologue"&&state.chapter>=2) return [{img:"assets/ig-drink.jpg",txt:"今日もありがとう😎"},{img:"assets/ig-sushi.jpg",txt:"🍣 また行こ"},{img:"assets/maron-close.jpg",txt:"実家のマロン🐾"}];
   return [{img:"assets/stage.jpg",txt:"ありがとうございました😎"},{img:"assets/maron-close.jpg",txt:"マロンとまったり🐾"}]; }
 let storySegs=[], storyIdx=0;
 function storyShow(i){ storyIdx=i; const sg=storySegs[i]; const img=$("#story-img"),txt=$("#story-txt");
@@ -1906,7 +1906,6 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 (function(){ const scroll=$("#v-ig .scroll"); if(!scroll) return;
   const POSTS=[
    ["assets/nao-hl-17.jpg","韓屋の路地、空がきれいだった日☁️","91","8月27日"],
-   ["assets/nao-hl-20.jpg","韓国の夜はチキン🍗 コンビニ寄るまでがセット","108","8月27日"],
    ["assets/nao-hl-03.jpg","木漏れ日の散歩道🌿 こういう時間がいちばん好き","45","9月6日"],
    ["assets/nao-hl-09.jpg","もふもふに癒された日🐶 かわいすぎた…","132","9月23日"]];
   const v18first=Array.from(scroll.querySelectorAll(".ig-post")).find(p=>p.textContent.includes("釜山きたら"));
@@ -1920,10 +1919,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 /* ===== v51: nao's cooking & cafe photos complete the highlight set ===== */
 (function(){ const scroll=$("#v-ig .scroll"); if(!scroll) return;
   const POSTS=[
-   ["assets/nao-hl-11.jpg","クリスマスのお菓子、かわいすぎた🎄 トナカイのフィナンシェ","96","12月25日"],
-   ["assets/nao-hl-12.jpg","ドラマに影響されて作ったやつ🥟 包むの楽しかった","58","10月6日"],
-   ["assets/nao-hl-14.jpg","毎日蒸籠にしたいなぁ🍠 えのきの肉巻きが正解だった","71","10月20日"],
-   ["assets/nao-hl-15.jpg","ぐつぐつ🍲 ロールキャベツのポトフ","83","10月26日"]];
+   ["assets/nao-hl-11.jpg","クリスマスのお菓子、かわいすぎた🎄 トナカイのフィナンシェ","96","12月25日"]];
   const v18first=Array.from(scroll.querySelectorAll(".ig-post")).find(p=>p.textContent.includes("釜山きたら"));
   POSTS.forEach(([img,cap,likes,date])=>{ const d=document.createElement("div"); d.className="ig-post";
     d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324</div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈️</span><span class="save-btn">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap} <span style="color:#8e8e93">いいね！${likes}件</span><div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">${date}</div></div>`;
@@ -2192,13 +2188,11 @@ document.addEventListener("click",e=>{ const fb=e.target.closest?e.target.closes
 (function(){ const sc=$("#v-ig .scroll"); if(!sc) return;
   const POSTS=[
    ["assets/nao-seafood.jpg","釜山きたら絶対これ🦐 カンジャンセウ優勝。ケジャンもアワビも全部うまい…",128,[["yui_s","ずるい！私も行きたかった😭"],["sauna_m","エビの人、幸せそう"]],"8月28日"],
-   ["assets/nao-korean.jpg","カンジャンケジャン定食🦀 ごはん泥棒ってこういうことか",96,[["m2326","この店、私も好き"]],"8月29日"],
    ["assets/nao-hotpot.jpg","ナッコプセ🐙 エビ・タコ・ホルモン全部入りは反則",87,[["yui_s","辛そう…でも絶対うまいやつ"]],"8月29日"],
    ["assets/nao-bridge.jpg","青沙浦のガラスの橋🌊 足すくんだけど、海がきれいすぎた",154,[["sauna_m","ここ行ったことある！高いよね"]],"8月31日"],
    ["assets/nao-fanmeet.jpg","KO1KEYZ 1stファンミーティング🎤 最高だった…余韻",203,[["yui_s","推し活充実してるね〜"]],"9月13日"],
    ["assets/nao-matcha.jpg","中村藤吉の抹茶パフェ🍵 本店限定のやつ、並んだ甲斐あった",76,[["m2326","抹茶濃そう…！"]],"9月15日"],
-   ["assets/nao-teishoku.jpg","からあげ定食は正義🍗 蒸し野菜もついてて偉い",64,[["sauna_m","からあげの人、今日もからあげ"]],"10月2日"],
-   ["assets/nao-western.jpg","洋食ランチ🍽 チーズとんかつ、とろけた",71,[["yui_s","チェックのテーブルクロスかわいい"]],"8月17日"]
+   ["assets/nao-teishoku.jpg","からあげ定食は正義🍗 蒸し野菜もついてて偉い",64,[["sauna_m","からあげの人、今日もからあげ"]],"10月2日"]
   ];
   POSTS.forEach(([img,cap,likes,cmts,date])=>{ const d=document.createElement("div"); d.className="ig-post";
     d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/nao-avatar4.jpg" width="30" height="30" alt=""> nao_0324<span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn">♡ ${likes}</span><span>💬</span><span>✈</span><span class="sv" style="cursor:pointer">🔖</span></div><div class="cap"><b>nao_0324</b> ${cap}<div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">${date}</div></div>`+cmts.map(c=>`<div class="cmt"><b>${c[0]}</b>${c[1]}</div>`).join("");
@@ -8601,7 +8595,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
     t.addEventListener("click",ev=>{ ev.stopPropagation(); pvShow(i); });
     strip.appendChild(t); });
    strip.classList.add("on");
-   const cur=strip.querySelector("img.cur"); if(cur) cur.scrollIntoView({inline:"center",block:"nearest"}); };
+   const cur=strip.querySelector("img.cur"); if(cur){ strip.scrollLeft=Math.max(0,cur.offsetLeft-strip.clientWidth/2+cur.clientWidth/2); } };
   new MutationObserver(syncStrip).observe(view,{attributes:true,attributeFilter:["class"]});
   const pd=document.querySelector("#pv-date"); if(pd) new MutationObserver(syncStrip).observe(pd,{childList:true,characterData:true,subtree:true});
  }
@@ -11988,7 +11982,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v643"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v644"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20223,6 +20217,114 @@ var stats=v.querySelectorAll(".ig-stats>div");
 function bindStat(el,title){ if(!el) return; el.style.cursor="pointer"; el.addEventListener("click",function(){ sheet.querySelector("#subfol-title").textContent=title; sheet.style.display="block"; }); }
 bindStat(stats[1],"\u30d5\u30a9\u30ed\u30ef\u30fc");
 bindStat(stats[2],"\u30d5\u30a9\u30ed\u30fc\u4e2d");
+})();
+</script>
+
+<script>
+/* ===== v644: her new posts + his story button + her multi-segment story ===== */
+(function(){ if(window.__v644) return; window.__v644=true;
+/* (A) her new posts (clone an existing post so every normalizer treats them the same) */
+try{
+ var sc=document.querySelector("#v-ig .scroll");
+ function findPost(end){ if(!sc) return null; var ps=sc.querySelectorAll(".ig-post"); for(var i=0;i<ps.length;i++){ var im=ps[i].querySelector(".pimg"); if(im&&(im.getAttribute("src")||"").endsWith(end)) return ps[i]; } return null; }
+ function mkPost(anchorEnd,img,cap,likes,date,cmtB,cmtT){
+  var a=findPost(anchorEnd); if(!a) return; if(findPost(img.split("/").pop())) return;
+  var d=a.cloneNode(true);
+  var im=d.querySelector(".pimg"); if(im){ im.src=img; }
+  var lk=d.querySelector(".like-btn"); if(lk){ lk.classList.remove("liked"); var svg=lk.querySelector("svg"); if(svg){ svg.setAttribute("fill","none"); svg.setAttribute("stroke","currentColor"); } }
+  var cp=d.querySelector(".cap"); if(cp){ cp.innerHTML="<b>nao_0324</b> "+cap+" <span style=\"color:#8e8e93\">いいね！"+likes+"件</span><div style=\"color:#8e8e93;font-size:12px;margin-top:2px\">"+date+"</div>"; }
+  var cmts=d.querySelectorAll(".cmt"); var box=cmts.length?cmts[0].parentNode:null;
+  cmts.forEach(function(c){ c.remove(); });
+  if(box){ var cd=document.createElement("div"); cd.className="cmt"; cd.innerHTML="<b>"+cmtB+"</b>"+cmtT+"<span class=\"tm\">"+date+"</span>"; box.appendChild(cd); }
+  a.after(d);
+ }
+ mkPost("cafe-latte.jpg","assets/nao-cafe2.jpg","いちごのショートとカフェオレ🍰 しあわせな日","47","10月26日","yui_s","いちごのやつ絶対おいしい🍓");
+ mkPost("nao-hl-08.jpg","assets/nao-hotel.jpg","釜山のホテルで📸 この服、お気に入り","88","8月29日","yui_s","釜山たのしんでるね〜");
+ var grid=document.querySelector("#ph-grid");
+ if(grid){ [["assets/nao-cafe2.jpg","カフェのいちごケーキ🍰"],["assets/nao-hotel.jpg","釜山のホテル📸"]].forEach(function(x){
+   if(grid.querySelector('img[src="'+x[0]+'"]')) return;
+   var f=document.createElement("figure"); f.dataset.cat="post";
+   f.innerHTML='<img loading="lazy" decoding="async" src="'+x[0]+'" alt=""><figcaption>'+x[1]+"</figcaption>";
+   grid.appendChild(f); }); }
+ try{ Object.assign(PHOTO_DATES,{"nao-cafe2.jpg":"カフェ ・ いちごケーキ","nao-hotel.jpg":"釜山 ・ ホテル"}); }catch(e){}
+}catch(e){}
+/* (C) his story: fill the empty stories row with a proper story button */
+try{
+ var hs=document.querySelector("#v-hisig .stories");
+ if(hs&&!hs.children.length){
+  hs.innerHTML='<button id="his-story-btn" style="background:none;border:none;cursor:pointer;padding:0;font:inherit;color:inherit"><span class="ring"><img src="assets/ig-avatar.jpg" alt=""></span>ストーリー</button>';
+  hs.querySelector("#his-story-btn").addEventListener("click",function(){ if(window.openHisStory) openHisStory(); });
+ }
+}catch(e){}
+/* (D) her story: multi-segment player (detach the old single-seg updater by cloning its nodes) */
+try{
+ var view=document.querySelector("#nao-story-view"); if(!view) return;
+ var btn=document.querySelector("#nao-story-btn");
+ if(btn){ var nb=btn.cloneNode(true); btn.parentNode.replaceChild(nb,btn); btn=nb; }
+ var img=view.querySelector("img"); if(img){ var ni=img.cloneNode(true); img.parentNode.replaceChild(ni,img); img=ni; }
+ var cap=null; var divs=view.querySelectorAll("div");
+ for(var i=0;i<divs.length;i++){ if(divs[i].id!=="nao-story-viewers"&&!divs[i].classList.contains("sbar")){ cap=divs[i]; break; } }
+ if(cap){ var nc=cap.cloneNode(true); cap.parentNode.replaceChild(nc,cap); cap=nc; }
+ var vw=document.querySelector("#nao-story-viewers");
+ if(vw){ var nv=vw.cloneNode(true); vw.parentNode.replaceChild(nv,vw); vw=nv; }
+ var sbar=view.querySelector(".sbar");
+ var css=document.createElement("style");
+ css.textContent="#nao-story-view .sbar{display:flex;gap:5px}#nao-story-view .sbar i{flex:1;position:relative;overflow:hidden;background:rgba(255,255,255,.35);border-radius:2px;height:3.5px;animation:none!important}#nao-story-view .sbar i b{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff}#nao-story-view .sbar i.done b{width:100%}#nao-story-view .sbar i.act b{animation:sprog 5s linear forwards}";
+ view.appendChild(css);
+ function segs(){
+  if(state.act2) return [["assets/cafe.jpg","おはよう☀ 今日からまた、普通に","👁 18人 ・ yui_s、sauna_m 他"],["assets/nao-disney.jpg","耳、つけてみた🎄","👁 19人 ・ yui_s、sauna_m 他"]];
+  if(state.started) return [["assets/cafe.jpg","おはよう☀ 今日からまた、普通に",null]];
+  var ch=state.chapter||0;
+  if(ch>=5) return [["assets/nao-street.jpg","帰り道、ちょっと寄り道","👁 19人 ・ yui_s、rina___ 他"],["assets/nao-hotpot.jpg","おなべの季節🍲","👁 21人 ・ 193.hiroto_jixiang、yui_s 他"]];
+  if(ch>=4) return [["assets/nao-matcha.jpg","抹茶🍵","👁 16人 ・ yui_s、sauna_m 他"]];
+  if(ch>=3) return [["assets/nao-seafood.jpg","釜山いきたい🦐 カンジャンセウ…","👁 18人 ・ yui_s、misaki_a 他"]];
+  if(ch>=2) return [["assets/cafe.jpg","カフェ☕ たまにはゆっくり","👁 14人 ・ yui_s、rina___ 他"],["assets/nao-matcha.jpg","抹茶🍵","👁 16人 ・ yui_s、sauna_m 他"]];
+  if(ch>=1) return [["assets/nao-bridge.jpg","なんか今日は、いいことがありそうな予感🫣","👁 15人 ・ yui_s、misaki_a 他"]];
+  return [["assets/cafe-latte.jpg","カフェオレ☕","👁 12人 ・ yui_s、sauna_m 他"]];
+ }
+ var SG=[],ix=0,tm=null;
+ function paint(){
+  sbar.innerHTML=""; SG.forEach(function(_,j){ var el=document.createElement("i"); if(j<ix) el.className="done"; if(j===ix) el.className="act"; el.innerHTML="<b></b>"; sbar.appendChild(el); });
+  img.src=SG[ix][0]; if(cap) cap.textContent=SG[ix][1];
+  if(vw&&SG[ix][2]) vw.textContent=SG[ix][2];
+ }
+ function show(i){ ix=i; paint(); clearTimeout(tm); tm=setTimeout(function(){ if(!view.classList.contains("on")) return; if(ix<SG.length-1) show(ix+1); else view.classList.remove("on"); },5000); }
+ function open(){ SG=segs(); view.classList.remove("on"); void view.offsetWidth; view.classList.add("on"); show(0); }
+ if(btn) btn.addEventListener("click",open);
+ view.addEventListener("click",function(e){
+  if(e.target.id==="nao-story-close") return;
+  var r=view.getBoundingClientRect(); var right=(e.clientX-r.left)>r.width/2;
+  if(right){ if(ix<SG.length-1) show(ix+1); else { clearTimeout(tm); view.classList.remove("on"); } }
+  else if(ix>0) show(ix-1);
+ });
+}catch(e){}
+})();
+</script>
+
+<script>
+/* ===== v644c: his story button at the head of his stories row ===== */
+(function(){ if(window.__v644c) return; window.__v644c=true;
+ try{
+  var row=document.querySelector("#v-hisig .stories"); if(!row) return;
+  var tpl=row.querySelector("button"); if(!tpl||document.querySelector("#his-story-btn")) return;
+  var b=tpl.cloneNode(true); b.removeAttribute("data-v261hl"); b.id="his-story-btn";
+  var circ=b.querySelector("span"); if(circ) circ.style.background="conic-gradient(from 210deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)";
+  var im=b.querySelector("img"); if(im) im.src="assets/ig-avatar.jpg";
+  var spans=b.querySelectorAll("span"); var lb=spans[spans.length-1]; if(lb) lb.textContent="ストーリー";
+  b.addEventListener("click",function(){ if(circ) circ.style.background="#e6e6e6"; if(window.openHisStory) openHisStory(); });
+  row.insertBefore(b,row.firstChild);
+ }catch(e){}
+})();
+</script>
+
+<script>
+/* ===== v644d: her avatar forwards to the live story button (v206 wire captured the pre-clone button) ===== */
+(function(){ if(window.__v644d) return; window.__v644d=true;
+ try{
+  var av=document.querySelector("#v-ig .ig-prof .avatar"); if(!av) return;
+  var na=av.cloneNode(true); av.parentNode.replaceChild(na,av);
+  na.addEventListener("click",function(){ var b=document.querySelector("#nao-story-btn"); if(b) b.click(); });
+ }catch(e){}
 })();
 </script>
 </body>
