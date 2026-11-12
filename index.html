@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v658</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v659</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11974,7 +11974,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v658"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v659"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20493,6 +20493,151 @@ try{
        if(w.dt===38000){ try{ setHeat(Math.min(100,(state.heat||0)+3)); }catch(e){} }
      }, w.dt);
    });
+ },1000);
+})();
+</script>
+
+<script>
+/* ===== v659: sub-account gains 2 posts; X gets a photo-post firestorm + leak spread ===== */
+(function(){
+ if(window.__v659) return; window.__v659=true;
+ /* ---- 1) sub-account posts (couple-33 sofa 12/21, couple-34 kiss2 12/23) ---- */
+ function subPosts(){
+   var posts=document.querySelectorAll("#v-subig .v587-post");
+   if(posts.length<2) return false;
+   var anchor=null, tpl=null;
+   posts.forEach(function(p){ var im=p.querySelector(".v587-img"); if(!im) return;
+     if((im.getAttribute("src")||"").indexOf("couple-32")>=0) anchor=p;
+     if((im.getAttribute("src")||"").indexOf("couple-9")>=0) tpl=p; });
+   if(!anchor||!tpl) return false;
+   function mk(img,cap,date,cmt){
+     var p=tpl.cloneNode(true);
+     p.querySelector(".v587-img").setAttribute("src",img);
+     var capDiv=p.querySelector(".cap").children[1];
+     capDiv.childNodes.forEach(function(n){ if(n.nodeType===3) n.textContent=" "+cap; });
+     p.querySelector(".v587-date").textContent=date;
+     var c=p.querySelector(".cmt");
+     if(c){ c.childNodes.forEach(function(n){ if(n.nodeType===3) n.textContent=" "+cmt; }); }
+     return p;
+   }
+   anchor.parentNode.insertBefore(mk("assets/scar-kiss2.jpg","近すぎ、って言われるやつ","12月23日","…近いのは、なおの方やろ"), anchor);
+   anchor.parentNode.insertBefore(mk("assets/scar-sofa.jpg","おうちで映画の日。気づいたらこの体勢","12月21日","…半分、寝てた"), anchor);
+   var tiles=document.querySelectorAll("#v-subig .v587-tile");
+   var tAnchor=null, tTpl=null;
+   tiles.forEach(function(t){ var im=t.querySelector("img"); if(!im) return;
+     if((im.getAttribute("src")||"").indexOf("couple-32")>=0) tAnchor=t;
+     if((im.getAttribute("src")||"").indexOf("couple-9")>=0) tTpl=t; });
+   if(tAnchor&&tTpl){
+     var t1=tTpl.cloneNode(true); t1.querySelector("img").setAttribute("src","assets/scar-sofa.jpg");
+     var t2=tTpl.cloneNode(true); t2.querySelector("img").setAttribute("src","assets/scar-kiss2.jpg");
+     tAnchor.parentNode.insertBefore(t2,tAnchor); tAnchor.parentNode.insertBefore(t1,tAnchor);
+     document.querySelectorAll("#v-subig .v587-tile").forEach(function(t,i){ t.setAttribute("data-i",i); });
+   }
+   var st=document.querySelector("#v-subig .ig-stats .n");
+   if(st && st.textContent.trim()==="32") st.textContent="34";
+   return true;
+ }
+ var siv=setInterval(function(){ if(subPosts()) clearInterval(siv); },900);
+ /* ---- helpers ---- */
+ function eligibleX(){ return typeof state!=="undefined" && state.phase==="scandal" && !state.act2 && !state.ended && !state._seq2; }
+ function busyX(){ var inc=document.querySelector("#call-incoming"); return !!state._answered || (inc && inc.style.display==="flex"); }
+ function tlPrepend(p){ var tl=document.querySelector("#x-pane-tl"); if(tl) tl.prepend(postEl(p,false)); try{ bump("x"); }catch(e){} }
+ /* ---- 2) X photo-post danger section + storm ---- */
+ function fireXPhotoStorm(){
+   try{ setHeat(Math.min(100,(state.heat||0)+18)); state._scar=(state._scar||0)+18; }catch(e){}
+   try{ push("X","#000","𝕏","メンションが急増しています","あなたの写真付きポストが拡散されています",function(){ show("x"); }); }catch(e){}
+   tlPrepend({n:"なお",h:"@nao_0324",tm:"今",t:"好きに言えばいい。私は、嘘ついてない",q:{n:"nao_0324",h:"@nao_0324",tm:"今",t:"💋",img:"assets/scar-kiss.jpg"},m:["💬 3,208","🔁 21,540","❤️ 11,203"]});
+   var TL=[
+    {n:"特定班",h:"@tokutei_jp",tm:"今",t:"相手の女、Xにキス写真上げたぞ。スクショ案件や",m:["💬 1,102","🔁 9,845","❤️ 4,102"]},
+    {n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【悲報】相手の女性、Xに写真付きポスト → トレンド入りへ",m:["💬 2,540","🔁 19,322","❤️ 7,540"]},
+    {n:"あんり",h:"@anri_h1029",tm:"今",t:"火に油ってレベルじゃない。本気で何考えてるの",m:["💬 764","🔁 3,208","❤️ 12,540"]},
+    {n:"さくらの推し活",h:"@sakura_act",tm:"今",t:"お願い、もうやめて…。大翔の顔、見たくなかった、こんな形で",m:["💬 932","🔁 4,540","❤️ 18,320"]},
+    {n:"現場レポ",h:"@genba_repo",tm:"今",t:"事務所の『交際の事実はありません』、完全に意味なくなったな",m:["💬 388","🔁 2,940","❤️ 5,870"]}];
+   TL.forEach(function(p,i){ later(function(){ tlPrepend(p); }, 5000+i*6500); });
+   [["tokutei_jp","Xの写真、消しても無駄やで"],["anri_h1029","アイドルの人生、軽く見すぎ"]].forEach(function(m,i){ later(function(){ try{ mentionV7(m[0],m[1]); }catch(e){} }, 12000+i*9000); });
+   later(function(){
+     var w=document.querySelector("#x-pane-trend"); if(!w||w.dataset.xp659) return; w.dataset.xp659="1";
+     var SC=[["日本のトレンド","Xでも発信","312,540 件のポスト"],["日本のトレンド","キス写真","204,187 件のポスト"],["エンターテイメント ・ トレンド","相手の女","176,204 件のポスト"],["日本のトレンド","井汲大翔","158,772 件のポスト"]];
+     w.innerHTML=""; SC.forEach(function(t,i){ var d=document.createElement("div"); d.className="trend"; d.style.cursor="pointer";
+       d.addEventListener("click",function(){ var q=document.querySelector("#x-q"); if(q) q.value=t[1]; if(typeof doSearch==="function") doSearch(t[1]); });
+       d.innerHTML='<div class="cat">'+(i+1)+' ・ '+t[0]+'</div><div class="kw">'+t[1]+'</div><div class="cnt">'+t[2]+'</div>'; w.appendChild(d); });
+   },15000);
+   later(function(){ try{ addNewsRow("assets/scar-kiss.jpg","お相手女性、今度はXに写真付きポスト　収拾つかず","芸能ニュース ・ たった今",null); bump("news"); }catch(e){} },21000);
+   var tries=0;
+   var react=function(){ tries++;
+     if(state.ended||state._seq2) return;
+     if(busyX()){ if(tries<=2) later(react,20000); return; }
+     (async function(){ try{
+       if(state._route!=="dating"){ await himMsg("…X、見た"); await himMsg("写真まで出すなって"); await himMsg("俺ら、付き合ってないんやで"); await himMsg("…これ以上、大きくせんといて"); }
+       else { await himMsg("…X、見た"); await himMsg("写真は、あかんて"); await himMsg("消して、頼む"); }
+     }catch(e){} })();
+   };
+   later(react,30000);
+ }
+ setInterval(function(){
+   try{
+     var ov=document.querySelector("#x-compose"); if(!ov) return;
+     var sec=ov.querySelector("#xproof-sec");
+     if(!eligibleX() || state._xPhoto659){ if(sec) sec.remove(); return; }
+     if(sec) return;
+     var ta=ov.querySelector("#xc-text"); if(!ta||!ta.parentNode) return;
+     sec=document.createElement("div"); sec.id="xproof-sec";
+     sec.style.cssText="border:2px solid #e0245e;border-radius:14px;padding:12px;margin-top:12px;background:#fff5f7";
+     sec.innerHTML='<div style="font-weight:800;font-size:14px;color:#c81e4e">🔥 写真付きポストができる</div>'+
+       '<div style="font-size:12.5px;color:#666;line-height:1.6;margin:7px 0 10px">例のキス写真を、Xにも上げられる。今これを出したら、間違いなく燃える。</div>'+
+       '<img loading="lazy" decoding="async" src="assets/scar-kiss.jpg" style="width:100%;border-radius:10px;display:block" alt="">'+
+       '<button id="xproof-post" type="button" style="width:100%;background:#e0245e;color:#fff;border:none;border-radius:999px;padding:11px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:10px;font-family:inherit">この写真でポストする</button>';
+     ta.parentNode.insertBefore(sec, ta.nextSibling);
+     sec.querySelector("#xproof-post").addEventListener("click",function(){
+       if(!eligibleX()){ toast("今はそれどころじゃない"); return; }
+       if(busyX()){ toast("今は電話中…終わってからにして"); return; }
+       state._xPhoto659=true;
+       var cancel=ov.querySelector("#xc-cancel"); if(cancel) cancel.click(); else ov.style.display="none";
+       show("x"); toast("ポストした…🔥");
+       fireXPhotoStorm();
+     });
+   }catch(e){}
+ },1200);
+ /* ---- 3) any text post during scandal -> moderate storm (v384 covers risky words; avoid double) ---- */
+ function watchMePosts(){
+   var box=document.querySelector("#x-me-posts"); if(!box) return false;
+   new MutationObserver(function(muts){
+     try{
+       if(typeof state==="undefined"||state.phase!=="scandal"||state.act2||state.ended||state._seq2||state._xAny659||state._xPostedProof) return;
+       for(var i=0;i<muts.length;i++){ for(var j=0;j<muts[i].addedNodes.length;j++){ var nd=muts[i].addedNodes[j];
+         if(nd.nodeType!==1) continue;
+         var hd=nd.querySelector?nd.querySelector(".hd"):null;
+         if(!hd||hd.textContent.indexOf("nao_0324")<0) continue;
+         var tx=nd.querySelector(".tx"); var text=tx?tx.textContent:"";
+         state._xAny659=true;
+         setTimeout(function(){
+           if(state._xPostedProof) return;
+           try{ setHeat(Math.min(100,(state.heat||0)+8)); state._scar=(state._scar||0)+8; }catch(e){}
+           var q=text.length>40?text.slice(0,40)+"\u2026":text;
+           tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【速報】例の相手の女、Xでポスト → 引用で荒れ始める",q:{n:"なお",h:"@nao_0324",tm:"今",t:q},m:["💬 1,208","🔁 8,930","❤️ 4,120"]});
+           later(function(){ tlPrepend({n:"特定班",h:"@tokutei_jp",tm:"今",t:"相手の女のポスト、スクショ完了。今は黙ってるのが正解やったのに",m:["💬 640","🔁 5,102","❤️ 2,870"]}); },7000);
+         },400);
+         return;
+       } }
+     }catch(e){}
+   }).observe(box,{childList:true});
+   return true;
+ }
+ if(!watchMePosts()){ var wiv=setInterval(function(){ if(watchMePosts()) clearInterval(wiv); },1500); }
+ /* ---- 4) leak spread: her sub-account photos circulate on X ---- */
+ var t0=0, spreadFired=false;
+ setInterval(function(){
+   try{
+     if(typeof state==="undefined") return;
+     if(state.phase==="scandal" && !t0) t0=Date.now();
+     if(spreadFired || state.phase!=="scandal" || state.act2) return;
+     var leaked = state._route!=="dating" ? (!!state._subLeaked || !!state._subPublic || (t0 && Date.now()-t0>110000)) : !!state._subOpened;
+     if(!leaked) return;
+     spreadFired=true;
+     later(function(){ tlPrepend({n:"特定班",h:"@tokutei_jp",tm:"今",t:"例のサブ垢、鍵外れて写真回ってきた。ソファでこの距離は、付き合ってないの無理ある",q:{n:"サブ垢",h:"@nao_ura",tm:"12月21日",t:"おうちで映画の日。気づいたらこの体勢",img:"assets/scar-sofa.jpg"},m:["💬 2,431","🔁 18,204","❤️ 9,870"]}); },2000);
+     later(function(){ tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【拡散】サブ垢の写真、キス寸前のまで出回る　『交際事実なし』と矛盾の声",q:{n:"サブ垢",h:"@nao_ura",tm:"12月23日",t:"近すぎ、って言われるやつ",img:"assets/scar-kiss2.jpg"},m:["💬 3,540","🔁 26,870","❤️ 12,540"]});
+       try{ push("X","#000","𝕏","写真が拡散されています","サブ垢の写真がXで出回っています",function(){ show("x"); }); }catch(e){} },26000);
+   }catch(e){}
  },1000);
 })();
 </script>
