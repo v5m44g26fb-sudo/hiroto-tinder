@@ -49,7 +49,7 @@ text-shadow:0 1px 4px rgba(0,0,0,.35);mix-blend-mode:difference;
 .view.on{display:flex}
 #v-home{background:#000}
 /* ===== home ===== */
-.wallpaper{position:absolute;inset:0;background:url('assets/crown.jpg') center 18%/cover no-repeat}
+.wallpaper{position:absolute;inset:0;background:url('assets/scar-street.jpg') center 18%/cover no-repeat}
 .wallpaper:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 70%,rgba(0,0,0,.28))}
 .home-inner{position:relative;z-index:2;display:flex;flex-direction:column;height:100%;padding:64px 20px 16px}
 .widget{
@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v665</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v666</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2721,7 +2721,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const fb=document.querySelector("#set-font");
  if(fb) fb.addEventListener("click",()=>{ const big=document.body.classList.toggle("font-big"); fb.textContent=big?"大きい":"標準"; });
  const wb=document.querySelector("#set-wall");
- if(wb){ const walls=[["デフォルト",""],["よる","assets/night.jpg"],["カフェ","assets/cafe.jpg"],["ステージ","assets/stage.jpg"],["桜とマロン","assets/maron-sakura.jpg"],["日プ時代","assets/pd101-uniform.jpg"]]; let wi=0;
+ if(wb){ const walls=[["デフォルト",""],["よる","assets/scar-street.jpg"],["カフェ","assets/couple-4.jpg"],["ステージ","assets/ig-gen-stage.jpg"],["マロン","assets/ig-gen-maron.jpg"],["レッスン","assets/ig-gen-rehearsal.jpg"]]; let wi=0;
   try{ wi=parseInt(localStorage.getItem("r5-wall")||"0",10)||0; if(wi<0||wi>=walls.length) wi=0; }catch(e){}
   const applyW=()=>{ const home=document.querySelector("#v-home");
    if(home){ home.style.backgroundImage=walls[wi][1]?'url("'+walls[wi][1]+'")':""; home.style.backgroundSize="cover"; home.style.backgroundPosition="center"; }
@@ -8104,7 +8104,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
  try{ if(sessionStorage.getItem("tt_title_seen")) return; }catch(e){}
  const phone=document.querySelector("#phone"); if(!phone) return;
  const css=document.createElement("style"); css.textContent=
-  "#title-ov{position:absolute;inset:0;z-index:560;display:flex;flex-direction:column;padding:74px 28px 34px;color:#fff;background:linear-gradient(180deg,rgba(10,8,18,.55) 0%,rgba(10,8,18,.25) 34%,rgba(16,6,20,.78) 68%,rgba(8,5,14,.94) 100%),url('assets/crown.jpg') center 22%/cover no-repeat;cursor:pointer;transition:opacity .45s ease}"+
+  "#title-ov{position:absolute;inset:0;z-index:560;display:flex;flex-direction:column;padding:74px 28px 34px;color:#fff;background:linear-gradient(180deg,rgba(10,8,18,.55) 0%,rgba(10,8,18,.25) 34%,rgba(16,6,20,.78) 68%,rgba(8,5,14,.94) 100%),url('assets/scar-street.jpg') center 22%/cover no-repeat;cursor:pointer;transition:opacity .45s ease}"+
   "#title-ov.bye{opacity:0;pointer-events:none}"+
   "#title-ov .t-kick{font-size:11.5px;font-weight:800;letter-spacing:.34em;color:#ffd7e6;animation:tup .7s ease both}"+
   "#title-ov .t-l1{font-size:27px;font-weight:900;margin-top:16px;line-height:1.25;animation:tup .7s .12s ease both}"+
@@ -8169,16 +8169,16 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
  /* retire the fake search pill in the home page dots (both pages) */
  document.querySelectorAll(".hp-search").forEach(e=>e.remove());
  const TABLE={
-  ch0:{ph:"プロローグ",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/tinder-bed.jpg",btn:"物語をはじめる ▶",go:"tinder",n:0},
-  ch1:{ph:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/tinder-bed.jpg",btn:"つづきを読む ▶",go:"tinder",n:1},
-  sus:{ph:"幕間『会ったあとの3日間』",tt:"一度会ったあとの、名前のない3日間",dt:"10月1日（水）〜10月3日（金） ・ LINE",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:1},
-  normlx:{ph:"幕間『会わない二週間』",tt:"会わないと決めた日々",dt:"10月19日（日）〜10月31日（金） ・ LINE",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:1},
-  ch2:{ph:"第2話",tt:"ちゃんとしたデート",dt:"10月4日（土） ・ 夜",img:"assets/cafe.jpg",btn:"つづきを読む ▶",go:"line",n:2},
+  ch0:{ph:"プロローグ",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/scar-first.jpg",btn:"物語をはじめる ▶",go:"tinder",n:0},
+  ch1:{ph:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/scar-first.jpg",btn:"つづきを読む ▶",go:"tinder",n:1},
+  sus:{ph:"幕間『会ったあとの3日間』",tt:"一度会ったあとの、名前のない3日間",dt:"10月1日（水）〜10月3日（金） ・ LINE",img:"assets/scar-street.jpg",btn:"つづきを読む ▶",go:"line",n:1},
+  normlx:{ph:"幕間『会わない二週間』",tt:"会わないと決めた日々",dt:"10月19日（日）〜10月31日（金） ・ LINE",img:"assets/scar-street.jpg",btn:"つづきを読む ▶",go:"line",n:1},
+  ch2:{ph:"第2話",tt:"ちゃんとしたデート",dt:"10月4日（土） ・ 夜",img:"assets/couple-4.jpg",btn:"つづきを読む ▶",go:"line",n:2},
   ch3:{ph:"第3話",tt:"ブレーキ",dt:"10月12日（日） ・ 並木道",img:"assets/ig-sunset.jpg",btn:"つづきを読む ▶",go:"line",n:3},
-  ch4:{ph:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",img:"assets/night.jpg",btn:"つづきを読む ▶",go:"line",n:4},
-  ch5:{ph:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",img:"assets/cafe3.jpg",btn:"つづきを読む ▶",go:"line",n:5},
-  scandal:{ph:"第6話 ・ 炎上編",tt:"バレた日",dt:"11月2日（日） ・ 夜",img:"assets/crown-full.jpg",btn:"つづきを読む ▶",go:"line",n:6},
-  ended:{ph:"エンディング",tt:"付き合わなかった、という結末",dt:"11月2日（日） ・ 夜の終わり",img:"assets/stage.jpg",btn:"結末を見る ▶",go:"news",n:7},
+  ch4:{ph:"第4話",tt:"曖昧な距離",dt:"10月18日（土） ・ 夜",img:"assets/scar-street.jpg",btn:"つづきを読む ▶",go:"line",n:4},
+  ch5:{ph:"第5話",tt:"少し空いた距離",dt:"11月1日（土） ・ 久しぶりのカフェ",img:"assets/couple-15.jpg",btn:"つづきを読む ▶",go:"line",n:5},
+  scandal:{ph:"第6話 ・ 炎上編",tt:"バレた日",dt:"11月2日（日） ・ 夜",img:"assets/ig-gen-stage.jpg",btn:"つづきを読む ▶",go:"line",n:6},
+  ended:{ph:"エンディング",tt:"付き合わなかった、という結末",dt:"11月2日（日） ・ 夜の終わり",img:"assets/ig-gen-backstage.jpg",btn:"結末を見る ▶",go:"news",n:7},
   act2:{ph:"翌朝編",tt:"少しずつ、日常が戻る",dt:"11月3日（月） ・ 朝",img:"assets/nao-bridge.jpg",btn:"翌朝のつづき ▶",go:"line",n:8}
  };
  let curKey="";
@@ -8310,7 +8310,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
  if(!sc||!phone) return;
  const css=document.createElement("style"); css.textContent=
   "#work-head{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:6px;box-shadow:0 2px 10px rgba(20,16,40,.06)}"+
-  "#work-head .wh-cover{height:104px;background:linear-gradient(180deg,rgba(10,8,18,.18),rgba(10,8,18,.66)),url('assets/crown.jpg') center 22%/cover no-repeat;display:flex;align-items:flex-end;padding:10px 14px}"+
+  "#work-head .wh-cover{height:104px;background:linear-gradient(180deg,rgba(10,8,18,.18),rgba(10,8,18,.66)),url('assets/scar-street.jpg') center 22%/cover no-repeat;display:flex;align-items:flex-end;padding:10px 14px}"+
   "#work-head .wh-title{color:#fff;font-size:16.5px;font-weight:900;line-height:1.35;text-shadow:0 2px 8px rgba(0,0,0,.45)}"+
   "#work-head .wh-ver{flex:none;margin-left:auto;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:10.5px;font-weight:800;border-radius:999px;padding:2px 8px}"+
   "#work-head .wh-body{padding:12px 14px 14px}"+
@@ -9125,7 +9125,7 @@ setInterval(upd,900); upd();
 (function(){
  const css=document.createElement("style"); css.textContent=
   "#title-ov{background:none}"+
-  "#title-ov::before{content:'';position:absolute;inset:0;background:url('assets/crown.jpg') center 22%/cover no-repeat;animation:v204kb 16s ease-in-out infinite alternate;z-index:-2}"+
+  "#title-ov::before{content:'';position:absolute;inset:0;background:url('assets/scar-street.jpg') center 22%/cover no-repeat;animation:v204kb 16s ease-in-out infinite alternate;z-index:-2}"+
   "#title-ov::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,18,.55) 0%,rgba(10,8,18,.25) 34%,rgba(16,6,20,.78) 68%,rgba(8,5,14,.94) 100%);z-index:-1}"+
   "@keyframes v204kb{from{transform:scale(1)}to{transform:scale(1.09) translateY(-6px)}}"+
   "#title-start{animation:tup .7s .55s ease both,v204glow 2.6s 1.5s ease-in-out infinite}"+
@@ -11974,7 +11974,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v665"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v666"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
