@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v725</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v726</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v725"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v726"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21275,10 +21275,16 @@ try{
  var pane=document.createElement("div"); pane.id="x-pane-subprof"; pane.style.display="none";
  var scroll=$("#x-scroll"); if(scroll) scroll.appendChild(pane);
  var LEAKS=[
-  {img:"assets/scar-sofa.jpg", t:"…これが『本垢に載せない写真の置き場』なん？ 近すぎん？", tm:"3時間前", m:["842","12,408","48,203"], imp:"312"},
-  {img:"assets/scar-kiss2.jpg", t:"キス寸前やん。ただのファンとの距離じゃなくない？", tm:"3時間前", m:["1,204","18,930","61,447"], imp:"428"},
-  {img:"assets/scar-car.jpg", t:"車内でもこの距離感。迎えに来てる時点で、もうそういうことやろ", tm:"2時間前", m:["693","9,812","35,209"], imp:"256"},
-  {img:"assets/scar-first.jpg", t:"出会った日の夜のやつらしい。最初からこの距離やったんや…", tm:"1時間前", m:["512","7,340","28,955"], imp:"198"}
+  {img:"assets/scar-sofa.jpg", t:"『本垢に載せない』って書いたのに、結局みんな見に来るじゃん。…で、保存した？ 笑", tm:"3時間前", m:["842","12,408","48,203"], imp:"312"},
+  {img:"assets/scar-kiss2.jpg", t:"キス寸前で止まると思った？ この先は渡さないよ。ふたりだけのやつだから。悔しい？", tm:"3時間前", m:["1,204","18,930","61,447"], imp:"428"},
+  {img:"assets/scar-car.jpg", t:"車で迎えに来る関係を『ただのファン』って言い張るの、そろそろ無理ない？", tm:"2時間前", m:["693","9,812","35,209"], imp:"256"},
+  {img:"assets/scar-first.jpg", t:"出会った日の夜からこれだもん。隠しててもバレるに決まってるわ", tm:"1時間前", m:["512","7,340","28,955"], imp:"198"}
+ ];
+ var TAUNTS=[
+  {t:"鍵垢を覗きに来て文句言うの、順番おかしくない？ 見たのはそっちだよ", tm:"4時間前", m:["2,318","9,540","31,208"], imp:"187"},
+  {t:"通報祭りおつかれさま。消したところで、もう全員の保存フォルダの中だよ", tm:"4時間前", m:["1,864","7,203","26,540"], imp:"154"},
+  {t:"『推しが可哀想』って言いながら拡散してる人、自分のこと棚に上げすぎじゃない？", tm:"3時間前", m:["3,102","11,870","40,311"], imp:"233"},
+  {t:"文句があるなら、こっそり覗いてないで本人に言いなよ。ここは写真の置き場", tm:"2時間前", m:["1,455","6,120","22,908"], imp:"139"}
  ];
  var MEDIA=["assets/scar-sofa.jpg","assets/scar-kiss2.jpg","assets/scar-car.jpg","assets/scar-nose.jpg","assets/scar-first.jpg","assets/scar-bed.jpg"];
  var curTab="posts", lastPub=null, lastFol=null;
@@ -21316,6 +21322,7 @@ try{
   if(pub && curTab==="posts"){
    var box=$("#v725-posts");
    if(box && typeof postEl==="function"){
+    TAUNTS.forEach(function(T){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:T.tm, t:T.t, m:T.m, imp:T.imp}, true)); });
     LEAKS.forEach(function(L){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:L.tm, t:L.t, m:L.m, imp:L.imp, q:{n:"サブ垢", h:"@nao_ura ・ Instagram", t:"本垢に載せない写真の置き場", img:L.img}}, true)); });
    }
   }
@@ -21345,6 +21352,23 @@ try{
   $$("[data-xtab]").forEach(function(b){ b.addEventListener("click",function(){ if(pane.style.display!=="none") pane.style.display="none"; }, true); });
   setInterval(function(){ if(pane.style.display!=="none" && (pubState()!==lastPub || folCount()!==lastFol)) renderProf(); }, 2500);
  }catch(e){}
+})();
+</script>
+
+<script>
+/* ===== v726: Nao's own defiant posts on her X profile (scandal) ===== */
+(function(){
+ if(window.__v726) return; window.__v726 = true;
+ function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 || state._subPublic); }catch(e){ return false; } }
+ function add(){
+  var box=document.querySelector("#x-me-posts"); if(!box || document.getElementById("v726-naoposts")) return;
+  if(typeof postEl!=="function") return;
+  var w=document.createElement("div"); w.id="v726-naoposts";
+  w.appendChild(postEl({n:"なお", h:"@nao_0324", tm:"2時間前", t:"拡散してくれてありがとう。おかげで、隠す理由なくなったわ", m:["3,418","8,204","19,540"], imp:"264"}, true));
+  w.appendChild(postEl({n:"なお", h:"@nao_0324", tm:"1時間前", t:"叩くなら鍵垢から石投げるんじゃなくて、表で言えば？ 私は逃げてないから", m:["2,977","6,811","15,208"], imp:"201"}, true));
+  box.insertBefore(w, box.firstChild);
+ }
+ setInterval(function(){ if(hot()) add(); }, 2500);
 })();
 </script>
 
