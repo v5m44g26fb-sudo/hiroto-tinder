@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v672</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v673</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11998,7 +11998,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v672"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v673"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20101,7 +20101,7 @@ if(typeof ending==="function"){ var _e605=ending; ending=async function(kind){ i
   ["🍽 ごはん","assets/couple-22.jpg",[["assets/couple-22.jpg","焼肉の日"],["assets/couple-10.jpg","たこ焼き"],["assets/couple-3.jpg","最初の夜、居酒屋"]]],
   ["🐶 マロン","assets/couple-12.jpg",[["assets/couple-12.jpg","散歩"],["assets/couple-19.jpg","デレデレ"],["assets/couple-24.jpg","腕の中で寝た"]]],
   ["🧣 ふたり","assets/couple-9.jpg",[["assets/couple-9.jpg","マフラー半分こ"],["assets/couple-20.jpg","電車の居眠り"],["assets/couple-21.jpg","傘"],["assets/couple-25.jpg","助手席"],["assets/couple-26.jpg","ほっぺ"]]],
-  ["🌙 よる","assets/scar-kiss2.jpg",[["assets/scar-kiss2.jpg","近すぎ、って言われるやつ"],["assets/scar-sofa2.jpg","映画、最後まで見たことない"],["assets/scar-car.jpg","後部座席は、近い"],["assets/scar-nose.jpg","近づきすぎ、って分かってる"],["assets/scar-sofa3.jpg","この体勢、ずるい"],["assets/scar-street.jpg","路上で、キス寸前"]]]];
+  ["🌙 よる","assets/scar-kiss2.jpg",[["assets/scar-kiss2.jpg","近すぎ、って言われるやつ"],["assets/scar-sofa2.jpg","映画、最後まで見たことない"],["assets/scar-car.jpg","後部座席は、近い"],["assets/scar-nose.jpg","近づきすぎ、って分かってる"],["assets/scar-sofa3.jpg","この体勢、ずるい"],["assets/scar-street.jpg","路上で、キス寸前"],["assets/scar-pov.jpg","脱がせかけた"]]]];
  var row=document.createElement("div");
  row.style.cssText="display:flex;gap:14px;padding:10px 14px 4px;overflow-x:auto";
  var player=document.createElement("div");
@@ -20879,6 +20879,40 @@ try{
      later(function(){ tlPrepend({n:"特定班",h:"@tokutei_jp",tm:"今",t:"一番古い投稿まで掘られた。『初日の夜』って、出会った日の夜じゃん…",q:{n:"サブ垢",h:"@nao_ura",tm:"9月28日",t:"初日の夜",img:"assets/scar-first.jpg"},m:["💬 3,120","🔁 24,560","❤️ 11,340"]}); },150000);
    }catch(e){}
  },1000);
+})();
+</script>
+<script>
+/* ===== v673: sub-account POV post (12/17) ===== */
+(function(){ if(window.__v673) return; window.__v673=true;
+ function go(){
+  var posts=document.querySelectorAll("#v-subig .v587-post");
+  var tpl=null, anchor=null;
+  posts.forEach(function(p){ var im=p.querySelector(".v587-img");
+    if(im&&im.getAttribute("src")==="assets/scar-nose.jpg") tpl=p;
+    if(im&&im.getAttribute("src")==="assets/couple-32.jpg") anchor=p; });
+  if(!tpl||!anchor||!tpl.parentNode) return;
+  if(document.querySelector('#v-subig .v587-img[src="assets/scar-pov.jpg"]')) return;
+  var np=tpl.cloneNode(true);
+  np.querySelector(".v587-img").src="assets/scar-pov.jpg";
+  var cap=np.querySelector(".v587-cap"); if(cap) cap.innerHTML="<b>nao_ura</b> 脱がせようとして、失敗した夜";
+  var dt=np.querySelector(".v587-date"); if(dt) dt.textContent="12月17日";
+  var cm=np.querySelectorAll(".v587-cmt"); cm.forEach(function(c){ c.remove(); });
+  var c1=document.createElement("div"); c1.className="v587-cmt"; c1.innerHTML="<b>193.hiroto_jixiang</b> …あれは、ほんまに焦らされた";
+  (np.querySelector(".v587-date")||np).before(c1);
+  anchor.parentNode.insertBefore(np, anchor);
+  var tiles=document.querySelectorAll("#v-subig .v587-tile");
+  var tt=null, ta=null;
+  tiles.forEach(function(t){ var im=t.querySelector("img");
+    if(im&&im.getAttribute("src")==="assets/scar-nose.jpg") tt=t;
+    if(im&&im.getAttribute("src")==="assets/couple-32.jpg") ta=t; });
+  if(tt&&ta&&ta.parentNode){ var nt=tt.cloneNode(true); nt.querySelector("img").src="assets/scar-pov.jpg"; ta.parentNode.insertBefore(nt, ta); }
+  var all=document.querySelectorAll("#v-subig .v587-tile");
+  all.forEach(function(t,ix){ t.setAttribute("data-i", String(ix)); });
+  var st=document.querySelectorAll("#v-subig .ig-stats b");
+  if(st.length>=1) st[0].textContent=String(document.querySelectorAll("#v-subig .v587-post").length);
+ }
+ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", go); else go();
+ setTimeout(go, 1500);
 })();
 </script>
 </body>
