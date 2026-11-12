@@ -937,7 +937,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v641</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v642</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1199,6 +1199,12 @@ const X_POSTS=[
 {n:"特定班",h:"@tokutei_work",t:"プロフ文の『ごはんとコーラは好き』、盛ってなさすぎて逆に本物。アイドルのプロフって、普通もっと飾るやろ",m:["💬 3,208","🔁 15,670","❤️ 12,305"]},
 {n:"さくらの推し活",h:"@sakura_act",t:"同担が泣いてたから、隣に座ってた。気持ちは痛いほど分かる。でも彼の口から聞くまでは、私は結論を出さない",m:["💬 289","🔁 2,410","❤️ 15,980"]},
 {n:"まとめ速報",h:"@matome_soku",t:"【賛否】『24歳の自由やん』擁護派 vs『ファンのお金で立つステージ』批判派。交際自体は事務所が否定済み #大翔Tinder",m:["💬 2,764","🔁 16,208","❤️ 6,930"]},
+{n:"特定班",h:"@tokutei_work",t:"検証班メモ②：彼の投稿『このまま時間が止まればいいのに』の写真、よく見ると傘が写ってる。11月1日の夜、帰り道の一枚。…その傘、誰の？",m:["💬 4,512","🔁 19,340","❤️ 8,204"]},
+{n:"さくらの推し活",h:"@sakura_act",t:"掘り起こされてる彼のプリンのストーリー、あれ10月18日のやつやで。『新作プリン、完成』って、ただ嬉しそうにしてただけのやつ",m:["💬 356","🔁 2,140","❤️ 9,870"]},
+{n:"まとめ速報",h:"@matome_soku",t:"各局の情報番組が特集を編成中。『現役アイドルとマッチングアプリ』、明日のワイドショーはこの話題で持ちきりになりそう",m:["💬 1,208","🔁 9,654","❤️ 3,311"]},
+{n:"一般の感想",h:"@ippan_no",t:"職場でも話題になってた。『推しがアプリやってたらどうする』って聞かれて、普通に『相手による』って答えた自分がいた",m:["💬 892","🔁 5,430","❤️ 21,305"]},
+{n:"海外ファン垢",h:"@hiroto_global",t:"声明の韓国語訳が回ってる。『お相手に迷惑をかけた』の一文に、海外ファンの反応が一番集まってる",m:["💬 1,104","🔁 6,208","❤️ 14,930"]},
+{n:"週刊デジタル公式",h:"@shukan_digi ☑",t:"次号では『アイドルとマッチングアプリの現在地』を特集します。今回の件の続報とは別枠で、識者コメントも交えてお届けする予定です",m:["💬 2,340","🔁 7,915","❤️ 2,204"]},
 {n:"ゆん",h:"@yun_o0",t:"声明、読んだ。ソロで、全部自分の名前で背負うやつ。逃げてないと思う。…それでも、しばらくは複雑なままやと思う",m:["💬 1,975","🔁 1,102","❤️ 5,468"]},
 {n:"ロットダン💙",h:"@rottdan_love",t:"アプリ、退会したって。もう、あの子と会うこともないんやね。…ステージで返してくれるなら、私は見届ける。それだけ",m:["💬 1,340","🔁 6,540","❤️ 24,310"]},
 {n:"みお",h:"@mio_hrt",t:"担降りします、って書く気はない。でも今日だけは、推しの名前を検索するのがつらい。明日、配信のアーカイブ見たらまた戻ってくる気がする",m:["💬 186","🔁 342","❤️ 2,431"]},
@@ -1214,7 +1220,7 @@ function postEl(p,hot){const d=document.createElement("div");d.className="post";
  tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); return d}
 function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
 const mine=document.createElement("div"); $("#x-me-posts").appendChild(postEl({n:"なお",h:"@nao_0324",t:"（このアカウント、今めちゃくちゃ見られてる…）",m:["💬 0","🔁 0","❤️ 0"]},false));}
-const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","マロン","31,204 件のポスト"]];
+const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","マロン","31,204 件のポスト"],["日本のトレンド","傘の写真","18,204 件のポスト"],["エンターテイメント ・ トレンド","ワイドショー","44,812 件のポスト"]];
 function buildTrends(){const w=$("#x-pane-trend"); w.innerHTML=""; TRENDS.forEach((t,i)=>{const d=document.createElement("div");d.className="trend";d.style.cursor="pointer";d.title="タップで検索";d.addEventListener("click",()=>{ $("#x-q").value=t[1].replace("#",""); doSearch(t[1].replace("#","")); });d.innerHTML=`<div class="cat">${i+1} ・ ${t[0]}</div><div class="kw">${t[1]}</div><div class="cnt">${t[2]}</div>`;w.appendChild(d)})}
 function bumpTrends(){ $$("#x-pane-trend .trend .cnt").forEach(el=>{ const n=parseInt(el.textContent.replace(/[^0-9]/g,"")); if(!isNaN(n)){ const add=Math.floor(Math.random()*900+120); el.textContent=(n+add).toLocaleString("ja-JP")+" 件のポスト"; } }); }
 $$("[data-xtab]").forEach(b=>b.addEventListener("click",()=>{$$("[data-xtab]").forEach(x=>x.classList.remove("act"));b.classList.add("act");$("#x-thread").style.display="none";const cb=$("#x-compose-btn"); if(cb) cb.style.display="";["tl","trend","mention","me","search"].forEach(k=>$("#x-pane-"+k).style.display=k===b.dataset.xtab?"block":"none")}));
@@ -1501,9 +1507,9 @@ document.addEventListener("click",e=>{const b=e.target.closest(".like-btn"); if(
  const m=b.textContent.match(/([\d,]+)/); if(m){let n=parseInt(m[1].replace(/,/g,"")); n+=on?1:-1; b.textContent=b.textContent.replace(m[1],n.toLocaleString("ja-JP"));}});
 /* ===== v2: infinite generators ===== */
 const GEN_NAMES=["fan_mama","rottdan_2","oshi_katsu_jp","hana_22","mio_p","yume_ko","sora_machi","ebiko_love"];
-const GEN_MEN_HOT=["@nao_0324 まだ信じたくない…","@nao_0324 説明してほしい、ほんとに","@nao_0324 そのカフェ投稿、やっぱ匂わせ？"];
+const GEN_MEN_HOT=["@nao_0324 まだ信じたくない…","@nao_0324 説明してほしい、ほんとに","@nao_0324 そのカフェ投稿、やっぱ匂わせ？","@nao_0324 傘の写真の件、ほんとなの？","@nao_0324 ワイドショー見た？　名前は出てなかったけど"];
 const GEN_MEN_OK=["@nao_0324 応援してるよ、負けないで","@nao_0324 大翔のこと大事にしてあげてね","@nao_0324 幸せならそれが一番だと思う","@nao_0324 無理しないでね、味方もいるよ","@nao_0324 本人の言葉を信じて待ってます","@nao_0324 推しのファンとして、なおさんを叩く気はないよ"];
-const GEN_IG_HOT=["やっぱり相手この人か…","匂わせだけはモヤる","説明まだ？","アプリの件、答えてほしい","ファンミの発言と矛盾してない？","担降りはしないからね","布教動画、また回ってきたよ"];
+const GEN_IG_HOT=["やっぱり相手この人か…","匂わせだけはモヤる","説明まだ？","アプリの件、答えてほしい","ファンミの発言と矛盾してない？","担降りはしないからね","傘の写真、見ちゃった","プリンのストーリーの人？","布教動画、また回ってきたよ"];
 const GEN_IG_OK=["応援に来ました！","大翔さんを幸せにしてあげて","炎上落ち着いてきたね","最初は驚いたけど、今は応援派です","二人のペースでいいと思う","コメント欄、平和になってきた","本人の言葉、ちゃんと届いたよ"];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function genContent(){ if(state._genN>=16) return; state._genN=(state._genN||0)+1;
@@ -11984,7 +11990,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v641"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v642"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20151,6 +20157,37 @@ if(typeof ending==="function"){ var _e605=ending; ending=async function(kind){ i
 #ph-view #v445-trash{bottom:14px!important}
 </style>
 
+
+<script>
+/* ===== v642: scandal expansion - two more news beats (wide-show feature + fanmeet decision) ===== */
+(function(){ if(window.__v642) return; window.__v642=true;
+window.openWideArticle=function(){
+var list=document.querySelector("#news-list"); if(list) list.style.display="none";
+var a=document.querySelector("#news-article"); if(!a) return; a.style.display="block";
+a.innerHTML='<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button>'+
+'<h2>情報番組が特集「現役アイドルとマッチングアプリ」　スタジオでも賛否</h2>'+
+'<div class="meta">芸能デスク ・ たった今</div>'+
+'<p>人気アイドル・井汲大翔（24）のマッチングアプリ利用報道が、テレビの情報番組でも取り上げられた。番組では事務所の「交際の事実はございません」とのコメントを紹介しつつ、コメンテーターの間でも意見が分かれた。</p>'+
+'<p>「24歳の大人。恋愛そのものより、相手の一般女性が特定されていく流れのほうが心配」とプライバシーへの懸念を示す声がある一方、「ファンとの関係で成り立つ仕事。説明は要る」とする声も。SNSでは「傘の写真」など過去投稿の検証が続いており、騒動はなお拡大している。</p>'+
+'<p>所属事務所は本誌の取材に「ファンミーティングの開催可否は週内に判断する」としている。</p>'+
+'<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">t</span> tv***さん</div><div class="yt">テレビで見た。名前より先に「一般女性を特定するな」って話になってたのは良かったと思う</div></div>'+
+'<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">h</span> hir***さん</div><div class="yt">傘の写真の検証、正直やりすぎ。雨の日の帰り道なんて、誰にでもある</div></div>'+
+'<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">f</span> fan***さん</div><div class="yt">ファンミ、やるなら行く。やらないなら、それも受け止める。早く決まってほしい</div></div>'+
+'</div>';
+var sc=document.querySelector("#news-scroll"); if(sc) sc.scrollTop=0;
+};
+var _ss=window.startScandal||startScandal;
+startScandal=function(){ _ss();
+later(function(){ if(state.phase!=="scandal"||state.act2||state.ended) return;
+addNewsRow("assets/crown-full.jpg","情報番組が特集「現役アイドルとマッチングアプリ」　スタジオでも賛否","芸能デスク ・ たった今",function(){ openWideArticle();});
+push("ニュース速報","#e60012","N","情報番組が特集で取り上げ","ワイドショーでも報道——タップで記事へ",function(){ show("news");});
+},100000);
+later(function(){ if(state.phase!=="scandal"||state.act2||state.ended) return;
+addNewsRow("assets/stage.jpg","ファンミーティングの開催可否「週内に判断」　事務所が回答","芸能デスク ・ たった今",null);
+},126000);
+};
+})();
+</script>
 </body>
 
 
