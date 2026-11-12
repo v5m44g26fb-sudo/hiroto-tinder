@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v715</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v716</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12001,7 +12001,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v715"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v716"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21030,6 +21030,86 @@ try{
  setTimeout(function(){ clearInterval(iv); },60000);
 })();
 </script>
+
+<script>
+/* ===== v716: when the sub-account goes public, its posts get flooded with comments =====
+   leaked route (state._subPublic==="leaked"): hostile/betrayed fan flood.
+   dating route (state._subPublic==="dating" / _subOpened): flood too, mixed with supportive voices.
+   Display-only: appends .cmt rows under sub posts, content matched per photo. No flags/branches touched. */
+(function(){
+ if(window.__v716) return; window.__v716 = true;
+ var USERS=["hiroto_ouen","dp2019_san","ikumi_0106","fan_no_hitorigoto","hiroto_dake_miteru","ouen_dan_3","ikumi_ichiban","pure_fan2019","hiroto_no_egao","dp_hakooshi","ikumi_suki_sugi","ouen_6nenme","hiroto_waiting","namida_no_fan","ikumi_forever","sakubai_kaigui","tampatsu_","hiroto_ouen2"];
+ var KEYED={
+ "couple-9":["クリスマス一緒に過ごしてたの？","マフラー半分こって、完全に恋人同士じゃん","…来年も、って彼のコメント、何なの"],
+ "couple-32":["ツリーの前で耳つけるとか、隠す気ゼロで草","顔寄せたら近すぎて笑ってたって、自白じゃん","これデート現場そのもの"],
+ "couple-31":["頭に手、置きがちって…彼女にだけ出す癖じゃん","歩くペース落ちるほど一緒にいたいってこと？","距離感バグってる"],
+ "couple-26":["近すぎて笑うしかなかったって、何があったの","この距離で何もないは無理がある"],
+ "couple-30":["この近さ、友達の距離じゃない","12月に入って一気に距離縮まってない？"],
+ "couple-25":["助手席、指定席って宣言じゃん","信号待ちで目をそらす距離って何","車内のツーショット、残すなよ…"],
+ "couple-27":["パン選ぶのに横並びで近すぎって、どういう状況","日常デートの証拠が多すぎる"],
+ "couple-28":["これも二人きりのやつ…","時系列で並べると全部繋がるの怖い"],
+ "couple-11":["海雲台！？ 釜山旅行も一緒だったの","寒いって言ったら寄ってきたって、彼氏ムーブすぎる"],
+ "couple-20":["電車で肩に寄りかかって寝る関係…","起こせなかった、じゃなくて起こしたくなかったでしょ"],
+ "couple-29":["言う前に寄ってきてたって、完全に彼氏","すすき畑デートとか、ドラマかよ"],
+ "couple-12":["マロンと三人で散歩って、もう家族じゃん","リード持つ手が重なって、離すの忘れてたって何"],
+ "couple-4":["向かいじゃなく隣に座って膝が当たってたって、自白多すぎ","カフェで隣に座るのは恋人だけ"],
+ "couple-13":["渡すとき指先が触れて、気づかないふりって両想いじゃん","朝からカフェオレ作ってもらえる関係…"],
+ "couple-17":["寝落ちを起こせなかったって、首元に息が当たる距離で見てたの？","これは見守る人の距離じゃない"],
+ "couple-23":["映画、最後まで見たことないって、隣で何してたの","彼のコメント『見んでええ』が答えじゃん"],
+ "couple-6":["水たまり避けるたび肩が寄るって、離れる気ないじゃん","雨上がりの帰り道、二人きり…"],
+ "couple-7":["エレベーター二人きりで、目をそらす距離って","誰も来ませんようにって願う時点で…"],
+ "couple-2":["指ぶつかるたびドキッとしたって、少女漫画か","初期からこの距離感だったの"],
+ "couple-1":["9月28日…会った初日から？","腕ぶつかるたび離れにくくなるって、初日の感想じゃない"]
+ };
+ var GEN_LEAK=["鍵垢でこれ溜めてたの、怖すぎる","ファンには見せられない写真ばっかりじゃん","いつから？ 全部時系列で並んでるの怖い","裏切られた気分。応援してた時間、返して","これ全部本物なの？ 合成じゃないの","スクショ撮った。消しても無駄だよ","事務所、これも『事実無根』って言うの？","いいね欄に彼の名前があるの、決定的すぎ","なんで鍵垢のままにしなかったの","覗き見してる気分で最悪。でも全部見た","担降りします。今までありがとうございました","この垢の存在自体が匂わせの塊じゃん","泣いてる。本気で泣いてる","コメント欄、閉じても手遅れだよ"];
+ var GEN_DATE=["自分で公開したの…認めたってことだよね","複雑だけど、隠し続けるよりは誠実かも","お幸せに、とはすぐ言えないけど、嘘つかないのは好感","ファンの気持ちも少しは考えてほしかった","この写真たち、幸せそうなのは伝わる","応援は続ける。でも整理する時間ちょうだい","事務所の『交際の事実はない』は何だったの","二人で決めたなら、外野は黙るしかないか","泣いた。でも本人たちが決めたなら","距離感の写真ばっかりで、見てるこっちが照れる","覚悟を決めて出したのは伝わる","裏でこそこそよりはマシ。でもショックはショック"];
+ var started=false, mode=null, ui=0;
+ function posts(){ return Array.prototype.slice.call(document.querySelectorAll("#v-subig .v587-post")); }
+ function keyOf(post){ var img=post.querySelector("img.v587-img"); if(!img) return ""; var s=img.getAttribute("src")||""; var m=s.match(/couple-\d+/); return m?m[0]:""; }
+ function pick(pool,seed){ return pool[Math.abs(seed)%pool.length]; }
+ function addComment(post){
+   var cap=post.querySelector(".cap"); if(!cap) return false;
+   var n=parseInt(post.getAttribute("data-v716c")||"0",10); if(n>=10) return false;
+   var key=keyOf(post); var pool=[];
+   if(KEYED[key]) pool=pool.concat(KEYED[key]);
+   pool=pool.concat(mode==="dating"?GEN_DATE:GEN_LEAK);
+   var d=document.createElement("div"); d.className="cmt"; d.setAttribute("data-v716","1");
+   var user=USERS[(ui++)%USERS.length];
+   d.innerHTML="<b>"+user+"</b> "+pick(pool, n*3 + ui + key.length);
+   cap.appendChild(d);
+   post.setAttribute("data-v716c", String(n+1));
+   return true;
+ }
+ function wave(w){
+   var ps=posts(); if(!ps.length) return;
+   var upto=Math.min(ps.length, 3+w*3);
+   for(var i=0;i<upto;i++){
+     var c=(w<2)?2:((i+w)%3===0?2:1);
+     for(var j=0;j<c;j++) addComment(ps[i]);
+   }
+   if(mode!=="dating" && w===2 && typeof push==="function"){
+     try{ push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","nao_ura","コメントが殺到しています —— 炎上中"); }catch(e){}
+   }
+ }
+ function start(m){
+   if(started) return; started=true; mode=m;
+   if(typeof push==="function"){
+     try{ push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","nao_ura", m==="dating" ? "二人が公開したサブ垢に、コメントが集まっています" : "サブ垢が公開され、投稿にコメントが殺到しています"); }catch(e){}
+   }
+   var delays=[4000,20000,45000,80000,125000,185000];
+   for(var w=0;w<delays.length;w++){ (function(w){ setTimeout(function(){ wave(w); }, delays[w]); })(w); }
+ }
+ setInterval(function(){
+   if(started) return;
+   try{
+     if(typeof state==="undefined") return;
+     if(state._subPublic==="dating" || state._subOpened) start("dating");
+     else if(state._subPublic==="leaked") start("leaked");
+   }catch(e){}
+ },2000);
+})();
+</script>
+
 </body>
 
 
