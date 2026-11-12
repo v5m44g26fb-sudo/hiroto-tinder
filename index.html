@@ -929,7 +929,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v635</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v636</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -11977,7 +11977,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v635"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v636"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20107,6 +20107,30 @@ if(typeof ending==="function"){ var _e605=ending; ending=async function(kind){ i
   row.appendChild(b); });
  var grid=v.querySelector(".v587-grid");
  if(grid) grid.parentElement.insertBefore(row, grid); else v.querySelector(".scroll").appendChild(row);
+})();
+</script>
+
+<script>
+/* ===== v636: memory photos at two more story points ===== */
+(function(){ if(window.__v636) return; window.__v636=true;
+ function add(src, cap){
+  try{ addPhoto(src, cap); }catch(e){ return; }
+  try{ push("写真","#8e8e93","🌼","思い出が追加されました", cap+" —— タップで写真へ", function(){ show("photos"); }); }catch(e){}
+ }
+ if(typeof window.startInterlude==="function"){
+  var _si=window.startInterlude;
+  window.startInterlude=async function(t){ var r=await _si(t);
+   if(!state._v636rain){ state._v636rain=true;
+    later(function(){ add("assets/couple-6.jpg","雨上がりの帰り道"); }, 6000); }
+   return r; };
+ }
+ var iv=setInterval(function(){
+  if(state && state._normInterludeDone==="run" && !state._v636kitchen){
+   state._v636kitchen=true;
+   later(function(){ add("assets/couple-13.jpg","朝のキッチン"); }, 9000);
+  }
+  if(state && state._normInterludeDone===true && state._v636kitchen) clearInterval(iv);
+ },1500);
 })();
 </script>
 </body>
