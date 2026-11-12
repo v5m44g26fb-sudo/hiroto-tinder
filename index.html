@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v690</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v691</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12001,7 +12001,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v690"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v691"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -13696,6 +13696,9 @@ dock.addEventListener("click",function(e){
  var REPL_ME_SC=[["ゆい","@yui_s","無理しないでね。味方やから"],["m_support","@m_support","見てるよ。大丈夫"],["一般人","@ippanjin_jp","この人が例の…？"]];
  function esc(t){ var d=document.createElement("div"); d.textContent=t||""; return d.innerHTML; }
  var TOPICS=[
+  {re:/流出|未投稿|晒され|ベッドの上/, rp:[["特定班","@tokutei_jp","この写真、どこにも投稿されてなかったやつだろ。出どころが一番怖い"],["担降り検討","@kangaechu","本人たちが一番守りたかった写真じゃん…これはさすがに可哀想でもある"],["まとめ読み","@matome_yomi","流出元は身内か、端末か。そこが一番の闇"],["冷静派","@reisei_ha","出回った写真をこれ以上広げるのも、加害だと思う"]], qt:["流出写真の件、元はこのポスト。広げすぎ注意で置いとく","未投稿のはずの写真が出回ってる件、これが発端"]},
+  {re:/キス写真|写真付きポスト/, rp:[["現場の声","@genba_koe","自分でキス写真上げるって、正気？ 燃やしに来てる"],["あんり","@anri_h1029","ガソリンぶちまけて自撮りしてるようなもん"],["さくらの推し活","@sakura_act","お願い、もうやめて…大翔の顔、こんな形で見たくなかった"],["元同担","@moto_dotan","相手の女、確信犯すぎて引く"]], qt:["例の写真付きポスト、引用で回ってきた。これが新しい火種","本人が上げた写真ポストの件、元ポストはこれ"]},
+  {re:/担降り|担おり/, rp:[["古参ファン","@koha_fan","6年は重いよ。簡単に叩けない"],["同担","@dotan_x","気持ちは分かる。でも、残る人もいるってことも分かって"],["様子見","@yousumi_jp","降りるも残るも、本人の自由。周りが騒ぐことじゃない"]], qt:["担降りの表明、このポストが起点。そっとしておこう","降りる決断のポスト。色々あったけど、まずはおつかれさま"]},
   {re:/マロン|わんこ|犬/, rp:[["犬好き","@inu_zuki","マロンくん安定のかわいさ。犬のいる生活うらやましい"],["わんこ班","@wanko_han","この子の写真はいつも癒し。もっと投稿してほしい"],["犬派宣言","@inuhai_sengen","マロン見たさにフォローしてるまである"]], qt:["マロンくんの写真、癒しなので引用しとく","犬好きはこのポスト見て"]},
   {re:/Tinder|マッチングアプリ|現役アイドル/, rp:[["一般人","@ippanjin_jp","現役アイドルがマッチングアプリはさすがに擁護しにくい…というか事実確認が先では"],["様子見","@yousumi_jp","事務所のコメント出るまで憶測で叩くのは違うと思う。静観"],["ファン歴3年","@fan_3nen","信じたくない。でもアプリ使ってたのが本当なら、そこは正直しんどい"],["冷静派","@reisei_ha","登録自体は誰でもできるし、なりすましの可能性も含めて続報待ち"]], qt:["現役アイドルのマッチングアプリ利用の件、元ポストはこれ。憶測で広げる前に原文を","この件、引用で回ってきた。事実関係は公式待ち"]},
   {re:/事務所|発表|コメント|謝罪|お騒がせ/, rp:[["発表読み","@happyom_yomi","事務所の発表、全文読んだ。本人の言葉も聞かせてほしい"],["ファンの一人","@fan_no_hitori","お騒がせって言葉が重い…。まずは無事に活動できる形になってほしい"],["冷静に読む","@reisei_yomu","発表文だけだと分からない部分も多い。続報を待ちます"]], qt:["事務所発表の原文はこれ。切り取りじゃなく全文読むべき","公式コメント出た。まずはこれを読んでから"]},
@@ -13714,8 +13717,8 @@ dock.addEventListener("click",function(e){
  function quoteList(topic){ if(!topic||!topic.qt) return QT_DEF; return [[QT_DEF[0][0],QT_DEF[0][1],topic.qt[0]],[QT_DEF[1][0],QT_DEF[1][1],topic.qt[1]||QT_DEF[1][2]]]; }
  function hashS(s){ var x=0; for(var i=0;i<s.length;i++) x=(x*31+s.charCodeAt(i))>>>0; return x; }
  function pick3(arr,seed){ var out=[]; for(var i=0;i<Math.min(3,arr.length);i++) out.push(arr[(seed+i)%arr.length]); return out; }
- function matchTopic(post){ var txEl=post.querySelector(".tx"); var t=txEl?txEl.textContent:""; for(var i=0;i<TOPICS.length;i++) if(TOPICS[i].re.test(t)) return TOPICS[i]; return null; }
- function kwReplies(post){ var txEl=post.querySelector(".tx"); var t=txEl?txEl.textContent:""; var m=t.match(/[ァ-ヶー]{3,}|[一-龯]{2,}/); var kw=m?m[0]:"これ";
+ function matchTopic(post){ var txEl=post.querySelector(".tx"); var t=txEl?txEl.textContent:""; var qd=post.querySelector(".tx + div"); if(qd) t+=" "+qd.textContent; for(var i=0;i<TOPICS.length;i++) if(TOPICS[i].re.test(t)) return TOPICS[i]; return null; }
+ function kwReplies(post){ var txEl=post.querySelector(".tx"); var t=txEl?txEl.textContent:""; var PK=["流出","炎上","熱愛","写真","事務所","発表","謝罪","ファンミ","延期","熱愛報道","キス"]; var kw=null; for(var pi=0;pi<PK.length;pi++){ if(t.indexOf(PK[pi])>=0){ kw=PK[pi]; break; } } if(!kw){ var m=t.match(/[ァ-ヶー]{3,}|[一-龯]{2,}/); kw=m?m[0]:"これ"; }
   if(typeof state!=="undefined"&&state.phase==="scandal") return [["様子見","@yousumi_jp",kw+"の件、続報出るまで静観する"],["一般人","@ippanjin_jp",kw+"ってそういうことだったのか…状況を整理したい"],["まとめ読み専","@matome_yomi",kw+"の元ポストはこれか。原文で確認した"]];
   return [["通りすがり","@toorisugari_x",kw+"の話、わかりすぎる"],["常連","@jouren_san",kw+"、気になってたやつ。詳しく聞きたい"],["フォロワー","@follower_x",kw+"のポストいつも楽しみにしてる"]]; }
  function openDetail(post){
