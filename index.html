@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v687</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v688</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1447,7 +1447,8 @@ document.addEventListener("dblclick",e=>{ const img=e.target.closest(".pimg"); i
 function findLikeBtn(img){ let el=img; for(let k=0;k<4;k++){ el=el.nextElementSibling; if(!el) break; if(el.classList&&el.classList.contains("acts")) return el.querySelector(".like-btn"); }
   const wrap=img.parentElement; if(wrap&&!wrap.classList.contains("scroll")){ const lb2=wrap.querySelector(".like-btn"); if(lb2) return lb2; } return null; }
 /* segmented stories */
-function buildSegs(){ if(state.started) return [{img:"assets/ig-food.jpg",txt:"食べまくってる🍚"},{img:null,txt:"驚かせてしまって、ごめんね。\nいつも本当にありがとう。"}];
+function buildSegs(){ if(state.phase==="scandal") return [{txt:"驚かせてしまって、ごめんね。\nいつも本当にありがとう。"}];
+  if(state.started) return [{img:"assets/ig-food.jpg",txt:"食べまくってる🍚"},{img:null,txt:"驚かせてしまって、ごめんね。\nいつも本当にありがとう。"}];
   if(state.phase==="prologue"&&state.chapter>=5) return [{img:"assets/cafe3.jpg",txt:"今日のカフェ"},{img:"assets/night.jpg",txt:"帰り道"},{img:"assets/hiroto-disney.jpg",txt:"ツリー、点いた🎄"}];
   if(state.phase==="prologue"&&state.chapter>=4) return [{img:"assets/ig-meal.jpg",txt:"内緒やけど、\n楽しいねん"},{txt:"新作プリン、完成🍮"},{txt:"…今日は、寝れん"}];
   if(state.phase==="prologue"&&state.chapter>=3) return [{img:"assets/selfie.jpg",txt:"レッスン終わり"},{img:"assets/ig-gen-studio.jpg",txt:"スタジオ籠り"}];
@@ -1511,7 +1512,7 @@ const GEN_IG_HOT=["やっぱり相手この人か…","匂わせ、ほんと無�
 const GEN_IG_OK=["応援に来ました！","大翔さんを幸せにしてあげて","炎上落ち着いてきたね","最初は驚いたけど、今は応援派です","二人のペースでいいと思う","コメント欄、平和になってきた","本人の言葉、ちゃんと届いたよ"];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function genContent(){ if(state._genN>=16) return; state._genN=(state._genN||0)+1;
-  const ok=Math.random()<(state.act2?0.85:0.45); const nm=pick(GEN_NAMES);
+  const ok=state.phase!=="scandal"&&Math.random()<(state.act2?0.85:0.45); const nm=pick(GEN_NAMES);
   if(state._genN%2===0){ const d=document.createElement("div"); d.className="cmt"; d.innerHTML=`<b>${nm}</b>${ok?pick(GEN_IG_OK):pick(GEN_IG_HOT)}<span class="tm">今</span>`; const _gb=$("#ig-cmts"); if(_gb) _gb.appendChild(d); state.igCmt++; $("#ig-cmt-n").textContent=state.igCmt; bump("ig");
   } else { const list=$("#x-men-list"); const d=document.createElement("div"); d.className="post"; d.innerHTML=`${avaTxt(nm)}<span style="min-width:0"><span class="nm">${nm}</span> <span class="hd">@${nm} ・ 今</span><div class="tx">${ok?pick(GEN_MEN_OK):pick(GEN_MEN_HOT)}</div><div class="mt" data-v258="1"><span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg></span><span class="like-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <b>${Math.floor(Math.random()*900+3)}</b></span></div></span>`; list.prepend(d); bump("x"); }
 }
@@ -12000,7 +12001,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v687"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v688"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20284,6 +20285,7 @@ try{
  css.textContent="#nao-story-view .sbar{display:flex;gap:5px}#nao-story-view .sbar i{flex:1;position:relative;overflow:hidden;background:rgba(255,255,255,.35);border-radius:2px;height:3.5px;animation:none!important}#nao-story-view .sbar i b{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff}#nao-story-view .sbar i.done b{width:100%}#nao-story-view .sbar i.act b{animation:sprog 5s linear forwards}";
  view.appendChild(css);
  function segs(){
+  if(state.phase==="scandal") return [["assets/night.jpg","…今日は、静かにしてます",null]];
   if(state.act2) return [["assets/cafe.jpg","おはよう☀ 今日からまた、普通に","👁 18人 ・ yui_s、sauna_m 他"],["assets/nao-disney.jpg","耳、つけてみた🎄","👁 19人 ・ yui_s、sauna_m 他"]];
   if(state.started) return [["assets/cafe.jpg","おはよう☀ 今日からまた、普通に",null]];
   var ch=state.chapter||0;
