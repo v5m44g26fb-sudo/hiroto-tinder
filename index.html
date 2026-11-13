@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v870</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v871</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v870"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v871"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -30240,6 +30240,80 @@ input,textarea,select{font-size:16px!important}
   setVis(document.querySelector("#news-stamp"),open);
  }
  setInterval(tick,300); tick();
+})();
+</script>
+
+<script>
+/* ===== v871: the Memories panel gains a real
+   photo-memories collection's face (category A,
+   visual UI overhaul, one screen). Until now
+   #mem-panel was the generic grey sheet carried
+   over from v76: a flat #f2f2f7 ground, a small
+   17px head with a grey side note, and plain
+   white 14px-radius rows with a bare 24px emoji,
+   nothing like the warm cinematic collection the
+   real Photos app puts its Memories in. This
+   layer restyles that one panel only: the ground
+   becomes a warm sunset wash (peach into cream),
+   the head grows to a 26px/900 title in deep
+   brown with the side note turned into an orange
+   pill and the close button a shadowed white disc,
+   a collection bar sits under the head (an
+   orange-to-pink gradient pill plus a live
+   "all N / unlocked M" count read off the cards'
+   own lock class), and every memory row becomes
+   a collection card - white at 20px radius, an
+   orange spine inset on its left edge, a soft
+   warm shadow, its emoji held in a 52px gradient
+   disc, a 16px title, a semibold burnt-orange
+   date line, and the voice button as an
+   orange-to-pink gradient pill. The bar is
+   id-guarded and its count text is re-checked on
+   a mutation pass that writes only when the
+   wanted text actually differs, so nothing can
+   flicker or fight the builder. No memory title,
+   date line, unlock rule, voice file, play flow
+   or gate is touched; SMS untouched per nao's
+   move-on instruction, pull-to-refresh and the
+   small-gesture expansions skipped per the 06:52
+   exclusion; Playwright-verified (see
+   hidden_files/v871-probe.py) ===== */
+(function(){
+ if(window.__v871) return; window.__v871=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#mem-panel{background:linear-gradient(180deg,#ffe3c2,#fff3e2 42%,#fffaf1)!important;color:#431407!important}"+
+  "#mem-panel>div:first-child{margin-bottom:4px!important}"+
+  "#mem-panel>div:first-child b{font-size:26px!important;font-weight:900!important;letter-spacing:.02em;color:#7c2d12}"+
+  "#mem-panel>div:first-child>span{background:rgba(249,115,22,.16);color:#c2410c!important;font-size:11.5px!important;font-weight:700;border-radius:999px;padding:4px 10px}"+
+  "#mem-close{background:#fff!important;width:36px!important;height:36px!important;box-shadow:0 2px 9px rgba(124,45,18,.20)}"+
+  "#v871-membar{margin:2px 2px 12px;display:flex;align-items:center;gap:9px}"+
+  "#v871-membar .col{background:linear-gradient(135deg,#f97316,#ec4899);color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:5px 11px}"+
+  "#v871-membar .cnt{font-size:12.5px;color:#c2410c;font-weight:700}"+
+  "#mem-panel .mem-card{background:#fff!important;border-radius:20px!important;padding:16px!important;margin-bottom:12px!important;gap:14px!important;box-shadow:inset 5px 0 0 #fb923c,0 6px 18px rgba(194,65,12,.13)}"+
+  "#mem-panel .mem-card>span:nth-of-type(1){background:linear-gradient(135deg,#ffedd5,#ffe4e6);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-size:26px!important}"+
+  "#mem-panel .mem-card .mt{font-size:16px!important;color:#431407}"+
+  "#mem-panel .mem-card .md{font-size:12.5px!important;color:#c2410c!important;font-weight:600;margin-top:3px!important}"+
+  "#mem-panel .mem-card .play{background:linear-gradient(135deg,#f97316,#ec4899)!important;padding:10px 14px!important;box-shadow:0 4px 12px rgba(236,72,153,.32)}";
+ document.head.appendChild(css);
+ function sync(){
+   var panel=document.querySelector("#mem-panel"); if(!panel) return;
+   var head=panel.querySelector(":scope>div"); if(!head) return;
+   var bar=panel.querySelector("#v871-membar");
+   if(!bar){
+     bar=document.createElement("div"); bar.id="v871-membar";
+     bar.innerHTML='<span class="col">コレクション</span><span class="cnt"></span>';
+     head.after(bar);
+   }
+   var cards=panel.querySelectorAll(".mem-card");
+   if(!cards.length) return;
+   var un=0; cards.forEach(function(c){ if(!c.classList.contains("lock")) un++; });
+   var txt="全"+cards.length+"件 ・ 解放済み "+un+"件";
+   var cnt=bar.querySelector(".cnt");
+   if(cnt && cnt.textContent!==txt) cnt.textContent=txt;
+ }
+ new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
+ sync();
 })();
 </script>
 </body>
