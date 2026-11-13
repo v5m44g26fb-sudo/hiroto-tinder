@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v802</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v803</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v802"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v803"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -25236,6 +25236,65 @@ input,textarea,select{font-size:16px!important}
    other card on the screen. No element, handler, gate or text
    changes - the same home, at the density it should have had. ===== */
 (function(){ if(window.__v802) return; window.__v802=1; })();
+</script>
+
+<script>
+/* ===== v803: TikTok's feed mode gains the real app's playback
+   progress bar. In the real TikTok the playing video carries a thin
+   progress line at the bottom of the screen (just above the tab
+   bar) whose fill tracks the playback position; here the feed-mode
+   videos (v257 slide feed, native controls removed) had no position
+   cue at all beyond v775's paused triangle - a video halfway through
+   looked exactly like one that had just started. This layer adds
+   exactly that line: one bar per video, created lazily inside its
+   own .tt-vwrap on the first playback event, shown only in feed
+   mode (.tt-fm) via CSS, pointer-events off so it can never swallow
+   the tap that v257 uses for play/pause or the double-tap v766 uses
+   for the heart. The fill is driven by the video's own timeupdate /
+   seeked / loadedmetadata events and is change-guarded (the width
+   is only written when the rounded percentage actually moves, kept
+   per-video), so it cannot churn the DOM or fight any other layer.
+   No video file, caption, like count, comment, tab or gate is
+   touched, and outside feed mode nothing appears at all. ===== */
+(function(){
+ if(window.__v803) return; window.__v803=1;
+ var css=document.createElement("style");
+ css.textContent=
+  ".v803-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.28);z-index:7;pointer-events:none;display:none}"+
+  "#v-tiktok.tt-fm .v803-bar{display:block;bottom:57px}"+
+  ".v803-fill{height:100%;width:0%;background:#fe2c55}";
+ document.head.appendChild(css);
+ function barFor(vid){
+  var wrap=vid.closest(".tt-vwrap")||vid.parentElement; if(!wrap) return null;
+  var bar=wrap.querySelector(".v803-bar");
+  if(!bar){
+   bar=document.createElement("div"); bar.className="v803-bar";
+   var fill=document.createElement("div"); fill.className="v803-fill";
+   bar.appendChild(fill); wrap.appendChild(bar);
+  }
+  return bar;
+ }
+ function sync(vid){
+  var bar=barFor(vid); if(!bar) return;
+  var d=vid.duration||0;
+  var p=(d>0&&isFinite(d))?Math.round((vid.currentTime/d)*1000)/10:0;
+  if(p<0) p=0; if(p>100) p=100;
+  var last=parseFloat(vid.dataset.v803p||"-1");
+  if(Math.abs(p-last)<0.5 && last>=0) return;
+  vid.dataset.v803p=String(p);
+  bar.querySelector(".v803-fill").style.width=p+"%";
+ }
+ function onEv(e){
+  var vid=e.target;
+  if(!vid||!vid.closest||!vid.closest("#v-tiktok .tt-card")) return;
+  if(!vid.duration) { var f=function(){ sync(vid); }; vid.addEventListener("loadedmetadata",f,{once:true}); }
+  sync(vid);
+ }
+ document.addEventListener("timeupdate",onEv,true);
+ document.addEventListener("seeked",onEv,true);
+ document.addEventListener("loadedmetadata",onEv,true);
+ document.addEventListener("play",onEv,true);
+})();
 </script>
 </body>
 
