@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v856</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v857</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v856"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v857"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -29011,6 +29011,180 @@ input,textarea,select{font-size:16px!important}
  attach();
  setInterval(attach,700);
  setInterval(sync,700);
+})();
+</script>
+
+<script>
+/* ===== v857: his Instagram DM gains the real app's message
+   reactions. v770 gave reactions to the Instagram DM bubbles
+   it could see - double-tap pins a heart, long-press opens
+   the six-face tray, tapping the same face again lifts it,
+   the badge sits on the bubble's lower corner and choices
+   persist in localStorage - but that layer only matches
+   .dm-bub inside a .dm-scroll, which covers the friend DM
+   thread (#dm-thread) and the dummy DM pane. His DM
+   (#his-dm) was left out of that round exactly as it was
+   left out of the Seen round until v822: the v123 builder
+   makes its bubbles as plain inline-styled rows inside
+   #hdm-msgs (align-self flex-start for him, flex-end for
+   her), with no .dm-bub class and no .dm-scroll around
+   them, so a bubble there answers neither a double-tap
+   nor a long press, while in the real Instagram every DM
+   thread - his included - reacts the same way. This layer
+   adds the v770 behaviour to #hdm-msgs alone, in v770's
+   exact form: the same six faces, a double-tap heart that
+   toggles, a 550ms long-press tray (#v857-dmbar) floating
+   over the pressed bubble inside #phone, a badge on the
+   lower corner (left for his rows, right for hers), the
+   same reaction lifting on a repeat tap, and choices kept
+   per bubble index + text under their own localStorage
+   key so they re-apply as the thread grows and survive
+   reloads. The #v822-seen receipt row is never treated as
+   a bubble, and bubble indices count bubbles only, so the
+   receipt parking itself under her last message never
+   shifts a stored reaction. No seed message, reply pool,
+   topic pool, message text, Seen receipt or gate is
+   touched. Every write is change-guarded: badges are only
+   created, retexted, classed or removed on an actual
+   change, the tray's position and selected face are only
+   written on a flip, and the light apply poll follows the
+   same rule, so no node is rewritten with the same value.
+   SMS untouched, per nao's move-on instruction.
+   Playwright-verified (see hidden_files/v857-probe.py)
+   ===== */
+(function(){
+ if(window.__v857) return; window.__v857=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#hdm-msgs>div.v857-bub{position:relative}"+
+  "#hdm-msgs>div.v857-has{margin-bottom:7px}"+
+  ".v857-rxn{position:absolute;bottom:-8px;z-index:3;background:#fff;border:1px solid #e8e8ec;border-radius:999px;padding:1px 5px;font-size:11px;line-height:1.45;box-shadow:0 1px 4px rgba(0,0,0,.16);pointer-events:none}"+
+  ".v857-rxn.l{left:7px}"+
+  ".v857-rxn.r{right:7px}"+
+  "#v857-dmbar{position:absolute;display:none;gap:3px;background:#fff;border:1px solid #eee;border-radius:999px;padding:6px 9px;z-index:430;box-shadow:0 8px 26px rgba(0,0,0,.22)}"+
+  "#v857-dmbar.on{display:flex}"+
+  "#v857-dmbar button{background:none;border:none;font-size:21px;line-height:1;cursor:pointer;padding:3px;border-radius:50%}"+
+  "#v857-dmbar button.sel{background:#ffe0eb}";
+ document.head.appendChild(css);
+ var EMOJIS=["\u2764\uFE0F","\uD83D\uDE02","\uD83D\uDE2E","\uD83D\uDE22","\uD83D\uDE21","\uD83D\uDC4D"];
+ var HEART=EMOJIS[0];
+ var store={};
+ try{ store=JSON.parse(localStorage.getItem("v857-hdmrxn")||"{}")||{}; }catch(e){ store={}; }
+ function save(){ try{ localStorage.setItem("v857-hdmrxn",JSON.stringify(store)); }catch(e){} }
+ function box(){ return document.querySelector("#hdm-msgs"); }
+ function bubbles(){
+  var bx=box(); if(!bx) return [];
+  var out=[];
+  for(var i=0;i<bx.children.length;i++){ var el=bx.children[i];
+   if(el.id==="v822-seen") continue;
+   if(el.style && (el.style.alignSelf==="flex-start"||el.style.alignSelf==="flex-end")) out.push(el);
+  }
+  return out;
+ }
+ function bubbleOf(node){
+  var bx=box(); if(!bx||!node) return null;
+  var n=node;
+  while(n && n.parentElement!==bx) n=n.parentElement;
+  if(!n || n.parentElement!==bx || n.id==="v822-seen") return null;
+  return bubbles().indexOf(n)>=0 ? n : null;
+ }
+ function ownText(bub){
+  var t="";
+  [].forEach.call(bub.childNodes,function(n){
+   if(n.nodeType===3) t+=n.textContent;
+   else if(n.nodeType===1 && !n.classList.contains("v857-rxn")) t+=n.textContent;
+  });
+  return t.slice(0,24);
+ }
+ function keyFor(bub,idx){ return "hisdm|"+idx+"|"+ownText(bub); }
+ function setClass(el,name,on){
+  var has=el.classList.contains(name);
+  if(on && !has) el.classList.add(name);
+  if(!on && has) el.classList.remove(name);
+ }
+ var applying=false;
+ function applyOne(bub,idx){
+  setClass(bub,"v857-bub",true);
+  var want=store[keyFor(bub,idx)]||"";
+  var badge=bub.querySelector(".v857-rxn");
+  if(!want){
+   if(badge) badge.remove();
+   setClass(bub,"v857-has",false);
+   return;
+  }
+  if(!badge){ badge=document.createElement("span"); badge.className="v857-rxn"; bub.appendChild(badge); }
+  if(badge.textContent!==want) badge.textContent=want;
+  var own=bub.style.alignSelf==="flex-end";
+  setClass(badge,"r",own); setClass(badge,"l",!own);
+  setClass(bub,"v857-has",true);
+ }
+ function applyAll(){
+  if(applying) return; applying=true;
+  try{ bubbles().forEach(applyOne); } finally{ applying=false; }
+ }
+ var bar=null, target=null, targetKey="";
+ function ensureBar(){
+  var phone=document.querySelector("#phone"); if(!phone||bar) return bar;
+  bar=document.createElement("div"); bar.id="v857-dmbar";
+  EMOJIS.forEach(function(em){
+   var b=document.createElement("button"); b.type="button"; b.textContent=em;
+   b.addEventListener("click",function(ev){
+    ev.stopPropagation();
+    if(!target){ closeBar(); return; }
+    if(store[targetKey]===em) delete store[targetKey]; else store[targetKey]=em;
+    save(); applyAll(); closeBar();
+   });
+   bar.appendChild(b);
+  });
+  phone.appendChild(bar);
+  return bar;
+ }
+ function closeBar(){
+  if(bar && bar.classList.contains("on")) bar.classList.remove("on");
+  target=null;
+ }
+ function openBar(bub){
+  ensureBar(); if(!bar) return;
+  var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
+  target=bub; targetKey=keyFor(bub,idx);
+  var cur=store[targetKey]||"";
+  [].forEach.call(bar.children,function(b){ setClass(b,"sel",b.textContent===cur); });
+  if(!bar.classList.contains("on")) bar.classList.add("on");
+  var phone=document.querySelector("#phone"); if(!phone) return;
+  var pr=phone.getBoundingClientRect(), r=bub.getBoundingClientRect();
+  var bw=bar.offsetWidth||238;
+  var left=Math.max(8,Math.min(r.left-pr.left, pr.width-bw-8))+"px";
+  var top=Math.max(52, r.top-pr.top-50)+"px";
+  if(bar.style.left!==left) bar.style.left=left;
+  if(bar.style.top!==top) bar.style.top=top;
+ }
+ document.addEventListener("dblclick",function(e){
+  var bub=bubbleOf(e.target); if(!bub) return;
+  e.preventDefault();
+  var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
+  var k=keyFor(bub,idx);
+  if(store[k]===HEART) delete store[k]; else store[k]=HEART;
+  save(); applyAll(); closeBar();
+ },true);
+ var pressT=null;
+ document.addEventListener("pointerdown",function(e){
+  var bub=bubbleOf(e.target); if(!bub) return;
+  pressT=setTimeout(function(){ openBar(bub); },550);
+ },true);
+ ["pointerup","pointercancel","pointermove"].forEach(function(ev){
+  document.addEventListener(ev,function(){ if(pressT){ clearTimeout(pressT); pressT=null; } },true);
+ });
+ document.addEventListener("click",function(e){
+  if(!bar||!bar.classList.contains("on")) return;
+  if(e.target.closest && e.target.closest("#v857-dmbar")) return;
+  if(bubbleOf(e.target)) return;
+  closeBar();
+ },true);
+ document.addEventListener("scroll",function(e){
+  if(e.target && e.target.id==="hdm-msgs") closeBar();
+ },true);
+ setInterval(applyAll,900);
+ setTimeout(applyAll,800);
 })();
 </script>
 </body>
