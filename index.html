@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v745</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v746</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v745"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v746"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21798,10 +21798,11 @@ window.__v733inject=inject;
    +'<div style="display:flex;margin-top:12px;border-bottom:1px solid #eff3f4">'
    +'<button data-v735tab="posts" style="flex:1;background:none;border:none;padding:11px 0;font-family:inherit;font-size:14px;cursor:pointer;'+(curTab==="posts"?"font-weight:900;border-bottom:3px solid #1d9bf0":"color:#536471")+'">ポスト</button>'
    +'<button data-v735tab="replies" style="flex:1;background:none;border:none;padding:11px 0;font-family:inherit;font-size:14px;cursor:pointer;'+(curTab==="replies"?"font-weight:900;border-bottom:3px solid #1d9bf0":"color:#536471")+'">返信</button>'
+   +'<button data-v735tab="highlights" style="flex:1;background:none;border:none;padding:11px 0;font-family:inherit;font-size:14px;cursor:pointer;'+(curTab==="highlights"?"font-weight:900;border-bottom:3px solid #1d9bf0":"color:#536471")+'">ハイライト</button>'
    +'<button data-v735tab="media" style="flex:1;background:none;border:none;padding:11px 0;font-family:inherit;font-size:14px;cursor:pointer;'+(curTab==="media"?"font-weight:900;border-bottom:3px solid #1d9bf0":"color:#536471")+'">メディア</button></div>';
   var body = curTab==="media"
    ? '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;padding:2px">'+MEDIA.map(function(M,i){ return '<img src="assets/'+M.f+'" alt="" data-v735med="'+i+'" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer">'; }).join("")+'</div>'
-   : curTab==="replies" ? '<div id="v736-replies"></div>' : '<div id="v735-posts"></div>';
+   : curTab==="replies" ? '<div id="v736-replies"></div>' : curTab==="highlights" ? '<div id="v746-highlights"></div>' : '<div id="v735-posts"></div>';
   pane.innerHTML=head+body;
   var bk=$("#v735-back"); if(bk) bk.addEventListener("click", closeProf);
   var fb=$("#v735-follow"); if(fb) fb.addEventListener("click",function(){ following=!following; fb.textContent=following?"フォロー中":"フォローする"; fb.style.cssText=folBtnCss(); toast_(following?"<b>井汲大翔</b> さんをフォローしました":"フォローをやめたよ"); });
@@ -21831,6 +21832,12 @@ window.__v733inject=inject;
      wrap.appendChild(postEl({n:"井汲大翔", h:"@193hiroto", tm:R.tm, t:R.to+" "+R.t, m:R.m, imp:R.imp}, true));
      rbox.appendChild(wrap);
     });
+   }
+  }
+  if(curTab==="highlights"){
+   var hbox=$("#v746-highlights");
+   if(hbox && typeof postEl==="function"){
+    [PIN, POSTS[1], POSTS[0]].forEach(function(P){ if(P) hbox.appendChild(postEl(P, true)); });
    }
   }
   if(curTab==="media"){
