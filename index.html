@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v785</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v786</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v785"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v786"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -24744,6 +24744,69 @@ try{
  setup("#story-view",function(){ clearTimeout(storyTimer); });
  setup("#hl-view",function(){ clearTimeout(hlTimer); });
  setup("#nao-story-view",function(){ clearTimeout(naoStoryTimer); });
+})();
+</script>
+
+<script>
+/* ===== v786: the News front page gains the real apps' access ranking.
+   Yahoo! News and SmartNews both lead their front page with a numbered
+   access ranking, not a bare list of rows. This layer adds that section
+   above the article list in #v-news: it mirrors the live .newsrow
+   headlines (newest first, exactly as addNewsRow prepends them), so
+   when the scandal breaks the ranking fills with the scandal coverage
+   itself - no invented articles, no new headlines. Tapping a rank taps
+   the row it mirrors, so every article keeps its own existing opener.
+   The section shows only while the list is shown and at least three
+   rows exist; it syncs on a slow interval plus clicks, and rebuilds
+   only when the headline signature actually changes (change-guarded,
+   per the freeze-audit rule). No article body, gate or flow changes. ===== */
+(function(){
+ if(window.__v786) return; window.__v786=1;
+ var scroll=document.querySelector("#news-scroll"); if(!scroll) return;
+ var list=document.querySelector("#news-list"); if(!list) return;
+ var css=document.createElement("style");
+ css.textContent=
+  "#v786-rank{display:none;background:#fff;border-bottom:8px solid #f2f2f7;padding:12px 14px 6px}"+
+  "#v786-rank.on{display:block}"+
+  "#v786-rank .v786-h{font-size:15px;font-weight:800;color:#111;display:flex;align-items:baseline;gap:8px;margin-bottom:4px}"+
+  "#v786-rank .v786-h span{font-size:11px;font-weight:600;color:#e60012;border:1px solid #e60012;border-radius:4px;padding:1px 5px}"+
+  "#v786-rank .v786-r{display:flex;gap:10px;align-items:flex-start;width:100%;background:none;border:none;border-bottom:1px solid #f2f2f7;padding:8px 0;cursor:pointer;text-align:left}"+
+  "#v786-rank .v786-r:last-child{border-bottom:none}"+
+  "#v786-rank .v786-n{font-size:17px;font-weight:800;font-style:italic;width:18px;flex:none;text-align:center;color:#9a9aa0;line-height:1.25}"+
+  "#v786-rank .v786-r:nth-child(1) .v786-n{color:#d0021b}"+
+  "#v786-rank .v786-r:nth-child(2) .v786-n{color:#e8590c}"+
+  "#v786-rank .v786-r:nth-child(3) .v786-n{color:#e8a10c}"+
+  "#v786-rank .v786-t{font-size:13px;font-weight:600;color:#1c1c1e;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}";
+ document.head.appendChild(css);
+ var box=document.createElement("div"); box.id="v786-rank";
+ box.innerHTML='<div class="v786-h">アクセスランキング <span>急上昇</span></div><div id="v786-rows"></div>';
+ scroll.insertBefore(box, list);
+ var rowsBox=box.querySelector("#v786-rows");
+ var sig="", shown=false;
+ function sync(){
+  var listOn=list.style.display!=="none";
+  var rows=listOn?list.querySelectorAll(".newsrow"):[];
+  var want=listOn&&rows.length>=3;
+  if(want!==shown){ shown=want; box.classList.toggle("on",want); }
+  if(!want) return;
+  var hs=[], i;
+  for(i=0;i<Math.min(5,rows.length);i++){ var h=rows[i].querySelector(".h"); hs.push(h?h.textContent:""); }
+  var ns=hs.join("|");
+  if(ns===sig) return;
+  sig=ns;
+  rowsBox.innerHTML="";
+  hs.forEach(function(t,j){
+   var b=document.createElement("button"); b.className="v786-r"; b.type="button";
+   b.innerHTML='<span class="v786-n"></span><span class="v786-t"></span>';
+   b.querySelector(".v786-n").textContent=String(j+1);
+   b.querySelector(".v786-t").textContent=t;
+   b.addEventListener("click",function(){ var rs=list.querySelectorAll(".newsrow"); if(rs[j]) rs[j].click(); });
+   rowsBox.appendChild(b);
+  });
+ }
+ document.addEventListener("click",function(){ setTimeout(sync,50); },false);
+ setInterval(sync,800);
+ sync();
 })();
 </script>
 </body>
