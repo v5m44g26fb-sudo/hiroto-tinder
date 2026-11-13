@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v871</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v872</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v871"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v872"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -30311,6 +30311,96 @@ input,textarea,select{font-size:16px!important}
    var txt="全"+cards.length+"件 ・ 解放済み "+un+"件";
    var cnt=bar.querySelector(".cnt");
    if(cnt && cnt.textContent!==txt) cnt.textContent=txt;
+ }
+ new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
+ sync();
+})();
+</script>
+<script>
+/* ===== v872: the Save Data panel gains the real
+   phone's data-screen face (category A, visual UI
+   overhaul, one screen). Until now #save-panel was
+   the generic grey sheet: a flat #f7f7fa ground, a
+   small 16.5px head, eight separate white cards
+   floating on the grey and a black copy pill,
+   nothing like the grouped data screens of a real
+   phone. This layer restyles that one panel only:
+   the head becomes a large 29px/800 title with the
+   close button as a grey disc, a navy "now" hero
+   card sits at the top of the list reading the
+   live stage and reached chapter off the panel's
+   own first two rows, the eight stat rows join
+   into one grouped inset list (hairlines between
+   rows, 16px corners only at the group's ends, a
+   soft group shadow), labels go iOS grey and the
+   copy button becomes the real system's blue
+   rounded action with a blue shadow. The hero is
+   id-guarded, rows are class-tagged and every text
+   write happens only when the wanted value
+   actually differs, so nothing can flicker or
+   fight the builder, which re-renders the panel
+   on every open. No stat label, value, copy text,
+   clipboard flow, close flow or gate is touched;
+   SMS untouched per nao's move-on instruction,
+   pull-to-refresh and the small-gesture expansions
+   skipped per the 06:52 exclusion;
+   Playwright-verified (see hidden_files/v872-probe.py)
+   ===== */
+(function(){
+ if(window.__v872) return; window.__v872=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#save-panel{background:#f2f2f7!important}"+
+  "#save-panel>div:first-child{padding:62px 20px 2px!important}"+
+  "#save-panel>div:first-child b{font-size:29px!important;font-weight:800!important;letter-spacing:.01em;color:#1c1c1e}"+
+  "#sv-x{background:#e4e4e9!important;width:34px!important;height:34px!important;border-radius:50%!important;font-size:15px!important;color:#3a3a3c!important}"+
+  "#save-panel>div:nth-child(2){padding:12px 16px 26px!important}"+
+  "#v872-svhero{display:flex;align-items:center;gap:13px;background:linear-gradient(135deg,#262b47,#4a3f78);color:#fff;border-radius:18px;padding:16px 18px;margin-bottom:14px;box-shadow:0 10px 24px rgba(38,43,71,.30)}"+
+  "#v872-svhero .ic{flex:none;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}"+
+  "#v872-svhero .lab{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,.65)}"+
+  "#v872-svhero .st{font-size:18.5px;font-weight:800;line-height:1.35;margin-top:2px}"+
+  "#v872-svhero .sb{font-size:12px;color:rgba(255,255,255,.78);margin-top:3px}"+
+  "#save-panel .v872-row{background:#fff!important;margin-bottom:0!important;border-radius:0!important;padding:14px 16px!important;box-shadow:inset 0 -1px 0 #ececf0}"+
+  "#save-panel .v872-row span{font-size:13px!important;color:#6e6e73!important}"+
+  "#save-panel .v872-row b{font-size:14.5px!important;font-weight:700!important;color:#1c1c1e;text-align:right}"+
+  "#save-panel .v872-f{border-radius:16px 16px 0 0!important}"+
+  "#save-panel .v872-l{border-radius:0 0 16px 16px!important;margin-bottom:16px!important;box-shadow:0 8px 20px rgba(20,24,40,.08)!important}"+
+  "#sv-copy{background:#007aff!important;border-radius:14px!important;padding:15px!important;font-size:15px!important;box-shadow:0 8px 18px rgba(0,122,255,.30);margin-top:2px!important}"+
+  "#save-panel .v872-note{background:transparent!important;font-size:11.5px!important;color:#aeaeb2!important;text-align:center!important;margin-top:12px!important;padding:0!important;box-shadow:none!important;border-radius:0!important}";
+ document.head.appendChild(css);
+ var SVG='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>';
+ function sync(){
+   var panel=document.querySelector("#save-panel"); if(!panel) return;
+   var scroll=panel.children[1]; if(!scroll) return;
+   var divs=[], notes=[];
+   for(var i=0;i<scroll.children.length;i++){
+     var c=scroll.children[i];
+     if(c.tagName!=="DIV"||c.id) continue;
+     if(c.textContent.indexOf("\u203b")===0){ notes.push(c); continue; }
+     if(c.children.length===2&&c.querySelector(":scope>span")&&c.querySelector(":scope>b")) divs.push(c);
+   }
+   if(!divs.length) return;
+   divs.forEach(function(r,idx){
+     if(!r.classList.contains("v872-row")) r.classList.add("v872-row");
+     var f=idx===0, l=idx===divs.length-1;
+     if(f&&!r.classList.contains("v872-f")) r.classList.add("v872-f");
+     if(!f&&r.classList.contains("v872-f")) r.classList.remove("v872-f");
+     if(l&&!r.classList.contains("v872-l")) r.classList.add("v872-l");
+     if(!l&&r.classList.contains("v872-l")) r.classList.remove("v872-l");
+   });
+   notes.forEach(function(n){ if(!n.classList.contains("v872-note")) n.classList.add("v872-note"); });
+   var hero=scroll.querySelector("#v872-svhero");
+   if(!hero){
+     hero=document.createElement("div"); hero.id="v872-svhero";
+     hero.innerHTML='<span class="ic">'+SVG+'</span><div><div class="lab">NOW PLAYING</div><div class="st"></div><div class="sb"></div></div>';
+     scroll.insertBefore(hero, divs[0]);
+   }
+   var st=hero.querySelector(".st"), sb=hero.querySelector(".sb");
+   var b0=divs[0].querySelector("b"), b1=divs.length>1?divs[1].querySelector("b"):null;
+   var wantSt=b0?b0.textContent:"";
+   if(st&&st.textContent!==wantSt) st.textContent=wantSt;
+   var wantSb=b1?("\u5230\u9054\u3057\u305f\u7ae0\uff1a"+b1.textContent):"";
+   if(sb&&sb.textContent!==wantSb) sb.textContent=wantSb;
  }
  new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
  sync();
