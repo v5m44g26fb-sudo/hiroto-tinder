@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v769</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v770</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v769"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v770"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -23837,6 +23837,129 @@ try{
  new MutationObserver(function(){
   if(!view.classList.contains("on")) view.classList.remove("v767-imm");
  }).observe(view,{attributes:true,attributeFilter:["class"]});
+})();
+</script>
+
+<style>
+.dm-bub{position:relative}
+.dm-bub.v770-has{margin-bottom:7px}
+.v770-rxn{position:absolute;bottom:-8px;z-index:3;background:#fff;border:1px solid #e8e8ec;border-radius:999px;padding:1px 5px;font-size:11px;line-height:1.45;box-shadow:0 1px 4px rgba(0,0,0,.16);pointer-events:none}
+.v770-rxn.l{left:7px}
+.v770-rxn.r{right:7px}
+#v770-dmbar{position:absolute;display:none;gap:3px;background:#fff;border:1px solid #eee;border-radius:999px;padding:6px 9px;z-index:430;box-shadow:0 8px 26px rgba(0,0,0,.22)}
+#v770-dmbar.on{display:flex}
+#v770-dmbar button{background:none;border:none;font-size:21px;line-height:1;cursor:pointer;padding:3px;border-radius:50%}
+#v770-dmbar button.sel{background:#ffe0eb}
+</style>
+<script>
+/* ===== v770: Instagram DM gains the real app's message reactions. In the
+   real app, double-tapping a DM bubble pins a heart to it, and long-pressing
+   opens the reaction tray (heart / laugh / wow / sad / angry / thumbs-up) to
+   pin any of them instead; tapping the same reaction again lifts it off. The
+   badge sits on the bubble's lower corner - left for incoming, right for her
+   own, like the real thing. Choices are kept per thread + message, are
+   re-applied whenever a thread re-renders, and survive reloads via
+   localStorage. No message, thread, reply pool or gate is touched - this is
+   a reaction layer over the existing DM bubbles (.dm-bub in any .dm-scroll,
+   which covers both the main IG DM thread and the dummy DM pane). ===== */
+(function(){
+ if(window.__v770) return; window.__v770=1;
+ var EMOJIS=["\u2764\uFE0F","\uD83D\uDE02","\uD83D\uDE2E","\uD83D\uDE22","\uD83D\uDE21","\uD83D\uDC4D"];
+ var HEART=EMOJIS[0];
+ var store={};
+ try{ store=JSON.parse(localStorage.getItem("v770-dmrxn")||"{}")||{}; }catch(e){ store={}; }
+ function save(){ try{ localStorage.setItem("v770-dmrxn",JSON.stringify(store)); }catch(e){} }
+ function bubbles(){ return [].slice.call(document.querySelectorAll(".dm-scroll .dm-bub")); }
+ function ownText(bub){
+  var t="";
+  [].forEach.call(bub.childNodes,function(n){
+   if(n.nodeType===3) t+=n.textContent;
+   else if(n.nodeType===1 && !n.classList.contains("v770-rxn")) t+=n.textContent;
+  });
+  return t.slice(0,24);
+ }
+ function threadKey(bub){
+  var th=bub.closest("#dm-thread")||bub.closest("#dm-chat-wrap")||bub.closest("[id]");
+  var nm="";
+  if(th){ var t=th.querySelector(".t"); if(t) nm=t.textContent.trim(); }
+  return (th&&th.id?th.id:"dm")+"|"+nm;
+ }
+ function keyFor(bub,idx){ return threadKey(bub)+"|"+idx+"|"+ownText(bub); }
+ var applying=false;
+ function applyOne(bub,idx){
+  var want=store[keyFor(bub,idx)]||"";
+  var badge=bub.querySelector(".v770-rxn");
+  if(!want){ if(badge) badge.remove(); bub.classList.remove("v770-has"); return; }
+  if(!badge){ badge=document.createElement("span"); badge.className="v770-rxn"; bub.appendChild(badge); }
+  badge.textContent=want;
+  badge.classList.toggle("r",bub.classList.contains("me"));
+  badge.classList.toggle("l",!bub.classList.contains("me"));
+  bub.classList.add("v770-has");
+ }
+ function applyAll(){
+  if(applying) return; applying=true;
+  try{ bubbles().forEach(applyOne); } finally{ applying=false; }
+ }
+ var bar=null, target=null, targetKey="";
+ function ensureBar(){
+  var phone=document.querySelector("#phone"); if(!phone||bar) return bar;
+  bar=document.createElement("div"); bar.id="v770-dmbar";
+  EMOJIS.forEach(function(em){
+   var b=document.createElement("button"); b.type="button"; b.textContent=em;
+   b.addEventListener("click",function(ev){
+    ev.stopPropagation();
+    if(!target){ closeBar(); return; }
+    if(store[targetKey]===em) delete store[targetKey]; else store[targetKey]=em;
+    save(); applyAll(); closeBar();
+   });
+   bar.appendChild(b);
+  });
+  phone.appendChild(bar);
+  return bar;
+ }
+ function closeBar(){ if(bar) bar.classList.remove("on"); target=null; }
+ function openBar(bub){
+  ensureBar(); if(!bar) return;
+  var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
+  target=bub; targetKey=keyFor(bub,idx);
+  var cur=store[targetKey]||"";
+  [].forEach.call(bar.children,function(b){ b.classList.toggle("sel",b.textContent===cur); });
+  var phone=document.querySelector("#phone"); var pr=phone.getBoundingClientRect(), r=bub.getBoundingClientRect();
+  bar.classList.add("on");
+  var bw=bar.offsetWidth||238;
+  var left=Math.max(8,Math.min(r.left-pr.left, pr.width-bw-8));
+  var top=Math.max(52, r.top-pr.top-50);
+  bar.style.left=left+"px"; bar.style.top=top+"px";
+ }
+ document.addEventListener("dblclick",function(e){
+  var bub=e.target&&e.target.closest? e.target.closest(".dm-bub") : null;
+  if(!bub||!bub.closest(".dm-scroll")) return;
+  e.preventDefault();
+  var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
+  var k=keyFor(bub,idx);
+  if(store[k]===HEART) delete store[k]; else store[k]=HEART;
+  save(); applyAll(); closeBar();
+ },true);
+ var pressT=null;
+ document.addEventListener("pointerdown",function(e){
+  var bub=e.target&&e.target.closest? e.target.closest(".dm-bub") : null;
+  if(!bub||!bub.closest(".dm-scroll")) return;
+  pressT=setTimeout(function(){ openBar(bub); },550);
+ },true);
+ ["pointerup","pointercancel","pointermove"].forEach(function(ev){
+  document.addEventListener(ev,function(){ if(pressT){ clearTimeout(pressT); pressT=null; } },true);
+ });
+ document.addEventListener("click",function(e){
+  if(!bar||!bar.classList.contains("on")) return;
+  if(e.target.closest&&e.target.closest("#v770-dmbar")) return;
+  if(e.target.closest&&e.target.closest(".dm-bub")) return;
+  closeBar();
+ },true);
+ document.addEventListener("scroll",function(e){
+  if(e.target&&e.target.classList&&e.target.classList.contains("dm-scroll")) closeBar();
+ },true);
+ setInterval(applyAll,900);
+ setTimeout(applyAll,800);
 })();
 </script>
 </body>
