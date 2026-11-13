@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v844</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v845</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v844"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v845"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -27878,6 +27878,94 @@ input,textarea,select{font-size:16px!important}
  }
  sc.addEventListener("touchstart",function(e){
   if(busy||e.touches.length!==1||sc.scrollTop>0||!mefolVisible()){ active=false; return; }
+  sy=e.touches[0].clientY; pull=0; active=true;
+ },{passive:true});
+ sc.addEventListener("touchmove",function(e){
+  if(!active||busy) return;
+  var dy=e.touches[0].clientY-sy;
+  if(dy<=0){ pull=0; setPill(-56,0); return; }
+  if(sc.scrollTop>0){ active=false; setPill(-56,0); return; }
+  e.preventDefault();
+  pull=Math.min(Math.round(dy*0.55), 64);
+  setPill(-56+pull, Math.min(1, pull/40));
+ },{passive:false});
+ function end(){
+  if(!active) return; active=false;
+  if(pull>=44){
+   busy=true; pill.classList.add("spin"); setPill(6,1);
+   setTimeout(function(){ pill.classList.remove("spin"); setPill(-56,0); busy=false; },750);
+  } else setPill(-56,0);
+  pull=0;
+ }
+ sc.addEventListener("touchend",end);
+ sc.addEventListener("touchcancel",end);
+})();
+</script>
+
+<script>
+/* ===== v845: his X following/followers list pane gains the
+   real app's pull-to-refresh. v794 gave that gesture to the
+   X home (For You) timeline, v828 to the three Instagram
+   profile scrolls, v830 to the News list, v831 to the X
+   notifications list, v832 to the Instagram DM inbox, v833
+   to the LINE talk list, v834 to the X messages list, v835
+   to the X trend pane, v836 to her own X profile pane, v837
+   to the X mention pane, v838 to the X following pane, v839
+   to the X search pane, v840 to his X profile pane, v841 to
+   the sub-account (nao_ura) X profile pane, v842 to the X
+   bookmarks pane, v843 to the X lists pane and v844 to her
+   own following/followers list pane, but his
+   following/followers list pane (#x-pane-hisfollist inside
+   the shared #x-scroll, built by the v737 layer from his
+   profile counts) was left out of every round because v794
+   wires the same scroller yet gates itself to the home pane
+   alone and each later layer gates itself to its own pane
+   alone, so opening his following or followers list and
+   pulling down from the very top did nothing, while in the
+   real X a follow list is a primary people-list surface and
+   that pull is how it refreshes; a v836/v844-form layer now
+   adds it (engages only while the hisfollist pane is the
+   visible pane and at scrollTop 0 so it never co-fires with
+   v794, v835, v836, v837, v838, v839, v840, v841, v842,
+   v843 or v844, pill tracks the pull capped at 64px,
+   release at 44px+ spins 750ms at the top before
+   retracting, shorter pulls just retract, every pill
+   transform/opacity/rotation write change-guarded,
+   one-time wiring on the statically-present scroller); no
+   follow row, follow-back toggle, tab, count, pane switch
+   or gate touched, SMS untouched per nao's move-on
+   instruction; Playwright-verified (see
+   hidden_files/v845-probe.py)
+   ===== */
+(function(){
+ if(window.__v845) return; window.__v845=1;
+ var view=document.querySelector("#v-x");
+ var sc=document.querySelector("#x-scroll");
+ if(!view||!sc||sc.dataset.v845) return; sc.dataset.v845="1";
+ var css=document.createElement("style");
+ css.textContent=
+  ".v845-ptr{position:absolute;top:100px;left:50%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;z-index:64;opacity:0;pointer-events:none}"+
+  ".v845-ptr svg{display:block}"+
+  ".v845-ptr.spin svg{animation:v845-rot .7s linear infinite}"+
+  "@keyframes v845-rot{to{transform:rotate(360deg)}}";
+ document.head.appendChild(css);
+ var pill=document.createElement("div"); pill.className="v845-ptr";
+ pill.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d9bf0" stroke-width="2.6" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.34-5.66"/></svg>';
+ view.appendChild(pill);
+ var svg=pill.querySelector("svg");
+ var sy=0, pull=0, active=false, busy=false, lastTy=null, lastOp=null, lastRot=null;
+ function hisfolVisible(){
+  var pane=document.querySelector("#x-pane-hisfollist");
+  return !!pane && pane.style.display!=="none";
+ }
+ function setPill(ty, op){
+  if(ty!==lastTy){ lastTy=ty; pill.style.transform="translateY("+ty+"px)"; }
+  if(op!==lastOp){ lastOp=op; pill.style.opacity=op; }
+  var rot=Math.round(pull*5);
+  if(rot!==lastRot){ lastRot=rot; svg.style.transform="rotate("+rot+"deg)"; }
+ }
+ sc.addEventListener("touchstart",function(e){
+  if(busy||e.touches.length!==1||sc.scrollTop>0||!hisfolVisible()){ active=false; return; }
   sy=e.touches[0].clientY; pull=0; active=true;
  },{passive:true});
  sc.addEventListener("touchmove",function(e){
