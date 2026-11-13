@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v784</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v785</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v784"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v785"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -24680,6 +24680,70 @@ try{
   if(swallow){ swallow=false; e.stopPropagation(); return; }
   if(locked){ locked=false; setPill(false); }
  },true);
+})();
+</script>
+
+<style>
+#story-view.v785-snap,#hl-view.v785-snap,#nao-story-view.v785-snap{transition:transform .18s ease}
+</style>
+<script>
+/* ===== v785: the Instagram story-format players gain the real app's
+   swipe-down-to-dismiss. In the real Instagram, dragging a story
+   downward makes the player follow the finger, letting go past a
+   threshold closes it, and a shorter drag snaps back in place without
+   changing the segment. This layer adds that gesture to all three
+   story-format players: his story (#story-view), her highlights
+   (#hl-view) and her own story (#nao-story-view). Only a clearly
+   vertical one-finger pull engages (dy>14 to follow, dy>80 with
+   |dx|<60 to dismiss); drags starting on a close button, the reply
+   bar or an input never start, and any engaged drag - dismissed or
+   snapped back - swallows its release click so it can never turn
+   into a segment tap. Dismissing clears the player's own
+   auto-advance timer (storyTimer / hlTimer / naoStoryTimer), the
+   same timers their close buttons and v774's hold-to-pause already
+   share, so a dismissed story never advances unseen behind the
+   scenes. Segment order, texts, images, gates and the 5s duration
+   are untouched. ===== */
+(function(){
+ if(window.__v785) return; window.__v785=1;
+ function setup(sel, clearTimer){
+  var view=document.querySelector(sel); if(!view||view.dataset.v785) return; view.dataset.v785="1";
+  var sx=0, sy=0, dragging=false, dismiss=false, lastTy="", suppressUntil=0;
+  function setTy(v){ if(lastTy!==v){ lastTy=v; view.style.transform=v; } }
+  view.addEventListener("touchstart",function(e){
+   if(!view.classList.contains("on")||e.touches.length!==1){ dragging=false; return; }
+   if(e.target.closest&&e.target.closest("#story-close,#hl-close,#nao-story-close,.story-replybar,input,textarea,button")){ dragging=false; return; }
+   sx=e.touches[0].clientX; sy=e.touches[0].clientY; dragging=true; dismiss=false;
+  },{passive:true});
+  view.addEventListener("touchmove",function(e){
+   if(!dragging||e.touches.length!==1) return;
+   var dy=e.touches[0].clientY-sy, dx=e.touches[0].clientX-sx;
+   if(dy>14 && Math.abs(dx)<60 && dy>Math.abs(dx)*1.4){ setTy("translateY("+Math.round(dy*0.85)+"px)"); dismiss=dy>80; }
+   else { if(lastTy) setTy(""); dismiss=false; }
+  },{passive:true});
+  function end(){
+   if(!dragging) return; dragging=false;
+   if(dismiss){
+    suppressUntil=Date.now()+450;
+    try{ clearTimer(); }catch(err){}
+    if(view.classList.contains("on")) view.classList.remove("on");
+    setTy("");
+   } else if(lastTy){
+    suppressUntil=Date.now()+450;
+    view.classList.add("v785-snap");
+    setTy("");
+    setTimeout(function(){ view.classList.remove("v785-snap"); },220);
+   }
+  }
+  view.addEventListener("touchend",end,{passive:true});
+  view.addEventListener("touchcancel",end,{passive:true});
+  view.addEventListener("click",function(e){
+   if(Date.now()<suppressUntil){ suppressUntil=0; e.preventDefault(); e.stopPropagation(); }
+  },true);
+ }
+ setup("#story-view",function(){ clearTimeout(storyTimer); });
+ setup("#hl-view",function(){ clearTimeout(hlTimer); });
+ setup("#nao-story-view",function(){ clearTimeout(naoStoryTimer); });
 })();
 </script>
 </body>
