@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v809</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v810</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v809"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v810"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -25541,6 +25541,46 @@ input,textarea,select{font-size:16px!important}
  }
  setInterval(sync,300);
  document.addEventListener("input",function(e){ if(e.target && e.target.id==="xc-text") sync(); },true);
+ document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
+ sync();
+})();
+</script>
+
+<script>
+/* ===== v810: the X thread reply button gains the real app's
+   empty state. v795 gave this to the detail view's reply
+   composer (#xd-send) and v809 to the main composer, but the
+   thread view's own reply bar was left out: #th-send, the
+   "返信" button beside #th-text under a thread's post, stayed
+   solid #1d9bf0 blue even with an empty field, offering a
+   reply the real app never offers (its handler already refuses
+   empty sends, so only the look lied). This layer owns only
+   that button's state: opacity 0.5, disabled and a default
+   cursor while #th-text is empty or whitespace; full opacity,
+   enabled and a pointer cursor once it holds text. The
+   elements are re-resolved on every check (the row is built
+   once by the v8 thread layer, but the check stays honest if
+   it is ever rebuilt) and every write is change-guarded, so
+   the 300ms poll is churn-free. Sending is untouched: the
+   existing handler clears the field after a reply lands, so
+   the button falls back to pale by itself, and the thread's
+   like-surge effect, the replies list and every gate stay
+   exactly as they were. No post text, reply text or gate
+   touched. ===== */
+(function(){
+ if(window.__v810) return; window.__v810=1;
+ function sync(){
+  var inp=document.querySelector("#th-text"), btn=document.querySelector("#th-send");
+  if(!inp || !btn) return;
+  var has=(inp.value||"").trim().length>0;
+  var op=has? "1" : "0.5";
+  if(btn.style.opacity!==op) btn.style.opacity=op;
+  if(btn.disabled===has) btn.disabled=!has;
+  var cur=has? "pointer" : "default";
+  if(btn.style.cursor!==cur) btn.style.cursor=cur;
+ }
+ setInterval(sync,300);
+ document.addEventListener("input",function(e){ if(e.target && e.target.id==="th-text") sync(); },true);
  document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
  sync();
 })();
