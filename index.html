@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v821</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v822</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v821"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v822"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -26035,6 +26035,58 @@ input,textarea,select{font-size:16px!important}
  }
  setInterval(sync,300);
  document.addEventListener("input",function(e){ if(e.target && e.target.id==="live-in") sync(); },true);
+ document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
+ sync();
+})();
+</script>
+
+<script>
+/* ===== v822: his Instagram DM gains the real app's Seen receipt.
+   In the real Instagram a small grey "既読" sits directly under
+   her most recent sent message once he has read it - and the
+   friend DM thread in this phone has had exactly that since
+   v628 (its .dm-seen moves under her last bubble every time a
+   reply lands). His DM (#his-dm) never got one: her bubbles
+   landed, his replies arrived, and nothing under her last
+   bubble ever changed, so a read message looked exactly like
+   an unread one. This layer keeps exactly one receipt element
+   (#v822-seen) inside #hdm-msgs, parked right after her last
+   sent bubble (the flex-end rows the v119 builder's add(true)
+   makes), and only while a real reply of his (a flex-start
+   row) sits anywhere below that bubble - so the moment she
+   sends a newer message the receipt lifts again until he
+   answers it, exactly like the real app and like v806's
+   Delivered/Read flip in SMS. His one meta bubble whose text
+   says the receipt never comes ("（既読がつかない…）") does
+   not count as a read. Every write is guarded by the tracked
+   owner element and shown state, so the 300ms poll is
+   churn-free, and the elements are re-resolved on every check
+   because the DM panel is built beside his profile. No seed
+   message, reply pool, topic pool, message text, the
+   "既読にならない…" status line or any gate touched. SMS
+   untouched, per nao's 2026-11-14 instruction to move on
+   from SMS. ===== */
+(function(){
+ if(window.__v822) return; window.__v822=1;
+ var owner=null, shown=false;
+ function sync(){
+  var box=document.querySelector("#hdm-msgs"); if(!box) return;
+  var kids=box.children, lastMe=null, read=false;
+  for(var i=0;i<kids.length;i++){ var el=kids[i]; if(el.id==="v822-seen") continue;
+   if(el.style.alignSelf==="flex-end"){ lastMe=el; read=false; }
+   else if(el.style.alignSelf==="flex-start" && lastMe && (el.textContent||"").trim()!=="（既読がつかない…）"){ read=true; }
+  }
+  var el=document.querySelector("#v822-seen");
+  if(!lastMe || !read){
+   if(el && shown){ el.remove(); }
+   owner=null; shown=false; return;
+  }
+  if(!el){ el=document.createElement("div"); el.id="v822-seen"; el.textContent="既読";
+   el.style.cssText="align-self:flex-end;color:#8e8e93;font-size:11px;margin:-3px 4px 2px 0"; }
+  if(owner!==lastMe || !shown || el.previousElementSibling!==lastMe){ lastMe.after(el); }
+  owner=lastMe; shown=true;
+ }
+ setInterval(sync,300);
  document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
  sync();
 })();
