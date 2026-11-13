@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v817</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v818</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v817"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v818"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -25886,6 +25886,51 @@ input,textarea,select{font-size:16px!important}
  document.addEventListener("input",function(e){
   if(e.target && e.target.classList && e.target.classList.contains("tt-in")) sync();
  },true);
+ document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
+ sync();
+})();
+</script>
+
+<script>
+/* ===== v818: the news article comment button gains the real
+   app's empty state. Every posting composer in the phone has
+   learned this by now (IG v808/v812/v816, X v809-v811, TikTok
+   v813/v817, Grok v814, Tinder v815), but the comment form
+   the v113 layer appends to the scandal article in the news
+   app was left out: #my-cmt-btn, the black post pill beside
+   #my-cmt-in ("\u5f53\u4e8b\u8005\u3068\u3057\u3066\u3001\u4e00\u8a00\u2026"), stayed at full
+   strength with an empty field and tapping it was a silent
+   no-op (the v113 handler already refuses empty comments
+   and clears the field after a post, so only the look lied).
+   On a real news app the post affordance sits dimmed and
+   inert until the field holds a comment. This layer owns
+   only that button's state: opacity 0.45, disabled and a
+   default cursor while #my-cmt-in is empty or whitespace;
+   full opacity, enabled and a pointer cursor once it holds
+   text. The elements are re-resolved on every check (the
+   form is built by a MutationObserver when the scandal
+   article renders and can be rebuilt when the article is
+   re-rendered) and every write is change-guarded, so the
+   300ms poll is churn-free. Posting itself is untouched:
+   the existing handler clears the field, so the pill dims
+   itself again after a post, and its like counter and the
+   delayed reply are untouched. No article text, comment
+   text or gate touched. SMS untouched, per nao's
+   2026-11-14 instruction to move on from SMS. ===== */
+(function(){
+ if(window.__v818) return; window.__v818=1;
+ function sync(){
+  var inp=document.querySelector("#my-cmt-in"), btn=document.querySelector("#my-cmt-btn");
+  if(!inp || !btn) return;
+  var has=(inp.value||"").trim().length>0;
+  var op=has? "1" : "0.45";
+  if(btn.style.opacity!==op) btn.style.opacity=op;
+  if(btn.disabled===has) btn.disabled=!has;
+  var cur=has? "pointer" : "default";
+  if(btn.style.cursor!==cur) btn.style.cursor=cur;
+ }
+ setInterval(sync,300);
+ document.addEventListener("input",function(e){ if(e.target && e.target.id==="my-cmt-in") sync(); },true);
  document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
  sync();
 })();
