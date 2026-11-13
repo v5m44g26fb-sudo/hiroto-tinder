@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v749</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v750</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v749"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v750"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -22830,6 +22830,63 @@ window.__v745inject=inject;
  }
  new MutationObserver(function(){ list.querySelectorAll(":scope > div").forEach(restructure); })
   .observe(list, {childList:true});
+})();
+</script>
+
+
+<script>
+/* ===== v750: explore tabs switch inside the explore screen (no jump to the home tab system), with real-X active-tab icons ===== */
+(function(){
+ if(window.__v750) return; window.__v750=true;
+ var view=document.querySelector("#v-x"); if(!view) return;
+ var sp=document.querySelector("#x-pane-search");
+ var tp=document.querySelector("#x-pane-trend");
+ var etabs=document.querySelector("#v747-xtabs");
+ if(!sp || !tp || !etabs) return;
+ var st=document.createElement("style");
+ st.textContent="#v747-xtabs button svg{display:none;width:15px;height:15px;vertical-align:-2px;margin-right:4px}"
+  +"#v747-xtabs button.act svg{display:inline-block}";
+ document.head.appendChild(st);
+ var IC={
+  trend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-8"/><path d="M14 7h6v6"/></svg>',
+  news:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="14.5" height="14" rx="2"/><path d="M17.5 9H20a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2h-1.5"/><path d="M6.5 9.5h7M6.5 13h7M6.5 16.5h7"/></svg>',
+  sports:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M6.2 5.6c2 1.8 2 11 0 12.8M17.8 5.6c-2 1.8-2 11 0 12.8"/></svg>',
+  ent:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 10h11l-1.4 9.2a1.5 1.5 0 0 1-1.5 1.3H9.4a1.5 1.5 0 0 1-1.5-1.3z"/><path d="M6.5 10C5 7.5 6.8 5 9 5.6 9.4 3.8 12 3.4 12.9 5.2c1.6-1 4 .3 3.9 2.3 1 .3 1.4 1.3.7 2.5"/></svg>'
+ };
+ etabs.querySelectorAll("[data-et]").forEach(function(b){
+  var ic=IC[b.dataset.et]; if(ic) b.insertAdjacentHTML("afterbegin", ic);
+ });
+ var mode="off";
+ function setAct(key){
+  etabs.querySelectorAll("[data-et]").forEach(function(b){
+   var on=b.dataset.et===key; b.classList.toggle("act", on);
+   if(on){ var sc=etabs.firstElementChild; if(sc) sc.scrollLeft=Math.max(0, b.offsetLeft-26); }
+  });
+ }
+ function softHide(){ sp.style.position="absolute"; sp.style.visibility="hidden"; sp.style.height="0px"; sp.style.overflow="hidden"; }
+ function softShow(){ sp.style.position=""; sp.style.visibility=""; sp.style.height=""; sp.style.overflow=""; }
+ var chipBtn0=tp.querySelector("[data-cat]"); var chipRow=chipBtn0? chipBtn0.parentElement : null;
+ var CATLBL={trend:"すべて", news:"ニュース", sports:"スポーツ", ent:"エンタメ"};
+ function toTop(){ softShow(); sp.style.display="block"; tp.style.display="none"; if(chipRow) chipRow.style.display=""; mode="top"; setAct("top"); }
+ function toCat(key){ softHide(); tp.style.display="block"; if(chipRow) chipRow.style.display="none"; var cb=tp.querySelector('[data-cat="'+(CATLBL[key]||"すべて")+'"]'); if(cb) cb.click(); mode="cat"; setAct(key); }
+ function exitExplore(){ softShow(); if(chipRow) chipRow.style.display=""; if(mode==="cat") tp.style.display="none"; mode="off"; }
+ etabs.addEventListener("click", function(e){
+  var b=e.target.closest("[data-et]"); if(!b) return;
+  e.stopPropagation();
+  if(mode==="off") mode="top";
+  if(b.dataset.et==="top") toTop(); else toCat(b.dataset.et);
+ }, true);
+ var nav=document.querySelector("#x-nav");
+ if(nav) nav.addEventListener("click", function(e){ if(e.target.closest("[data-xn]")) exitExplore(); }, true);
+ if(typeof window.doSearch==="function"){
+  var prev=window.doSearch;
+  window.doSearch=function(){ var r=prev.apply(this, arguments); if(mode!=="off") toTop(); return r; };
+ }
+ setInterval(function(){
+  var viewOn=view.classList.contains("on") || view.offsetParent!==null;
+  if(mode==="off" && viewOn && sp.style.display!=="none" && sp.style.visibility!=="hidden"){ mode="top"; setAct("top"); }
+  if(mode!=="off" && !viewOn) exitExplore();
+ }, 250);
 })();
 </script>
 
