@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v823</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v824</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v823"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v824"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -26141,6 +26141,87 @@ input,textarea,select{font-size:16px!important}
  setInterval(sync,300);
  document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
  sync();
+})();
+</script>
+
+<script>
+/* ===== v824: his Instagram highlight player gains the real
+   app's swipe-down-to-dismiss. v785 gave that gesture to his
+   story (#story-view), her highlights (#hl-view) and her own
+   story (#nao-story-view), and v805 gave it to the two nao_ura
+   players (#subst-player and the v635 highlight player), but
+   his highlight player was left out of both rounds: #hl-player
+   (the v116 player over his IG profile, opened from the
+   highlight row under his stories) could only be closed with
+   its x button, and a downward drag on it did nothing at all -
+   unlike every other story surface in the phone and unlike
+   the real Instagram. This layer adds the same gesture, in
+   v805's display-based form: only a clearly vertical
+   one-finger pull engages (dy>14 to follow, dy>80 with
+   |dx|<60 to dismiss), drags starting on the close button or
+   a form control never start, and the transform writes are
+   change-guarded exactly as in v785/v805. Dismissing goes
+   through the player's own #hl-x button, so its own close()
+   runs and clears its own 3.5s auto-advance timer - no timer
+   is duplicated or left running behind the scenes - and any
+   engaged drag swallows its release click (with the
+   programmatic x click exempted from the suppression
+   window), so it can never turn into a segment tap on
+   #hl-next / #hl-prev. Segment order, images, captions,
+   gates and the 3.5s duration are untouched. SMS untouched,
+   per nao's 2026-11-14 instruction to move on from SMS. ===== */
+(function(){
+ if(window.__v824) return; window.__v824=1;
+ var css=document.createElement("style");
+ css.textContent=".v824-story.v824-snap{transition:transform .2s ease}";
+ document.head.appendChild(css);
+ function setup(player, xBtn){
+  if(!player || player.dataset.v824) return;
+  player.dataset.v824="1"; player.classList.add("v824-story");
+  var sx=0, sy=0, dragging=false, dismiss=false, lastTy="", suppressUntil=0;
+  function visible(){ return player.style.display==="flex"; }
+  function setTy(v){ if(lastTy!==v){ lastTy=v; player.style.transform=v; } }
+  player.addEventListener("touchstart",function(e){
+   if(!visible()||e.touches.length!==1){ dragging=false; return; }
+   if(e.target.closest&&e.target.closest("#hl-x,button,input,textarea")){ dragging=false; return; }
+   sx=e.touches[0].clientX; sy=e.touches[0].clientY; dragging=true; dismiss=false;
+  },{passive:true});
+  player.addEventListener("touchmove",function(e){
+   if(!dragging||e.touches.length!==1) return;
+   var dy=e.touches[0].clientY-sy, dx=e.touches[0].clientX-sx;
+   if(dy>14 && Math.abs(dx)<60 && dy>Math.abs(dx)*1.4){ setTy("translateY("+Math.round(dy*0.85)+"px)"); dismiss=dy>80; }
+   else { if(lastTy) setTy(""); dismiss=false; }
+  },{passive:true});
+  function end(){
+   if(!dragging) return; dragging=false;
+   if(dismiss){
+    setTy("");
+    suppressUntil=0;
+    if(xBtn) xBtn.click();
+    suppressUntil=Date.now()+450;
+   } else if(lastTy){
+    suppressUntil=Date.now()+450;
+    player.classList.add("v824-snap");
+    setTy("");
+    setTimeout(function(){ player.classList.remove("v824-snap"); },220);
+   }
+  }
+  player.addEventListener("touchend",end,{passive:true});
+  player.addEventListener("touchcancel",end,{passive:true});
+  player.addEventListener("click",function(e){
+   if(Date.now()<suppressUntil){ suppressUntil=0; e.preventDefault(); e.stopPropagation(); }
+  },true);
+ }
+ function attach(){
+  var pl=document.querySelector("#hl-player");
+  if(!pl) return false;
+  setup(pl, pl.querySelector("#hl-x"));
+  return !!pl.dataset.v824;
+ }
+ if(!attach()){
+  var iv=setInterval(function(){ if(attach()) clearInterval(iv); },500);
+  setTimeout(function(){ clearInterval(iv); },15000);
+ }
 })();
 </script>
 </body>
