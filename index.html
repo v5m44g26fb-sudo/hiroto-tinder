@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v773</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v774</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v773"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v774"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -24172,6 +24172,86 @@ try{
  },true);
  setInterval(applyAll,900);
  setTimeout(applyAll,800);
+})();
+</script>
+
+<style>
+#story-view.v774-hold .sbar i.act b,#hl-view.v774-hold .sbar i.act b{animation-play-state:paused}
+</style>
+<script>
+/* ===== v774: the Instagram story-format players gain the real app's
+   hold-to-pause. In the real Instagram, pressing and holding on a story
+   freezes it: the segment bar stops filling and the auto-advance timer
+   waits, and lifting the finger resumes both from where they stopped
+   (the remaining time is kept, not restarted). A hold of 260ms or more
+   also swallows the release click, so pausing never turns into a tap
+   navigation - a short tap still moves between segments exactly as
+   before. This layer wraps the two segmented players whose timers are
+   the game's own globals: his story (#story-view, storyShow/storyTimer)
+   and her highlights (#hl-view, hlShow/hlTimer). The wrappers only
+   timestamp each segment change; segments, texts, images, gates and
+   the 5s duration are untouched, and closing a player mid-hold resets
+   cleanly with no stray timer. ===== */
+(function(){
+ if(window.__v774) return; window.__v774=1;
+ var DUR=5000, HOLDMS=260;
+ function make(view, getT, setT, advance){
+  if(!view) return null;
+  var P={segAt:0, remaining:DUR, holding:false, downAt:0, suppressUntil:0};
+  view.addEventListener("pointerdown",function(e){
+   if(!view.classList.contains("on")||P.holding) return;
+   if(e.target.closest&&e.target.closest("#story-close,#hl-close,.story-replybar,input,textarea")) return;
+   P.holding=true; P.downAt=Date.now();
+   var el=Date.now()-P.segAt;
+   P.remaining=Math.max(600, DUR-(el>0?el:0));
+   var t=getT(); if(t){ clearTimeout(t); setT(null); }
+   view.classList.add("v774-hold");
+  },true);
+  function release(){
+   if(!P.holding) return;
+   P.holding=false;
+   view.classList.remove("v774-hold");
+   if(Date.now()-P.downAt>=HOLDMS) P.suppressUntil=Date.now()+450;
+   if(!view.classList.contains("on")) return;
+   P.segAt=Date.now()-(DUR-P.remaining);
+   setT(setTimeout(function(){ P.segAt=Date.now(); P.remaining=DUR; advance(); }, P.remaining));
+  }
+  document.addEventListener("pointerup",release,true);
+  document.addEventListener("pointercancel",release,true);
+  document.addEventListener("click",function(e){
+   if(Date.now()<P.suppressUntil && view.contains(e.target)){
+    P.suppressUntil=0; e.preventDefault(); e.stopPropagation();
+   }
+  },true);
+  new MutationObserver(function(){
+   if(!view.classList.contains("on")&&P.holding){ P.holding=false; view.classList.remove("v774-hold"); }
+  }).observe(view,{attributes:true,attributeFilter:["class"]});
+  return P;
+ }
+ /* his story */
+ var sv=document.querySelector("#story-view");
+ if(sv && typeof storyShow==="function"){
+  var P1=make(sv,
+   function(){ return storyTimer; },
+   function(v){ storyTimer=v; },
+   function(){ if(storyIdx<storySegs.length-1) storyShow(storyIdx+1); else sv.classList.remove("on"); });
+  if(P1){
+   var _ss=storyShow;
+   storyShow=function(i){ P1.segAt=Date.now(); P1.remaining=DUR; _ss(i); };
+  }
+ }
+ /* her highlights */
+ var hv=document.querySelector("#hl-view");
+ if(hv && typeof hlShow==="function"){
+  var P2=make(hv,
+   function(){ return hlTimer; },
+   function(v){ hlTimer=v; },
+   function(){ if(hlIdx<hlSegs.length-1) hlShow(hlIdx+1); else hv.classList.remove("on"); });
+  if(P2){
+   var _hs=hlShow;
+   hlShow=function(i){ P2.segAt=Date.now(); P2.remaining=DUR; _hs(i); };
+  }
+ }
 })();
 </script>
 </body>
