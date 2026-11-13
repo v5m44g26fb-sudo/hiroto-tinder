@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v760</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v761</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v760"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v761"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -23358,6 +23358,111 @@ try{
   },true);
  }
  boot();
+})();
+</script>
+
+<script>
+/* ===== v761: every X post gets the real app's top-right ... menu - a bottom sheet with
+   follow / not-interested / mute / block / report. Mute and block actually hide that
+   author's posts across the X view (and can be undone from the same sheet), "not
+   interested" hides just that post, follow toggles its label, report closes with the
+   real app's thanks toast. Own posts in #x-me-posts keep their v131 pin/delete menu;
+   no posts, texts, data or gates changed. ===== */
+(function(){
+ if(window.__v761) return; window.__v761=1;
+ var css=document.createElement("style");
+ css.textContent=".v761-post{position:relative!important}"+
+ ".v761-dots{position:absolute;top:6px;right:8px;width:30px;height:30px;border:none;background:transparent;border-radius:50%;color:#536471;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;z-index:5}"+
+ ".v761-dots:active{background:rgba(29,155,240,.12)}"+
+ "#v761-sheet{position:absolute;inset:0;z-index:300;background:rgba(36,47,56,.45);display:none}"+
+ "#v761-sheet.on{display:block}"+
+ "#v761-card{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:18px 18px 0 0;padding:10px 10px 6px;animation:v761up .22s ease}"+
+ "@keyframes v761up{from{transform:translateY(26px);opacity:.4}to{transform:none;opacity:1}}"+
+ ".v761-row{display:flex;align-items:center;gap:14px;width:100%;background:none;border:none;padding:13px 12px;font-size:15px;color:#0f1419;cursor:pointer;text-align:left;font-family:inherit;border-radius:10px}"+
+ ".v761-row:active{background:#f7f9f9}.v761-row svg{flex:none}"+
+ ".v761-row.red{color:#f4212e}"+
+ "#v761-cancel{display:block;width:100%;margin:8px 0 10px;background:#fff;border:1px solid #cfd9de;border-radius:999px;padding:12px;font-size:15px;font-weight:700;color:#0f1419;cursor:pointer;font-family:inherit}";
+ document.head.appendChild(css);
+ var muted={}, blocked={}, followed={};
+ var IC={
+  fol:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="10" cy="8" r="3.6"/><path d="M3.5 20c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M18.5 5v6M15.5 8h6"/></svg>',
+  unfol:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="10" cy="8" r="3.6"/><path d="M3.5 20c.8-3.2 3.4-5 6.5-5s5.7 1.8 6.5 5"/><path d="M15.5 8h6"/></svg>',
+  meh:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 15.5c1-1 2.2-1.5 3.5-1.5s2.5.5 3.5 1.5"/><circle cx="9" cy="9.6" r=".4" fill="currentColor"/><circle cx="15" cy="9.6" r=".4" fill="currentColor"/></svg>',
+  mute:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="m16 9.5 5 5M21 9.5l-5 5"/></svg>',
+  unmute:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.4 6a9 9 0 0 1 0 12"/></svg>',
+  block:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M5.8 5.8l12.4 12.4"/></svg>',
+  flag:'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4.5c4-2 7 2 14 0v9c-7 2-10-2-14 0"/></svg>',
+  dots:'<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>'};
+ function notify(msg){
+  if(typeof toast==="function"){ toast(msg); return; }
+  var vx=document.querySelector("#v-x"); if(!vx) return;
+  var t=document.createElement("div");
+  t.style.cssText="position:absolute;left:50%;bottom:96px;transform:translateX(-50%);background:#0f1419;color:#fff;font-size:13px;padding:10px 16px;border-radius:999px;z-index:400;white-space:nowrap";
+  t.textContent=msg; vx.appendChild(t); setTimeout(function(){ t.remove(); },2200);
+ }
+ function handleOf(post){
+  var hd=post.querySelector(".hd"); if(!hd) return "";
+  var m=(hd.textContent||"").match(/@[A-Za-z0-9_.]+/); return m? m[0] : "";
+ }
+ function applyVisibility(){
+  document.querySelectorAll("#v-x .post").forEach(function(p){
+   var h=handleOf(p); if(!h) return;
+   if(muted[h]||blocked[h]) p.style.display="none";
+   else if(p.dataset.v761ni!=="1") p.style.display="";
+  });
+ }
+ var sheet=null, curPost=null, curHandle="";
+ function closeSheet(){ if(sheet) sheet.classList.remove("on"); curPost=null; }
+ function openSheet(post){
+  var vx=document.querySelector("#v-x"); if(!vx) return;
+  curPost=post; curHandle=handleOf(post);
+  if(!sheet){
+   sheet=document.createElement("div"); sheet.id="v761-sheet";
+   sheet.innerHTML='<div id="v761-card"></div>';
+   vx.appendChild(sheet);
+   sheet.addEventListener("click",function(e){ if(e.target===sheet) closeSheet(); });
+  }
+  var card=sheet.querySelector("#v761-card"); card.innerHTML="";
+  function row(icon,label,red,fn){
+   var b=document.createElement("button"); b.className="v761-row"+(red?" red":"");
+   b.innerHTML=icon+"<span></span>"; b.querySelector("span").textContent=label;
+   b.addEventListener("click",function(e){ e.stopPropagation(); fn(); });
+   card.appendChild(b);
+  }
+  var h=curHandle||"このアカウント";
+  if(muted[curHandle]) row(IC.unmute,h+" のミュートを解除",false,function(){ delete muted[curHandle]; applyVisibility(); closeSheet(); notify(h+" のミュートを解除しました"); });
+  if(blocked[curHandle]) row(IC.block,h+" のブロックを解除",true,function(){ delete blocked[curHandle]; applyVisibility(); closeSheet(); notify(h+" のブロックを解除しました"); });
+  if(!muted[curHandle]&&!blocked[curHandle]){
+   if(followed[curHandle]) row(IC.unfol,h+" のフォローを解除",false,function(){ delete followed[curHandle]; closeSheet(); notify(h+" のフォローを解除しました"); });
+   else row(IC.fol,h+" をフォロー",false,function(){ followed[curHandle]=1; closeSheet(); notify(h+" をフォローしました"); });
+   row(IC.meh,"このポストに興味がない",false,function(){ if(curPost){ curPost.dataset.v761ni="1"; curPost.style.display="none"; } closeSheet(); notify("フィードバックを送信しました。類似のポストは減ります"); });
+   row(IC.mute,h+" をミュート",false,function(){ muted[curHandle]=1; applyVisibility(); closeSheet(); notify(h+" をミュートしました"); });
+   row(IC.block,h+" をブロック",true,function(){ blocked[curHandle]=1; applyVisibility(); closeSheet(); notify(h+" をブロックしました"); });
+   row(IC.flag,"ポストを報告",true,function(){ closeSheet(); notify("報告を受け付けました。ご協力ありがとうございます"); });
+  }
+  var c=document.createElement("button"); c.id="v761-cancel"; c.textContent="キャンセル";
+  c.addEventListener("click",function(e){ e.stopPropagation(); closeSheet(); });
+  card.appendChild(c);
+  sheet.classList.add("on");
+ }
+ function arm(post){
+  if(post.dataset.v761) return;
+  if(post.closest("#x-me-posts")) return;
+  post.dataset.v761="1";
+  post.classList.add("v761-post");
+  var b=document.createElement("button"); b.className="v761-dots"; b.type="button";
+  b.setAttribute("aria-label","ポストのメニュー"); b.innerHTML=IC.dots;
+  b.addEventListener("click",function(e){ e.stopPropagation(); e.preventDefault(); openSheet(post); });
+  post.appendChild(b);
+  var h=handleOf(post);
+  if(h&&(muted[h]||blocked[h])) post.style.display="none";
+ }
+ function scan(){
+  var vx=document.querySelector("#v-x"); if(!vx) return;
+  vx.querySelectorAll(".post").forEach(arm);
+ }
+ new MutationObserver(function(){ scan(); }).observe(document.body,{childList:true,subtree:true});
+ setInterval(scan,1500); scan();
 })();
 </script>
 </body>
