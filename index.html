@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v744</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v745</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v744"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v745"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -22566,6 +22566,98 @@ function wire(){
 }
 setInterval(wire, 800);
 window.__v744inject=inject;
+})();
+</script>
+
+<script>
+/* ===== v745: his X profile @193hiroto - header/avatar viewer, notify bell, more-menu sheet (real-X style) ===== */
+(function(){
+if(window.__v745) return; window.__v745 = true;
+var $=function(s){return document.querySelector(s);};
+var DOTS='<svg width="17" height="17" viewBox="0 0 24 24" fill="#0f1419"><circle cx="5" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="19" cy="12" r="1.9"/></svg>';
+var BELL='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0f1419" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg>';
+var VER='<svg width="15" height="15" viewBox="0 0 24 24" fill="#1d9bf0" style="flex:none;vertical-align:-2px"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91C1.88 9.33 1 10.57 1 12s.88 2.67 2.19 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"/></svg>';
+var notify=false, muted=false, viewer=null, sheet=null;
+function toast_(h){ try{ if(typeof toast==="function") toast(h); }catch(e){} }
+function buildViewer(){
+ var vx=$("#v-x"); if(!vx || viewer) return;
+ viewer=document.createElement("div"); viewer.id="v745-viewer";
+ viewer.style.cssText="position:absolute;inset:0;background:rgba(0,0,0,.96);z-index:275;display:none;flex-direction:column;align-items:center;justify-content:center";
+ viewer.innerHTML='<button id="v745-vclose" style="position:absolute;top:12px;left:12px;width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.14);color:#fff;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>'
+  +'<img id="v745-vimg" src="" alt="" style="max-width:100%;max-height:82%;object-fit:contain">'
+  +'<div style="color:#fff;font-size:13px;margin-top:14px;display:flex;align-items:center;gap:6px"><b>井汲大翔</b>'+VER+'<span style="color:#71767b">@193hiroto</span></div>';
+ vx.appendChild(viewer);
+ viewer.addEventListener("click",function(e){ if(e.target!==document.getElementById("v745-vimg")) viewer.style.display="none"; });
+}
+function openViewer(srcImg, round){
+ buildViewer(); if(!viewer) return;
+ var im=document.getElementById("v745-vimg"); if(!im) return;
+ im.src=srcImg;
+ im.style.borderRadius=round?"50%":"0";
+ im.style.width=round?"240px":"";
+ im.style.height=round?"240px":"";
+ im.style.objectFit=round?"cover":"contain";
+ viewer.style.display="flex";
+}
+function buildSheet(){
+ var vx=$("#v-x"); if(!vx || sheet) return;
+ sheet=document.createElement("div"); sheet.id="v745-sheet";
+ sheet.style.cssText="position:absolute;inset:0;background:rgba(15,20,25,.45);z-index:265;display:none;flex-direction:column;justify-content:flex-end";
+ sheet.innerHTML='<div style="background:#fff;border-radius:18px 18px 0 0;padding:8px 0 18px">'
+  +'<div style="width:38px;height:4px;border-radius:99px;background:#cfd9de;margin:4px auto 10px"></div>'
+  +'<button data-v745m="share" style="display:block;width:100%;background:none;border:none;text-align:left;padding:13px 20px;font-size:15px;font-family:inherit;cursor:pointer;color:#0f1419">プロフィールを共有する</button>'
+  +'<button data-v745m="mute" style="display:block;width:100%;background:none;border:none;text-align:left;padding:13px 20px;font-size:15px;font-family:inherit;cursor:pointer;color:#0f1419">@193hiroto さんをミュートする</button>'
+  +'<button data-v745m="block" style="display:block;width:100%;background:none;border:none;text-align:left;padding:13px 20px;font-size:15px;font-family:inherit;cursor:pointer;color:#f4212e">@193hiroto さんをブロックする</button>'
+  +'<button data-v745m="cancel" style="display:block;width:calc(100% - 32px);margin:10px 16px 0;background:#eff3f4;border:none;border-radius:999px;padding:12px 0;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;color:#0f1419">キャンセル</button>'
+  +'</div>';
+ vx.appendChild(sheet);
+ sheet.addEventListener("click",function(e){ if(e.target===sheet) sheet.style.display="none"; });
+ sheet.querySelectorAll("[data-v745m]").forEach(function(b){ b.addEventListener("click",function(){
+  var k=b.getAttribute("data-v745m");
+  if(k==="share") toast_("リンクをコピーしました");
+  else if(k==="mute"){ muted=!muted; b.textContent=muted?"@193hiroto さんのミュートを解除する":"@193hiroto さんをミュートする"; toast_(muted?"@193hiroto さんをミュートしました":"ミュートを解除しました"); }
+  else if(k==="block") toast_("ブロックするとこのアカウントは見られなくなるよ（この物語では固定だよ）");
+  sheet.style.display="none";
+ });});
+}
+function isFollowing(){
+ var fb=document.getElementById("v735-follow");
+ return !!(fb && fb.textContent.indexOf("フォロー中")===0);
+}
+function syncBell(){
+ var bell=document.getElementById("v745-bell"); if(!bell) return;
+ if(isFollowing()){ bell.style.display="flex"; }
+ else { bell.style.display="none"; if(notify){ notify=false; bell.style.background="#fff"; } }
+}
+function inject(){
+ var pane=$("#x-pane-hisprof"); if(!pane || pane.style.display==="none") return;
+ buildViewer(); buildSheet();
+ var av=pane.querySelector('img[width="66"]');
+ if(av && !av.dataset.v745){ av.dataset.v745="1"; av.style.cursor="pointer";
+  av.addEventListener("click",function(){ openViewer(av.getAttribute("src"), true); }); }
+ var tops=pane.querySelectorAll(":scope > div");
+ var hdr=tops && tops.length>1 ? tops[1] : null;
+ if(hdr && !hdr.dataset.v745){ hdr.dataset.v745="1"; hdr.style.cursor="pointer";
+  hdr.addEventListener("click",function(){ openViewer("assets/ig-gen-stage.jpg", false); }); }
+ var fb=document.getElementById("v735-follow");
+ if(fb && !document.getElementById("v745-actions")){
+  var row=document.createElement("div"); row.id="v745-actions";
+  row.style.cssText="display:flex;gap:8px;align-items:center";
+  var bell=document.createElement("button"); bell.id="v745-bell";
+  bell.style.cssText="width:34px;height:34px;border-radius:50%;border:1px solid #cfd9de;background:#fff;cursor:pointer;display:none;align-items:center;justify-content:center;padding:0;flex:none";
+  bell.innerHTML=BELL;
+  bell.addEventListener("click",function(){ notify=!notify; bell.style.background=notify?"#e8f5fe":"#fff"; toast_(notify?"@193hiroto のポスト通知をオンにしました":"ポスト通知をオフにしました"); });
+  var more=document.createElement("button"); more.id="v745-more";
+  more.style.cssText="width:34px;height:34px;border-radius:50%;border:1px solid #cfd9de;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;flex:none";
+  more.innerHTML=DOTS;
+  more.addEventListener("click",function(){ if(sheet) sheet.style.display="flex"; });
+  fb.parentNode.insertBefore(row, fb);
+  row.appendChild(bell); row.appendChild(more); row.appendChild(fb);
+ }
+ syncBell();
+}
+setInterval(inject, 700);
+window.__v745inject=inject;
 })();
 </script>
 
