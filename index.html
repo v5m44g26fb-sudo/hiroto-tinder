@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v825</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v826</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v825"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v826"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -26307,6 +26307,72 @@ input,textarea,select{font-size:16px!important}
  }
  attach();
  setInterval(attach,700);
+})();
+</script>
+
+<script>
+/* ===== v826: the LINE group and friend rooms gain the real
+   app's scroll-to-bottom button. v791 gave that white circular
+   chevron to the main room (#chat) only and deliberately left
+   the other two rooms out, but in the real LINE every talk
+   room has it: scroll up through the group room (#gchat) or a
+   friend room (#fchat) and the button floats above the input
+   bar, tapping it glides back to the newest message and it
+   disappears on arrival. This layer mirrors v791 room by
+   room: each button shows only while its own room is open and
+   the distance from the bottom exceeds 260px, its bottom
+   offset is measured from the space under its own scroll
+   area (input bar, plus the friend room's typing strip) so
+   it always rides just above them, and every write is
+   change-guarded exactly as in v791 - the scroll listener
+   and the light sync pass only touch the DOM when the shown
+   state or the measured offset actually changes. Clicking
+   smooth-scrolls through the container's own scrollTop. No
+   message, text, reply pool, gate or reaction behaviour is
+   touched. SMS untouched, per nao's 2026-11-14 instruction
+   to move on from SMS. ===== */
+(function(){
+ if(window.__v826) return; window.__v826=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#group-chat,#friend-chat{position:relative}"+
+  ".v826-bottom{position:absolute;right:14px;bottom:96px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(0,0,0,.07);background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:30;padding:0;opacity:0;transform:translateY(8px) scale(.85);pointer-events:none;transition:opacity .18s ease,transform .18s ease}"+
+  ".v826-bottom.on{opacity:1;transform:none;pointer-events:auto}";
+ document.head.appendChild(css);
+ var CHEV='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9.5l7 7 7-7"/></svg>';
+ var rooms=[];
+ function setup(roomSel, scrollSel, btnId){
+  var room=document.querySelector(roomSel), sc=document.querySelector(scrollSel);
+  if(!room || !sc || room.dataset.v826) return;
+  room.dataset.v826="1";
+  var btn=document.createElement("button");
+  btn.id=btnId; btn.type="button"; btn.className="v826-bottom";
+  btn.setAttribute("aria-label","\u4e00\u756a\u4e0b\u3078");
+  btn.innerHTML=CHEV;
+  room.appendChild(btn);
+  var R={room:room, sc:sc, btn:btn, shown:false};
+  btn.addEventListener("click",function(){
+   try{ sc.scrollTo({top:sc.scrollHeight,behavior:"smooth"}); }
+   catch(e){ sc.scrollTop=sc.scrollHeight; }
+   if(R.shown){ R.shown=false; btn.classList.remove("on"); }
+  });
+  sc.addEventListener("scroll",function(){ sync(R); },{passive:true});
+  rooms.push(R);
+ }
+ function sync(R){
+  var open=R.room.style.display!=="none" && R.sc.clientHeight>0;
+  var below=R.room.clientHeight-R.sc.offsetTop-R.sc.offsetHeight;
+  if(below>0){ var b=(below+10)+"px"; if(R.btn.style.bottom!==b) R.btn.style.bottom=b; }
+  var dist=R.sc.scrollHeight-R.sc.scrollTop-R.sc.clientHeight;
+  var want=open && dist>260;
+  if(want!==R.shown){ R.shown=want; R.btn.classList.toggle("on",R.shown); }
+ }
+ function syncAll(){ for(var i=0;i<rooms.length;i++) sync(rooms[i]); }
+ setup("#group-chat","#gchat","v826-gbottom");
+ setup("#friend-chat","#fchat","v826-fbottom");
+ document.addEventListener("click",function(){ setTimeout(syncAll,60); },false);
+ setInterval(syncAll,900);
+ syncAll();
 })();
 </script>
 </body>
