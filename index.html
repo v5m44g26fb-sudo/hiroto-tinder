@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v748</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v749</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v748"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v749"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -22698,7 +22698,7 @@ window.__v745inject=inject;
   +"#v747-ntabs{display:flex;margin-top:10px}"
   +"#v747-ntabs button{flex:1;background:none;border:none;padding:10px 0 9px;font-size:14px;color:#536471;cursor:pointer;font-family:inherit;position:relative}"
   +"#v747-ntabs button.act{color:#0f1419;font-weight:900}"
-  +"#v747-ntabs button.act::after{content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:56px;height:3.5px;border-radius:2px;background:#0f1419}";
+  +"#v747-ntabs button.act::after{content:'';position:absolute;left:16px;right:16px;bottom:0;height:3.5px;border-radius:2px;background:#0f1419}";
  document.head.appendChild(st);
  /* --- A) explore tabs, shown only while searching; gear joins the top bar --- */
  if(appbar){
@@ -22735,20 +22735,29 @@ window.__v745inject=inject;
    +'<img id="v747-nava" src="assets/nao-avatar4.jpg" width="32" height="32" alt="" style="border-radius:50%;object-fit:cover;cursor:pointer">'
    +'<span style="position:absolute;left:50%;transform:translateX(-50%);font-size:16.5px;font-weight:900">通知</span>'
    +'<span id="v747-ngear" style="margin-left:auto;cursor:pointer;display:flex">'+GEAR+'</span></div>'
-   +'<div id="v747-ntabs"><button data-nt="all" class="act">すべて</button><button data-nt="men">@ツイート</button></div>';
+   +'<div id="v747-ntabs"><button data-nt="all" class="act"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M18 9a6 6 0 1 0-12 0c0 6-2.5 7-2.5 7h17S18 15 18 9z"/><path d="M10 20a2.2 2.2 0 0 0 4 0"/></svg>すべて</button><button data-nt="men">@ツイート</button></div>';
   notif.insertBefore(head, notif.firstChild);
   var nava=head.querySelector("#v747-nava");
   if(nava) nava.addEventListener("click", function(){ if(window.__v738openDrawer) window.__v738openDrawer(); });
   var ngear=head.querySelector("#v747-ngear");
   if(ngear) ngear.addEventListener("click", function(){ toast("通知の設定は飾りだよ"); });
   head.querySelector('[data-nt="men"]').addEventListener("click", function(){
-   notif.style.display="none";
-   var m=view.querySelector('[data-xtab="mention"]'); if(m) m.click();
-   var bell=view.querySelector('#x-nav [data-xn="bell"]'); if(bell) bell.classList.remove("sel");
-   var mt=view.querySelector('#x-nav [data-xn="home"]'); if(mt) mt.classList.add("sel");
+   head.querySelector('[data-nt="all"]').classList.remove("act");
+   head.querySelector('[data-nt="men"]').classList.add("act");
+   document.querySelectorAll("#x-notif-list > div").forEach(function(r){ r.style.display=/\u8fd4\u4fe1/.test(r.textContent)?"":"none"; });
+   var anyF=[...document.querySelectorAll("#x-notif-list > div")].some(function(r){ return r.id!=="v749-empty" && r.style.display!=="none"; });
+   var emF=document.querySelector("#v749-empty");
+   if(!anyF && !emF){ emF=document.createElement("div"); emF.id="v749-empty"; emF.style.cssText="padding:34px 20px;text-align:center;color:#536471;font-size:13.5px"; emF.textContent="あなたへの返信はまだないよ"; document.querySelector("#x-notif-list").appendChild(emF); }
+   if(anyF && emF) emF.remove();
+  });
+  head.querySelector('[data-nt="all"]').addEventListener("click", function(){
+   head.querySelector('[data-nt="men"]').classList.remove("act");
+   head.querySelector('[data-nt="all"]').classList.add("act");
+   document.querySelectorAll("#x-notif-list > div").forEach(function(r){ r.style.display=""; });
+   var emA=document.querySelector("#v749-empty"); if(emA) emA.remove();
   });
   var ICONS={
-   "❤️":'<svg width="21" height="21" viewBox="0 0 24 24" fill="#f91880"><path d="M12 2l2.4 6.9H21l-5.3 4.3 1.9 7L12 15.9l-5.6 4.3 1.9-7L3 8.9h6.6z"/></svg>',
+   "❤️":'<svg width="21" height="21" viewBox="0 0 24 24" fill="#7856ff"><path d="M12 3c.6 3.9 1.7 5.3 5.6 6.1-3.9.8-5 2.2-5.6 6.1-.6-3.9-1.7-5.3-5.6-6.1C10.3 8.3 11.4 6.9 12 3z"/></svg>',
    "💬":'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1d9bf0" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3c-1.4 0-2.8-.3-4-.9L3 20l1.2-5.2a8.1 8.1 0 0 1-1.2-4.3A8.4 8.4 0 0 1 11.5 2h1A8.4 8.4 0 0 1 21 11.5z"/></svg>',
    "👤":'<svg width="21" height="21" viewBox="0 0 24 24" fill="#1d9bf0"><circle cx="12" cy="8" r="4.2"/><path d="M3.5 20.5c1.2-4 4.4-6 8.5-6s7.3 2 8.5 6z"/></svg>',
    "🔁":'<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#00ba7c" stroke-width="2"><path d="M4 9h11l-3-3M20 15H9l3 3"/></svg>'
@@ -22776,6 +22785,51 @@ window.__v745inject=inject;
  st.textContent="#x-pane-grok{bottom:58px!important}"
   +"#x-nav [data-xn=\"grok\"].sel span{background:#0f1419!important;color:#fff!important;border-radius:10px!important}";
  document.head.appendChild(st);
+})();
+</script>
+
+
+<script>
+/* ===== v749: notifications single header (drop the legacy pill header) + rows gain avatar and name line ===== */
+(function(){
+ if(window.__v749) return; window.__v749=true;
+ var xa=document.querySelector("#xn-all");
+ if(xa){ var hd=xa; while(hd && hd.parentElement && hd.parentElement.id!=="x-notif") hd=hd.parentElement; if(hd) hd.style.display="none"; }
+ var list=document.querySelector("#x-notif-list"); if(!list || !window.MutationObserver) return;
+ var PALETTE=["#e0245e","#1d9bf0","#00ba7c","#f91880","#7856ff","#ff8a00","#17bf63","#794bc4"];
+ function restructure(row){
+  if(row.dataset.v749) return; row.dataset.v749="1";
+  var spans=row.querySelectorAll("span"); if(spans.length<2) return;
+  var icon=spans[0], body=spans[spans.length-1];
+  var text=(body.textContent||"").trim(); if(!text) return;
+  var name=null, rest=text;
+  var m1=text.match(/^(@\S+)\s+(.*)$/); var m2=text.match(/^(.+?)さんが(.*)$/); var m3=text.match(/新しいフォロワー：(@\S+)/);
+  if(m1){ name=m1[1]; rest=m1[2]; }
+  else if(m2){ name=m2[1]+"さん"; rest="が"+m2[2]; }
+  else if(m3){ name=m3[1]; rest="さんがあなたをフォローしました"; }
+  rest=rest.replace(/^\u304c/,"");
+  if(!name) return;
+  row.style.gap="10px";
+  icon.style.flex="none"; icon.style.width="26px"; icon.style.textAlign="center";
+  var av;
+  if(name.indexOf("井汲大翔")>=0){
+   av=document.createElement("img"); av.src="assets/ig-avatar.jpg"; av.alt="";
+   av.style.cssText="width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none";
+  } else {
+   var h=0; for(var i=0;i<name.length;i++) h=(h*31+name.charCodeAt(i))>>>0;
+   av=document.createElement("div");
+   av.textContent=name.replace(/^@/,"").charAt(0).toUpperCase();
+   av.style.cssText="width:40px;height:40px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:16px;background:"+PALETTE[h%PALETTE.length];
+  }
+  row.insertBefore(av, body);
+  body.style.flex="1"; body.style.minWidth="0";
+  body.innerHTML="";
+  var nm=document.createElement("div"); nm.style.cssText="font-weight:900;font-size:14.5px"; nm.textContent=name;
+  var rs=document.createElement("div"); rs.style.cssText="font-size:14px;line-height:1.45"; rs.textContent=rest;
+  body.appendChild(nm); body.appendChild(rs);
+ }
+ new MutationObserver(function(){ list.querySelectorAll(":scope > div").forEach(restructure); })
+  .observe(list, {childList:true});
 })();
 </script>
 
