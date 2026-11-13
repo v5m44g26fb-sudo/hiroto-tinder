@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v854</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v855</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v854"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v855"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -28778,6 +28778,96 @@ input,textarea,select{font-size:16px!important}
  setInterval(attach,700);
  document.addEventListener("click",function(){ setTimeout(sync,60); },false);
  setInterval(sync,900);
+})();
+</script>
+
+<script>
+/* ===== v855: the LINE group room gains the real app's
+   unsend entry. v801 gave that entry to the main room: her
+   bubbles there offer a red \u9001\u4fe1\u53d6\u6d88 entry beside the
+   reaction faces in the v773 tray, and tapping it replaces
+   the message with the grey \u30e1\u30c3\u30bb\u30fc\u30b8\u306e\u9001\u4fe1\u3092
+   \u53d6\u308a\u6d88\u3057\u307e\u3057\u305f line, exactly like the real LINE.
+   The group room (#gchat, \u3044\u3064\u30e1\u30f3) was left out of that
+   round: it still opens the older v28 five-face picker
+   (#rxn-picker, long-press or double-tap on a bubble), and
+   that picker has faces only - a message she sent to the
+   group could be reacted to but never unsent, while in the
+   real LINE any of her own messages in any room can be
+   unsent the same way. This layer appends the same red
+   entry to the v28 picker: it tracks the last bubble
+   pressed inside #gchat (capture-phase pointerdown /
+   dblclick), shows the entry solely while the picker is
+   open over one of HER bubbles (.msg.me), and tapping it
+   replaces that .msg with the same unsent line (the
+   v801-unsent class, re-declared here so the line keeps
+   its shape) and closes the picker. A friend's bubble
+   (.msg.him) never shows the entry, and the five faces,
+   attachRxn, the picker itself and every message, reply
+   pool and gate are untouched - like v801 the unsend is a
+   DOM-level replacement in place. Every write is
+   change-guarded: the class observer on the picker only
+   restyles the entry's display when the wanted state
+   actually flips, and the light sync interval follows the
+   same rule, so no observed node is rewritten with the
+   same value. SMS untouched, per nao's 2026-11-14
+   instruction to move on from SMS.
+   Playwright-verified (see hidden_files/v855-probe.py)
+   ===== */
+(function(){
+ if(window.__v855) return; window.__v855=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#rxn-picker .v855-unsend{font-size:12.5px;font-weight:700;color:#e03131;padding:4px 6px 4px 10px;border-left:1px solid #eee;border-top:none;border-right:none;border-bottom:none;border-radius:0;white-space:nowrap;background:none;cursor:pointer;font-family:inherit}"+
+  ".v855-unsent{text-align:center;font-size:11.5px;color:#8e8e93;margin:10px 0 2px}";
+ document.head.appendChild(css);
+ var cand=null, R=null;
+ function isMine(b){
+  if(!b || !b.isConnected) return false;
+  var msg=b.closest ? b.closest(".msg") : null;
+  return !!msg && msg.classList.contains("me") && !!b.closest("#gchat");
+ }
+ function sync(){
+  if(!R) return;
+  var open=R.picker.classList.contains("on");
+  var want=(open && isMine(cand)) ? "" : "none";
+  if(R.btn.style.display!==want) R.btn.style.display=want;
+ }
+ function setup(){
+  var picker=document.querySelector("#rxn-picker");
+  if(!picker || picker.dataset.v855) return;
+  picker.dataset.v855="1";
+  var btn=document.createElement("button");
+  btn.id="v855-unsend"; btn.type="button"; btn.className="v855-unsend";
+  btn.textContent="\u9001\u4fe1\u53d6\u6d88"; btn.style.display="none";
+  picker.appendChild(btn);
+  R={picker:picker, btn:btn};
+  btn.addEventListener("click",function(ev){
+   ev.stopPropagation();
+   if(isMine(cand)){
+    var msg=cand.closest(".msg");
+    var line=document.createElement("div");
+    line.className="v801-unsent v855-unsent";
+    line.textContent="\u30e1\u30c3\u30bb\u30fc\u30b8\u306e\u9001\u4fe1\u3092\u53d6\u308a\u6d88\u3057\u307e\u3057\u305f";
+    msg.replaceWith(line);
+   }
+   cand=null;
+   picker.classList.remove("on");
+   sync();
+  });
+  new MutationObserver(sync).observe(picker,{attributes:true,attributeFilter:["class"]});
+ }
+ function track(e){
+  var t=e.target;
+  var b=t && t.closest ? t.closest("#gchat .bub") : null;
+  if(b) cand=b;
+ }
+ document.addEventListener("pointerdown",track,true);
+ document.addEventListener("dblclick",track,true);
+ function attach(){ setup(); sync(); }
+ attach();
+ setInterval(attach,700);
+ setInterval(sync,700);
 })();
 </script>
 </body>
