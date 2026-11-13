@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v737</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v738</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v737"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v738"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21950,6 +21950,98 @@ window.__v733inject=inject;
   $$("[data-xtab]").forEach(function(b){ b.addEventListener("click",function(){ if(pane.style.display!=="none") pane.style.display="none"; }, true); });
   setInterval(wire, 1000);
  }catch(e){}
+})();
+</script>
+
+
+<script>
+/* ===== v738: X header rework (search bar into the top bar, search tab only), mood card removed, account drawer with sub-account ===== */
+(function(){
+ if(window.__v738) return; window.__v738=true;
+ var view=document.querySelector("#v-x"); if(!view) return;
+ var appbar=view.querySelector(".appbar"); if(!appbar) return;
+ /* 1) mood card (いまの世間) is retired */
+ var st=document.createElement("style");
+ st.textContent="#r4-mood{display:none!important}"
+  +".appbar .x-searchbar{display:none!important}"
+  +".appbar.v738-search .x-searchbar{display:flex!important;flex:1;margin-left:10px;padding:0!important}"
+  +".appbar.v738-search .back,.appbar.v738-search .t,.appbar.v738-search #x-head-note{display:none!important}"
+  +"#v738-drawer{position:absolute;inset:0;z-index:460;display:none}"
+  +"#v738-drawer.on{display:block}"
+  +"#v738-drawer .bk{position:absolute;inset:0;background:rgba(15,20,25,.45)}"
+  +"#v738-drawer .pn{position:absolute;top:0;left:0;bottom:0;width:80%;max-width:320px;background:#fff;box-shadow:2px 0 14px rgba(0,0,0,.18);transform:translateX(-102%);transition:transform .25s ease;padding:20px 18px;overflow-y:auto}"
+  +"#v738-drawer.on .pn{transform:translateX(0)}"
+  +"#v738-drawer .mrow{display:flex;align-items:center;gap:16px;padding:13px 2px;font-size:16.5px;font-weight:700;color:#0f1419;cursor:pointer;background:none;border:none;width:100%;text-align:left;font-family:inherit}"
+  +"#v738-toast{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);background:#0f1419;color:#fff;font-size:12.5px;padding:8px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:470;white-space:nowrap}";
+ document.head.appendChild(st);
+ var toastEl=document.createElement("div"); toastEl.id="v738-toast"; view.appendChild(toastEl);
+ var toastT=null;
+ function toast(m){ toastEl.textContent=m; toastEl.style.opacity="1"; clearTimeout(toastT); toastT=setTimeout(function(){ toastEl.style.opacity="0"; },1900); }
+ /* 2) search bar: strip its avatar + gear, move it into the top app bar */
+ var bar=view.querySelector(".x-searchbar");
+ if(bar){
+  Array.prototype.slice.call(bar.children).forEach(function(ch){
+   if(!ch.querySelector || !ch.querySelector("#x-q")) ch.remove();
+  });
+  appbar.appendChild(bar);
+ }
+ function searchMode(){
+  var pane=document.querySelector("#x-pane-search");
+  var on=!!(pane&&pane.style.display!=="none"&&pane.offsetParent);
+  appbar.classList.toggle("v738-search", !!on);
+ }
+ setInterval(searchMode, 400);
+ /* 3) account drawer (real-X style), with the sub account for switching */
+ var unlocked=function(){ return (state.chapter||0)>=2 || !!state._subPublic || state.phase==="scandal"; };
+ var drawer=document.createElement("div"); drawer.id="v738-drawer";
+ view.appendChild(drawer);
+ var IC={
+  prof:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f1419" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-3.6 4.5-5 8-5s6.5 1.4 8 5"/></svg>',
+  bm:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f1419" stroke-width="1.8"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg>',
+  list:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f1419" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>',
+  gear:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f1419" stroke-width="1.7"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8l1.2 2.7 2.9-.7 1 2.8 2.9.7-.4 3 2.3 1.9-1.9 2.3 1 2.8-2.9.7-1 2.8-2.9-.7L12 21.2l-1.2-2.7-2.9.7-1-2.8-2.9-.7.4-3L2.1 10.8l1.9-2.3-1-2.8 2.9-.7 1-2.8 2.9.7z" stroke-linejoin="round"/></svg>',
+  lock:'<svg width="13" height="13" viewBox="0 0 24 24" fill="#0f1419"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 8V7a3 3 0 1 1 6 0v3H9z"/></svg>'
+ };
+ function renderDrawer(){
+  var un=unlocked();
+  var fol=(document.querySelector("#x-fol-n")||{}).textContent||"189";
+  var subTop=un?'<img id="v738-sub-ava" src="assets/cafe-latte.jpg" width="34" height="34" alt="" style="border-radius:50%;object-fit:cover;cursor:pointer">':"";
+  var subRow=un?'<button class="mrow" id="v738-sub-row"><img src="assets/cafe-latte.jpg" width="26" height="26" alt="" style="border-radius:50%;object-fit:cover"><span>サブ垢 @nao_ura</span>'+(state._subPublic?"":IC.lock)+'</button>':"";
+  drawer.innerHTML='<div class="bk"></div><div class="pn">'
+   +'<div style="display:flex;align-items:flex-start">'
+   +'<img src="assets/nao-avatar4.jpg" width="52" height="52" alt="" style="border-radius:50%;object-fit:cover">'
+   +'<span style="margin-left:auto;display:flex;align-items:center;gap:10px">'+subTop
+   +'<button id="v738-dots" style="width:34px;height:34px;border-radius:50%;border:1.6px solid #0f1419;background:#fff;font-size:15px;font-weight:900;cursor:pointer;line-height:1">…</button></span></div>'
+   +'<div style="font-size:18px;font-weight:900;margin-top:10px">なお</div>'
+   +'<div style="color:#536471;font-size:13.5px">@nao_0324</div>'
+   +'<div style="font-size:13.5px;margin-top:9px"><b>'+fol+'</b> <span style="color:#536471">フォロワー</span>　<b>96</b> <span style="color:#536471">フォロー中</span></div>'
+   +'<div style="border-top:1px solid #eff3f4;margin:14px -18px 4px"></div>'
+   +'<button class="mrow" id="v738-prof">'+IC.prof+'<span>プロフィール</span></button>'
+   + subRow
+   +'<button class="mrow" id="v738-bm">'+IC.bm+'<span>ブックマーク</span></button>'
+   +'<button class="mrow" id="v738-list">'+IC.list+'<span>リスト</span></button>'
+   +'<button class="mrow" id="v738-gear">'+IC.gear+'<span>設定とプライバシー</span></button>'
+   +'</div>';
+  drawer.querySelector(".bk").addEventListener("click", closeDrawer);
+  var prof=drawer.querySelector("#v738-prof");
+  if(prof) prof.addEventListener("click", function(){ closeDrawer(); var b=view.querySelector('[data-xtab="me"]'); if(b) b.click(); });
+  var sr=drawer.querySelector("#v738-sub-row");
+  if(sr) sr.addEventListener("click", openSub);
+  var sa=drawer.querySelector("#v738-sub-ava");
+  if(sa) sa.addEventListener("click", openSub);
+  var dots=drawer.querySelector("#v738-dots");
+  if(dots) dots.addEventListener("click", function(){ toast(un?"アカウントは2つ（本垢とサブ垢）だよ":"アカウントは本垢だけだよ"); });
+  ["#v738-bm","#v738-list","#v738-gear"].forEach(function(sel){
+   var b=drawer.querySelector(sel);
+   if(b) b.addEventListener("click", function(){ toast("この画面はまだ飾りだよ"); });
+  });
+ }
+ function openSub(){ closeDrawer(); if(typeof window.__v725openSub==="function") window.__v725openSub(); }
+ function openDrawer(){ renderDrawer(); drawer.classList.add("on"); }
+ function closeDrawer(){ drawer.classList.remove("on"); }
+ window.__v738openDrawer=openDrawer;
+ var ava=appbar.querySelector("img.avatar");
+ if(ava){ ava.style.cursor="pointer"; ava.addEventListener("click", function(e){ e.stopPropagation(); openDrawer(); }); }
 })();
 </script>
 
