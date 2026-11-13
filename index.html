@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v822</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v823</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v822"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v823"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -26085,6 +26085,58 @@ input,textarea,select{font-size:16px!important}
    el.style.cssText="align-self:flex-end;color:#8e8e93;font-size:11px;margin:-3px 4px 2px 0"; }
   if(owner!==lastMe || !shown || el.previousElementSibling!==lastMe){ lastMe.after(el); }
   owner=lastMe; shown=true;
+ }
+ setInterval(sync,300);
+ document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
+ sync();
+})();
+</script>
+
+<script>
+/* ===== v823: her Instagram new-post button gains the real app's
+   no-photo state. Every text composer in the phone has learned
+   its empty state by now (IG v808/v812/v816, X v809-v811,
+   TikTok v813/v817, Grok v814, Tinder v815, news v818, the
+   shared notebook v819), but the new-post composer on her own
+   IG profile (#nao-composer, built by the v132-era layer) kept
+   its blue #nc-post pill at full strength even after she
+   deselected every photo: tapping it only earned a scolding
+   toast ("写真を選んでね") from the handler, where the real
+   Instagram simply keeps Share dimmed and inert until at
+   least one photo is selected again. This layer owns only
+   that button's state, read off the composer's own DOM on
+   every check: the count line (#nc-count, "選択中：N枚") is
+   the primary source and the visible selection badges
+   (.nc-num) are the fallback, so the state follows the
+   untouched paintPicks() whichever way it renders. Opacity
+   0.45, disabled and a default cursor while zero photos are
+   selected; full opacity, enabled and a pointer cursor once
+   one or more are selected. Every write is change-guarded
+   and the elements are re-resolved on every check, so the
+   300ms poll is churn-free. Posting itself is untouched:
+   the existing handler still runs when the button is live,
+   and because it resets the selection to the first photo
+   after a post, the pill comes back solid on its own. No
+   photo choice, caption, post text or gate touched, and no
+   post added. SMS untouched, per nao's 2026-11-14
+   instruction to move on from SMS. ===== */
+(function(){
+ if(window.__v823) return; window.__v823=1;
+ function selected(){
+  var c=document.querySelector("#nc-count");
+  if(c){ var m=(c.textContent||"").match(/(\d+)\s*枚/); if(m) return parseInt(m[1],10); }
+  var nums=document.querySelectorAll("#nao-composer .nc-num"), n=0;
+  for(var i=0;i<nums.length;i++){ if(nums[i].style.display && nums[i].style.display!=="none") n++; }
+  return n;
+ }
+ function sync(){
+  var btn=document.querySelector("#nc-post"); if(!btn) return;
+  var has=selected()>0;
+  var op=has? "1" : "0.45";
+  if(btn.style.opacity!==op) btn.style.opacity=op;
+  if(btn.disabled===has) btn.disabled=!has;
+  var cur=has? "pointer" : "default";
+  if(btn.style.cursor!==cur) btn.style.cursor=cur;
  }
  setInterval(sync,300);
  document.addEventListener("click",function(){ setTimeout(sync,60); setTimeout(sync,400); },true);
