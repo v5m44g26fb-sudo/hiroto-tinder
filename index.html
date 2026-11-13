@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v862</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v863</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v862"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v863"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -29728,6 +29728,73 @@ input,textarea,select{font-size:16px!important}
  }
  attach();
  setInterval(attach,700);
+})();
+</script>
+
+<script>
+/* ===== v863: the News app gains a real news app's
+   face (category A, visual UI overhaul, one screen).
+   Until now #v-news was the plainest screen in the
+   phone: a 16.5px appbar title, hairline-divided
+   74x62-thumbnail rows straight on white, and the
+   hero card floating in the same flat list - nothing
+   like the masthead-and-cards layout of the news apps
+   it stands in for. This layer restyles that one view
+   only: the appbar becomes a masthead (25px/900 title
+   sitting on a 3px #e60012 rule, the date note turned
+   into a red pill), a "top news" section label with a
+   red bar is set over the list (hidden while an
+   article is open, via :has on the article's inline
+   display), the scroll ground goes #f2f2f7 and every
+   row becomes a white card (16px radius, soft shadow,
+   88x74 radius-11 thumbnail, 14.5px/1.55 headline,
+   the source line in semibold red), the hero grows to
+   an 18px-radius shadowed card with a 190px image and
+   18px headline, the calm-night note becomes a white
+   card too, and the article body gets reading-app
+   type (15px/2.0 body, 21px headline, ruled meta).
+   The label insert is id-guarded and re-checked on a
+   poll, writing only when missing; no headline, row,
+   article text, comment, count or gate is touched,
+   SMS untouched per nao's move-on instruction;
+   Playwright-verified (see hidden_files/v863-probe.py)
+   ===== */
+(function(){
+ if(window.__v863) return; window.__v863=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#v-news{background:#f2f2f7}"+
+  "#v-news .appbar{padding:60px 16px 12px;background:#fff;border-bottom:3px solid #e60012;align-items:flex-end;gap:12px}"+
+  "#v-news .appbar .t{font-size:25px;font-weight:900;letter-spacing:.02em;line-height:1.15}"+
+  "#v-news .appbar .s{background:#e60012;color:#fff;font-weight:700;border-radius:999px;padding:3px 10px;font-size:11px;margin-left:auto}"+
+  "#news-scroll{background:#f2f2f7}"+
+  ".v863-news-sec{display:flex;align-items:center;gap:8px;padding:16px 16px 2px;font-size:17px;font-weight:900;color:#111}"+
+  ".v863-news-sec:before{content:\"\";width:4px;height:19px;border-radius:2px;background:#e60012;flex:none}"+
+  ".v863-news-sec .v863-live{margin-left:auto;font-size:10.5px;font-weight:800;color:#e60012;border:1.5px solid #e60012;border-radius:999px;padding:2px 8px;letter-spacing:.08em}"+
+  "#news-scroll:has(>#news-article[style*=\"block\"]) .v863-news-sec{display:none}"+
+  "#news-list{padding:12px 12px 22px}"+
+  "#v-news .newsrow{background:#fff;border-bottom:none;border-radius:16px;padding:12px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);gap:13px;align-items:center}"+
+  "#v-news .newsrow img{width:88px;height:74px;border-radius:11px}"+
+  "#v-news .newsrow .h{font-size:14.5px;line-height:1.55}"+
+  "#v-news .newsrow .m{font-size:11.5px;color:#e60012;font-weight:600}"+
+  "#v-news .news-hero{margin:0 0 12px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.18)}"+
+  "#v-news .news-hero img{height:190px}"+
+  "#v-news .news-hero h3{font-size:18px;line-height:1.5}"+
+  "#v-news #news-calm{background:#fff;border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:center;color:#6e6e73!important;font-weight:600}"+
+  "#news-article{background:#fff;min-height:100%}"+
+  "#news-article .article{padding:20px 19px;font-size:15px;line-height:2}"+
+  "#news-article .article h2{font-size:21px;line-height:1.5}"+
+  "#news-article .article .m{border-bottom:1px solid #f2f2f7;padding-bottom:10px}";
+ document.head.appendChild(css);
+ function place(){
+  var sc=document.querySelector("#news-scroll"), list=document.querySelector("#news-list");
+  if(!sc||!list||document.querySelector(".v863-news-sec")) return;
+  var d=document.createElement("div"); d.className="v863-news-sec";
+  d.innerHTML='トップニュース<span class="v863-live">LIVE</span>';
+  sc.insertBefore(d, list);
+ }
+ place();
+ setInterval(place,700);
 })();
 </script>
 </body>
