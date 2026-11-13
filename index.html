@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v866</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v867</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v866"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v867"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -29995,6 +29995,78 @@ input,textarea,select{font-size:16px!important}
   "#v438-evtitle{font-size:16px!important;color:#161823!important;padding-top:18px!important}"+
   "#v438-ev>div:has(>span){background:#fff!important;border:1px solid #ececf0;border-radius:12px!important;padding:13px 15px!important;box-shadow:inset 4px 0 0 #d70015,0 1px 4px rgba(0,0,0,.05)}";
  document.head.appendChild(css);
+})();
+</script>
+
+<script>
+/* ===== v867: the Hiroto quiz gains a real exam app's
+   face (category A, visual UI overhaul, one screen).
+   Until now #quiz-panel was the generic home-panel face
+   carried over: a flat #f7f7fa grey ground, a small
+   black head, the question as plain 16.5px text and the
+   three answers as thin white bordered rows, with the
+   result screen in the same grey - nothing like the
+   exam app it stands in for. This layer restyles that
+   one panel only: the ground becomes a deep violet
+   exam gradient and all type turns white, the head
+   label goes 18px/800 with a frosted close button, a
+   progress track with a violet-to-pink fill is set
+   under the head (its width follows the (n / 8) count
+   in the head, full on the result screen), the
+   question grows to 20px/700 with roomier leading, and
+   every answer becomes a translucent dark card with a
+   round A/B/C letter chip, while the result's send
+   button flips to a white pill with violet type. Both
+   inserts are id/class-guarded and re-checked on a
+   mutation pass that writes only when something is
+   missing or the width actually changed, so nothing
+   can flicker or fight the builder. No question,
+   answer, order, scoring, rank, send flow or gate is
+   touched; SMS untouched per nao's move-on instruction,
+   pull-to-refresh and the small-gesture expansions
+   skipped per the 06:52 exclusion; Playwright-verified
+   (see hidden_files/v867-probe.py) ===== */
+(function(){
+ if(window.__v867) return; window.__v867=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#quiz-panel{background:linear-gradient(180deg,#3b1d6e 0%,#241145 55%,#1d0f38 100%)!important;color:#fff!important}"+
+  "#quiz-panel .hp-head{margin-bottom:6px}"+
+  "#quiz-panel .hp-head b{color:#fff;font-size:18px!important;font-weight:800}"+
+  "#quiz-panel .hp-close{background:rgba(255,255,255,.16)!important;box-shadow:none!important;color:#fff}"+
+  "#quiz-panel>div:not(.hp-head){color:#fff}"+
+  "#quiz-panel>div:not(.hp-head):not(:last-child){font-size:20px!important;line-height:1.7!important;padding:16px 2px 20px!important}"+
+  "#qz-prog{height:6px;border-radius:999px;background:rgba(255,255,255,.18);margin:2px 2px 4px;overflow:hidden}"+
+  "#qz-prog-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#a78bfa,#f472b6);transition:width .3s}"+
+  "#quiz-panel .qz-opt{display:flex!important;align-items:center;gap:12px;background:rgba(255,255,255,.09)!important;border:1px solid rgba(255,255,255,.28)!important;border-radius:16px!important;padding:15px 14px!important;font-size:15.5px!important;color:#fff!important;margin-bottom:11px!important;text-align:left}"+
+  "#quiz-panel .qz-chip{flex:none;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:13.5px;font-weight:800;display:flex;align-items:center;justify-content:center}"+
+  "#qz-send{background:#fff!important;color:#5a3ad6!important;box-shadow:0 6px 18px rgba(0,0,0,.28)}";
+ document.head.appendChild(css);
+ function sync(){
+   var panel=document.querySelector("#quiz-panel"); if(!panel) return;
+   var head=panel.querySelector(".hp-head"); if(!head) return;
+   var prog=panel.querySelector("#qz-prog");
+   if(!prog){
+     prog=document.createElement("div"); prog.id="qz-prog";
+     var fill=document.createElement("div"); fill.id="qz-prog-fill"; fill.style.width="0%";
+     prog.appendChild(fill); head.after(prog);
+   }
+   var b=head.querySelector("b"); var t=b? b.textContent : "";
+   var m=t.match(/(\d+)\s*\/\s*(\d+)/);
+   var pct=m? Math.round(100*(+m[1])/(+m[2])) : (/結果/.test(t)? 100 : 0);
+   var fill2=prog.querySelector("#qz-prog-fill");
+   if(fill2 && fill2.style.width!==pct+"%") fill2.style.width=pct+"%";
+   var opts=panel.querySelectorAll(".qz-opt");
+   opts.forEach(function(o,i){
+     if(!o.querySelector(".qz-chip")){
+       var chip=document.createElement("span"); chip.className="qz-chip";
+       chip.textContent="ABC".charAt(i)||"";
+       o.insertBefore(chip, o.firstChild);
+     }
+   });
+ }
+ new MutationObserver(sync).observe(document.body,{childList:true,subtree:true});
+ sync();
 })();
 </script>
 </body>
