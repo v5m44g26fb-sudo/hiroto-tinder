@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v772</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v773</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v772"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v773"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -24052,6 +24052,126 @@ try{
  var tp0=document.querySelector("#x-pane-trend");
  if(tp0) new MutationObserver(function(){ ensure(); sync(); }).observe(tp0,{childList:true});
  setInterval(sync, 400);
+})();
+</script>
+
+<style>
+#v773-lbar{position:absolute;display:none;gap:7px;background:#fff;border-radius:999px;padding:5px 9px;z-index:330;box-shadow:0 4px 18px rgba(0,0,0,.32)}
+#v773-lbar.on{display:flex}
+#v773-lbar button{background:none;border:none;font-size:19px;line-height:1;cursor:pointer;padding:2px;border-radius:50%}
+#v773-lbar button.sel{background:#e7f7ec}
+</style>
+<script>
+/* ===== v773: LINE's main chat (his chat, #chat) gains the real app's full
+   reaction tray. The group and friend chats already had the 5-face picker
+   (v28), but the main chat only ever got the v60 double-tap shortcut that
+   pins a fixed heart with no way to choose or lift it. Real LINE: long-press
+   a bubble and the reaction tray floats above it (heart / laugh / wow /
+   thumbs-up / sad); tapping the same face again lifts the reaction off, a
+   different face swaps it. Double-tap still pins the heart, now as a toggle.
+   The old v60 double-tap handler on #chat is superseded for this container
+   only - a capture-phase listener stops the event before it can double-apply
+   (group / friend chats keep their own picker untouched). Badges reuse the
+   existing .rxn chip and .rxn-on spacing, choices are kept per message
+   (index + text key) in localStorage and re-applied whenever the chat
+   re-renders or a save is resumed, exactly like the v770 IG DM layer. No
+   message, reply pool, gate or save format is touched. ===== */
+(function(){
+ if(window.__v773) return; window.__v773=1;
+ var EMOJIS=["\u2764\uFE0F","\uD83D\uDE06","\uD83D\uDE2E","\uD83D\uDC4D","\uD83D\uDE22"];
+ var HEART=EMOJIS[0];
+ var LSKEY="v773-linerxn";
+ var store={};
+ try{ store=JSON.parse(localStorage.getItem(LSKEY)||"{}")||{}; }catch(e){ store={}; }
+ function save(){ try{ localStorage.setItem(LSKEY,JSON.stringify(store)); }catch(e){} }
+ function chatEl(){ return document.getElementById("chat"); }
+ function bubbles(){ var c=chatEl(); return c? [].slice.call(c.querySelectorAll(".msg .bub")) : []; }
+ function ownText(bub){
+  var t="";
+  [].forEach.call(bub.childNodes,function(n){
+   if(n.nodeType===3) t+=n.textContent;
+   else if(n.nodeType===1 && !n.classList.contains("rxn")) t+=n.textContent;
+  });
+  return t.slice(0,24);
+ }
+ function keyFor(bub,idx){ return "chat|"+idx+"|"+ownText(bub); }
+ var applying=false;
+ function applyOne(bub,idx){
+  var want=store[keyFor(bub,idx)]||"";
+  var badge=bub.querySelector(".rxn");
+  var msg=bub.closest(".msg");
+  if(!want){ if(badge) badge.remove(); if(msg) msg.classList.remove("rxn-on"); return; }
+  if(!badge){ badge=document.createElement("span"); badge.className="rxn"; bub.appendChild(badge); }
+  if(badge.textContent!==want) badge.textContent=want;
+  if(msg) msg.classList.add("rxn-on");
+ }
+ function applyAll(){
+  if(applying) return; applying=true;
+  try{ bubbles().forEach(applyOne); } finally{ applying=false; }
+ }
+ var bar=null, target=null, targetKey="";
+ function ensureBar(){
+  var phone=document.querySelector("#phone"); if(!phone||bar) return bar;
+  bar=document.createElement("div"); bar.id="v773-lbar";
+  EMOJIS.forEach(function(em){
+   var b=document.createElement("button"); b.type="button"; b.textContent=em;
+   b.addEventListener("click",function(ev){
+    ev.stopPropagation();
+    if(!target){ closeBar(); return; }
+    if(store[targetKey]===em) delete store[targetKey]; else store[targetKey]=em;
+    save(); applyAll(); closeBar();
+   });
+   bar.appendChild(b);
+  });
+  phone.appendChild(bar);
+  return bar;
+ }
+ function closeBar(){ if(bar) bar.classList.remove("on"); target=null; }
+ function openBar(bub){
+  ensureBar(); if(!bar) return;
+  var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
+  target=bub; targetKey=keyFor(bub,idx);
+  var cur=store[targetKey]||"";
+  [].forEach.call(bar.children,function(b){ b.classList.toggle("sel",b.textContent===cur); });
+  var phone=document.querySelector("#phone"); var pr=phone.getBoundingClientRect(), r=bub.getBoundingClientRect();
+  bar.classList.add("on");
+  var bw=bar.offsetWidth||196;
+  var left=Math.max(6,Math.min(r.left-pr.left-10, pr.width-bw-6));
+  var top=Math.max(52, r.top-pr.top-46);
+  bar.style.left=left+"px"; bar.style.top=top+"px";
+ }
+ function inMainChat(node){
+  var c=chatEl(); if(!c||!node) return null;
+  var bub=node.closest? node.closest(".bub") : null;
+  return (bub && c.contains(bub))? bub : null;
+ }
+ document.addEventListener("dblclick",function(e){
+  var bub=inMainChat(e.target); if(!bub) return;
+  e.preventDefault(); e.stopPropagation();
+  var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
+  var k=keyFor(bub,idx);
+  if(store[k]===HEART) delete store[k]; else store[k]=HEART;
+  save(); applyAll(); closeBar();
+ },true);
+ var pressT=null;
+ document.addEventListener("pointerdown",function(e){
+  var bub=inMainChat(e.target); if(!bub) return;
+  pressT=setTimeout(function(){ openBar(bub); },550);
+ },true);
+ ["pointerup","pointercancel","pointermove"].forEach(function(ev){
+  document.addEventListener(ev,function(){ if(pressT){ clearTimeout(pressT); pressT=null; } },true);
+ });
+ document.addEventListener("click",function(e){
+  if(!bar||!bar.classList.contains("on")) return;
+  if(e.target.closest&&e.target.closest("#v773-lbar")) return;
+  if(inMainChat(e.target)) return;
+  closeBar();
+ },true);
+ document.addEventListener("scroll",function(e){
+  if(e.target&&e.target.id==="chat") closeBar();
+ },true);
+ setInterval(applyAll,900);
+ setTimeout(applyAll,800);
 })();
 </script>
 </body>
