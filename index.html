@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v872</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v873</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v872"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v873"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -30401,6 +30401,107 @@ input,textarea,select{font-size:16px!important}
    if(st&&st.textContent!==wantSt) st.textContent=wantSt;
    var wantSb=b1?("\u5230\u9054\u3057\u305f\u7ae0\uff1a"+b1.textContent):"";
    if(sb&&sb.textContent!==wantSb) sb.textContent=wantSb;
+ }
+ new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
+ sync();
+})();
+</script>
+<script>
+/* ===== v873: the daily love-fortune panel gains a real
+   fortune app's face (category A, visual UI overhaul,
+   one screen). Until now #uranai-panel was a flat dark
+   sheet: a small 17px head, a bare 76px percentage
+   floating on the gradient and one plain pill, nothing
+   like the fortune apps it stands in for. This layer
+   restyles that one panel only: the ground becomes a
+   plum night wash with pink and violet glows, the head
+   a 23px/800 title, a DAILY FORTUNE eyebrow bar sits
+   under the head, the whole reading joins into one
+   frosted glass card, the percentage becomes a glowing
+   178px ring gauge with a live compatibility meter
+   under it (its fill reads the panel's own percentage),
+   the message gains roomier leading, the lucky item
+   becomes a pink-to-orange gradient pill and the send
+   button a full-width green action with a soft shadow.
+   The eyebrow and meter are id-guarded, rows are
+   class-tagged and every text and width write happens
+   only when the wanted value actually differs, so
+   nothing can flicker or fight the builder, which
+   re-renders the panel on every open. No fortune date,
+   percentage, message, lucky item, note, send flow,
+   close flow or gate is touched; SMS untouched per
+   nao's move-on instruction, pull-to-refresh and the
+   small-gesture expansions skipped per the 06:52
+   exclusion; Playwright-verified (see
+   hidden_files/v873-probe.py) ===== */
+(function(){
+ if(window.__v873) return; window.__v873=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#uranai-panel{background:radial-gradient(120% 60% at 85% 0%,rgba(255,94,138,.32),rgba(255,94,138,0) 55%),radial-gradient(110% 55% at 8% 88%,rgba(140,90,255,.30),rgba(140,90,255,0) 55%),linear-gradient(180deg,#341239 0%,#1d0b26 58%,#150818 100%)!important;padding:60px 18px 24px!important}"+
+  "#uranai-panel>div:first-child b{font-size:23px!important;font-weight:800!important;letter-spacing:.01em}"+
+  "#ur-x{background:rgba(255,255,255,.18)!important;width:36px!important;height:36px!important;box-shadow:0 4px 12px rgba(0,0,0,.25)}"+
+  "#v873-ureye{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:11px;font-weight:800;letter-spacing:.24em;color:#ff9ec2}"+
+  "#v873-ureye .dot{width:7px;height:7px;border-radius:50%;background:#ff5e8a;box-shadow:0 0 10px #ff5e8a}"+
+  "#v873-ureye .rt{margin-left:auto;letter-spacing:.06em;font-size:11px;color:rgba(255,255,255,.55);font-weight:700}"+
+  "#uranai-panel .v873-card{background:rgba(255,255,255,.07)!important;border:1px solid rgba(255,255,255,.15);border-radius:26px;padding:26px 20px 24px!important;margin-top:14px!important;box-shadow:0 18px 40px rgba(0,0,0,.35)}"+
+  "#uranai-panel .v873-date{font-size:13px!important;font-weight:700!important;letter-spacing:.12em;color:#ffb9d2!important}"+
+  "#uranai-panel .v873-pct{width:178px!important;height:178px;margin:20px auto 4px!important;border-radius:50%;background:radial-gradient(circle at 50% 36%,rgba(255,143,179,.38),rgba(255,94,138,.13) 62%,rgba(255,255,255,.05));box-shadow:inset 0 0 0 3px rgba(255,185,210,.55),0 14px 34px rgba(255,94,138,.28);display:flex!important;align-items:center;justify-content:center;font-size:66px!important}"+
+  "#uranai-panel .v873-pct span{font-size:30px!important;margin-left:4px}"+
+  "#v873-urmeter{margin-top:18px;text-align:left}"+
+  "#v873-urmeter .lab{display:flex;align-items:baseline;font-size:12px;font-weight:700;color:rgba(255,255,255,.75)}"+
+  "#v873-urmeter .lab b{margin-left:auto;font-size:13px;color:#ffb9d2}"+
+  "#v873-urmeter .track{height:10px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden;margin-top:7px}"+
+  "#v873-urmeter .fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#ff5e8a,#b06bff)}"+
+  "#uranai-panel .v873-msg{font-size:16.5px!important;line-height:1.85!important;margin-top:16px!important}"+
+  "#uranai-panel .v873-lucky{background:linear-gradient(90deg,#ff5e8a,#ff9a5e)!important;border-radius:999px!important;padding:11px 20px!important;font-size:14px!important;font-weight:800!important;color:#fff;box-shadow:0 10px 22px rgba(255,94,138,.35);margin-top:22px!important}"+
+  "#uranai-panel .v873-note{font-size:12px!important;margin-top:16px!important}"+
+  "#uranai-panel>button{width:100%!important;margin:18px 0 0!important;padding:15px!important;border-radius:16px!important;font-size:15px!important;box-shadow:0 10px 22px rgba(6,199,85,.30)}";
+ document.head.appendChild(css);
+ function sync(){
+   var panel=document.querySelector("#uranai-panel"); if(!panel) return;
+   var card=null, head=null;
+   for(var i=0;i<panel.children.length;i++){
+     var c=panel.children[i];
+     if(c.tagName!=="DIV") continue;
+     if(!head){ head=c; continue; }
+     if(c.id==="v873-ureye") continue;
+     if(c.textContent.indexOf("\u30e9\u30c3\u30ad\u30fc\u30a2\u30a4\u30c6\u30e0")>=0) card=c;
+   }
+   if(!card) return;
+   if(!card.classList.contains("v873-card")) card.classList.add("v873-card");
+   var pctEl=null;
+   for(var j=0;j<card.children.length;j++){
+     var d=card.children[j];
+     if(d.tagName!=="DIV"||d.id==="v873-urmeter") continue;
+     var t=d.textContent;
+     if(t.indexOf("\u30e9\u30c3\u30ad\u30fc\u30a2\u30a4\u30c6\u30e0")===0){ if(!d.classList.contains("v873-lucky")) d.classList.add("v873-lucky"); continue; }
+     if(t.indexOf("\u203b")===0){ if(!d.classList.contains("v873-note")) d.classList.add("v873-note"); continue; }
+     if(d.querySelector("span")&&t.indexOf("%")>=0){ pctEl=d; if(!d.classList.contains("v873-pct")) d.classList.add("v873-pct"); continue; }
+     if(!pctEl){ if(!d.classList.contains("v873-date")) d.classList.add("v873-date"); }
+     else { if(!d.classList.contains("v873-msg")) d.classList.add("v873-msg"); }
+   }
+   var eye=panel.querySelector("#v873-ureye");
+   if(!eye){
+     eye=document.createElement("div"); eye.id="v873-ureye";
+     eye.innerHTML='<span class="dot"></span><span>DAILY FORTUNE</span><span class="rt">\u6bce\u671d\u66f4\u65b0</span>';
+     panel.insertBefore(eye, card);
+   }
+   if(!pctEl) return;
+   var meter=card.querySelector("#v873-urmeter");
+   if(!meter){
+     meter=document.createElement("div"); meter.id="v873-urmeter";
+     meter.innerHTML='<div class="lab"><span>\u76f8\u6027\u30e1\u30fc\u30bf\u30fc</span><b></b></div><div class="track"><div class="fill"></div></div>';
+     card.insertBefore(meter, pctEl.nextSibling);
+   }
+   var n=parseInt(pctEl.textContent,10);
+   if(!isNaN(n)){
+     var fill=meter.querySelector(".fill"), lab=meter.querySelector(".lab b");
+     var wantW=n+"%";
+     if(fill&&fill.style.width!==wantW) fill.style.width=wantW;
+     var wantT=n+"%";
+     if(lab&&lab.textContent!==wantT) lab.textContent=wantT;
+   }
  }
  new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
  sync();
