@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v757</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v758</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v757"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v758"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -23248,6 +23248,93 @@ try{
  setInterval(function(){
   if(mode==="men" && notif.style.display==="none") exitMen();
  }, 600);
+})();
+</script>
+
+
+<script>
+/* ===== v758: X chat (DM) matches real X Chat — own header, no handles, encrypted-state subline + profile meta in threads ===== */
+(function(){
+ if(window.__v758boot) return; window.__v758boot=true;
+ var boot=setInterval(function(){
+ var pane=document.querySelector("#x-pane-msg"); if(!pane) return;
+ clearInterval(boot); if(window.__v758) return; window.__v758=true;
+ var appbar=document.querySelector("#v-x .appbar");
+ var xtabs=document.querySelector(".xtabs");
+ var list=document.querySelector("#xdm-list");
+ var thread=document.querySelector("#xdm-thread");
+ var titleEl=pane.children[0], searchEl=pane.children[1];
+ var PHONE='<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#536471" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg>';
+ var VIDEO='<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="#536471" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>';
+ var LOCK='<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#8a8a8e" stroke-width="2.2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>';
+ var head=document.createElement("div");
+ var st=document.createElement("style");
+ st.textContent="#v-x.v758-chat .appbar{display:none!important}#v-x.v758-chat .xtabs{display:none!important}#xdm-thread{padding-top:54px}";
+ document.head.appendChild(st);
+ var vx=document.querySelector("#v-x");
+ head.id="v758-chead";
+ head.style.cssText="display:none;position:sticky;top:0;z-index:6;background:#fff;align-items:center;padding:58px 14px 6px";
+ head.innerHTML='<img src="assets/nao-avatar4.jpg" id="v758-cava" style="width:32px;height:32px;border-radius:50%;object-fit:cover;cursor:pointer"><span style="flex:1;text-align:center;font-size:18px;font-weight:800">チャット</span><span style="font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:2px">すべて<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></span>';
+ pane.insertBefore(head, pane.firstChild);
+ head.querySelector("#v758-cava").addEventListener("click", function(){
+  var av=document.querySelector("#v-x .appbar img.avatar"); if(av) av.click();
+ });
+ var JOIN={"ゆい":"2021年4月からXを利用しています","みさき":"2020年8月からXを利用しています","りな":"2022年1月からXを利用しています"};
+ var FOL={"ゆい":"312人のフォロワー","みさき":"1,204人のフォロワー","りな":"486人のフォロワー"};
+ function hideHandles(root){
+  if(!root) return;
+  root.querySelectorAll("span").forEach(function(s){
+   if(s.textContent.trim().charAt(0)==="@" && s.children.length===0) s.style.display="none";
+  });
+ }
+ function decorateThread(){
+  if(!thread || !thread.firstElementChild) return;
+  var hr=thread.firstElementChild;
+  hideHandles(hr);
+  if(!hr.dataset.v758){
+   hr.dataset.v758="1";
+   var b=hr.querySelector("b");
+   if(b){
+    var col=document.createElement("span");
+    col.style.cssText="display:flex;flex-direction:column;line-height:1.25";
+    b.parentNode.insertBefore(col, b); col.appendChild(b);
+    var sub=document.createElement("span");
+    sub.style.cssText="color:#8a8a8e;font-size:11.5px;display:flex;align-items:center;gap:3px";
+    sub.innerHTML=LOCK+"<span>非暗号化</span>"; col.appendChild(sub);
+   }
+   var sp=document.createElement("span"); sp.style.flex="1"; hr.appendChild(sp);
+   var ph=document.createElement("span"); ph.innerHTML=PHONE; ph.style.display="flex"; hr.appendChild(ph);
+   var vd=document.createElement("span"); vd.innerHTML=VIDEO; vd.style.display="flex"; hr.appendChild(vd);
+  }
+  var msgs=document.querySelector("#xdm-msgs");
+  if(msgs && !msgs.querySelector(".v758-meta")){
+   var nameEl=thread.querySelector("b");
+   var nm=nameEl? nameEl.textContent.trim() : "";
+   var meta=document.createElement("div");
+   meta.className="v758-meta";
+   meta.style.cssText="text-align:center;padding:14px 10px 16px;color:#536471";
+   meta.innerHTML='<div style="font-size:13.5px">'+(JOIN[nm]||"2023年5月からXを利用しています")+'</div>'
+    +'<div style="font-size:13.5px;margin-top:3px">'+(FOL[nm]||"128人のフォロワー")+'</div>'
+    +'<button style="margin-top:12px;background:#eff1f3;border:none;border-radius:999px;padding:8px 22px;font-size:13.5px;font-weight:700;color:#111;cursor:pointer">プロフィールを表示</button>';
+   msgs.insertBefore(meta, msgs.firstChild);
+  }
+ }
+ function threadOn(){
+  return list && list.style.display==="none" && thread && thread.children.length>0;
+ }
+ setInterval(function(){
+  var on = pane.style.display!=="none" && pane.offsetParent!==null || (pane.style.display==="block");
+  on = getComputedStyle(pane).display!=="none";
+  if(vx) vx.classList.toggle("v758-chat", !!on);
+  if(!on){ head.style.display="none"; return; }
+  var th=threadOn();
+  if(titleEl) titleEl.style.display="none";
+  if(searchEl) searchEl.style.display = th? "none":"";
+  head.style.display = th? "none":"flex";
+  if(!th) hideHandles(list);
+  if(th) decorateThread();
+ }, 400);
+ }, 500);
 })();
 </script>
 
