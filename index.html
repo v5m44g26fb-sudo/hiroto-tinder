@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v827</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v828</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v827"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v828"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -26455,6 +26455,86 @@ input,textarea,select{font-size:16px!important}
   for(var i=0;i<TARGETS.length;i++){
    var v=document.querySelector(TARGETS[i][0]);
    if(v) setup(v, TARGETS[i][1]);
+  }
+ }
+ attach();
+ setInterval(attach,700);
+})();
+</script>
+
+<script>
+/* ===== v828: the Instagram scrolls gain the real app's
+   pull-to-refresh. v794 gave that gesture to the X home
+   timeline only, but in the real Instagram every profile
+   scroll does it too: dragging down from the very top pulls
+   a small spinner that tracks the finger, and releasing
+   past the threshold keeps it spinning briefly before it
+   retracts. The three Instagram scrolls were left out of
+   v794's round: her own profile (#ig-scroll), his profile
+   (#v-hisig .scroll) and the nao_ura profile
+   (#subig-scroll) did nothing at all on a top pull. This
+   layer adds the gesture to all three, in v794's exact
+   form - it engages solely while the scroll is already at
+   the very top, the pill tracks the pull (capped at 64px),
+   releasing at 44px or more spins for 750ms, and a shorter
+   pull just retracts. Every pill write (transform, opacity
+   and the spinner's rotation) is change-guarded, so no
+   observed node is ever rewritten with the same value. No
+   post, photo, caption, count, identity or gate is touched
+   - the feeds themselves, their order and every other app
+   are untouched, and normal scrolling is never intercepted
+   once a list has moved off the top. SMS untouched, per
+   nao's 2026-11-14 instruction to move on from SMS. ===== */
+(function(){
+ if(window.__v828) return; window.__v828=1;
+ var css=document.createElement("style");
+ css.textContent=
+  ".v828-ptr{position:absolute;top:96px;left:50%;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;z-index:64;opacity:0;pointer-events:none}"+
+  ".v828-ptr svg{display:block}"+
+  ".v828-ptr.spin svg{animation:v828-rot .7s linear infinite}"+
+  "@keyframes v828-rot{to{transform:rotate(360deg)}}";
+ document.head.appendChild(css);
+ var TARGETS=[["#v-ig","#ig-scroll"],["#v-hisig","#v-hisig .scroll"],["#v-subig","#subig-scroll"]];
+ function setup(view, sc){
+  if(!view||!sc||sc.dataset.v828) return; sc.dataset.v828="1";
+  var pill=document.createElement("div"); pill.className="v828-ptr";
+  pill.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="2.6" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.34-5.66"/></svg>';
+  view.appendChild(pill);
+  var svg=pill.querySelector("svg");
+  var sy=0, pull=0, active=false, busy=false, lastTy=null, lastOp=null, lastRot=null;
+  function setPill(ty, op){
+   if(ty!==lastTy){ lastTy=ty; pill.style.transform="translateY("+ty+"px)"; }
+   if(op!==lastOp){ lastOp=op; pill.style.opacity=op; }
+   var rot=Math.round(pull*5);
+   if(rot!==lastRot){ lastRot=rot; svg.style.transform="rotate("+rot+"deg)"; }
+  }
+  sc.addEventListener("touchstart",function(e){
+   if(busy||e.touches.length!==1||sc.scrollTop>0){ active=false; return; }
+   sy=e.touches[0].clientY; pull=0; active=true;
+  },{passive:true});
+  sc.addEventListener("touchmove",function(e){
+   if(!active||busy) return;
+   var dy=e.touches[0].clientY-sy;
+   if(dy<=0){ pull=0; setPill(-56,0); return; }
+   if(sc.scrollTop>0){ active=false; setPill(-56,0); return; }
+   e.preventDefault();
+   pull=Math.min(Math.round(dy*0.55), 64);
+   setPill(-56+pull, Math.min(1, pull/40));
+  },{passive:false});
+  function end(){
+   if(!active) return; active=false;
+   if(pull>=44){
+    busy=true; pill.classList.add("spin"); setPill(6,1);
+    setTimeout(function(){ pill.classList.remove("spin"); setPill(-56,0); busy=false; },750);
+   } else setPill(-56,0);
+   pull=0;
+  }
+  sc.addEventListener("touchend",end);
+  sc.addEventListener("touchcancel",end);
+ }
+ function attach(){
+  for(var i=0;i<TARGETS.length;i++){
+   setup(document.querySelector(TARGETS[i][0]), document.querySelector(TARGETS[i][1]));
   }
  }
  attach();
