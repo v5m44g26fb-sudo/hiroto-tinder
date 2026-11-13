@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v824</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v825</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v824"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v825"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -26222,6 +26222,91 @@ input,textarea,select{font-size:16px!important}
   var iv=setInterval(function(){ if(attach()) clearInterval(iv); },500);
   setTimeout(function(){ clearInterval(iv); },15000);
  }
+})();
+</script>
+
+<script>
+/* ===== v825: the X profile image viewers gain the real app's
+   swipe-down-to-dismiss. v783 gave that gesture to the Photos
+   viewer, v785/v805/v824 to every Instagram story-format
+   player, but the three X profile viewers were left out of
+   every round: #v733-viewer (nao_ura's avatar/header, v733),
+   #v742-viewer (her own avatar/header, v742) and #v745-viewer
+   (his avatar/header, v745) could only be closed with their
+   x button or a background tap, and a downward drag on the
+   photo did nothing at all - unlike the real X, where pulling
+   a profile photo down follows the finger and dismisses it.
+   This layer adds the same gesture, in v805/v824's
+   display-based form: only a clearly vertical one-finger
+   pull engages (dy>14 to follow, dy>80 with |dx|<60 to
+   dismiss), drags starting on the close button or a form
+   control never start, and the transform writes are
+   change-guarded exactly as in v785/v805/v824. Dismissing
+   goes through each viewer's own close button, whose click
+   runs the viewer's own tap-outside close (display none) -
+   no close logic is duplicated - and any engaged drag
+   swallows its release click (with the programmatic close
+   click exempted from the suppression window), so a short
+   drag can never fall through to the viewer's background-tap
+   close on release. The viewers are built lazily when their
+   profile is first rendered, so the attach check polls
+   lightly (700ms, dataset-guarded one-time wiring per
+   viewer, the same cadence their own inject layers use).
+   Images, captions, identities, gates and the tap-to-close
+   behaviour are untouched. SMS untouched, per nao's
+   2026-11-14 instruction to move on from SMS. ===== */
+(function(){
+ if(window.__v825) return; window.__v825=1;
+ var css=document.createElement("style");
+ css.textContent=".v825-view.v825-snap{transition:transform .2s ease}";
+ document.head.appendChild(css);
+ var TARGETS=[["#v733-viewer","#v733-close"],["#v742-viewer","#v742-vclose"],["#v745-viewer","#v745-vclose"]];
+ function setup(viewer, xSel){
+  if(!viewer || viewer.dataset.v825) return;
+  viewer.dataset.v825="1"; viewer.classList.add("v825-view");
+  var sx=0, sy=0, dragging=false, dismiss=false, lastTy="", suppressUntil=0;
+  function visible(){ return viewer.style.display==="flex"; }
+  function setTy(v){ if(lastTy!==v){ lastTy=v; viewer.style.transform=v; } }
+  viewer.addEventListener("touchstart",function(e){
+   if(!visible()||e.touches.length!==1){ dragging=false; return; }
+   if(e.target.closest&&e.target.closest("button,input,textarea")){ dragging=false; return; }
+   sx=e.touches[0].clientX; sy=e.touches[0].clientY; dragging=true; dismiss=false;
+  },{passive:true});
+  viewer.addEventListener("touchmove",function(e){
+   if(!dragging||e.touches.length!==1) return;
+   var dy=e.touches[0].clientY-sy, dx=e.touches[0].clientX-sx;
+   if(dy>14 && Math.abs(dx)<60 && dy>Math.abs(dx)*1.4){ setTy("translateY("+Math.round(dy*0.85)+"px)"); dismiss=dy>80; }
+   else { if(lastTy) setTy(""); dismiss=false; }
+  },{passive:true});
+  function end(){
+   if(!dragging) return; dragging=false;
+   if(dismiss){
+    setTy("");
+    var xBtn=viewer.querySelector(xSel);
+    suppressUntil=0;
+    if(xBtn) xBtn.click();
+    suppressUntil=Date.now()+450;
+   } else if(lastTy){
+    suppressUntil=Date.now()+450;
+    viewer.classList.add("v825-snap");
+    setTy("");
+    setTimeout(function(){ viewer.classList.remove("v825-snap"); },220);
+   }
+  }
+  viewer.addEventListener("touchend",end,{passive:true});
+  viewer.addEventListener("touchcancel",end,{passive:true});
+  viewer.addEventListener("click",function(e){
+   if(Date.now()<suppressUntil){ suppressUntil=0; e.preventDefault(); e.stopPropagation(); }
+  },true);
+ }
+ function attach(){
+  for(var i=0;i<TARGETS.length;i++){
+   var v=document.querySelector(TARGETS[i][0]);
+   if(v) setup(v, TARGETS[i][1]);
+  }
+ }
+ attach();
+ setInterval(attach,700);
 })();
 </script>
 </body>
