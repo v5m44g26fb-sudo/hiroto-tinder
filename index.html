@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v865</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v866</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v865"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v866"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -29941,6 +29941,60 @@ input,textarea,select{font-size:16px!important}
  }
  place();
  setInterval(place,700);
+})();
+</script>
+
+<script>
+/* ===== v866: the Calendar gains the real calendar
+   app's month face (category A, visual UI overhaul,
+   one screen). Until now #v438-cal was a plain grid
+   floating on white: a 21px month title with two grey
+   pill arrows, centred day numbers in loose rows, the
+   story's today as pink text and the selection as a
+   solid black circle, and the day's event as a flat
+   grey slab - nothing like the month page of the
+   calendar app it stands in for. This layer restyles
+   that one view only, CSS-only so nothing can flicker
+   or fight the builder: the head label and its
+   chevron turn calendar red, the month title goes to
+   30px/800 and the month arrows become bare red
+   chevrons; the weekday strip gains size and a
+   hairline; the grid tightens to real month geometry
+   (no gaps, a hairline under every week row, numbers
+   riding at the top of 44px cells at 16.5px); today
+   becomes the real app's red disc with a white number
+   and the selection a light grey disc with dark type
+   (today keeps its red disc even when selected);
+   event dots unify to calendar red; and the day's
+   event list gets a 16px dark heading and a white
+   card edged with the red calendar bar and a soft
+   shadow (picked out with :has(>span) so the plain
+   no-events line keeps its quiet grey face). No date,
+   event text, lock, month guard, tap target or gate
+   is touched; SMS untouched per nao's move-on
+   instruction, pull-to-refresh and the small-gesture
+   expansions skipped per the 06:52 exclusion;
+   Playwright-verified (see hidden_files/v866-probe.py)
+   ===== */
+(function(){
+ if(window.__v866) return; window.__v866=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#v438-cal .hp-head b{color:#d70015}"+
+  "#v438-cal .hp-close{background:transparent;box-shadow:none;color:#d70015;font-size:25px}"+
+  "#v438-title{font-size:30px!important;font-weight:800;letter-spacing:.01em;color:#161823}"+
+  "#v438-prev,#v438-next{background:transparent!important;color:#d70015;font-size:23px!important;font-weight:600}"+
+  "#v438-cal .v438-dow{font-size:12px;padding:10px 10px 8px;border-bottom:1px solid #e8e8ec}"+
+  "#v438-grid{gap:0;padding:2px 8px}"+
+  "#v438-cal .v438-day{border-radius:0;justify-content:flex-start;padding-top:6px;font-size:16.5px;box-shadow:inset 0 -1px 0 #f0f0f3}"+
+  "#v438-cal .v438-day .dot{background:#d70015;margin-top:4px}"+
+  "#v438-cal .v438-day.sel{background:radial-gradient(circle at 50% 16px,#e8e8ed 14px,rgba(0,0,0,0) 15px);color:#161823!important}"+
+  "#v438-cal .v438-day.sel .dot{background:#d70015}"+
+  "#v438-cal .v438-day.today{background:radial-gradient(circle at 50% 16px,#d70015 14px,rgba(0,0,0,0) 15px);color:#fff!important;font-weight:700}"+
+  "#v438-cal .v438-day.today .dot{background:#d70015}"+
+  "#v438-evtitle{font-size:16px!important;color:#161823!important;padding-top:18px!important}"+
+  "#v438-ev>div:has(>span){background:#fff!important;border:1px solid #ececf0;border-radius:12px!important;padding:13px 15px!important;box-shadow:inset 4px 0 0 #d70015,0 1px 4px rgba(0,0,0,.05)}";
+ document.head.appendChild(css);
 })();
 </script>
 </body>
