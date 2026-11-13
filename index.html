@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v799</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v800</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1754,7 +1754,11 @@ $("#pv-fav").addEventListener("click",()=>{ const list=pvList(); const f=list[pv
     b.addEventListener("click",()=>{ panel.style.display="none"; meMsg(em); const bs=$$("#chat .msg.me .bub"); const bub=bs[bs.length-1]; if(bub) bub.classList.add("stk"); clearTimeout(state._replyT); state._replyT=setTimeout(()=>himReply(em),1100); });
     panel.appendChild(b); });
   const row=chat.querySelector(".line-input"); row.parentElement.insertBefore(panel,row);
-  const plus=row.querySelector("span"); plus.style.cursor="pointer"; plus.title="スタンプ"; plus.addEventListener("click",()=>{ panel.style.display=panel.style.display==="none"?"flex":"none"; });
+  /* v800: stamps move to their real LINE home - a smiley button inside the input field. The + at the left is attachments only (v793); binding stamps to it as well made one tap open two panels. */
+  const sb=document.createElement("button"); sb.type="button"; sb.title="スタンプ"; sb.style.cssText="background:none;border:none;cursor:pointer;padding:0 2px;flex:none;display:flex;align-items:center";
+  sb.innerHTML='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#8e8e93" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><circle cx="9" cy="10" r="1.15" fill="#8e8e93" stroke="none"/><circle cx="15" cy="10" r="1.15" fill="#8e8e93" stroke="none"/><path d="M8.6 14.2c.9 1.1 2.1 1.7 3.4 1.7s2.5-.6 3.4-1.7"/></svg>';
+  sb.addEventListener("click",()=>{ panel.style.display=panel.style.display==="none"?"flex":"none"; });
+  const sendB=row.querySelector("#line-send"); if(sendB) row.insertBefore(sb,sendB); else row.appendChild(sb);
 })();
 /* LINE talk search */
 (function(){ const list=$("#line-list"); if(!list) return; const wrap=document.createElement("div"); wrap.style.cssText="padding:8px 12px 6px;background:#fff"; wrap.id="line-search-wrap"; const inp=document.createElement("input"); inp.id="line-search"; inp.placeholder="トークを検索"; inp.autocomplete="off"; wrap.appendChild(inp); list.parentElement.insertBefore(wrap,list);
@@ -11996,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v799"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v800"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
