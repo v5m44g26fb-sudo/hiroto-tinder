@@ -23750,6 +23750,7 @@ try{
   ensureBar(); if(!bar) return;
   var list=bubbles(); var idx=list.indexOf(bub); if(idx<0) return;
   target=bub; targetKey=keyFor(bub,idx);
+  if(bar._unsend){ var mm=bub.closest(".msg"); bar._unsend.style.display=(mm&&mm.classList.contains("me"))?"":"none"; }
   var cur=store[targetKey]||"";
   [].forEach.call(bar.children,function(b){ b.classList.toggle("sel",b.textContent===cur); });
   var phone=document.querySelector("#phone"); var pr=phone.getBoundingClientRect(), r=bub.getBoundingClientRect();
@@ -24088,6 +24089,8 @@ try{
 #v773-lbar.on{display:flex}
 #v773-lbar button{background:none;border:none;font-size:19px;line-height:1;cursor:pointer;padding:2px;border-radius:50%}
 #v773-lbar button.sel{background:#e7f7ec}
+#v773-lbar .v801-unsend{font-size:12.5px;font-weight:700;color:#e03131;padding:4px 6px 4px 10px;border-left:1px solid #eee;border-radius:0;white-space:nowrap}
+.v801-unsent{text-align:center;font-size:11.5px;color:#8e8e93;margin:10px 0 2px}
 </style>
 <script>
 /* ===== v773: LINE's main chat (his chat, #chat) gains the real app's full
@@ -24151,7 +24154,20 @@ try{
    });
    bar.appendChild(b);
   });
-  phone.appendChild(bar);
+    var ub=document.createElement("button"); ub.type="button"; ub.className="v801-unsend"; ub.textContent="送信取消"; ub.style.display="none";
+  ub.addEventListener("click",function(ev){
+   ev.stopPropagation();
+   if(!target){ closeBar(); return; }
+   var msg=target.closest(".msg");
+   if(msg&&msg.classList.contains("me")){
+    delete store[targetKey]; save();
+    var line=document.createElement("div"); line.className="v801-unsent"; line.textContent="メッセージの送信を取り消しました";
+    msg.replaceWith(line);
+   }
+   closeBar();
+  });
+  bar.appendChild(ub); bar._unsend=ub;
+phone.appendChild(bar);
   return bar;
  }
  function closeBar(){ if(bar) bar.classList.remove("on"); target=null; }
