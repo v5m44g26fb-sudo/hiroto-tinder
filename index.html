@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v756</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v757</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1219,7 +1219,7 @@ function postEl(p,hot){const d=document.createElement("div");d.className="post";
  tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); return d}
 function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
 const mine=document.createElement("div"); $("#x-me-posts").appendChild(postEl({n:"なお",h:"@nao_0324",t:"（このアカウント、今めちゃくちゃ見られてる…）",m:["💬 0","🔁 0","❤️ 0"]},false));}
-const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","マロン","31,204 件のポスト"],["日本のトレンド","傘の写真","18,204 件のポスト"],["エンターテイメント ・ トレンド","ワイドショー","44,812 件のポスト"]];
+const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","マロン","31,204 件のポスト"],["日本のトレンド","傘の写真","18,204 件のポスト"],["エンターテイメント ・ トレンド","ワイドショー","44,812 件のポスト"],["スポーツ ・ トレンド","甲子園 組み合わせ","27,540 件のポスト"]];
 function buildTrends(){const w=$("#x-pane-trend"); w.innerHTML=""; TRENDS.forEach((t,i)=>{const d=document.createElement("div");d.className="trend";d.style.cursor="pointer";d.title="タップで検索";d.addEventListener("click",()=>{ $("#x-q").value=t[1].replace("#",""); doSearch(t[1].replace("#","")); });d.innerHTML=`<div class="cat">${i+1} ・ ${t[0]}</div><div class="kw">${t[1]}</div><div class="cnt">${t[2]}</div>`;w.appendChild(d)})}
 function bumpTrends(){ $$("#x-pane-trend .trend .cnt").forEach(el=>{ const n=parseInt(el.textContent.replace(/[^0-9]/g,"")); if(!isNaN(n)){ const add=Math.floor(Math.random()*900+120); el.textContent=(n+add).toLocaleString("ja-JP")+" 件のポスト"; } }); }
 $$("[data-xtab]").forEach(b=>b.addEventListener("click",()=>{$$("[data-xtab]").forEach(x=>x.classList.remove("act"));b.classList.add("act");$("#x-thread").style.display="none";const cb=$("#x-compose-btn"); if(cb) cb.style.display="";["tl","trend","mention","me","search"].forEach(k=>$("#x-pane-"+k).style.display=k===b.dataset.xtab?"block":"none")}));
@@ -2163,7 +2163,7 @@ $("#hl-view").addEventListener("click",e=>{ if(e.target.id==="hl-close") return;
 /* ===== v24: group name labels slimmer + consecutive-sender merge ===== */
 /* ===== v23: prologue trends + more voices ===== */
 (function(){ const w=$("#x-pane-trend"); if(w&&!w.children.length){
-  const PRO=[["日本のトレンド","大翔 ファンミ","12,408 件のポスト"],["エンターテイメント ・ トレンド","王子様衣装","8,932 件のポスト"],["日本のトレンド","追加公演","5,377 件のポスト"],["ライフスタイル ・ トレンド","チムジルバン","3,204 件のポスト"],["日本のトレンド","神戸カフェ","2,148 件のポスト"]];
+  const PRO=[["日本のトレンド","大翔 ファンミ","12,408 件のポスト"],["エンターテイメント ・ トレンド","王子様衣装","8,932 件のポスト"],["日本のトレンド","追加公演","5,377 件のポスト"],["スポーツ ・ トレンド","甲子園 組み合わせ","4,512 件のポスト"],["ライフスタイル ・ トレンド","チムジルバン","3,204 件のポスト"],["スポーツ ・ トレンド","サッカー代表 召集","2,860 件のポスト"],["日本のトレンド","神戸カフェ","2,148 件のポスト"]];
   PRO.forEach((t,i)=>{ const d=document.createElement("div"); d.className="trend"; d.style.cursor="pointer"; d.title="タップで検索";
     d.addEventListener("click",()=>{ $("#x-q").value=t[1]; doSearch(t[1]); });
     d.innerHTML=`<div class="cat">${i+1} ・ ${t[0]}</div><div class="kw">${t[1]}</div><div class="cnt">${t[2]}</div>`; w.appendChild(d); }); } })();
@@ -12002,7 +12002,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v756"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v757"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
