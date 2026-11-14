@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v888</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v889</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v888"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v889"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -32044,6 +32044,41 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
 #x-nav button svg{width:26px!important;height:26px!important}
 #x-compose-btn{width:56px!important;height:56px!important;box-shadow:0 4px 14px rgba(15,20,25,.28)!important}
 </style>
+
+<!-- ===== v889: the TikTok feed face gains its real finishing layer (category A, one big screen - the TikTok feed face, the last of the big-screen list; X home was v888, Photos grid v887, Music v885, his IG profile v881) - the v257 slide feed underneath is sound (snap scroll, cover video, top row, rail, v803 progress), but its face still wore the profile stack's typography: the caption was one cramped 14px line with the handle flowing inline at the same weight, sitting bare on the picture with no scrim, there was no music row under it, the rail glyphs were the v239 starter sizes and the top-row tabs sat at 15.5px. An appended layer restyles the feed face only (every rule is scoped to the existing .tt-fm feed mode, so the profile / discover / inbox faces and the v257 mode switch keep their own faces and nothing can fight them): each slide gains the real bottom gradient scrim; the caption becomes the real two-tier block - the @handle on its own line at 17.5px/800, the caption text under it at 15px with a 1.42 line height, the whole block lifted to clear the progress bar; a music row (note glyph + the original-sound line) appears under the caption, exactly where the real app puts it; the right rail grows to the real measure (48px avatar, 35px glyphs, 12.5px counts, roomier gaps); the top-row tabs grow to 17px; and the bottom tab bar settles at 58px with 26px glyphs. The only script adds the music row element per card (existence-guarded, observer-fed like the other TikTok layers). No caption text, like count, video, comment, LIVE entry, flag, gate or save field touched, no post added, protected TikTok captions byte-identical, SMS untouched, pull-to-refresh and the small-gesture expansions skipped per the 06:52 exclusion; next run continues category A on the next screen in line. ===== -->
+<style id="v889-css">
+/* bottom tab bar settles at the real measure */
+#ttx-tabs{height:58px!important}
+#ttx-tabs button svg{width:26px!important;height:26px!important}
+/* feed face finishing layer - scoped to the v257 feed mode (.tt-fm) */
+#v-tiktok.tt-fm .tt-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:44%;background:linear-gradient(transparent,rgba(0,0,0,.58));z-index:2;pointer-events:none}
+#v-tiktok.tt-fm .tk-toprow .tk-ftab{font-size:17px!important}
+#v-tiktok.tt-fm .tt-cap{font-size:15px!important;line-height:1.42!important;bottom:106px!important;right:88px!important}
+#v-tiktok.tt-fm .tt-cap b{display:block;font-size:17.5px;font-weight:800;margin-bottom:4px;letter-spacing:.01em}
+#v-tiktok.tt-fm .tt-rail{bottom:70px!important;gap:16px!important}
+#v-tiktok.tt-fm .tt-rail .tav{width:48px!important;height:48px!important}
+#v-tiktok.tt-fm .tt-rail .rb svg{width:35px!important;height:35px!important}
+#v-tiktok.tt-fm .tt-rail .rb{font-size:12.5px!important}
+.v889-music{display:none}
+#v-tiktok.tt-fm .v889-music{display:flex;position:absolute;left:12px;bottom:76px;z-index:5;align-items:center;gap:7px;color:#fff;font-size:13.5px;text-shadow:0 1px 4px rgba(0,0,0,.6);max-width:60%;white-space:nowrap;overflow:hidden}
+</style>
+<script>
+(function(){
+ if(window.__v889) return; window.__v889=true;
+ var view=document.querySelector("#v-tiktok"); if(!view) return;
+ var NOTE='<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 18.5A3.5 3.5 0 1 1 5.5 15c.54 0 1.05.13 1.5.36V5.6c0-.8.5-1.5 1.26-1.77l9-3.2A2 2 0 0 1 20 2.5v12.86a3.5 3.5 0 1 1-2-3.16V7.35L11 10.1v8.4z" transform="scale(.92) translate(1 1)"/></svg>';
+ function furnish(){
+   view.querySelectorAll(".tt-card").forEach(function(card){
+     if(card.querySelector(".v889-music")) return;
+     var m=document.createElement("div"); m.className="v889-music";
+     m.innerHTML=NOTE+"<span>オリジナル楽曲 · 193hiroto</span>";
+     card.appendChild(m);
+   });
+ }
+ furnish();
+ if(window.MutationObserver) new MutationObserver(furnish).observe(view,{childList:true,subtree:true});
+})();
+</script>
 
 </body>
 
