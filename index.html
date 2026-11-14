@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v875</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v876</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v875"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v876"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -30645,6 +30645,84 @@ input,textarea,select{font-size:16px!important}
      if(getComputedStyle(d).display==="grid"){ if(!d.classList.contains("v875-ggrid")) d.classList.add("v875-ggrid"); return; }
      if(!d.querySelector(".gift-pick")&&d.textContent.indexOf("\u30ae\u30d5\u30c8")>=0&&!d.classList.contains("v875-gtitle")) d.classList.add("v875-gtitle");
    });
+ }
+ new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
+ sync();
+})();
+</script>
+<script>
+/* ===== v876: the shared notebook gains a real notebook
+   app's face (category A, visual UI overhaul, one screen).
+   Until now #note-panel was a flat cream sheet: a small
+   16.5px head, thin 11px-radius bordered cards at 13.5px
+   and a black pill write button. This layer restyles that
+   one panel only: the ground becomes a warm paper gradient,
+   the head a 25px/900 title with the close as a shadowed
+   white disc, a LINE-green SHARED NOTEBOOK hero card sits
+   at the top of the scroll (a white disc with the notebook
+   emoji and a live page / your-memo count read off the
+   panel's own cards), every notebook page becomes a roomy
+   card at 18px radius with a gold spine shadow and
+   14.5px/1.75 type, the later extra pages keep their own
+   tints but gain the same 18px card face, and the write
+   bar becomes a frosted bar with a 15px field at 14px
+   radius and a LINE-green write action. The hero is
+   id-guarded, cards are class-tagged once, and every text
+   write happens only when the wanted value actually
+   differs, so nothing can flicker or fight the builder,
+   which re-renders the panel on every memo add. No note
+   text, memo, unlock rule, add flow, close flow or gate
+   is touched. SMS untouched per nao's move-on
+   instruction, pull-to-refresh and the small-gesture
+   expansions skipped per the 06:52 exclusion;
+   Playwright-verified (see hidden_files/v876-probe.py)
+   ===== */
+(function(){
+ if(window.__v876note) return; window.__v876note=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#note-panel{background:linear-gradient(180deg,#fdf8ec,#f6ead0)!important}"+
+  "#note-panel>div:first-child{padding:62px 20px 12px!important}"+
+  "#note-panel>div:first-child b{font-size:25px!important;font-weight:900!important}"+
+  "#note-x{background:#fff!important;width:38px;height:38px;border-radius:50%!important;box-shadow:0 3px 10px rgba(120,90,20,.20);font-size:16px!important;display:flex!important;align-items:center;justify-content:center}"+
+  "#note-panel>div:nth-child(2){padding:4px 18px 14px!important}"+
+  "#v876-notehero{background:linear-gradient(120deg,#06c755,#00a04a);border-radius:20px;padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 12px 26px rgba(6,160,74,.30);margin-bottom:14px}"+
+  "#v876-notehero .disc{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;font-size:27px;flex:none;box-shadow:0 4px 12px rgba(0,0,0,.14)}"+
+  "#v876-notehero .eb{font-size:13px;font-weight:800;letter-spacing:.22em;color:#fff}"+
+  "#v876-notehero .sub{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.9);margin-top:3px}"+
+  ".v876-ncard{border-radius:18px!important;padding:15px 16px!important;margin-bottom:10px!important;font-size:14.5px!important;line-height:1.75!important;box-shadow:inset 5px 0 0 #eab543,0 6px 16px rgba(140,105,30,.10)!important}"+
+  ".v876-xpage{border-radius:18px!important;padding:16px 17px!important;margin-top:12px!important;box-shadow:0 8px 20px rgba(120,90,20,.12)!important}"+
+  "#note-panel>div:last-child{background:rgba(255,253,244,.94)!important;backdrop-filter:blur(8px);padding:14px 16px 20px!important;gap:10px!important}"+
+  "#note-in{font-size:15px!important;padding:12px 16px!important;border-radius:14px!important;border:1.5px solid #e3d194!important;background:#fff!important}"+
+  "#note-add{background:#06c755!important;border-radius:14px!important;padding:12px 20px!important;font-size:15px!important;font-weight:800!important}";
+ document.head.appendChild(css);
+ function sync(){
+   var panel=document.querySelector("#note-panel"); if(!panel) return;
+   var scroll=null;
+   for(var i=0;i<panel.children.length;i++){ if(getComputedStyle(panel.children[i]).overflowY==="auto"){ scroll=panel.children[i]; break; } }
+   if(!scroll) return;
+   var hero=scroll.querySelector("#v876-notehero");
+   if(!hero){
+     hero=document.createElement("div"); hero.id="v876-notehero";
+     hero.innerHTML='<span class="disc">\ud83d\udcd2</span><span><span class="eb">SHARED NOTEBOOK</span><div class="sub"></div></span>';
+     scroll.prepend(hero);
+   }
+   scroll.querySelectorAll(":scope>div").forEach(function(d){
+     if(d.id==="v876-notehero") return;
+     if(/^note-extra/.test(d.id||"")){
+       if(d.id==="note-extra3"){ d.querySelectorAll(":scope>div").forEach(function(inner){ if(!inner.classList.contains("v876-ncard")) inner.classList.add("v876-ncard"); }); }
+       else if(!d.classList.contains("v876-xpage")) d.classList.add("v876-xpage");
+       return;
+     }
+     if(!d.classList.contains("v876-ncard")) d.classList.add("v876-ncard");
+   });
+   var cards=scroll.querySelectorAll(".v876-ncard");
+   var xpages=scroll.querySelectorAll(".v876-xpage");
+   var mine=0;
+   cards.forEach(function(c){ if(c.textContent.indexOf("\u306a\u304a\uff1a")>=0) mine++; });
+   var sub=hero.querySelector(".sub");
+   var wantSub="\u5168"+(cards.length+xpages.length)+"\u30da\u30fc\u30b8 \u30fb \u3042\u306a\u305f\u306e\u30e1\u30e2 "+mine+"\u4ef6";
+   if(sub&&sub.textContent!==wantSub) sub.textContent=wantSub;
  }
  new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
  sync();
