@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v884</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v885</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v884"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v885"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -31441,6 +31441,56 @@ pane.style.display="none";
 }, true);
 })();
 </script>
+<style>
+/* ===== v885: Music app face (category A, one big screen) ===== */
+#v447-pages{padding:58px 20px 28px!important}
+#v447-music .m-title{font-size:34px!important;font-weight:800!important;letter-spacing:-.8px!important}
+#v447-music .m-head{margin-bottom:18px!important}
+#v447-music .m-ava{width:36px!important;height:36px!important;font-size:15px!important}
+#v447-music .m-sec{font-size:22px!important;font-weight:800!important;letter-spacing:-.4px!important;margin:30px 0 14px!important}
+#v447-music [data-page="home"]>div:nth-of-type(2).m-sec{margin-top:6px!important}
+#v447-music .m-bigcard{width:264px!important;height:336px!important;border-radius:0!important;overflow:visible!important;background:transparent!important;display:flex!important;flex-direction:column!important}
+#v447-music .m-bigcard img{width:100%!important;height:248px!important;flex:none!important;border-radius:18px!important;object-fit:cover!important}
+#v447-music .m-bigcard .ovl{display:none!important}
+#v447-music .m-bigcard .tx{position:static!important;padding:10px 2px 0!important;color:#111!important}
+#v447-music .m-bigcard .tx>div:nth-child(1){font-size:11.5px!important;font-weight:700!important;color:#fa2d48!important;letter-spacing:.06em!important;opacity:1!important}
+#v447-music .m-bigcard .tx>div:nth-child(2){font-size:17.5px!important;font-weight:800!important;color:#111!important;margin-top:2px!important}
+#v447-music .m-bigcard .tx>div:nth-child(3){font-size:13.5px!important;color:#8a8a8e!important;opacity:1!important;margin-top:2px!important}
+#v447-music .m-scrollx{gap:16px!important;padding-bottom:10px!important}
+#v447-music .m-sqcard{width:164px!important}
+#v447-music .m-sqcard img{width:164px!important;height:164px!important;border-radius:16px!important}
+#v447-music .m-sqcard>div:nth-of-type(1){font-size:15px!important;font-weight:700!important;margin-top:8px!important}
+#v447-music .m-sqcard>div:nth-of-type(2){font-size:13px!important}
+#v447-music [data-page="new"]>div:nth-of-type(2){color:#fa2d48!important;font-size:12.5px!important;font-weight:700!important;letter-spacing:.04em!important}
+#v447-music [data-page="new"]>div:nth-of-type(3){font-size:24px!important}
+#v447-music [data-page="new"] .m-wide{height:300px!important;border-radius:20px!important}
+#v447-music .m-menurow{padding:16px 2px!important;font-size:17px!important;gap:14px!important}
+#v447-music .m-grid2{gap:20px 14px!important}
+#v447-music .m-grid2 img{border-radius:16px!important}
+#v447-music .m-grid2 .cell>div:nth-of-type(1){font-size:15.5px!important;font-weight:700!important;margin-top:8px!important}
+#v447-music .m-grid2 .cell>div:nth-of-type(2){font-size:13px!important}
+#v447-music .m-search{height:44px!important;border-radius:12px!important;background:#e8e8ed!important;padding:0 14px!important}
+#v447-music .m-search input{font-size:16px!important}
+#v447-music .m-tiles{gap:14px!important}
+#v447-music .m-tile{height:104px!important;border-radius:16px!important}
+#v447-music .m-tile span{font-size:17.5px!important;left:14px!important;bottom:11px!important}
+#v447-music .m-rgrid{gap:12px!important}
+#v447-music .m-rtile{border-radius:16px!important}
+#v447-music .m-trow{gap:12px!important;padding:10px 0!important}
+#v447-music .m-trow img{width:52px!important;height:52px!important;border-radius:10px!important}
+#v447-music .m-trow .tt{font-size:16px!important}
+#v447-music .m-trow .aa{font-size:13.5px!important}
+#v447-mini{height:64px!important;border-radius:18px!important;margin:0 12px 10px!important;padding:0 14px!important;gap:12px!important}
+#v447-mini img{width:44px!important;height:44px!important;border-radius:9px!important}
+#v447-mini-t{font-size:15px!important}
+#v447-mini-a{font-size:13px!important}
+#v447-tabs{margin:0 12px 14px!important;height:68px!important;border-radius:24px!important}
+#v447-music .m-tab{font-size:10.5px!important;gap:3px!important}
+#v447-music .m-tab.on{color:#fa2d48!important}
+#v447-music [data-page="songs"]>img{width:224px!important;height:224px!important;border-radius:18px!important;margin:18px auto 12px!important}
+#v447-music .m-pillbtn{padding:13px 0!important;font-size:16px!important}
+</style>
+
 
 </body>
 
