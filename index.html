@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v886</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v887</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v886"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v887"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -31864,6 +31864,161 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
   sc.insertBefore(b,sc.firstChild);
  }
  setInterval(inject,1200); inject();
+})();
+</script>
+<script>
+/* ===== v887: the Photos Library grid gains its real iOS
+   select face (category A, one big screen - the Photos grid
+   face from the 09:48 big-screen list; v886 was category B,
+   so the rotation returns to A). Until now the header's
+   選択 button only toasted "選択モードはこの世界には
+   ありません" and the grid had exactly one face. Tapping
+   選択 now transforms the whole Library the way the real
+   Photos app does: the big title swaps from ライブラリ to
+   項目を選択, the count line under it becomes a live
+   N枚選択中 readout, the 選択 button becomes 完了, every
+   thumbnail gains the white selection circle at its top
+   left, a picked photo's circle fills iOS blue with a
+   white check while the photo itself shrinks a touch
+   inside its cell on the white ground, the floating
+   ライブラリ/コレクション switcher is replaced by the
+   real bottom action toolbar (共有 / お気に入り / 削除,
+   dimmed until something is picked), and taps toggle
+   selection instead of opening the viewer. The toolbar
+   actions stay world-consistent dead ends like the app's
+   other read-only faces (検索 / 地図 / 並び順): sharing
+   and deleting do not exist in this world and favorites
+   are set from the viewer, each said so in a toast.
+   Fully contained in this layer: the interceptors sit in
+   the capture phase on #v-photos, above the grid's own
+   handlers, and only act while select mode is on (the
+   選択 tap itself is captured so the v277 toast never
+   fires); the collage flow (v109) is untouched - if its
+   bar is open this layer stays out of the way, and while
+   selecting, the video posters' TikTok jump and the
+   viewer's open are held back by the same capture gate.
+   Leaving the Photos view exits select mode silently.
+   No figure, photo, caption, album filter, story state,
+   flag, gate or save field is touched, no photo is added
+   (per the standing ban), the protected IG posts and all
+   protected lines stay untouched, SMS untouched, and
+   pull-to-refresh / the small-gesture expansions are
+   skipped per the 06:52 exclusion. Next run returns to
+   category B under the 09:48 rotation (remaining big
+   screens after this: X home face, TikTok feed face).
+   Playwright-verified (see hidden_files/v887-probe.py) */
+(function(){
+ if(window.__v887) return; window.__v887=1;
+ var css=document.createElement("style");
+ css.textContent=
+  "#v887-bar{position:absolute;left:0;right:0;bottom:0;z-index:70;display:none;align-items:flex-start;justify-content:space-around;background:rgba(248,248,250,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(60,60,67,.18);padding:9px 18px 24px;box-sizing:border-box}"+
+  "#v-photos.v887-selecting #v887-bar{display:flex}"+
+  "#v-photos.v887-selecting .ph-tabbar{display:none!important}"+
+  "#v887-bar button{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:#0a6cff;font-size:10.5px;font-weight:600;cursor:pointer;font-family:inherit;padding:2px 10px}"+
+  "#v887-bar button.off{opacity:.32}"+
+  "#v887-bar button.del{color:#ff3b30}"+
+  "#v-photos .v887-check{position:absolute;top:6px;left:6px;width:23px;height:23px;border-radius:50%;border:1.8px solid rgba(255,255,255,.95);background:rgba(0,0,0,.28);box-shadow:0 1px 5px rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:4;pointer-events:none}"+
+  "#v-photos.v887-selecting .v887-check{display:flex}"+
+  "#v-photos figure.v887-picked .v887-check{background:#0a6cff;border-color:#fff}"+
+  "#v-photos .v887-check svg{display:none}"+
+  "#v-photos figure.v887-picked .v887-check svg{display:block}"+
+  "#v-photos.v887-selecting #ph-grid figure{background:#fff}"+
+  "#v-photos figure.v887-picked img{transform:scale(.85);border-radius:5px}"+
+  "#v-photos #ph-grid figure img{transition:transform .16s ease}";
+ document.head.appendChild(css);
+
+ var view=document.querySelector("#v-photos"); if(!view) return;
+ var grid=view.querySelector("#ph-grid"); if(!grid) return;
+
+ var IC={
+  share:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7.5 6 12 1.8 16.5 6"/><path d="M5 10.5V19a1.8 1.8 0 0 0 1.8 1.8h10.4A1.8 1.8 0 0 0 19 19v-8.5"/></svg>',
+  heart:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>',
+  trash:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.5h16"/><path d="M9.5 6V4.2A1.2 1.2 0 0 1 10.7 3h2.6a1.2 1.2 0 0 1 1.2 1.2V6"/><path d="M6.5 6.5 7.4 19a1.8 1.8 0 0 0 1.8 1.7h5.6a1.8 1.8 0 0 0 1.8-1.7l.9-12.5"/><path d="M10 10.5v6M14 10.5v6"/></svg>',
+  check:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5 10 18 19.5 6.5"/></svg>'
+ };
+
+ var bar=document.createElement("div"); bar.id="v887-bar";
+ bar.innerHTML=
+  '<button type="button" class="off" data-v887-act="share">'+IC.share+'共有</button>'+
+  '<button type="button" class="off" data-v887-act="fav">'+IC.heart+'お気に入り</button>'+
+  '<button type="button" class="off del" data-v887-act="del">'+IC.trash+'削除</button>';
+ view.appendChild(bar);
+
+ var on=false, picked=new Set(), origTitle=null, origSub=null;
+
+ function figs(){ return Array.prototype.slice.call(grid.querySelectorAll("figure")); }
+ function visibleFigs(){ return figs().filter(function(f){ return f.style.display!=="none"; }); }
+ function countText(){ return figs().length+"項目"; }
+
+ function syncHead(){
+   var sub=view.querySelector("#ph-sync");
+   if(sub) sub.textContent=picked.size+"枚選択中";
+   bar.querySelectorAll("button").forEach(function(b){ b.classList.toggle("off", picked.size===0); });
+ }
+ function enter(){
+   if(on) return;
+   var cb=document.querySelector("#collage-bar");
+   if(cb && cb.style.display==="flex") return;
+   on=true; picked=new Set();
+   var big=view.querySelector(".ph-big"); if(big){ origTitle=big.textContent; big.textContent="項目を選択"; }
+   var sub=view.querySelector("#ph-sync"); if(sub) origSub=sub.textContent;
+   var sel=view.querySelector("#ph-select"); if(sel) sel.textContent="完了";
+   figs().forEach(function(f){
+     if(!f.querySelector(".v887-check")){
+       var s=document.createElement("span"); s.className="v887-check"; s.innerHTML=IC.check;
+       f.appendChild(s);
+     }
+     f.classList.remove("v887-picked");
+   });
+   view.classList.add("v887-selecting");
+   syncHead();
+ }
+ function exit(){
+   if(!on) return;
+   on=false; picked=new Set();
+   var big=view.querySelector(".ph-big"); if(big && origTitle) big.textContent=origTitle;
+   var sub=view.querySelector("#ph-sync"); if(sub) sub.textContent=countText();
+   var sel=view.querySelector("#ph-select"); if(sel) sel.textContent="選択";
+   figs().forEach(function(f){ f.classList.remove("v887-picked"); });
+   view.classList.remove("v887-selecting");
+ }
+ window.__v887exit=exit;
+
+ /* capture-phase gate on the whole Photos view: sits above
+    the grid's own capture/bubble handlers */
+ view.addEventListener("click",function(e){
+   var selBtn=e.target.closest ? e.target.closest("#ph-select") : null;
+   if(selBtn){
+     var cb=document.querySelector("#collage-bar");
+     if(cb && cb.style.display==="flex") return; /* collage owns the moment */
+     e.stopPropagation(); e.preventDefault();
+     if(on) exit(); else enter();
+     return;
+   }
+   if(!on) return;
+   var act=e.target.closest ? e.target.closest("[data-v887-act]") : null;
+   if(act){
+     e.stopPropagation(); e.preventDefault();
+     if(picked.size===0){ toast("まずは写真を選んでね"); return; }
+     var a=act.getAttribute("data-v887-act");
+     if(a==="share") toast("共有シートはこの世界にはありません");
+     else if(a==="fav") toast("お気に入りは、写真を開いて右上の♡から付けてね");
+     else if(a==="del") toast("思い出はこの世界では消せないよ");
+     return;
+   }
+   var f=e.target.closest ? e.target.closest("#ph-grid figure") : null;
+   if(f){
+     e.stopPropagation(); e.preventDefault();
+     if(picked.has(f)){ picked.delete(f); f.classList.remove("v887-picked"); }
+     else { picked.add(f); f.classList.add("v887-picked"); }
+     syncHead();
+   }
+ },true);
+
+ /* leaving Photos exits select mode silently */
+ new MutationObserver(function(){
+   if(on && !view.classList.contains("on")) exit();
+ }).observe(view,{attributes:true,attributeFilter:["class"]});
 })();
 </script>
 
