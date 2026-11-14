@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v879</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v880</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v879"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v880"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -30929,6 +30929,203 @@ input,textarea,select{font-size:16px!important}
  }
  new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
  sync();
+})();
+</script>
+<script>
+/* ===== v880: X gains the Taunt Reply Center (category B,
+   new feature + aori strengthening). A whole new screen
+   inside the X app: a black entry banner at the top of
+   the Trend pane and the Mention pane opens a full
+   panel where, once the scandal is hot (the exact v726
+   gate: phase scandal, heat>0, or the sub-account
+   public), she can fire back at three hostile posts -
+   a doxxing roundup, a furious fan and a news matome -
+   with three reply styles each (provoke / defiant /
+   thank-you-for-spreading), nine replies written at the
+   v726 standard (screenshot all you like, reporting is
+   useless, thanks for the free publicity). Every reply
+   she sends lands as her own post quoting the target at
+   the top of the panel feed, followed by a linked wave
+   of four reactions (matome speed reports, screenshot
+   squads, escalating fans, supporters, bystanders) whose
+   metrics grow wave by wave, while the panel counters -
+   wave number, impressions, follower gain, buzz meter -
+   all move with it. Used style buttons lock per target,
+   progress reads x/9, and clearing all nine lands a
+   finale card: her counterattack trending at #1. Before
+   the scandal is hot the same panel opens to a quiet
+   locked face instead. Everything is event-driven (no
+   observer, no timer writes except existence-guarded
+   entry injection after buildTrends rebuilds its pane),
+   no global story state, flag, gate, heat or save field
+   is touched, and no protected line is edited. SMS
+   untouched per nao's move-on instruction, pull-to-
+   refresh and the small-gesture expansions skipped per
+   the 06:52 exclusion; Playwright-verified (see
+   hidden_files/v880-probe.py) ===== */
+(function(){
+ if(window.__v880) return; window.__v880=1;
+ var css=document.createElement("style");
+ css.textContent=
+  ".v880-entry{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:15px 16px;border:none;border-radius:16px;background:linear-gradient(120deg,#000,#3d0a1e 60%,#7f1d3a);color:#fff;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(0,0,0,.28)}"+
+  ".v880-entry .tt{font-size:16.5px;font-weight:900;letter-spacing:.02em}"+
+  ".v880-entry .ts{font-size:12px;font-weight:600;color:rgba(255,255,255,.82);margin-top:3px;line-height:1.6}"+
+  ".v880-entry .arr{margin-left:auto;font-size:22px;font-weight:900;color:#ff8fbe;flex:none}"+
+  "#v880-panel{position:absolute;inset:0;background:#000;color:#fff;z-index:240;display:none;flex-direction:column;padding:60px 0 0;box-sizing:border-box}"+
+  "#v880-panel .hd{display:flex;align-items:center;gap:12px;padding:10px 16px 12px;border-bottom:1px solid #2f3336}"+
+  "#v880-panel .bk{background:rgba(255,255,255,.10);border:1px solid #2f3336;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer;flex:none}"+
+  "#v880-panel .tt{font-size:19px;font-weight:900}"+
+  "#v880-panel .ts{font-size:11.5px;color:#71767b;margin-top:2px}"+
+  "#v880-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 15px 30px}"+
+  ".v880-meter{background:linear-gradient(120deg,#1d0b16,#2a0f22);border:1px solid #3d2436;border-radius:18px;padding:14px 15px;margin-bottom:14px}"+
+  ".v880-meter .row{display:flex;gap:10px}"+
+  ".v880-meter .cell{flex:1;text-align:center}"+
+  ".v880-meter .num{font-size:19px;font-weight:900;color:#fff}"+
+  ".v880-meter .lab{font-size:10.5px;color:#a97e96;margin-top:2px;font-weight:700}"+
+  ".v880-bar{height:9px;border-radius:99px;background:#3a2233;margin-top:12px;overflow:hidden}"+
+  ".v880-bar i{display:block;height:100%;width:34%;border-radius:99px;background:linear-gradient(90deg,#fd267d,#ff7854);transition:width .7s ease}"+
+  ".v880-sec{font-size:13px;font-weight:900;color:#ff8fbe;letter-spacing:.14em;margin:16px 2px 9px}"+
+  ".v880-tgt{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:11px}"+
+  ".v880-tgt .who{font-size:13.5px;font-weight:800;color:#fff}"+
+  ".v880-tgt .who span{color:#71767b;font-weight:500;font-size:12px}"+
+  ".v880-tgt .tx{font-size:13.5px;line-height:1.75;color:#e7e9ea;margin-top:5px}"+
+  ".v880-tgt .btns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}"+
+  ".v880-tgt .btns button{flex:1;min-width:96px;padding:9px 6px;border-radius:999px;border:1px solid #fd267d;background:rgba(253,38,125,.13);color:#ff8fbe;font-size:12.5px;font-weight:800;cursor:pointer}"+
+  ".v880-tgt .btns button.used{background:#2f3336;border-color:#2f3336;color:#71767b;cursor:default}"+
+  ".v880-wave{margin-bottom:16px}"+
+  ".v880-wave .wlab{font-size:12px;font-weight:900;color:#ff7854;letter-spacing:.1em;margin:4px 2px 8px}"+
+  ".v880-post{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:9px}"+
+  ".v880-post.her{border-color:#fd267d;background:linear-gradient(180deg,rgba(253,38,125,.14),#16181c)}"+
+  ".v880-post .who{font-size:13.5px;font-weight:800}"+
+  ".v880-post .who span{color:#71767b;font-weight:500;font-size:12px}"+
+  ".v880-post .tx{font-size:13.5px;line-height:1.8;color:#e7e9ea;margin-top:5px;white-space:pre-wrap}"+
+  ".v880-post .qt{border:1px solid #2f3336;border-radius:12px;padding:9px 11px;margin-top:9px;font-size:12.5px;line-height:1.7;color:#aab8c2}"+
+  ".v880-post .qt b{color:#e7e9ea}"+
+  ".v880-post .mt{font-size:12px;color:#71767b;margin-top:9px;display:flex;gap:16px}"+
+  ".v880-lock{background:#16181c;border:1px solid #2f3336;border-radius:18px;padding:26px 20px;text-align:center;color:#aab8c2;font-size:13.5px;line-height:2}"+
+  ".v880-lock b{color:#fff;font-size:16px}"+
+  ".v880-fin{background:linear-gradient(120deg,#fd267d,#ff7854);border-radius:18px;padding:18px;text-align:center;color:#fff;margin-bottom:16px;box-shadow:0 12px 26px rgba(253,38,125,.35)}"+
+  ".v880-fin .big{font-size:19px;font-weight:900}"+
+  ".v880-fin .sm{font-size:12.5px;font-weight:700;margin-top:5px;line-height:1.8}";
+ document.head.appendChild(css);
+ function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 || !!state._subPublic); }catch(e){ return false; } }
+ var TARGETS=[
+  {n:"\u7279\u5b9a\u73ed",h:"@tokutei_jp",tx:"\u76f8\u624b\u306e\u5973\u3001\u30b5\u30d6\u57a2\u307e\u3067\u7279\u5b9a\u5b8c\u4e86\u3002\u5199\u771f\u5168\u90e8\u4fdd\u5b58\u6e08\u307f\u3060\u304b\u3089\u6d88\u3057\u3066\u3082\u7121\u99c4\u306d"},
+  {n:"hiroto_honmei",h:"@hiroto_honmei",tx:"\u63a8\u3057\u3092\u91e3\u3063\u305f\u81ea\u6162\u57a2\u3001\u307e\u3060\u6d88\u3057\u3066\u306a\u3044\u306e\uff1f \u30d5\u30a1\u30f3\u306e\u6c17\u6301\u3061\u8003\u3048\u305f\u3053\u3068\u3042\u308b\uff1f"},
+  {n:"\u307e\u3068\u3081\u901f\u5831",h:"@matome_soku",tx:"\u3010\u708e\u4e0a\u4e2d\u3011\u4f8b\u306e\u76f8\u624b\u306e\u5973\u3001\u53cd\u8ad6\u306a\u3057\u3002\u4e8b\u5b9f\u4e0a\u306e\u6557\u5317\u5ba3\u8a00\u304b"}
+ ];
+ var REPLIES=[
+  ["\u4fdd\u5b58\u3054\u82e6\u52b4\u3055\u307e\u3002\u9375\u57a2\u3092\u8997\u3044\u3066\u307e\u3067\u96c6\u3081\u305f\u30b9\u30af\u30b7\u30e7\u3067\u4eba\u751f\u697d\u3057\u305d\u3046\u3067\u4f55\u3088\u308a\u3002\u3053\u3063\u3061\u306f\u6d88\u3059\u6c17\u306a\u3044\u304b\u3089\u3001\u305b\u3044\u305c\u3044\u772a\u3081\u3066\u3066",
+   "\u7279\u5b9a\u5b8c\u4e86\u304a\u3081\u3067\u3068\u3046\u3002\u3067\u3001\u305d\u308c\u3067\u4f55\u304c\u5909\u308f\u308b\u306e\uff1f \u79c1\u306e\u751f\u6d3b\u306f\u4eca\u65e5\u3082\u666e\u901a\u306b\u56de\u3063\u3066\u308b\u3088",
+   "\u62e1\u6563\u3042\u308a\u304c\u3068\u3046\u3002\u304a\u304b\u3052\u3067\u30d5\u30a9\u30ed\u30ef\u30fc\u5897\u3048\u305f\u308f\u3002\u307e\u3068\u3081\u8077\u4eba\u3055\u3093\u305f\u3061\u306e\u5ba3\u4f1d\u8cbb\u3001\u3053\u3063\u3061\u306f1\u5186\u3082\u6255\u3063\u3066\u306a\u3044\u306e\u306b\u306d"],
+  ["\u91e3\u3063\u305f\u3093\u3058\u3083\u306a\u304f\u3066\u3001\u5411\u3053\u3046\u3082\u79c1\u3092\u9078\u3093\u3060\u306e\u3002\u305d\u308c\u304c\u4e00\u756a\u6094\u3057\u3044\u3093\u3067\u3057\u3087\uff1f \u5206\u304b\u308b\u3088\u3001\u305d\u306e\u6c17\u6301\u3061",
+   "\u6d88\u3055\u306a\u3044\u3088\u3002\u8b1d\u308b\u7406\u7531\u3082\u306a\u3044\u3057\u3002\u30d5\u30a1\u30f3\u306e\u6c17\u6301\u3061\u306f\u5927\u4e8b\u3060\u3051\u3069\u3001\u79c1\u306e\u4eba\u751f\u306f\u79c1\u306e\u3082\u306e\u3060\u304b\u3089",
+   "\u6bce\u65e5\u898b\u306b\u6765\u3066\u304f\u308c\u3066\u3042\u308a\u304c\u3068\u3046\u3002\u6012\u308a\u306a\u304c\u3089\u3082\u30c1\u30a7\u30c3\u30af\u6b20\u304b\u3055\u306a\u3044\u306e\u3001\u3082\u3046\u7acb\u6d3e\u306a\u30d5\u30a1\u30f3\u3060\u3068\u601d\u3046"],
+  ["\u6557\u5317\u5ba3\u8a00\uff1f \u6c88\u9ed9\u306f\u6226\u7565\u3063\u3066\u77e5\u3089\u306a\u3044\uff1f \u2026\u2026\u307e\u3042\u3001\u4eca\u3053\u3046\u3057\u3066\u8fd4\u3057\u3066\u308b\u6642\u70b9\u3067\u6226\u7565\u3067\u3082\u306a\u3044\u304b\u3002\u8a00\u3044\u305f\u3044\u304b\u3089\u8a00\u3063\u3066\u308b\u3060\u3051",
+   "\u53cd\u8ad6\u306a\u3057\u3058\u3083\u306a\u304f\u3066\u3001\u76f8\u624b\u3057\u3066\u306a\u304b\u3063\u305f\u3060\u3051\u3002\u4eca\u3057\u305f\u3089\u3057\u305f\u3067\u9a12\u3050\u3093\u3067\u3057\u3087\uff1f \u306f\u3044\u306f\u3044\u3001\u71c3\u6599\u3069\u3046\u305e",
+   "\u307e\u3068\u3081\u3042\u308a\u304c\u3068\u3046\u3001\u6bce\u56de\u4ed5\u4e8b\u304c\u65e9\u3044\u3002\u304a\u304b\u3052\u3067\u79c1\u304c\u8aac\u660e\u3057\u306a\u304f\u3066\u3082\u7d4c\u7def\u304c\u5168\u90e8\u6b8b\u3063\u3066\u304f\u304b\u3089\u52a9\u304b\u3063\u3066\u308b"]
+ ];
+ var STYLES=["\u6311\u767a\u3067\u8fd4\u3059","\u958b\u304d\u76f4\u308b","\u62e1\u6563\u306b\u611f\u8b1d\u3059\u308b"];
+ var REACT=[
+  {n:"\u307e\u3068\u3081\u901f\u5831",h:"@matome_soku",tx:"\u3010\u901f\u5831\u3011\u76f8\u624b\u306e\u5973\u3001\u53cd\u6483\u958b\u59cb \u2192 \u5f15\u7528\u304c\u4e00\u6c17\u306b\u4f38\u3073\u3066\u308b"},
+  {n:"\u7279\u5b9a\u73ed",h:"@tokutei_jp",tx:"\u30b9\u30af\u30b7\u30e7\u73ed\u3001\u8ffd\u52a0\u3067\u4fdd\u5b58\u5b8c\u4e86\u3002\u3053\u308c\u306f\u6d88\u305b\u306a\u3044\u3084\u3064"},
+  {n:"\u305f\u3060\u306e\u30d5\u30a1\u30f3",h:"@tada_fan",tx:"\u8a00\u3044\u65b9\u306f\u5f37\u3044\u3051\u3069\u3001\u9375\u57a2\u8997\u3044\u3066\u53e9\u3044\u3066\u305f\u5074\u304c\u88ab\u5bb3\u8005\u9762\u3059\u308b\u306e\u306f\u9055\u3046\u3068\u601d\u3046"},
+  {n:"hiroto_honmei",h:"@hiroto_honmei",tx:"\u306a\u3093\u3067\u4f59\u8a08\u306b\u71c3\u3084\u3059\u306e\u2026\u63a8\u3057\u306e\u3053\u3068\u8003\u3048\u3066"},
+  {n:"\u306a\u304a\u306e\u5473\u65b9",h:"@nao_mikata",tx:"\u5f37\u304f\u3066\u597d\u304d\u3002\u305d\u306e\u307e\u307e\u9003\u3052\u306a\u3044\u3067\u3001\u3053\u3063\u3061\u306f\u898b\u3066\u308b\u3088"},
+  {n:"\u91ce\u6b21\u99ac\u306e\u4eba",h:"@yajiuma_jp",tx:"\u796d\u308a\u306f\u7d9a\u304f\u306e\u304b\u2026\u30dd\u30c3\u30d7\u30b3\u30fc\u30f3\u7528\u610f\u3057\u305f"},
+  {n:"\u9031\u520a\u30c7\u30b8\u30bf\u30eb",h:"@shukan_digi",tx:"\u76f8\u624b\u5973\u6027\u306e\u300c\u53cd\u6483\u30dd\u30b9\u30c8\u300d\u304c\u30c8\u30ec\u30f3\u30c9\u5165\u308a\u3002\u53ce\u675f\u306e\u6c17\u914d\u306a\u3057"},
+  {n:"\u901a\u5831\u6e08\u307f\u306e\u4eba",h:"@tsuho_shita",tx:"\u901a\u5831\u3057\u305f\u3002\u2026\u2026\u3057\u305f\u3051\u3069\u4f55\u3082\u8d77\u304d\u306a\u3044\u3002\u672c\u5f53\u306b\u7121\u99c4\u3058\u3083\u3093"}
+ ];
+ var rounds=0, used={}, imp=1284000, fol=0, feedEl=null, built=false;
+ function fmt(n){ return n.toLocaleString("ja-JP"); }
+ function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+ function buildPanel(){
+  if(built) return; built=true;
+  var vx=document.querySelector("#v-x"); if(!vx) return;
+  var panel=document.createElement("div"); panel.id="v880-panel";
+  panel.innerHTML=
+   '<div class="hd"><button class="bk" id="v880-back">\u2039</button><div><div class="tt">\u3042\u304a\u308a\u8fd4\u3057\u30bb\u30f3\u30bf\u30fc</div><div class="ts">\u5f15\u7528\u30fb\u30e1\u30f3\u30b7\u30e7\u30f3\u3078\u306e\u53cd\u6483 \u2014 \u708e\u4e0a\u4e2d\u306eX</div></div></div>'+
+   '<div id="v880-scroll"></div>';
+  vx.appendChild(panel);
+  panel.querySelector("#v880-back").addEventListener("click",function(){ panel.style.display="none"; });
+ }
+ function meterHTML(){
+  var buzz=Math.min(100,34+rounds*8);
+  return '<div class="v880-meter"><div class="row">'+
+   '<div class="cell"><div class="num" id="v880-wave">\u7b2c'+(rounds+1)+'\u6ce2</div><div class="lab">\u53cd\u6483\u306e\u6ce2</div></div>'+
+   '<div class="cell"><div class="num" id="v880-imp">'+fmt(imp)+'</div><div class="lab">\u7d2f\u8a08\u30a4\u30f3\u30d7\u30ec\u30c3\u30b7\u30e7\u30f3</div></div>'+
+   '<div class="cell"><div class="num" id="v880-fol">+'+fmt(fol)+'</div><div class="lab">\u30d5\u30a9\u30ed\u30ef\u30fc\u5897</div></div></div>'+
+   '<div class="v880-bar"><i id="v880-buzz" style="width:'+buzz+'%"></i></div>'+
+   '<div style="font-size:11px;color:#a97e96;margin-top:7px;font-weight:700">\u30d0\u30ba\u5ea6 '+buzz+'% \u30fb \u53cd\u6483 '+(Object.keys(used).length)+' / 9</div></div>';
+ }
+ function render(){
+  buildPanel();
+  var panel=document.querySelector("#v880-panel"); if(!panel) return;
+  var sc=panel.querySelector("#v880-scroll"); if(!sc) return;
+  if(!hot()){
+   sc.innerHTML='<div class="v880-lock"><b>\u4eca\u306f\u307e\u3060\u9759\u304b\u3067\u3059</b><br>\u708e\u4e0a\u304c\u59cb\u307e\u308b\u3068\u3001\u3053\u3053\u3067\u5f15\u7528\u3084\u30e1\u30f3\u30b7\u30e7\u30f3\u306b<br>\u3042\u304a\u308a\u8fd4\u3057\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002</div>';
+   feedEl=null; return;
+  }
+  var h=meterHTML();
+  h+='<div class="v880-sec">\u2014 \u53cd\u6483\u3059\u308b\u76f8\u624b\u3092\u9078\u3076 \u2014</div>';
+  TARGETS.forEach(function(t,ti){
+   h+='<div class="v880-tgt" data-ti="'+ti+'"><div class="who">'+esc(t.n)+' <span>'+esc(t.h)+'</span></div><div class="tx">'+esc(t.tx)+'</div><div class="btns">';
+   STYLES.forEach(function(st,si){
+    var u=used[ti+"-"+si];
+    h+='<button data-v880-fire="'+ti+':'+si+'" class="'+(u?"used":"")+'">'+(u?"\u9001\u4fe1\u6e08\u307f":st)+'</button>';
+   });
+   h+='</div></div>';
+  });
+  h+='<div class="v880-sec">\u2014 \u53cd\u6483\u30d5\u30a3\u30fc\u30c9 \u2014</div><div id="v880-feed"></div>';
+  sc.innerHTML=h;
+  feedEl=sc.querySelector("#v880-feed");
+  var btns=sc.querySelectorAll("[data-v880-fire]");
+  for(var i=0;i<btns.length;i++){ btns[i].addEventListener("click",function(){ var p=this.getAttribute("data-v880-fire").split(":"); fire(+p[0],+p[1],this); }); }
+ }
+ function postCard(cls,who,handle,tx,metrics,quote){
+  var d=document.createElement("div"); d.className="v880-post "+cls;
+  d.innerHTML='<div class="who">'+esc(who)+' <span>'+esc(handle)+' \u30fb \u4eca</span></div><div class="tx">'+esc(tx)+'</div>'+
+   (quote?'<div class="qt"><b>'+esc(quote.n)+' '+esc(quote.h)+'</b><br>'+esc(quote.tx)+'</div>':'')+
+   '<div class="mt"><span>\ud83d\udcac '+metrics[0]+'</span><span>\ud83d\udd01 '+metrics[1]+'</span><span>\u2764\ufe0f '+metrics[2]+'</span></div>';
+  return d;
+ }
+ function fire(ti,si,btn){
+  var key=ti+"-"+si; if(used[key]) return; used[key]=1; rounds++;
+  imp+= 86000 + rounds*27400 + ti*9300; fol+= 1180 + rounds*340 + si*210;
+  var wave=document.createElement("div"); wave.className="v880-wave";
+  var lab=document.createElement("div"); lab.className="wlab"; lab.textContent="\u2014 \u7b2c"+rounds+"\u6ce2 \u2014"; wave.appendChild(lab);
+  wave.appendChild(postCard("her","\u306a\u304a","@nao_0324",REPLIES[ti][si],[fmt(420+rounds*913),fmt(3100+rounds*2870),fmt(9800+rounds*7410)],TARGETS[ti]));
+  for(var k=0;k<4;k++){
+   var r=REACT[(rounds*4+k+ti)%REACT.length];
+   wave.appendChild(postCard("",r.n,r.h,r.tx,[fmt(96+rounds*137+k*41),fmt(420+rounds*690+k*120),fmt(1500+rounds*1980+k*260)],null));
+  }
+  if(feedEl) feedEl.insertBefore(wave,feedEl.firstChild);
+  if(btn){ btn.classList.add("used"); btn.textContent="\u9001\u4fe1\u6e08\u307f"; }
+  var panel=document.querySelector("#v880-panel");
+  var wEl=panel.querySelector("#v880-wave"); if(wEl) wEl.textContent="\u7b2c"+(rounds+1)+"\u6ce2";
+  var iEl=panel.querySelector("#v880-imp"); if(iEl) iEl.textContent=fmt(imp);
+  var fEl=panel.querySelector("#v880-fol"); if(fEl) fEl.textContent="+"+fmt(fol);
+  var bz=panel.querySelector("#v880-buzz"); if(bz) bz.style.width=Math.min(100,34+rounds*8)+"%";
+  var cnt=Object.keys(used).length;
+  if(cnt>=9 && !panel.querySelector(".v880-fin")){
+   var fin=document.createElement("div"); fin.className="v880-fin";
+   fin.innerHTML='<div class="big">\u3042\u304a\u308a\u8fd4\u3057\u30b3\u30f3\u30d7\u30ea\u30fc\u30c8</div><div class="sm">9\u901a\u308a\u5168\u90e8\u8fd4\u3057\u305f\u3002\u307e\u3068\u3081\u901f\u5831\u304c\u300c\u76f8\u624b\u306e\u5973\u3001\u53cd\u6483\u3067\u30c8\u30ec\u30f3\u30c91\u4f4d\u300d\u3068\u901f\u5831 \u2014<br>\u53e9\u304f\u307b\u3069\u4f38\u3073\u308b\u306e\u3001\u3082\u3046\u307f\u3093\u306a\u5206\u304b\u3063\u3066\u308b\u306f\u305a</div>';
+   var sc2=panel.querySelector("#v880-scroll"); if(sc2) sc2.insertBefore(fin,sc2.firstChild);
+  }
+  try{ if(typeof push==="function") push("X","#000","\ud835\udd4f","\u5f15\u7528\u30dd\u30b9\u30c8\u304c\u6025\u5897\u3057\u3066\u3044\u307e\u3059","\u3042\u306a\u305f\u306e\u53cd\u6483\u30dd\u30b9\u30c8\u304c\u62e1\u6563\u3055\u308c\u3066\u3044\u307e\u3059",function(){ window.__v880open(); }); }catch(e){}
+ }
+ window.__v880open=function(){ buildPanel(); var panel=document.querySelector("#v880-panel"); if(!panel) return; render(); panel.style.display="flex"; var sc=panel.querySelector("#v880-scroll"); if(sc) sc.scrollTop=0; };
+ function inject(){
+  [["#x-pane-trend"],["#x-pane-mention"]].forEach(function(q){
+   var pane=document.querySelector(q[0]); if(!pane) return;
+   if(pane.querySelector(".v880-entry")) return;
+   var b=document.createElement("button"); b.className="v880-entry"; b.type="button";
+   b.innerHTML='<span><span class="tt">\u3042\u304a\u308a\u8fd4\u3057\u30bb\u30f3\u30bf\u30fc</span><div class="ts">\u5f15\u7528\u30fb\u30e1\u30f3\u30b7\u30e7\u30f3\u306b\u53cd\u6483\u3057\u3066\u3001\u71c3\u6599\u3092\u6295\u3052\u308b\u65b0\u6a5f\u80fd</div></span><span class="arr">\u203a</span>';
+   b.addEventListener("click",function(){ window.__v880open(); });
+   pane.insertBefore(b,pane.firstChild);
+  });
+ }
+ setInterval(inject,1200); inject();
 })();
 </script>
 </body>
