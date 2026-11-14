@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v896</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v897</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v896"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v897"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -32335,6 +32335,8 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
    nothing added to any conversation. ===== */
 (function(){
  if(window.__v896) return; window.__v896=true;
+ var v897st=document.createElement("style"); v897st.textContent='.v897-foldh::after{content:"";position:absolute;right:2px;top:50%;width:8px;height:8px;border-right:2px solid #c7c7cc;border-bottom:2px solid #c7c7cc;transform:translateY(-70%) rotate(45deg)}.v897-foldh.v897-closed::after{transform:translateY(-30%) rotate(-135deg)}'; document.head.appendChild(v897st);
+ setInterval(function(){ try{ if(typeof state==="undefined") return; var t; if((state.chapter||0)<2 && !state.act2){ t="♪ コーラとマロン"; } else { var hp=document.querySelector("#hp-status"); t=hp?hp.textContent:""; } if(!t) return; document.querySelectorAll('#line-tab-panel [data-row="#talk-hiroto"]').forEach(function(r){ var parts=r.querySelectorAll(':scope > div > div'); var el=parts[parts.length-1]; if(el && el.textContent!==t) el.textContent=t; }); }catch(e){} },1500);
  var CHEV='<span style="margin-left:auto;color:#c7c7cc;font-size:21px;line-height:1">›</span>';
  var IC={
   point:'<svg viewBox="0 0 24 24" width="27" height="27"><text x="12" y="17.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="sans-serif">P</text></svg>',
@@ -32358,6 +32360,7 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
  var GROUP=["いつメン🍻","assets/grp-itsumen.jpg","女子会しよ〜","#talk-group"];
  var MAYBE=[["あやか","友だちの友だち"],["しょうた","同じグループのメンバー"]];
  function head(t){ return '<div style="font-weight:800;font-size:15.5px;margin:22px 16px 6px">'+t+'</div>'; }
+ function headF(t,id){ return '<div class="v897-foldh" data-h="'+id+'" style="font-weight:800;font-size:15.5px;margin:22px 16px 6px;position:relative;cursor:pointer">'+t+'</div>'; }
  function band(){ return '<div style="height:8px;background:#f4f4f6;margin-top:20px"></div>'; }
  function row(img,name,sub,target){
   return '<div '+(target?'data-row="'+target+'" ':'')+'style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><img loading="lazy" decoding="async" src="'+img+'" style="width:52px;height:52px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+name+'</div><div style="font-size:13px;color:#76767c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">'+sub+'</div></div></div>';
@@ -32381,14 +32384,17 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
    +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px 2px;padding:4px 10px 2px">'
    +SERVICES.map(function(s){ return '<button type="button" class="v896-svc" data-act="'+s[3]+'" data-name="'+s[0]+'" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:'+s[1]+';display:flex;align-items:center;justify-content:center">'+IC[s[2]]+'</span><span style="font-size:11px;color:#333">'+s[0]+'</span></button>'; }).join("")
    +'</div>'
+   +'<div class="v897-banner" style="margin:14px 16px 0;border-radius:14px;padding:15px 16px;background:linear-gradient(120deg,#7b5cff,#b04df0);color:#fff;cursor:pointer"><div style="font-weight:800;font-size:15px">LINEポイント祭り開催中</div><div style="font-size:12px;opacity:.92;margin-top:2px">対象店舗のお買い物で最大10%還元</div></div>'
    +band()
    +head("公式アカウント")
    +OFFICIAL.map(function(o){ return '<div class="v896-off" style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><span style="width:52px;height:52px;border-radius:16px;background:'+o[1]+';display:flex;align-items:center;justify-content:center;flex:none">'+IC[o[2]]+'</span><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+o[0]+'</div><div style="font-size:13px;color:#76767c;margin-top:2px">'+o[3]+'</div></div><span class="v896-add" style="margin-left:auto;border:1.5px solid #06c755;color:#06c755;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;flex:none">追加</span></div>'; }).join("")
    +band()
-   +head("グループ 1")
-   +row(GROUP[1],GROUP[0],GROUP[2],GROUP[3])
-   +head("友だち 4")
-   +FRIENDS.map(function(f){ return row(f[1],f[0],f[2],f[3]); }).join("")
+   +headF("お気に入り","fav")
+   +'<div class="v897-sec" data-w="fav">'+row("assets/ig-avatar.jpg","ひろと <span style=\"color:#f5b301;font-size:13px\">★</span>","♪ コーラとマロン","#talk-hiroto")+'</div>'
+   +headF("グループ 1","grp")
+   +'<div class="v897-sec" data-w="grp">'+row(GROUP[1],GROUP[0],GROUP[2],GROUP[3])+'</div>'
+   +headF("友だち 4","fr")
+   +'<div class="v897-sec" data-w="fr">'+FRIENDS.map(function(f){ return row(f[1],f[0],f[2],f[3]); }).join("")+'</div>'
    +band()
    +head("知り合いかも？")
    +MAYBE.map(function(m){ return '<div class="v896-off" style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><span style="width:52px;height:52px;border-radius:50%;background:#ececf0;display:flex;align-items:center;justify-content:center;flex:none">'+IC.silh+'</span><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+m[0]+'</div><div style="font-size:13px;color:#76767c;margin-top:2px">'+m[1]+'</div></div><span class="v896-add" style="margin-left:auto;border:1.5px solid #06c755;color:#06c755;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;flex:none">追加</span></div>'; }).join("")
@@ -32412,6 +32418,8 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
    else if(typeof toast==="function") toast(b.dataset.name+"はこの世界にはないよ");
   }); });
   scroll.querySelectorAll(".v896-off").forEach(function(r){ r.addEventListener("click",function(){ if(typeof toast==="function") toast("追加はこの世界にはないよ"); }); });
+  scroll.querySelectorAll(".v897-foldh").forEach(function(h){ h.addEventListener("click",function(){ var w=scroll.querySelector('[data-w="'+h.dataset.h+'"]'); if(!w) return; var closed=w.style.display==="none"; w.style.display=closed?"":"none"; h.classList.toggle("v897-closed",!closed); }); });
+  var bn=scroll.querySelector(".v897-banner"); if(bn) bn.addEventListener("click",function(){ ptsPage(panel); });
  }
  function watch(){
   var panel=document.getElementById("line-tab-panel"); if(!panel) return false;
