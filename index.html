@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v885</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v886</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v885"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v886"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -31656,6 +31656,214 @@ if(rl) new MutationObserver(function(){ apply(); applyQt();}).observe(rl,{childL
 var qb0=document.querySelector("#xd-quotes");
 if(qb0) new MutationObserver(function(){ applyQt();}).observe(qb0,{childList:true});
 setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style.display==="none"){ if(rl&&rl.dataset.v885done) delete rl.dataset.v885done; var q2=document.querySelector("#xd-quotes"); if(q2&&q2.dataset.v885q) delete q2.dataset.v885q;}},600);
+})();
+</script>
+<script>
+/* ===== v886: TikTok gains his LIVE Room (category B, new
+   feature). A whole new screen inside the TikTok app: a
+   red LIVE entry banner at the top of his profile scroll
+   opens a full live-room panel where, once the scandal is
+   hot (the exact v726 gate: phase scandal, heat>0, or the
+   sub-account public), she watches his stream as an
+   anonymous viewer and steadies a rough comment section -
+   three rough moments (a heckler demanding gossip, a fan
+   who no longer knows whether to cheer, a clip-only
+   bystander asking what happened) each get two supportive
+   comments she can send; every comment she sends pins to
+   the top of the stream followed by a linked flow of four
+   viewer comments as the room's mood turns supportive,
+   while the counters (viewers, hearts, gifts and the
+   support meter) all climb with it. A heart button lets
+   her tap-send hearts any time (a floating heart rises in
+   the stage card per tap). Used choices lock per moment,
+   progress reads x/6, and clearing all six lands a finale
+   card: the comment section rebuilt with support, the
+   live trending on TikTok. Before the scandal is hot the
+   same panel opens to a quiet not-live face instead.
+   Supportive only - no taunting anywhere in this room,
+   and nothing is posted from the sub-account. Fully
+   event-driven (existence-guarded entry injection only),
+   no global story state, flag, gate, heat or save field
+   is touched, no protected line, caption or video is
+   edited, SMS untouched, pull-to-refresh and the small-
+   gesture expansions skipped per the 06:52 exclusion;
+   Playwright-verified (see hidden_files/v886-probe.py)
+   ===== */
+(function(){
+ if(window.__v886) return; window.__v886=1;
+ var css=document.createElement("style");
+ css.textContent=
+  ".v886-entry{display:flex;align-items:center;gap:12px;width:calc(100% - 24px);box-sizing:border-box;margin:12px 12px 2px;padding:15px 16px;border:none;border-radius:16px;background:linear-gradient(120deg,#000,#3d0a14 55%,#fe2c55);color:#fff;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(0,0,0,.45)}"+
+  ".v886-entry .badge{background:#fe2c55;color:#fff;font-size:11px;font-weight:900;letter-spacing:.12em;padding:4px 8px;border-radius:6px;flex:none}"+
+  ".v886-entry .tt{font-size:16.5px;font-weight:900;letter-spacing:.02em}"+
+  ".v886-entry .ts{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);margin-top:3px;line-height:1.6}"+
+  ".v886-entry .arr{margin-left:auto;font-size:22px;font-weight:900;color:#ff8fab;flex:none}"+
+  "#v886-panel{position:absolute;inset:0;background:#000;color:#fff;z-index:240;display:none;flex-direction:column;padding:60px 0 0;box-sizing:border-box}"+
+  "#v886-panel .hd{display:flex;align-items:center;gap:12px;padding:10px 16px 12px;border-bottom:1px solid #262626}"+
+  "#v886-panel .bk{background:rgba(255,255,255,.10);border:1px solid #333;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer;flex:none}"+
+  "#v886-panel .tt{font-size:19px;font-weight:900}"+
+  "#v886-panel .ts{font-size:11.5px;color:#a8a8b3;margin-top:2px}"+
+  "#v886-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 15px 30px}"+
+  ".v886-stage{position:relative;background:linear-gradient(150deg,#1a0b12,#3d0a14 70%,#57122a);border:1px solid #4a2436;border-radius:20px;padding:16px;margin-bottom:14px;overflow:hidden}"+
+  ".v886-stage .live{display:inline-block;background:#fe2c55;color:#fff;font-size:11px;font-weight:900;letter-spacing:.14em;padding:4px 9px;border-radius:6px}"+
+  ".v886-stage .who{font-size:18px;font-weight:900;margin-top:10px}"+
+  ".v886-stage .cap{font-size:13px;line-height:1.8;color:rgba(255,255,255,.88);margin-top:5px}"+
+  ".v886-stage .fheart{position:absolute;right:16px;bottom:10px;font-size:22px;color:#fe2c55;animation:v886rise 1s ease forwards;pointer-events:none}"+
+  "@keyframes v886rise{0%{transform:translateY(6px);opacity:0}25%{opacity:1}100%{transform:translateY(-52px);opacity:0}}"+
+  ".v886-meter{background:#121212;border:1px solid #2b2b2b;border-radius:18px;padding:14px 15px;margin-bottom:14px}"+
+  ".v886-meter .row{display:flex;gap:10px}"+
+  ".v886-meter .cell{flex:1;text-align:center}"+
+  ".v886-meter .num{font-size:19px;font-weight:900;color:#fff}"+
+  ".v886-meter .lab{font-size:10.5px;color:#a8a8b3;margin-top:2px;font-weight:700}"+
+  ".v886-bar{height:9px;border-radius:99px;background:#2b2b2b;margin-top:12px;overflow:hidden}"+
+  ".v886-bar i{display:block;height:100%;width:38%;border-radius:99px;background:linear-gradient(90deg,#25f4ee,#fe2c55);transition:width .7s ease}"+
+  ".v886-heartrow{display:flex;align-items:center;gap:11px;margin-bottom:6px}"+
+  "#v886-heartbtn{flex:1;padding:13px;border:none;border-radius:999px;background:#fe2c55;color:#fff;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(254,44,85,.35)}"+
+  "#v886-heartbtn:active{transform:scale(.97)}"+
+  ".v886-sec{font-size:13px;font-weight:900;color:#ff8fab;letter-spacing:.14em;margin:16px 2px 9px}"+
+  ".v886-pr{background:#161823;border:1px solid #2b2f3a;border-radius:16px;padding:13px 14px;margin-bottom:11px}"+
+  ".v886-pr .who{font-size:13.5px;font-weight:800;color:#fff}"+
+  ".v886-pr .who span{color:#a8a8b3;font-weight:500;font-size:12px}"+
+  ".v886-pr .tx{font-size:13.5px;line-height:1.75;color:#e8e8ea;margin-top:5px}"+
+  ".v886-pr .btns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}"+
+  ".v886-pr .btns button{flex:1;min-width:120px;padding:10px 6px;border-radius:999px;border:1px solid #fe2c55;background:rgba(254,44,85,.13);color:#ff8fab;font-size:12.5px;font-weight:800;cursor:pointer}"+
+  ".v886-pr .btns button.used{background:#2b2f3a;border-color:#2b2f3a;color:#71767b;cursor:default}"+
+  ".v886-wave{margin-bottom:16px}"+
+  ".v886-wave .wlab{font-size:12px;font-weight:900;color:#25f4ee;letter-spacing:.1em;margin:4px 2px 8px}"+
+  ".v886-cmt{background:#161823;border:1px solid #2b2f3a;border-radius:16px;padding:12px 14px;margin-bottom:8px}"+
+  ".v886-cmt.her{border-color:#fe2c55;background:linear-gradient(180deg,rgba(254,44,85,.16),#161823)}"+
+  ".v886-cmt .who{font-size:13px;font-weight:800}"+
+  ".v886-cmt .who span{color:#a8a8b3;font-weight:500;font-size:11.5px}"+
+  ".v886-cmt .pin{font-size:10px;font-weight:900;color:#fe2c55;letter-spacing:.1em}"+
+  ".v886-cmt .tx{font-size:13.5px;line-height:1.8;color:#e8e8ea;margin-top:4px;white-space:pre-wrap}"+
+  ".v886-lock{background:#161823;border:1px solid #2b2f3a;border-radius:18px;padding:26px 20px;text-align:center;color:#a8a8b3;font-size:13.5px;line-height:2}"+
+  ".v886-fin{background:linear-gradient(130deg,#fe2c55,#a3122f);border-radius:20px;padding:20px 18px;margin-bottom:16px;color:#fff;box-shadow:0 14px 26px rgba(254,44,85,.3)}"+
+  ".v886-fin .big{font-size:19px;font-weight:900;line-height:1.5}"+
+  ".v886-fin .sm{font-size:13px;line-height:1.9;margin-top:7px;color:rgba(255,255,255,.92)}";
+ document.head.appendChild(css);
+ function esc(t){ return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+ function fmt(n){ return Number(n).toLocaleString("ja-JP"); }
+ function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 || !!state._subPublic); }catch(e){ return false; } }
+ var PROMPTS=[
+  {n:"通りすがり",h:"@suresu_gari",tx:"例の彼女の話はまだ？ 今日はその説明をしに来たんじゃないの？",labels:["場を歌に戻す","詮索を止める"],hers:["今日は歌の日だよ。まず一曲、ちゃんと聞こう。そのあとでなら何でも言える","プライベートの詮索はここではやめよう。本人が話したことだけを信じる場所にしたい"]},
+  {n:"複雑なファン",h:"@fukuzatsu_fan",tx:"正直まだ気持ちが複雑で…応援していいのか分からなくなってきた",labels:["複雑なまま応援","気持ちを重ねる"],hers:["複雑なままでいいと思う。無理に整理しなくていいから、今日のステージを見てから決めよう","私も最初は同じだった。でも歌を聞いたら、やっぱりこの人のステージが好きだって分かった"]},
+  {n:"切り抜きから来た人",h:"@kirinuki_kun",tx:"切り抜きだけ回ってきた。結局なにがあったの？ 誰か教えて",labels:["本人の言葉へ誘導","訂正記事へ誘導"],hers:["切り抜きより、本人の言葉を聞いて。今ここで本人が話してるのが一番正確だよ","時系列はニュースの訂正記事にまとまってるよ。まずこのライブを最後まで楽しもう"]}
+ ];
+ var REACT=[
+  {n:"応援ファン",h:"@ouen_tai",tx:"分かる。今日は歌を聞きに来た"},
+  {n:"古参ファン",h:"@kosan_fan",tx:"この空気、前にも乗り越えてきたよね"},
+  {n:"新規ファン",h:"@new_fan88",tx:"初めて来たけど、歌うますぎてびっくりした"},
+  {n:"通りすがり",h:"@toorisugari_jp",tx:"荒れてるって聞いたけど、意外と平和で草"},
+  {n:"まとめウォッチャー",h:"@matome_watch",tx:"コメント欄が応援側に傾いてきた、と速報が出てる"},
+  {n:"ギフト勢",h:"@gift_ouen",tx:"応援ギフト送った。歌で返してほしい"},
+  {n:"複雑だったファン",h:"@nayande_ta",tx:"さっきのコメントで少し楽になった。ありがとう"},
+  {n:"海外ファン",h:"@global_fan23",tx:"watching from overseas, his voice is amazing"},
+  {n:"冷静派",h:"@reisei_ha",tx:"詮索よりステージ。本当にそれ"},
+  {n:"初見さん",h:"@hajimete_mita",tx:"おすすめから来た。ファンの民度いいな"},
+  {n:"古参ファン",h:"@ouen_10nen",tx:"デビュー前から見てるけど、今日の歌い方いちばん好き"},
+  {n:"傍観者",h:"@boukansha_2",tx:"荒らしより応援コメントの方が伸びてるの、珍しい"}
+ ];
+ var used={}, rounds=0, hearts=128400, gifts=214, viewers=12408, feedEl=null, built=false;
+ function support(){ return Math.min(96, 38+rounds*10); }
+ function buildPanel(){
+  if(built) return; built=true;
+  var vt=document.querySelector("#v-tiktok"); if(!vt) return;
+  var panel=document.createElement("div"); panel.id="v886-panel";
+  panel.innerHTML=
+   '<div class="hd"><button class="bk" id="v886-back">‹</button><div><div class="tt">LIVEルーム</div><div class="ts">彼のTikTokライブ — 匿名で一緒に見る</div></div></div>'+
+   '<div id="v886-scroll"></div>';
+  vt.appendChild(panel);
+  panel.querySelector("#v886-back").addEventListener("click",function(){ panel.style.display="none"; });
+ }
+ function meterHTML(){
+  var sup=support();
+  return '<div class="v886-meter"><div class="row">'+
+   '<div class="cell"><div class="num" id="v886-view">'+fmt(viewers)+'</div><div class="lab">視聴者</div></div>'+
+   '<div class="cell"><div class="num" id="v886-heart">'+fmt(hearts)+'</div><div class="lab">ハート</div></div>'+
+   '<div class="cell"><div class="num" id="v886-gift">'+fmt(gifts)+'</div><div class="lab">ギフト</div></div></div>'+
+   '<div class="v886-bar"><i id="v886-bar-i" style="width:'+sup+'%"></i></div>'+
+   '<div style="font-size:11px;color:#a8a8b3;margin-top:7px;font-weight:700">応援度 '+sup+'% ・ あなたのコメント '+(Object.keys(used).length)+' / 6</div></div>';
+ }
+ function render(){
+  buildPanel();
+  var panel=document.querySelector("#v886-panel"); if(!panel) return;
+  var sc=panel.querySelector("#v886-scroll"); if(!sc) return;
+  if(!hot()){
+   sc.innerHTML='<div class="v886-lock"><b>今は配信していません</b><br>炎上編で彼のライブが始まると、<br>ここで匿名のまま一緒に見て、<br>コメント欄を応援で埋められるようになります。</div>';
+   feedEl=null; return;
+  }
+  var h='<div class="v886-stage" id="v886-stage"><span class="live">LIVE</span><div class="who">HIROTO — 歌枠ライブ</div><div class="cap">「今日は歌の日。最後まで聞いてくれたらうれしい」<br>コメント欄は荒れ気味。匿名の視聴者として、場を立て直そう。</div></div>';
+  h+=meterHTML();
+  h+='<div class="v886-heartrow"><button id="v886-heartbtn" type="button">♥ ハートを送る</button></div>';
+  h+='<div class="v886-sec">— 流れてきたコメントに応える —</div>';
+  PROMPTS.forEach(function(p,ti){
+   h+='<div class="v886-pr"><div class="who">'+esc(p.n)+' <span>'+esc(p.h)+'</span></div><div class="tx">'+esc(p.tx)+'</div><div class="btns">';
+   p.labels.forEach(function(lb,si){
+    var u=used[ti+"-"+si];
+    h+='<button data-v886-fire="'+ti+':'+si+'" class="'+(u?"used":"")+'">'+(u?"送信済み":esc(lb))+'</button>';
+   });
+   h+='</div></div>';
+  });
+  h+='<div class="v886-sec">— コメント欄 —</div><div id="v886-feed"></div>';
+  sc.innerHTML=h;
+  feedEl=sc.querySelector("#v886-feed");
+  sc.querySelector("#v886-heartbtn").addEventListener("click",tapHeart);
+  sc.querySelectorAll("[data-v886-fire]").forEach(function(b){ b.addEventListener("click",function(){ fire(b); }); });
+ }
+ function syncMeter(){
+  var panel=document.querySelector("#v886-panel"); if(!panel) return;
+  var v=panel.querySelector("#v886-view"); if(v && v.textContent!==fmt(viewers)) v.textContent=fmt(viewers);
+  var hh=panel.querySelector("#v886-heart"); if(hh && hh.textContent!==fmt(hearts)) hh.textContent=fmt(hearts);
+  var g=panel.querySelector("#v886-gift"); if(g && g.textContent!==fmt(gifts)) g.textContent=fmt(gifts);
+  var bar=panel.querySelector("#v886-bar-i"); if(bar) bar.style.width=support()+"%";
+  var note=panel.querySelector(".v886-meter div[style]");
+  if(note){ var want="応援度 "+support()+"% ・ あなたのコメント "+(Object.keys(used).length)+" / 6"; if(note.textContent!==want) note.textContent=want; }
+ }
+ function tapHeart(){
+  hearts+=12;
+  var st=document.querySelector("#v886-stage");
+  if(st){ var s=document.createElement("span"); s.className="fheart"; s.textContent="♥"; st.appendChild(s); setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); },1000); }
+  syncMeter();
+ }
+ function cmtHTML(cls,pin,n,h,tx){
+  return '<div class="who">'+(pin?'<span class="pin">あなたのコメント ・ </span>':"")+esc(n)+' <span>'+esc(h)+'</span></div><div class="tx">'+esc(tx)+'</div>';
+ }
+ function fire(btn){
+  var key=btn.getAttribute("data-v886-fire"); if(!key || used[key]) return;
+  var parts=key.split(":"); var ti=+parts[0], si=+parts[1];
+  used[key]=1; rounds++;
+  viewers+=1800+rounds*640; hearts+=240+rounds*130; gifts+=3+rounds;
+  var wave=document.createElement("div"); wave.className="v886-wave";
+  var lab=document.createElement("div"); lab.className="wlab"; lab.textContent="— コメントの流れ 第"+rounds+"波 —"; wave.appendChild(lab);
+  var her=document.createElement("div"); her.className="v886-cmt her"; her.innerHTML=cmtHTML("her",true,"あなた（匿名）","@viewer_nao",PROMPTS[ti].hers[si]); wave.appendChild(her);
+  for(var k=0;k<4;k++){
+   var r=REACT[((rounds-1)*4+k)%REACT.length];
+   var c=document.createElement("div"); c.className="v886-cmt"; c.innerHTML=cmtHTML("",false,r.n,r.h,r.tx); wave.appendChild(c);
+  }
+  if(feedEl) feedEl.insertBefore(wave,feedEl.firstChild);
+  btn.classList.add("used"); btn.textContent="送信済み";
+  syncMeter();
+  if(Object.keys(used).length>=6){
+   var panel=document.querySelector("#v886-panel"); var sc2=panel? panel.querySelector("#v886-scroll"):null;
+   if(sc2 && !sc2.querySelector(".v886-fin")){
+    var fin=document.createElement("div"); fin.className="v886-fin";
+    fin.innerHTML='<div class="big">コメント欄、立て直し完了</div><div class="sm">応援コメントが欄の上位を占め、彼のLIVEがTikTokのトレンド入り。<br>視聴者 '+fmt(viewers)+'人 — 荒らしは流れ、残ったのは歌を聞く人たち。</div>';
+    sc2.insertBefore(fin,sc2.firstChild);
+   }
+  }
+  try{ if(typeof push==="function") push("TikTok","#000","♪","彼のLIVEが盛り上がっています","コメント欄が応援で埋まってきました",function(){ window.__v886open(); }); }catch(e){}
+ }
+ window.__v886open=function(){ buildPanel(); var panel=document.querySelector("#v886-panel"); if(!panel) return; render(); panel.style.display="flex"; var sc=panel.querySelector("#v886-scroll"); if(sc) sc.scrollTop=0; };
+ function inject(){
+  var vt=document.querySelector("#v-tiktok"); if(!vt) return;
+  var sc=vt.querySelector(".scroll"); if(!sc) return;
+  if(sc.querySelector(".v886-entry")) return;
+  var b=document.createElement("button"); b.className="v886-entry"; b.type="button";
+  b.innerHTML='<span class="badge">LIVE</span><span><span class="tt">LIVEルーム</span><div class="ts">彼の配信を一緒に見る — コメント欄を応援で埋める新機能</div></span><span class="arr">›</span>';
+  b.addEventListener("click",function(){ window.__v886open(); });
+  sc.insertBefore(b,sc.firstChild);
+ }
+ setInterval(inject,1200); inject();
 })();
 </script>
 
