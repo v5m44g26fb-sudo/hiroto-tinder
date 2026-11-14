@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v887</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v888</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v887"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v888"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -32021,6 +32021,29 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
  }).observe(view,{attributes:true,attributeFilter:["class"]});
 })();
 </script>
+
+<!-- ===== v888: X home face gains the real app's timeline face (category A, one big screen - the X home face from the big-screen list; Photos grid was v887, Music v885, his IG profile v881) - until now the home timeline still wore the first-build post face: 14px name/text on a 38px text avatar, the action row clustered at the left on a 22px gap, tab labels at 13.5px underlined edge-to-edge, and a solid header with a full divider. An appended CSS-only layer restyles the X home face only (so nothing can flicker or fight the builders, the v738 header/search modes, the v747 explore tabs or the detail view): the header goes translucent with a backdrop blur and no divider of its own, its avatar settles at the real 32px and the centred X mark grows to 25px; the tab row becomes the real 54px row - 15px labels, grey until active, and the active tab carries the real short blue pill underline (56px, centred, rounded) instead of the full-width border; timeline posts become the real article face - 40px avatars, 15px/700 names with 15px grey handles, 15px body text at 1.36 line height in near-black, quote cards at the real 16px radius on the #cfd9de border, and the action row spreads across the full measure (space-between, max 425px, 13px grey counts, 18px glyphs) instead of clustering left; the bottom nav settles at the real 54px translucent bar with 26px glyphs and the compose button becomes the real 56px FAB with the app's softer shadow. No post text, count, tab, pane, search mode, drawer, flag, gate or save field touched, no post added, protected lines and IG posts untouched, SMS untouched, pull-to-refresh and the small-gesture expansions skipped per the 06:52 exclusion; next run continues category A (remaining big screen: TikTok feed face). ===== -->
+<style id="v888-css">
+#v-x .appbar{border-bottom:none!important;background:rgba(255,255,255,.86)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:54px 16px 6px!important}
+#v-x .appbar img.avatar{width:32px!important;height:32px!important}
+#x-logo-c svg{width:25px!important;height:25px!important}
+#v-x .xtabs{height:54px;align-items:stretch}
+#v-x .xtabs button{font-size:15px!important;font-weight:500;color:#536471;padding:0 14px!important;position:relative;border-bottom:none!important}
+#v-x .xtabs button.act{color:#0f1419!important;font-weight:800}
+#v-x .xtabs button.act::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:56px;max-width:72%;height:4px;border-radius:999px;background:#1d9bf0}
+#x-pane-tl .post{padding:12px 16px 10px!important;gap:12px!important}
+#x-pane-tl .post .ava-txt{width:40px!important;height:40px!important;font-size:17px!important}
+#x-pane-tl .post>span:not(.ava-txt){flex:1;min-width:0}
+#x-pane-tl .post .nm{font-size:15px!important;font-weight:700;letter-spacing:-.01em}
+#x-pane-tl .post .hd{font-size:15px!important;color:#536471!important}
+#x-pane-tl .post .tx{font-size:15px!important;line-height:1.36!important;margin-top:1px!important;color:#0f1419}
+#x-pane-tl .post>span>div:not(.tx):not(.mt){border-radius:16px!important;border-color:#cfd9de!important;padding:12px!important;margin-top:12px!important}
+#x-pane-tl .post .mt{justify-content:space-between!important;max-width:425px;gap:0!important;margin-top:11px!important;font-size:13px!important;color:#536471!important;padding-right:8px}
+#x-pane-tl .post .mt svg{width:18px!important;height:18px!important}
+#x-nav{height:54px!important;padding-bottom:2px!important;background:rgba(255,255,255,.94)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+#x-nav button svg{width:26px!important;height:26px!important}
+#x-compose-btn{width:56px!important;height:56px!important;box-shadow:0 4px 14px rgba(15,20,25,.28)!important}
+</style>
 
 </body>
 
