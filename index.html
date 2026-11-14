@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v898</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v899</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v898"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v899"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -32360,6 +32360,25 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
  var GROUP=["いつメン🍻","assets/grp-itsumen.jpg","女子会しよ〜","#talk-group"];
  var MAYBE=[["あやか","友だちの友だち"],["しょうた","同じグループのメンバー"]];
  function head(t){ return '<div style="font-weight:800;font-size:15.5px;margin:22px 16px 6px">'+t+'</div>'; }
+ function filterHome(panel,q){
+  q=(q||"").trim();
+  var scroll=panel.children[1]; if(!scroll) return;
+  var total=0;
+  scroll.querySelectorAll("[data-w]").forEach(function(w){
+   var n=0;
+   Array.prototype.forEach.call(w.children,function(r){
+    var nameEl=r.children[1]&&r.children[1].children[0];
+    var nm=nameEl?nameEl.textContent:"";
+    var hit=!q||nm.indexOf(q)!==-1;
+    r.style.display=hit?"":"none"; if(hit) n++;
+   });
+   total+=n;
+   var h=scroll.querySelector('[data-h="'+w.dataset.w+'"]');
+   if(h) h.style.display=(!q||n>0)?"":"none";
+  });
+  var nr=scroll.querySelector(".v899-nores");
+  if(nr) nr.style.display=(q&&total===0)?"":"none";
+ }
  function headF(t,id){ return '<div class="v897-foldh" data-h="'+id+'" style="font-weight:800;font-size:15.5px;margin:22px 16px 6px;position:relative;cursor:pointer">'+t+'</div>'; }
  function band(){ return '<div style="height:8px;background:#f4f4f6;margin-top:20px"></div>'; }
  function row(img,name,sub,target){
@@ -32384,10 +32403,16 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
    +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px 2px;padding:4px 10px 2px">'
    +SERVICES.map(function(s){ return '<button type="button" class="v896-svc" data-act="'+s[3]+'" data-name="'+s[0]+'" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:'+s[1]+';display:flex;align-items:center;justify-content:center">'+IC[s[2]]+'</span><span style="font-size:11px;color:#333">'+s[0]+'</span></button>'; }).join("")
    +'</div>'
+   +'<div class="v899-svcmore" style="text-align:center;font-size:12.5px;color:#8e8e93;padding:6px 0 2px;cursor:pointer">もっと見る <span class="v899-svcmore-c">⌄</span></div>'
+   +'<div class="v899-svc2" style="display:none;grid-template-columns:repeat(4,1fr);gap:6px 2px;padding:4px 10px 2px"><button type="button" class="v899-svc2btn" data-name="マンガ" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:#00b900;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"><path d="M12 5.5C10.2 4 7.8 3.4 5 3.6v14.6c2.8-.2 5.2.4 7 1.9 1.8-1.5 4.2-2.1 7-1.9V3.6c-2.8-.2-5.2.4-7 1.9z"/><path d="M12 5.5v14.6"/></svg></span><span style="font-size:11px;color:#333">マンガ</span></button><button type="button" class="v899-svc2btn" data-name="Keep" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:#5b7a99;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="27" height="27" fill="#fff"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-4.2L6 20V5a1 1 0 0 1 1-1z"/></svg></span><span style="font-size:11px;color:#333">Keep</span></button><button type="button" class="v899-svc2btn" data-name="音楽" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:#f43f5e;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="27" height="27" fill="#fff"><path d="M9.5 17.8V6.2l10-2v11.6a3.7 3.7 0 1 1-2-3.34V6.1l-6 1.36v10.34a3.7 3.7 0 1 1-2-3.34z"/></svg></span><span style="font-size:11px;color:#333">音楽</span></button><button type="button" class="v899-svc2btn" data-name="天気" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:#38a5e8;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="3.6" fill="#fff" stroke="none"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M5.8 5.8l1.6 1.6M16.6 16.6l1.6 1.6M18.2 5.8l-1.6 1.6M7.4 16.6l-1.6 1.6"/></svg></span><span style="font-size:11px;color:#333">天気</span></button></div>'
    +'<div class="v897-banner" style="margin:14px 16px 0;border-radius:14px;padding:15px 16px;background:linear-gradient(120deg,#7b5cff,#b04df0);color:#fff;cursor:pointer"><div style="font-weight:800;font-size:15px">LINEポイント祭り開催中</div><div style="font-size:12px;opacity:.92;margin-top:2px">対象店舗のお買い物で最大10%還元</div></div>'
    +band()
    +head("公式アカウント")
    +OFFICIAL.map(function(o){ return '<div class="v896-off" style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><span style="width:52px;height:52px;border-radius:16px;background:'+o[1]+';display:flex;align-items:center;justify-content:center;flex:none">'+IC[o[2]]+'</span><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+o[0]+'</div><div style="font-size:13px;color:#76767c;margin-top:2px">'+o[3]+'</div></div><span class="v896-add" style="margin-left:auto;border:1.5px solid #06c755;color:#06c755;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;flex:none">追加</span></div>'; }).join("")
+   +'<div class="v899-more" style="text-align:right;padding:8px 16px 2px;font-size:13px;color:#8e8e93;cursor:pointer">すべて見る ›</div>'
+   +band()
+   +head("おすすめ")
+   +'<div style="display:flex;gap:10px;overflow-x:auto;padding:2px 16px 8px"><div class="v899-rec" data-name="人気スタンプ特集" style="flex:none;width:196px;height:100px;border-radius:14px;padding:12px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;background:linear-gradient(120deg,#ffb03a,#ff7847)"><div style="font-weight:800;font-size:14.5px">人気スタンプ特集</div><div style="font-size:11.5px;opacity:.92;margin-top:1px">今週のランキング</div></div><div class="v899-rec" data-name="新作きせかえ" style="flex:none;width:196px;height:100px;border-radius:14px;padding:12px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;background:linear-gradient(120deg,#7b5cff,#b04df0)"><div style="font-weight:800;font-size:14.5px">新作きせかえ</div><div style="font-size:11.5px;opacity:.92;margin-top:1px">秋の新作が続々登場</div></div><div class="v899-rec" data-name="LINEマンガ" style="flex:none;width:196px;height:100px;border-radius:14px;padding:12px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;background:linear-gradient(120deg,#00b900,#00a0a0)"><div style="font-weight:800;font-size:14.5px">LINEマンガ</div><div style="font-size:11.5px;opacity:.92;margin-top:1px">毎日無料で読める</div></div></div>'
    +band()
    +headF("お気に入り","fav")
    +'<div class="v897-sec" data-w="fav">'+row("assets/ig-avatar.jpg","ひろと <span style=\"color:#f5b301;font-size:13px\">★</span>","♪ コーラとマロン","#talk-hiroto")+'</div>'
@@ -32396,11 +32421,23 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
    +headF("友だち 4","fr")
    +'<div class="v897-sec" data-w="fr">'+FRIENDS.map(function(f){ return row(f[1],f[0],f[2],f[3]); }).join("")+'</div>'
    +band()
-   +head("知り合いかも？")
+   +'<div data-h="maybe" style="font-weight:800;font-size:15.5px;margin:22px 16px 6px">知り合いかも？</div>'
+   +'<div class="v897-sec" data-w="maybe">'
    +MAYBE.map(function(m){ return '<div class="v896-off" style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><span style="width:52px;height:52px;border-radius:50%;background:#ececf0;display:flex;align-items:center;justify-content:center;flex:none">'+IC.silh+'</span><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+m[0]+'</div><div style="font-size:13px;color:#76767c;margin-top:2px">'+m[1]+'</div></div><span class="v896-add" style="margin-left:auto;border:1.5px solid #06c755;color:#06c755;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;flex:none">追加</span></div>'; }).join("")
+   +'</div>'
+   +'<div class="v899-nores" style="display:none;text-align:center;color:#8e8e93;font-size:13.5px;padding:24px 0 6px">見つかりませんでした</div>'
    +'<div style="height:14px"></div>';
   scroll.innerHTML=html;
   var hdr=panel.children[0];
+  if(hdr && !hdr.querySelector(".v899-search")){
+   hdr.style.flexWrap="wrap";
+   var srow=document.createElement("div"); srow.className="v899-search";
+   srow.style.cssText="width:100%;margin-top:10px;position:relative";
+   srow.innerHTML='<span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);pointer-events:none"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#8e8e93" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3L21 21"/></svg></span><input class="v899-q" type="text" placeholder="検索" autocomplete="off" style="width:100%;box-sizing:border-box;border:none;outline:none;background:#eff0f3;border-radius:10px;padding:9px 12px 9px 34px;font-size:15px;color:#111">';
+   hdr.appendChild(srow);
+   srow.querySelector(".v899-q").addEventListener("input",function(){ filterHome(panel,this.value); });
+  }
+
   if(hdr && !hdr.querySelector(".v896-hbtn")){
    var mk=function(svg,fn){ var b=document.createElement("button"); b.type="button"; b.className="v896-hbtn"; b.style.cssText="margin-left:8px;border:none;background:#f2f2f7;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"; b.innerHTML=svg; b.addEventListener("click",fn); return b; };
    var x=hdr.querySelector("#ltp-x");
@@ -32420,6 +32457,10 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
   scroll.querySelectorAll(".v896-off").forEach(function(r){ r.addEventListener("click",function(){ if(typeof toast==="function") toast("追加はこの世界にはないよ"); }); });
   scroll.querySelectorAll(".v897-foldh").forEach(function(h){ h.addEventListener("click",function(){ var w=scroll.querySelector('[data-w="'+h.dataset.h+'"]'); if(!w) return; var closed=w.style.display==="none"; w.style.display=closed?"":"none"; h.classList.toggle("v897-closed",!closed); }); });
   var bn=scroll.querySelector(".v897-banner"); if(bn) bn.addEventListener("click",function(){ ptsPage(panel); });
+  var sm=scroll.querySelector(".v899-svcmore"); if(sm) sm.addEventListener("click",function(){ var g=scroll.querySelector(".v899-svc2"); if(!g) return; var open=g.style.display!=="none"; g.style.display=open?"none":"grid"; var c=sm.querySelector(".v899-svcmore-c"); if(c) c.textContent=open?"⌄":"⌃"; sm.firstChild.textContent=open?"もっと見る ":"閉じる "; });
+  scroll.querySelectorAll(".v899-svc2btn").forEach(function(b){ b.addEventListener("click",function(){ if(typeof toast==="function") toast(b.dataset.name+"はこの世界にはないよ"); }); });
+  scroll.querySelectorAll(".v899-rec").forEach(function(c){ c.addEventListener("click",function(){ if(typeof toast==="function") toast(c.dataset.name+"はこの世界にはないよ"); }); });
+  var mr=scroll.querySelector(".v899-more"); if(mr) mr.addEventListener("click",function(){ if(typeof toast==="function") toast("公式アカウント一覧はこの世界にはないよ"); });
  }
  function watch(){
   var panel=document.getElementById("line-tab-panel"); if(!panel) return false;
