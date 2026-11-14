@@ -144,7 +144,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .dmrow .tx{font-size:13px;color:#3a3a3c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dmrow .nm{font-size:14px;font-weight:700}
 /* ===== LINE ===== */
-#v-line{background:#8ba6c9}
+#v-line{background:#8ba6c9;will-change:transform}
 .line-head{padding:56px 14px 10px;background:#fff;border-bottom:1px solid #e5e5ea;flex:none;display:flex;gap:10px;align-items:center}
 .line-list{background:#fff;flex:1;overflow-y:auto}
 .talkrow{display:flex;gap:11px;padding:12px 14px;align-items:center;cursor:pointer;border-bottom:1px solid #f2f2f7;width:100%;background:#fff;color:#111;border-left:none;border-right:none;border-top:none;font-family:inherit;text-align:left}
@@ -170,7 +170,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .choices .q{font-size:11.5px;color:var(--sub);text-align:center}
 .choices button{border:1.5px solid var(--line);color:#07873a;background:#f2fdf5;border-radius:20px;padding:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
 .choices button:active{background:#dcf5e3}
-.line-input{flex:none;background:#fff;display:flex;gap:8px;align-items:center;padding:9px 12px 22px;border-top:1px solid #e5e5ea}
+.line-input{flex:none;background:#fff;display:flex;gap:2px;align-items:center;padding:8px 10px 22px;border-top:1px solid #e5e5ea}
 /* ===== news ===== */
 .news-hero{margin:12px 14px 4px;border-radius:14px;overflow:hidden;background:#111;color:#fff;animation:fadeup.4s ease}
 .news-hero img{width:100%;height:170px;object-fit:cover;opacity:.85;display:block}
@@ -234,8 +234,8 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 #story-img{flex:1;width:100%;object-fit:cover;min-height:0}
 #story-txt{position:absolute;left:0;right:0;bottom:110px;text-align:center;color:#fff;font-size:19px;font-weight:800;line-height:1.8;padding:0 26px;text-shadow:0 2px 10px rgba(0,0,0,.8);white-space:pre-wrap}
 #story-close{position:absolute;top:66px;right:14px;background:rgba(0,0,0,.4);color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:15px;cursor:pointer;z-index:2}
-.line-input input{flex:1;border:none;background:#f2f2f7;border-radius:18px;padding:10px 13px;font-size:14px;font-family:inherit;outline:none;color:#111}
-.line-input .sendbtn{border:none;background:var(--line);color:#fff;font-weight:800;border-radius:16px;padding:8px 13px;font-size:13px;cursor:pointer;font-family:inherit}
+.line-input input{flex:1;min-width:0;border:none;background:transparent;padding:10px 4px 10px 13px;font-size:16px;font-family:inherit;outline:none;color:#111}
+.line-input .sendbtn{border:none;background:none;padding:6px 7px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
 .like-btn{cursor:pointer;user-select:none}
 .like-btn.liked{color:#f91880 !important;font-weight:800}
 .ig-post .acts .like-btn.liked{color:#ff3040 !important}
@@ -817,7 +817,7 @@ input,textarea{font-size:16px!important}
 </div>
 <div class="typing" id="typing" style="margin:0 12px 8px"><i></i><i></i><i></i></div>
 <div class="choices" id="choices"></div>
-<div class="line-input"><span style="font-size:19px">＋</span><input id="line-text" placeholder="メッセージを入力（自由に送れる）" autocomplete="off"><button class="sendbtn" id="line-send">送信</button></div>
+<div class="line-input"><span style="font-size:19px">＋</span><input id="line-text" placeholder="メッセージを入力（自由に送れる）" autocomplete="off"><button class="sendbtn" id="line-send" aria-label="送信"><svg width="21" height="21" viewBox="0 0 24 24" fill="#06c755"><path d="M3.4 20.4 21.8 12 3.4 3.6l-.01 6.53L14 12 3.39 13.87z"/></svg></button></div>
 </div>
 <div id="group-chat" style="display:none;flex:1;flex-direction:column;min-height:0">
         <div class="line-head" style="padding-top:56px"><button class="back" id="group-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span><span class="t" style="font-size:15.5px;font-weight:800;display:block">いつメン🍻</span><span class="s" style="font-size:10.5px;color:#8e8e93">ゆい ・ みさき ・ りな</span></span></div>
@@ -825,13 +825,13 @@ input,textarea{font-size:16px!important}
           <div class="daychip">月曜日</div>
           <div class="msg him"><img loading="lazy" decoding="async" class="avatar" src="assets/fr-yui.jpg" width="34" height="34" alt=""><span><div class="gname">ゆい</div><span class="bub">次の飲みいつにする？</span></span></div>
         </div>
-        <div class="line-input"><span style="font-size:19px">＋</span><input id="g-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="g-send">送信</button></div>
+        <div class="line-input"><span style="font-size:19px">＋</span><input id="g-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="g-send" aria-label="送信"><svg width="21" height="21" viewBox="0 0 24 24" fill="#06c755"><path d="M3.4 20.4 21.8 12 3.4 3.6l-.01 6.53L14 12 3.39 13.87z"/></svg></button></div>
       </div>
 <div id="friend-chat" style="display:none;flex:1;flex-direction:column;min-height:0">
 <div class="line-head" style="padding-top:56px"><button class="back" id="f-back" style="border:none;background:none;font-size:19px;cursor:pointer">‹</button><span><span class="t" id="f-name" style="font-size:15.5px;font-weight:800;display:block">ゆい</span><span class="s" id="f-sub" style="font-size:10.5px;color:#8e8e93">幹事担当🍻</span></span></div>
 <div class="chat-scroll" id="fchat"></div>
 <div class="typing" id="f-typing" style="margin:0 12px 8px;display:none"><i></i><i></i><i></i></div>
-<div class="line-input"><span style="font-size:19px">＋</span><input id="f-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="f-send">送信</button></div>
+<div class="line-input"><span style="font-size:19px">＋</span><input id="f-text" placeholder="メッセージを入力" autocomplete="off"><button class="sendbtn" id="f-send" aria-label="送信"><svg width="21" height="21" viewBox="0 0 24 24" fill="#06c755"><path d="M3.4 20.4 21.8 12 3.4 3.6l-.01 6.53L14 12 3.39 13.87z"/></svg></button></div>
 </div>
 <div id="hiroto-prof"><img loading="lazy" decoding="async" class="hp-bg" src="assets/night.jpg" alt=""><button id="hp-close" style="position:absolute;top:52px;left:12px;background:rgba(0,0,0,.45);color:#fff;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer">✕</button><div style="padding:0 20px;margin-top:-42px"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="84" height="84" style="border:3px solid #fff" alt=""><div style="font-size:21px;font-weight:900;margin-top:8px">ひろと</div><div id="hp-status" style="font-size:13px;color:#536471;margin-top:2px">スタジオとレッスンの日々</div><div style="font-size:12.5px;color:#8e8e93;margin-top:10px">🎵 BGM： サウナ帰りのプレイリスト</div><div id="hp-photos" style="display:flex;gap:6px;margin-top:14px"><img loading="lazy" decoding="async" src="assets/ig-meal.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/roses.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"><img loading="lazy" decoding="async" src="assets/insta-post.jpg" style="width:32%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:pointer"></div><div style="display:flex;gap:10px;margin-top:18px"><button id="hp-call" style="flex:1;background:#06c755;color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">📞 無料通話</button><button id="hp-chat" style="flex:1;background:#f2f2f7;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">💬 トーク</button></div><div style="font-size:12px;color:#8e8e93;margin-top:16px;line-height:1.9">ホーム写真：夜の散歩で撮ったやつ<br>※ プロフィールは本人だけが見れる設定…のはず</div></div></div>
 </section>
@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v876</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v877</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v876"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v877"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -14455,7 +14455,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
 #v435-picker.on{display:flex}
 #v435-grid{overflow-y:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:2px}
 #v435-grid img{width:100%;aspect-ratio:1;object-fit:cover;cursor:pointer;display:block}
-#v435-pick-btn{font-size:19px;background:none;border:none;cursor:pointer;padding:0 1px}
+#v435-pick-btn{background:none;border:none;cursor:pointer;padding:6px 5px;display:flex;align-items:center;flex:none}.v877-pill{flex:1;min-width:0;display:flex;align-items:center;background:#f2f2f7;border-radius:999px;padding-right:5px}.v877-icobtn{background:none;border:none;cursor:pointer;padding:6px 5px;display:flex;align-items:center;flex:none}.v877-plus{font-size:26px;font-weight:300;color:#111;line-height:1;padding:2px 5px 4px;cursor:pointer;flex:none}.v877-mic{background:none;border:none;cursor:pointer;padding:6px 7px;display:flex;align-items:center;flex:none}
 </style>
 <script>
 /* ===== v435: photo sending lives inside his LINE chat only.
@@ -30726,6 +30726,108 @@ input,textarea,select{font-size:16px!important}
  }
  new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
  sync();
+})();
+</script>
+
+<script>
+/* ===== v877: nao's three asks.
+   (1) The LINE input bars gain the real app's layout (her screenshot of
+   the real LINE): plus, camera and photo icons at the left, the field as
+   a grey pill with the stamp smiley inside its right end, a mic at the
+   right while the field is empty, and the send as a green paper plane
+   once text exists. The camera icon presses the v793 panel's camera
+   item in his chat (the same sanctioned route to the camera) and opens
+   the camera through its home tile in the other rooms; the photo icon
+   presses the existing v435 album button - in the group and friend
+   rooms it is the real layout's icon with a toast, as those rooms have
+   no photo path. The mic is layout only. v796's typing class drives
+   the mic/plane swap and keeps collapsing the left icons, exactly as
+   it already did with the send button.
+   (2) The shared notebook no longer pushes up over his profile: the
+   LINE view is the panel's positioning context (promoted with
+   will-change so no higher ancestor can steal the anchor), and if any
+   other layer ever parks the panel inside the profile it is moved
+   straight back to the view - the panel covers the view only.
+   (3) Sending a gift flies straight to his talk: his profile closes
+   before the chat opens, so the gift card lands in the talk in view
+   instead of piling up behind the profile. ===== */
+(function(){
+ if(window.__v877) return; window.__v877=1;
+ var CAM='<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3a1.5 1.5 0 0 1 1.5 1.5V18a1.5 1.5 0 0 1-1.5 1.5H4A1.5 1.5 0 0 1 2.5 18V9.5A1.5 1.5 0 0 1 4 8Z"/><circle cx="12" cy="13" r="3.4"/></svg>';
+ var IMG='<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.6" fill="#111" stroke="none"/><path d="M4.5 17.5 10 12l3.5 3.5L17 12l2.5 2.8"/></svg>';
+ var MIC='<svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg>';
+ var css=document.createElement("style");
+ css.textContent=
+  ".v877-mic{display:flex}"+
+  ".line-input.v796-typing .v877-mic{display:none}"+
+  "#line-chat .line-input.v796-typing .v877-icobtn{width:0;padding:0;opacity:0;overflow:hidden}"+
+  ".v877-icobtn{transition:width .16s ease,opacity .16s ease,padding .16s ease}";
+ document.head.appendChild(css);
+ function build(roomSel,withStamp){
+  var room=document.querySelector(roomSel); if(!room) return;
+  var bar=room.querySelector(".line-input"); if(!bar||bar.dataset.v877) return;
+  var inp=bar.querySelector("input"); var send=bar.querySelector(".sendbtn"); if(!inp||!send) return;
+  bar.dataset.v877="1";
+  var plus=bar.querySelector("span"); if(plus) plus.classList.add("v877-plus");
+  var cam=document.createElement("button"); cam.type="button"; cam.className="v877-icobtn v877-cam"; cam.title="カメラ"; cam.innerHTML=CAM;
+  bar.insertBefore(cam, inp);
+  var pill=document.createElement("div"); pill.className="v877-pill";
+  bar.insertBefore(pill, inp); pill.appendChild(inp);
+  if(withStamp){
+   var sb=[].slice.call(bar.querySelectorAll("button")).filter(function(b){ return b.title==="スタンプ"; })[0];
+   if(sb){ sb.style.padding="4px 5px"; pill.appendChild(sb); }
+  }
+  var mic=document.createElement("button"); mic.type="button"; mic.className="v877-mic"; mic.title="ボイス"; mic.innerHTML=MIC;
+  mic.addEventListener("click",function(){ if(window.toast) toast("ボイスメッセージは、まだ送れないよ"); });
+  bar.appendChild(mic);
+  cam.addEventListener("click",function(){
+   if(roomSel==="#line-chat"){
+    var p=document.querySelector("#v793-panel");
+    if(plus&&!(p&&p.classList.contains("on"))) plus.click();
+    setTimeout(function(){
+     var b=document.querySelector('#v793-panel button[data-a="cam"]');
+     if(b) b.click();
+     else if(plus&&p&&p.classList.contains("on")) plus.click();
+    },60);
+   } else {
+    if(typeof show==="function") show("home");
+    setTimeout(function(){ var t=document.querySelector('[data-hp="cam"]'); if(t) t.click(); },80);
+   }
+  });
+ }
+ function boot(){
+  build("#line-chat", true); build("#group-chat", false); build("#friend-chat", false);
+  var pb=document.querySelector("#v435-pick-btn");
+  if(pb&&!pb.dataset.v877){ pb.dataset.v877="1"; pb.innerHTML=IMG; pb.title="写真を送る"; }
+  ["#group-chat","#friend-chat"].forEach(function(sel){
+   var room=document.querySelector(sel); if(!room) return;
+   var bar=room.querySelector(".line-input"); if(!bar||bar.dataset.v877img) return;
+   var cam=bar.querySelector(".v877-cam"); if(!cam) return;
+   bar.dataset.v877img="1";
+   var im=document.createElement("button"); im.type="button"; im.className="v877-icobtn"; im.title="写真"; im.innerHTML=IMG;
+   im.addEventListener("click",function(){ if(window.toast) toast("この部屋では写真は送れないよ"); });
+   bar.insertBefore(im, cam.nextSibling);
+  });
+ }
+ var tries=0;
+ var iv=setInterval(function(){
+  boot();
+  if(document.querySelector("#v435-pick-btn")) clearInterval(iv);
+  else if(++tries>40) clearInterval(iv);
+ },300);
+ boot();
+ document.addEventListener("click",function(e){
+  var gp=e.target&&e.target.closest? e.target.closest(".gift-pick") : null;
+  if(gp){ var prof=document.querySelector("#hiroto-prof"); if(prof) prof.classList.remove("on"); return; }
+  var nb=e.target&&e.target.closest? e.target.closest("#note-btn") : null;
+  if(nb){
+   var prof2=document.querySelector("#hiroto-prof");
+   var vl=document.querySelector("#v-line");
+   var panel=document.querySelector("#note-panel");
+   if(vl&&panel&&panel.parentElement!==vl) vl.appendChild(panel);
+   else if(prof2&&panel&&panel.parentElement===prof2) prof2.removeChild(panel), (vl||document.body).appendChild(panel);
+  }
+ },true);
 })();
 </script>
 </body>
