@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v892</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v893</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v892"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v893"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -32174,6 +32174,76 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
 (function(){
  if(window.__v892) return; window.__v892=true;
  /* CSS-only layer: the marker script only records that v892 is present. */
+})();
+</script>
+
+<style id="v893-css">
+/* ===== v893: LINE chat faces to the real app (manual, user direction) ===== */
+#v-line .chat-scroll{background:#7d9abe}
+#v-line .msg{gap:8px;max-width:84%}
+#v-line .chat-scroll .msg>img.avatar{width:38px!important;height:38px!important}
+#v-line .msg .bub{font-size:15.5px;line-height:1.45;padding:9px 13px;border-radius:19px}
+#v-line .msg.him .bub{border-top-left-radius:6px;border-bottom-left-radius:19px}
+#v-line .msg.me .bub{background:#8cdd68;border-top-right-radius:6px;border-bottom-right-radius:19px}
+#v-line .msg .bub.stamp,#v-line .msg .bub.stk{background:transparent!important}
+#v-line .msg .bub.photo{padding:4px;border-radius:16px}
+#v-line .msg .meta{color:#3e5c82;text-shadow:none;font-size:10.5px}
+#v-line .daychip{background:rgba(0,0,0,.32)}
+#v-line .gname{color:rgba(38,64,96,.85);font-size:11px}
+/* chat room headers: real LINE shows the name only */
+#v-line #line-chat .line-head,#v-line #group-chat .line-head,#v-line #friend-chat .line-head{border-bottom:none}
+#v-line #hiroto-prof-btn img{display:none}
+#v-line #hiroto-prof-btn .s{display:none}
+#v-line #hiroto-prof-btn .t{font-size:17px!important;font-weight:700}
+#v-line #friend-chat .line-head .s{display:none}
+#v-line #friend-chat .line-head .t{font-size:17px!important;font-weight:700}
+#v-line #group-chat .line-head .s{display:none}
+#v-line #group-chat .line-head .t{font-size:17px!important;font-weight:700}
+#v-line .v893-count{color:#8e8e93;font-size:15px;font-weight:400;margin-left:5px}
+#v-line .v893-searchbtn{background:none;border:none;cursor:pointer;display:flex;align-items:center;padding:4px;margin-left:auto}
+#v-line #line-call-btn{margin-left:2px!important;display:flex;align-items:center;padding:4px}
+#v-line.v893-inchat{padding-bottom:0!important}
+#v-line #line-chat .line-input>span.v878-plusmark{order:1}
+#v-line #line-chat .line-input>.v877-cam{order:2}
+#v-line #line-chat .line-input>#v435-pick-btn{order:3}
+#v-line #line-chat .line-input>.v877-pill{order:4}
+#v-line #line-chat .line-input>.v877-mic{order:5}
+#v-line #line-chat .line-input>.sendbtn{order:6}
+#v-line #line-tabbar.v893-hide{display:none!important}
+</style>
+<script>
+(function(){
+ if(window.__v893) return; window.__v893=true;
+ var CHEV='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>';
+ var PHONE='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>';
+ var MAG='<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>';
+ var CHATB='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg>';
+ function swapBack(sel){
+   var b=document.querySelector(sel);
+   if(b && !b.dataset.v893){ b.dataset.v893="1"; b.innerHTML=CHEV; b.style.display="flex"; b.style.alignItems="center"; }
+ }
+ function boot(){
+   swapBack("#line-back"); swapBack("#group-back"); swapBack("#f-back"); swapBack("#line-head-list .back");
+   var call=document.getElementById("line-call-btn");
+   if(call && !call.dataset.v893){ call.dataset.v893="1"; call.innerHTML=PHONE; }
+   var gt=document.querySelector("#group-chat .line-head .t");
+   if(gt && !gt.querySelector(".v893-count")){ var s=document.createElement("span"); s.className="v893-count"; s.textContent="4"; gt.appendChild(s); }
+   var hc=document.getElementById("hp-call");
+   if(hc && !hc.dataset.v893){ hc.dataset.v893="1"; hc.innerHTML=PHONE.replace('width="21" height="21"','width="16" height="16"')+" 無料通話"; hc.style.display="flex"; hc.style.alignItems="center"; hc.style.justifyContent="center"; hc.style.gap="6px"; }
+   var ht=document.getElementById("hp-chat");
+   if(ht && !ht.dataset.v893){ ht.dataset.v893="1"; ht.innerHTML=CHATB+" トーク"; ht.style.display="flex"; ht.style.alignItems="center"; ht.style.justifyContent="center"; ht.style.gap="6px"; }
+ }
+ boot();
+ var tries=0; var iv=setInterval(function(){ boot(); if(++tries>20) clearInterval(iv); },500);
+ /* real LINE hides the tab bar inside a chat room */
+ setInterval(function(){
+   var inChat=["#line-chat","#group-chat","#friend-chat"].some(function(sel){ var e=document.querySelector(sel); return e && e.style.display==="flex"; });
+   var vl=document.getElementById("v-line");
+   if(vl && vl.dataset.v893p!==String(inChat)){ vl.dataset.v893p=String(inChat); vl.classList.toggle("v893-inchat", inChat); }
+   var bar=document.getElementById("line-tabbar"); if(!bar) return;
+   var want=inChat?"1":"0";
+   if(bar.dataset.v893h!==want){ bar.dataset.v893h=want; bar.classList.toggle("v893-hide", inChat); }
+ },300);
 })();
 </script>
 
