@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v882</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v883</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v882"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v883"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -31245,6 +31245,205 @@ input,textarea,select{font-size:16px!important}
    if(ig && ig.classList.contains("on")) tryLeak();
   }catch(e){}
  },700);
+})();
+</script>
+<script>
+/* ===== v883: X sub-account gains the Taunt Post Studio
+(category B, new feature + aori strengthening). A whole new
+screen inside the X app: a violet-black entry banner at the
+top of the home timeline pane and the nao_ura sub-profile
+pane opens a full panel where, once the scandal is hot (the
+exact v726 gate: phase scandal, heat>0, or the sub-account
+public), she posts taunts FROM the sub-account nao_ura
+itself - three topics (the locked-account peepers, the
+reporters / deletion-requesters, the stop-thinking-about-
+him crowd) with two phrasings each, six posts written at
+the v726 standard (peeking then complaining, reporting is
+useless, thanks for spreading it, you are all my PR team).
+This is the posting side, distinct from v880's reply center
+on the main account. Every post she fires lands as a
+nao_ura post at the top of the panel feed followed by a
+linked wave of four reactions (screenshot squads saving
+everything, matome speed reports tracking the climb,
+furious fans, supporters, a bystander, a failed reporter)
+while the counters all move with it: posts x/6, the trend
+rank climbing from off-chart through 28 / 14 / 7 / 3 / 2
+to #1, sub-account follower gain and the screenshot spread
+count. Used phrasings lock per topic, and firing all six
+lands a finale card (nao_ura trending at #1, the sub
+outgrowing the main). Before the scandal is hot the same
+panel opens to a quiet locked face instead. Everything is
+event-driven; the entry injection is an existence-guarded
+interval like v880 (the sub-profile pane is rebuilt by
+v725, so the banner is re-seated when missing), no global
+story state, flag, gate, heat or save field is touched,
+and no protected line is edited. SMS untouched per nao's
+move-on instruction, pull-to-refresh and the small-gesture
+expansions skipped per the 06:52 exclusion; the 09:48
+rotation returns to category A (a remaining big screen)
+next run. Playwright-verified (see
+hidden_files/v883-probe.py) ===== */
+(function(){
+if(window.__v883) return; window.__v883=1;
+var css=document.createElement("style");
+css.textContent=
+".v883-entry{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:15px 16px;border:none;border-radius:16px;background:linear-gradient(120deg,#0b0614,#2a1150 60%,#5b21b6);color:#fff;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(20,8,50,.32)}"+
+".v883-entry.tt{font-size:16.5px;font-weight:900;letter-spacing:.02em}"+
+".v883-entry.ts{font-size:12px;font-weight:600;color:rgba(255,255,255,.84);margin-top:3px;line-height:1.6}"+
+".v883-entry.arr{margin-left:auto;font-size:22px;font-weight:900;color:#c4a6ff;flex:none}"+
+"#v883-panel{position:absolute;inset:0;background:#000;color:#fff;z-index:241;display:none;flex-direction:column;padding:60px 0 0;box-sizing:border-box}"+
+"#v883-panel.hd{display:flex;align-items:center;gap:12px;padding:10px 16px 12px;border-bottom:1px solid #2f3336}"+
+"#v883-panel.bk{background:rgba(255,255,255,.10);border:1px solid #2f3336;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer;flex:none}"+
+"#v883-panel.tt{font-size:19px;font-weight:900}"+
+"#v883-panel.ts{font-size:11.5px;color:#71767b;margin-top:2px}"+
+"#v883-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 15px 30px}"+
+".v883-meter{background:linear-gradient(120deg,#150a2a,#22103f);border:1px solid #3b2a5e;border-radius:18px;padding:14px 15px;margin-bottom:14px}"+
+".v883-meter.row{display:flex;gap:10px}"+
+".v883-meter.cell{flex:1;text-align:center}"+
+".v883-meter.num{font-size:19px;font-weight:900;color:#fff}"+
+".v883-meter.lab{font-size:10.5px;color:#a68fd0;margin-top:2px;font-weight:700}"+
+".v883-rank{display:flex;align-items:center;gap:10px;margin-top:12px}"+
+".v883-rank.rlab{font-size:11px;color:#a68fd0;font-weight:800;letter-spacing:.08em;flex:none}"+
+".v883-bar{flex:1;height:9px;border-radius:99px;background:#33224f;overflow:hidden}"+
+".v883-bar i{display:block;height:100%;width:6%;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#ec4899);transition:width.7s ease}"+
+".v883-rank.rnum{font-size:15px;font-weight:900;color:#e9d5ff;flex:none;min-width:44px;text-align:right}"+
+".v883-sec{font-size:13px;font-weight:900;color:#c4a6ff;letter-spacing:.14em;margin:16px 2px 9px}"+
+".v883-tgt{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:11px}"+
+".v883-tgt.who{font-size:13.5px;font-weight:800;color:#fff}"+
+".v883-tgt.who span{color:#a68fd0;font-weight:700;font-size:11.5px}"+
+".v883-tgt.tx{font-size:13.5px;line-height:1.75;color:#e7e9ea;margin-top:5px}"+
+".v883-tgt.btns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}"+
+".v883-tgt.btns button{flex:1;min-width:130px;padding:9px 6px;border-radius:999px;border:1px solid #8b5cf6;background:rgba(139,92,246,.14);color:#c4a6ff;font-size:12.5px;font-weight:800;cursor:pointer}"+
+".v883-tgt.btns button.used{background:#2f3336;border-color:#2f3336;color:#71767b;cursor:default}"+
+".v883-wave{margin-bottom:16px}"+
+".v883-wave.wlab{font-size:12px;font-weight:900;color:#f0abfc;letter-spacing:.1em;margin:4px 2px 8px}"+
+".v883-post{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:9px}"+
+".v883-post.her{border-color:#8b5cf6;background:linear-gradient(180deg,rgba(139,92,246,.16),#16181c)}"+
+".v883-post.who{font-size:13.5px;font-weight:800}"+
+".v883-post.who span{color:#71767b;font-weight:500;font-size:12px}"+
+".v883-post.tx{font-size:13.5px;line-height:1.8;color:#e7e9ea;margin-top:5px;white-space:pre-wrap}"+
+".v883-post.mt{font-size:12px;color:#71767b;margin-top:9px;display:flex;gap:16px}"+
+".v883-lock{background:#16181c;border:1px solid #2f3336;border-radius:18px;padding:26px 20px;text-align:center;color:#aab8c2;font-size:13.5px;line-height:2}"+
+".v883-lock b{color:#fff;font-size:16px}"+
+".v883-fin{background:linear-gradient(120deg,#7c3aed,#ec4899);border-radius:18px;padding:18px;text-align:center;color:#fff;margin-bottom:16px;box-shadow:0 12px 26px rgba(139,92,246,.38)}"+
+".v883-fin.big{font-size:19px;font-weight:900}"+
+".v883-fin.sm{font-size:12.5px;font-weight:700;margin-top:5px;line-height:1.8}";
+document.head.appendChild(css);
+function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 ||!!state._subPublic);}catch(e){ return false;}}
+var TOPICS=[
+{n:"鍵垢を覗いた人たちへ",tag:"TOPIC 1",tx:"鍵をかけてた頃から覗きに来て、今は公開された途端に文句。あの人たちに一言打ちたい。"},
+{n:"通報・削除依頼の人たちへ",tag:"TOPIC 2",tx:"通報も削除依頼DMも止まらない。仕組みごと煽り返すなら今。"},
+{n:"「推しのこと考えろ」の人たちへ",tag:"TOPIC 3",tx:"一番言われるこの一言。選ばれた側から返してやる。"}
+];
+var POSTS=[
+["鍵かけてたのに覗きに来て文句言うの、順番おかしくない？ 見たくて来たのはそっち。スクショまで撮って保存してる時点で、もう立派なファンだよ",
+"鍵垢のスクショ、拡散してくれてありがとう。こっちは消す気ないし、隠す気もなくなった。次からは堂々と見に来てね、フォロー申請はいらないから"],
+["通報しても無駄だよ、何回も試した人いるでしょ？ 消えないの分かってて続けるの、応援と何が違うの。おかげでインプレッションだけ伸びてる",
+"削除依頼のDM、全部読んでる。返事はしないけど。怒れば怒るほどおすすめに載る仕組み、分かってやってる？ 私の宣伝部長さんたち、今日もご苦労さま"],
+["「推しのこと考えろ」って、私が一番考えてるに決まってるじゃん。選ばれた側の景色、見たことない人には分からないよね。悔しいのは分かるよ",
+"やめる気ないって何回言えば分かるの。騒げば騒ぐほど二人の話は大きくなるだけ。静かにしてた方が、そっちの望む結果に近かったのにね"]
+];
+var LABELS=["文句言うな、と打つ","拡散に感謝して打つ","通報は無駄、と打つ","宣伝部長と煽る","選ばれた側から打つ","開き直って打つ"];
+var REACT=[
+{n:"スクショ班",h:"@sukusho_han",tx:"保存完了。鍵じゃなくなった途端これかよ、供給が止まらない"},
+{n:"まとめ速報",h:"@matome_soku",tx:"nao_ura、新規ポスト → トレンド順位が急上昇中"},
+{n:"特定班",h:"@tokutei_jp",tx:"投稿ペース上がってる。本人が一番楽しんでる説が濃厚"},
+{n:"hiroto_honmei",h:"@hiroto_honmei",tx:"わざわざサブ垢で挑発しないで…推しの名前がまたトレンドに載ってる"},
+{n:"なおの味方",h:"@nao_mikata",tx:"鍵垢時代より今の方が好き。言いたいこと言えるの強い"},
+{n:"野次馬の人",h:"@yajiuma_jp",tx:"サブ垢が本垢より伸びてるの草。フォロワー逆転しそう"},
+{n:"通報済みの人",h:"@tsuho_shita",tx:"通報したのにフォロワー増えてるの何なの…"},
+{n:"週刊デジタル",h:"@shukan_digi",tx:"nao_uraの挑発ポストがトレンド入り。本人の開き直りが火に油"}
+];
+var RANKS=["圏外","28位","14位","7位","3位","2位","1位"];
+var rounds=0, used={}, fol=0, shots=412, feedEl=null, built=false;
+function fmt(n){ return n.toLocaleString("ja-JP");}
+function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function buildPanel(){
+if(built) return; built=true;
+var vx=document.querySelector("#v-x"); if(!vx) return;
+var panel=document.createElement("div"); panel.id="v883-panel";
+panel.innerHTML=
+'<div class="hd"><button class="bk" id="v883-back">‹</button><div><div class="tt">サブ垢あおり投稿局</div><div class="ts">nao_ura から挑発ポストを打つ — 炎上中のX</div></div></div>'+
+'<div id="v883-scroll"></div>';
+vx.appendChild(panel);
+panel.querySelector("#v883-back").addEventListener("click",function(){ panel.style.display="none";});
+}
+function meterHTML(){
+var pct=Math.round((6+rounds*16)/1);
+if(pct>100) pct=100;
+return '<div class="v883-meter"><div class="row">'+
+'<div class="cell"><div class="num" id="v883-cnt">'+rounds+' / 6</div><div class="lab">投稿したポスト</div></div>'+
+'<div class="cell"><div class="num" id="v883-fol">+'+fmt(fol)+'</div><div class="lab">サブ垢フォロワー増</div></div>'+
+'<div class="cell"><div class="num" id="v883-shots">'+fmt(shots)+'</div><div class="lab">スクショ拡散数</div></div></div>'+
+'<div class="v883-rank"><span class="rlab">トレンド順位</span><span class="v883-bar"><i id="v883-buzz" style="width:'+pct+'%"></i></span><span class="rnum" id="v883-rank">'+RANKS[rounds]+'</span></div></div>';
+}
+function render(){
+buildPanel();
+var panel=document.querySelector("#v883-panel"); if(!panel) return;
+var sc=panel.querySelector("#v883-scroll"); if(!sc) return;
+if(!hot()){
+sc.innerHTML='<div class="v883-lock"><b>サブ垢はまだ静かです</b><br>炎上が始まって nao_ura が表に出てくると、<br>ここから挑発ポストを打てるようになります。</div>';
+feedEl=null; return;
+}
+var h=meterHTML();
+h+='<div class="v883-sec">— どの話題で打つ？ —</div>';
+TOPICS.forEach(function(t,ti){
+h+='<div class="v883-tgt" data-ti="'+ti+'"><div class="who">'+esc(t.n)+' <span>'+esc(t.tag)+'</span></div><div class="tx">'+esc(t.tx)+'</div><div class="btns">';
+POSTS[ti].forEach(function(tx,si){
+var u=used[ti+"-"+si];
+h+='<button data-v883-fire="'+ti+':'+si+'" class="'+(u?"used":"")+'">'+(u?"投稿済み":LABELS[ti*2+si])+'</button>';
+});
+h+='</div></div>';
+});
+h+='<div class="v883-sec">— nao_ura の投稿と世間の反応 —</div><div id="v883-feed"></div>';
+sc.innerHTML=h;
+feedEl=sc.querySelector("#v883-feed");
+var btns=sc.querySelectorAll("[data-v883-fire]");
+for(var i=0;i<btns.length;i++){ btns[i].addEventListener("click",function(){ var p=this.getAttribute("data-v883-fire").split(":"); fire(+p[0],+p[1],this);});}
+}
+function postCard(cls,who,handle,tx,metrics){
+var d=document.createElement("div"); d.className="v883-post "+cls;
+d.innerHTML='<div class="who">'+esc(who)+' <span>'+esc(handle)+' ・ 今</span></div><div class="tx">'+esc(tx)+'</div>'+
+'<div class="mt"><span>💬 '+metrics[0]+'</span><span>🔁 '+metrics[1]+'</span><span>❤️ '+metrics[2]+'</span></div>';
+return d;
+}
+function fire(ti,si,btn){
+var key=ti+"-"+si; if(used[key]) return; used[key]=1; rounds++;
+fol+= 2340 + rounds*780 + si*460; shots+= 1900 + rounds*1150 + ti*370;
+var wave=document.createElement("div"); wave.className="v883-wave";
+var lab=document.createElement("div"); lab.className="wlab"; lab.textContent="— 投稿 "+rounds+" 本目 ・ トレンド"+RANKS[rounds]+" —"; wave.appendChild(lab);
+wave.appendChild(postCard("her","nao_ura","@nao_ura",POSTS[ti][si],[fmt(380+rounds*840),fmt(2900+rounds*2600),fmt(8600+rounds*6900)]));
+for(var k=0;k<4;k++){
+var r=REACT[(rounds*3+k+ti)%REACT.length];
+wave.appendChild(postCard("",r.n,r.h,r.tx,[fmt(88+rounds*129+k*37),fmt(390+rounds*640+k*110),fmt(1300+rounds*1750+k*230)]));
+}
+if(feedEl) feedEl.insertBefore(wave,feedEl.firstChild);
+if(btn){ btn.classList.add("used"); btn.textContent="投稿済み";}
+var panel=document.querySelector("#v883-panel");
+var cEl=panel.querySelector("#v883-cnt"); if(cEl) cEl.textContent=rounds+" / 6";
+var fEl=panel.querySelector("#v883-fol"); if(fEl) fEl.textContent="+"+fmt(fol);
+var sEl=panel.querySelector("#v883-shots"); if(sEl) sEl.textContent=fmt(shots);
+var rEl=panel.querySelector("#v883-rank"); if(rEl) rEl.textContent=RANKS[rounds];
+var bz=panel.querySelector("#v883-buzz"); if(bz) bz.style.width=Math.min(100,6+rounds*16)+"%";
+if(rounds>=6 &&!panel.querySelector(".v883-fin")){
+var fin=document.createElement("div"); fin.className="v883-fin";
+fin.innerHTML='<div class="big">nao_ura、トレンド1位</div><div class="sm">6本全部打った。まとめ速報が「サブ垢が本垢を超えた」と速報 —<br>鍵を覗いた人、通報した人、怒った人、全員が宣伝部長だった</div>';
+var sc2=panel.querySelector("#v883-scroll"); if(sc2) sc2.insertBefore(fin,sc2.firstChild);
+}
+try{ if(typeof push==="function") push("X","#000","𝕏","nao_ura がトレンドで伸びています","あなたのサブ垢の挑発ポストが拡散されています",function(){ window.__v883open();});}catch(e){}
+}
+window.__v883open=function(){ buildPanel(); var panel=document.querySelector("#v883-panel"); if(!panel) return; render(); panel.style.display="flex"; var sc=panel.querySelector("#v883-scroll"); if(sc) sc.scrollTop=0;};
+function inject(){
+["#x-pane-tl","#x-pane-subprof"].forEach(function(q){
+var pane=document.querySelector(q); if(!pane) return;
+if(pane.querySelector(".v883-entry")) return;
+var b=document.createElement("button"); b.className="v883-entry"; b.type="button";
+b.innerHTML='<span><span class="tt">サブ垢あおり投稿局</span><div class="ts">nao_uraから挑発ポストを打って、トレンド1位を狙う新機能</div></span><span class="arr">›</span>';
+b.addEventListener("click",function(){ window.__v883open();});
+pane.insertBefore(b,pane.firstChild);
+});
+}
+setInterval(inject,1200); inject();
 })();
 </script>
 </body>
