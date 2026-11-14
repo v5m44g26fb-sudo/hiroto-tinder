@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v883</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v884</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v883"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v884"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21305,22 +21305,29 @@ try{
  var pane=document.createElement("div"); pane.id="x-pane-subprof"; pane.style.display="none";
  var scroll=$("#x-scroll"); if(scroll) scroll.appendChild(pane);
  var LEAKS=[
-  {img:"assets/scar-sofa.jpg", t:"『本垢に載せない』って書いたのに、結局みんな見に来るじゃん。…で、保存した？ 笑", tm:"3時間前", m:["842","12,408","48,203"], imp:"312"},
-  {img:"assets/scar-kiss2.jpg", t:"キス寸前で止まると思った？ この先は渡さないよ。ふたりだけのやつだから。悔しい？", tm:"3時間前", m:["1,204","18,930","61,447"], imp:"428"},
-  {img:"assets/scar-car.jpg", t:"車で迎えに来る関係を『ただのファン』って言い張るの、そろそろ無理ない？", tm:"2時間前", m:["693","9,812","35,209"], imp:"256"},
-  {img:"assets/scar-first.jpg", t:"出会った日の夜からこれだもん。隠しててもバレるに決まってるわ", tm:"1時間前", m:["512","7,340","28,955"], imp:"198"}
+  {img:"assets/scar-sofa.jpg", t:"のせ忘れてたやつ。この日ずっと笑ってた", tm:"10月25日", m:["842","12,408","48,203"], imp:"312"},
+  {img:"assets/scar-kiss2.jpg", t:"お気に入りの一枚。ここにだけ", tm:"10月11日", m:["1,204","18,930","61,447"], imp:"428"},
+  {img:"assets/scar-car.jpg", t:"迎えに来てくれた日。ありがとうって言いそびれた", tm:"10月4日", m:["693","9,812","35,209"], imp:"256"},
+  {img:"assets/scar-first.jpg", t:"最初の日の夜。緊張してたの、バレてたかな", tm:"9月28日", m:["512","7,340","28,955"], imp:"198"}
  ];
  var TAUNTS=[
-  {t:"鍵垢を覗きに来て文句言うの、順番おかしくない？ 見たのはそっち、保存したのもそっち。文句だけこっちに来るの、都合よすぎない？", tm:"4時間前", m:["2,318","9,540","31,208"], imp:"187"},
-  {t:"通報祭りおつかれさま。何回押しても無駄だよ。消したところで、もう全員の保存フォルダの中だし、拡散してくれた分だけ増えてるから", tm:"4時間前", m:["1,864","7,203","26,540"], imp:"154"},
-  {t:"『推しが可哀想』って言いながら一番拡散してる人、自分のこと棚に上げすぎじゃない？ 拡散ありがとう、って言っとくね", tm:"3時間前", m:["3,102","11,870","40,311"], imp:"233"},
-  {t:"文句があるなら、こっそり覗いてないで本人に言いなよ。鍵垢から石投げてるうちは、何も変わらないよ。ここは写真の置き場、それだけ", tm:"2時間前", m:["1,455","6,120","22,908"], imp:"139"}
+  {t:"心配してくれた人、ありがとうございます。私は元気です。騒がせてごめんなさい", tm:"3時間前", m:["2,318","9,540","31,208"], imp:"187"},
+  {t:"今日は普通に起きて、普通にごはん食べた。それで十分な日もある", tm:"2時間前", m:["1,864","7,203","26,540"], imp:"154"},
+  {t:"ここは元々、ふたりの記録用でした。それだけです", tm:"1時間前", m:["3,102","11,870","40,311"], imp:"233"}
+ ];
+ var PRE=[
+  {t:"今日のカフェオレ、濃いめで当たりだった。いい日", tm:"10月26日", m:["3","12","48"], imp:"2"},
+  {t:"帰り道、並んで歩くだけで楽しいのなんでなんやろ", tm:"10月19日", m:["2","9","41"], imp:"2"},
+  {t:"プリン2個買って、1個あげた。ほんとは両方食べたかった", tm:"10月12日", m:["4","15","63"], imp:"3"},
+  {t:"マロンに会いたい。写真だけ永遠に見てる", tm:"10月5日", m:["3","11","52"], imp:"2"},
+  {t:"昨日のこと、まだちょっと夢みたい。ここにだけ書いとく", tm:"9月29日", m:["2","8","37"], imp:"1"},
+  {t:"新しい置き場つくった。本垢に載せないやつ用", tm:"9月27日", m:["1","4","19"], imp:"1"}
  ];
  var REPLIES=[
-  {to:"@hiroto_honmei", t:"鍵垢から長文で説教してくるの、届いてないと思ってる？ 全部読んでるよ。…で、その写真、見たんだよね？", tm:"3時間前", m:["964","3,208","11,540"], imp:"98"},
-  {to:"@tsuho_matsuri", t:"通報したってスクショは消えないよ。拡散した分だけ、もう戻れないんだから", tm:"3時間前", m:["1,208","4,516","15,903"], imp:"121"},
-  {to:"@oshi_ga_kawaiso", t:"『推しが可哀想』を何回も連投してるけど、その推しの写真を一番拡散してるの、そっち側じゃない？", tm:"2時間前", m:["1,577","5,940","19,377"], imp:"146"},
-  {to:"@miterudake_jan", t:"ブロックするなら最初から見なきゃいいのに。わざわざ検索して、プロフィールまで来てるじゃん", tm:"1時間前", m:["842","2,764","9,812"], imp:"87"}
+  {to:"@yui_s", t:"そのリップ、今度つけてるとこ見せて。絶対似合うやつ", tm:"10月24日", m:["1","3","14"], imp:"1"},
+  {to:"@misaki_s2", t:"サウナ3セットは強い。私は2セットで限界やった", tm:"10月20日", m:["2","5","21"], imp:"1"},
+  {to:"@rina_s", t:"海老天丼いいなあ。今度連れてって", tm:"10月15日", m:["1","4","17"], imp:"1"},
+  {to:"@sauna_m", t:"整った日のカフェオレ、ほんまに優勝やと思う", tm:"10月8日", m:["2","6","25"], imp:"2"}
  ];
  var MEDIA=["assets/scar-sofa.jpg","assets/scar-kiss2.jpg","assets/scar-car.jpg","assets/scar-nose.jpg","assets/scar-first.jpg","assets/scar-bed.jpg"];
  var curTab="posts", lastPub=null, lastFol=null;
@@ -21366,10 +21373,11 @@ try{
     pinLab.style.cssText="display:flex;align-items:center;gap:6px;padding:10px 14px 0 44px;color:#536471;font-size:12.5px;font-weight:700";
     pinLab.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="#536471"><path d="M16 3a1 1 0 0 1 1 1v5.2l2.3 3.4a1 1 0 0 1-.83 1.55H13v6.35l-2 2-2-2v-6.35H5.53A1 1 0 0 1 4.7 12.6L7 9.2V4a1 1 0 0 1 1-1h8z"/></svg>固定されたポスト';
     pinWrap.appendChild(pinLab);
-    pinWrap.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:"5時間前", t:"覗きに来た人へ。鍵垢のまま文句言うのはナシね。見たなら見た、保存したならしたって、表で言えば？ 通報しても無駄だよ、スクショはもう全員のフォルダの中だし。ここは逃げも隠れもしないし、消しもしないから", m:["4,102","15,330","52,418"], imp:"386"}, true));
+    pinWrap.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:"5時間前", t:"ここは、ふたりの日常の置き場でした。特別なことは何もないです。心配してくれた人、ありがとうございます", m:["4,102","15,330","52,418"], imp:"386"}, true));
     box.appendChild(pinWrap);
     TAUNTS.forEach(function(T){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:T.tm, t:T.t, m:T.m, imp:T.imp}, true)); });
     LEAKS.forEach(function(L){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:L.tm, t:L.t, m:L.m, imp:L.imp, q:{n:"サブ垢", h:"@nao_ura ・ Instagram", t:"本垢に載せない写真の置き場", img:L.img}}, true)); });
+    PRE.forEach(function(P){ box.appendChild(postEl({n:"nao_ura", h:"@nao_ura", tm:P.tm, t:P.t, m:P.m, imp:P.imp}, true)); });
    }
   }
   if(pub && curTab==="replies"){
@@ -22930,9 +22938,9 @@ if(window.__v751) return; window.__v751=true;
 var $=function(s){return document.querySelector(s);};
 var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
 var HL=[
- {tm:"5時間前", t:"覗きに来た人へ。鍵垢のまま文句言うのはナシね。見たなら見た、保存したならしたって、表で言えば？ 通報しても無駄だよ、スクショはもう全員のフォルダの中だし。ここは逃げも隠れもしないし、消しもしないから", m:["4,102","15,330","52,418"], imp:"386"},
- {tm:"4時間前", t:"鍵垢を覗きに来て文句言うの、順番おかしくない？ 見たのはそっち、保存したのもそっち。文句だけこっちに来るの、都合よすぎない？", m:["2,318","9,540","31,208"], imp:"187"},
- {tm:"4時間前", t:"通報祭りおつかれさま。何回押しても無駄だよ。消したところで、もう全員の保存フォルダの中だし、拡散してくれた分だけ増えてるから", m:["1,864","7,203","26,540"], imp:"154"}
+ {tm:"5時間前", t:"ここは、ふたりの日常の置き場でした。特別なことは何もないです。心配してくれた人、ありがとうございます", m:["4,102","15,330","52,418"], imp:"386"},
+ {tm:"3時間前", t:"心配してくれた人、ありがとうございます。私は元気です。騒がせてごめんなさい", m:["2,318","9,540","31,208"], imp:"187"},
+ {tm:"10月19日", t:"帰り道、並んで歩くだけで楽しいのなんでなんやろ", m:["2","9","41"], imp:"2"}
 ];
 function hlBox(){
  var box=document.getElementById("v751-highlights");
@@ -31248,204 +31256,192 @@ input,textarea,select{font-size:16px!important}
 })();
 </script>
 <script>
-/* ===== v883: X sub-account gains the Taunt Post Studio
-(category B, new feature + aori strengthening). A whole new
-screen inside the X app: a violet-black entry banner at the
-top of the home timeline pane and the nao_ura sub-profile
-pane opens a full panel where, once the scandal is hot (the
-exact v726 gate: phase scandal, heat>0, or the sub-account
-public), she posts taunts FROM the sub-account nao_ura
-itself - three topics (the locked-account peepers, the
-reporters / deletion-requesters, the stop-thinking-about-
-him crowd) with two phrasings each, six posts written at
-the v726 standard (peeking then complaining, reporting is
-useless, thanks for spreading it, you are all my PR team).
-This is the posting side, distinct from v880's reply center
-on the main account. Every post she fires lands as a
-nao_ura post at the top of the panel feed followed by a
-linked wave of four reactions (screenshot squads saving
-everything, matome speed reports tracking the climb,
-furious fans, supporters, a bystander, a failed reporter)
-while the counters all move with it: posts x/6, the trend
-rank climbing from off-chart through 28 / 14 / 7 / 3 / 2
-to #1, sub-account follower gain and the screenshot spread
-count. Used phrasings lock per topic, and firing all six
-lands a finale card (nao_ura trending at #1, the sub
-outgrowing the main). Before the scandal is hot the same
-panel opens to a quiet locked face instead. Everything is
-event-driven; the entry injection is an existence-guarded
-interval like v880 (the sub-profile pane is rebuilt by
-v725, so the banner is re-seated when missing), no global
-story state, flag, gate, heat or save field is touched,
-and no protected line is edited. SMS untouched per nao's
-move-on instruction, pull-to-refresh and the small-gesture
-expansions skipped per the 06:52 exclusion; the 09:48
-rotation returns to category A (a remaining big screen)
-next run. Playwright-verified (see
-hidden_files/v883-probe.py) ===== */
+/* ===== v884: every X post gets replies written for THAT post, the
+   sub-account turns realistic, and the v883 Taunt Post Studio is
+   removed (nao, 2026-11-14: the taunting is too much - take all of
+   it out and put realistic posts in).
+nao's call: the detail view's replies were topic buckets plus a
+keyword-stitching fallback, so unrelated comments landed on posts.
+This layer carries an exact-match table keyed on each post's own
+text - every fixed post in the game (timeline, following, search,
+his profile, her profile, the sub-account's posts and replies, the
+mention pools, the scandal waves) has three replies written for its
+actual content - and swaps them into the detail view as it renders.
+It also bridges his-profile / sub-account / bookmark posts into the
+detail view (they were dead taps), restoring the profile afterwards.
+The engine underneath is untouched; unmatched (free-typed) posts
+keep the old behaviour. ===== */
 (function(){
-if(window.__v883) return; window.__v883=1;
-var css=document.createElement("style");
-css.textContent=
-".v883-entry{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:15px 16px;border:none;border-radius:16px;background:linear-gradient(120deg,#0b0614,#2a1150 60%,#5b21b6);color:#fff;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(20,8,50,.32)}"+
-".v883-entry.tt{font-size:16.5px;font-weight:900;letter-spacing:.02em}"+
-".v883-entry.ts{font-size:12px;font-weight:600;color:rgba(255,255,255,.84);margin-top:3px;line-height:1.6}"+
-".v883-entry.arr{margin-left:auto;font-size:22px;font-weight:900;color:#c4a6ff;flex:none}"+
-"#v883-panel{position:absolute;inset:0;background:#000;color:#fff;z-index:241;display:none;flex-direction:column;padding:60px 0 0;box-sizing:border-box}"+
-"#v883-panel.hd{display:flex;align-items:center;gap:12px;padding:10px 16px 12px;border-bottom:1px solid #2f3336}"+
-"#v883-panel.bk{background:rgba(255,255,255,.10);border:1px solid #2f3336;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer;flex:none}"+
-"#v883-panel.tt{font-size:19px;font-weight:900}"+
-"#v883-panel.ts{font-size:11.5px;color:#71767b;margin-top:2px}"+
-"#v883-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 15px 30px}"+
-".v883-meter{background:linear-gradient(120deg,#150a2a,#22103f);border:1px solid #3b2a5e;border-radius:18px;padding:14px 15px;margin-bottom:14px}"+
-".v883-meter.row{display:flex;gap:10px}"+
-".v883-meter.cell{flex:1;text-align:center}"+
-".v883-meter.num{font-size:19px;font-weight:900;color:#fff}"+
-".v883-meter.lab{font-size:10.5px;color:#a68fd0;margin-top:2px;font-weight:700}"+
-".v883-rank{display:flex;align-items:center;gap:10px;margin-top:12px}"+
-".v883-rank.rlab{font-size:11px;color:#a68fd0;font-weight:800;letter-spacing:.08em;flex:none}"+
-".v883-bar{flex:1;height:9px;border-radius:99px;background:#33224f;overflow:hidden}"+
-".v883-bar i{display:block;height:100%;width:6%;border-radius:99px;background:linear-gradient(90deg,#8b5cf6,#ec4899);transition:width.7s ease}"+
-".v883-rank.rnum{font-size:15px;font-weight:900;color:#e9d5ff;flex:none;min-width:44px;text-align:right}"+
-".v883-sec{font-size:13px;font-weight:900;color:#c4a6ff;letter-spacing:.14em;margin:16px 2px 9px}"+
-".v883-tgt{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:11px}"+
-".v883-tgt.who{font-size:13.5px;font-weight:800;color:#fff}"+
-".v883-tgt.who span{color:#a68fd0;font-weight:700;font-size:11.5px}"+
-".v883-tgt.tx{font-size:13.5px;line-height:1.75;color:#e7e9ea;margin-top:5px}"+
-".v883-tgt.btns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}"+
-".v883-tgt.btns button{flex:1;min-width:130px;padding:9px 6px;border-radius:999px;border:1px solid #8b5cf6;background:rgba(139,92,246,.14);color:#c4a6ff;font-size:12.5px;font-weight:800;cursor:pointer}"+
-".v883-tgt.btns button.used{background:#2f3336;border-color:#2f3336;color:#71767b;cursor:default}"+
-".v883-wave{margin-bottom:16px}"+
-".v883-wave.wlab{font-size:12px;font-weight:900;color:#f0abfc;letter-spacing:.1em;margin:4px 2px 8px}"+
-".v883-post{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:9px}"+
-".v883-post.her{border-color:#8b5cf6;background:linear-gradient(180deg,rgba(139,92,246,.16),#16181c)}"+
-".v883-post.who{font-size:13.5px;font-weight:800}"+
-".v883-post.who span{color:#71767b;font-weight:500;font-size:12px}"+
-".v883-post.tx{font-size:13.5px;line-height:1.8;color:#e7e9ea;margin-top:5px;white-space:pre-wrap}"+
-".v883-post.mt{font-size:12px;color:#71767b;margin-top:9px;display:flex;gap:16px}"+
-".v883-lock{background:#16181c;border:1px solid #2f3336;border-radius:18px;padding:26px 20px;text-align:center;color:#aab8c2;font-size:13.5px;line-height:2}"+
-".v883-lock b{color:#fff;font-size:16px}"+
-".v883-fin{background:linear-gradient(120deg,#7c3aed,#ec4899);border-radius:18px;padding:18px;text-align:center;color:#fff;margin-bottom:16px;box-shadow:0 12px 26px rgba(139,92,246,.38)}"+
-".v883-fin.big{font-size:19px;font-weight:900}"+
-".v883-fin.sm{font-size:12.5px;font-weight:700;margin-top:5px;line-height:1.8}";
-document.head.appendChild(css);
-function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 ||!!state._subPublic);}catch(e){ return false;}}
-var TOPICS=[
-{n:"鍵垢を覗いた人たちへ",tag:"TOPIC 1",tx:"鍵をかけてた頃から覗きに来て、今は公開された途端に文句。あの人たちに一言打ちたい。"},
-{n:"通報・削除依頼の人たちへ",tag:"TOPIC 2",tx:"通報も削除依頼DMも止まらない。仕組みごと煽り返すなら今。"},
-{n:"「推しのこと考えろ」の人たちへ",tag:"TOPIC 3",tx:"一番言われるこの一言。選ばれた側から返してやる。"}
-];
-var POSTS=[
-["鍵かけてたのに覗きに来て文句言うの、順番おかしくない？ 見たくて来たのはそっち。スクショまで撮って保存してる時点で、もう立派なファンだよ",
-"鍵垢のスクショ、拡散してくれてありがとう。こっちは消す気ないし、隠す気もなくなった。次からは堂々と見に来てね、フォロー申請はいらないから"],
-["通報しても無駄だよ、何回も試した人いるでしょ？ 消えないの分かってて続けるの、応援と何が違うの。おかげでインプレッションだけ伸びてる",
-"削除依頼のDM、全部読んでる。返事はしないけど。怒れば怒るほどおすすめに載る仕組み、分かってやってる？ 私の宣伝部長さんたち、今日もご苦労さま"],
-["「推しのこと考えろ」って、私が一番考えてるに決まってるじゃん。選ばれた側の景色、見たことない人には分からないよね。悔しいのは分かるよ",
-"やめる気ないって何回言えば分かるの。騒げば騒ぐほど二人の話は大きくなるだけ。静かにしてた方が、そっちの望む結果に近かったのにね"]
-];
-var LABELS=["文句言うな、と打つ","拡散に感謝して打つ","通報は無駄、と打つ","宣伝部長と煽る","選ばれた側から打つ","開き直って打つ"];
-var REACT=[
-{n:"スクショ班",h:"@sukusho_han",tx:"保存完了。鍵じゃなくなった途端これかよ、供給が止まらない"},
-{n:"まとめ速報",h:"@matome_soku",tx:"nao_ura、新規ポスト → トレンド順位が急上昇中"},
-{n:"特定班",h:"@tokutei_jp",tx:"投稿ペース上がってる。本人が一番楽しんでる説が濃厚"},
-{n:"hiroto_honmei",h:"@hiroto_honmei",tx:"わざわざサブ垢で挑発しないで…推しの名前がまたトレンドに載ってる"},
-{n:"なおの味方",h:"@nao_mikata",tx:"鍵垢時代より今の方が好き。言いたいこと言えるの強い"},
-{n:"野次馬の人",h:"@yajiuma_jp",tx:"サブ垢が本垢より伸びてるの草。フォロワー逆転しそう"},
-{n:"通報済みの人",h:"@tsuho_shita",tx:"通報したのにフォロワー増えてるの何なの…"},
-{n:"週刊デジタル",h:"@shukan_digi",tx:"nao_uraの挑発ポストがトレンド入り。本人の開き直りが火に油"}
-];
-var RANKS=["圏外","28位","14位","7位","3位","2位","1位"];
-var rounds=0, used={}, fol=0, shots=412, feedEl=null, built=false;
-function fmt(n){ return n.toLocaleString("ja-JP");}
-function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
-function buildPanel(){
-if(built) return; built=true;
-var vx=document.querySelector("#v-x"); if(!vx) return;
-var panel=document.createElement("div"); panel.id="v883-panel";
-panel.innerHTML=
-'<div class="hd"><button class="bk" id="v883-back">‹</button><div><div class="tt">サブ垢あおり投稿局</div><div class="ts">nao_ura から挑発ポストを打つ — 炎上中のX</div></div></div>'+
-'<div id="v883-scroll"></div>';
-vx.appendChild(panel);
-panel.querySelector("#v883-back").addEventListener("click",function(){ panel.style.display="none";});
+if(window.__v884) return; window.__v884=true;
+var EXACT=[
+["神戸ファンミ、王子様衣装の大翔が近すぎて",[["神戸参戦組","@kobe_sansei","私も神戸いたけど、あの近さはほんまに反則やった。目合った瞬間、息止まったもん"],["衣装オタ","@ishou_ota","王子様衣装、白×金のあれでしょ。写真で見ても仕上がりすぎてる"],["ファンミ行きたい","@fanmi_ikitai","召された報告ばっかり流れてくる…次こそ当てる"]]],
+["ライブツアー、大阪のホール公演当たりますように",[["当落待ち","@touraku_machi","大阪ホール、私も申し込んだ。一緒に祈ろ"],["遠征組","@ensei_gumi","ホールの距離感で見る大翔は格別って聞く。当たれ〜"],["ライブ常連","@live_jouren","抽選のドキドキ、わかりすぎる。結果出たら教えて"]]],
+["今日も大翔くんのダンス動画を布教します",[["布教され組","@fukyou_sare","流れてきて見た。笑顔の優しさにやられた、沼の入口だった"],["鯖番オタ","@saba_otaku","鯖番好きは絶対刺さるの分かりすぎる。音の取り方が別格"],["新規ファン","@shinki_fan","この動画きっかけで今日ファンになった。もっと早く知りたかった"]]],
+["朝サウナで整った",[["サウナ部","@sauna_bu","朝サウナで整うと一日勝ち確なの、わかりすぎる"],["整い民","@totonoi_min","朝イチの外気浴までが本番やと思ってる"],["サウナ女子2号","@sauna_joshi2","整った報告見るとこっちまで行きたくなる"]]],
+["三宮でカフェ開拓中",[["三宮カフェ民","@sannomiya_cafe","三宮なら駅近のあそこのカフェオレ、濃くておすすめ"],["カフェ開拓団","@cafe_kaitaku","開拓情報たすかる。私もカフェオレ派"],["神戸グルメ2号","@kobe_gourmet2","今度三宮行くから保存した"]]],
+["水風呂16度、完璧なセッティング",[["サウナ部","@sauna_bu","水風呂16度は理想のセッティング。分かりすぎる"],["整い民","@totonoi_min","16度で完璧って言えるの、通やな"],["朝サウナ派","@asa_sauna","今日も整った報告、見ると行きたくなる"]]],
+["西成のホルモン、安くてうますぎる",[["大阪グルメ班","@osaka_gourmet_han","西成のホルモン並ぶ価値あるの同意しかない"],["ホルモン好き","@horumon_zuki","安くてうまい、は正義。場所知りたい"],["通りすがり","@toorisugari_x","このポスト見て今夜ホルモンに決めた"]]],
+["中崎町のカフェ、カフェオレが反則級にうまい",[["カフェ巡り仲間","@cafe_nakama","中崎町のカフェオレ反則級、分かる。あの辺り名店多い"],["カフェ開拓団","@cafe_kaitaku","また行くって言える店に出会えるの強い"],["神戸カフェ民","@kobe_cafe_min","カフェオレ派として保存した"]]],
+["ファンミーティング追加公演が決定しました",[["ファンの一人","@fan_no_hitori","追加公演うれしい…！ 詳細出たらすぐ申し込む"],["神戸参戦組","@kobe_sansei","追加公演はどこでやるんやろ。遠征の準備だけ先にしとく"],["同担","@dotan_x","いつも応援ありがとうって言ってくれる推し、好きが増す"]]],
+["レッスン終わり。今日もありがとう",[["ファンの一人","@fan_no_hitori","レッスンおつかれさま。こっちこそありがとうやで"],["新規ファン","@shinki_fan","短い報告でも嬉しい。無理だけはしないで"],["同担","@dotan_x","積み重ねてる姿が一番かっこいい。本番楽しみ"]]],
+["次のファンミ、楽しみにしててね",[["ファンミ待ち","@fanmi_machi","楽しみにしてるに決まってる。早く日程出て"],["レポ感謝","@repo_arigato","その一言でまた頑張れる。ありがとう"],["神戸参戦組","@kobe_sansei","次のファンミも絶対行く。当てにいく"]]],
+["整った〜〜 サウナのあとのカフェオレが優勝",[["ゆい","@yui_s","整ったあとのカフェオレ優勝、わかりすぎる"],["みさき","@misaki_s2","サウナ→カフェオレの流れ、最適解やと思う"],["りな","@rina_s","その組み合わせ最強やね"]]],
+["釜山のカンジャンセウ、思い出してはため息",[["ゆい","@yui_s","カンジャンセウの話すると釜山行きたくなるやつ"],["みさき","@misaki_s2","エビは吸うもの、名言やと思う"],["りな","@rina_s","釜山のエビ、私もまた食べたい…"]]],
+["新しいリップ買った",[["みさき","@misaki_s2","そのリップ明日の飲み会で見せて〜！ 色味気になる"],["りな","@rina_s","新しいリップ買うとテンション上がるよね"],["なお","@nao_0324","明日の飲み会、そのリップで来て。楽しみ"]]],
+["サウナ3セットきめた",[["ゆい","@yui_s","3セットきめた日の整い具合、異常やよね"],["りな","@rina_s","このまま寝たい、までがワンセット"],["なお","@nao_0324","整いすぎてる。私も行きたい"]]],
+["お昼の海老天丼が優勝だった",[["ゆい","@yui_s","海老天丼優勝は分かりすぎる。エビの話になるとなお呼びがち"],["みさき","@misaki_s2","なおに食べさせたいって言うの優しい"],["なお","@nao_0324","食べさせて。絶対行く"]]],
+["カフェ写真掲載",[["まとめ読み専","@matome_yomi","時系列で整理されてて助かる。感情論の前に事実を並べるの大事"],["冷静派","@reisei_ha","事務所の『アプリ確認中』が一番の焦点やと思う。続報待ち"],["記事検証班","@kiji_kensho","ファンミの開催可否まで並べると、事の大きさが分かる"]]],
+["お相手は一般の方です。特定や詮索は控えよう",[["一般人","@ippanjin_jp","『犬に罪はない』ほんとそれ。特定や詮索は控えようって声、もっと増えてほしい"],["冷静派","@reisei_ha","お相手は一般の方、って線引きを守れるかどうかやね"],["様子見","@yousumi_jp","ようやく落ち着いた声が増えてきた。いい傾向"]]],
+["ソロで全部背負ったのは立派",[["ファンの一人","@fan_no_hitori","『ステージは変わらない』って言葉に救われる。古参が戻ってきてるのも分かる"],["同担","@dotan_x","ソロで全部背負ったのは立派、その通りやと思う"],["新規ファン","@shinki_fan","前向きな投稿が増えてるの、見てて安心する"]]],
+["拡散中のプロフ写真、過去の私服投稿と耳の形",[["特定班ウォッチ","@tokutei_watch","耳の形まで照合してるの、特定班の本気を見た"],["まとめ読み専","@matome_yomi","プロフ写真と私服投稿の照合、ここまで出ると本人で確定の流れやな"],["冷静派","@reisei_ha","検証が進むほど、事務所の確認中コメントとの温度差が際立つ"]]],
+["大翔が最近つけてるネックレス、シンプルでかわいい",[["衣装オタ","@ishou_ota","シンプルなネックレス、最近よくつけてるよね。ブランド気になる"],["ファンの一人","@fan_no_hitori","私服のさりげないアイテムまでかわいいの、ずるい"],["新規ファン","@shinki_fan","特定班まだ出てこないの？ってくらい気になるやつ"]]],
+["例のサブ垢、鍵外れて写真回ってきた",[["特定班","@tokutei_jp","回ってきた写真、私も見た。距離の近さが全てを語ってる"],["担降り検討","@kangaechu","ソファの距離感であの空気は、ただの知り合いで出せるもんじゃない"],["まとめ読み","@matome_yomi","鍵が外れた経緯が一番の問題。誰が外したのか"]]],
+["Xでポスト → 引用で",[["まとめ読み専","@matome_yomi","引用で荒れる元ポスト、原文は彼女のプロフィールにある。切り取りで判断しない方がいい"],["傍観者","@boukansha_x","荒れ始める、じゃなくてもう荒れてる。引用欄が戦場"],["冷静派","@reisei_ha","本人の言葉は短いのに、周りの解釈だけが一人歩きしてる"]]],
+["が公開状態に。鍵垢のはずが、写真32件",[["まとめ読み専","@matome_yomi","32件一斉に回り始めたの、鍵垢の事故じゃ済まない規模"],["特定班","@tokutei_jp","#nao_ura で検索すると全部出てくる状態。拡散が早すぎる"],["心配なファン","@shinpai_fan","写真の中身より、鍵が外れたこと自体が怖い。本人たち大丈夫かな"]]],
+["サブ垢、ふたりで回してたんやって",[["ファンの一人","@fan_no_hitori","否定のあとに自ら開けるのは、覚悟決めた人のやること。応援する"],["同担","@dotan_x","ふたりで回してたって事実が、なにより正直でいい"],["古参ファン","@koha_fan","事務所のコメントより本人の行動を信じる。ついていく"]]],
+["ここは、ふたりの日常の置き場でした",[["心配なファン","@shinpai_fan","『特別なことは何もない』って本人が言ってる。そっとしておいてあげてほしい"],["一般人","@ippanjin_jp","日常の置き場が事故で全世界公開されるの、普通に怖いことやと思う"],["まとめ読み専","@matome_yomi","固定ポストの文面、騒ぎの大きさと裏腹に静かで印象が変わった"]]],
+["心配してくれた人、ありがとうございます。私は元気です",[["心配なファン","@shinpai_fan","元気ですって聞けて少し安心した。無理だけしないで"],["一般人","@ippanjin_jp","謝ることないと思うけど、この一言で空気変わった気がする"],["ファンの一人","@fan_no_hitori","大翔のファンだけど、この子にも幸せでいてほしいって思った"]]],
+["今日は普通に起きて、普通にごはん食べた",[["通りすがり","@toorisugari_x","普通にごはん食べた、の一文に一番ほっとした"],["一般人","@ippanjin_jp","それで十分な日、ほんとにある。ゆっくりしてほしい"],["心配なファン","@shinpai_fan","日常に戻ろうとしてる感じがして、応援したくなった"]]],
+["ここは元々、ふたりの記録用でした",[["まとめ読み専","@matome_yomi","記録用だった、という説明が一番しっくりくる。中身もただの日常やったし"],["冷静派","@reisei_ha","それだけです、で締める潔さ。騒いだ側が恥ずかしくなるやつ"],["一般人","@ippanjin_jp","ふたりの記録を全員で覗いた構図、冷静になるとだいぶ異常やったな"]]],
+["のせ忘れてたやつ。この日ずっと笑ってた",[["特定班","@tokutei_jp","この距離で笑ってる写真、付き合ってないは無理があるって言われる理由が分かる"],["担降り検討","@kangaechu","楽しそうなのが一番しんどい。幸せそうすぎる"],["まとめ読み","@matome_yomi","流出写真の中で一番回ってるのがこれ。日常の一枚って感じが逆に生々しい"]]],
+["お気に入りの一枚。ここにだけ",[["あんり","@anri_h1029","キス寸前の距離感、これはファンが見たら倒れるやつ"],["さくらの推し活","@sakura_act","『ここにだけ』って書いた場所が全員に見えてるのが残酷すぎる"],["冷静派","@reisei_ha","お気に入りの一枚を内緒の場所に置いてた、それだけの話でもある"]]],
+["迎えに来てくれた日。ありがとうって言いそびれた",[["目撃検証","@mokugeki_ken","車で迎えに来る関係、写真の説得力がすごい"],["元同担","@moto_dotan","ありがとうって言いそびれた、って一文が刺さる。生々しい"],["まとめ読み","@matome_yomi","迎えの車の写真、目撃談と繋がるやつだ"]]],
+["最初の日の夜。緊張してたの、バレてたかな",[["まとめ読み","@matome_yomi","最初の日から残してた記録ってことか。時系列で見ると話が変わる"],["心配なファン","@shinpai_fan","緊張してたのバレてたかな、って…普通の恋愛の始まりじゃん"],["担降り検討","@kangaechu","出会った日の夜から残してたのは、隠しててもバレる運命やったんやな"]]],
+["今日のカフェオレ、濃いめで当たりだった",[["ゆい","@yui_s","カフェオレ濃いめ当たりの日、地味に嬉しいやつ"],["みさき","@misaki_s2","いい日って言える日、大事にしよ"],["りな","@rina_s","そのカフェ教えて。今度行こ"]]],
+["帰り道、並んで歩くだけで楽しいの",[["ゆい","@yui_s","並んで歩くだけで楽しい時期、一番いいやつ"],["みさき","@misaki_s2","なんでなんやろ、の答えは出てるやつ"],["りな","@rina_s","こういう何気ないのが一番残るんよね"]]],
+["プリン2個買って、1個あげた",[["ゆい","@yui_s","ほんとは両方食べたかった、が正直で好き"],["みさき","@misaki_s2","1個あげた時点でだいぶ好きなやつ"],["りな","@rina_s","プリンの譲り合いは愛情表現"]]],
+["マロンに会いたい。写真だけ永遠に見てる",[["ゆい","@yui_s","写真だけ永遠に見てるの分かりすぎる"],["みさき","@misaki_s2","マロン人気すごいな"],["りな","@rina_s","会いたい気持ち、届くといいね"]]],
+["昨日のこと、まだちょっと夢みたい",[["ゆい","@yui_s","ここにだけ書いとく、って場所があるのいいね"],["みさき","@misaki_s2","夢みたいな日、忘れないでね"],["りな","@rina_s","詳細は聞かないけど、いい日やったんやね"]]],
+["新しい置き場つくった。本垢に載せないやつ用",[["ゆい","@yui_s","置き場できたのね。本垢に載せないやつ、楽しみにしてる"],["みさき","@misaki_s2","鍵垢デビューおめでとう"],["りな","@rina_s","フォローしたよ。内緒の場所、開設"]]],
+["そのリップ、今度つけてるとこ見せて",[["みさき","@misaki_s2","見せて見せて、私も色味チェックしたい"],["りな","@rina_s","似合う前提で話進んでるの好き"],["ゆい","@yui_s","なおの審美眼、信頼してる"]]],
+["サウナ3セットは強い。私は2セットで限界やった",[["ゆい","@yui_s","2セットで限界の人、ここにもおる"],["りな","@rina_s","サウナの話になると二人とも熱い"],["みさき","@misaki_s2","次は3セット挑戦してみて"]]],
+["海老天丼いいなあ。今度連れてって",[["ゆい","@yui_s","連れてって、は私も便乗する"],["みさき","@misaki_s2","エビの話で集まれるの平和"],["りな","@rina_s","任せて、絶対連れてく"]]],
+["整った日のカフェオレ、ほんまに優勝やと思う",[["ゆい","@yui_s","優勝のやつ、また出た"],["りな","@rina_s","整った報告は正義"],["みさき","@misaki_s2","その優勝、定期的に聞きたい"]]],
+["まだ信じたくない…",[["心配なファン","@shinpai_fan","信じたくない気持ち、分かる。でも叩くのは違う"],["様子見","@yousumi_jp","公式の言葉出るまで待ちたいよね"],["ファンの一人","@fan_no_hitori","しんどいのはみんな同じだと思う"]]],
+["説明してほしい、ほんとに",[["冷静派","@reisei_ha","説明がほしいのは正直なところ。本人の言葉を待ちたい"],["様子見","@yousumi_jp","事務所じゃなく本人の言葉、だよね"],["ファンの一人","@fan_no_hitori","待つから、ちゃんと話してほしい"]]],
+["カフェ投稿、匂わせ乙",[["冷静派","@reisei_ha","カフェの写真だけで匂わせと決めるのは早いと思う"],["心配なファン","@shinpai_fan","目撃談と写真が繋がって見えるのは確かだけど、断定はまだ"],["まとめ読み専","@matome_yomi","11/1のカフェの件、時系列はまとめが出てる"]]],
+["傘の写真の件、ほんとなの？",[["目撃検証","@mokugeki_ken","傘の写真、私も見た。あれが決め手って言われてるやつ"],["まとめ読み","@matome_yomi","傘の件は週刊誌の記事にも出てた"],["様子見","@yousumi_jp","写真の出どころが分かってないのが一番の問題"]]],
+["ワイドショー見た？",[["一般人","@ippanjin_jp","名前出てなかったのにここまで特定進んでるの、ネットの速度が怖い"],["冷静派","@reisei_ha","ワイドショーは憶測半分。公式待ちが正解"],["まとめ読み専","@matome_yomi","放送内容のまとめは出回ってる"]]],
+["推し釣った自慢、まだ続ける気？",[["心配なファン","@shinpai_fan","言葉が強い。ファンが傷ついてるのは事実やけど、本人を追い詰めるのは違う"],["冷静派","@reisei_ha","自慢と決めつける材料はまだ揃ってないと思う"],["一般人","@ippanjin_jp","踏みにじってるのはどっちか、冷静に見たい"]]],
+["スクショ全部保存済み。消しても無駄だし",[["まとめ読み専","@matome_yomi","保存済み宣言が一番拡散を加速させてる自覚はあるんかな"],["冷静派","@reisei_ha","担降りが続いてるのは事実。理由は人それぞれやけど"],["心配なファン","@shinpai_fan","消しても無駄、の空気が一番怖い"]]],
+["深夜に彼の家から出てきたって話",[["目撃検証","@mokugeki_ken","深夜の目撃談、出典が曖昧なまま回ってるのが気になる"],["冷静派","@reisei_ha","黙ってるのが匂う、は憶測の飛躍やと思う"],["まとめ読み","@matome_yomi","彼の家は実家で家族と住んでる。本人の発信で分かってること"]]],
+["二人でいる写真、距離近すぎ",[["担降り検討","@kangaechu","距離の近さは写真が全て語ってる。知り合いは無理がある"],["まとめ読み","@matome_yomi","あの写真が一番拡散されてる。見た人の衝撃は大きい"],["心配なファン","@shinpai_fan","信じたくない側の気持ちも分かる"]]],
+["流出した写真、あの距離感で『偶然撮られただけ』は無理ある",[["特定班","@tokutei_jp","流出写真の検証は進んでる。本人たちのものではあるっぽい"],["冷静派","@reisei_ha","偶然撮られた、は確かに無理がある構図ではある"],["一般人","@ippanjin_jp","流出自体が犯罪に近いこと、忘れられてない？"]]],
+["彼の隣で笑ってる写真、見ちゃったよ",[["心配なファン","@shinpai_fan","笑ってる写真が一番刺さるのは分かる。幸せそうなのがしんどいんよね"],["同担","@dotan_x","平気なファンおらん、は正直その通りやと思う"],["様子見","@yousumi_jp","見ちゃった側の気持ちも、写真を出された側の気持ちも両方ある"]]],
+["応援してるよ、負けないで",[["ファンの一人","@fan_no_hitori","味方がいるって言葉、届くといいな"],["同担","@dotan_x","負けないで、に尽きる"],["心配なファン","@shinpai_fan","こういう声がもっと増えますように"]]],
+["大翔のこと大事にしてあげてね",[["ファンの一人","@fan_no_hitori","この一言言えるファン、強いと思う"],["古参ファン","@koha_fan","大事にしてあげてね、が一番の応援かもしれん"],["同担","@dotan_x","推しの幸せを願える側でいたい"]]],
+["幸せならそれが一番だと思う",[["様子見","@yousumi_jp","幸せならそれが一番、ほんとにそう"],["ファンの一人","@fan_no_hitori","この境地に行きたい"],["心配なファン","@shinpai_fan","本人の幸せが一番、って思えるファンが増えてる気がする"]]],
+["無理しないでね、味方もいるよ",[["同担","@dotan_x","味方もいるよ、は大事な言葉"],["ファンの一人","@fan_no_hitori","無理しないで、ほんとに"],["新規ファン","@shinki_fan","こういうメンションが届いてるといいな"]]],
+["本人の言葉を信じて待ってます",[["冷静派","@reisei_ha","待てるファンがいるの、本人にも伝われ"],["ファンの一人","@fan_no_hitori","信じて待つ、それだけ"],["様子見","@yousumi_jp","憶測より本人の言葉、だよね"]]],
+["推しのファンとして、なおさんを叩く気はないよ",[["ファンの一人","@fan_no_hitori","推しのファンとして、って前置きが誠実"],["心配なファン","@shinpai_fan","叩かない選択ができる人、増えてほしい"],["同担","@dotan_x","こういう声がタイムラインに増えてきた"]]],
+["好きに言えばいい。私は、嘘ついてない",[["あんり","@anri_h1029","嘘ついてない、は強い。でも写真まで出すのは…"],["さくらの推し活","@sakura_act","本人が出した写真ってのが一番の衝撃"],["冷静派","@reisei_ha","言葉は短いけど、覚悟は伝わる"]]],
+ ["一夜明けて、彼の言葉を読み直した",[["さくらの推し活","@sakura_act","読み直した、って言葉に救われた。叩く空気、ほんとに静かになってきた"],["ファンの一人","@fan_no_hitori","『ステージの大翔が好き』に戻ってこれるの、古参の強さやと思う"],["通りすがり","@toorisugari_x","一夜明けてこの空気。本人の言葉が一番効いたってことやね"]]],
+ ["彼の隣にいるの、やっぱり私がいい",[["同担","@dotan_x","分かる。その気持ちを言えるようになったのが一番の変化"],["ファンの一人","@fan_no_hitori","言葉にできるようになったの、見てて嬉しい"],["心配なファン","@shinpai_fan","急がず、ふたりのペースでね"]]],
+ ["心配かけてごめんね。ちゃんと大丈夫だよ",[["応援団","@ouen_dan","大丈夫って聞けて安心した。無理しないでね"],["ファンの一人","@fan_no_hitori","言葉にしてくれてありがとう。待ってる"],["同担","@dotan_x","謝らなくていい。いてくれるだけで"]]],
+ ["ふたりで決めたことだから、後悔はないよ",[["ファンの一人","@fan_no_hitori","『後悔はない』って本人が言えるの、強いし清々しい"],["古参ファン","@koha_fan","ふたりで決めた、を信じて応援する"],["様子見","@yousumi_jp","周りが騒いでも本人がこれなら、それでいいと思う"]]]
+ ];
+ var QT=[
+ ["神戸ファンミ、王子様衣装の大翔が近すぎて",[["ファンミレポまとめ","@fanmi_repo","神戸ファンミのレポ、これが一番詳しい。王子様衣装の近さ、行った人全員同じこと言ってる"],["衣装オタ","@ishou_ota","王子様衣装のレポ写真、何回見ても仕上がってる。このポストの表現が一番近い"]]],
+ ["ファンミーティング追加公演が決定しました",[["同担速報","@dotan_sokuho","追加公演の公式発表これ。本人のポストが一次情報。詳細まだだけど申し込みは確定"],["ファンの一人","@fan_no_hitori","公式発表をそのまま置いとく。追加公演、絶対行く"]]],
+ ["鍵外れて写真回ってきた",[["まとめ速報","@matome_soku","サブ垢の鍵が外れて写真が回り始めた件、発端のポストはこれ。ソファの距離感が物議"],["特定班","@tokutei_jp","例のサブ垢の件、起点はこのポスト。写真はもう削除不能なレベルで回ってる"]]],
+ ["が公開状態に。鍵垢のはずが、写真32件",[["まとめ速報","@matome_soku","nao_ura公開状態のまとめ。32件一斉拡散の起点はこれ"],["まとめ読み専","@matome_yomi","鍵垢のはずが公開に、の経緯まとめ。ハッシュタグ付きで拡散中"]]],
+ ["Xでポスト → 引用で",[["まとめ速報","@matome_soku","相手の女性のポストが引用で荒れ始めた件、流れはこれ"],["傍観者","@boukansha_x","引用欄の荒れ方をまとめたやつ。元ポストは短いのに解釈だけが暴走してる"]]],
+ ["ここは、ふたりの日常の置き場でした",[["まとめ読み専","@matome_yomi","炎上したサブ垢の固定ポストこれ。『特別なことは何もない』の一文が静かすぎて、逆に印象に残る"],["一般人","@ippanjin_jp","サブ垢本人の言葉、原文で。騒ぎの大きさのわりに、ただの日常の記録だった"]]],
+ ["好きに言えばいい。私は、嘘ついてない",[["あんり","@anri_h1029","本人が写真付きで出したポストこれ。『嘘ついてない』の一言と写真が全部"],["まとめ速報","@matome_soku","彼女本人のポストが引用で拡散中。写真付き、言葉は短い"]]],
+ ["一夜明けて、彼の言葉を読み直した",[["さくらの推し活","@sakura_act","一夜明けてのファンの声、これが空気の変化を一番表してる。『ステージの大翔が好き』"],["ファンの一人","@fan_no_hitori","彼の言葉を読み直した人のポスト。叩く空気から静かになる転換点だった"]]],
+ ["【時系列まとめ】カフェ写真掲載",[["まとめ読み専","@matome_yomi","報道の時系列まとめはこれが一番正確。カフェ写真から事務所コメントまでの流れ"],["記事検証班","@kiji_kensho","時系列で追うならこのまとめ。憶測を足してないのがいい"]]],
+ ["お相手は一般の方です。特定や詮索は控えよう",[["一般人","@ippanjin_jp","『犬に罪はない』も含めて、このポストの言い方が一番まともだった"],["冷静派","@reisei_ha","特定や詮索は控えよう、の声。ようやく増えてきたまともな流れ"]]]
+ ];
+EXACT.sort(function(a,b){ return b[0].length-a[0].length;});
+function esc(t){ var d=document.createElement("div"); d.textContent=t||""; return d.innerHTML;}
+function fmtN(n){ n=Math.round(n); return n>=10000?((Math.round(n/1000)/10).toLocaleString("ja-JP")+"万"):n.toLocaleString("ja-JP");}
+function hashS(s){ var x=0; for(var i=0;i<s.length;i++) x=(x*31+s.charCodeAt(i))>>>0; return x;}
+function rowHTML(rr,i){
+return '<div class="xd-reply" data-likes="'+(24+i*17)+'" data-hours="'+(2+i*3)+'" data-ord="'+i+'" style="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6"><span style="width:32px;height:32px;border-radius:50%;background:hsl('+(hashS(rr[0])%360)+',45%,55%);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none">'+esc(rr[0].slice(0,1))+'</span><span style="font-size:13.5px;line-height:1.5"><b>'+esc(rr[0])+'</b> <span style="color:#536471">'+esc(rr[1])+' · '+(2+i*3)+'時間</span><div>'+esc(rr[2])+'</div><div style="color:#71767b;font-size:12.5px;margin-top:4px;display:flex;gap:16px;align-items:center"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> <b>'+(2+i)+'</b></span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg> <b>'+(5+i*3)+'</b></span><span class="xd-like" style="cursor:pointer;display:inline-flex;gap:4px;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> <b>'+(24+i*17)+'</b></span><span style="display:inline-flex;gap:4px;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="11" width="3.4" height="9" rx="1"/><rect x="10.3" y="4" width="3.4" height="16" rx="1"/><rect x="17.1" y="8" width="3.4" height="12" rx="1"/></svg> <b>'+fmtN((24+i*17)*13+120+i*97)+'</b></span><span class="xd-bmk" style="cursor:pointer;display:inline-flex;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" style="vertical-align:-2px"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></span><span class="xd-share" style="cursor:pointer;display:inline-flex;align-items:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M12 15V3.5"/><path d="m6.5 8.5 5.5-5.5 5.5 5.5"/><path d="M5 13.5V20a1.6 1.6 0 0 0 1.6 1.6h10.8A1.6 1.6 0 0 0 19 20v-6.5"/></svg></span></div></span></div>';
 }
-function meterHTML(){
-var pct=Math.round((6+rounds*16)/1);
-if(pct>100) pct=100;
-return '<div class="v883-meter"><div class="row">'+
-'<div class="cell"><div class="num" id="v883-cnt">'+rounds+' / 6</div><div class="lab">投稿したポスト</div></div>'+
-'<div class="cell"><div class="num" id="v883-fol">+'+fmt(fol)+'</div><div class="lab">サブ垢フォロワー増</div></div>'+
-'<div class="cell"><div class="num" id="v883-shots">'+fmt(shots)+'</div><div class="lab">スクショ拡散数</div></div></div>'+
-'<div class="v883-rank"><span class="rlab">トレンド順位</span><span class="v883-bar"><i id="v883-buzz" style="width:'+pct+'%"></i></span><span class="rnum" id="v883-rank">'+RANKS[rounds]+'</span></div></div>';
+function wire(box){
+box.querySelectorAll(".xd-bmk").forEach(function(b){ b.addEventListener("click",function(){ var on=b.dataset.on==="1"; b.dataset.on=on?"":"1"; b.style.color=on?"":"#1d9bf0"; var pth=b.querySelector("svg path"); if(pth) pth.setAttribute("fill",on?"none":"#1d9bf0");});});
+box.querySelectorAll(".xd-share").forEach(function(b){ b.addEventListener("click",function(){ if(window.toast) toast("🔗 リンクをコピーしました");});});
 }
-function render(){
-buildPanel();
-var panel=document.querySelector("#v883-panel"); if(!panel) return;
-var sc=panel.querySelector("#v883-scroll"); if(!sc) return;
-if(!hot()){
-sc.innerHTML='<div class="v883-lock"><b>サブ垢はまだ静かです</b><br>炎上が始まって nao_ura が表に出てくると、<br>ここから挑発ポストを打てるようになります。</div>';
-feedEl=null; return;
+function matchExact(){
+var det=document.querySelector("#x-detail"); if(!det||det.style.display==="none") return null;
+var body=document.querySelector("#xd-body"); if(!body) return null;
+var divs=body.querySelectorAll("div");
+var t="";
+for(var i=0;i<divs.length;i++){ var st=divs[i].getAttribute("style")||""; if(st.indexOf("font-size:17px")>=0){ t=divs[i].textContent||""; break;}}
+var q=document.querySelector("#xd-q"); if(q) t+=" "+q.textContent;
+if(!t) return null;
+for(var j=0;j<EXACT.length;j++) if(t.indexOf(EXACT[j][0])>=0) return EXACT[j];
+return null;
 }
-var h=meterHTML();
-h+='<div class="v883-sec">— どの話題で打つ？ —</div>';
-TOPICS.forEach(function(t,ti){
-h+='<div class="v883-tgt" data-ti="'+ti+'"><div class="who">'+esc(t.n)+' <span>'+esc(t.tag)+'</span></div><div class="tx">'+esc(t.tx)+'</div><div class="btns">';
-POSTS[ti].forEach(function(tx,si){
-var u=used[ti+"-"+si];
-h+='<button data-v883-fire="'+ti+':'+si+'" class="'+(u?"used":"")+'">'+(u?"投稿済み":LABELS[ti*2+si])+'</button>';
-});
-h+='</div></div>';
-});
-h+='<div class="v883-sec">— nao_ura の投稿と世間の反応 —</div><div id="v883-feed"></div>';
-sc.innerHTML=h;
-feedEl=sc.querySelector("#v883-feed");
-var btns=sc.querySelectorAll("[data-v883-fire]");
-for(var i=0;i<btns.length;i++){ btns[i].addEventListener("click",function(){ var p=this.getAttribute("data-v883-fire").split(":"); fire(+p[0],+p[1],this);});}
+var rl=document.querySelector("#xd-replies");
+function apply(){
+if(!rl || rl.dataset.v884done) return;
+var hit=matchExact(); if(!hit) return;
+var seed=hashS(hit[0]);
+var pool=hit[1]; var out=[];
+for(var i=0;i<Math.min(3,pool.length);i++) out.push(pool[(seed+i)%pool.length]);
+rl.innerHTML=out.map(rowHTML).join("");
+wire(rl);
+rl.dataset.v884done="1";
 }
-function postCard(cls,who,handle,tx,metrics){
-var d=document.createElement("div"); d.className="v883-post "+cls;
-d.innerHTML='<div class="who">'+esc(who)+' <span>'+esc(handle)+' ・ 今</span></div><div class="tx">'+esc(tx)+'</div>'+
-'<div class="mt"><span>💬 '+metrics[0]+'</span><span>🔁 '+metrics[1]+'</span><span>❤️ '+metrics[2]+'</span></div>';
-return d;
+function applyQt(){
+var qb=document.querySelector("#xd-quotes");
+if(!qb) return;
+if(qb.dataset.v884q && qb.innerText.indexOf("引用ウォッチャー")<0) return;
+var hit=matchExact(); if(!hit) return;
+var qe=null;
+for(var j=0;j<QT.length;j++) if(QT[j][0]===hit[0]){ qe=QT[j]; break; }
+if(!qe) return;
+var body=document.querySelector("#xd-body"); if(!body) return;
+var nm=body.querySelector("b"), hd=body.querySelector("span");
+var txEl=null, divs=body.querySelectorAll("div");
+for(var i=0;i<divs.length;i++){ var st=divs[i].getAttribute("style")||""; if(st.indexOf("font-size:17px")>=0){ txEl=divs[i]; break; } }
+if(!txEl) return;
+var excerpt=(txEl.textContent||"").trim().slice(0,60);
+qb.innerHTML=qe[1].map(function(qz){ return '<div style="padding:11px 0;border-bottom:1px solid #f3f5f6;font-size:13.5px;line-height:1.5"><b>'+esc(qz[0])+'</b> <span style="color:#536471">'+esc(qz[1])+'</span><div>'+esc(qz[2])+'</div><div style="border:1px solid #cfd9de;border-radius:12px;padding:9px 11px;margin-top:7px"><div style="font-size:12.5px"><b>'+esc(nm?nm.textContent.trim():"")+'</b> <span style="color:#536471">'+esc(hd?hd.textContent.trim():"")+'</span></div><div style="font-size:13px;margin-top:2px">'+esc(excerpt)+'…</div></div></div>'; }).join("");
+qb.dataset.v884q="1";
 }
-function fire(ti,si,btn){
-var key=ti+"-"+si; if(used[key]) return; used[key]=1; rounds++;
-fol+= 2340 + rounds*780 + si*460; shots+= 1900 + rounds*1150 + ti*370;
-var wave=document.createElement("div"); wave.className="v883-wave";
-var lab=document.createElement("div"); lab.className="wlab"; lab.textContent="— 投稿 "+rounds+" 本目 ・ トレンド"+RANKS[rounds]+" —"; wave.appendChild(lab);
-wave.appendChild(postCard("her","nao_ura","@nao_ura",POSTS[ti][si],[fmt(380+rounds*840),fmt(2900+rounds*2600),fmt(8600+rounds*6900)]));
-for(var k=0;k<4;k++){
-var r=REACT[(rounds*3+k+ti)%REACT.length];
-wave.appendChild(postCard("",r.n,r.h,r.tx,[fmt(88+rounds*129+k*37),fmt(390+rounds*640+k*110),fmt(1300+rounds*1750+k*230)]));
+if(rl){
+new MutationObserver(function(){ apply(); applyQt(); }).observe(rl,{childList:true});
 }
-if(feedEl) feedEl.insertBefore(wave,feedEl.firstChild);
-if(btn){ btn.classList.add("used"); btn.textContent="投稿済み";}
-var panel=document.querySelector("#v883-panel");
-var cEl=panel.querySelector("#v883-cnt"); if(cEl) cEl.textContent=rounds+" / 6";
-var fEl=panel.querySelector("#v883-fol"); if(fEl) fEl.textContent="+"+fmt(fol);
-var sEl=panel.querySelector("#v883-shots"); if(sEl) sEl.textContent=fmt(shots);
-var rEl=panel.querySelector("#v883-rank"); if(rEl) rEl.textContent=RANKS[rounds];
-var bz=panel.querySelector("#v883-buzz"); if(bz) bz.style.width=Math.min(100,6+rounds*16)+"%";
-if(rounds>=6 &&!panel.querySelector(".v883-fin")){
-var fin=document.createElement("div"); fin.className="v883-fin";
-fin.innerHTML='<div class="big">nao_ura、トレンド1位</div><div class="sm">6本全部打った。まとめ速報が「サブ垢が本垢を超えた」と速報 —<br>鍵を覗いた人、通報した人、怒った人、全員が宣伝部長だった</div>';
-var sc2=panel.querySelector("#v883-scroll"); if(sc2) sc2.insertBefore(fin,sc2.firstChild);
+var qb0=document.querySelector("#xd-quotes");
+if(qb0) new MutationObserver(function(){ applyQt();}).observe(qb0,{childList:true});
+setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style.display==="none"){ if(rl&&rl.dataset.v884done) delete rl.dataset.v884done; var q2=document.querySelector("#xd-quotes"); if(q2&&q2.dataset.v884q) delete q2.dataset.v884q; } },600);
+/* ---- bridge: his profile / sub-account / bookmark posts open detail ---- */
+var xv=document.querySelector("#v-x");
+var backPane=null, host=null, tlPrevDisplay=null;
+function restore(){
+if(host){ host.remove(); host=null;}
+if(backPane){ backPane.style.display="block"; backPane=null;}
+var tl=document.querySelector("#x-pane-tl");
+if(tl&&tlPrevDisplay!==null){ tl.style.display=tlPrevDisplay; tlPrevDisplay=null;}
 }
-try{ if(typeof push==="function") push("X","#000","𝕏","nao_ura がトレンドで伸びています","あなたのサブ垢の挑発ポストが拡散されています",function(){ window.__v883open();});}catch(e){}
-}
-window.__v883open=function(){ buildPanel(); var panel=document.querySelector("#v883-panel"); if(!panel) return; render(); panel.style.display="flex"; var sc=panel.querySelector("#v883-scroll"); if(sc) sc.scrollTop=0;};
-function inject(){
-["#x-pane-tl","#x-pane-subprof"].forEach(function(q){
-var pane=document.querySelector(q); if(!pane) return;
-if(pane.querySelector(".v883-entry")) return;
-var b=document.createElement("button"); b.className="v883-entry"; b.type="button";
-b.innerHTML='<span><span class="tt">サブ垢あおり投稿局</span><div class="ts">nao_uraから挑発ポストを打って、トレンド1位を狙う新機能</div></span><span class="arr">›</span>';
-b.addEventListener("click",function(){ window.__v883open();});
-pane.insertBefore(b,pane.firstChild);
-});
-}
-setInterval(inject,1200); inject();
+setInterval(function(){
+var d=document.querySelector("#x-detail");
+if(host&&d&&d.style.display==="none") restore();
+},500);
+if(xv) xv.addEventListener("click",function(e){
+var det=document.querySelector("#x-detail");
+if(!det||det.style.display!=="none") return;
+var post=e.target&&e.target.closest?e.target.closest(".post"):null;
+if(!post||post.title) return;
+var pane=post.closest("#x-pane-hisprof,#x-pane-subprof,#x-pane-bmk");
+if(!pane) return;
+if(e.target.closest(".rp-btn,.like-btn,.save-btn,button")) return;
+e.stopPropagation(); e.preventDefault();
+var tl=document.querySelector("#x-pane-tl"); if(!tl) return;
+tlPrevDisplay=tl.style.display;
+backPane=pane;
+host=document.createElement("div");
+host.appendChild(post.cloneNode(true));
+tl.appendChild(host);
+host.firstChild.click();
+pane.style.display="none";
+}, true);
 })();
 </script>
+
 </body>
 
 
