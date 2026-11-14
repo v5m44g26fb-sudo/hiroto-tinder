@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v895</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v896</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12000,7 +12000,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v895"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v896"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -32310,6 +32310,118 @@ setInterval(function(){ var d=document.querySelector("#x-detail"); if(d&&d.style
    Falls back to hidden where clip is unsupported. ===== */
 #phone{overflow:hidden!important;overflow:clip!important}
 </style>
+
+<script>
+/* ===== v896: the LINE home tab gains its real contents (manual, user
+   direction: "make the home tab's contents more real"). v894 gave the
+   panel the real face (header, profile row, points card, friend rows),
+   but the contents were still the v122 skeleton: profile + points +
+   one flat "friends 5" list. The real LINE home tab is a stack of
+   sections, so this layer rebuilds the home page's scroll content
+   every time v122's open() renders it (guarded, value-checked, and
+   only on the home page - the points page keeps its own face):
+   profile row and points card stay first (v894's selectors depend on
+   them), then a SERVICES shortcut grid (8 real services, SVG tiles -
+   points opens the points page, news jumps to the news view, the
+   rest toast like other absent things in this world), an OFFICIAL
+   ACCOUNTS section (LINE NEWS / LINE Points Club / LINE Gift with
+   add buttons), then GROUPS (1) and FRIENDS (4) as separate sections
+   like the real app (the group used to sit inside the friend list),
+   and a PEOPLE YOU MAY KNOW section with add buttons. The header
+   gains the real home bar's add-friend and settings icons (settings
+   jumps to the settings view). Friend/group rows keep their exact
+   data-row targets and click-through behaviour; all names, statuses,
+   the point balance and history are the same strings v122 used -
+   nothing added to any conversation. ===== */
+(function(){
+ if(window.__v896) return; window.__v896=true;
+ var CHEV='<span style="margin-left:auto;color:#c7c7cc;font-size:21px;line-height:1">›</span>';
+ var IC={
+  point:'<svg viewBox="0 0 24 24" width="27" height="27"><text x="12" y="17.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="sans-serif">P</text></svg>',
+  stamp:'<svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#8a6d00" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><circle cx="9" cy="10.4" r="1.15" fill="#8a6d00" stroke="none"/><circle cx="15" cy="10.4" r="1.15" fill="#8a6d00" stroke="none"/><path d="M8.2 14.6c1.2 1.5 2.5 2.2 3.8 2.2s2.6-.7 3.8-2.2"/></svg>',
+  theme:'<svg viewBox="0 0 24 24" width="27" height="27" fill="#fff"><path d="M12 3.5c-4.7 0-8.5 3.6-8.5 8 0 4 3.1 7.3 7.2 7.9.6.1 1-.4 1-1v-1.5c0-.6-.4-1-.9-1.2-.5-.2-.8-.7-.8-1.2 0-.8.7-1.5 1.5-1.5h2.3c3 0 5.5-2.3 5.7-5.2C19.4 5.7 16 3.5 12 3.5z" opacity=".95"/><circle cx="7.6" cy="10" r="1.25" fill="#b18cff"/><circle cx="10.8" cy="6.9" r="1.25" fill="#b18cff"/><circle cx="15.4" cy="7.4" r="1.25" fill="#b18cff"/></svg>',
+  gift:'<svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10" width="15" height="4"/><path d="M6 14v6.5h12V14M12 10v10.5M12 10s-4.6.2-5.6-1.6C5.6 6.9 7.3 5.4 8.9 6.1 10.6 6.8 12 10 12 10zm0 0s4.6.2 5.6-1.6c.8-1.5-.9-3-2.5-2.3C13.4 6.8 12 10 12 10z"/></svg>',
+  news:'<svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><path d="M5 5.5h13.5v12a1.5 1.5 0 0 1-1.5 1.5H6.5A1.5 1.5 0 0 1 5 17.5z"/><path d="M18.5 9.5h1A1.5 1.5 0 0 1 21 11v6a2 2 0 0 1-2 2"/><path d="M8 9h7.5M8 12.2h7.5M8 15.4h4.5"/></svg>',
+  shop:'<svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 8h13l-1.1 11.1a1.6 1.6 0 0 1-1.6 1.4H8.2a1.6 1.6 0 0 1-1.6-1.4z"/><path d="M8.8 10.2V6.8a3.2 3.2 0 0 1 6.4 0v3.4"/></svg>',
+  coupon:'<svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A1.5 1.5 0 0 1 5.5 7h13A1.5 1.5 0 0 1 20 8.5v2a2.5 2.5 0 0 0 0 5v2a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 17.5v-2a2.5 2.5 0 0 0 0-5z"/><path d="M13.5 7v1.8M13.5 11v2M13.5 15.2V17" stroke-dasharray="0.1 3.4"/></svg>',
+  voom:'<svg viewBox="0 0 24 24" width="27" height="27" fill="#fff"><rect x="3.8" y="5" width="16.4" height="14" rx="4"/><path d="M10.2 9.3v5.4c0 .6.7 1 1.2.7l4.4-2.7c.5-.3.5-1 0-1.3l-4.4-2.7c-.5-.3-1.2.1-1.2.6z" fill="#3d7bff"/></svg>',
+  newsA:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M5 5.5h13.5v12A1.5 1.5 0 0 1 17 19H6.5A1.5 1.5 0 0 1 5 17.5z"/><path d="M8 9h7.5M8 12.2h7.5M8 15.4h4.5"/></svg>',
+  ptsA:'<svg viewBox="0 0 24 24" width="30" height="30"><text x="12" y="17.5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="sans-serif">P</text></svg>',
+  giftA:'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10" width="15" height="4"/><path d="M6 14v6.5h12V14M12 10v10.5M12 10s-4.6.2-5.6-1.6C5.6 6.9 7.3 5.4 8.9 6.1 10.6 6.8 12 10 12 10zm0 0s4.6.2 5.6-1.6c.8-1.5-.9-3-2.5-2.3C13.4 6.8 12 10 12 10z"/></svg>',
+  addfr:'<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#3a3a3c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="3.6"/><path d="M3.8 19.4c.8-3 3.2-4.6 6.2-4.6 1.5 0 2.8.4 3.9 1.2M17.5 8v6M14.5 11h6"/></svg>',
+  gear:'<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#3a3a3c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.9l1.2 2.7 2.9-.7 1 2.8 2.9.8-.4 3 2 2.2-2 2.2.4 3-2.9.8-1 2.8-2.9-.7L12 21.1l-1.2-2.7-2.9.7-1-2.8-2.9-.8.4-3-2-2.2 2-2.2-.4-3 2.9-.8 1-2.8 2.9.7z" stroke-width="1.4"/></svg>',
+  silh:'<svg viewBox="0 0 24 24" width="30" height="30" fill="#c9c9ce"><circle cx="12" cy="9" r="4"/><path d="M4.5 20c1-3.9 4-5.8 7.5-5.8s6.5 1.9 7.5 5.8"/></svg>'
+ };
+ var SERVICES=[["ポイント","#06c755","point","pts"],["スタンプ","#ffcf3f","stamp",""],["着せかえ","#b18cff","theme",""],["ギフト","#ff7aa8","gift",""],["ニュース","#e60012","news","news"],["ショッピング","#ff8a3d","shop",""],["クーポン","#00b8a9","coupon",""],["VOOM","#3d7bff","voom",""]];
+ var OFFICIAL=[["LINE NEWS","#e60012","newsA","ニュース・天気・災害情報"],["LINEポイントクラブ","#06c755","ptsA","ポイントがたまる・つかえる"],["LINEギフト","#ff7aa8","giftA","大切な人にギフトを贈ろう"]];
+ var FRIENDS=[["ひろと","assets/ig-avatar.jpg","♪ コーラとマロン","#talk-hiroto"],["ゆい","assets/fr-yui.jpg","サウナいこ♨️","#talk-yui"],["みさき","assets/fr-misaki.jpg","チキン食べたい","#talk-misaki"],["りな","assets/fr-rina.jpg","推し活たのしい","#talk-rina"]];
+ var GROUP=["いつメン🍻","assets/grp-itsumen.jpg","女子会しよ〜","#talk-group"];
+ var MAYBE=[["あやか","友だちの友だち"],["しょうた","同じグループのメンバー"]];
+ function head(t){ return '<div style="font-weight:800;font-size:15.5px;margin:22px 16px 6px">'+t+'</div>'; }
+ function band(){ return '<div style="height:8px;background:#f4f4f6;margin-top:20px"></div>'; }
+ function row(img,name,sub,target){
+  return '<div '+(target?'data-row="'+target+'" ':'')+'style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><img loading="lazy" decoding="async" src="'+img+'" style="width:52px;height:52px;border-radius:50%" alt=""><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+name+'</div><div style="font-size:13px;color:#76767c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">'+sub+'</div></div></div>';
+ }
+ function ptsPage(panel){
+  var hist=[["キャンペーン参加","+500","11/1"],["コンビニでお買い物","+12","10/30"],["アンケート回答","+30","10/28"],["スタンプ購入","-120","10/25"]];
+  panel.innerHTML='<div style="padding:58px 16px 10px;border-bottom:1px solid #eee;display:flex;align-items:center"><b style="font-size:16.5px">🎁 LINEポイント</b><button id="ltp-x" style="margin-left:auto;border:none;background:none;font-size:19px;cursor:pointer">✕</button></div>'
+   +'<div style="overflow-y:auto;padding:12px 16px"><div style="background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:16px;padding:18px"><div style="font-size:12.5px;opacity:.9">LINEポイント残高</div><div style="font-size:32px;font-weight:800;margin-top:2px">1,240 <span style="font-size:15px">pt</span></div><div style="font-size:12px;opacity:.85;margin-top:4px">今月末で 120pt が失効します</div></div>'
+   +'<div style="font-weight:800;font-size:14px;margin:18px 0 6px">履歴</div>'
+   +hist.map(function(h){ return '<div style="display:flex;padding:9px 2px;border-bottom:1px solid #f2f2f4;font-size:13.5px"><span>'+h[0]+'</span><span style="margin-left:auto;font-weight:700;color:'+(h[1][0]==="+"?"#06c755":"#e60012")+'">'+h[1]+' pt</span><span style="color:#aaa;font-size:12px;margin-left:9px">'+h[2]+'</span></div>'; }).join("")+'</div>';
+  panel.querySelector("#ltp-x").addEventListener("click",function(){ panel.style.display="none"; });
+ }
+ function rebuild(panel){
+  var scroll=panel.children[1]; if(!scroll || scroll.dataset.v896) return;
+  if(!panel.querySelector('#pts-card')) return;
+  scroll.dataset.v896="1";
+  var status=((document.querySelector("#my-status")||{}).textContent)||"♨️ サウナとエビとコーラ";
+  var html='<div style="display:flex;align-items:center;gap:12px;background:#f7f7fa;border-radius:14px;padding:14px"><img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:56px;height:56px;border-radius:50%" alt=""><div><div style="font-weight:800;font-size:16.5px">なお</div><div style="font-size:12.5px;color:#666;margin-top:2px">'+status+'</div></div><span style="margin-left:auto;font-size:19px">🎵</span></div>'
+   +'<div id="pts-card" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#06c755,#04a647);color:#fff;border-radius:14px;padding:13px 14px;margin-top:12px;cursor:pointer"><span style="font-size:19px">🎁</span><div><div style="font-size:11.5px;opacity:.9">LINEポイント残高</div><div style="font-weight:800;font-size:17px">1,240 pt</div></div><span style="margin-left:auto">›</span></div>'
+   +head("サービス")
+   +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px 2px;padding:4px 10px 2px">'
+   +SERVICES.map(function(s){ return '<button type="button" class="v896-svc" data-act="'+s[3]+'" data-name="'+s[0]+'" style="border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 0"><span style="width:52px;height:52px;border-radius:15px;background:'+s[1]+';display:flex;align-items:center;justify-content:center">'+IC[s[2]]+'</span><span style="font-size:11px;color:#333">'+s[0]+'</span></button>'; }).join("")
+   +'</div>'
+   +band()
+   +head("公式アカウント")
+   +OFFICIAL.map(function(o){ return '<div class="v896-off" style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><span style="width:52px;height:52px;border-radius:16px;background:'+o[1]+';display:flex;align-items:center;justify-content:center;flex:none">'+IC[o[2]]+'</span><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+o[0]+'</div><div style="font-size:13px;color:#76767c;margin-top:2px">'+o[3]+'</div></div><span class="v896-add" style="margin-left:auto;border:1.5px solid #06c755;color:#06c755;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;flex:none">追加</span></div>'; }).join("")
+   +band()
+   +head("グループ 1")
+   +row(GROUP[1],GROUP[0],GROUP[2],GROUP[3])
+   +head("友だち 4")
+   +FRIENDS.map(function(f){ return row(f[1],f[0],f[2],f[3]); }).join("")
+   +band()
+   +head("知り合いかも？")
+   +MAYBE.map(function(m){ return '<div class="v896-off" style="display:flex;align-items:center;gap:13px;padding:10px 16px;cursor:pointer"><span style="width:52px;height:52px;border-radius:50%;background:#ececf0;display:flex;align-items:center;justify-content:center;flex:none">'+IC.silh+'</span><div style="min-width:0"><div style="font-weight:700;font-size:15.5px">'+m[0]+'</div><div style="font-size:13px;color:#76767c;margin-top:2px">'+m[1]+'</div></div><span class="v896-add" style="margin-left:auto;border:1.5px solid #06c755;color:#06c755;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 13px;flex:none">追加</span></div>'; }).join("")
+   +'<div style="height:14px"></div>';
+  scroll.innerHTML=html;
+  var hdr=panel.children[0];
+  if(hdr && !hdr.querySelector(".v896-hbtn")){
+   var mk=function(svg,fn){ var b=document.createElement("button"); b.type="button"; b.className="v896-hbtn"; b.style.cssText="margin-left:8px;border:none;background:#f2f2f7;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"; b.innerHTML=svg; b.addEventListener("click",fn); return b; };
+   var x=hdr.querySelector("#ltp-x");
+   var g=mk(IC.gear,function(){ panel.style.display="none"; if(typeof show==="function") show("settings"); });
+   var a=mk(IC.addfr,function(){ if(typeof toast==="function") toast("友だち追加はこの世界にはないよ"); });
+   a.style.marginLeft="auto"; if(x) x.style.marginLeft="8px";
+   hdr.insertBefore(a, x||null); hdr.insertBefore(g, x||null);
+  }
+  scroll.querySelectorAll("[data-row]").forEach(function(r){ r.addEventListener("click",function(){ panel.style.display="none"; var t=document.querySelector(r.dataset.row); if(t) t.click(); }); });
+  var pc=scroll.querySelector("#pts-card"); if(pc) pc.addEventListener("click",function(){ ptsPage(panel); });
+  scroll.querySelectorAll(".v896-svc").forEach(function(b){ b.addEventListener("click",function(){
+   var act=b.dataset.act;
+   if(act==="pts"){ ptsPage(panel); }
+   else if(act==="news"){ panel.style.display="none"; if(typeof show==="function") show("news"); }
+   else if(typeof toast==="function") toast(b.dataset.name+"はこの世界にはないよ");
+  }); });
+  scroll.querySelectorAll(".v896-off").forEach(function(r){ r.addEventListener("click",function(){ if(typeof toast==="function") toast("追加はこの世界にはないよ"); }); });
+ }
+ function watch(){
+  var panel=document.getElementById("line-tab-panel"); if(!panel) return false;
+  new MutationObserver(function(){ rebuild(panel); }).observe(panel,{childList:true});
+  rebuild(panel);
+  return true;
+ }
+ if(!watch()){ var iv=setInterval(function(){ if(watch() || ++watch.n>40) clearInterval(iv); },500); watch.n=0; }
+})();
+</script>
 
 </body>
 
