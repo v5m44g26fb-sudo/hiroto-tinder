@@ -936,7 +936,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v919</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v920</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -5899,8 +5899,9 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    panel.appendChild(sb); } });
 })();
 /* --- v155: photo of the day banner - RETIRED in v432 (nao: no longer needed) --- */
-/* --- v156: a follower-growth card on his IG profile (caption follows the Tinder arc) --- */
+/* --- v156: a follower-growth card on his IG profile — RETIRED in v920 (follower graphs do not appear on other people's profiles) --- */
 (function(){
+ return;
  const bio=document.querySelector("#v-hisig .ig-bio"); if(!bio) return;
  const card=document.createElement("div");
  card.style.cssText="margin:2px 16px 8px;background:#fafafa;border:1px solid #efefef;border-radius:13px;padding:11px 13px;color:#111";
@@ -11016,9 +11017,9 @@ sw();let n=0;const iv=setInterval(function(){sw();if(++n>70)clearInterval(iv)},1
 
 <!-- v259: IG refresh to the current app UI -->
 <style>
-.igx-nav{position:absolute;left:16px;right:16px;bottom:14px;height:52px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:none;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.22);display:flex;z-index:45;padding:5px}
-.igx-nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#262626;border-radius:999px}
-.igx-nav button.on{background:#e7e7ec}
+.igx-nav{position:absolute;left:0;right:0;bottom:0;height:52px;background:#fff;border-top:1px solid #e5e5ea;display:flex;z-index:45;padding:0}
+.igx-nav button{flex:1;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#262626}
+.igx-nav button.on{background:none;color:#000}
 .igx-nav img{width:26px;height:26px;border-radius:50%;object-fit:cover}
 .ig-note-b{position:absolute;background:#fff;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.18);padding:5px 9px;font-size:11px;color:#262626;z-index:3}
 .ig-note-b::after{content:"";position:absolute;left:20px;bottom:-5px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
@@ -12003,7 +12004,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v919"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v920"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -16505,10 +16506,8 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
      new MutationObserver(paintFlash).observe(document.querySelector("#v436-flash-lab"),{childList:true,characterData:true,subtree:true}); }
    if(gb&&!gb.dataset.v467){ gb.dataset.v467="1"; gb.innerHTML=DIAL; }
    if(x&&!x.dataset.v467){ x.dataset.v467="1"; x.innerHTML=XC; }
-   if(topbar&&!cam.querySelector("#v467-ev")){
-     var ev=document.createElement("span"); ev.id="v467-ev"; ev.innerHTML="<b>0.0</b><span>EV</span>";
-     topbar.insertBefore(ev, gb);
-   }
+   var scn=cam.querySelector("#v436-scene"); if(scn) scn.style.display="none";
+   var flab=cam.querySelector("#v436-flash-lab"); if(flab) flab.style.display="none";
    var modes=cam.querySelectorAll(".v436-mode");
    if(modes.length&&!cam.dataset.v467rows){
      cam.dataset.v467rows="1";
@@ -16518,17 +16517,10 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
      var capsule=document.createElement("div");
      capsule.style.cssText="display:inline-flex;align-items:center;gap:5px;background:rgba(26,26,30,.88);border-radius:999px;padding:6px 9px;min-width:0";
      modes.forEach(function(m){ capsule.appendChild(m); m.style.padding="3px 5px"; m.style.borderRadius="999px"; m.style.fontSize="11.5px"; });
-     modesRow.style.cssText="display:flex;align-items:center;justify-content:space-between;padding:10px 12px 26px;gap:6px";
-     if(thumb){ thumb.style.width="34px"; thumb.style.height="34px"; thumb.style.borderRadius="50%"; modesRow.insertBefore(thumb, modesRow.firstChild); }
+     modesRow.style.cssText="display:flex;align-items:center;justify-content:center;padding:8px 12px 2px";
      modesRow.appendChild(capsule);
-     if(flip){ flip.className="v467-sidebtn"; flip.innerHTML=FLIP; flip.style.width="38px"; flip.style.height="38px"; modesRow.appendChild(flip); }
-     var fb=document.createElement("button"); fb.type="button"; fb.className="v467-sidebtn"; fb.innerHTML=FST;
-     fb.addEventListener("click",function(){ var f=cam.querySelector("#v436-filts"); if(f) f.classList.toggle("on"); });
-     var db=document.createElement("button"); db.type="button"; db.className="v467-sidebtn"; db.innerHTML=DOTS;
-     db.addEventListener("click",function(){ if(gb) gb.click(); });
-     bottomRow.insertBefore(fb, bottomRow.firstChild);
-     bottomRow.appendChild(db);
-     bottomRow.style.padding="12px 34px 8px"; cam.insertBefore(bottomRow, modesRow);
+     if(flip){ flip.className="v467-sidebtn"; flip.innerHTML=FLIP; }
+     bottomRow.style.padding="12px 30px 26px";
      var mo=new MutationObserver(function(){ modes.forEach(function(m){ m.style.background=m.classList.contains("act")?"rgba(255,255,255,.16)":"transparent"; }); });
      modes.forEach(function(m){ mo.observe(m,{attributes:true,attributeFilter:["class"]}); });
      modes.forEach(function(m){ m.style.background=m.classList.contains("act")?"rgba(255,255,255,.16)":"transparent"; });
