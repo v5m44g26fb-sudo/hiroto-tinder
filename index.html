@@ -225,7 +225,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .stories button{background:none;border:none;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;color:#111}
 .stories .ring{width:62px;height:62px;border-radius:50%;padding:3px;background:conic-gradient(#feda75,#fa7e1e,#d62976,#962fbf,#feda75)}
 .stories .ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2.5px solid #fff;display:block}
-#story-view{position:absolute;inset:0;background:#000;z-index:205;display:none;flex-direction:column}
+#story-view{position:absolute;inset:0;background:#000;z-index:140;display:none;flex-direction:column}
 #story-view.on{display:flex}
 #story-view .sbar{height:3.5px;background:rgba(255,255,255,.35);border-radius:2px;margin:58px 12px 0;overflow:hidden}
 #story-view .sbar i{display:block;height:100%;width:0;background:#fff}
@@ -247,12 +247,12 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .act-row img.thumb{width:40px;height:40px;object-fit:cover;border-radius:7px;flex:none}
 .act-row .fb{margin-left:auto;flex:none;background:#0095f6;color:#fff;border:none;border-radius:9px;padding:6px 11px;font-size:12px;font-weight:700;font-family:inherit}
 .act-row .tm{color:#8e8e93;font-size:11px}
-#nao-story-view{position:absolute;inset:0;background:#000;z-index:205;display:none;flex-direction:column}
+#nao-story-view{position:absolute;inset:0;background:#000;z-index:140;display:none;flex-direction:column}
 #nao-story-view.on{display:flex}
 #nao-story-view .sbar{height:3.5px;background:rgba(255,255,255,.35);border-radius:2px;margin:58px 12px 0;overflow:hidden}
 #nao-story-view .sbar i{display:block;height:100%;width:0;background:#fff}
 #nao-story-view.on .sbar i{animation:sprog 5s linear forwards}
-#hl-view{position:absolute;inset:0;background:#000;z-index:206;display:none;flex-direction:column}
+#hl-view{position:absolute;inset:0;background:#000;z-index:140;display:none;flex-direction:column}
 #hl-view.on{display:flex}
 #hl-view .sbar{display:flex;gap:5px;margin:58px 12px 0}
 #hl-view .sbar i{flex:1;height:3.5px;position:relative;overflow:hidden;background:rgba(255,255,255,.35);border-radius:2px}
@@ -272,7 +272,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 #rxn-picker{position:absolute;z-index:320;background:#fff;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,.32);padding:5px 9px;display:none;gap:7px}
 #rxn-picker.on{display:flex}
 #rxn-picker button{background:none;border:none;font-size:19px;cursor:pointer;padding:2px}
-#member-panel{position:absolute;inset:0;background:#f6f6f8;z-index:280;display:none;flex-direction:column}
+#member-panel{position:absolute;inset:0;background:#f6f6f8;z-index:140;display:none;flex-direction:column}
 #member-panel.on{display:flex}
 .mp-row{display:flex;align-items:center;gap:11px;padding:10px 16px;background:#fff;border-bottom:1px solid #eee;font-size:14.5px}
 .mp-sec{padding:14px 16px 6px;font-weight:800;font-size:13px;color:#666}
@@ -305,7 +305,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 #chapter-card .cc-title{font-size:30px;font-weight:900;margin-top:8px}
 #chapter-card .cc-sub{font-size:13.5px;color:#c9cfdd;margin-top:10px;line-height:1.8}
 #skip-btn{display:none;margin-top:9px;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:13px;padding:5px 12px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit}
-#ph-view{position:absolute;inset:0;background:#000;z-index:210;display:none;flex-direction:column}
+#ph-view{position:absolute;inset:0;background:#000;z-index:140;display:none;flex-direction:column}
 #ph-view.on{display:flex}
 #ph-view img.main{flex:1;width:100%;object-fit:contain;min-height:0;background:#000}
 #ph-view .pv-meta{color:#fff;padding:12px 16px 26px}
@@ -317,7 +317,7 @@ transform:translateY(-190%);transition:transform.55s cubic-bezier(.2,.9,.25,1);c
 .x-searchbar button{background:#1d9bf0;color:#fff;border:none;border-radius:999px;padding:8px 15px;font-weight:800;font-size:13px;cursor:pointer;font-family:inherit}
 .sug{display:flex;flex-wrap:wrap;gap:7px;padding:10px 14px}
 .sug button{border:1px solid #cfd9de;background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
-#hiroto-prof{position:absolute;inset:0;background:#fff;z-index:206;display:none;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#hiroto-prof{position:absolute;inset:0;background:#fff;z-index:140;display:none;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #hiroto-prof.on{display:flex}
 #hiroto-prof .hp-bg{height:210px;object-fit:cover;width:100%}
 .cmt-input{display:flex;gap:8px;padding:9px 14px;border-top:1px solid #efefef;background:#fff}
@@ -353,7 +353,7 @@ button,input,textarea{touch-action:manipulation}
 #story-view .sbar i.act b{animation:sprog2 5s linear forwards}
 @keyframes sprog2{to{transform:scaleX(1)}}
 #x-compose-btn{position:absolute;right:16px;bottom:26px;width:54px;height:54px;border-radius:50%;background:#1d9bf0;color:#fff;border:none;font-size:24px;box-shadow:0 6px 18px rgba(29,155,240,.45);cursor:pointer;z-index:60}
-#x-compose{position:absolute;inset:0;background:#fff;z-index:220;display:none;flex-direction:column;padding:64px 16px 16px}
+#x-compose{position:absolute;inset:0;background:#fff;z-index:140;display:none;flex-direction:column;padding:64px 16px 16px}
 #x-compose.on{display:flex}
 #x-compose textarea{flex:1;border:none;font-size:17px;font-family:inherit;resize:none;outline:none;line-height:1.6}
 .album-tabs{display:flex;gap:7px;padding:10px 12px 8px}
@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v927</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v928</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2808,7 +2808,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
 (function(){
  const css=document.createElement("style"); css.textContent=
   "#x-fl-btn{display:none;margin:10px 0 4px;background:#f7f9fa;border:1px solid #e6ecf0;color:#0f1419;font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;cursor:pointer}"+
-  "#x-fl-panel{position:absolute;inset:0;background:#fff;z-index:230;display:none;flex-direction:column;padding:64px 0 0}"+
+  "#x-fl-panel{position:absolute;inset:0;background:#fff;z-index:140;display:none;flex-direction:column;padding:64px 0 0}"+
   ".xfl-row{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #f2f2f2}"+
   ".xfl-row .fb{margin-left:auto;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:800;cursor:pointer;border:1px solid #0f1419;background:#0f1419;color:#fff}"+
   ".xfl-row .fb.on{background:#fff;color:#0f1419}";
@@ -12005,7 +12005,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v927"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v928"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
