@@ -3,6 +3,7 @@
 このリポジトリのゲーム本体を読みたい時は、GitHubの画面ではなく **raw の index.html** を直接読んでください（画面経由だと古いキャッシュや要約になることがあります）。
 
 - 本体（raw）: https://raw.githubusercontent.com/v5m44g26fb-sudo/hiroto-tinder/main/index.html
+- **仕様書（先にこれを読んで）: 同リポジトリの `SPEC.md`** — 物語の骨格・ルート条件・炎上システム・各アプリの仕様・変更禁止ルールをまとめてある。
 - プレイ用: https://v5m44g26fb-sudo.github.io/hiroto-tinder/
 - リポジトリ: https://github.com/v5m44g26fb-sudo/hiroto-tinder
 
