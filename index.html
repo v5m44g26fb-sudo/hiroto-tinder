@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v955</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v956</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1717,7 +1717,7 @@ async function startAct2(kind){ if(state._act2) return; state._act2=true; state.
   $("#his-statement").appendChild(st);
   push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","ひろとが新しい投稿","「いつも応援してくださっている皆さまへ」——タップで読む",()=>show("hisig"));
   animateCount($("#ig-fol-n"),52814,58920,12000); animateCount($("#w-ig"),52814,58920,12000);
-  later(async()=>{ if(kind==="away"||kind==="wait"||kind==="half"){ state._act2MorningDone=true; toast(kind==="away"?"💬 ひろとからの新しいメッセージは、なかった":kind==="wait"?"💭 <b>（約束どおり、静かな朝。彼の投稿だけ、そっと確認した）</b>":"💭 <b>（連絡は来ない。……分かってたはずやのに、画面を見てしまう）</b>"); return; } show("line"); openChat(); if(kind==="together"){ toast("💭 <b>（昨夜、ふたりで決めた。その事実が、朝の光の中で少しだけ重くて——怖さと、同じくらい、ほっとする気持ちもあった）</b>"); await himMsg("…起きた？",600); await himMsg("投稿、もう見たやんな"); await himMsg("事務所のコメントと、真逆のこと書いたわ"); await himMsg("出す前に、事務所には自分から言った"); await himPhoto("assets/maron-nose.jpg"); await himMsg("マロンにも見せた。…彼女やで、って紹介したら、鼻で笑われた気がする"); await himMsg("…この顔に免じて、今日を乗り切ろ");
+  later(async()=>{ if(kind==="away"||kind==="wait"||kind==="half"){ state._act2MorningDone=true; toast(kind==="away"?"💬 ひろとからの新しいメッセージは、なかった":kind==="wait"?"💭 <b>（約束どおり、静かな朝。彼の投稿だけ、そっと確認した）</b>":"💭 <b>（連絡は来ない。……分かってたはずやのに、画面を見てしまう）</b>"); return; } show("line"); openChat(); if(kind==="together"){ toast("💭 <b>（昨夜、ふたりで決めた。その事実が、朝の光の中で少しだけ重くて——怖さと、同じくらい、ほっとする気持ちもあった）</b>"); await himMsg("…起きた？",600); await himMsg("投稿、もう見たやんな"); await himMsg("事務所のコメントより、ずっと先のこと書いたわ"); await himMsg("出す前に、事務所には自分から言った"); await himPhoto("assets/maron-nose.jpg"); await himMsg("マロンにも見せた。…彼女やで、って紹介したら、鼻で笑われた気がする"); await himMsg("…この顔に免じて、今日を乗り切ろ");
    const doneT=()=>{ state._act2MorningDone=true; toast("💬 ここからはLINEで<b>自由に送れる</b>よ。下の入力欄からどうぞ"); };
    askChoices("なおの返信を選んで",[
     {label:"後悔、してない？",fn:async()=>{ await himMsg("してへん。…してたら、あんな投稿せん"); await himMsg("なおは、してない？"); await himVoice("assets/vt-morning.mp3","0:07"); await himMsg("…ふたりなら、なんとかなる気がする"); doneT(); }},
@@ -3737,7 +3737,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   {no:"エンディング",tt:"ふたりで、決めた結末",dt:"11月2日（日） ・ 夜の終わり",sy:"熱愛と、アプリ利用。二重の炎上の中で、ふたりは逃げずに並んで立つことを選んだ。事務所の否定コメントと、彼の謝罪。それでも、ふたりの関係は、ふたりで決めた——結末は、なおの選んだ言葉で変わる。",un:()=>!!state.ended&&state._route==="dating",go:jumpNewsEnd},
   {no:"翌朝編",tt:"少しずつ、日常が戻る",dt:"11月3日（月） ・ 朝",sy:"トレンドから名前が消えた朝。彼の言葉が届く人も、届かない人もいる。それでも、消えないやり取りと一緒に、日常は少しずつ戻っていく。",un:()=>!!state.act2,go:()=>jumpLine("11月3日（月）")},
   {no:"半年後",tt:"遠くのステージ",dt:"翌年5月 ・ ライブ会場",sy:"連絡を絶って、半年。一般発売で取ったチケットを握って、なおは会場の後方にいた。会うためじゃない。ファンとして、彼のステージを見届けるため。MCの合間、客席を見渡す彼の目が止まった気がしたのは、一瞬だけ。それで、十分だった。",un:()=>state.ending==="half"&&!!state._act2MorningDone,go:()=>{ if(window.showEpilogueV20) window.showEpilogueV20(); else show("news"); }},
-  {no:"一週間後",tt:"名前のついた関係",dt:"11月10日（月） ・ 夜",sy:"炎上から、一週間。事務所の発表はそのまま、彼の日常は通常運転に戻った。でも夜になると、LINEのいちばん上が光る。全部を話したわけじゃない。それでも二人の間では、もう『名前のないもの』じゃない。",un:()=>state.ending==="together"&&!!state._act2MorningDone,go:()=>{ if(window.showTogetherEpilogue) window.showTogetherEpilogue(); else show("news"); }}
+  {no:"一週間後",tt:"名前のついた関係",dt:"11月10日（月） ・ 夜",sy:"炎上から、一週間。付き合っていることは、もう公の事実。事務所の発表はそのまま、彼の日常は通常運転に戻った。でも夜になると、LINEのいちばん上が光る。ふたりの全部が表に出たわけじゃない。出さなかった分は、二人だけの秘密のまま。——もう、『名前のないもの』じゃない。",un:()=>state.ending==="together"&&!!state._act2MorningDone,go:()=>{ if(window.showTogetherEpilogue) window.showTogetherEpilogue(); else show("news"); }}
  ];
  function renderSyn(){ const list=panel.querySelector("#syn-list"); list.innerHTML="";
   SYN.forEach(s=>{ const un=s.un(); const d=document.createElement("div"); d.className="syn-card"+(un?"":" lock");
@@ -10577,8 +10577,30 @@ setInterval(upd,900); upd();
  if(window.__v250) return; window.__v250=true;
  if(typeof ending!=="function") return;
  const _e=ending;
- async function endingTogether(){
+ async function endingTogether(kind){
   if(state.ended) return; state.ended=true; state.ending="together";
+  if(kind==="wait"){
+   await himMsg("…静かに待つ、か");
+   await himMsg("ほな、騒ぎが収まるまで待つ。…その間も、俺はここにおるで");
+  } else if(kind==="away"){
+   await himMsg("……距離、置くんか");
+   await himMsg("…理由、聞いてもええか");
+   await new Promise(function(res){ askChoices("なおの答えは——",[
+    {label:"今のままやと、ふたりとも壊れそうで怖い",fn:async()=>{ await himMsg("…そっか。怖い思い、させたな"); res(); }},
+    {label:"ひろとの仕事を、守りたい",fn:async()=>{ await himMsg("……なおが、そう決めたんなら"); res(); }}
+   ]);});
+   await himMsg("分かった。…表向きは、離れよ。連絡も、控えめにする");
+   await himMsg("けど、気持ちまで離す気は、ないからな");
+  } else if(kind==="half"){
+   await himMsg("…遠くから、て");
+   await himMsg("それは、俺は嫌や");
+   await new Promise(function(res){ askChoices("なおの答えは——",[
+    {label:"応援する側に、戻りたいだけ",fn:async()=>{ await himMsg("…ファンに、戻るてことか"); res(); }},
+    {label:"近くにいると、迷惑かけそうで",fn:async()=>{ await himMsg("迷惑なんか、ひとつもない"); res(); }}
+   ]);});
+   await himMsg("…分かった。表向きは、ファンとアイドルでいよ");
+   await himMsg("けど、ほんまのとこは、変えへんで");
+  }
   await himMsg("事務所には、言える範囲だけ、ほんまのこと言う");
   await himMsg("付き合うとる、とは言えへん。でも、ない、とは二度と言わへん");
   await himMsg("なおのことは、俺がちゃんと向き合う");
@@ -10591,7 +10613,7 @@ setInterval(upd,900); upd();
   later(()=>showEnding(box),6000);
  }
  ending=async function(kind){
-  if(typeof state!=="undefined" && state._route==="dating"){ await endingTogether(); return; }
+  if(typeof state!=="undefined" && state._route==="dating"){ await endingTogether(kind); return; }
   return _e(kind);
  };
 })();
@@ -12076,7 +12098,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v955"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v956"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -19836,17 +19858,17 @@ setInterval(function(){ try{ if(typeof state!=="undefined"&&state._subPublic==="
 async function openTogether(){
 await himMsg("なお、ひとつ決めたことがある");
 await himMsg("例の垢、開けるわ。…ふたりの、やつ");
-await himMsg("事務所は「ない」って言うた。でも、なかったことにはしたくない");
+await himMsg("事務所は「任せています」って言うただけ。でも、なかったことにはしたくない");
 await himMsg("鍵、外すのは俺がやる。…ええか？");
 await new Promise(function(res){ askChoices("なおの答えは——",[
 {label:"うん、ふたりで開けよ",fn:function(){ res(); }},
-{label:"…ひろとが決めたなら",fn:function(){ res();}}
+{label:"…ひろとが決めたなら",fn:async function(){ await himMsg("…それで、ええんか"); await himMsg("なおが嫌なら、開けへん。無理に合わせんでええで"); askChoices("なおの答えは——",[{label:"うん、大丈夫。開けよ",fn:function(){ res(); }},{label:"…怖いけど、ふたりでなら",fn:function(){ res(); }}]); }}
 ]);});
 state._subOpened=true; state._subPublic="dating";
 applySubOpen();
-if(typeof addNewsRow==="function") addNewsRow("assets/couple-9.jpg","【速報】サブ垢「nao_ura」、本人が自ら公開——事務所の交際否定コメントの直後、二人の意思表示と話題に","週刊デジタル ・ たった今",null);
+if(typeof addNewsRow==="function") addNewsRow("assets/couple-9.jpg","【速報】サブ垢「nao_ura」、本人が自ら公開——事務所コメントの直後、二人の意思表示と話題に","週刊デジタル ・ たった今",null);
 var tl=document.querySelector("#x-pane-tl");
-if(tl&&typeof postEl==="function"){ var pel=postEl({n:"大翔ファン",h:"@wish_hiroto",t:"サブ垢、ふたりで回してたんやって…否定のあとにこれをするのは、覚悟を決めた人のやることやと思う。応援するしかない #nao_ura",m:["💬 2,318","🔁 9,874","❤️ 21,406"]},true); tl.prepend(pel);}
+if(tl&&typeof postEl==="function"){ var pel=postEl({n:"大翔ファン",h:"@wish_hiroto",t:"サブ垢、ふたりで回してたんやって…コメントのあとにこれをするのは、覚悟を決めた人のやることやと思う。応援するしかない #nao_ura",m:["💬 2,318","🔁 9,874","❤️ 21,406"]},true); tl.prepend(pel);}
 if(typeof push==="function") push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","nao_ura が公開になりました","ふたりで決めて、鍵を外しました——タップでアカウントへ",function(){ show("subig");});
 if(typeof toast==="function") toast("💑 <b>ふたりで、決めた</b>：サブ垢の鍵を、外した");
 await himMsg("…開けたで");
