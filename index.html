@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v966</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v967</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2026,18 +2026,18 @@ function openFChat(key){ fCur=key; const fc=FCHATS[key]; const sw=$("#line-searc
   $("#f-name").textContent=fc.name; $("#f-sub").textContent=fc.sub; $("#friend-chat").style.display="flex";
   const _fa=$("#fc-ava"); if(_fa&&FRF[fc.name]){ _fa.src=FRF[fc.name]; _fa.style.display=""; }
   fc.unread=0; const u=$("#fu-"+key); u.style.display="none"; clearBadge("line");
-  if(state.started&&!fc._scandalShown){ fc._scandalShown=true; fc.scandalLog.forEach((t,i)=>later(()=>fPush(key,t,true),900+i*1600)); }
+  if(state.started) fScandal(key);
   fRender(); }
-function closeFChat(){ $("#friend-chat").style.display="none"; fCur=null; show("line"); }
+function closeFChat(){ $("#friend-chat").style.display="none"; fCur=null; const sw=$("#line-search-wrap"); if(sw) sw.style.display=""; $("#line-list").style.display="block"; $("#line-head-list").style.display="flex"; show("line"); }
 ["yui","misaki","rina"].forEach(k=>{ const r=$("#talk-"+k); if(r) r.addEventListener("click",()=>openFChat(k)); });
 $("#f-back").addEventListener("click",closeFChat);
 function fSend(){ const inp=$("#f-text"); const v=inp.value.trim(); if(!v||!fCur) return; inp.value=""; const fc=FCHATS[fCur]; const key=fCur;
   fc.log.push(["me",v]); $("#fv-"+key).textContent="あなた："+v; fRender();
   later(()=>{ $("#f-typing").style.display="flex"; $("#fchat").scrollTop=$("#fchat").scrollHeight; },700);
-  later(()=>{ $("#f-typing").style.display="none"; const pool=state.started?fc.scandal:fc.calm; fPush(key,pool[Math.floor(Math.random()*pool.length)]); },2100); }
+  later(()=>{ $("#f-typing").style.display="none"; const pool=(state.started&&!state.act2&&!state.ended)?fc.scandal:fc.calm; fPush(key,pool[Math.floor(Math.random()*pool.length)]); },2100); }
 $("#f-send").addEventListener("click",fSend);
 $("#f-text").addEventListener("keydown",e=>{ if(e.key==="Enter") fSend(); });
-(function(){ const _ss=startScandal; startScandal=function(){ _ss(); ["yui","misaki","rina"].forEach((k,i)=>later(()=>{ const fc=FCHATS[k]; if(fc._scandalShown) return; fc._scandalShown=true; fc.scandalLog.forEach((t,j)=>later(()=>fPush(k,t,true),j*1500)); },26000+i*11000)); }; })();
+(function(){ const _ss=startScandal; startScandal=function(){ _ss(); ["yui","misaki","rina"].forEach((k,i)=>later(()=>fScandal(k),26000+i*11000)); }; })();
 (function(){ [["#line-preview","#talk-hiroto"],["#g-preview","#talk-group"]].forEach(([pv,row])=>{ const el=$(pv), r=$(row); if(!el||!r||!window.MutationObserver) return; const tm=r.querySelector(".tm"); if(!tm) return; new MutationObserver(()=>{ tm.textContent=nowTime(); }).observe(el,{childList:true,characterData:true,subtree:true}); }); })();
 /* ===== v15: prologue-safe X search ===== */
 /* ===== v28: group LINE evolution ===== */
@@ -4357,7 +4357,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    fc.log.push(["me",em]); $("#fv-"+key).textContent="あなた："+em; fRender();
    const bs=$$("#fchat .msg.me .bub"); const bub=bs[bs.length-1]; if(bub){ bub.classList.add("stk"); }
    later(()=>{ $("#f-typing").style.display="flex"; },700);
-   later(()=>{ $("#f-typing").style.display="none"; const pool=state.started?fc.scandal:fc.calm; fPush(key,pool[Math.floor(Math.random()*pool.length)]); },2000); });
+   later(()=>{ $("#f-typing").style.display="none"; const pool=(state.started&&!state.act2&&!state.ended)?fc.scandal:fc.calm; fPush(key,pool[Math.floor(Math.random()*pool.length)]); },2000); });
   mk($("#group-chat"),"#g-text","#g-send",em=>{ gMe(em); const bs=$$("#gchat .msg.me .bub"); const bub=bs[bs.length-1]; if(bub) bub.classList.add("stk");
    setTimeout(()=>gMsg(pick(Object.keys(FRIENDS)),pick(FRIEND_REPLIES)),1500); });
  })();
@@ -12094,7 +12094,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v966"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v967"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -33287,6 +33287,11 @@ body:has(#v-tiktok.on) .statusbar{mix-blend-mode:normal;color:#fff}
  }
  setInterval(gate,1000);
 })();
+</script>
+<script>
+/* ===== v967: friend scandal-log single delivery + LINE badge spec (opening the talk list marks friend chats read) ===== */
+function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; fc._scandalShown=true; fc.scandalLog.forEach((t,i)=>later(()=>fPush(key,t,true),900+i*1600)); }
+(function(){ const _show=show; show=function(id){ _show(id); if(id==="line"){ ["yui","misaki","rina"].forEach(k=>{ const fc=FCHATS[k]; if(fc&&fc.unread){ fc.unread=0; const u=document.querySelector("#fu-"+k); if(u) u.style.display="none"; } }); } }; })();
 </script>
 </body>
 
