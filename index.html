@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v971</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v972</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2007,7 +2007,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
 /* ===== v41: individual friend chats (yui / misaki / rina) ===== */
 const FCHATS={
  yui:{name:"ゆい",ini:"ゆ",color:"#e879a0",sub:"幹事担当🍻",log:[["f","韓国旅行の計画、航空券セール始まったって！"],["f","なおの希望、釜山で合ってる？"]],calm:["幹事にまかせとき","ホテルは西面か海雲台か、迷う〜","カンジャンセウは必須で入れとく"],scandalLog:["ニュース見た。…何も聞かん。味方やから","一人で抱えんといて。電話しよ"],scandal:["夜中でも起きてるから","味方はここにおるよ"]},
- misaki:{name:"みさき",ini:"み",color:"#7a9cc6",sub:"相談役",log:[["f","来月の試験、申し込んじゃった…応援して"],["f","なお最近どう？ 無理してへん？"]],calm:["うん、聞いてる","それ、焦らんで大丈夫やと思う","続きは、ゆっくりでいいよ"],scandalLog:["ネットの声、全部受け止めんでいいから","私はなおの言葉だけ信じる"],scandal:["深呼吸。まず、温かいもの飲も","そばにおるから"]},
+ misaki:{name:"みさき",ini:"み",color:"#7a9cc6",sub:"相談役",log:[["f","来月の試験、申し込んじゃった…応援して"],["f","なお最近どう？ 無理してへん？"]],calm:["うん、聞いてる","それ、焦らんで大丈夫やと思う","続きは、ゆっくりでいいよ","私はね、人の目より自分の気持ちを大事にしたい派やねん","迷ったら、後悔の少ない方を選ぶのが私の決め方やねん"],scandalLog:["ネットの声、全部受け止めんでいいから","私はなおの言葉だけ信じる"],scandal:["深呼吸。まず、温かいもの飲も","そばにおるから","私は、なおの言うことだけ信じるって決めてる"]},
  rina:{name:"りな",ini:"り",color:"#8fbf7a",sub:"テンション担当",log:[["f","オリヤンで爆買いした戦利品、見て！！"],["f","なおの好きな化粧水、買っといたよ〜"]],calm:["わかりみ深い！！","それ事件！！","早く会って語ろ🥺"],scandalLog:["なおー！？ トレンドに名前出てる！！","無事！？ 既読だけつけて！？"],scandal:["腹立つけど、相手にせんとこ。なおは何も書かんでいいからね","なおは私が守るから！！"]}
 };
 let fCur=null;
@@ -2036,7 +2036,10 @@ $("#f-back").addEventListener("click",closeFChat);
 function fSend(){ const inp=$("#f-text"); const v=inp.value.trim(); if(!v||!fCur) return; inp.value=""; const fc=FCHATS[fCur]; const key=fCur;
   fc.log.push(["me",v,nowTime()]); $("#fv-"+key).textContent="あなた："+v; fRender();
   later(()=>{ $("#f-typing").style.display="flex"; $("#fchat").scrollTop=$("#fchat").scrollHeight; },700);
-  later(()=>{ $("#f-typing").style.display="none"; const pool=(state.started&&!state.act2&&!state.ended)?fc.scandal:fc.calm; fPush(key,pool[Math.floor(Math.random()*pool.length)]); },2100); }
+  later(()=>{ $("#f-typing").style.display="none"; const pool=(state.started&&!state.act2&&!state.ended)?fc.scandal:fc.calm; let rep=null;
+  const CX=[[/疲れ|仕事|しんど|残業/,["おつかれさま。無理せんと早よ寝なよ","仕事おつかれ。今日はもう休みな"]],[/ありがと/,["ええって。いつでも言うて","気にせんとって。味方やから"]],[/炎上|ニュース|記事|大丈夫/,["大丈夫。私らは変わらんから","ニュースは気にせんでいい。味方やで"]],[/ごめん/,["謝らんでいい。あんたは悪くない","ごめんは要らんって。ほんまに"]]];
+  for(const [re,arr] of CX){ if(re.test(v)){ rep=arr[Math.floor(Math.random()*arr.length)]; break; } }
+  fPush(key, rep||pool[Math.floor(Math.random()*pool.length)]); },2100); }
 $("#f-send").addEventListener("click",fSend);
 $("#f-text").addEventListener("keydown",e=>{ if(e.key==="Enter") fSend(); });
 (function(){ const _ss=startScandal; startScandal=function(){ _ss(); ["yui","misaki","rina"].forEach((k,i)=>later(()=>fScandal(k),26000+i*11000)); }; })();
@@ -12096,7 +12099,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v971"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v972"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
