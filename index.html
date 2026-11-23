@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v950</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v951</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2387,7 +2387,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     await tThem("顔、見ながら話したいねん");
     tNote("（会う前提が早い。……ファンの私が言うのも、なんやけど）");
     tChoices("なおの返信を選んで",[
-      {label:"あるよ。今日の流れ次第で", fn:async()=>{ stepMorning(); }},
+      {label:"うん、会いたい。今日の流れ次第で", fn:async()=>{ stepMorning(); }},
       {label:"秘密。会えた人だけ知ってる", fn:async()=>{ await tThem("秘密、多いな笑"); stepLazy(); }}
     ]);
   }
@@ -2450,7 +2450,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tNote("（夜の話題に、わざと寄せてきてる。分かってて、乗ってしまう）");
     tChoices("なおの返信を選んで",[
       {label:"大翔の投稿、遡ってる", fn:async()=>{ await tThem("…だいぶ遡ったんちゃう"); await tThem("…遡った先で、止まった写真ある？"); stepNight2(); }},
-      {label:"眠くないなら、もうちょっと話そ？", fn:async()=>{ await tThem("…起きてるんやな"); await tThem("ほな、もうちょっと話そか"); stepNight2(); }}
+      {label:"大翔の声、聞いてる", fn:async()=>{ await tThem("…起きてるんやな"); await tThem("ほな、もうちょっと話そか"); stepNight2(); }}
     ]);
   }
   async function stepNight2(){
@@ -5512,6 +5512,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["him","「夢に出てきた。元気そうでよかった」"],
    ["n","何度も書いては、消した跡があった。"],
    ["him","「会いたい、は言わん。……会いたいけど」"],
+   ["him","「……会えたら、もう離す自信ない」"],
    ["n","送信ボタンは、押されなかった。"],
    ["him","送ったら、迷惑やもんな…"],
    ["n","代わりに彼は、事務所の声明文を何度も読み返した。"],
@@ -10437,8 +10438,9 @@ setInterval(upd,900); upd();
   await himMsg("その飲み会、男もおるんか",1200); if(!alive(t))return;
   await himMsg("…あかん、今のなし",800); if(!alive(t))return;
   await himMsg("彼氏みたいなこと、言うてもうた",1000); if(!alive(t))return;
+  await himMsg("…なおのことになると、余裕ないねん",1100); if(!alive(t))return;
   askChoices("なおの返信を選んで",[
-   {label:"彼氏やもん、焼いていいよ",fn:async()=>{ if(!alive(t))return; await himMsg("その言い方、反則や",1100); if(!alive(t))return; await himMsg("…帰り、連絡してな",1000); fin4(); }},
+   {label:"彼氏やもん、焼いていいよ",fn:async()=>{ if(!alive(t))return; await himMsg("その言い方、反則や",1100); if(!alive(t))return; await himMsg("…他の男と、笑わんといてな",1100); if(!alive(t))return; await himMsg("…帰り、連絡してな",1000); fin4(); }},
    {label:"焼きすぎ笑",fn:async()=>{ if(!alive(t))return; await himMsg("笑わんで",900); if(!alive(t))return; await himMsg("…嘘ちゃうねん、心配なんは",1100); fin4(); }}
   ]);
   async function fin4(){ if(!alive(t))return;
@@ -12069,7 +12071,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v950"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v951"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
