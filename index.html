@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v961</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v962</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1394,7 +1394,7 @@ $("#pv-next").addEventListener("click",()=>pvShow(pvIdx+1));
 /* ===== v5: X search ===== */
 const X_SUGS=["大翔 Tinder","大翔 アプリ","大翔 一般女性 誰","ひろと なお","大翔 事務所コメント","Super Like"];
 const X_SEARCH_POSTS=[
- {n:"まとめ速報",h:"@matome_soku",tm:"12分",t:"【時系列まとめ】カフェ写真掲載→事務所『交際否定・アプリ確認中』→証言拡散→週末ファンミの開催可否まで、井汲大翔のアプリ報道を整理",m:["💬 1,204","🔁 8,932","❤️ 12,408"]},
+ {n:"まとめ速報",h:"@matome_soku",tm:"12分",t:"【時系列まとめ】カフェ目撃情報→事務所コメント→証言拡散→週末ファンミの開催可否まで、井汲大翔のアプリ報道を整理",m:["💬 1,204","🔁 8,932","❤️ 12,408"]},
  {n:"芸能ウォッチャー",h:"@geino_watch",tm:"34分",t:"お相手は一般の方です。特定や詮索は控えようという声、ようやく増えてきた。あと、犬に罪はない",m:["💬 864","🔁 3,102","❤️ 9,845"]},
  {n:"ファンの声bot",h:"@fan_voice",tm:"1時間",t:"「ソロで全部背負ったのは立派」「ステージは変わらない」前向きな投稿がじわじわ増加中。日プ時代からの古参が戻ってきてるのも熱い",m:["💬 432","🔁 2,208","❤️ 15,320"]},
 ];
@@ -12098,7 +12098,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v961"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v962"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21554,22 +21554,7 @@ try{
 })();
 </script>
 
-<script>
-/* ===== v726: Nao's own defiant posts on her X profile (scandal) ===== */
-(function(){
- if(window.__v726) return; window.__v726 = true; return;
- function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 || state._subPublic); }catch(e){ return false; } }
- function add(){
-  var box=document.querySelector("#x-me-posts"); if(!box || document.getElementById("v726-naoposts")) return;
-  if(typeof postEl!=="function") return;
-  var w=document.createElement("div"); w.id="v726-naoposts";
-  w.appendChild(postEl({n:"なお", h:"@nao_0324", tm:"2時間前", t:"拡散してくれてありがとう。おかげで、隠す理由なくなったわ。止めたいなら最初から見なきゃよかったのにね", m:["3,418","8,204","19,540"], imp:"264"}, true));
-  w.appendChild(postEl({n:"なお", h:"@nao_0324", tm:"1時間前", t:"叩くなら鍵垢から石投げるんじゃなくて、表で言えば？ 通報しても無駄、私は鍵もかけないし逃げもしないから", m:["2,977","6,811","15,208"], imp:"201"}, true));
-  box.insertBefore(w, box.firstChild);
- }
- setInterval(function(){ if(hot()) add(); }, 2500);
-})();
-</script>
+
 
 <script>
 /* ===== v729: nao_ura X profile - following/followers lists ===== */
@@ -31071,203 +31056,7 @@ input,textarea,select{font-size:16px!important}
  sync();
 })();
 </script>
-<script>
-/* ===== v880: X gains the Taunt Reply Center (category B,
-   new feature + aori strengthening). A whole new screen
-   inside the X app: a black entry banner at the top of
-   the Trend pane and the Mention pane opens a full
-   panel where, once the scandal is hot (the exact v726
-   gate: phase scandal, heat>0, or the sub-account
-   public), she can fire back at three hostile posts -
-   a doxxing roundup, a furious fan and a news matome -
-   with three reply styles each (provoke / defiant /
-   thank-you-for-spreading), nine replies written at the
-   v726 standard (screenshot all you like, reporting is
-   useless, thanks for the free publicity). Every reply
-   she sends lands as her own post quoting the target at
-   the top of the panel feed, followed by a linked wave
-   of four reactions (matome speed reports, screenshot
-   squads, escalating fans, supporters, bystanders) whose
-   metrics grow wave by wave, while the panel counters -
-   wave number, impressions, follower gain, buzz meter -
-   all move with it. Used style buttons lock per target,
-   progress reads x/9, and clearing all nine lands a
-   finale card: her counterattack trending at #1. Before
-   the scandal is hot the same panel opens to a quiet
-   locked face instead. Everything is event-driven (no
-   observer, no timer writes except existence-guarded
-   entry injection after buildTrends rebuilds its pane),
-   no global story state, flag, gate, heat or save field
-   is touched, and no protected line is edited. SMS
-   untouched per nao's move-on instruction, pull-to-
-   refresh and the small-gesture expansions skipped per
-   the 06:52 exclusion; Playwright-verified (see
-   hidden_files/v880-probe.py) ===== */
-(function(){
- if(window.__v880) return; window.__v880=1; return;
- var css=document.createElement("style");
- css.textContent=
-  ".v880-entry{display:flex;align-items:center;gap:12px;width:100%;box-sizing:border-box;margin:12px 0 4px;padding:15px 16px;border:none;border-radius:16px;background:linear-gradient(120deg,#000,#3d0a1e 60%,#7f1d3a);color:#fff;cursor:pointer;text-align:left;box-shadow:0 10px 22px rgba(0,0,0,.28)}"+
-  ".v880-entry .tt{font-size:16.5px;font-weight:900;letter-spacing:.02em}"+
-  ".v880-entry .ts{font-size:12px;font-weight:600;color:rgba(255,255,255,.82);margin-top:3px;line-height:1.6}"+
-  ".v880-entry .arr{margin-left:auto;font-size:22px;font-weight:900;color:#ff8fbe;flex:none}"+
-  "#v880-panel{position:absolute;inset:0;background:#000;color:#fff;z-index:240;display:none;flex-direction:column;padding:60px 0 0;box-sizing:border-box}"+
-  "#v880-panel .hd{display:flex;align-items:center;gap:12px;padding:10px 16px 12px;border-bottom:1px solid #2f3336}"+
-  "#v880-panel .bk{background:rgba(255,255,255,.10);border:1px solid #2f3336;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer;flex:none}"+
-  "#v880-panel .tt{font-size:19px;font-weight:900}"+
-  "#v880-panel .ts{font-size:11.5px;color:#71767b;margin-top:2px}"+
-  "#v880-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 15px 30px}"+
-  ".v880-meter{background:linear-gradient(120deg,#1d0b16,#2a0f22);border:1px solid #3d2436;border-radius:18px;padding:14px 15px;margin-bottom:14px}"+
-  ".v880-meter .row{display:flex;gap:10px}"+
-  ".v880-meter .cell{flex:1;text-align:center}"+
-  ".v880-meter .num{font-size:19px;font-weight:900;color:#fff}"+
-  ".v880-meter .lab{font-size:10.5px;color:#a97e96;margin-top:2px;font-weight:700}"+
-  ".v880-bar{height:9px;border-radius:99px;background:#3a2233;margin-top:12px;overflow:hidden}"+
-  ".v880-bar i{display:block;height:100%;width:34%;border-radius:99px;background:linear-gradient(90deg,#fd267d,#ff7854);transition:width .7s ease}"+
-  ".v880-sec{font-size:13px;font-weight:900;color:#ff8fbe;letter-spacing:.14em;margin:16px 2px 9px}"+
-  ".v880-tgt{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:11px}"+
-  ".v880-tgt .who{font-size:13.5px;font-weight:800;color:#fff}"+
-  ".v880-tgt .who span{color:#71767b;font-weight:500;font-size:12px}"+
-  ".v880-tgt .tx{font-size:13.5px;line-height:1.75;color:#e7e9ea;margin-top:5px}"+
-  ".v880-tgt .btns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}"+
-  ".v880-tgt .btns button{flex:1;min-width:96px;padding:9px 6px;border-radius:999px;border:1px solid #fd267d;background:rgba(253,38,125,.13);color:#ff8fbe;font-size:12.5px;font-weight:800;cursor:pointer}"+
-  ".v880-tgt .btns button.used{background:#2f3336;border-color:#2f3336;color:#71767b;cursor:default}"+
-  ".v880-wave{margin-bottom:16px}"+
-  ".v880-wave .wlab{font-size:12px;font-weight:900;color:#ff7854;letter-spacing:.1em;margin:4px 2px 8px}"+
-  ".v880-post{background:#16181c;border:1px solid #2f3336;border-radius:16px;padding:13px 14px;margin-bottom:9px}"+
-  ".v880-post.her{border-color:#fd267d;background:linear-gradient(180deg,rgba(253,38,125,.14),#16181c)}"+
-  ".v880-post .who{font-size:13.5px;font-weight:800}"+
-  ".v880-post .who span{color:#71767b;font-weight:500;font-size:12px}"+
-  ".v880-post .tx{font-size:13.5px;line-height:1.8;color:#e7e9ea;margin-top:5px;white-space:pre-wrap}"+
-  ".v880-post .qt{border:1px solid #2f3336;border-radius:12px;padding:9px 11px;margin-top:9px;font-size:12.5px;line-height:1.7;color:#aab8c2}"+
-  ".v880-post .qt b{color:#e7e9ea}"+
-  ".v880-post .mt{font-size:12px;color:#71767b;margin-top:9px;display:flex;gap:16px}"+
-  ".v880-lock{background:#16181c;border:1px solid #2f3336;border-radius:18px;padding:26px 20px;text-align:center;color:#aab8c2;font-size:13.5px;line-height:2}"+
-  ".v880-lock b{color:#fff;font-size:16px}"+
-  ".v880-fin{background:linear-gradient(120deg,#fd267d,#ff7854);border-radius:18px;padding:18px;text-align:center;color:#fff;margin-bottom:16px;box-shadow:0 12px 26px rgba(253,38,125,.35)}"+
-  ".v880-fin .big{font-size:19px;font-weight:900}"+
-  ".v880-fin .sm{font-size:12.5px;font-weight:700;margin-top:5px;line-height:1.8}";
- document.head.appendChild(css);
- function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 || !!state._subPublic); }catch(e){ return false; } }
- var TARGETS=[
-  {n:"\u7279\u5b9a\u73ed",h:"@tokutei_jp",tx:"\u76f8\u624b\u306e\u5973\u3001\u30b5\u30d6\u57a2\u307e\u3067\u7279\u5b9a\u5b8c\u4e86\u3002\u5199\u771f\u5168\u90e8\u4fdd\u5b58\u6e08\u307f\u3060\u304b\u3089\u6d88\u3057\u3066\u3082\u7121\u99c4\u306d"},
-  {n:"hiroto_honmei",h:"@hiroto_honmei",tx:"\u63a8\u3057\u3092\u91e3\u3063\u305f\u81ea\u6162\u57a2\u3001\u307e\u3060\u6d88\u3057\u3066\u306a\u3044\u306e\uff1f \u30d5\u30a1\u30f3\u306e\u6c17\u6301\u3061\u8003\u3048\u305f\u3053\u3068\u3042\u308b\uff1f"},
-  {n:"\u307e\u3068\u3081\u901f\u5831",h:"@matome_soku",tx:"\u3010\u708e\u4e0a\u4e2d\u3011\u4f8b\u306e\u76f8\u624b\u306e\u5973\u3001\u53cd\u8ad6\u306a\u3057\u3002\u4e8b\u5b9f\u4e0a\u306e\u6557\u5317\u5ba3\u8a00\u304b"}
- ];
- var REPLIES=[
-  ["\u4fdd\u5b58\u3054\u82e6\u52b4\u3055\u307e\u3002\u9375\u57a2\u3092\u8997\u3044\u3066\u307e\u3067\u96c6\u3081\u305f\u30b9\u30af\u30b7\u30e7\u3067\u4eba\u751f\u697d\u3057\u305d\u3046\u3067\u4f55\u3088\u308a\u3002\u3053\u3063\u3061\u306f\u6d88\u3059\u6c17\u306a\u3044\u304b\u3089\u3001\u305b\u3044\u305c\u3044\u772a\u3081\u3066\u3066",
-   "\u7279\u5b9a\u5b8c\u4e86\u304a\u3081\u3067\u3068\u3046\u3002\u3067\u3001\u305d\u308c\u3067\u4f55\u304c\u5909\u308f\u308b\u306e\uff1f \u79c1\u306e\u751f\u6d3b\u306f\u4eca\u65e5\u3082\u666e\u901a\u306b\u56de\u3063\u3066\u308b\u3088",
-   "\u62e1\u6563\u3042\u308a\u304c\u3068\u3046\u3002\u304a\u304b\u3052\u3067\u30d5\u30a9\u30ed\u30ef\u30fc\u5897\u3048\u305f\u308f\u3002\u307e\u3068\u3081\u8077\u4eba\u3055\u3093\u305f\u3061\u306e\u5ba3\u4f1d\u8cbb\u3001\u3053\u3063\u3061\u306f1\u5186\u3082\u6255\u3063\u3066\u306a\u3044\u306e\u306b\u306d"],
-  ["\u91e3\u3063\u305f\u3093\u3058\u3083\u306a\u304f\u3066\u3001\u5411\u3053\u3046\u3082\u79c1\u3092\u9078\u3093\u3060\u306e\u3002\u305d\u308c\u304c\u4e00\u756a\u6094\u3057\u3044\u3093\u3067\u3057\u3087\uff1f \u5206\u304b\u308b\u3088\u3001\u305d\u306e\u6c17\u6301\u3061",
-   "\u6d88\u3055\u306a\u3044\u3088\u3002\u8b1d\u308b\u7406\u7531\u3082\u306a\u3044\u3057\u3002\u30d5\u30a1\u30f3\u306e\u6c17\u6301\u3061\u306f\u5927\u4e8b\u3060\u3051\u3069\u3001\u79c1\u306e\u4eba\u751f\u306f\u79c1\u306e\u3082\u306e\u3060\u304b\u3089",
-   "\u6bce\u65e5\u898b\u306b\u6765\u3066\u304f\u308c\u3066\u3042\u308a\u304c\u3068\u3046\u3002\u6012\u308a\u306a\u304c\u3089\u3082\u30c1\u30a7\u30c3\u30af\u6b20\u304b\u3055\u306a\u3044\u306e\u3001\u3082\u3046\u7acb\u6d3e\u306a\u30d5\u30a1\u30f3\u3060\u3068\u601d\u3046"],
-  ["\u6557\u5317\u5ba3\u8a00\uff1f \u6c88\u9ed9\u306f\u6226\u7565\u3063\u3066\u77e5\u3089\u306a\u3044\uff1f \u2026\u2026\u307e\u3042\u3001\u4eca\u3053\u3046\u3057\u3066\u8fd4\u3057\u3066\u308b\u6642\u70b9\u3067\u6226\u7565\u3067\u3082\u306a\u3044\u304b\u3002\u8a00\u3044\u305f\u3044\u304b\u3089\u8a00\u3063\u3066\u308b\u3060\u3051",
-   "\u53cd\u8ad6\u306a\u3057\u3058\u3083\u306a\u304f\u3066\u3001\u76f8\u624b\u3057\u3066\u306a\u304b\u3063\u305f\u3060\u3051\u3002\u4eca\u3057\u305f\u3089\u3057\u305f\u3067\u9a12\u3050\u3093\u3067\u3057\u3087\uff1f \u306f\u3044\u306f\u3044\u3001\u71c3\u6599\u3069\u3046\u305e",
-   "\u307e\u3068\u3081\u3042\u308a\u304c\u3068\u3046\u3001\u6bce\u56de\u4ed5\u4e8b\u304c\u65e9\u3044\u3002\u304a\u304b\u3052\u3067\u79c1\u304c\u8aac\u660e\u3057\u306a\u304f\u3066\u3082\u7d4c\u7def\u304c\u5168\u90e8\u6b8b\u3063\u3066\u304f\u304b\u3089\u52a9\u304b\u3063\u3066\u308b"]
- ];
- var STYLES=["\u6311\u767a\u3067\u8fd4\u3059","\u958b\u304d\u76f4\u308b","\u62e1\u6563\u306b\u611f\u8b1d\u3059\u308b"];
- var REACT=[
-  {n:"\u307e\u3068\u3081\u901f\u5831",h:"@matome_soku",tx:"\u3010\u901f\u5831\u3011\u76f8\u624b\u306e\u5973\u3001\u53cd\u6483\u958b\u59cb \u2192 \u5f15\u7528\u304c\u4e00\u6c17\u306b\u4f38\u3073\u3066\u308b"},
-  {n:"\u7279\u5b9a\u73ed",h:"@tokutei_jp",tx:"\u30b9\u30af\u30b7\u30e7\u73ed\u3001\u8ffd\u52a0\u3067\u4fdd\u5b58\u5b8c\u4e86\u3002\u3053\u308c\u306f\u6d88\u305b\u306a\u3044\u3084\u3064"},
-  {n:"\u305f\u3060\u306e\u30d5\u30a1\u30f3",h:"@tada_fan",tx:"\u8a00\u3044\u65b9\u306f\u5f37\u3044\u3051\u3069\u3001\u9375\u57a2\u8997\u3044\u3066\u53e9\u3044\u3066\u305f\u5074\u304c\u88ab\u5bb3\u8005\u9762\u3059\u308b\u306e\u306f\u9055\u3046\u3068\u601d\u3046"},
-  {n:"hiroto_honmei",h:"@hiroto_honmei",tx:"\u306a\u3093\u3067\u4f59\u8a08\u306b\u71c3\u3084\u3059\u306e\u2026\u63a8\u3057\u306e\u3053\u3068\u8003\u3048\u3066"},
-  {n:"\u306a\u304a\u306e\u5473\u65b9",h:"@nao_mikata",tx:"\u5f37\u304f\u3066\u597d\u304d\u3002\u305d\u306e\u307e\u307e\u9003\u3052\u306a\u3044\u3067\u3001\u3053\u3063\u3061\u306f\u898b\u3066\u308b\u3088"},
-  {n:"\u91ce\u6b21\u99ac\u306e\u4eba",h:"@yajiuma_jp",tx:"\u796d\u308a\u306f\u7d9a\u304f\u306e\u304b\u2026\u30dd\u30c3\u30d7\u30b3\u30fc\u30f3\u7528\u610f\u3057\u305f"},
-  {n:"\u9031\u520a\u30c7\u30b8\u30bf\u30eb",h:"@shukan_digi",tx:"\u76f8\u624b\u5973\u6027\u306e\u300c\u53cd\u6483\u30dd\u30b9\u30c8\u300d\u304c\u30c8\u30ec\u30f3\u30c9\u5165\u308a\u3002\u53ce\u675f\u306e\u6c17\u914d\u306a\u3057"},
-  {n:"\u901a\u5831\u6e08\u307f\u306e\u4eba",h:"@tsuho_shita",tx:"\u901a\u5831\u3057\u305f\u3002\u2026\u2026\u3057\u305f\u3051\u3069\u4f55\u3082\u8d77\u304d\u306a\u3044\u3002\u672c\u5f53\u306b\u7121\u99c4\u3058\u3083\u3093"}
- ];
- var rounds=0, used={}, imp=1284000, fol=0, feedEl=null, built=false;
- function fmt(n){ return n.toLocaleString("ja-JP"); }
- function esc(t){ return t.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
- function buildPanel(){
-  if(built) return; built=true;
-  var vx=document.querySelector("#v-x"); if(!vx) return;
-  var panel=document.createElement("div"); panel.id="v880-panel";
-  panel.innerHTML=
-   '<div class="hd"><button class="bk" id="v880-back">\u2039</button><div><div class="tt">\u3042\u304a\u308a\u8fd4\u3057\u30bb\u30f3\u30bf\u30fc</div><div class="ts">\u5f15\u7528\u30fb\u30e1\u30f3\u30b7\u30e7\u30f3\u3078\u306e\u53cd\u6483 \u2014 \u708e\u4e0a\u4e2d\u306eX</div></div></div>'+
-   '<div id="v880-scroll"></div>';
-  vx.appendChild(panel);
-  panel.querySelector("#v880-back").addEventListener("click",function(){ panel.style.display="none"; });
- }
- function meterHTML(){
-  var buzz=Math.min(100,34+rounds*8);
-  return '<div class="v880-meter"><div class="row">'+
-   '<div class="cell"><div class="num" id="v880-wave">\u7b2c'+(rounds+1)+'\u6ce2</div><div class="lab">\u53cd\u6483\u306e\u6ce2</div></div>'+
-   '<div class="cell"><div class="num" id="v880-imp">'+fmt(imp)+'</div><div class="lab">\u7d2f\u8a08\u30a4\u30f3\u30d7\u30ec\u30c3\u30b7\u30e7\u30f3</div></div>'+
-   '<div class="cell"><div class="num" id="v880-fol">+'+fmt(fol)+'</div><div class="lab">\u30d5\u30a9\u30ed\u30ef\u30fc\u5897</div></div></div>'+
-   '<div class="v880-bar"><i id="v880-buzz" style="width:'+buzz+'%"></i></div>'+
-   '<div style="font-size:11px;color:#a97e96;margin-top:7px;font-weight:700">\u30d0\u30ba\u5ea6 '+buzz+'% \u30fb \u53cd\u6483 '+(Object.keys(used).length)+' / 9</div></div>';
- }
- function render(){
-  buildPanel();
-  var panel=document.querySelector("#v880-panel"); if(!panel) return;
-  var sc=panel.querySelector("#v880-scroll"); if(!sc) return;
-  if(!hot()){
-   sc.innerHTML='<div class="v880-lock"><b>\u4eca\u306f\u307e\u3060\u9759\u304b\u3067\u3059</b><br>\u708e\u4e0a\u304c\u59cb\u307e\u308b\u3068\u3001\u3053\u3053\u3067\u5f15\u7528\u3084\u30e1\u30f3\u30b7\u30e7\u30f3\u306b<br>\u3042\u304a\u308a\u8fd4\u3057\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002</div>';
-   feedEl=null; return;
-  }
-  var h=meterHTML();
-  h+='<div class="v880-sec">\u2014 \u53cd\u6483\u3059\u308b\u76f8\u624b\u3092\u9078\u3076 \u2014</div>';
-  TARGETS.forEach(function(t,ti){
-   h+='<div class="v880-tgt" data-ti="'+ti+'"><div class="who">'+esc(t.n)+' <span>'+esc(t.h)+'</span></div><div class="tx">'+esc(t.tx)+'</div><div class="btns">';
-   STYLES.forEach(function(st,si){
-    var u=used[ti+"-"+si];
-    h+='<button data-v880-fire="'+ti+':'+si+'" class="'+(u?"used":"")+'">'+(u?"\u9001\u4fe1\u6e08\u307f":st)+'</button>';
-   });
-   h+='</div></div>';
-  });
-  h+='<div class="v880-sec">\u2014 \u53cd\u6483\u30d5\u30a3\u30fc\u30c9 \u2014</div><div id="v880-feed"></div>';
-  sc.innerHTML=h;
-  feedEl=sc.querySelector("#v880-feed");
-  var btns=sc.querySelectorAll("[data-v880-fire]");
-  for(var i=0;i<btns.length;i++){ btns[i].addEventListener("click",function(){ var p=this.getAttribute("data-v880-fire").split(":"); fire(+p[0],+p[1],this); }); }
- }
- function postCard(cls,who,handle,tx,metrics,quote){
-  var d=document.createElement("div"); d.className="v880-post "+cls;
-  d.innerHTML='<div class="who">'+esc(who)+' <span>'+esc(handle)+' \u30fb \u4eca</span></div><div class="tx">'+esc(tx)+'</div>'+
-   (quote?'<div class="qt"><b>'+esc(quote.n)+' '+esc(quote.h)+'</b><br>'+esc(quote.tx)+'</div>':'')+
-   '<div class="mt"><span>\ud83d\udcac '+metrics[0]+'</span><span>\ud83d\udd01 '+metrics[1]+'</span><span>\u2764\ufe0f '+metrics[2]+'</span></div>';
-  return d;
- }
- function fire(ti,si,btn){
-  var key=ti+"-"+si; if(used[key]) return; used[key]=1; rounds++;
-  imp+= 86000 + rounds*27400 + ti*9300; fol+= 1180 + rounds*340 + si*210;
-  var wave=document.createElement("div"); wave.className="v880-wave";
-  var lab=document.createElement("div"); lab.className="wlab"; lab.textContent="\u2014 \u7b2c"+rounds+"\u6ce2 \u2014"; wave.appendChild(lab);
-  wave.appendChild(postCard("her","\u306a\u304a","@nao_0324",REPLIES[ti][si],[fmt(420+rounds*913),fmt(3100+rounds*2870),fmt(9800+rounds*7410)],TARGETS[ti]));
-  for(var k=0;k<4;k++){
-   var r=REACT[(rounds*4+k+ti)%REACT.length];
-   wave.appendChild(postCard("",r.n,r.h,r.tx,[fmt(96+rounds*137+k*41),fmt(420+rounds*690+k*120),fmt(1500+rounds*1980+k*260)],null));
-  }
-  if(feedEl) feedEl.insertBefore(wave,feedEl.firstChild);
-  if(btn){ btn.classList.add("used"); btn.textContent="\u9001\u4fe1\u6e08\u307f"; }
-  var panel=document.querySelector("#v880-panel");
-  var wEl=panel.querySelector("#v880-wave"); if(wEl) wEl.textContent="\u7b2c"+(rounds+1)+"\u6ce2";
-  var iEl=panel.querySelector("#v880-imp"); if(iEl) iEl.textContent=fmt(imp);
-  var fEl=panel.querySelector("#v880-fol"); if(fEl) fEl.textContent="+"+fmt(fol);
-  var bz=panel.querySelector("#v880-buzz"); if(bz) bz.style.width=Math.min(100,34+rounds*8)+"%";
-  var cnt=Object.keys(used).length;
-  if(cnt>=9 && !panel.querySelector(".v880-fin")){
-   var fin=document.createElement("div"); fin.className="v880-fin";
-   fin.innerHTML='<div class="big">\u3042\u304a\u308a\u8fd4\u3057\u30b3\u30f3\u30d7\u30ea\u30fc\u30c8</div><div class="sm">9\u901a\u308a\u5168\u90e8\u8fd4\u3057\u305f\u3002\u307e\u3068\u3081\u901f\u5831\u304c\u300c\u76f8\u624b\u306e\u5973\u3001\u53cd\u6483\u3067\u30c8\u30ec\u30f3\u30c91\u4f4d\u300d\u3068\u901f\u5831 \u2014<br>\u53e9\u304f\u307b\u3069\u4f38\u3073\u308b\u306e\u3001\u3082\u3046\u307f\u3093\u306a\u5206\u304b\u3063\u3066\u308b\u306f\u305a</div>';
-   var sc2=panel.querySelector("#v880-scroll"); if(sc2) sc2.insertBefore(fin,sc2.firstChild);
-  }
-  try{ if(typeof push==="function") push("X","#000","\ud835\udd4f","\u5f15\u7528\u30dd\u30b9\u30c8\u304c\u6025\u5897\u3057\u3066\u3044\u307e\u3059","\u3042\u306a\u305f\u306e\u53cd\u6483\u30dd\u30b9\u30c8\u304c\u62e1\u6563\u3055\u308c\u3066\u3044\u307e\u3059",function(){ window.__v880open(); }); }catch(e){}
- }
- window.__v880open=function(){ buildPanel(); var panel=document.querySelector("#v880-panel"); if(!panel) return; render(); panel.style.display="flex"; var sc=panel.querySelector("#v880-scroll"); if(sc) sc.scrollTop=0; };
- function inject(){
-  [["#x-pane-trend"],["#x-pane-mention"]].forEach(function(q){
-   var pane=document.querySelector(q[0]); if(!pane) return;
-   if(pane.querySelector(".v880-entry")) return;
-   var b=document.createElement("button"); b.className="v880-entry"; b.type="button";
-   b.innerHTML='<span><span class="tt">\u3042\u304a\u308a\u8fd4\u3057\u30bb\u30f3\u30bf\u30fc</span><div class="ts">\u5f15\u7528\u30fb\u30e1\u30f3\u30b7\u30e7\u30f3\u306b\u53cd\u6483\u3057\u3066\u3001\u71c3\u6599\u3092\u6295\u3052\u308b\u65b0\u6a5f\u80fd</div></span><span class="arr">\u203a</span>';
-   b.addEventListener("click",function(){ window.__v880open(); });
-   pane.insertBefore(b,pane.firstChild);
-  });
- }
- setInterval(inject,1200); inject();
-})();
-</script>
+
 <style>
 /* ===== v881: his IG profile face (category A, one big screen) ===== */
 #v-hisig{background:#fff}
@@ -31422,7 +31211,7 @@ var EXACT=[
 ["新しいリップ買った",[["みさき","@misaki_s2","そのリップ明日の飲み会で見せて〜！ 色味気になる"],["りな","@rina_s","新しいリップ買うとテンション上がるよね"],["なお","@nao_0324","明日の飲み会、そのリップで来て。楽しみ"]]],
 ["サウナ3セットきめた",[["ゆい","@yui_s","3セットきめた日の整い具合、異常やよね"],["りな","@rina_s","このまま寝たい、までがワンセット"],["なお","@nao_0324","整いすぎてる。私も行きたい"]]],
 ["お昼の海老天丼が優勝だった",[["ゆい","@yui_s","海老天丼優勝は分かりすぎる。エビの話になるとなお呼びがち"],["みさき","@misaki_s2","なおに食べさせたいって言うの優しい"],["なお","@nao_0324","食べさせて。絶対行く"]]],
-["カフェ写真掲載",[["まとめ読み専","@matome_yomi","時系列で整理されてて助かる。感情論の前に事実を並べるの大事"],["冷静派","@reisei_ha","事務所の『アプリ確認中』が一番の焦点やと思う。続報待ち"],["記事検証班","@kiji_kensho","ファンミの開催可否まで並べると、事の大きさが分かる"]]],
+["カフェ目撃情報",[["まとめ読み専","@matome_yomi","時系列で整理されてて助かる。感情論の前に事実を並べるの大事"],["冷静派","@reisei_ha","事務所の『アプリ確認中』が一番の焦点やと思う。続報待ち"],["記事検証班","@kiji_kensho","ファンミの開催可否まで並べると、事の大きさが分かる"]]],
 ["お相手は一般の方です。特定や詮索は控えよう",[["一般人","@ippanjin_jp","『犬に罪はない』ほんとそれ。特定や詮索は控えようって声、もっと増えてほしい"],["冷静派","@reisei_ha","お相手は一般の方、って線引きを守れるかどうかやね"],["様子見","@yousumi_jp","ようやく落ち着いた声が増えてきた。いい傾向"]]],
 ["ソロで全部背負ったのは立派",[["ファンの一人","@fan_no_hitori","『ステージは変わらない』って言葉に救われる。古参が戻ってきてるのも分かる"],["同担","@dotan_x","ソロで全部背負ったのは立派、その通りやと思う"],["新規ファン","@shinki_fan","前向きな投稿が増えてるの、見てて安心する"]]],
 ["拡散中のプロフ写真、過去の私服投稿と耳の形",[["特定班ウォッチ","@tokutei_watch","耳の形まで照合してるの、特定班の本気を見た"],["まとめ読み専","@matome_yomi","プロフ写真と私服投稿の照合、ここまで出ると本人で確定の流れやな"],["冷静派","@reisei_ha","検証が進むほど、事務所の確認中コメントとの温度差が際立つ"]]],
@@ -31481,7 +31270,7 @@ var EXACT=[
  ["ここは、ふたりの日常の置き場でした",[["まとめ読み専","@matome_yomi","炎上したサブ垢の固定ポストこれ。『特別なことは何もない』の一文が静かすぎて、逆に印象に残る"],["一般人","@ippanjin_jp","サブ垢本人の言葉、原文で。騒ぎの大きさのわりに、ただの日常の記録だった"]]],
  ["好きに言えばいい。私は、嘘ついてない",[["あんり","@anri_h1029","本人が写真付きで出したポストこれ。『嘘ついてない』の一言と写真が全部"],["まとめ速報","@matome_soku","彼女本人のポストが引用で拡散中。写真付き、言葉は短い"]]],
  ["一夜明けて、彼の言葉を読み直した",[["さくらの推し活","@sakura_act","一夜明けてのファンの声、これが空気の変化を一番表してる。『ステージの大翔が好き』"],["ファンの一人","@fan_no_hitori","彼の言葉を読み直した人のポスト。叩く空気から静かになる転換点だった"]]],
- ["【時系列まとめ】カフェ写真掲載",[["まとめ読み専","@matome_yomi","報道の時系列まとめはこれが一番正確。カフェ写真から事務所コメントまでの流れ"],["記事検証班","@kiji_kensho","時系列で追うならこのまとめ。憶測を足してないのがいい"]]],
+ ["【時系列まとめ】カフェ目撃情報",[["まとめ読み専","@matome_yomi","報道の時系列まとめはこれが一番正確。カフェ目撃情報から事務所コメントまでの流れ"],["記事検証班","@kiji_kensho","時系列で追うならこのまとめ。憶測を足してないのがいい"]]],
  ["お相手は一般の方です。特定や詮索は控えよう",[["一般人","@ippanjin_jp","『犬に罪はない』も含めて、このポストの言い方が一番まともだった"],["冷静派","@reisei_ha","特定や詮索は控えよう、の声。ようやく増えてきたまともな流れ"]]]
  ];
 EXACT.sort(function(a,b){ return b[0].length-a[0].length;});
@@ -31635,8 +31424,9 @@ also replaced in this version, so unknown (user-composed) posts can no longer pr
 if(window.__v885) return; window.__v885=true;
 var EXACT2=[
 ["人気アイドル・井汲大翔に“アプリ利用”報道",[["記事検証班","@kiji_kensho","速報の文面、『確認中』が一番重い。交際は否定されてる点もセットで読むべき"],["担降り検討","@kangaechu","朝からこの見出しは心臓に悪い。でも逃げずに最後まで読んだ"],["一般人","@ippanjin_jp","ワイドショーより先にTLで知る時代なんだな、って実感した"]]],
-["カフェ写真が出た途端、相手のインスタ特定班がもう動いてる",[["傍観者","@boukansha_x","特定の速さが一番怖い。写真一枚でここまで行くのか"],["心配なファン","@shinpai_fan","相手は一般の人なのに…特定班の動きだけは止まってほしい"],["冷静派","@reisei_ha","『ただの休日』の写真ばっかり、って所に一番モヤモヤが残る"]]],
+["目撃情報が出た途端、相手のインスタ特定班がもう動いてる",[["傍観者","@boukansha_x","特定の速さが一番怖い。写真一枚でここまで行くのか"],["心配なファン","@shinpai_fan","相手は一般の人なのに…特定班の動きだけは止まってほしい"],["冷静派","@reisei_ha","『ただの休日』の写真ばっかり、って所に一番モヤモヤが残る"]]],
 ["寝る前に何回も読み返した。交際は否定されてる",[["同担","@dotan_x","何回も読み返すの、分かりすぎる。否定の文と確認中の文の間で揺れるやつ"],["ファンの一人","@fan_no_hitori","信じたいとモヤモヤが両方ほんま、って言葉が一番正確だと思う"],["古参ファン","@koha_fan","ロットダンのこの揺れ方、古参ほど経験してるやつ"]]],
+["寝る前に何回も読み返した。交際、否定はされてへん",[["同担","@dotan_x","否定されてへん、ってのが一番モヤる。認めたわけでもないのに"],["ファンの一人","@fan_no_hitori","何回も読み返すの、分かりすぎる。本人の言葉を待つしかない"],["冷静派","@reisei_ha","『任せています』は否定でも肯定でもない。決めつけないほうがいい"]]],
 ["日プの頃から見てる身としては、アプリの件より",[["古参ファン","@koha_fan","『暇つぶしで入れた』の正直さが刺さる、って感覚は古参ほど強いと思う"],["同担","@dotan_x","飾らない人、ってずっと思ってた印象は今も変わらないな"],["新規ファン","@shinki_fan","日プからの人の言葉は重みが違う。読んでて静かになった"]]],
 ["ファンミのレポ書いてた側からすると、あの距離感を知ってるからこそ飲み込みにくい",[["レポ感謝","@repo_arigato","レポと現実は別、って自分に言い聞かせる感覚、痛いほど分かる"],["神戸参戦組","@kobe_sansei","あの距離感を知ってる側の言葉だから、軽く叩けない"],["ファンの一人","@fan_no_hitori","飲み込みにくい、で止まれる人はまだ優しいと思う"]]],
 ["検証班メモ：①週刊誌のカフェ",[["特定班ウォッチ","@tokutei_watch","検証班メモの①、店の内装まで一致はさすがに強い材料"],["冷静派","@reisei_ha","③の日プ時代の写真の掘り返しは別問題、って線引きは正しいと思う"],["一般人","@ippanjin_jp","メモ形式で淡々と並ぶのが一番信憑性あって怖い"]]],
@@ -31722,8 +31512,6 @@ var EXACT2=[
 ["叩いてた人たち、少しずつ静かになってきた",[["ファンの一人","@fan_no_hitori","本人の言葉って、ちゃんと届くんやね、に尽きる"],["同担","@dotan_x","静かになってきた空気を一番感じてるのは本人たちだと思う"],["通りすがり","@toorisugari_x","一夜明けての変化、TLで見てても分かる"]]],
 ["トレンドから名前、消えたね。アプリの件は反省して、歌で返してくれたら",[["様子見","@yousumi_jp","歌で返してくれたら、という着地点が一番健全"],["ファンの一人","@fan_no_hitori","トレンドから消えた朝の静けさ、ほっとした"],["冷静派","@reisei_ha","反省と歌、ファンの多くが待ってるのは結局そこ"]]],
 ["（このアカウント、今めちゃくちゃ見られてる…）",[["ゆい","@yui_s","見られてる自覚のある独り言、そっと応援してる"],["みさき","@misaki_s2","通知の量、想像するだけで怖い。無理しないで"],["りな","@rina_s","味方はここにいるからね"]]],
-["拡散してくれてありがとう。おかげで、隠す理由なくなったわ",[["あんり","@anri_h1029","隠す理由なくなった、の開き直りが火に油なのは事実"],["さくらの推し活","@sakura_act","止めたいなら見なきゃよかった、は図星すぎて刺さる"],["冷静派","@reisei_ha","本人の言葉は短いのに、周りの反応だけが巨大"]]],
-["叩くなら鍵垢から石投げるんじゃなくて、表で言えば？",[["まとめ読み専","@matome_yomi","通報しても無駄、の宣言が一番拡散してるのが皮肉"],["心配なファン","@shinpai_fan","鍵もかけないし逃げもしない、は心配になる強さ"],["傍観者","@boukansha_x","表で言えば？は正論だけど、炎上の燃料にもなってる"]]],
 ["エビ、優勝。それ以外に言うことない",[["ゆい","@yui_s","エビ優勝の断言、なおらしくて好き"],["みさき","@misaki_s2","それ以外に言うことない、の潔さ"],["りな","@rina_s","エビの話になると語彙が優勝だけになる人"]]],
 ["サウナ3セット目で整いすぎて、返事が遅れただけだよ笑",[["ゆい","@yui_s","整いすぎて返事遅れるのは仕様だよね"],["みさき","@misaki_s2","外気浴まで付き合って、は次の約束として最高"],["りな","@rina_s","サウナの話になると二人の熱量がすごい"]]],
 ["今日の投稿、保存しました…！ 次の現場も絶対いきます",[["ファンの一人","@fan_no_hitori","推しの投稿を保存する彼女、完全にファンの顔してる"],["同担","@dotan_x","次の現場も絶対、の言葉に嘘がない"],["新規ファン","@shinki_fan","ファンとしての彼女の顔が見える貴重な返信"]]],
@@ -31747,8 +31535,6 @@ var QT2=[
 ["声明で一番残った一文、『お相手に迷惑をかけた』",[["ファンの一人","@fan_no_hitori","声明で一番残った一文はこれ、という声が一番多い"],["同担","@dotan_x","保身より相手、という声明の姿勢を象徴するポスト"]]],
 ["例の相手の女、IG更新したぞ。顔寄せ合ったツーショット",[["まとめ速報","@matome_soku","否定直後のIG更新を伝えたポスト。ツーショットの説得力が全て"],["あんり","@anri_h1029","この更新が第二波の起点になったのは間違いない"]]],
 ["相手の女、Xにキス写真上げたぞ。もう終わりだろ、これ",[["まとめ速報","@matome_soku","本人がXに上げた写真ポストの第一報。ここからトレンド入りまで一瞬だった"],["特定班","@tokutei_jp","キス写真ポスト、スクショの拡散がもう止まらない"]]],
-["拡散してくれてありがとう。おかげで、隠す理由なくなったわ",[["あんり","@anri_h1029","彼女本人の反撃ポストこれ。『隠す理由なくなった』の一文が全部持っていった"],["まとめ速報","@matome_soku","本垢のこのポスト、引用の伸びが炎上の第二幕って感じ"]]],
-["叩くなら鍵垢から石投げるんじゃなくて、表で言えば？",[["まとめ読み専","@matome_yomi","通報無駄宣言のポスト。賛否の割れ方が一番大きい"],["傍観者","@boukansha_x","表で言えば？への反応、応援と批判が同数でぶつかってる"]]],
 ["路上で撮られたやつまで回ってきた",[["流出画像","@ryushutsu_img","路上キス寸前ショット付きのポスト。週刊デジタルの写真が回ってる"],["目撃検証","@mokugeki_ken","路上の写真は目撃談と繋がるやつ。時系列で見ると重い"]]],
 ["Tinderで送ったとされる写真まで出回る",[["まとめ速報","@matome_soku","Tinderで送ったとされる写真の流出ポスト。本人しか持ってないはず、という点が騒ぎ"],["特定班","@tokutei_jp","流出の経路が一番の謎になってる件"]]]
 ];
