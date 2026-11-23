@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v962</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v963</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12098,7 +12098,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v962"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v963"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -20739,62 +20739,6 @@ try{
  function eligibleX(){ return typeof state!=="undefined" && state.phase==="scandal" && !state.act2 && !state.ended; }
  function busyX(){ var inc=document.querySelector("#call-incoming"); return !!state._answered || (inc && inc.style.display==="flex"); }
  function tlPrepend(p){ var tl=document.querySelector("#x-pane-tl"); if(tl) tl.prepend(postEl(p,false)); try{ bump("x"); }catch(e){} }
- /* ---- 2) X photo-post danger section + storm ---- */
- function fireXPhotoStorm(){
-   try{ setHeat(Math.min(100,(state.heat||0)+18)); state._scar=(state._scar||0)+18; }catch(e){}
-   try{ push("X","#000","𝕏","メンションが急増しています","あなたの写真付きポストが拡散されています",function(){ show("x"); }); }catch(e){}
-   tlPrepend({n:"なお",h:"@nao_0324",tm:"今",t:"好きに言えばいい。私は、嘘ついてない",q:{n:"nao_0324",h:"@nao_0324",tm:"今",t:"💋",img:"assets/scar-kiss.jpg"},m:["💬 3,208","🔁 21,540","❤️ 11,203"]});
-   var TL=[
-    {n:"特定班",h:"@tokutei_jp",tm:"今",t:"相手の女、Xにキス写真上げたぞ。もう終わりだろ、これ",m:["💬 1,102","🔁 9,845","❤️ 4,102"]},
-    {n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【悲報】相手の女性、Xに写真付きポスト → トレンド入りへ",m:["💬 2,540","🔁 19,322","❤️ 7,540"]},
-    {n:"あんり",h:"@anri_h1029",tm:"今",t:"ガソリンぶちまけて自撮りしてるようなもん。本気で狂ってる",m:["💬 764","🔁 3,208","❤️ 12,540"]},
-    {n:"さくらの推し活",h:"@sakura_act",tm:"今",t:"お願い、もうやめて…。大翔の顔、見たくなかった、こんな形で",m:["💬 932","🔁 4,540","❤️ 18,320"]},
-    {n:"現場レポ",h:"@genba_repo",tm:"今",t:"事務所の否定、紙くずになったな。担当者かわいそ",m:["💬 388","🔁 2,940","❤️ 5,870"]}];
-   TL.forEach(function(p,i){ later(function(){ tlPrepend(p); }, 5000+i*6500); });
-   [["tokutei_jp","Xの写真、消しても無駄やで"],["anri_h1029","推しの人生、テメェの承認欲求のオモチャじゃねえ"]].forEach(function(m,i){ later(function(){ try{ mentionV7(m[0],m[1]); }catch(e){} }, 12000+i*9000); });
-   later(function(){
-     var w=document.querySelector("#x-pane-trend"); if(!w||w.dataset.xp659) return; w.dataset.xp659="1";
-     var SC=[["日本のトレンド","Xでも発信","312,540 件のポスト"],["日本のトレンド","キス写真","204,187 件のポスト"],["エンターテイメント ・ トレンド","相手の女","176,204 件のポスト"],["日本のトレンド","井汲大翔","158,772 件のポスト"]];
-     w.innerHTML=""; SC.forEach(function(t,i){ var d=document.createElement("div"); d.className="trend"; d.style.cursor="pointer";
-       d.addEventListener("click",function(){ var q=document.querySelector("#x-q"); if(q) q.value=t[1]; if(typeof doSearch==="function") doSearch(t[1]); });
-       d.innerHTML='<div class="cat">'+(i+1)+' ・ '+t[0]+'</div><div class="kw">'+t[1]+'</div><div class="cnt">'+t[2]+'</div>'; w.appendChild(d); });
-   },15000);
-   later(function(){ try{ addNewsRow("assets/scar-kiss.jpg","お相手女性、今度はXに写真付きポスト　収拾つかず","芸能ニュース ・ たった今",null); bump("news"); }catch(e){} },21000);
-   var tries=0;
-   var react=function(){ tries++;
-     if(state.ended) return;
-     if(busyX()){ if(tries<=2) later(react,20000); return; }
-     (async function(){ try{
-       if(state._route!=="dating"){ await himMsg("…X、見た"); await himMsg("写真まで出すなって"); await himMsg("俺ら、付き合ってないんやで"); await himMsg("…これ以上、大きくせんといて"); }
-       else { await himMsg("…X、見た"); await himMsg("写真は、あかんて"); await himMsg("消して、頼む"); }
-     }catch(e){} })();
-   };
-   later(react,30000);
- }
- setInterval(function(){
-   try{
-     var ov=document.querySelector("#x-compose"); if(!ov) return;
-     var sec=ov.querySelector("#xproof-sec");
-     if(!eligibleX() || state._xPhoto659){ if(sec) sec.remove(); return; }
-     if(sec) return;
-     var ta=ov.querySelector("#xc-text"); if(!ta||!ta.parentNode) return;
-     sec=document.createElement("div"); sec.id="xproof-sec";
-     sec.style.cssText="border:2px solid #e0245e;border-radius:14px;padding:12px;margin-top:12px;background:#fff5f7";
-     sec.innerHTML='<div style="font-weight:800;font-size:14px;color:#c81e4e">🔥 写真付きポストができる</div>'+
-       '<div style="font-size:12.5px;color:#666;line-height:1.6;margin:7px 0 10px">例のキス写真を、Xにも上げられる。今これを出したら、間違いなく燃える。</div>'+
-       '<img loading="lazy" decoding="async" src="assets/scar-kiss.jpg" style="width:100%;border-radius:10px;display:block" alt="">'+
-       '<button id="xproof-post" type="button" style="width:100%;background:#e0245e;color:#fff;border:none;border-radius:999px;padding:11px;font-size:14.5px;font-weight:800;cursor:pointer;margin-top:10px;font-family:inherit">この写真でポストする</button>';
-     ta.parentNode.insertBefore(sec, ta.nextSibling);
-     sec.querySelector("#xproof-post").addEventListener("click",function(){
-       if(!eligibleX()){ toast("今はそれどころじゃない"); return; }
-       if(busyX()){ toast("今は電話中…終わってからにして"); return; }
-       state._xPhoto659=true;
-       var cancel=ov.querySelector("#xc-cancel"); if(cancel) cancel.click(); else ov.style.display="none";
-       show("x"); toast("ポストした…🔥");
-       fireXPhotoStorm();
-     });
-   }catch(e){}
- },1200);
  /* ---- 3) any text post during scandal -> moderate storm (v384 covers risky words; avoid double) ---- */
  function watchMePosts(){
    var box=document.querySelector("#x-me-posts"); if(!box) return false;
@@ -20831,6 +20775,7 @@ try{
      var leaked = state._route!=="dating" ? (!!state._subLeaked || !!state._subPublic || (t0 && Date.now()-t0>110000)) : !!state._subOpened;
      if(!leaked) return;
      spreadFired=true;
+     later(function(){ tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t: state._route==="dating" ? "【発端】二人が公開した記録用アカウントの写真、スクショがXに転載され始める" : "【発端】お相手の非公開アカウントが一時公開状態に。フォロワーが保存したスクショがXへ転載され始める",m:["💬 1,204","🔁 8,930","❤️ 3,412"]}); },600);
      later(function(){ tlPrepend({n:"特定班",h:"@tokutei_jp",tm:"今",t:"例のサブ垢、鍵外れて写真回ってきた。ソファでこの距離は、付き合ってないの無理ある",q:{n:"流出画像",h:"@ryushutsu_img",tm:"12月21日",t:"おうちで映画の日。気づいたらこの体勢",img:"assets/scar-sofa.jpg"},m:["💬 2,431","🔁 18,204","❤️ 9,870"]}); },2000);
      later(function(){ tlPrepend({n:"まとめ速報",h:"@matome_soku",tm:"今",t:"【拡散】サブ垢の写真、キス寸前のまで出回る　『交際事実なし』と矛盾の声",q:{n:"流出画像",h:"@ryushutsu_img",tm:"12月23日",t:"近すぎ、って言われるやつ",img:"assets/scar-kiss2.jpg"},m:["💬 3,540","🔁 26,870","❤️ 12,540"]});
        try{ push("X","#000","𝕏","写真が拡散されています","サブ垢の写真がXで出回っています",function(){ show("x"); }); }catch(e){} },26000);
@@ -31255,7 +31200,6 @@ var EXACT=[
 ["無理しないでね、味方もいるよ",[["同担","@dotan_x","味方もいるよ、は大事な言葉"],["ファンの一人","@fan_no_hitori","無理しないで、ほんとに"],["新規ファン","@shinki_fan","こういうメンションが届いてるといいな"]]],
 ["本人の言葉を信じて待ってます",[["冷静派","@reisei_ha","待てるファンがいるの、本人にも伝われ"],["ファンの一人","@fan_no_hitori","信じて待つ、それだけ"],["様子見","@yousumi_jp","憶測より本人の言葉、だよね"]]],
 ["推しのファンとして、なおさんを叩く気はないよ",[["ファンの一人","@fan_no_hitori","推しのファンとして、って前置きが誠実"],["心配なファン","@shinpai_fan","叩かない選択ができる人、増えてほしい"],["同担","@dotan_x","こういう声がタイムラインに増えてきた"]]],
-["好きに言えばいい。私は、嘘ついてない",[["あんり","@anri_h1029","嘘ついてない、は強い。でも写真まで出すのは…"],["さくらの推し活","@sakura_act","本人が出した写真ってのが一番の衝撃"],["冷静派","@reisei_ha","言葉は短いけど、覚悟は伝わる"]]],
  ["一夜明けて、彼の言葉を読み直した",[["さくらの推し活","@sakura_act","読み直した、って言葉に救われた。叩く空気、ほんとに静かになってきた"],["ファンの一人","@fan_no_hitori","『ステージの大翔が好き』に戻ってこれるの、古参の強さやと思う"],["通りすがり","@toorisugari_x","一夜明けてこの空気。本人の言葉が一番効いたってことやね"]]],
  ["彼の隣にいるの、やっぱり私がいい",[["同担","@dotan_x","分かる。その気持ちを言えるようになったのが一番の変化"],["ファンの一人","@fan_no_hitori","言葉にできるようになったの、見てて嬉しい"],["心配なファン","@shinpai_fan","急がず、ふたりのペースでね"]]],
  ["心配かけてごめんね。ちゃんと大丈夫だよ",[["応援団","@ouen_dan","大丈夫って聞けて安心した。無理しないでね"],["ファンの一人","@fan_no_hitori","言葉にしてくれてありがとう。待ってる"],["同担","@dotan_x","謝らなくていい。いてくれるだけで"]]],
@@ -31268,7 +31212,6 @@ var EXACT=[
  ["が公開状態に。鍵垢のはずが、写真32件",[["まとめ速報","@matome_soku","nao_ura公開状態のまとめ。32件一斉拡散の起点はこれ"],["まとめ読み専","@matome_yomi","鍵垢のはずが公開に、の経緯まとめ。ハッシュタグ付きで拡散中"]]],
  ["Xでポスト → 引用で",[["まとめ速報","@matome_soku","相手の女性のポストが引用で荒れ始めた件、流れはこれ"],["傍観者","@boukansha_x","引用欄の荒れ方をまとめたやつ。元ポストは短いのに解釈だけが暴走してる"]]],
  ["ここは、ふたりの日常の置き場でした",[["まとめ読み専","@matome_yomi","炎上したサブ垢の固定ポストこれ。『特別なことは何もない』の一文が静かすぎて、逆に印象に残る"],["一般人","@ippanjin_jp","サブ垢本人の言葉、原文で。騒ぎの大きさのわりに、ただの日常の記録だった"]]],
- ["好きに言えばいい。私は、嘘ついてない",[["あんり","@anri_h1029","本人が写真付きで出したポストこれ。『嘘ついてない』の一言と写真が全部"],["まとめ速報","@matome_soku","彼女本人のポストが引用で拡散中。写真付き、言葉は短い"]]],
  ["一夜明けて、彼の言葉を読み直した",[["さくらの推し活","@sakura_act","一夜明けてのファンの声、これが空気の変化を一番表してる。『ステージの大翔が好き』"],["ファンの一人","@fan_no_hitori","彼の言葉を読み直した人のポスト。叩く空気から静かになる転換点だった"]]],
  ["【時系列まとめ】カフェ目撃情報",[["まとめ読み専","@matome_yomi","報道の時系列まとめはこれが一番正確。カフェ目撃情報から事務所コメントまでの流れ"],["記事検証班","@kiji_kensho","時系列で追うならこのまとめ。憶測を足してないのがいい"]]],
  ["お相手は一般の方です。特定や詮索は控えよう",[["一般人","@ippanjin_jp","『犬に罪はない』も含めて、このポストの言い方が一番まともだった"],["冷静派","@reisei_ha","特定や詮索は控えよう、の声。ようやく増えてきたまともな流れ"]]]
@@ -31496,7 +31439,6 @@ var EXACT2=[
 ["井汲大翔の相手とみられる一般女性、ニュース記事のコメント欄に登場",[["記事検証班","@kiji_kensho","コメント欄に登場、がニュースになる段階まで来た"],["一般人","@ippanjin_jp","内容が話題に、という曖昧さが一番拡散するやつ"],["冷静派","@reisei_ha","本人の発信と周りの解釈の温度差がすごい"]]],
 ["ガソリンぶちまけて自撮りしてるようなもん。本気で狂ってる",[["さくらの推し活","@sakura_act","あんりの言葉は強いけど、ファンの絶望の代弁でもある"],["担降り検討","@kangaechu","ガソリン、という比喩に賛否が集まるのは分かる"],["冷静派","@reisei_ha","狂ってる、とまで言う熱量がこの炎上の温度"]]],
 ["お願い、もうやめて…。大翔の顔、見たくなかった、こんな形で",[["心配なファン","@shinpai_fan","見たくなかった、こんな形で、が一番ファンの本音だと思う"],["同担","@dotan_x","さくらの悲鳴に近いお願い、刺さる"],["ファンの一人","@fan_no_hitori","やめて、と言いながら見てしまうのがTLの現実"]]],
-["事務所の否定、紙くずになったな。担当者かわいそ",[["記事検証班","@kiji_kensho","否定が紙くず、という現場の見立ては厳しいけど的確"],["傍観者","@boukansha_x","担当者かわいそ、に尽きる展開ではある"],["一般人","@ippanjin_jp","写真一枚で公式コメントが無効化される怖さ"]]],
 ["相手の女、Xにキス写真上げたぞ。もう終わりだろ、これ",[["あんり","@anri_h1029","特定班の断定口調がTLの確信に変わっていく"],["担降り検討","@kangaechu","もう終わりだろ、と思った人は多かったはず"],["冷静派","@reisei_ha","写真の破壊力が全ての議論を飛び越えた瞬間"]]],
 ["相手の女性、Xに写真付きポスト → トレンド入りへ",[["まとめ読み専","@matome_yomi","トレンド入りへの速さが、事態の大きさを物語ってる"],["一般人","@ippanjin_jp","写真付き、という一言で空気が変わった"],["傍観者","@boukansha_x","まとめの見出しが一番拡散する形になってる"]]],
 ["路上で撮られたやつまで回ってきた",[["目撃検証","@mokugeki_ken","路上キス寸前ショット、週刊デジタル側の写真が決定的すぎる"],["担降り検討","@kangaechu","完全に付き合ってる距離感、は写真が語ってる"],["心配なファン","@shinpai_fan","撮られたやつ、という出どころの怖さが残る"]]],
