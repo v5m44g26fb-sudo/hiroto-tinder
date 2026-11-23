@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v936</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v937</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -7691,7 +7691,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
   const grid=v.querySelector(".ig-grid");
   if(grid&&!v.querySelector("#v261-tabs")){ const tabs=document.createElement("div"); tabs.id="v261-tabs";
    tabs.style.cssText="display:flex;border-top:1px solid #eee;background:#fff";
-   tabs.innerHTML='<span style="flex:1;text-align:center;padding:8px 0;font-size:19px;border-bottom:1.5px solid #111">▦</span><span id="v261-tag" style="flex:1;text-align:center;padding:8px 0;font-size:17px;opacity:.45;cursor:pointer">👤</span>';
+   tabs.innerHTML='<span style="flex:1;display:flex;justify-content:center;padding:8px 0;border-bottom:1.5px solid #111"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17"/><path d="M9.2 3.5v17M14.8 3.5v17M3.5 9.2h17M3.5 14.8h17"/></svg></span><span id="v261-tag" style="flex:1;display:flex;justify-content:center;padding:8px 0;opacity:.45;cursor:pointer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="10" r="2.7"/><path d="M6.8 17.6c1-2.3 2.9-3.4 5.2-3.4s4.2 1.1 5.2 3.4"/></svg></span>';
    grid.parentElement.insertBefore(tabs,grid);
    tabs.querySelector("#v261-tag").addEventListener("click",()=>toast("タグ付けされた投稿はまだないよ")); }
  };
@@ -12015,7 +12015,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v936"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v937"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12031,7 +12031,7 @@ var FAVI2={
  ig:'<span style="width:42px;height:42px;border-radius:11px;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);display:flex;align-items:center;justify-content:center;flex:none"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.25" fill="#fff" stroke="none"/></svg></span>',
  tt:'<span style="width:42px;height:42px;border-radius:11px;background:#111;display:flex;align-items:center;justify-content:center;flex:none"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9"><path d="M9.5 18.2V6.4L19.5 4.4v11.8"/><circle cx="7" cy="18.2" r="2.6"/><circle cx="17" cy="16.2" r="2.6"/></svg></span>',
  news:'<span style="width:42px;height:42px;border-radius:11px;background:#e03131;display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M5 5.5A1.5 1.5 0 0 1 6.5 4H19v13.5a2 2 0 0 1-2 2H6.5A1.5 1.5 0 0 1 5 18Z"/><path d="M5 16.5A2.5 2.5 0 0 1 2.8 14V6"/><path d="M8.5 8h7M8.5 11.5h7M8.5 15h4.5"/></svg></span>',
- line:'<span style="width:42px;height:42px;border-radius:11px;background:#06c755;display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 4C7 4 3 7.2 3 11.2c0 3.6 3.2 6.6 7.5 7.2.3 0 .7.2.8.4l.3 1c.1.3.4.4.6.2.8-.7 4.3-3.9 4.3-7.8C16.5 7.2 17 4 12 4Z" transform="translate(1.5,0) scale(.9)"/></svg></span>'};
+ line:'<span style="width:42px;height:42px;border-radius:11px;background:#06c755;display:flex;align-items:center;justify-content:center;flex:none"><svg width="25" height="25" viewBox="0 0 24 24"><rect x="3.6" y="4.8" width="16.8" height="11" rx="5.5" fill="#fff"/><path d="M8.8 15.2 8.1 19.3c-.06.5.5.83.93.54l3-2.34Z" fill="#fff"/><text x="12" y="13.6" font-size="5.8" font-weight="800" fill="#06c755" text-anchor="middle" font-family="-apple-system, sans-serif">LINE</text></svg></span>'};
 var HOME_HTML='<div style="font-weight:800;font-size:16.5px;margin-bottom:4px">よく見るサイト</div>'
  +[["ig","彼のInstagram","instagram.com","hisig"],["tt","彼のTikTok","tiktok.com","tiktok"],["news","ニュース","entame-news.jp","news"],["line","LINE","line.me","line"]].map(function(s){return '<div class="sf-short" data-go="'+s[3]+'" style="display:flex;gap:12px;align-items:center;padding:9px 2px;border-bottom:1px solid #f4f4f6;cursor:pointer">'+FAVI2[s[0]]+'<span><span style="display:block;font-size:14.5px;font-weight:500">'+s[1]+'</span><span style="display:block;font-size:12px;color:#8a8a8e;margin-top:1px">'+s[2]+'</span></span><span style="margin-left:auto;color:#c7c7cc;font-size:17px">›</span></div>'}).join("")
  +'<div style="display:flex;gap:11px;align-items:center;background:#f6f6f8;border-radius:14px;padding:12px 13px;margin-top:16px"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="1.9"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6Z"/><path d="M9 11.6l2.1 2.1 3.9-4.2"/></svg><span style="font-size:12.5px;line-height:1.5;color:#3a3a3c"><b>プライバシーレポート</b><br><span style="color:#8a8a8e">過去7日間で、12件のトラッカーがプロファイルを作成するのを防ぎました</span></span></div>'
