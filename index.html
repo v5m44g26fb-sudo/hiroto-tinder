@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v953</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v954</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1158,7 +1158,7 @@ floodComments(); floodMentions(); floodDms(); every(genContent,15000); every(gen
   state._batt=43; every(()=>{ if(state._batt>36){ state._batt--; $("#batt-n").textContent=state._batt; const bf=document.querySelector(".batt .fill"); bf.style.width=state._batt+"%"; bf.style.background=state._batt<=37?"#ff453a":state._batt<=39?"#ff9f0a":"#fff"; if(state._batt===38&&!state._battWarned){ state._battWarned=true; toast("🪫 <b>電池残量わずか</b>： 通知の嵐で電池がピンチ"); } } },25000);
   $("#nao-story-viewers").innerHTML="👁 2,314人 ・ <b>193.hiroto_jixiang</b>、yui_s、sauna_m 他 —— 彼、見てる…";
   later(groupFlood,23000); later(()=>{ if(!state._mgrDone&&!state.ended){ state._mgrDone=true; showIncomingCall("manager"); } },85000);
-later(()=>push("X","#000","𝕏","トレンド1位 #大翔Tinder","「アイドルがアプリはやばい」「交際はしてないらしい」賛否が真っ二つ",()=>show("x")),6000);
+later(()=>push("X","#000","𝕏","トレンド1位 #大翔Tinder",state._route==="dating"?"「アイドルがアプリはやばい」「交際は認めたってこと？」賛否が真っ二つ":"「アイドルがアプリはやばい」「交際はしてないらしい」賛否が真っ二つ",()=>show("x")),6000);
 later(()=>push("Instagram","linear-gradient(45deg,#fa7e1e,#d62976,#962fbf)","📷","フォロワーが+10,000人突破","コメントとDMリクエストが殺到している",()=>show("ig")),12000);
 later(()=>{lineSequence1()},16000);
 later(()=>{addNewsRow("assets/crown-full.jpg",state._route==="dating"?"事務所がコメント発表「プライベートは本人に任せています」":"事務所がコメント発表「交際の事実はございません」","芸能デスク ・ たった今",()=>openStatement()); setHeat(62); push("ニュース速報","#e60012","N","事務所コメント発表",state._route==="dating"?"「プライベートは本人に任せています」——アプリ利用は確認中":"「交際の事実はございません」——アプリ利用は確認中",()=>show("news"));},32000);
@@ -1171,10 +1171,10 @@ later(()=>{addNewsRow("assets/stage.jpg","事務所『アプリの退会を確�
 /* ============ NEWS ============ */
 function addNewsHero(){const d=document.createElement("div");d.className="news-hero";d.innerHTML=`<img loading="lazy" decoding="async" src="assets/stage.jpg" alt=""><div class="in"><span class="tag">速報</span><h3>人気アイドル・井汲大翔にアプリ利用報道 —— 一般女性との休日写真も</h3><p>大阪のカフェで一般女性と会う姿が報じられた。交際を示す写真はないものの、本人のものとされるアプリのプロフィールが拡散し、騒動が一気に広がっている。</p></div>`;d.style.cursor="pointer";d.addEventListener("click",openArticle);$("#news-list").prepend(d)}
 function newsBack(){ $("#news-article").style.display="none"; $("#news-list").style.display="block"; $("#news-scroll").scrollTop=0}
-function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃</h2><div class="m">週刊デジタル ・ 20:49配信</div><img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。拡散中のプロフィールは、私服の自撮り写真と「大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き」という飾らない自己紹介文。彼とみられる男性が一般女性と大阪のカフェで過ごす様子も捉えられたが、交際を裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>井汲はソロで活動する歌手で、オーディション番組出身。古くからのファンが多いことでも知られる。ネットでは早くもお相手の特定が進み、本人のInstagramには数時間でフォローとコメントが殺到。何気ない日常の投稿までもが、次々と“検証”の対象にされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
+function openArticle(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>${state._route==="dating"?"人気アイドル、マッチングアプリ利用＆熱愛か　一般女性とカフェで目撃":"人気アイドル、マッチングアプリ利用疑惑　一般女性とカフェで目撃"}</h2><div class="m">週刊デジタル ・ 20:49配信</div><img loading="lazy" decoding="async" src="assets/crown-full.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>${state._route==="dating"?"人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用し、一般女性と交際しているとみられることが分かった。":"人気上昇中のアイドル・井汲大翔（24）が、マッチングアプリを利用していたとみられることが分かった。"}拡散中のプロフィールは、私服の自撮り写真と「大阪。暇つぶしで入れた。気軽に会える人がええな。ごはんとコーラは好き」という飾らない自己紹介文。彼とみられる男性が一般女性と大阪のカフェで過ごす様子も捉えられたが、交際を裏付ける写真は確認されていない。</p><div class="box">目撃者「帽子もマスクもしてたけど、背格好と声でバレバレでした。女性のほうがちょっと緊張してて、彼がずっと笑わせてたのが印象的でした」</div><p>井汲はソロで活動する歌手で、オーディション番組出身。古くからのファンが多いことでも知られる。ネットでは早くもお相手の特定が進み、本人のInstagramには数時間でフォローとコメントが殺到。何気ない日常の投稿までもが、次々と“検証”の対象にされている。</p><p>所属事務所は取材に対し「担当者が不在のため、確認中」と回答している。</p></div>`; $("#news-scroll").scrollTop=0}
 function addArticleDefault(){}
 function openStatement(){ $("#news-list").style.display="none"; const a=$("#news-article"); a.style.display="block"; a.innerHTML=`<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>事務所がコメント発表「${state._route==="dating"?"プライベートは本人に任せています":"交際の事実はございません"}」</h2><div class="m">芸能デスク ・ たった今</div><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>所属事務所は報道について、次のようにコメントした。</p><div class="box">${state._route==="dating"?"「お相手とされる方とのプライベートにつきましては、本人に任せています。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」":"「お相手とされる方との交際の事実はございません。マッチングアプリの利用につきましては、本人に確認中です。今後の活動に変更はありません」"}</div><p>${state._route==="dating"?"交際については、否定も肯定もされなかった":"交際は否定された"}。ただ、アプリ利用については「確認中」の二文字が残り、SNSでは「使っていたなら、そこは正直に」「大人なんだから自由では」と声が割れ続けている。ソロで活動する彼の場合、背負うものは全部、自分の名前ひとつ分だ。本人が何を語るのかに、注目が集まる。</p><h3 style="margin-top:20px;font-size:15.5px">コメント <span style="color:#8e8e93;font-size:12.5px">12,408件</span></h3>
-<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">交際してないのは分かった。でも『確認中』のままなのが一番モヤる。活動に変更なしは安心したけど</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
+<div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7a9cc6">a</span> aaa***さん</div><div class="yt">${state._route==="dating"?"交際、否定せんかったな。『本人に任せる』って事務所も思い切った。活動に変更なしは安心したけど":"交際してないのは分かった。でも『確認中』のままなのが一番モヤる。活動に変更なしは安心したけど"}</div><div class="yb"><span class="like-btn">👍 そう思う 4,208</span><span>返信 312件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#c67a7a">r</span> rot***さん</div><div class="yt">複雑だけど、交際してないなら相手の子を叩くのは違うと思う</div><div class="yb"><span class="like-btn">👍 そう思う 3,914</span><span>返信 208件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#8a8a8a">y</span> yun***さん</div><div class="yt">ファンミの『彼女いない』は嘘じゃなかったんやね。それは信じる。アプリの方だけ、説明がほしい</div><div class="yb"><span class="like-btn">👍 そう思う 2,577</span><span>返信 489件</span></div></div>
 <div class="ycmt"><div class="yh"><span class="ava-txt" style="width:26px;height:26px;font-size:11px;background:#7ac68d">s</span> sak***さん</div><div class="yt">24歳の大人、アプリ使うくらい自由やと思うけどな。叩きすぎは違う</div><div class="yb"><span class="like-btn">👍 そう思う 5,102</span><span>返信 156件</span></div></div></div>`; $("#news-scroll").scrollTop=0}
@@ -1276,7 +1276,7 @@ askChoices("なおの返信を選んで",[
 }
 async function lineSequence2(){ if(!state.started||state._seq2) return; state._seq2=true;
   
-if(state._route==="dating"){ await himMsg("…事務所と、話した",1200); await himMsg("コメント、出ることになった",1100); await himMsg("中身は「プライベートは本人に任せています」や",1400); await himMsg("「交際の事実はない」とは、言わせへんかった",1300); await himMsg("アプリの件は、俺だけで被る",1200); await himMsg("なおの名前は、出させへん。…そこは、通した",1400); await himMsg("…巻き込んだな。ごめん",1500); } else { await himMsg("…事務所と、話した",1200); await himMsg("コメント、出ることになった",1100); await himMsg("中身は「交際の事実はない」や",1400); await himMsg("アプリの件は、俺だけで被る",1200); await himMsg("なおの名前は、出させへん。…そこは、通した",1400); await himMsg("…巻き込んだな。ごめん",1500); await himVoice("assets/vm-t-bye.mp3","0:03"); }
+if(state._route==="dating"){ await himMsg("…事務所と、話した",1200); await himMsg("コメント、出ることになった",1100); await himMsg("中身は「プライベートは本人に任せています」や",1400); await himMsg("「交際の事実はない」とは、言わせへんかった",1300); await himMsg("アプリの件は、俺だけで被る",1200); await himMsg("なおの名前は、出させへん。…そこは、通した",1400); await himMsg("…今日、かける言うた電話も、こんな形や",1400); await himMsg("…巻き込んだな。ごめん",1500); } else { await himMsg("…事務所と、話した",1200); await himMsg("コメント、出ることになった",1100); await himMsg("中身は「交際の事実はない」や",1400); await himMsg("アプリの件は、俺だけで被る",1200); await himMsg("なおの名前は、出させへん。…そこは、通した",1400); await himMsg("…巻き込んだな。ごめん",1500); await himVoice("assets/vm-t-bye.mp3","0:03"); }
 askChoices("これから、どうする？",[
 {label:"嘘はつかずにいこう",fn:()=>ending("open")},
 {label:"今は、静かに待とう",fn:()=>ending("wait")},
@@ -4497,7 +4497,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   let i=0;
   setInterval(()=>{ const on=state.phase==="scandal"&&!state.act2;
    bar.style.display=on?"block":"none"; if(!on) return;
-   bar.textContent=H[i%H.length]; i++; },4000); })();
+   bar.textContent=(state._route==="dating"?H[i%H.length].replace("交際の事実はない","プライベートは本人に任せています"):H[i%H.length]); i++; },4000); })();
 
  /* ---- v111: her Instagram grid, rebuilt lazily ---- */
  (function(){ const vig=$("#v-ig"); if(!vig) return;
@@ -9275,6 +9275,7 @@ setInterval(upd,900); upd();
   "@keyframes v205flash{0%{box-shadow:inset 0 0 0 rgba(230,0,18,0)}25%{box-shadow:inset 0 0 44px 10px rgba(230,0,18,.55)}100%{box-shadow:inset 0 0 0 rgba(230,0,18,0)}}";
  document.head.appendChild(css);
  const HEAD="速報：井汲大翔さん、マッチングアプリ利用か　事務所『交際の事実はない』　///　SNSでは賛否　『本人の言葉を待つ』　///　『現役アイドルがTinder』トレンド上位を維持　///　ファンの声『ステージで返してほしい』　///　";
+ const HEAD_D="速報：井汲大翔さん、マッチングアプリ利用＆熱愛か　事務所『プライベートは本人に任せています』　///　SNSでは賛否　『本人の言葉を待つ』　///　『現役アイドルがTinder』トレンド上位を維持　///　ファンの声『ステージで返してほしい』　///　";
  function mkTick(view,scroll){ if(!view||!scroll) return null;
   const t=document.createElement("div"); t.className="v205-tick";
   t.innerHTML='<span class="v205-in"><b>🔴</b> '+HEAD+'<b>🔴</b> '+HEAD+'</span>';
@@ -9285,6 +9286,7 @@ setInterval(upd,900); upd();
  let prev=0; const fired=new Set();
  setInterval(()=>{ let sc=false; try{ sc=(typeof state!=="undefined")&&state.phase==="scandal"&&!state.ended&&!state.act2; }catch(e){}
   ticks.forEach(t=>t.classList.toggle("on",!!sc));
+  if(sc&&state._route==="dating") ticks.forEach(t=>{ const s=t.querySelector(".v205-in"); if(s&&!s.dataset.d8){ s.dataset.d8="1"; s.innerHTML='<b>🔴</b> '+HEAD_D+'<b>🔴</b> '+HEAD_D; } });
   if(!sc){ prev=state&&state.heat||0; return; }
   const h=state.heat||0;
   MILES.forEach(([t,name])=>{ if(prev<t&&h>=t&&!fired.has(t)){ fired.add(t);
@@ -12072,7 +12074,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v953"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v954"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
