@@ -935,7 +935,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v957</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v958</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1219,7 +1219,7 @@ const xcnt9=t=>{ const m=String(t||"").replace(/,/g,"").match(/[\d.]+\s*(?:万|K
 function postEl(p,hot){const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(p.n)}<span style="min-width:0"><span class="nm">${p.n}</span> <span class="hd">${p.h} ・ ${p.tm||"今"}</span><div class="tx">${p.t}</div>${p.q?`<div style="border:1px solid rgba(128,128,128,.45);border-radius:12px;padding:9px 11px;margin-top:8px"><div style="font-size:12.5px"><b>${p.q.n}</b> <span style="color:#71767b">${p.q.h} ・ ${p.q.tm||"今"}</span></div><div style="font-size:13.5px;margin-top:2px">${p.q.t}</div>${p.q.img?`<img loading="lazy" decoding="async" src="${p.q.img}" style="width:100%;border-radius:9px;margin-top:7px;display:block" alt="">`:""}</div>`:""}<div class="mt" data-v258="1"><span class="${hot?'hot':''}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>${xcnt9(p.m[0])&&xcnt9(p.m[0])!=="0"?" <b>"+xcnt9(p.m[0])+"</b>":""}</span><span class="rp-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg>${xcnt9(p.m[1])?" <b>"+xcnt9(p.m[1])+"</b>":""}</span><span class="like-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>${xcnt9(p.m[2])?" <b>"+xcnt9(p.m[2])+"</b>":""}</span>${p.imp?`<span><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="11" width="3.4" height="9" rx="1"/><rect x="10.3" y="4" width="3.4" height="16" rx="1"/><rect x="17.1" y="8" width="3.4" height="12" rx="1"/></svg> <span id="imp-n">${p.imp}万</span></span>`:""}</div></span>`;
  const tog=(sel,emo,col)=>{ const el=d.querySelector(sel); if(!el) return; el.style.cursor="pointer"; el.addEventListener("click",e=>{ e.stopPropagation(); const on=el.dataset.on==="1"; var bEl=el.querySelector("b"); const num=bEl?(parseInt((bEl.textContent||"").replace(/[^0-9]/g,""))||0):(parseInt((el.textContent||"").replace(/[^0-9]/g,""))||0); const nx=on?Math.max(0,num-1):num+1; if(el.querySelector("svg")){ if(!bEl){ el.insertAdjacentHTML("beforeend"," <b></b>"); bEl=el.querySelector("b"); } [...el.childNodes].forEach(function(cn){ if(cn.nodeType===3) cn.remove(); }); if(bEl) bEl.textContent=nx.toLocaleString("ja-JP"); var svgEl=el.querySelector("svg"); if(svgEl&&el.classList.contains("like-btn")){ if(!on){ svgEl.setAttribute("fill","#f91880"); svgEl.removeAttribute("stroke"); } else { svgEl.setAttribute("fill","none"); svgEl.setAttribute("stroke","currentColor"); } } } else el.textContent=emo+" "+nx.toLocaleString("ja-JP"); if(el.classList.contains("like-btn")) el.classList.toggle("liked",!on); el.dataset.on=on?"":"1"; el.style.color=on?"":col; el.style.fontWeight=on?"":"700"; }); };
  tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); return d}
-function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{ if(state._route==="dating"&&p.t){ if(p.t.indexOf("事務所が第1報コメント")===0) p=Object.assign({},p,{t:"事務所が第1報コメント『プライベートは本人に任せています』。アプリ利用は『確認中』のまま #大翔Tinder"}); else if(p.t.indexOf("交際自体は事務所が否定済み")>=0) p=Object.assign({},p,{t:p.t.replace("交際自体は事務所が否定済み","交際自体は事務所が否定も肯定もしてない")}); } const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
+function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{ if(state._route==="dating"&&p.t){ if(p.t.indexOf("事務所が第1報コメント")===0) p=Object.assign({},p,{t:"事務所が第1報コメント『プライベートは本人に任せています』。アプリ利用は『確認中』のまま #大翔Tinder"}); else if(p.t.indexOf("交際自体は事務所が否定済み")>=0) p=Object.assign({},p,{t:p.t.replace("交際自体は事務所が否定済み","交際自体は事務所が否定も肯定もしてない")}); else if(p.t.indexOf("交際は否定されてる")>=0) p=Object.assign({},p,{t:p.t.replace("交際は否定されてる","交際、否定はされてへん")}); } const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
 const mine=document.createElement("div"); $("#x-me-posts").appendChild(postEl({n:"なお",h:"@nao_0324",t:"（このアカウント、今めちゃくちゃ見られてる…）",m:["💬 0","🔁 0","❤️ 0"]},false));}
 const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","マロン","31,204 件のポスト"],["日本のトレンド","傘の写真","18,204 件のポスト"],["エンターテイメント ・ トレンド","ワイドショー","44,812 件のポスト"],["スポーツ ・ トレンド","甲子園 組み合わせ","27,540 件のポスト"]];
 function buildTrends(){const w=$("#x-pane-trend"); w.innerHTML=""; TRENDS.forEach((t,i)=>{const d=document.createElement("div");d.className="trend";d.style.cursor="pointer";d.title="タップで検索";d.addEventListener("click",()=>{ $("#x-q").value=t[1].replace("#",""); doSearch(t[1].replace("#","")); });d.innerHTML=`<div class="cat">${i+1} ・ ${t[0]}</div><div class="kw">${t[1]}</div><div class="cnt">${t[2]}</div>`;w.appendChild(d)})}
@@ -12098,7 +12098,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v957"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v958"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21316,7 +21316,7 @@ try{
     else if(typeof toast==="function"){ toast("🔒 <b>非公開アカウントです</b><br>投稿はフォロワーだけが見られます"); }
   });
   res.appendChild(card);
-  try{ if(typeof X_SEARCH_POSTS!=="undefined" && typeof postEl==="function"){ X_SEARCH_POSTS.forEach(function(pst){ res.appendChild(postEl(pst,false)); }); } }catch(e){}
+  try{ if(typeof X_SEARCH_POSTS!=="undefined" && typeof postEl==="function"){ X_SEARCH_POSTS.forEach(function(pst){ if(typeof state!=="undefined"&&state._route==="dating") pst=Object.assign({},pst,{t:(pst.t||"").replace("事務所『交際否定・アプリ確認中』","事務所『本人に任せています』・アプリ確認中")}); res.appendChild(postEl(pst,false)); }); } }catch(e){}
   return r;
  };
 })();
@@ -21361,7 +21361,7 @@ try{
  var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
  function toast_(h){ if(typeof toast==="function") toast(h); }
  function pubState(){ try{ return !!(typeof state!=="undefined" && (state._subPublic || state._subOpened)); }catch(e){ return false; } }
- function folCount(){ try{ var ns=document.querySelectorAll("#v-subig .ig-stats .n"); if(ns&&ns[1]&&ns[1].textContent.trim()) return ns[1].textContent.trim(); }catch(e){} return "2"; }
+ function folCount(){ try{ if(pubState()) return "18,742"; }catch(e){} return "2"; }
  function scandalOn(){ try{ return (typeof state!=="undefined") && (state.phase==="scandal" || (state.heat||0)>0); }catch(e){ return false; } }
 
  /* ---- 1) Search bar: real X look (avatar + pill + gear) ---- */
@@ -21470,7 +21470,7 @@ try{
   var head='<div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(255,255,255,.92);position:sticky;top:0;z-index:5">'
    +'<button id="v725-back" style="background:none;border:none;font-size:19px;cursor:pointer;padding:2px 4px">‹</button>'
    +'<span style="min-width:0"><span style="display:flex;align-items:center;gap:5px"><b style="font-size:16px">nao_ura</b>'+(pub?"":lockSvg(14))+'</span>'
-   +'<span style="display:block;color:#536471;font-size:12px">'+(pub?"128":"0")+' 件のポスト</span></span></div>'
+   +'<span style="display:block;color:#536471;font-size:12px">'+(pub?"10":"0")+' 件のポスト</span></span></div>'
    +'<div style="height:104px;background:url(assets/scar-street.jpg) center 40%/cover"></div>'
    +'<div style="padding:0 14px"><img src="assets/cafe-latte.jpg" width="66" height="66" alt="" style="border-radius:50%;object-fit:cover;margin-top:-30px;border:3px solid #fff">'
    +'<div style="display:flex;align-items:center;gap:5px;margin-top:3px"><span style="font-size:18px;font-weight:900">nao_ura</span>'+(pub?"":lockSvg(15))+'</div>'
@@ -21557,7 +21557,7 @@ try{
 <script>
 /* ===== v726: Nao's own defiant posts on her X profile (scandal) ===== */
 (function(){
- if(window.__v726) return; window.__v726 = true;
+ if(window.__v726) return; window.__v726 = true; return;
  function hot(){ try{ return typeof state!=="undefined" && (state.phase==="scandal" || (state.heat||0)>0 || state._subPublic); }catch(e){ return false; } }
  function add(){
   var box=document.querySelector("#x-me-posts"); if(!box || document.getElementById("v726-naoposts")) return;
@@ -21578,7 +21578,7 @@ try{
  var $=function(s){return document.querySelector(s);};
  var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
  function pubState(){ try{ return !!(typeof state!=="undefined" && (state._subPublic || state._subOpened)); }catch(e){ return false; } }
- function folCount(){ try{ var ns=document.querySelectorAll("#v-subig .ig-stats .n"); if(ns&&ns[1]&&ns[1].textContent.trim()) return ns[1].textContent.trim(); }catch(e){} return "2"; }
+ function folCount(){ try{ if(pubState()) return "18,742"; }catch(e){} return "2"; }
  var VER='<svg width="15" height="15" viewBox="0 0 24 24" fill="#1d9bf0" style="flex:none"><path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81c-.66-1.31-1.91-2.19-3.34-2.19s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91C1.88 9.33 1 10.57 1 12s.88 2.67 2.19 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34zm-11.71 4.2L6.8 12.46l1.41-1.42 2.26 2.26 4.8-5.23 1.47 1.36-6.2 6.77z"/></svg>';
  var HIRO={name:"井汲大翔", h:"@193hiroto", img:"assets/ig-avatar.jpg", bio:"井汲大翔　Hiroto", ver:true, act:"hisig"};
  var NAO={name:"なお", h:"@nao_0324", img:"assets/nao-avatar4.jpg", bio:"ふつうの会社員。推し活とサウナとエビが好き", ver:false, act:"me"};
@@ -21629,6 +21629,7 @@ try{
   if(mode==="following"){
    FOLLOWING.forEach(function(it){ list.appendChild(rowEl(it,"following")); });
   } else {
+   if(pub){ var top=document.createElement("div"); top.style.cssText="padding:10px 14px 0;color:#536471;font-size:12.5px"; top.textContent="フォロワー "+fol+"人の中から、最近のものを表示しています"; list.appendChild(top); }
    KNOWN.forEach(function(it){ list.appendChild(rowEl(it,"known")); });
    if(pub){
     var note=document.createElement("div");
