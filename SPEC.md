@@ -1,13 +1,13 @@
 # 仕様書 — 『現役アイドル、Tinderやってた件』（Tinder ver）
 
-現行 **v905**（2026-11-14）時点の仕様。チャッピー（ChatGPT）が本体を読む時の前提資料。
+現行 **v1023**（2026-11-24）時点の仕様。チャッピー（ChatGPT）が本体を読む時の前提資料。
 本体: https://raw.githubusercontent.com/v5m44g26fb-sudo/hiroto-tinder/main/index.html
 案内: 同リポジトリ `FOR_CHATGPT.md` ／ ルート早見: `ROUTE.md`
 
 ## 0. 技術構成
 
 - 単一 `index.html`（約2.8MB、フレームワークなし、素のJS）＋ `assets/` の画像ファイル群。
-- 改修方式：版ごとのレイヤー（`<script>` ブロック）を末尾に積み上げる。v1〜v905 で script ブロックは431個。
+- 改修方式：版ごとのレイヤー（`<script>` ブロック）を末尾に積み上げる。v1〜v1023 で script ブロックは450個。
 - 画面はスマホフレーム `#phone` の中に各アプリのビュー（`.view`）を absolute 配置で切り替える疑似スマホOS構成。
 - セーブは localStorage。チェックポイント保存キー `r5-resume-v1`、他に設定・解放系の個別キー多数（§7）。
 - ページ内に「創作フィクション」である旨の明記がある。
