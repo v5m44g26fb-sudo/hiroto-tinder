@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v979</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v980</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12116,7 +12116,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v979"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v980"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -33367,55 +33367,65 @@ function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; 
 })();
 </script>
 <script>
-/* ===== v979: X likes/reposts/replies persist across re-renders and panes ===== */
+/* ===== v980: X action store v2 - handle|text keys, localStorage, thread replies, cross-pane sync ===== */
 (function(){
- var S=window.__xAct={like:{}, rp:{}, rep:{}};
+ var S={like:{}, rp:{}, rep:{}};
+ try{ var raw=localStorage.getItem("hiroto_xact_v1"); if(raw){ var p=JSON.parse(raw); if(p&&typeof p==="object"){ S.like=p.like||{}; S.rp=p.rp||{}; S.rep=p.rep||{}; } } }catch(e){}
+ window.__xAct=S;
+ function save(){ try{ localStorage.setItem("hiroto_xact_v1", JSON.stringify(S)); }catch(e){} }
+ function K(h,t){ return (h||"")+"|"+(t||""); }
  function bumpB(span,delta){ if(!span) return; var b=span.querySelector("b"); var n=b?parseInt((b.textContent||"").replace(/[^0-9]/g,""))||0:0; n=Math.max(0,n+delta); if(!b){ if(n===0) return; span.insertAdjacentHTML("beforeend"," <b></b>"); b=span.querySelector("b"); } b.textContent=n.toLocaleString("ja-JP"); }
- window.__xApply=function(d,p){ var key=p.t||"";
-   var lb=d.querySelector(".like-btn");
-   if(lb&&S.like[key]){ lb.dataset.on="1"; lb.classList.add("liked"); lb.style.color="#f91880"; lb.style.fontWeight="700"; var svg=lb.querySelector("svg"); if(svg){ svg.setAttribute("fill","#f91880"); svg.removeAttribute("stroke"); } bumpB(lb,1); }
-   var rb=d.querySelector(".rp-btn");
-   if(rb&&S.rp[key]){ rb.dataset.on="1"; rb.style.color="#00ba7c"; rb.style.fontWeight="700"; bumpB(rb,1); }
+ function setBtn(btn,on,kind){ if(!btn) return; var was=btn.dataset.on==="1"||btn.classList.contains("liked"); if(was===on) return; btn.dataset.on=on?"1":""; btn.classList.toggle("liked",on&&kind==="like"); btn.style.color=on?(kind==="like"?"#f91880":"#00ba7c"):""; btn.style.fontWeight=on?"700":""; var svg=btn.querySelector("svg"); if(svg&&kind==="like"){ if(on){ svg.setAttribute("fill","#f91880"); svg.removeAttribute("stroke"); } else { svg.setAttribute("fill","none"); svg.setAttribute("stroke","currentColor"); } } bumpB(btn,on?1:-1); }
+ window.__xApply=function(d,p){ var key=K(p.h,p.t);
+   if(S.like[key]) setBtn(d.querySelector(".like-btn"),true,"like");
+   if(S.rp[key]) setBtn(d.querySelector(".rp-btn"),true,"rp");
    var reps=S.rep[key]; if(reps&&reps.length){ var mt=d.querySelector(".mt"); if(mt) bumpB(mt.children[0],reps.length); }
  };
+ function postKey(post){ var tx=post.querySelector(".tx"), hd=post.querySelector(".hd"); return K(hd?hd.textContent.trim().split("・")[0].trim():"", tx?tx.textContent:""); }
+ function syncOthers(srcPost,key,kind,on){ document.querySelectorAll("#v-x .post").forEach(function(p){ if(p===srcPost) return; if(postKey(p)!==key) return; setBtn(p.querySelector(kind==="like"?".like-btn":".rp-btn"),on,kind); }); }
  document.addEventListener("click",function(e){
    var b=e.target.closest?e.target.closest(".like-btn,.rp-btn"):null; if(!b) return;
    var post=b.closest("#v-x .post"); if(!post) return;
-   var tx=post.querySelector(".tx"); if(!tx) return; var key=tx.textContent;
+   var key=postKey(post); if(!key) return;
+   var kind=b.classList.contains("like-btn")?"like":"rp";
    setTimeout(function(){ var on=b.dataset.on==="1"||b.classList.contains("liked");
-     var nm=post.querySelector(".nm"), hd=post.querySelector(".hd");
-     var data={n:nm?nm.textContent.trim():"", h:hd?hd.textContent.trim().split("・")[0].trim():"", t:key};
-     if(b.classList.contains("like-btn")){ if(on) S.like[key]=data; else delete S.like[key]; }
+     var nm=post.querySelector(".nm"), tx=post.querySelector(".tx");
+     if(kind==="like"){ if(on) S.like[key]={n:nm?nm.textContent.trim():"", h:key.split("|")[0], t:tx?tx.textContent:""}; else delete S.like[key]; }
      else { if(on) S.rp[key]=true; else delete S.rp[key]; }
+     save(); syncOthers(post,key,kind,on);
    },0);
  },true);
- /* detail replies: record on send, restore on open, sync counts */
- function detailKey(){ var body=document.querySelector("#xd-body"); if(!body||!body.children[1]) return ""; return body.children[1].textContent.trim(); }
- document.addEventListener("click",function(e){
-   if(!e.target.closest||!e.target.closest("#xd-send")) return;
-   var inp=document.querySelector("#xd-in"); if(!inp) return; var v=inp.value.trim(); if(!v) return;
-   var key=detailKey(); if(!key) return;
-   (S.rep[key]=S.rep[key]||[]).push(v);
-   setTimeout(function(){ document.querySelectorAll("#x-pane-tl .post, #x-pane-search .post, #x-pane-mention .post, #x-me-posts .post").forEach(function(p){ var tx=p.querySelector(".tx"); if(tx&&tx.textContent===key){ var mt=p.querySelector(".mt"); if(mt) bumpB(mt.children[0],1); } }); },50);
+ /* detail + thread replies */
+ function detailKey(){ var body=document.querySelector("#xd-body"); if(!body||!body.children[1]) return ""; var hd=""; var m=(body.textContent||"").match(/@[A-Za-z0-9_]+/); if(m) hd=m[0]; return K(hd, body.children[1].textContent.trim()); }
+ function threadKey(){ var p=document.querySelector("#thread-main .post"); if(!p) return ""; return postKey(p); }
+ function addReply(key,v){ if(!key||!v) return; (S.rep[key]=S.rep[key]||[]).push(v); save();
+   document.querySelectorAll("#x-pane-tl .post, #x-pane-search .post, #x-pane-mention .post, #x-me-posts .post").forEach(function(p){ if(postKey(p)===key){ var mt=p.querySelector(".mt"); if(mt) bumpB(mt.children[0],1); } }); }
+ document.addEventListener("click",function(e){ if(!e.target.closest) return;
+   if(e.target.closest("#xd-send")){ var inp=document.querySelector("#xd-in"); if(inp) addReply(detailKey(), inp.value.trim()); }
+   if(e.target.closest("#th-send")){ var inp2=document.querySelector("#th-text"); if(inp2) addReply(threadKey(), inp2.value.trim()); }
  },true);
- var det=document.querySelector("#x-detail");
- if(det){ var obs=new MutationObserver(function(){ if(det.style.display==="none") return;
-   var key=detailKey(); var reps=S.rep[key]; if(!reps||!reps.length) return;
+ document.addEventListener("keydown",function(e){ if(e.key==="Enter"&&e.target&&e.target.id==="th-text"){ addReply(threadKey(), e.target.value.trim()); } },true);
+ function restoreDetail(){ var key=detailKey(); var reps=S.rep[key]; if(!reps||!reps.length) return;
    [400,1600].forEach(function(ms){ setTimeout(function(){ var box=document.querySelector("#xd-replies"); if(!box) return;
-     var have=box.querySelectorAll(".v979-mine").length;
-     for(var i=have;i<reps.length;i++){ var d=document.createElement("div"); d.className="xd-reply v979-mine"; d.dataset.likes="0"; d.dataset.hours="0"; d.dataset.ord="-1";
+     var have=box.querySelectorAll(".v980-mine").length;
+     for(var i2=have;i2<reps.length;i2++){ var d=document.createElement("div"); d.className="xd-reply v980-mine"; d.dataset.likes="0"; d.dataset.hours="0"; d.dataset.ord="-1";
        d.style.cssText="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6";
        d.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><span style="font-size:13.5px;line-height:1.5"><b>なお</b> <span style="color:#536471">@nao_0324 · 今</span><div></div></span>';
-       d.querySelector("div").textContent=reps[i]; box.prepend(d); }
-   },ms); });
- }); obs.observe(det,{attributes:true,attributeFilter:["style"]}); }
- /* profile tabs: widen likes/replies beyond the timeline */
+       d.querySelector("div").textContent=reps[i2]; box.prepend(d); }
+   },ms); }); }
+ function restoreThread(){ var key=threadKey(); var reps=S.rep[key]; if(!reps||!reps.length) return;
+   [400,2200].forEach(function(ms){ setTimeout(function(){ var box=document.querySelector("#thread-replies"); if(!box) return;
+     var have=box.querySelectorAll(".v980-mine").length;
+     for(var i2=have;i2<reps.length;i2++){ var el=postEl({n:"なお",h:"@nao_0324",t:reps[i2],m:["💬 0","🔁 0","❤️ 0"]},false); el.classList.add("v980-mine"); box.prepend(el); }
+   },ms); }); }
+ [["#x-detail",restoreDetail],["#x-thread",restoreThread]].forEach(function(pair){ var el=document.querySelector(pair[0]); if(!el) return; new MutationObserver(function(){ if(el.style.display!=="none") pair[1](); }).observe(el,{attributes:true,attributeFilter:["style"]}); });
+ /* profile tabs */
  document.addEventListener("click",function(e){
    var b=e.target.closest?e.target.closest(".x-ptabs button"):null; if(!b) return;
    setTimeout(function(){
      if(b.dataset.t==="likes"){ var box=document.querySelector("#x-ptab-likes"); if(!box) return;
        var have=[...box.querySelectorAll(".tx")].map(x=>x.textContent);
-       Object.keys(S.like).forEach(function(k){ if(have.indexOf(k)>=0) return; var d=S.like[k]; var el=postEl({n:d.n,h:d.h,t:d.t,m:["💬 0","🔁 0","❤️ 0"]},false); box.appendChild(el); });
+       Object.keys(S.like).forEach(function(k){ var d=S.like[k]; if(have.indexOf(d.t)>=0) return; box.appendChild(postEl({n:d.n,h:d.h,t:d.t,m:["💬 0","🔁 0","❤️ 0"]},false)); });
        var em=box.querySelector(".x-ptab-empty"); if(em&&Object.keys(S.like).length) em.remove();
      }
      if(b.dataset.t==="replies"){ var box2=document.querySelector("#x-ptab-replies"); if(!box2) return;
