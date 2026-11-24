@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v984</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v986</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1370,16 +1370,16 @@ function gMsg(name,text){ const f=FRIENDS[name]; const FRG={"ゆい":"assets/fr-
 function gMe(text){ const d=document.createElement("div"); d.className="msg me"; d.innerHTML=`<span class="bub"></span><span class="meta">既読<br>${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#gchat").appendChild(d); $("#gchat").scrollTop=$("#gchat").scrollHeight }
 const FRIEND_REPLIES=["ちょ、詳しく聞かせて","それ大丈夫なやつ！？","今から電話する？","まずお茶飲んで深呼吸","なおの味方やからね、われら"];
 function sendGroup(){ pop(); const inp=$("#g-text"); const v=inp.value.trim(); if(!v) return; inp.value=""; gMe(v);
-  const R=[[/旅行|釜山|韓国|ホテル|飛行機|予約/,"ゆい",["任せて、日程とホテル候補まとめるわ","釜山やろ？　店のリストも作っとく"]],[/炎上|ニュース|記事|報道/,"ゆい",["記事は最後まで読んだ。大丈夫、変な飛び火はないか見てる","情報は追えてる。なおは今、ネット見んでいいよ"]],[/不安|悩|どうしよ|しんど|疲れ|泣|つら/,"みさき",["深呼吸。まず、温かいもの飲も","無理に答え出さんでいいと思う。ゆっくりでいいよ"]],[/ありがと/,"りな",["ええって！　いつでも言うて","こういう時のための、いつメンやろ"]],[/ごめん/,"みさき",["謝らんでいいって。ほんまに","ごめんは要らん。味方やで"]],[/見て|かわいい|やばい|すごい|笑/,"りな",["見た見た！　やばくない！？","それはテンション上がるやつ！"]]];
-  let who=null, line=null;
-  for(const [re,w,arr] of R){ if(re.test(v)){ who=w; line=pick(arr); break; } }
+  const R=[[/旅行|釜山|韓国|ホテル|飛行機|予約/,"ゆい",["任せて、日程とホテル候補まとめるわ","釜山やろ？　店のリストも作っとく"],["行きたい","候補見るの楽しみ"]],[/炎上|ニュース|記事|報道/,"ゆい",["記事は最後まで読んだ。大丈夫、変な飛び火はないか見てる","情報は追えてる。なおは今、ネット見んでいいよ"],["うん…","なおは見んでいいよ"]],[/不安|悩|どうしよ|しんど|疲れ|泣|つら/,"みさき",["深呼吸。まず、温かいもの飲も","無理に答え出さんでいいと思う。ゆっくりでいいよ"],["聞いてる","そばにおるから"]],[/ありがと/,"りな",["ええって！　いつでも言うて","こういう時のための、いつメンやろ"],["いつメン！","うんうん"]],[/ごめん/,"みさき",["謝らんでいいって。ほんまに","ごめんは要らん。味方やで"],["ほんまに","うん"]],[/見て|かわいい|やばい|すごい|笑/,"りな",["見た見た！　やばくない！？","それはテンション上がるやつ！"],["やばい","分かる"]]];
+  let who=null, line=null, second=["うんうん","それな"];
+  for(const [re,w,arr,sec] of R){ if(re.test(v)){ who=w; line=pick(arr); if(sec) second=sec; break; } }
   if(!who){ who=pick(Object.keys(FRIENDS)); line=pick(FRIEND_REPLIES); }
   setTimeout(()=>gMsg(who,line),1400);
-  if(Math.random()<0.45){ const w2=pick(Object.keys(FRIENDS).filter(k=>k!==who)); setTimeout(()=>gMsg(w2,pick(["うんうん","それな","同意","ほんまそれ"])),3300); }
+  if(Math.random()<0.45){ const w2=pick(Object.keys(FRIENDS).filter(k=>k!==who)); setTimeout(()=>gMsg(w2,pick(second)),3300); }
 }
 $("#g-send").addEventListener("click",sendGroup);
 $("#g-text").addEventListener("keydown",e=>{ if(e.key==="Enter") sendGroup(); });
-async function groupFlood(){ const art=state._route==="dating"?"記事、最後まで読んだ。事務所は否定してへん。…認めたってことやんな":"記事の最後まで読んだ。「交際はしてない」って書いてある"; const seq=[["りな","なお！！ 電話出なさい！！"],["ゆい","見出しに名前…これ、なおのことやんな？"],["ゆい",art],["みさき","返事は急がんでいいから。私らは、なおの言うことだけ信じる"],["ゆい","今夜うち来な。ごはん作るし、話はそれから"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
+async function groupFlood(){ const art=state._route==="dating"?"記事、最後まで読んだ。事務所は否定してへん。けど、認めてもないんやろ？":"記事の最後まで読んだ。「交際はしてない」って書いてある"; const seq=[["りな","なお！！ 電話出なさい！！"],["ゆい","見出しに名前…これ、なおのことやんな？"],["ゆい",art],["みさき","返事は急がんでいいから。私らは、なおの言うことだけ信じる"],["ゆい","今夜うち来な。ごはん作るし、話はそれから"]]; for(const [n,t] of seq){ gMsg(n,t); await new Promise(r=>setTimeout(r,2100)); } push("LINE","#06c755","💬","いつメン🍻","「なお！？ ニュース見た！？」——タップでグループへ",()=>{show("line");openGroup()}); }
 /* ===== v5: his IG extra posts ===== */
 (function(){ const hs=$("#v-hisig .scroll"); if(!hs) return;
   const mk=(img,cap,likes,date)=>{ const d=document.createElement("div"); d.className="ig-post"; d.innerHTML=`<div class="ph"><img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="30" height="30" alt=""> 193.hiroto_jixiang <span class="verified">☑</span><span style="margin-left:auto;color:#8e8e93">…</span></div><img loading="lazy" decoding="async" class="pimg" src="${img}" alt=""><div class="acts"><span class="like-btn"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span><span>💬</span><span>✈</span><span class="save-btn">🔖</span></div><div class="cap">いいね！：${likes}件<br><b>193.hiroto_jixiang</b> ${cap}<br><span style="color:#8e8e93;font-size:12px">${date}</span></div>`; hs.appendChild(d); };
@@ -2053,7 +2053,11 @@ function fSend(){ const inp=$("#f-text"); const v=inp.value.trim(); if(!v||!fCur
   later(()=>{ $("#f-typing").style.display="flex"; $("#fchat").scrollTop=$("#fchat").scrollHeight; },700);
   later(()=>{ $("#f-typing").style.display="none"; const pool=(state.started&&!state.act2&&!state.ended)?fc.scandal:fc.calm; let rep=null;
   const CX=[[/疲れ|仕事|しんど|残業/,["おつかれさま。無理せんと早よ寝なよ","仕事おつかれ。今日はもう休みな"]],[/ありがと/,["ええって。いつでも言うて","気にせんとって。味方やから"]],[/炎上|ニュース|記事|大丈夫/,["大丈夫。私らは変わらんから","ニュースは気にせんでいい。味方やで"]],[/ごめん/,["謝らんでいい。あんたは悪くない","ごめんは要らんって。ほんまに"]]];
-  for(const [re,arr] of CX){ if(re.test(v)){ rep=arr[Math.floor(Math.random()*arr.length)]; break; } }
+  const CXF={yui:[[/疲れ|仕事|しんど|残業/,["おつかれ。今週末、空けとく？ どっか行こ","無理したらあかん。予定、調整しよか"]],[/ありがと/,["気にせんで。次は奢ってな","ええって。段取りは任せて"]],[/炎上|ニュース|記事|大丈夫/,["見たで。時系列で整理したから、落ち着いて読んで","ニュース見た。まとめたやつ送るわ"]],[/ごめん/,["謝らんでいい。次どうするか決めよ","ごめんはええから。まず今の状況教えて"]]],
+  misaki:[[/疲れ|仕事|しんど|残業/,["今日はもう何もせんでいいよ。話すなら聞く","しんどい日やったな。温かいもの飲んだ？"]],[/ありがと/,["うん、よかった","いつでも聞くから"]],[/炎上|ニュース|記事|大丈夫/,["大丈夫？ まず深呼吸しよ","ニュースは見た。あんたの味方やから"]],[/ごめん/,["謝ることちゃう。しんどかったな","ごめんは要らん。気持ちは分かる"]]],
+  rina:[[/疲れ|仕事|しんど|残業/,["疲れた時は集合！ 今日会える？","おつかれ！ 美味しいもの食べに行こ"]],[/ありがと/,["えへへ。じゃあ今度カラオケ行こ","いいってことよ。次は遊びの計画立てよ"]],[/炎上|ニュース|記事|大丈夫/,["えっ見た！？ 大丈夫なん！？","ニュース見た…心配で電話したくなった"]],[/ごめん/,["ごめんはいいから、今度会った時ぎゅってさせて","謝らんとって。りなは味方やで"]]]};
+  for(const [re,arr] of (CXF[key]||[])){ if(re.test(v)){ rep=arr[Math.floor(Math.random()*arr.length)]; break; } }
+  if(!rep) for(const [re,arr] of CX){ if(re.test(v)){ rep=arr[Math.floor(Math.random()*arr.length)]; break; } }
   fPush(key, rep||pool[Math.floor(Math.random()*pool.length)]); },2100); }
 $("#f-send").addEventListener("click",fSend);
 $("#f-text").addEventListener("keydown",e=>{ if(e.key==="Enter") fSend(); });
@@ -12116,7 +12120,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v984"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v986"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21408,11 +21412,11 @@ try{
   {img:"assets/scar-first.jpg", t:"最初の日の夜。緊張してたの、バレてたかな", tm:"9月28日", m:["512","7,340","28,955"], imp:"198"}
  ];
  var TAUNTS=[
-  {t:"心配してくれた人、ありがとうございます。私は元気です。騒がせてごめんなさい", tm:"3時間前", m:["2,318","9,540","31,208"], imp:"187"},
-  {t:"今日は普通に起きて、普通にごはん食べた。それで十分な日もある", tm:"2時間前", m:["1,864","7,203","26,540"], imp:"154"},
-  {t:"ここは元々、ふたりの記録用でした。それだけです", tm:"1時間前", m:["3,102","11,870","40,311"], imp:"233"},
+  {t:"オリヤンで買ったリップ、やっと開けた。色、思ったよりずっとかわいい", tm:"12分前", m:["1,108","3,764","15,209"], imp:"74"},
   {t:"サウナで整ってカフェオレ飲んだら、今日はもう満点でいいと思う", tm:"25分前", m:["964","3,208","12,845"], imp:"61"},
-  {t:"オリヤンで買ったリップ、やっと開けた。色、思ったよりずっとかわいい", tm:"12分前", m:["1,108","3,764","15,209"], imp:"74"}
+  {t:"ここは元々、ふたりの記録用でした。それだけです", tm:"1時間前", m:["3,102","11,870","40,311"], imp:"233"},
+  {t:"今日は普通に起きて、普通にごはん食べた。それで十分な日もある", tm:"2時間前", m:["1,864","7,203","26,540"], imp:"154"},
+  {t:"心配してくれた人、ありがとうございます。私は元気です。騒がせてごめんなさい", tm:"3時間前", m:["2,318","9,540","31,208"], imp:"187"}
  ];
  var PRE=[
   {t:"今日のカフェオレ、濃いめで当たりだった。いい日", tm:"10月26日", m:["3","12","48"], imp:"2"},
@@ -33541,18 +33545,32 @@ function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; 
  var MAP={}; try{ MAP=JSON.parse(localStorage.getItem("hiroto_subfolmap_v1")||"{}")||{}; }catch(e){ MAP={}; }
  function recount(){ var n=2; Object.keys(MAP).forEach(function(k){ if(MAP[k]) n++; }); window.__subFolN=n; var el=document.querySelector("#v725-foling"); if(el&&el.textContent!==String(n)) el.textContent=String(n); }
  recount();
+ var subfol=document.querySelector("#x-pane-subfol");
+ function applySubfol(){ if(!subfol) return;
+   subfol.querySelectorAll("[data-v729fb]").forEach(function(fb){ var row=fb.closest("div"); if(!row) return; var h="";
+     row.querySelectorAll("span").forEach(function(s){ var t=(s.textContent||"").trim(); if(!h&&t.startsWith("@")) h=t; });
+     if(!h||!MAP[h]) return;
+     if(fb.textContent!=="フォロー中") fb.textContent="フォロー中";
+     fb.dataset.on="1"; fb.style.background="#fff"; fb.style.color="#0f1419"; fb.style.border="1px solid #cfd9de"; }); }
+ if(subfol){ new MutationObserver(function(){ applySubfol(); }).observe(subfol,{childList:true,subtree:true}); }
  document.addEventListener("click",function(e){
    var fb=e.target.closest?e.target.closest("#x-pane-subfol [data-v729fb]"):null; if(!fb) return;
    var row=fb.closest("div"); var h="";
    if(row) row.querySelectorAll("span").forEach(function(s){ var t=(s.textContent||"").trim(); if(!h&&t.startsWith("@")) h=t; });
-   setTimeout(function(){ if(h){ MAP[h]=(fb.textContent==="フォロー中"); try{ localStorage.setItem("hiroto_subfolmap_v1", JSON.stringify(MAP)); }catch(e2){} recount(); } },0);
+   queueMicrotask(function(){ if(h){ MAP[h]=(fb.textContent==="フォロー中"); try{ localStorage.setItem("hiroto_subfolmap_v1", JSON.stringify(MAP)); }catch(e2){} recount(); } });
  },true);
- /* sub profile: switch back to the main account */
+ /* sub profile: switch back to the main account (restoring her tab + scroll) */
  var subp=document.querySelector("#x-pane-subprof");
+ var savedTab=null, savedScroll=0, subWasShown=false;
+ setInterval(function(){ if(!subp) return; var shown=subp.style.display!=="none";
+   if(shown&&!subWasShown){ var act=document.querySelector(".x-ptabs button.act"); savedTab=act?act.dataset.t:null; var sc=document.querySelector("#x-scroll"); savedScroll=sc?sc.scrollTop:0; }
+   subWasShown=shown; },600);
  function addSwitch(){ if(!subp) return; var head=subp.querySelector("div"); if(!head||head.querySelector("#v984-tomain")) return;
    var b=document.createElement("button"); b.id="v984-tomain"; b.textContent="本垢へ切替";
    b.style.cssText="margin-left:auto;flex:none;background:#0f1419;color:#fff;border:none;border-radius:999px;padding:6px 13px;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer";
-   b.addEventListener("click",function(){ subp.style.display="none"; var me=document.querySelector('[data-xtab="me"]'); if(me) me.click(); else { var mp=document.querySelector("#x-pane-me"); if(mp) mp.style.display="block"; } });
+   b.addEventListener("click",function(){ subp.style.display="none"; var me=document.querySelector('[data-xtab="me"]'); if(me) me.click(); else { var mp=document.querySelector("#x-pane-me"); if(mp) mp.style.display="block"; }
+     if(savedTab&&savedTab!=="posts"){ var tb=document.querySelector('.x-ptabs button[data-t="'+savedTab+'"]'); if(tb) setTimeout(function(){ tb.click(); },60); }
+     if(savedScroll){ var sc2=document.querySelector("#x-scroll"); if(sc2) setTimeout(function(){ sc2.scrollTop=savedScroll; },120); } });
    head.appendChild(b); }
  if(subp){ new MutationObserver(addSwitch).observe(subp,{childList:true,subtree:true}); addSwitch(); }
  /* drawer: bookmarks opens the real bookmarks pane */
@@ -33562,6 +33580,25 @@ function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; 
    var d=document.querySelector("#v738-drawer"); if(d) d.classList.remove("on");
    var bm=document.querySelector('[data-xtab="bmk"]'); if(bm) bm.click();
  },true);
+})();
+</script>
+<script>
+/* ===== v985: X bookmarks persist across reloads (keyed by handle|text) ===== */
+(function(){
+ var B=[]; try{ B=JSON.parse(localStorage.getItem("hiroto_bmk_v1")||"[]")||[]; }catch(e){ B=[]; }
+ function save(){ try{ localStorage.setItem("hiroto_bmk_v1", JSON.stringify(B)); }catch(e){} }
+ function keyOf(post){ var hd=post.querySelector(".hd"), tx=post.querySelector(".tx"); return (hd?hd.textContent.trim().split("・")[0].trim():"")+"|"+(tx?tx.textContent:""); }
+ document.addEventListener("click",function(e){
+   var b=e.target.closest?e.target.closest(".bm-btn"):null; if(!b) return;
+   var post=b.closest("#v-x .post"); if(!post) return; var k=keyOf(post); if(!k) return;
+   setTimeout(function(){ var on=!!b.style.color; var i=B.indexOf(k);
+     if(on&&i<0){ B.push(k); save(); } if(!on&&i>=0){ B.splice(i,1); save(); } },0);
+ },true);
+ function restore(){ document.querySelectorAll("#v-x .post").forEach(function(p){ var b=p.querySelector(".bm-btn"); if(!b||b.dataset.v985) return; b.dataset.v985="1";
+   if(B.indexOf(keyOf(p))>=0){ b.style.color="#1d9bf0"; b.style.opacity="1"; } }); }
+ var sc=document.querySelector("#x-scroll");
+ if(sc){ new MutationObserver(function(){ restore(); }).observe(sc,{childList:true,subtree:true}); }
+ restore();
 })();
 </script>
 </body>
