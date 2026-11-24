@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v997</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v998</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1106,7 +1106,7 @@ async function ch5(t){ addDayChip("11月1日（土）"); setChapterWidget("第5�
   if(!alive(t))return; await himMsg("…早めに来て、待っててん",900); if(!alive(t))return; await himMsg("いつもの、頼んどいたわ",1000);
   later(()=>{ addPhoto("assets/cafe-latte.jpg","カフェのラテ"); push("写真","#8e8e93","🌼","思い出が追加されました","カフェのラテ —— タップで写真へ",()=>show("photos")); },2200);
   later(()=>toast("💭 <b>（私の分のカフェオレ、温かいのがもう出てきた。…2週間って、なんやったんやろな）</b>"),2600);
-  if(!alive(t))return; const cont5b=async()=>{ if(!alive(t))return; await himMsg("この前の夜のことやけど",1500); if(!alive(t))return; await himMsg("…忘れられた日、なかったわ",1400);
+  if(!alive(t))return; const cont5b=async()=>{ if(!alive(t))return; await himMsg("この前の夜のことやけど",1500); if(!alive(t))return; await himMsg("…忘れられた日、なかったわ",1400); if(!alive(t))return; await himMsg("…会われへんかったんは、仕事のせいにしとったけど",1300); if(!alive(t))return; await himMsg("…会おうと思えば、時間くらい、作れたんちゃうかな",1300); if(!alive(t))return; await himMsg("…その間に、他の誰かと、とか",1100);
   if(!alive(t))return; const cont5c=async()=>{ if(!alive(t))return; await himMsg("あの夜、引き止めたの俺やのに",1100); if(!alive(t))return; await himMsg("…最低やな",900); if(!alive(t))return; await himMsg("…でも、後悔はしてへんねん",1600); if(!alive(t))return; await himMsg("…また、同じことしそうやけどな",1200); if(!alive(t))return; await himMsg("新作プリン、なおに食べてもらってよかったわ",1000); if(!alive(t))return; await himMsg("帽子、深かったやろ。…目立つん、怖かってん",1200); if(!alive(t))return; await himMsg("帰り、遠回りしよ。人混みは避けたい",1000);
   later(()=>toast("💭 <b>（遠回りの理由、半分は人目で、半分は違った）</b>"),1400);
   later(()=>{ addPhoto("assets/night.jpg","夜の散歩"); },9000);
@@ -3897,13 +3897,13 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   ]},
   9:{sub:"彼のスマホ —— 10月26日（日）夜",steps:[
    {k:"note",t:"10月26日（日）23:12"},
-   {k:"mono",t:"（LINE、開いてしもた。……既読は、つけへん）"},
+   {k:"mono",t:"（また、開いてしもた。昼間は、マロンの話で誤魔化したくせに）"},
    {k:"draft",t:"元気しとる？"},
    {k:"mono",t:"（消す。心配する資格、ないやろ）"},
    {k:"draft",t:"この前は、ごめん"},
    {k:"mono",t:"（それも違う。謝って済む話にしたら、あかん気がする）"},
    {k:"mono",t:"（……マロン、俺ばっかりスマホ見とるな）"},
-   {k:"note",t:"言いたい言葉は、今日も送られへんかった"}
+   {k:"note",t:"本音のほうは、今日も送られへんかった"}
   ]},
   10:{sub:"彼のスマホ —— 11月9日（日）朝",steps:[
    {k:"note",t:"11月9日（日）8:03"},
@@ -12088,7 +12088,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v997"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v998"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
