@@ -540,7 +540,7 @@ input,textarea{font-size:16px!important}
 <div class="home-inner">
 <div class="widget">
 <div class="w-title" id="w-title">📖 物語は、出会いから</div>
-<div class="w-main" id="w-main">第1話『スワイプから始まる出会い』—— Tinderを開いてね。</div><button id="skip-btn">炎上編へスキップ</button>
+<div class="w-main" id="w-main">第1話『最初のSuper Like』—— Tinderを開いてね。</div><button id="skip-btn">炎上編へスキップ</button>
 <div class="w-row">
 <span>Instagram フォロワー <b id="w-ig">342</b></span>
 <span>X フォロワー <b id="w-x">189</b></span>
@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1027</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1028</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1015,7 +1015,7 @@ function schedulePrologue(){ if(state._proStarted) return; state._proStarted=tru
 $("#skip-btn").addEventListener("click",()=>{ if(state.phase!=="prologue") return; state._token++; toScandal(); });
 function toScandal(){ if(state.phase==="scandal") return; state.phase="scandal"; $("#lock-date").textContent="11月2日 日曜日"; $("#news-note").textContent="11月2日（日）夜"; $("#skip-btn").style.display="none"; chapterCard("第6話","バレた日",(state._route==="dating"?"バレたのは、二人の関係だった。アプリと熱愛が、表に出た。":"バレたのは、恋じゃなかった。アプリを開いていた、その事実だった。")+"<br><span class=\"cc-when\">11月2日（日）夜 —— LINEを開いて様子を見てね</span>"); addDayChip("11月2日（日）"); scheduleFirstPush(); }
 function chapter(n){ if(state.phase!=="prologue") return; state.chapter=n; const LD={1:"9月27日 土曜日",2:"10月4日 土曜日",3:"10月12日 日曜日",4:"10月18日 土曜日",5:"11月1日 土曜日"}; if(LD[n]) $("#lock-date").textContent=LD[n]; const ND={1:"9月27日（土）夜",2:"10月4日（土）夜",3:"10月12日（日）夜",4:"10月18日（土）夜",5:"11月1日（土）夜"}; if(ND[n]) $("#news-note").textContent=ND[n]; const t=state._token; if(n===1) ch1(t); else if(n===2) ch2(t); else if(n===3) ch3(t); else if(n===4) ch4(t); else if(n===5) ch5(t); }
-async function ch1(t){ setChapterWidget("第1話『スワイプから始まる出会い』","Tinderで、運命のスワイプ。"); chapterCard("第1話","スワイプから始まる出会い","「本物か、偽物か」——確かめるまでは、眠れない。<br><span class=\"cc-when\">9月27日（土） ・ Tinderで出会った日 —— ホームの Tinder を開いてね</span>"); state._tinderWaiting=true; toast("<b>Tinder</b>を開いて、スワイプしてみて"); }
+async function ch1(t){ setChapterWidget("第1話『最初のSuper Like』","Tinderで、運命のスワイプ。"); chapterCard("第1話","最初のSuper Like","「本物か、偽物か」——確かめるまでは、眠れない。<br><span class=\"cc-when\">9月27日（土） ・ Tinderで出会った日 —— ホームの Tinder を開いてね</span>"); state._tinderWaiting=true; toast("<b>Tinder</b>を開いて、スワイプしてみて"); }
 async function ch2(t){ addDayChip("10月4日（土）"); setChapterWidget("第2話『ちゃんとしたデート』","2回目に会う日。今日は、最初からデート。"); chapterCard("第2話","ちゃんとしたデート","一度会ってしまった二人の、仕切り直しの一日。<br><span class=\"cc-when\">10月4日（土） ・ 待ち合わせ場所 —— LINEを開いてね</span>"); later(()=>toast("📍 <b>待ち合わせ</b>：柱のそば、黒キャップ。こっちを見て、小さく手が上がった。…2回目"),500); later(()=>toast("💭 <b>（歩き方も、後ろ姿も、もう覚えてる。…「デート」と言い切られた日から、ずっと考えてた）</b>"),2400); later(()=>toast("💓 <b>（近づくにつれて、どんどん緊張してくる。2回目でも、全然慣れへん）</b>"),4700); later(()=>toast("🚶 <b>（人混みで離れかけたら、袖口をそっと掴まれた。指先だけ。…なのに、熱い）</b>"),6900);
   await himMsg("…お、なお",700); if(!alive(t))return; await himMsg("ほんまに来てくれた"); if(!alive(t))return; await himMsg("今日は、最初からデートやで"); if(!alive(t))return; await himMsg("今日は、ちゃんと楽しませたいねん"); if(!alive(t))return; await himVoice("assets/vt-greet.mp3","0:05");
   if(!alive(t))return; askChoices("なおの反応は——",[
@@ -1389,7 +1389,7 @@ async function groupFlood(){ const art=state._route==="dating"?"記事、最後�
 const PHOTO_DATES={"crown.jpg":"9月 ・ 神戸","crown-full.jpg":"9月 ・ 保存用","stage.jpg":"9月 ・ ライブ会場","selfie.jpg":"10月 ・ ひろとから送信","insta-post.jpg":"11月1日 ・ Instagramの投稿","ig-drink.jpg":"10月4日 ・ 2回目に会った夜","couple-heart.jpg":"10月4日 ・ ハート作った日","ig-food.jpg":"本人の投稿 ・ 麺の日","ig-bday.jpg":"本人の投稿 ・ 誕生日","maron-close.jpg":"本人の投稿 ・ マロン","ig-sushi.jpg":"本人の投稿 ・ 寿司","roses.jpg":"本人の投稿 ・ バラ園","night.jpg":"11月1日 ・ 夜の散歩","glasses.jpg":"本人の投稿 ・ メガネの日","studio.jpg":"本人の投稿 ・ お仕事","cafe3.jpg":"本人の投稿 ・ カフェ","hoodie.jpg":"本人の投稿 ・ 寒い日","cafe.jpg":"なおの投稿写真","ig-meal.jpg":"本人の投稿 ・ カフェ","gift-glasses.jpg":"ひろとから送信 ・ メガネ","gift-jacket.jpg":"ひろとから送信 ・ 公園","gift-shanghai.jpg":"ひろとから送信 ・ 上海","gift-snow.jpg":"ひろとから送信 ・ 雪の日"};
 let pvIdx=0;
 function pvList(){ return $$("#ph-grid figure").filter(f=>f.style.display!=="none"); }
-/* ===== Tinder ver v95 (orig v302+v303 audited, read against this arc): v303 ported - the photo viewer no longer wraps around: pvShow now clamps (Math.max/Math.min) instead of modulo, so swiping left on the last photo stays there instead of jumping back to the first photo. Same one-line change as the original, same entry points (nav buttons, touch swipe, arrow keys, slideshow) all go through pvShow. v302 NOT ported: it deletes the original's 9/26 day-before prologue and starts the story at the 9/27 gokon scene with the party-chat 9/27 log unlocking at ch1 - this version has no gokon scene and no #party-chat, and 9/27 here is the Tinder match day (ch1 'スワイプから始まる出会い'), so there is no prologue block to delete and no party-premise wording is imported. No story text touched. ===== */
+/* ===== Tinder ver v95 (orig v302+v303 audited, read against this arc): v303 ported - the photo viewer no longer wraps around: pvShow now clamps (Math.max/Math.min) instead of modulo, so swiping left on the last photo stays there instead of jumping back to the first photo. Same one-line change as the original, same entry points (nav buttons, touch swipe, arrow keys, slideshow) all go through pvShow. v302 NOT ported: it deletes the original's 9/26 day-before prologue and starts the story at the 9/27 gokon scene with the party-chat 9/27 log unlocking at ch1 - this version has no gokon scene and no #party-chat, and 9/27 here is the Tinder match day (ch1 '最初のSuper Like'), so there is no prologue block to delete and no party-premise wording is imported. No story text touched. ===== */
 function pvShow(i){ const list=pvList(); if(!list.length) return; pvIdx=Math.max(0,Math.min(i,list.length-1)); const img=list[pvIdx].querySelector("img"); const cap=list[pvIdx].querySelector("figcaption"); const base=(img.getAttribute("src")||"").split("/").pop();
   $("#pv-img").src=img.getAttribute("src"); $("#pv-cap").textContent=cap?cap.textContent:"思い出"; $("#pv-date").textContent=(PHOTO_DATES[base]||"思い出")+" ・ "+(pvIdx+1)+" / "+list.length; const fb=$("#pv-fav"); if(fb){ const on=FAVS.has(base); fb.textContent=on?"♥":"♡"; fb.classList.toggle("fav-on",on); } }
 $("#ph-grid").addEventListener("click",e=>{ const f=e.target.closest("figure"); if(!f) return; $("#ph-view").classList.add("on"); pvShow(pvList().indexOf(f)); });
@@ -3701,7 +3701,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  }
  const past=()=> state.phase==="scandal"||!!state.act2;
  const SYN=[
-  {no:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。開いてまもなく、ひとりの男の子から Super Like が届いていた。名前も顔も、推しに一致しすぎている——本物か、写真を使った偽物か。確かめずにはいられなかった。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
+  {no:"第1話",tt:"最初のSuper Like",dt:"9月27日（土） ・ Tinder",sy:"何気なく始めたTinder。開いてまもなく、ひとりの男の子から Super Like が届いていた。名前も顔も、推しに一致しすぎている——本物か、写真を使った偽物か。確かめずにはいられなかった。",un:()=>state.chapter>=1||past(),go:()=>show("tinder")},
   {no:"幕間",tt:"会ったあとの3日間",dt:"10月1日（水）夜〜10月3日（金） ・ LINE",sy:"LINEを交換してからの3日間。一度会ってしまった二人は、関係の名前だけないまま近づいていく。彼の仕事の日は推しの収録日と重なり、送られてきたマロンの写真に、明日の約束が重なった。明日、2回目に会う。こんどは最初から、デートとして。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月1日（水）")},
   {no:"第2話",tt:"ちゃんとしたデート",dt:"10月4日（土） ・ 夜",sy:"2回目に会う日。彼は言い切った——「今日は、最初からデートやで」。待ち合わせから、まっすぐ飲みに。気づいたら二軒目。終電を過ぎて、二人はまた進んでしまった——その先は、二人だけの秘密。",un:()=>state.chapter>=2||past(),go:()=>jumpLine("10月4日（土）")},
   {no:"特別編",tt:"まだ名前のない日々",dt:"10月5日（日）〜11日（土） ・ LINE",sy:"デートの翌日からの一週間。朝のマロンの写真、売り切れ続ける限定プリンに二度足を運ぶ彼、掠れた声、そして週末の散歩の誘い。関係に名前がないまま、日常だけが静かに積み重なっていく。",un:()=>!!state._ch2bDone||state.chapter>=3||past(),go:()=>jumpLine("10月5日（日）")},
@@ -8238,14 +8238,14 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
   "@media (max-height:760px){ #story-dash .sd-cover{height:78px} }";
  document.head.appendChild(css);
  const dash=document.createElement("div"); dash.id="story-dash";
- dash.innerHTML='<div class="sd-cover" id="sd-cover"><span class="sd-phase" id="sd-phase">プロローグ</span><div class="sd-tt"><div class="sd-title" id="sd-title">スワイプから始まる出会い</div><div class="sd-date" id="sd-date">9月27日（土） ・ Tinder</div></div></div>'
+ dash.innerHTML='<div class="sd-cover" id="sd-cover"><span class="sd-phase" id="sd-phase">プロローグ</span><div class="sd-tt"><div class="sd-title" id="sd-title">最初のSuper Like</div><div class="sd-date" id="sd-date">9月27日（土） ・ Tinder</div></div></div>'
   +'<div class="sd-row"><div class="sd-dots" id="sd-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="sd-prog" id="sd-prog">0 / 8</span><button id="sd-go">物語をはじめる ▶</button></div>';
  inner.insertBefore(dash, inner.firstChild);
  /* retire the fake search pill in the home page dots (both pages) */
  document.querySelectorAll(".hp-search").forEach(e=>e.remove());
  const TABLE={
-  ch0:{ph:"プロローグ",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/scar-first.jpg",btn:"物語をはじめる ▶",go:"tinder",n:0},
-  ch1:{ph:"第1話",tt:"スワイプから始まる出会い",dt:"9月27日（土） ・ Tinder",img:"assets/scar-first.jpg",btn:"つづきを読む ▶",go:"tinder",n:1},
+  ch0:{ph:"プロローグ",tt:"最初のSuper Like",dt:"9月27日（土） ・ Tinder",img:"assets/scar-first.jpg",btn:"物語をはじめる ▶",go:"tinder",n:0},
+  ch1:{ph:"第1話",tt:"最初のSuper Like",dt:"9月27日（土） ・ Tinder",img:"assets/scar-first.jpg",btn:"つづきを読む ▶",go:"tinder",n:1},
   sus:{ph:"幕間『会ったあとの3日間』",tt:"一度会ったあとの、名前のない3日間",dt:"10月1日（水）〜10月3日（金） ・ LINE",img:"assets/scar-street.jpg",btn:"つづきを読む ▶",go:"line",n:1},
   normlx:{ph:"幕間『会わない二週間』",tt:"会わずに続いた日々",dt:"10月19日（日）〜10月31日（金） ・ LINE",img:"assets/scar-street.jpg",btn:"つづきを読む ▶",go:"line",n:1},
   ch2:{ph:"第2話",tt:"ちゃんとしたデート",dt:"10月4日（土） ・ 夜",img:"assets/couple-4.jpg",btn:"つづきを読む ▶",go:"line",n:2},
@@ -12093,7 +12093,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1027"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1028"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
