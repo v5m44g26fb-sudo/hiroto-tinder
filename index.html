@@ -960,7 +960,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1052</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1053</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -9111,10 +9111,25 @@ setInterval(upd,900); upd();
   if(_sb) _sb.addEventListener("click",stamp,true);
   if(_si) _si.addEventListener("keydown",e=>{ if(e.key==="Enter") stamp(); },true);
   const origMsg=himMsg;
-  himMsg=function(){ if(state._seqAt&&Date.now()-state._seqAt<12000&&state.chapter===state._seqChapter&&state._token===state._seqToken){
+  himMsg=function(){ if(state._inReply&&state._seqAt&&Date.now()-state._seqAt<12000&&state.chapter===state._seqChapter&&state._token===state._seqToken){
     state._seqMsgN=(state._seqMsgN||0)+1; if(state._seqMsgN>3) return Promise.resolve(); }
    return origMsg.apply(this,arguments); };
   himMsg._v333t=true; }
+})();
+/* ===== v1053: the v333 send-stamped cap also fired on STORY sequences (its v332 ancestor capped
+   only replies inside himReply). A send shortly before a scene made the cap eat scene lines;
+   each eaten line resolved instantly, so the scene raced inside the 12s window and lost every
+   line while day chips (uncapped) stacked out of order. Fix: the cap now requires _inReply,
+   held for the whole free-chat reply chain by this outermost himReply wrapper and cleared by
+   the branch completion callback (every base branch calls it - v84), with a 30s safety. ===== */
+(function(){
+ if(typeof himReply!=="function"||himReply._v1053) return;
+ const _hr=himReply;
+ himReply=function(t,cb){ state._inReply=true;
+  const done=()=>{ state._inReply=false; if(typeof cb==="function") cb(); };
+  setTimeout(()=>{ if(state._inReply) state._inReply=false; },30000);
+  try{ return _hr(t,done); }catch(e){ state._inReply=false; throw e; } };
+ himReply._v1053=true;
 })();
 </script>
 <!-- ===== Tinder ver v177: ORIGINAL-SYNC batch 1 (orig v315-v332 audit) - free-chat volume/voice specs aligned with the original: the v213t afterthought double-text layer deleted (orig v321), the per-send free-chat voice budget ported in orig v324's final form (fc-t-/fv- voices only, stamped by her sent bubble), the 3-texts-per-reply window cap ported (orig v332), and the friend-chat reply pools trimmed exactly as orig v332 (7 lines). Story voices, call voices and story sequences are untouched. ===== -->
@@ -12125,7 +12140,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1052"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1053"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
