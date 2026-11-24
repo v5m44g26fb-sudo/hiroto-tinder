@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v983</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v984</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12116,7 +12116,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v983"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v984"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -21410,7 +21410,9 @@ try{
  var TAUNTS=[
   {t:"心配してくれた人、ありがとうございます。私は元気です。騒がせてごめんなさい", tm:"3時間前", m:["2,318","9,540","31,208"], imp:"187"},
   {t:"今日は普通に起きて、普通にごはん食べた。それで十分な日もある", tm:"2時間前", m:["1,864","7,203","26,540"], imp:"154"},
-  {t:"ここは元々、ふたりの記録用でした。それだけです", tm:"1時間前", m:["3,102","11,870","40,311"], imp:"233"}
+  {t:"ここは元々、ふたりの記録用でした。それだけです", tm:"1時間前", m:["3,102","11,870","40,311"], imp:"233"},
+  {t:"サウナで整ってカフェオレ飲んだら、今日はもう満点でいいと思う", tm:"25分前", m:["964","3,208","12,845"], imp:"61"},
+  {t:"オリヤンで買ったリップ、やっと開けた。色、思ったよりずっとかわいい", tm:"12分前", m:["1,108","3,764","15,209"], imp:"74"}
  ];
  var PRE=[
   {t:"今日のカフェオレ、濃いめで当たりだった。いい日", tm:"10月26日", m:["3","12","48"], imp:"2"},
@@ -21435,14 +21437,14 @@ try{
   var head='<div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(255,255,255,.92);position:sticky;top:0;z-index:5">'
    +'<button id="v725-back" style="background:none;border:none;font-size:19px;cursor:pointer;padding:2px 4px">‹</button>'
    +'<span style="min-width:0"><span style="display:flex;align-items:center;gap:5px"><b style="font-size:16px">nao_ura</b>'+(pub?"":lockSvg(14))+'</span>'
-   +'<span style="display:block;color:#536471;font-size:12px">'+(pub?"10":"0")+' 件のポスト</span></span></div>'
+   +'<span style="display:block;color:#536471;font-size:12px">'+(pub?String(1+TAUNTS.length+PRE.length):"0")+' 件のポスト</span></span></div>'
    +'<div style="height:104px;background:url(assets/scar-street.jpg) center 40%/cover"></div>'
    +'<div style="padding:0 14px"><img src="assets/cafe-latte.jpg" width="66" height="66" alt="" style="border-radius:50%;object-fit:cover;margin-top:-30px;border:3px solid #fff">'
    +'<div style="display:flex;align-items:center;gap:5px;margin-top:3px"><span style="font-size:18px;font-weight:900">nao_ura</span>'+(pub?"":lockSvg(15))+'</div>'
    +'<div style="color:#536471;font-size:13px">@nao_ura</div>'
    +'<div style="font-size:13.5px;margin-top:6px;line-height:1.6">サブ垢。本垢に載せない写真の置き場。見つけても、内緒でいてください</div>'
    +'<div style="color:#536471;font-size:12.5px;margin-top:6px">2025年9月からXを利用しています</div>'
-   +'<div style="margin-top:8px;display:flex;gap:18px;font-size:13px"><span><b>2</b> <span style="color:#536471">フォロー中</span></span><span><b id="v725-fol">'+fol+'</b> <span style="color:#536471">フォロワー</span></span></div></div>'
+   +'<div style="margin-top:8px;display:flex;gap:18px;font-size:13px"><span><b id="v725-foling">2</b> <span style="color:#536471">フォロー中</span></span><span><b id="v725-fol">'+fol+'</b> <span style="color:#536471">フォロワー</span></span></div></div>'
    +'<div style="display:flex;margin-top:12px;border-bottom:1px solid #eff3f4">'
    +'<button data-v725tab="posts" style="flex:1;background:none;border:none;padding:11px 0;font-family:inherit;font-size:14px;cursor:pointer;'+(curTab==="posts"?"font-weight:900;border-bottom:3px solid #1d9bf0":"color:#536471")+'">ポスト</button>'
    +'<button data-v725tab="replies" style="flex:1;background:none;border:none;padding:11px 0;font-family:inherit;font-size:14px;cursor:pointer;'+(curTab==="replies"?"font-weight:900;border-bottom:3px solid #1d9bf0":"color:#536471")+'">返信</button>'
@@ -21460,6 +21462,7 @@ try{
    body='<div id="v725-posts"></div>';
   }
   pane.innerHTML=head+body;
+  var _fg=$("#v725-foling"); if(_fg&&typeof window.__subFolN==="number") _fg.textContent=String(window.__subFolN);
   var bk=$("#v725-back"); if(bk) bk.addEventListener("click", closeProf);
   $$("#x-pane-subprof [data-v725tab]").forEach(function(b){ b.addEventListener("click",function(){ curTab=b.dataset.v725tab; renderProf(); }); });
   if(pub && curTab==="posts"){
@@ -33528,6 +33531,36 @@ function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; 
    card.querySelector(".v983-close").addEventListener("click",closeCard);
    card.addEventListener("click",function(ev){ if(ev.target===card) closeCard(); });
    document.body.appendChild(card);
+ },true);
+})();
+</script>
+<script>
+/* ===== v984: sub-account return switch, drawer bookmarks wired, sub following count follows its list ===== */
+(function(){
+ /* sub following counter, shared with the subfol list buttons */
+ var MAP={}; try{ MAP=JSON.parse(localStorage.getItem("hiroto_subfolmap_v1")||"{}")||{}; }catch(e){ MAP={}; }
+ function recount(){ var n=2; Object.keys(MAP).forEach(function(k){ if(MAP[k]) n++; }); window.__subFolN=n; var el=document.querySelector("#v725-foling"); if(el&&el.textContent!==String(n)) el.textContent=String(n); }
+ recount();
+ document.addEventListener("click",function(e){
+   var fb=e.target.closest?e.target.closest("#x-pane-subfol [data-v729fb]"):null; if(!fb) return;
+   var row=fb.closest("div"); var h="";
+   if(row) row.querySelectorAll("span").forEach(function(s){ var t=(s.textContent||"").trim(); if(!h&&t.startsWith("@")) h=t; });
+   setTimeout(function(){ if(h){ MAP[h]=(fb.textContent==="フォロー中"); try{ localStorage.setItem("hiroto_subfolmap_v1", JSON.stringify(MAP)); }catch(e2){} recount(); } },0);
+ },true);
+ /* sub profile: switch back to the main account */
+ var subp=document.querySelector("#x-pane-subprof");
+ function addSwitch(){ if(!subp) return; var head=subp.querySelector("div"); if(!head||head.querySelector("#v984-tomain")) return;
+   var b=document.createElement("button"); b.id="v984-tomain"; b.textContent="本垢へ切替";
+   b.style.cssText="margin-left:auto;flex:none;background:#0f1419;color:#fff;border:none;border-radius:999px;padding:6px 13px;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer";
+   b.addEventListener("click",function(){ subp.style.display="none"; var me=document.querySelector('[data-xtab="me"]'); if(me) me.click(); else { var mp=document.querySelector("#x-pane-me"); if(mp) mp.style.display="block"; } });
+   head.appendChild(b); }
+ if(subp){ new MutationObserver(addSwitch).observe(subp,{childList:true,subtree:true}); addSwitch(); }
+ /* drawer: bookmarks opens the real bookmarks pane */
+ document.addEventListener("click",function(e){
+   var t=e.target&&e.target.closest?e.target.closest("#v738-bm"):null; if(!t) return;
+   e.stopPropagation(); e.preventDefault();
+   var d=document.querySelector("#v738-drawer"); if(d) d.classList.remove("on");
+   var bm=document.querySelector('[data-xtab="bmk"]'); if(bm) bm.click();
  },true);
 })();
 </script>
