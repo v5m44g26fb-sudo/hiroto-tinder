@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1030</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1031</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -12094,7 +12094,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1030"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1031"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -33581,6 +33581,37 @@ function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; 
  var t=document.querySelector("#v-subig .ig-head .t"); if(!t) return;
  var seen=false;
  [...t.querySelectorAll("span")].forEach(function(s){ if(s.textContent.trim()==="▾"){ if(seen) s.remove(); else seen=true; } });
+})();
+</script>
+
+<script>
+/* ===== v1031: persist nao's own X posts (localStorage hiroto_xmine_v1) ===== */
+(function(){
+ var KEY="hiroto_xmine_v1", SEED="（このアカウント、今めちゃくちゃ見られてる…）";
+ function load(){ try{ var a=JSON.parse(localStorage.getItem(KEY)||"[]"); return Array.isArray(a)?a.filter(function(x){return typeof x==="string"&&x&&x!==SEED;}):[]; }catch(e){ return []; } }
+ function save(a){ try{ localStorage.setItem(KEY, JSON.stringify(a.slice(0,50))); }catch(e){} }
+ var restoring=false;
+ function restore(){
+   var me=document.querySelector("#x-me-posts"), tl=document.querySelector("#x-pane-tl");
+   if(!me||typeof postEl!=="function") return;
+   var a=load(); if(!a.length) return;
+   var existing={}; me.querySelectorAll(".tx").forEach(function(t){ existing[t.textContent]=1; });
+   var fresh=a.filter(function(t){ return !existing[t]; });
+   if(!fresh.length) return;
+   restoring=true;
+   fresh.slice().reverse().forEach(function(t){
+     var p={n:"なお",h:"@nao_0324",t:t,m:["💬 0","🔁 0","❤️ 0"]};
+     me.prepend(postEl(p,false));
+     if(tl) tl.prepend(postEl(p,false));
+   });
+   restoring=false;
+ }
+ var tries=0; var iv=setInterval(function(){ tries++; restore(); if(tries>=8) clearInterval(iv); },900);
+ var postBtn=document.querySelector("#xc-post");
+ if(postBtn) postBtn.addEventListener("click",function(){
+   var ta=document.querySelector("#xc-text"); var t=ta?ta.value.trim():"";
+   if(!t) return; var a=load(); if(a.indexOf(t)<0){ a.unshift(t); save(a); }
+ },true);
 })();
 </script>
 </body>
