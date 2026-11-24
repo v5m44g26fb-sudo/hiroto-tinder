@@ -931,7 +931,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v978</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v979</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1214,7 +1214,7 @@ const XIC9={reply:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" s
 const xcnt9=t=>{ const m=String(t||"").replace(/,/g,"").match(/[\d.]+\s*(?:万|K)?/); return m?m[0].trim():""; };
 function postEl(p,hot){const d=document.createElement("div");d.className="post";d.innerHTML=`${avaTxt(p.n)}<span style="min-width:0"><span class="nm">${p.n}</span> <span class="hd">${p.h} ・ ${p.tm||"今"}</span><div class="tx">${p.t}</div>${p.q?`<div style="border:1px solid rgba(128,128,128,.45);border-radius:12px;padding:9px 11px;margin-top:8px"><div style="font-size:12.5px"><b>${p.q.n}</b> <span style="color:#71767b">${p.q.h} ・ ${p.q.tm||"今"}</span></div><div style="font-size:13.5px;margin-top:2px">${p.q.t}</div>${p.q.img?`<img loading="lazy" decoding="async" src="${p.q.img}" style="width:100%;border-radius:9px;margin-top:7px;display:block" alt="">`:""}</div>`:""}<div class="mt" data-v258="1"><span class="${hot?'hot':''}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>${xcnt9(p.m[0])&&xcnt9(p.m[0])!=="0"?" <b>"+xcnt9(p.m[0])+"</b>":""}</span><span class="rp-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1.5 21 5.5l-4 4"/><path d="M3 12.5V11a3 3 0 0 1 3-3h15"/><path d="m7 22.5-4-4 4-4"/><path d="M21 11.5V13a3 3 0 0 1-3 3H3"/></svg>${xcnt9(p.m[1])?" <b>"+xcnt9(p.m[1])+"</b>":""}</span><span class="like-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>${xcnt9(p.m[2])?" <b>"+xcnt9(p.m[2])+"</b>":""}</span>${p.imp?`<span><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="11" width="3.4" height="9" rx="1"/><rect x="10.3" y="4" width="3.4" height="16" rx="1"/><rect x="17.1" y="8" width="3.4" height="12" rx="1"/></svg> <span id="imp-n">${p.imp}万</span></span>`:""}</div></span>`;
  const tog=(sel,emo,col)=>{ const el=d.querySelector(sel); if(!el) return; el.style.cursor="pointer"; el.addEventListener("click",e=>{ e.stopPropagation(); const on=el.dataset.on==="1"; var bEl=el.querySelector("b"); const num=bEl?(parseInt((bEl.textContent||"").replace(/[^0-9]/g,""))||0):(parseInt((el.textContent||"").replace(/[^0-9]/g,""))||0); const nx=on?Math.max(0,num-1):num+1; if(el.querySelector("svg")){ if(!bEl){ el.insertAdjacentHTML("beforeend"," <b></b>"); bEl=el.querySelector("b"); } [...el.childNodes].forEach(function(cn){ if(cn.nodeType===3) cn.remove(); }); if(bEl) bEl.textContent=nx.toLocaleString("ja-JP"); var svgEl=el.querySelector("svg"); if(svgEl&&el.classList.contains("like-btn")){ if(!on){ svgEl.setAttribute("fill","#f91880"); svgEl.removeAttribute("stroke"); } else { svgEl.setAttribute("fill","none"); svgEl.setAttribute("stroke","currentColor"); } } } else el.textContent=emo+" "+nx.toLocaleString("ja-JP"); if(el.classList.contains("like-btn")) el.classList.toggle("liked",!on); el.dataset.on=on?"":"1"; el.style.color=on?"":col; el.style.fontWeight=on?"":"700"; }); };
- tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); return d}
+ tog(".like-btn","❤️","#f91880"); tog(".rp-btn","🔁","#00ba7c"); if(window.__xApply) window.__xApply(d,p); return d}
 function buildTimeline(){const tl=$("#x-pane-tl"); X_POSTS.forEach((p,i)=>later(()=>{ if(p.t){ if(p.t.indexOf("カフェ写真を掲載")>=0) p=Object.assign({},p,{t:p.t.replace("一般女性とのカフェ写真を掲載","一般女性とのカフェでの目撃情報を掲載")}); if(p.t.indexOf("カフェ写真が出た途端")>=0) p=Object.assign({},p,{t:p.t.replace("カフェ写真が出た途端","目撃情報が出た途端")}); } if(state._route==="dating"&&p.t){ if(p.t.indexOf("事務所が第1報コメント")===0) p=Object.assign({},p,{t:"事務所が第1報コメント『プライベートは本人に任せています』。アプリ利用は『確認中』のまま #大翔Tinder"}); else if(p.t.indexOf("交際自体は事務所が否定済み")>=0) p=Object.assign({},p,{t:p.t.replace("交際自体は事務所が否定済み","交際自体は事務所が否定も肯定もしてない")}); else if(p.t.indexOf("交際は否定されてる")>=0) p=Object.assign({},p,{t:p.t.replace("交際は否定されてる","交際、否定はされてへん")}); else if(p.t.indexOf("交際じゃないなら")>=0) p=Object.assign({},p,{t:p.t.replace("交際じゃないなら","交際してるなら")}); } const el=postEl(p,i===0); tl.prepend(el); if(i===0){el.style.cursor="pointer"; el.title="タップでスレッド表示"; el.addEventListener("click",openThread);}},i*2600));
 const mine=document.createElement("div"); $("#x-me-posts").appendChild(postEl({n:"なお",h:"@nao_0324",t:"（このアカウント、今めちゃくちゃ見られてる…）",m:["💬 0","🔁 0","❤️ 0"]},false));}
 const TRENDS=[["エンターテイメント ・ トレンド","#大翔Tinder","128,409 件のポスト"],["日本のトレンド","マッチングアプリ","96,540 件のポスト"],["日本のトレンド","現役アイドル","84,210 件のポスト"],["日本のトレンド","事務所コメント","61,003 件のポスト"],["エンターテイメント ・ トレンド","Super Like","52,118 件のポスト"],["日本のトレンド","マロン","31,204 件のポスト"],["日本のトレンド","傘の写真","18,204 件のポスト"],["エンターテイメント ・ トレンド","ワイドショー","44,812 件のポスト"],["スポーツ ・ トレンド","甲子園 組み合わせ","27,540 件のポスト"]];
@@ -12116,7 +12116,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v978"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v979"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -33364,6 +33364,66 @@ function fScandal(key){ const fc=FCHATS[key]; if(!fc||fc._scandalShown) return; 
    if(thumb&&sc){ var post=document.querySelector("#v-ig .ig-post"); if(post){ post.scrollIntoView({block:"center"}); post.style.outline="2px solid #0095f6"; setTimeout(()=>{ post.style.outline=""; },1400); } }
    else if(sc) sc.scrollTop=0;
  });
+})();
+</script>
+<script>
+/* ===== v979: X likes/reposts/replies persist across re-renders and panes ===== */
+(function(){
+ var S=window.__xAct={like:{}, rp:{}, rep:{}};
+ function bumpB(span,delta){ if(!span) return; var b=span.querySelector("b"); var n=b?parseInt((b.textContent||"").replace(/[^0-9]/g,""))||0:0; n=Math.max(0,n+delta); if(!b){ if(n===0) return; span.insertAdjacentHTML("beforeend"," <b></b>"); b=span.querySelector("b"); } b.textContent=n.toLocaleString("ja-JP"); }
+ window.__xApply=function(d,p){ var key=p.t||"";
+   var lb=d.querySelector(".like-btn");
+   if(lb&&S.like[key]){ lb.dataset.on="1"; lb.classList.add("liked"); lb.style.color="#f91880"; lb.style.fontWeight="700"; var svg=lb.querySelector("svg"); if(svg){ svg.setAttribute("fill","#f91880"); svg.removeAttribute("stroke"); } bumpB(lb,1); }
+   var rb=d.querySelector(".rp-btn");
+   if(rb&&S.rp[key]){ rb.dataset.on="1"; rb.style.color="#00ba7c"; rb.style.fontWeight="700"; bumpB(rb,1); }
+   var reps=S.rep[key]; if(reps&&reps.length){ var mt=d.querySelector(".mt"); if(mt) bumpB(mt.children[0],reps.length); }
+ };
+ document.addEventListener("click",function(e){
+   var b=e.target.closest?e.target.closest(".like-btn,.rp-btn"):null; if(!b) return;
+   var post=b.closest("#v-x .post"); if(!post) return;
+   var tx=post.querySelector(".tx"); if(!tx) return; var key=tx.textContent;
+   setTimeout(function(){ var on=b.dataset.on==="1"||b.classList.contains("liked");
+     var nm=post.querySelector(".nm"), hd=post.querySelector(".hd");
+     var data={n:nm?nm.textContent.trim():"", h:hd?hd.textContent.trim().split("・")[0].trim():"", t:key};
+     if(b.classList.contains("like-btn")){ if(on) S.like[key]=data; else delete S.like[key]; }
+     else { if(on) S.rp[key]=true; else delete S.rp[key]; }
+   },0);
+ },true);
+ /* detail replies: record on send, restore on open, sync counts */
+ function detailKey(){ var body=document.querySelector("#xd-body"); if(!body||!body.children[1]) return ""; return body.children[1].textContent.trim(); }
+ document.addEventListener("click",function(e){
+   if(!e.target.closest||!e.target.closest("#xd-send")) return;
+   var inp=document.querySelector("#xd-in"); if(!inp) return; var v=inp.value.trim(); if(!v) return;
+   var key=detailKey(); if(!key) return;
+   (S.rep[key]=S.rep[key]||[]).push(v);
+   setTimeout(function(){ document.querySelectorAll("#x-pane-tl .post, #x-pane-search .post, #x-pane-mention .post, #x-me-posts .post").forEach(function(p){ var tx=p.querySelector(".tx"); if(tx&&tx.textContent===key){ var mt=p.querySelector(".mt"); if(mt) bumpB(mt.children[0],1); } }); },50);
+ },true);
+ var det=document.querySelector("#x-detail");
+ if(det){ var obs=new MutationObserver(function(){ if(det.style.display==="none") return;
+   var key=detailKey(); var reps=S.rep[key]; if(!reps||!reps.length) return;
+   [400,1600].forEach(function(ms){ setTimeout(function(){ var box=document.querySelector("#xd-replies"); if(!box) return;
+     var have=box.querySelectorAll(".v979-mine").length;
+     for(var i=have;i<reps.length;i++){ var d=document.createElement("div"); d.className="xd-reply v979-mine"; d.dataset.likes="0"; d.dataset.hours="0"; d.dataset.ord="-1";
+       d.style.cssText="display:flex;gap:9px;padding:11px 0;border-bottom:1px solid #f3f5f6";
+       d.innerHTML='<img loading="lazy" decoding="async" src="assets/nao-avatar4.jpg" style="width:32px;height:32px;border-radius:50%" alt=""><span style="font-size:13.5px;line-height:1.5"><b>なお</b> <span style="color:#536471">@nao_0324 · 今</span><div></div></span>';
+       d.querySelector("div").textContent=reps[i]; box.prepend(d); }
+   },ms); });
+ }); obs.observe(det,{attributes:true,attributeFilter:["style"]}); }
+ /* profile tabs: widen likes/replies beyond the timeline */
+ document.addEventListener("click",function(e){
+   var b=e.target.closest?e.target.closest(".x-ptabs button"):null; if(!b) return;
+   setTimeout(function(){
+     if(b.dataset.t==="likes"){ var box=document.querySelector("#x-ptab-likes"); if(!box) return;
+       var have=[...box.querySelectorAll(".tx")].map(x=>x.textContent);
+       Object.keys(S.like).forEach(function(k){ if(have.indexOf(k)>=0) return; var d=S.like[k]; var el=postEl({n:d.n,h:d.h,t:d.t,m:["💬 0","🔁 0","❤️ 0"]},false); box.appendChild(el); });
+       var em=box.querySelector(".x-ptab-empty"); if(em&&Object.keys(S.like).length) em.remove();
+     }
+     if(b.dataset.t==="replies"){ var box2=document.querySelector("#x-ptab-replies"); if(!box2) return;
+       var have2=[...box2.querySelectorAll(".tx")].map(x=>x.textContent);
+       Object.keys(S.rep).forEach(function(k){ S.rep[k].forEach(function(t){ if(have2.indexOf(t)>=0) return; box2.appendChild(postEl({n:"なお",h:"@nao_0324",t:t,m:["💬 0","🔁 0","❤️ 0"]},false)); }); });
+     }
+   },120);
+ },true);
 })();
 </script>
 </body>
