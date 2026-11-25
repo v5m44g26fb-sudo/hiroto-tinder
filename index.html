@@ -960,7 +960,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1055</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1056</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -2423,10 +2423,10 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   async function startChat(){
     if(chatStarted) return; chatStarted=true;
     tChip("9月27日（土）夜 —— マッチした日");
-    tNote("（来た。……分かってて、右に振った。画面にいるのは、井汲大翔本人や）");
+    tNote("（来た。……分かってて、右にスワイプした。画面にいるのは、井汲大翔本人や）");
     await tThem("…マッチ、ありがとう",600);
     await tThem("一応、ひろとです");
-    await tThem("名乗らんでも、バレてるか");
+    await tThem("……まあ、知ってるよな");
     await tThem("なおの写真、3回見直した");
     await tThem("特に、笑ってるやつ");
     await tThem("…何回も、開いてもうた");
@@ -2434,7 +2434,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
     tChoices("なおの返信を選んで",[
       {label:"もうバレてるっぽいし、言うけど……ファンです。", fn:async()=>{ await tThem("……やっぱり"); await tThem("ファンの人やったんや"); step2(); }},
       {label:"写真の感想、詳しく聞かせて", fn:async()=>{ await tThem("カフェのやつ"); await tThem("あれ見て、即決やった"); await tThem("…あの写真の笑い方、ずるいねん"); step2(); }},
-      {label:"分かってて振った。後悔は、まだない", fn:async()=>{ await tThem("…強気やな"); await tThem("後悔、させへんけど"); step2(); }}
+      {label:"分かってて選んだ。後悔は、まだない", fn:async()=>{ await tThem("…強気やな"); await tThem("後悔、させへんけど"); step2(); }}
     ]);
   }
   async function step2(){
@@ -3845,7 +3845,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"mgr",t:"今日のお前、振り、遅れてたぞ"},
    {k:"him",t:"…すみません"},
    {k:"mono",t:"（言えば楽やったんは、俺のほうや）"},
-   {k:"mono",t:"（ブレーキ踏んだ言い方したけど、踏めてへんのは、こっちや）"},
+   {k:"mono",t:"（……ブレーキ、効かへん。俺のほうが、余裕ないわ）"},
    {k:"mono",t:"（軽いつもりで始めたのは、俺のほうやったのに）"}
   ]},
   3:{sub:"彼のスマホ —— 11月2日（日）深夜",steps:[
@@ -3854,7 +3854,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"him",t:"あの子の名前は、出さへんって約束してください"},
    {k:"him",t:"アプリのほうは、俺ひとりで被ります"},
    {k:"mgr",t:"…分かった。名前は出さん。文面は、これで出す"},
-   {k:"mono",t:"（守り方、これしかあらへんのが情けない）"},
+   {k:"mono",t:"（……こんな守り方しかできへんのか、俺）"},
    {k:"draft",t:"検索、もうやめとき。…俺の名前は、見んといて"},
    {k:"draft",t:"泣いてへんか"},
    {k:"draft",t:"今すぐ、声だけでも聞きたい"},
@@ -3912,7 +3912,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    {k:"mono",t:"（プロフィール、もう一回開いた。…何回目や）"},
    {k:"draft",t:"エビ、ほんまに好きなんやな"},
    {k:"mono",t:"（送らん。初日から、距離感バグってると思われたくない）"},
-   {k:"mono",t:"（……マロン、今は構うたれへん。お前のごはんは後や）"},
+   {k:"mono",t:"（……マロン、ごめん。後で遊んだるから。今は、これ返させて）"},
    {k:"mono",t:"（……返事、まだかな。いや、急かすな。軽くいけ、軽く）"}
   ]},
   8:{sub:"彼のスマホ —— 10月17日（金）夜",steps:[
@@ -4428,7 +4428,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  /* ---- v108: Hiroto quiz, rebuilt for the Tinder story ---- */
  (function(){ const grid=$("#home-page2 .grid"); if(!grid||grid.querySelector('[data-hp="quiz"]')) return;
   const b=document.createElement("button"); b.className="appicon"; b.dataset.hp="quiz";
-  b.innerHTML='<span class="ic" style="background:linear-gradient(180deg,#7a5af8,#5a3ad6);font-size:24px;color:#fff">🎓</span><span class="lb">ひろと検定</span>';
+  b.innerHTML='<span class="ic" style="background:linear-gradient(180deg,#7a5af8,#5a3ad6);font-size:24px;color:#fff">🎓</span><span class="lb">ひろとクイズ</span>';
   grid.appendChild(b);
   const QS=[
    ["ひろととマッチした日は？",["9月27日","10月4日","9月30日"],0],
@@ -4444,20 +4444,20 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    panel.style.cssText="position:absolute;inset:0;background:#f7f7fa;z-index:85;display:none;flex-direction:column;padding:64px 16px 16px;overflow-y:auto;color:#111";
    $("#v-home").appendChild(panel); }
   b.addEventListener("click",()=>{ let qi=0, score=0;
-   const draw=()=>{ if(qi>=QS.length){ const rank=score===8?"🏆 ひろと検定 1級":score>=5?"🥈 よく知ってる":"🥉 これから知っていく";
+   const draw=()=>{ if(qi>=QS.length){ const rank=score===8?"🏆 ひろとクイズ 1級":score>=5?"🥈 よく知ってる":"🥉 これから知っていく";
      panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">🎓 結果</b></div>'+
       '<div style="text-align:center;padding:26px 0"><div style="font-size:44px;font-weight:800">'+score+' / '+QS.length+'</div><div style="font-size:16px;margin-top:8px">'+rank+'</div>'+
       '<button id="qz-send" style="margin-top:22px;background:#111;color:#fff;border:none;border-radius:999px;padding:12px 22px;font-size:14px;font-weight:700;cursor:pointer">結果をひろとに送る</button></div>';
      panel.querySelector(".hp-close").addEventListener("click",()=>panel.style.display="none");
      panel.querySelector("#qz-send").addEventListener("click",async()=>{ panel.style.display="none"; show("line"); openChat();
-      meMsg("ひろと検定、"+score+"点やった！");
+      meMsg("ひろとクイズ、"+score+"点やった！");
       later(async()=>{ try{
        if(score===8){ await himMsg("満点…さすがやな"); await himMsg("……俺のこと、よく見てくれてるんやな"); }
        else if(score>=5){ await himMsg("へぇ、なかなかやん"); await himMsg("間違えたとこ、今度教えたる"); }
        else { await himMsg("……もっと知ってほしいな"); await himMsg("時間かけて、覚えてって"); } }catch(e){} },1200); });
      return; }
     const [q,rawOpts]=QS[qi]; const order=rawOpts.map((o,i)=>[o,i]).sort(()=>Math.random()-.5); const opts=order.map(x=>x[0]); const ans=order.findIndex(x=>x[1]===0);
-    panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">🎓 ひろと検定（'+(qi+1)+' / '+QS.length+'）</b></div>'+
+    panel.innerHTML='<div class="hp-head"><button class="hp-close">‹</button><b style="font-size:17px">🎓 ひろとクイズ（'+(qi+1)+' / '+QS.length+'）</b></div>'+
      '<div style="font-size:16.5px;font-weight:700;line-height:1.6;padding:10px 2px 16px">'+q+'</div>'+
      opts.map((o,i)=>'<button class="qz-opt" data-i="'+i+'" style="display:block;width:100%;text-align:left;background:#fff;border:1px solid #e2e2e8;border-radius:12px;padding:13px 14px;font-size:14.5px;margin-bottom:9px;cursor:pointer;font-family:inherit">'+o+'</button>').join("");
     panel.querySelector(".hp-close").addEventListener("click",()=>panel.style.display="none");
@@ -4826,7 +4826,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
    ["🏁 物語を見届けた", !!state.ended],
    ["👥 フォロワー1万人突破", num(($("#ig-fol-n")||{}).textContent)>=10000],
    ["🖼 アルバム40枚", $$("#ph-grid figure").length>=40],
-   ["🎓 ひろと検定に挑戦した", !!state._quizTried],
+   ["🎓 ひろとクイズに挑戦した", !!state._quizTried],
    ["🔖 Xでブックマークした", !!state._bmUsed],
    ["💬 ニュースにコメントした", !!state._newsCmt],
    ["🔔 通知センターを開いた", !!state._ncOpened],
@@ -5263,7 +5263,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
  const panel=document.querySelector("#mem-panel"); if(!panel) return;
  const EXTRA=[
   ["📸","はじめての撮影",()=>[...document.querySelectorAll("#ph-grid figcaption")].some(f=>f.textContent.includes("📷"))],
-  ["🎓","ひろと検定への挑戦",()=>!!state._quizTried],
+  ["🎓","ひろとクイズへの挑戦",()=>!!state._quizTried],
   ["🔴","LIVEを見た夜",()=>!!state._liveWatched]];
  new MutationObserver(()=>{ if(panel.style.display==="none"||panel.querySelector("#mem-extra")) return;
   const box=document.createElement("div"); box.id="mem-extra";
@@ -5477,7 +5477,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
    ["n","打っては消して、打っては消して。最後に残ったのは、わりと正直な一文だった。"],
    ["me","『大阪の会社員。今日ひましてます🙌 サウナとエビとお酒が好き。ノリの合う人と気軽に飲みたいな。会って話す派です』……うん、これでいっか"],
    ["n","登録の仕上げに、ポップアップが出た。『初月キャンペーン ― Gold が無料トライアル中』"],
-   ["him","ゆい『Gold にしとき。来た Like、先に見えるから』"],
+   ["him","ゆい『課金しとき。誰からLike来たか分かるし、楽やで』"],
    ["me","無料なら、まあ……ぽち"],
    ["n","こうして、なんとなく Gold になった。"],
    ["n","あとは深く考えず、右へ左へ。軽い気持ちだった。この時は、まだ。"],
@@ -7336,7 +7336,7 @@ app.querySelector("#sf-q").addEventListener("keydown",e=>{ if(e.key==="Enter"){ 
   setTimeout(()=>{ toastEl.style.opacity="0"; },2400); };
  const findBtn=(label)=>[...document.querySelectorAll("button")].find(b=>b.textContent.includes(label));
  const RULES=[
-  {key:"quiz", label:"ひろと検定", unlock:()=>state.chapter>=3, msg:"🔒 ひろと検定は第3話から（彼のことを知ってから挑戦してね）"},
+  {key:"quiz", label:"ひろとクイズ", unlock:()=>state.chapter>=3, msg:"🔒 ひろとクイズは第3話から（彼のことを知ってから挑戦してね）"},
   {key:"uranai", label:"相性占い", unlock:()=>state.chapter>=2, msg:"🔒 相性占いは第2話から（出会ってから占おう）"},
   {key:"hisdm", sel:"#his-dm-btn", unlock:()=>state.chapter>=2, msg:"🔒 彼へのDMは第2話から（連絡先を交換してからね）"},
   {key:"mem", panel:"#mem-panel", unlock:()=>state.chapter>=3, msg:"🔒 思い出は第3話から"}];
@@ -12140,7 +12140,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1055"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1056"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -12738,7 +12738,7 @@ dock.addEventListener("click",function(e){
   await himMsg("コメント欄、ちょこちょこ見てたけど、見つけられへんかった",1000); if(!alive(t))return;
   await new Promise(res=>{ askChoices("なおの返信を選んで",[
    {label:"見てた。ファンやもん",fn:async()=>{ await himMsg("…おったんか"); await himMsg("次は、見つけたいな"); res(); }},
-   {label:"一ファンとして、ね笑",fn:async()=>{ await himMsg("一ファン、か"); await himMsg("…その距離、ちょっと悔しいな"); res(); }}
+   {label:"一ファンとして、ね笑",fn:async()=>{ await himMsg("一ファン、か"); await himMsg("…その距離、ちょっと……悔しいな"); res(); }}
   ]); }); if(!alive(t))return;
   addDayChip("10月28日（火）");
   await himMsg("ハロウィン、予定ある？",1400); if(!alive(t))return;
@@ -17814,7 +17814,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
   "物語を見届けた":S(P.flag,16,"#2e9e6b"),
   "フォロワー1万人突破":S(P.people,16,"#0095f6"),
   "アルバム40枚":S(P.image,16,"#8e44ad"),
-  "ひろと検定に挑戦した":S(P.cap,16,"#34518f"),
+  "ひろとクイズに挑戦した":S(P.cap,16,"#34518f"),
   "Xでブックマークした":S(P.bmk,16,"#1d9bf0",true),
   "ニュースにコメントした":S(P.chat,16,"#e60012"),
   "通知センターを開いた":S(P.bell,16,"#e8a13a"),
@@ -19166,7 +19166,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
   function quizFix(){
     [...document.querySelectorAll("div,span,h1,h2")].forEach(el=>{
       if(el.dataset.v513q || el.children.length>1) return;
-      if(el.textContent.includes("🎓") && el.textContent.includes("ひろと検定")){
+      if(el.textContent.includes("🎓") && el.textContent.includes("ひろとクイズ")){
         el.innerHTML=el.innerHTML.replace("🎓", CAP); el.dataset.v513q="1";
       }
     });
@@ -19257,7 +19257,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
   function quizFix2(){
     const _qp=document.querySelector("#quiz-panel"); if(!_qp||_qp.getClientRects().length===0) return;
     const p=[...document.querySelectorAll("div,section")].filter(e=>{ const cs=getComputedStyle(e);
-      return cs.display!=="none" && e.getBoundingClientRect().height>300 && e.textContent.includes("ひろと検定"); }).pop();
+      return cs.display!=="none" && e.getBoundingClientRect().height>300 && e.textContent.includes("ひろとクイズ"); }).pop();
     if(!p) return;
     [...p.querySelectorAll("button")].forEach(b=>{
       if(b.textContent.trim()==="‹"){ b.style.minWidth="36px"; b.style.height="36px"; b.style.fontSize="22px"; b.style.flex="none"; }
@@ -19313,7 +19313,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  }
  function quizBack(){
    const panels=[...document.querySelectorAll(".hp-panel")];
-   const p=panels.find(x=>x.textContent.includes("ひろと検定"));
+   const p=panels.find(x=>x.textContent.includes("ひろとクイズ"));
    if(!p) return;
    const b=p.querySelector("button.hp-close") || [...p.querySelectorAll("button")].find(x=>x.textContent.trim()==="‹");
    if(b) b.style.borderRadius="50%";
