@@ -960,7 +960,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1076</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1077</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1993,7 +1993,7 @@ document.addEventListener("click",e=>{ if(e.target.closest("#v-tiktok")) return;
  NEW.forEach(n=>{
   const d=document.createElement("div"); d.innerHTML=POSTHTML(n); const post=d.firstChild;
   const anchor=postOf(n.before); if(anchor) sc.insertBefore(post, anchor);
-  if(grid){ const gi=grid.querySelector('img[src$="'+n.before+'"]'); if(gi){ const g=document.createElement("img"); g.src="assets/"+n.img; grid.insertBefore(g, gi); } }
+  if(grid){ const gi=grid.querySelector('img[src$="'+n.before+'"]'); if(gi){ const g=document.createElement("img"); g.src="assets/"+n.img; g.alt=""; grid.insertBefore(g, gi); } }
  });
  function POSTHTML(n){ const jp=n.date.replace("-","年").replace("-","月")+"日";
   return '<div class="ig-post" data-date="'+n.date+'" style="border-top:1px solid #eee"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px"><img alt="" loading="lazy" decoding="async" src="assets/ig-avatar.jpg" style="width:30px;height:30px;border-radius:50%"><b style="font-size:13px">193.hiroto_jixiang</b></div><img alt="" loading="lazy" decoding="async" class="pimg" src="assets/'+n.img+'" style="width:100%;display:block"><div style="padding:8px 12px;font-size:13px"><b class="like-btn" style="cursor:pointer">いいね！'+n.likes+'件</b><div style="margin-top:2px"><b>193.hiroto_jixiang</b> '+n.cap+'</div><div style="color:#999;font-size:11px;margin-top:2px">'+jp+' · コメント'+n.cmts+'件</div></div></div>'; }
@@ -9055,7 +9055,7 @@ setInterval(upd,900); upd();
   row.style.cursor="pointer";
   row.addEventListener("click",()=>{ const list=document.querySelector("#news-list"); if(list) list.style.display="none";
    const a=document.querySelector("#news-article"); if(!a) return; a.style.display="block";
-   a.innerHTML='<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>一夜明けて——ひろと、本人の言葉でコメント　ファンへの感謝に「泣いた」の声</h2><div class="m">TV・新聞各紙 ・ 翌朝</div><img src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリの利用が報じられた人気アイドル・井汲大翔が、自身のSNSでコメントを発表した。アプリの利用は事実と認めて謝罪し、お相手とされる女性との交際は否定。アプリはすでに退会したという。</p><div class="box">「ステージに立てるのは、皆さんがいてくれるから。その気持ちは毎日変わりません」——本人のコメントより</div><p>事務所も本人のコメントを支持する姿勢を示した。SNSでは「正直に話してくれてありがとう」「隠されるよりずっと応援できる」「歌とダンスで返してほしい」といった声が広がり、前夜の騒ぎは少しずつ静まっている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント</h3><div style="padding:10px 0;border-bottom:1px solid #f2f2f7"><div style="font-size:14px;line-height:1.75">嘘をつかなかった。それだけで十分だと思う</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px">♡ 2,861 ・ 返信</div></div><div style="padding:10px 0"><div style="font-size:14px;line-height:1.75">次のステージ、絶対に行く。待ってて</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px">♡ 1,502 ・ 返信</div></div></div>';
+   a.innerHTML='<div class="article"><button class="btn-main" style="background:#f2f2f7;width:auto;padding:7px 14px;margin:0 0 12px" onclick="newsBack()">‹ 一覧に戻る</button><h2>一夜明けて——ひろと、本人の言葉でコメント　ファンへの感謝に「泣いた」の声</h2><div class="m">TV・新聞各紙 ・ 翌朝</div><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;border-radius:12px;margin:6px 0 12px"><p>マッチングアプリの利用が報じられた人気アイドル・井汲大翔が、自身のSNSでコメントを発表した。アプリの利用は事実と認めて謝罪し、お相手とされる女性との交際は否定。アプリはすでに退会したという。</p><div class="box">「ステージに立てるのは、皆さんがいてくれるから。その気持ちは毎日変わりません」——本人のコメントより</div><p>事務所も本人のコメントを支持する姿勢を示した。SNSでは「正直に話してくれてありがとう」「隠されるよりずっと応援できる」「歌とダンスで返してほしい」といった声が広がり、前夜の騒ぎは少しずつ静まっている。</p><h3 style="margin-top:20px;font-size:15.5px">コメント</h3><div style="padding:10px 0;border-bottom:1px solid #f2f2f7"><div style="font-size:14px;line-height:1.75">嘘をつかなかった。それだけで十分だと思う</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px">♡ 2,861 ・ 返信</div></div><div style="padding:10px 0"><div style="font-size:14px;line-height:1.75">次のステージ、絶対に行く。待ってて</div><div style="font-size:12.5px;color:#8e8e93;margin-top:3px">♡ 1,502 ・ 返信</div></div></div>';
    const sc=document.querySelector("#news-scroll"); if(sc) sc.scrollTop=0; });
  },1200);
 })();
@@ -12038,7 +12038,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1076"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1077"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -15293,8 +15293,8 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  + '<div class="m-head"><div class="m-title">ホーム</div><div class="m-ava">な</div></div>'
  + '<div class="m-sec" style="margin-top:2px">あなたへのピックアップ</div>'
  + '<div class="m-scrollx">'
- +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/fanmeet-1.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">ファンミの余韻</div><div style="font-size:13px;opacity:.85">アンコールのあとに。</div></div></div>'
- +  '<div class="m-bigcard" data-open-songs="1"><img src="assets/ig-busan.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">釜山の夜</div><div style="font-size:13px;opacity:.85">旅行のあとで聞く曲。</div></div></div>'
+ +  '<div class="m-bigcard" data-open-songs="1"><img loading="lazy" decoding="async" src="assets/fanmeet-1.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">ファンミの余韻</div><div style="font-size:13px;opacity:.85">アンコールのあとに。</div></div></div>'
+ +  '<div class="m-bigcard" data-open-songs="1"><img loading="lazy" decoding="async" src="assets/ig-busan.jpg" alt=""><div class="ovl"></div><div class="tx"><div style="font-size:12px;opacity:.85">おすすめ</div><div style="font-size:19px;font-weight:800">釜山の夜</div><div style="font-size:13px;opacity:.85">旅行のあとで聞く曲。</div></div></div>'
  + '</div>'
  + '<div class="m-sec">最近の再生 <span style="color:#c7c7cc;font-size:16px">›</span></div>'
  + '<div class="m-scrollx">'+sqCards(HOME_RECENT)+'</div>'
@@ -15302,7 +15302,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  +'<div class="m-page" data-page="new">'
  + '<div class="m-head"><div class="m-title">新着おすすめ</div><div class="m-ava">な</div></div>'
  + '<div style="font-size:13px;color:#8a8a8e">新着プレイリスト</div><div style="font-size:21px;font-weight:800">2025年ベストソング</div><div style="font-size:15px;color:#8a8a8e;margin-bottom:8px">なおセレクト</div>'
- + '<div class="m-wide" data-open-songs="1"><img src="assets/fanmeet-3.jpg" alt=""><div class="ovl" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.5))"></div><div style="position:absolute;left:14px;bottom:12px;color:#fff;font-size:14px">この秋を象徴する4曲を、ピックアップ。</div></div>'
+ + '<div class="m-wide" data-open-songs="1"><img loading="lazy" decoding="async" src="assets/fanmeet-3.jpg" alt=""><div class="ovl" style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(0,0,0,.5))"></div><div style="position:absolute;left:14px;bottom:12px;color:#fff;font-size:14px">この秋を象徴する4曲を、ピックアップ。</div></div>'
  + '<div class="m-sec">2025年のベスト <span style="color:#c7c7cc;font-size:16px">›</span></div>'
  + '<div class="m-scrollx">'+sqCards(NEW_BEST)+'</div>'
  +'</div>'
@@ -15346,14 +15346,14 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  +'</div>'
  +'<div class="m-page" data-page="songs">'
  + '<button type="button" id="v447-back" style="background:rgba(0,0,0,.05);border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;cursor:pointer">'+I.back+'</button>'
- + '<img src="assets/cafe3.jpg" alt="" style="width:196px;height:196px;border-radius:16px;object-fit:cover;display:block;margin:14px auto 10px;box-shadow:0 14px 34px rgba(0,0,0,.22)">'
+ + '<img loading="lazy" decoding="async" src="assets/cafe3.jpg" alt="" style="width:196px;height:196px;border-radius:16px;object-fit:cover;display:block;margin:14px auto 10px;box-shadow:0 14px 34px rgba(0,0,0,.22)">'
  + '<div style="text-align:center;font-size:21px;font-weight:800">なおのプレイリスト</div>'
  + '<div style="text-align:center;color:#8a8a8e;font-size:13px;margin:3px 0 14px">なお ・ 2025年</div>'
  + '<div style="display:flex;gap:10px;margin-bottom:8px"><button type="button" class="m-pillbtn" id="v447-playall">'+I.play+' 再生</button><button type="button" class="m-pillbtn" id="v447-shuffle">シャッフル</button></div>'
  + '<div id="v447-songs">'+allRows(true)+'</div>'
  +'</div>'
  +'</div>'
- +'<div id="v447-mini"><img id="v447-mini-img" src="assets/cafe3.jpg" alt=""><div style="flex:1;min-width:0"><div id="v447-mini-t" style="font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div><div id="v447-mini-a" style="font-size:12.5px;color:#8a8a8e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div></div><button type="button" class="m-npbtn" id="v447-mini-play" style="color:#111">'+I.play+'</button><button type="button" class="m-npbtn" id="v447-mini-next" style="color:#111">'+I.next+'</button></div>'
+ +'<div id="v447-mini"><img loading="lazy" decoding="async" id="v447-mini-img" src="assets/cafe3.jpg" alt=""><div style="flex:1;min-width:0"><div id="v447-mini-t" style="font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div><div id="v447-mini-a" style="font-size:12.5px;color:#8a8a8e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div></div><button type="button" class="m-npbtn" id="v447-mini-play" style="color:#111">'+I.play+'</button><button type="button" class="m-npbtn" id="v447-mini-next" style="color:#111">'+I.next+'</button></div>'
  +'<div id="v447-tabs">'
  + '<button type="button" class="m-tab on" data-tab="home">'+I.home+'ホーム</button>'
  + '<button type="button" class="m-tab" data-tab="new">'+I.new+'新着</button>'
@@ -15363,7 +15363,7 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  +'</div>'
  +'<div id="v447-np"><div id="v447-npbg"></div><div class="inner">'
  + '<div id="v447-grab" style="width:38px;height:5px;border-radius:99px;background:rgba(255,255,255,.4);margin:0 auto;cursor:pointer"></div>'
- + '<img id="v447-npart" src="assets/cafe3.jpg" alt="">'
+ + '<img loading="lazy" decoding="async" id="v447-npart" src="assets/cafe3.jpg" alt="">'
  + '<div style="display:flex;align-items:center;gap:10px;margin-top:14px"><div style="flex:1;min-width:0"><div id="v447-npt" style="font-size:20px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div><div id="v447-npa" style="font-size:17px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div></div><button type="button" class="m-npbtn" id="v447-np-dots" style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.18)">'+I.dots+'</button></div>'
  + '<div id="v447-scrub" style="margin-top:16px"><div id="v447-scrubfill"></div></div>'
  + '<div style="display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.6);margin-top:5px"><span id="v447-npcur">0:00</span><span id="v447-nprem">-0:00</span></div>'
@@ -15533,13 +15533,13 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  };
  var ov=document.createElement("div"); ov.id="v452-safari";
  var favs=[
-  {lb:"公式サイト", page:"official", html:'<img src="assets/stage.jpg" alt="">'},
+  {lb:"公式サイト", page:"official", html:'<img loading="lazy" decoding="async" src="assets/stage.jpg" alt="">'},
   {lb:"Instagram", app:"ig", bg:"linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)", html:'<span style="color:#fff">'+I.ig+'</span>'},
   {lb:"TikTok", app:"tiktok", bg:"#111", html:'<span style="color:#fff">'+I.tt+'</span>'},
   {lb:"X", app:"x", bg:"#000", html:'<span style="color:#fff;font-weight:900;font-size:22px">X</span>'},
   {lb:"ニュース", page:"news", bg:"#e03131", html:'<span style="color:#fff">'+I.news+'</span>'},
   {lb:"YouTube", page:"youtube", bg:"#ff0033", html:I.play},
-  {lb:"ファンクラブ", page:"official", html:'<img src="assets/crown.jpg" alt="">'},
+  {lb:"ファンクラブ", page:"official", html:'<img loading="lazy" decoding="async" src="assets/crown.jpg" alt="">'},
   {lb:"マップ", page:"maps", bg:"#e8f3e8", html:'<span style="color:#34a853">'+svg('<path d="M12 21.5S5 15.8 5 10a7 7 0 0 1 14 0c0 5.8-7 11.5-7 11.5Z"/><circle cx="12" cy="10" r="2.6"/>',27)+'</span>'}
  ];
  ov.innerHTML=
@@ -15549,11 +15549,11 @@ input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:tex
  + '<div style="font-size:23px;font-weight:800;margin-bottom:12px">お気に入り</div>'
  + '<div class="sf-favs">'+favs.map(function(f,i){ return '<div class="sf-fav" data-fav="'+i+'"><div class="ic" style="'+(f.bg?"background:"+f.bg:"background:#eee")+'">'+f.html+'</div><div class="lb">'+f.lb+'</div></div>'; }).join("")+'</div>'
  + '<div style="font-size:19px;font-weight:800;margin:24px 0 4px">リーディングリスト</div>'
- + '<div class="sf-art" data-goto="official"><img src="assets/fanmeet-2.jpg" alt=""><div><div style="font-weight:700;font-size:14.5px">ファンミーティング、盛況のうちに終了</div><div style="font-size:12px;color:#8a8a8e">hiroto-ikumi.official</div></div></div>'
- + '<div class="sf-art" data-goto="news"><img src="assets/ig-memories.jpg" alt=""><div><div style="font-weight:700;font-size:14.5px">井汲大翔、SNSの写真が話題に</div><div style="font-size:12px;color:#8a8a8e">entame-news.jp</div></div></div>'
+ + '<div class="sf-art" data-goto="official"><img loading="lazy" decoding="async" src="assets/fanmeet-2.jpg" alt=""><div><div style="font-weight:700;font-size:14.5px">ファンミーティング、盛況のうちに終了</div><div style="font-size:12px;color:#8a8a8e">hiroto-ikumi.official</div></div></div>'
+ + '<div class="sf-art" data-goto="news"><img loading="lazy" decoding="async" src="assets/ig-memories.jpg" alt=""><div><div style="font-weight:700;font-size:14.5px">井汲大翔、SNSの写真が話題に</div><div style="font-size:12px;color:#8a8a8e">entame-news.jp</div></div></div>'
  +'</div>'
  +'<div class="sf-page" data-sf="official" style="padding-top:0">'
- + '<div style="margin:0 -18px;position:relative"><img src="assets/stage.jpg" alt="" style="width:100%;height:300px;object-fit:cover;display:block"><div style="position:absolute;left:18px;bottom:14px;color:#fff"><div style="font-size:12px;letter-spacing:3px">OFFICIAL SITE</div><div style="font-size:27px;font-weight:900">井汲 大翔</div></div></div>'
+ + '<div style="margin:0 -18px;position:relative"><img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;height:300px;object-fit:cover;display:block"><div style="position:absolute;left:18px;bottom:14px;color:#fff"><div style="font-size:12px;letter-spacing:3px">OFFICIAL SITE</div><div style="font-size:27px;font-weight:900">井汲 大翔</div></div></div>'
  + '<div style="font-size:18px;font-weight:800;margin:20px 0 4px">スケジュール</div>'
  + '<div class="sf-sched"><span class="d">11/15</span><span>ファンミーティング ― 大阪</span></div>'
  + '<div class="sf-sched"><span class="d">12/06</span><span>トークイベント ― 東京</span></div>'
@@ -20161,7 +20161,7 @@ var SEGS=[["assets/couple-29.jpg","11\u670816\u65e5 \u30fb \u30b9\u30b9\u30ad\u7
 var pl=document.createElement("div"); pl.id="subst-player";
 pl.style.cssText="position:absolute;inset:0;z-index:96;background:#000;display:none;flex-direction:column";
 pl.innerHTML='<div id="subst-bars" style="display:flex;gap:4px;padding:52px 10px 8px"></div>'
-+'<div style="display:flex;align-items:center;gap:8px;padding:2px 12px;color:#fff;font-size:13.5px"><img alt="" src="assets/cafe-latte.jpg" style="width:30px;height:30px;border-radius:50%;object-fit:cover"><b>nao_ura</b><span id="subst-when" style="opacity:.75;font-size:12px"></span><span id="subst-x" style="margin-left:auto;font-size:19px;cursor:pointer;padding:2px 6px">\u2715</span></div>'
++'<div style="display:flex;align-items:center;gap:8px;padding:2px 12px;color:#fff;font-size:13.5px"><img loading="lazy" decoding="async" alt="" src="assets/cafe-latte.jpg" style="width:30px;height:30px;border-radius:50%;object-fit:cover"><b>nao_ura</b><span id="subst-when" style="opacity:.75;font-size:12px"></span><span id="subst-x" style="margin-left:auto;font-size:19px;cursor:pointer;padding:2px 6px">\u2715</span></div>'
 +'<div style="flex:1;position:relative"><img alt="" id="subst-img" style="width:100%;height:100%;object-fit:cover">'
 +'<div id="subst-prev" style="position:absolute;left:0;top:0;bottom:0;width:35%"></div><div id="subst-next" style="position:absolute;right:0;top:0;bottom:0;width:35%"></div></div>'
 +'<div id="subst-cap" style="color:#fff;font-size:13px;padding:10px 14px 20px"></div>';
@@ -21248,7 +21248,7 @@ try{
    +'<span style="min-width:0"><span style="display:flex;align-items:center;gap:5px"><b style="font-size:16px">nao_ura</b>'+(pub?"":lockSvg(14))+'</span>'
    +'<span style="display:block;color:#536471;font-size:12px">'+(pub?String(1+TAUNTS.length+PRE.length):"0")+' 件のポスト</span></span></div>'
    +'<div style="height:104px;background:url(assets/scar-street.jpg) center 40%/cover"></div>'
-   +'<div style="padding:0 14px"><img src="assets/cafe-latte.jpg" width="66" height="66" alt="" style="border-radius:50%;object-fit:cover;margin-top:-30px;border:3px solid #fff">'
+   +'<div style="padding:0 14px"><img loading="lazy" decoding="async" src="assets/cafe-latte.jpg" width="66" height="66" alt="" style="border-radius:50%;object-fit:cover;margin-top:-30px;border:3px solid #fff">'
    +'<div style="display:flex;align-items:center;gap:5px;margin-top:3px"><span style="font-size:18px;font-weight:900">nao_ura</span>'+(pub?"":lockSvg(15))+'</div>'
    +'<div style="color:#536471;font-size:13px">@nao_ura</div>'
    +'<div style="font-size:13.5px;margin-top:6px;line-height:1.6">サブ垢。本垢に載せない写真の置き場。見つけても、内緒でいてください</div>'
@@ -21459,7 +21459,7 @@ try{
   +'<button id="v730-close" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:16px;cursor:pointer">✕</button>'
   +'<span style="margin-left:12px;color:#fff;font-weight:800;font-size:14.5px">写真</span></div>'
   +'<div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0"><img id="v730-img" alt="" style="max-width:100%;max-height:100%;object-fit:contain;display:block"></div>'
-  +'<div style="padding:12px 16px 20px;color:#fff"><div style="display:flex;align-items:center;gap:8px"><img src="assets/cafe-latte.jpg" width="34" height="34" alt="" style="border-radius:50%;object-fit:cover"><span><b style="font-size:14px">nao_ura</b><span id="v730-meta" style="display:block;color:#71767b;font-size:12px"></span></span></div>'
+  +'<div style="padding:12px 16px 20px;color:#fff"><div style="display:flex;align-items:center;gap:8px"><img loading="lazy" decoding="async" src="assets/cafe-latte.jpg" width="34" height="34" alt="" style="border-radius:50%;object-fit:cover"><span><b style="font-size:14px">nao_ura</b><span id="v730-meta" style="display:block;color:#71767b;font-size:12px"></span></span></div>'
   +'<div id="v730-cap" style="font-size:14.5px;line-height:1.65;margin-top:9px"></div>'
   +'<div id="v730-metrics" style="display:flex;gap:26px;color:#71767b;font-size:12.5px;margin-top:11px"></div></div>';
  vx.appendChild(ov);
@@ -21945,8 +21945,8 @@ window.__v733inject=inject;
  function renderDrawer(){
   var un=unlocked();
   var fol=(document.querySelector("#x-fol-n")||{}).textContent||"189";
-  var subTop=un?'<img id="v738-sub-ava" src="assets/cafe-latte.jpg" width="34" height="34" alt="" style="border-radius:50%;object-fit:cover;cursor:pointer">':"";
-  var subRow=un?'<button class="mrow" id="v738-sub-row"><img src="assets/cafe-latte.jpg" width="26" height="26" alt="" style="border-radius:50%;object-fit:cover"><span>サブ垢 @nao_ura</span>'+(state._subPublic?"":IC.lock)+'</button>':"";
+  var subTop=un?'<img loading="lazy" decoding="async" id="v738-sub-ava" src="assets/cafe-latte.jpg" width="34" height="34" alt="" style="border-radius:50%;object-fit:cover;cursor:pointer">':"";
+  var subRow=un?'<button class="mrow" id="v738-sub-row"><img loading="lazy" decoding="async" src="assets/cafe-latte.jpg" width="26" height="26" alt="" style="border-radius:50%;object-fit:cover"><span>サブ垢 @nao_ura</span>'+(state._subPublic?"":IC.lock)+'</button>':"";
   drawer.innerHTML='<div class="bk"></div><div class="pn">'
    +'<div style="display:flex;align-items:flex-start">'
    +'<img src="assets/nao-avatar4.jpg" width="52" height="52" alt="" style="border-radius:50%;object-fit:cover">'
@@ -32694,8 +32694,8 @@ body:has(#v-tiktok.on) .statusbar{mix-blend-mode:normal;color:#fff}
    +'<div class="mt">再生回数 52万回 ・ 1年前</div></div>'
    +'<div id="sfyt-chan"><img src="assets/ig-avatar.jpg" alt=""><div class="cn">HIROTO 히로토</div><div class="sub">チャンネル登録</div></div>'
    +'<div id="sfyt-acts"><span>&#128077; 8,932</span><span>共有</span><span>保存</span></div>'
-   +'<div class="sfyt-next"><img src="assets/fanmeet-2.jpg" alt=""><div><div class="ti">【LIVE】ファンミーティング 神戸 - ダイジェスト</div><div class="mt">HIROTO 히로토 ・ 12万回 ・ 3週間前</div></div></div>'
-   +'<div class="sfyt-next"><img src="assets/ig-memories.jpg" alt=""><div><div class="ti">オフの日の過ごし方 - マロンと散歩</div><div class="mt">HIROTO 히로토 ・ 9.1万回 ・ 2か月前</div></div></div>';
+   +'<div class="sfyt-next"><img loading="lazy" decoding="async" src="assets/fanmeet-2.jpg" alt=""><div><div class="ti">【LIVE】ファンミーティング 神戸 - ダイジェスト</div><div class="mt">HIROTO 히로토 ・ 12万回 ・ 3週間前</div></div></div>'
+   +'<div class="sfyt-next"><img loading="lazy" decoding="async" src="assets/ig-memories.jpg" alt=""><div><div class="ti">オフの日の過ごし方 - マロンと散歩</div><div class="mt">HIROTO 히로토 ・ 9.1万回 ・ 2か月前</div></div></div>';
    pages.appendChild(d);
    return true;
  }
@@ -32785,7 +32785,7 @@ body:has(#v-tiktok.on) .statusbar{mix-blend-mode:normal;color:#fff}
      +'<div style="margin:16px;padding:13px 14px;border:1px solid #e3e3e6;border-radius:12px;display:flex;align-items:center;gap:10px"><span style="font-size:12.5px;line-height:1.5;flex:1">ログインすると、いいねやコメントができます</span><span style="background:#0095f6;color:#fff;border-radius:8px;padding:7px 13px;font-size:13px;font-weight:700">ログイン</span></div>');
    mk("tiktok",
      '<div style="position:relative">'
-     +'<img src="assets/fanmeet-2.jpg" alt="" style="width:100%;aspect-ratio:3/4.1;object-fit:cover;display:block;opacity:.92">'
+     +'<img loading="lazy" decoding="async" src="assets/fanmeet-2.jpg" alt="" style="width:100%;aspect-ratio:3/4.1;object-fit:cover;display:block;opacity:.92">'
      +'<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="74" height="74" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,.38)"/><path d="M9.5 7.8v8.4L16.8 12Z" fill="#fff"/></svg></div>'
      +'<div style="position:absolute;right:10px;bottom:86px;display:flex;flex-direction:column;gap:15px;align-items:center;color:#fff;font-size:11px;text-align:center">'
      +'<span><svg width="31" height="31" viewBox="0 0 24 24" fill="#fe2c55"><path d="M12 21S3.5 15.3 3.5 9.3A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.5 3.3C20.5 15.3 12 21 12 21Z"/></svg><br>38.2万</span>'
@@ -32802,7 +32802,7 @@ body:has(#v-tiktok.on) .statusbar{mix-blend-mode:normal;color:#fff}
      +[["💬","メッセージ","テキスト、写真、スタンプで気軽にやりとり"],["📞","音声・ビデオ通話","世界中どこからでも無料で通話"],["🎨","スタンプ・着せかえ","気持ちを伝える豊富なスタンプ"]].map(function(r){
        return '<div style="display:flex;gap:13px;align-items:center;padding:15px 22px;border-top:1px solid #f2f2f4"><span style="font-size:23px">'+r[0]+'</span><span><b style="font-size:14px">'+r[1]+'</b><br><span style="font-size:12px;color:#8a8a8e">'+r[2]+'</span></span></div>'; }).join(""));
    mk("x",
-     '<img src="assets/stage.jpg" alt="" style="width:100%;height:104px;object-fit:cover;display:block;margin-top:-56px">'
+     '<img loading="lazy" decoding="async" src="assets/stage.jpg" alt="" style="width:100%;height:104px;object-fit:cover;display:block;margin-top:-56px">'
      +'<div style="padding:0 16px"><img src="assets/ig-avatar.jpg" alt="" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-top:-30px">'
      +'<div style="display:flex;align-items:center;gap:6px;margin-top:5px"><b style="font-size:17px">井汲大翔</b>'+BADGE+'<span style="margin-left:auto;background:#0f1419;color:#fff;border-radius:999px;padding:6px 15px;font-size:13px;font-weight:700">フォロー</span></div>'
      +'<div style="color:#536471;font-size:13.5px">@193hiroto</div>'
@@ -32846,7 +32846,7 @@ body:has(#v-tiktok.on) .statusbar{mix-blend-mode:normal;color:#fff}
    var d=document.createElement("div");
    d.className="sf-page"; d.setAttribute("data-sf","fanclub");
    d.innerHTML=
-     '<img src="assets/crown.jpg" alt="" style="width:100%;height:150px;object-fit:cover;display:block">'
+     '<img loading="lazy" decoding="async" src="assets/crown.jpg" alt="" style="width:100%;height:150px;object-fit:cover;display:block">'
      +'<div style="padding:16px 18px 0"><div style="font-size:11px;letter-spacing:2.5px;color:#a07d2c;font-weight:700">OFFICIAL FANCLUB</div>'
      +'<div style="font-size:20px;font-weight:800;margin-top:4px">HIROTO FANCLUB</div>'
      +'<div style="display:flex;gap:8px;margin-top:13px"><span style="flex:1;text-align:center;background:#111;color:#fff;border-radius:999px;padding:10px 0;font-size:13.5px;font-weight:700">会員ログイン</span><span style="flex:1;text-align:center;border:1.5px solid #111;border-radius:999px;padding:10px 0;font-size:13.5px;font-weight:700">新規入会</span></div></div>'
