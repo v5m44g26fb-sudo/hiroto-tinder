@@ -960,7 +960,7 @@ input,textarea{font-size:16px!important}
 <div class="setrow"><span>🐶 ひろとの愛犬</span><span style="color:#8e8e93;font-size:12.5px">マロン</span></div>
 <button class="btn-main" style="background:#ff3b30;color:#fff;width:100%;margin:6px 0 12px" onclick="window.__resumeOff=true;try{localStorage.removeItem('r5-resume-v1')}catch(e){};location.reload()">🔁 物語を最初からやり直す</button>
 <div style="font-size:13px;font-weight:800;margin:2px 2px 8px">📞 通話履歴</div><div id="set-calllog" style="background:#fff;border-radius:12px;padding:6px 14px;margin-bottom:6px"><div style="font-size:12.5px;color:#8e8e93;padding:8px 0">まだ通話はない</div></div><button id="calllog-clear" style="background:none;border:none;color:#8e8e93;font-size:12px;cursor:pointer;font-family:inherit;padding:2px 2px 12px">通話履歴を消す</button>
-<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1080</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
+<div style="background:#fff;border-radius:12px;padding:14px;font-size:12.5px;line-height:1.9;color:#3a3a3c">『現役アイドル、Tinderやってた件』 <b>v1081</b><br>※ この作品は創作フィクションです。<br>※ 通話の声はAI生成音声（AnyVoice）を使用しています。<br>※ フォロワー数などは物語上の演出です。</div>
 </div>
 </section>
 
@@ -1031,7 +1031,7 @@ function clearBadge(k){setBadge(k,0); if(k==="line"){state.lineUnread=0;$("#line
 /* push */
 let pushCb=null;
 function pop(){ if(state.mute){ try{ if(navigator.vibrate) vib(12); }catch(e){} return; } try{ if(navigator.vibrate) vib(25); if(!window._ac) window._ac=new (window.AudioContext||window.webkitAudioContext)(); const ac=window._ac; if(ac.state==="suspended") ac.resume(); const o=ac.createOscillator(),g=ac.createGain(); o.type="sine"; o.frequency.value=920; g.gain.setValueAtTime(0.05,ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.16); o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime+0.18);}catch(e){} }
-function push(app,color,icon,title,body,cb){ pop(); $("#push-app").textContent=app; const ic=$("#push-ic"); ic.style.background=color; ic.textContent=icon; $("#push-title").textContent=title; $("#push-body").textContent=body; pushCb=cb||null; $("#push").classList.add("in"); clearTimeout(push._t); push._t=setTimeout(()=>$("#push").classList.remove("in"),7000);}
+function push(app,color,icon,title,body,cb){ try{ window.__se ? __se.notify() : pop(); }catch(e){} $("#push-app").textContent=app; const ic=$("#push-ic"); ic.style.background=color; ic.textContent=icon; $("#push-title").textContent=title; $("#push-body").textContent=body; pushCb=cb||null; $("#push").classList.add("in"); clearTimeout(push._t); push._t=setTimeout(()=>$("#push").classList.remove("in"),7000);}
 $("#push").addEventListener("click",()=>{ const _incP=$("#call-incoming"); if(_incP&&_incP.style.display==="flex") return; $("#push").classList.remove("in"); if(pushCb) pushCb();});
 /* ============ v4: prologue (from the beginning) ============ */
 state.phase="prologue"; state.chapter=0; state._token=0;
@@ -1292,8 +1292,8 @@ function closeChat(){ $("#line-chat").style.display="none"; $("#line-list").styl
 $("#talk-hiroto").addEventListener("click",openChat);
 $("#line-back").addEventListener("click",closeChat);
 function nowTime(){const d=new Date();return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
-function himMsg(text,delay){ return new Promise(res=>{ later(()=>{ $("#typing").classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight; const _tw=Math.max(650,Math.min(2100,600+String(text).length*30)); later(()=>{ $("#typing").classList.remove("on"); const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#chat").appendChild(d); $("#line-preview").textContent=text; $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); }); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res();},_tw);},delay||400);})}
-function meMsg(text){ pop();const d=document.createElement("div");d.className="msg me";d.innerHTML=`<span class="bub"></span><span class="meta pr" data-t="${nowTime()}">${nowTime()}</span>`;d.querySelector(".bub").textContent=text;$("#chat").appendChild(d);$("#chat").scrollTop=$("#chat").scrollHeight}
+function himMsg(text,delay){ return new Promise(res=>{ later(()=>{ $("#typing").classList.add("on"); $("#chat").scrollTop=$("#chat").scrollHeight; const _tw=Math.max(650,Math.min(2100,600+String(text).length*30)); later(()=>{ $("#typing").classList.remove("on"); const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub"></span><span class="meta">${nowTime()}</span>`; d.querySelector(".bub").textContent=text; $("#chat").appendChild(d); $("#line-preview").textContent=text; $$("#chat .msg.me .meta.pr").forEach(m=>{ m.innerHTML="既読<br>"+m.dataset.t; m.classList.remove("pr"); }); $("#chat").scrollTop=$("#chat").scrollHeight; try{ if(window.__se) __se.recv(); }catch(e){} bump("line"); res();},_tw);},delay||400);})}
+function meMsg(text){ try{ window.__se ? __se.send() : pop(); }catch(e){}const d=document.createElement("div");d.className="msg me";d.innerHTML=`<span class="bub"></span><span class="meta pr" data-t="${nowTime()}">${nowTime()}</span>`;d.querySelector(".bub").textContent=text;$("#chat").appendChild(d);$("#chat").scrollTop=$("#chat").scrollHeight}
 function askChoices(q,opts){const w=$("#choices");w.innerHTML=`<div class="q">${q}</div>`;opts.forEach(o=>{const b=document.createElement("button");b.textContent=o.label;b.addEventListener("click",()=>{ if(w.dataset.done) return; w.dataset.done="1"; $$("#choices button").forEach(x=>x.disabled=true); w.classList.remove("on"); meMsg(o.label); o.fn(); setTimeout(()=>{delete w.dataset.done},600); });w.appendChild(b)});w.classList.add("on");$("#chat").scrollTop=$("#chat").scrollHeight}
 async function lineSequence1(){ if(state.act2||state.ended||state._seq1) return; state._seq1=true;
 push("LINE","#06c755","💬","ひろと","「なお」——タップでトークを開く",()=>{show("line");openChat()});
@@ -1384,8 +1384,8 @@ function openThread(){ ["tl","trend","mention","me"].forEach(k=>$("#x-pane-"+k).
 }
 $("#thread-back").addEventListener("click",()=>{ $("#x-thread").style.display="none"; $("#x-pane-tl").style.display="block"; const cb=$("#x-compose-btn"); if(cb) cb.style.display=""; });
 /* ===== v3: LINE photo + stamp ===== */
-function himPhoto(src){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub photo"><img loading="lazy" decoding="async" src="${src}" alt=""></span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },500); }) }
-function himStamp(emoji){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub stamp">${emoji}</span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; bump("line"); res(); },400); }) }
+function himPhoto(src){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub photo"><img loading="lazy" decoding="async" src="${src}" alt=""></span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; try{ if(window.__se) __se.recv(); }catch(e){} bump("line"); res(); },500); }) }
+function himStamp(emoji){ return new Promise(res=>{ later(()=>{ const d=document.createElement("div"); d.className="msg him"; d.innerHTML=`<img loading="lazy" decoding="async" class="avatar" src="assets/ig-avatar.jpg" width="34" height="34" alt=""><span class="bub stamp">${emoji}</span><span class="meta">${nowTime()}</span>`; $("#chat").appendChild(d); $("#chat").scrollTop=$("#chat").scrollHeight; try{ if(window.__se) __se.recv(); }catch(e){} bump("line"); res(); },400); }) }
 /* ===== v3: group chat ===== */
 function openGroup(){ const sw=$("#line-search-wrap"); if(sw) sw.style.display="none"; $("#line-list").style.display="none"; $("#line-head-list").style.display="none"; $("#line-chat").style.display="none"; const g=$("#group-chat"); g.style.display="flex"; state.gUnread=0; $("#g-unread").style.display="none"; clearBadge("line"); $("#gchat").scrollTop=$("#gchat").scrollHeight }
 function closeGroup(){ $("#group-chat").style.display="none"; $("#line-list").style.display="block"; $("#line-head-list").style.display="flex"; show("line") }
@@ -2402,7 +2402,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
       idx++; render();
     },380);
   }
-  function showMatch(){ matched=true; document.getElementById("match-overlay").classList.add("on"); try{pop();}catch(e){} }
+  function showMatch(){ matched=true; document.getElementById("match-overlay").classList.add("on"); try{ window.__se ? __se.match() : pop(); }catch(e){} }
   document.getElementById("btn-nope").addEventListener("click",()=>swipe("nope"));
   document.getElementById("btn-like").addEventListener("click",()=>swipe("like"));
   document.getElementById("btn-super").addEventListener("click",()=>{ if(superLeft<=0){ toast("⭐ <b>Super Likeは今日の分を使い切ったよ</b><br>ふつうの Like ならまだ送れるよ"); return; } swipe("super"); });
@@ -2412,7 +2412,7 @@ function shareRecord(){ const t="『現役アイドル、Tinderやってた件�
   document.getElementById("ttab-match").addEventListener("click",()=>{ if(matched){ document.getElementById("tinder-deck-wrap").style.display="none"; document.getElementById("tinder-chat-wrap").style.display="flex"; startChat(); } else toast("まだマッチはないよ。ひろとを Like してみて🔥"); });
   document.getElementById("ttab-discover").addEventListener("click",()=>{ if(!matched){ document.getElementById("tinder-chat-wrap").style.display="none"; document.getElementById("tinder-deck-wrap").style.display="flex"; } });
   // chat
-  function tThem(text,delay){ return new Promise(res=>{ const ms=delay||Math.max(550, Math.min(1500, 500+String(text).length*24)); const tc=document.getElementById("tchat"); const tp=document.createElement("div"); tp.className="t-bub them"; tp.textContent="・・・"; tp.style.opacity=".6"; tc.appendChild(tp); tc.scrollTop=99999; setTimeout(()=>{ tp.remove(); const d=document.createElement("div"); d.className="t-bub them"; d.textContent=text; tc.appendChild(d); tc.scrollTop=99999; res(); }, ms); }); }
+  function tThem(text,delay){ return new Promise(res=>{ const ms=delay||Math.max(550, Math.min(1500, 500+String(text).length*24)); const tc=document.getElementById("tchat"); const tp=document.createElement("div"); tp.className="t-bub them"; tp.textContent="・・・"; tp.style.opacity=".6"; tc.appendChild(tp); tc.scrollTop=99999; setTimeout(()=>{ tp.remove(); try{ if(window.__se) __se.recv(); }catch(e){} const d=document.createElement("div"); d.className="t-bub them"; d.textContent=text; tc.appendChild(d); tc.scrollTop=99999; res(); }, ms); }); }
   function tMe(text){ try{pop();}catch(e){} const d=document.createElement("div"); d.className="t-bub me"; d.textContent=text; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; }
   function tNote(text){ const d=document.createElement("div"); d.style.cssText="align-self:center;background:#f2f2f7;color:#6e6e73;font-size:12px;border-radius:12px;padding:7px 11px;max-width:88%;text-align:center;line-height:1.55;font-style:italic"; d.textContent=text; document.getElementById("tchat").appendChild(d); }
   function tChip(text){ const d=document.createElement("div"); d.className="daychip"; d.style.cssText="align-self:center;margin:8px 0 2px"; d.textContent=text; document.getElementById("tchat").appendChild(d); document.getElementById("tchat").scrollTop=99999; }
@@ -12044,7 +12044,7 @@ if(folEl && window.MutationObserver){ var busy=false;
 if(window.__v270) return; window.__v270=true;
 /* visible build stamp in the page head, so the loaded build can be checked at a glance */
 var ph=document.querySelector(".page-head");
-if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1080"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
+if(ph && !document.getElementById("build-stamp")){ var st=document.createElement("p"); st.id="build-stamp"; st.textContent="build v1081"; st.style.cssText="font-size:11px;opacity:.55;margin-top:2px"; ph.appendChild(st); }
 var home=document.querySelector("#v-home"); if(!home) return;
 var dock=home.querySelector(".dock"); if(!dock) return;
 /* --- Safari mini browser: rebuilt here and wired by delegation from the dock, so the
@@ -33324,6 +33324,33 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     while(n && n.parentElement !== phone) n = n.parentElement;
     if(n) hyd(n);
   }, true);
+})();
+</script>
+
+<script>
+/* ===== v1081: SE layer. Small synthesized phone sounds (no audio files, no new assets), gated by state.mute exactly like pop(), throttled so story bursts never machine-gun. send = her messages (LINE meMsg), recv = his messages (LINE himMsg / himPhoto / himStamp, Tinder tThem), notify = push banners, match = the Tinder match moment. ===== */
+(function(){
+  var last = {};
+  function ac(){ if(!window._ac) window._ac = new (window.AudioContext || window.webkitAudioContext)(); if(window._ac.state === "suspended") window._ac.resume(); return window._ac; }
+  function tone(freq, t0, dur, vol, slideTo){
+    var c = ac(), o = c.createOscillator(), g = c.createGain();
+    o.type = "sine";
+    o.frequency.setValueAtTime(freq, c.currentTime + t0);
+    if(slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, c.currentTime + t0 + dur);
+    g.gain.setValueAtTime(0.0001, c.currentTime + t0);
+    g.gain.exponentialRampToValueAtTime(vol, c.currentTime + t0 + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + t0 + dur);
+    o.connect(g); g.connect(c.destination);
+    o.start(c.currentTime + t0); o.stop(c.currentTime + t0 + dur + 0.05);
+  }
+  function gate(key, ms){ var n = Date.now(); if(last[key] && n - last[key] < ms) return false; last[key] = n; return true; }
+  function muted(){ try{ return !!(typeof state !== "undefined" && state && state.mute); }catch(e){ return false; } }
+  window.__se = {
+    send: function(){ if(muted() || !gate("send", 200)) return; try{ tone(740, 0, 0.10, 0.045, 1180); }catch(e){} },
+    recv: function(){ if(muted() || !gate("recv", 400)) return; try{ tone(1318, 0, 0.09, 0.032); tone(1760, 0.07, 0.11, 0.028); }catch(e){} },
+    notify: function(){ if(muted() || !gate("notify", 500)) return; try{ tone(1046, 0, 0.10, 0.030); tone(1568, 0.02, 0.08, 0.014); }catch(e){} },
+    match: function(){ if(muted() || !gate("match", 800)) return; try{ tone(784, 0, 0.10, 0.040); tone(988, 0.06, 0.10, 0.040); tone(1318, 0.12, 0.16, 0.045); }catch(e){} }
+  };
 })();
 </script>
 </body>
